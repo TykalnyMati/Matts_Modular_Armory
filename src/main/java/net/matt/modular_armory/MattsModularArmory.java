@@ -4,7 +4,6 @@ import com.mojang.logging.LogUtils;
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.items.ModCreativeModeTabs;
 import net.matt.modular_armory.items.ModItems;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
