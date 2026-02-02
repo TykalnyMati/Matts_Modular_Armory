@@ -1,6 +1,7 @@
 package net.matt.modular_armory;
 
 import com.mojang.logging.LogUtils;
+import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.items.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -35,6 +36,7 @@ public class MattsModularArmory {
         MinecraftForge.EVENT_BUS.register(this);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -52,6 +54,7 @@ public class MattsModularArmory {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.MODULAR_CLAY);
             event.accept(ModItems.RAW_MODULAR_PLATE);
+            event.accept(ModBlocks.MODULAR_CLAY_BLOCK);
         }
     }
 

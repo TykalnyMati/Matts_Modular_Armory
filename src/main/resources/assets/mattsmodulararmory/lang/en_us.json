@@ -1,4 +1,6 @@
 {
   "item.mattsmodulararmory.modular_clay": "Modular Clay",
-  "item.mattsmodulararmory.raw_modular_plate": "Raw Modular Plate"
+  "item.mattsmodulararmory.raw_modular_plate": "Raw Modular Plate",
+
+  "block.mattsmodulararmory.modular_clay_block": "Block of Modular Clay"
 }
