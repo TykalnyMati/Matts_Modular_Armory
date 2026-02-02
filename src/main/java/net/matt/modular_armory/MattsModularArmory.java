@@ -2,6 +2,7 @@ package net.matt.modular_armory;
 
 import com.mojang.logging.LogUtils;
 import net.matt.modular_armory.block.ModBlocks;
+import net.matt.modular_armory.items.ModCreativeModeTabs;
 import net.matt.modular_armory.items.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
@@ -35,7 +36,13 @@ public class MattsModularArmory {
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
+        // Adding Creative tab
+        ModCreativeModeTabs.register(modEventBus);
+
+        // Adding items
         ModItems.register(modEventBus);
+
+        //Adding Blocks
         ModBlocks.register(modEventBus);
 
         // Register the item to a creative tab
@@ -51,11 +58,12 @@ public class MattsModularArmory {
 
     // Add the example block item to the building blocks tab
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-            event.accept(ModItems.MODULAR_CLAY);
-            event.accept(ModItems.RAW_MODULAR_PLATE);
-            event.accept(ModBlocks.MODULAR_CLAY_BLOCK);
-        }
+        // Not needed, all the mod items are in its own tab
+//        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+//            event.accept(ModItems.MODULAR_CLAY);
+//            event.accept(ModItems.RAW_MODULAR_PLATE);
+//            event.accept(ModBlocks.MODULAR_CLAY_BLOCK);
+//        }
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
