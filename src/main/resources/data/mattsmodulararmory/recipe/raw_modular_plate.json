@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:modular_clay"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "A A",
+    "AAA"
+  ],
+  "result": {
+    "count": 2,
+    "id": "mattsmodulararmory:raw_modular_plate"
+  }
+}
