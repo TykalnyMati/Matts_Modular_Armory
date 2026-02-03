@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:raw_modular_plate"
+    },
+    "B": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "A  ",
+    " B ",
+    "  B"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:modular_clay_extractor"
+  }
+}

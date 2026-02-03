@@ -20,6 +20,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODULAR_CLAY.get());
                         output.accept(ModItems.RAW_MODULAR_PLATE.get());
                         output.accept(ModBlocks.MODULAR_CLAY_BLOCK.get());
+                        output.accept(ModItems.MODULAR_CLAY_EXTRACTOR.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {
