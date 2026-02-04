@@ -1,6 +1,7 @@
 package net.matt.modular_armory.block;
 
 import net.matt.modular_armory.MattsModularArmory;
+import net.matt.modular_armory.block.custom.AdaptiveFleshBlock;
 import net.matt.modular_armory.items.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -21,8 +22,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> MODULAR_CLAY_BLOCK = registerBlock("modular_clay_block",
             () -> new Block(BlockBehaviour.Properties.of().strength(0.6f ).sound(SoundType.GRAVEL)));
 
-
-
+    public static final RegistryObject<Block> ADAPTIVE_FLESH_BLOCK = registerBlock("adaptive_flesh_block",
+            () -> new AdaptiveFleshBlock(BlockBehaviour.Properties.of().strength(0.6f ).sound(SoundType.MOSS)));
 
 
     // Helpfull methods

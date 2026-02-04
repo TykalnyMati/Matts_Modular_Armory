@@ -13,6 +13,7 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
 
@@ -28,7 +29,7 @@ public class ModularClayExtractorItem extends Item {
     }
 
     @Override
-    public InteractionResult useOn(UseOnContext pContext) {
+    public @NotNull InteractionResult useOn(UseOnContext pContext) {
         Level level = pContext.getLevel();
         Block clickedBlock = level.getBlockState(pContext.getClickedPos()).getBlock();
 
@@ -51,7 +52,6 @@ public class ModularClayExtractorItem extends Item {
                 return InteractionResult.SUCCESS;
             }
         }
-
-        return super.useOn(pContext);
+        return InteractionResult.FAIL;
     }
 }

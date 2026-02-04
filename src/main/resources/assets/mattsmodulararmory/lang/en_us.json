@@ -4,6 +4,11 @@
   "item.mattsmodulararmory.modular_clay": "Modular Clay",
   "item.mattsmodulararmory.raw_modular_plate": "Raw Modular Plate",
   "item.mattsmodulararmory.modular_clay_extractor": "Modular Clay Extractor",
+  "item.mattsmodulararmory.flesh_meal": "Flesh Meal",
 
-  "block.mattsmodulararmory.modular_clay_block": "Block of Modular Clay"
+  "block.mattsmodulararmory.modular_clay_block": "Block of Modular Clay",
+  "block.mattsmodulararmory.adaptive_flesh_block": "Block of Adaptive Flesh",
+
+  "tooltip.mattsmodulararmory.flesh_meal0": "Spreads ",
+  "tooltip.mattsmodulararmory.flesh_meal1": "Adaptive Flesh"
 }
