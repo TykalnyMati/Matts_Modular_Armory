@@ -14,7 +14,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> MODULAR_CLAY = ITEMS.register("modular_clay", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> RAW_MODULAR_PLATE = ITEMS.register("raw_modular_plate", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BASIC_MODULAR_PLATE = ITEMS.register("basic_modular_plate", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> MODULAR_CLAY_EXTRACTOR = ITEMS.register("modular_clay_extractor", () -> new ModularClayExtractorItem(new Item.Properties().durability(16)));
 

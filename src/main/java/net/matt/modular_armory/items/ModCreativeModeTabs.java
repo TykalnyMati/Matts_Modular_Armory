@@ -18,7 +18,7 @@ public class ModCreativeModeTabs {
                     .title(Component.translatable("creativetab.mattsmodulararmory.mattsmodulararmory"))
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItems.MODULAR_CLAY.get());
-                        output.accept(ModItems.RAW_MODULAR_PLATE.get());
+                        output.accept(ModItems.BASIC_MODULAR_PLATE.get());
                         output.accept(ModBlocks.MODULAR_CLAY_BLOCK.get());
                         output.accept(ModItems.MODULAR_CLAY_EXTRACTOR.get());
                         output.accept(ModItems.FLESH_MEAL.get());

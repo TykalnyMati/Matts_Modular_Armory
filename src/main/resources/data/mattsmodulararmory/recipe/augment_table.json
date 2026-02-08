@@ -6,7 +6,7 @@
       "tag": "minecraft:planks"
     },
     "B": {
-      "item": "mattsmodulararmory:raw_modular_plate"
+      "item": "mattsmodulararmory:basic_modular_plate"
     }
   },
   "pattern": [

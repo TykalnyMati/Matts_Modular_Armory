@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "mattsmodulararmory:item/raw_modular_plate"
+    "layer0": "mattsmodulararmory:item/basic_modular_plate"
   }
 }
