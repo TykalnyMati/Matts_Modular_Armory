@@ -6,6 +6,9 @@ import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.renderer.AugmentTableBlockEntityRenderer;
 import net.matt.modular_armory.items.ModCreativeModeTabs;
 import net.matt.modular_armory.items.ModItems;
+import net.matt.modular_armory.screen.ModMenuTypes;
+import net.matt.modular_armory.screen.custom.AugmentTableScreen;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -44,11 +47,14 @@ public class MattsModularArmory {
         // Adding items
         ModItems.register(modEventBus);
 
-        //Adding Blocks
+        // Adding Blocks
         ModBlocks.register(modEventBus);
 
-        //Adding Block Entities
+        // Adding Block Entities
         ModBlockEntities.register(modEventBus);
+
+        // Adding Menus
+        ModMenuTypes.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
@@ -83,6 +89,7 @@ public class MattsModularArmory {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
+            MenuScreens.register(ModMenuTypes.AUGMENT_TABLE_MENU.get(), AugmentTableScreen::new);
         }
 
         @SubscribeEvent
