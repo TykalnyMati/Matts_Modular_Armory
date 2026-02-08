@@ -23,6 +23,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODULAR_CLAY_EXTRACTOR.get());
                         output.accept(ModItems.FLESH_MEAL.get());
                         output.accept(ModBlocks.ADAPTIVE_FLESH_BLOCK.get());
+                        output.accept(ModBlocks.AUGMENT_TABLE.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

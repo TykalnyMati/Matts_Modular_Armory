@@ -2,9 +2,12 @@ package net.matt.modular_armory;
 
 import com.mojang.logging.LogUtils;
 import net.matt.modular_armory.block.ModBlocks;
+import net.matt.modular_armory.block.entity.ModBlockEntities;
+import net.matt.modular_armory.block.entity.renderer.AugmentTableBlockEntityRenderer;
 import net.matt.modular_armory.items.ModCreativeModeTabs;
 import net.matt.modular_armory.items.ModItems;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -44,6 +47,9 @@ public class MattsModularArmory {
         //Adding Blocks
         ModBlocks.register(modEventBus);
 
+        //Adding Block Entities
+        ModBlockEntities.register(modEventBus);
+
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
@@ -77,6 +83,11 @@ public class MattsModularArmory {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
 
+        }
+
+        @SubscribeEvent
+        public static void registerBBR(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerBlockEntityRenderer(ModBlockEntities.AUGMENT_TABLE_BE.get(), AugmentTableBlockEntityRenderer::new);
         }
     }
 }

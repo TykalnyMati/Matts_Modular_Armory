@@ -2,6 +2,7 @@ package net.matt.modular_armory.block;
 
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.block.custom.AdaptiveFleshBlock;
+import net.matt.modular_armory.block.custom.AugmentTableBlock;
 import net.matt.modular_armory.items.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -23,7 +24,10 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of().strength(0.6f ).sound(SoundType.GRAVEL)));
 
     public static final RegistryObject<Block> ADAPTIVE_FLESH_BLOCK = registerBlock("adaptive_flesh_block",
-            () -> new AdaptiveFleshBlock(BlockBehaviour.Properties.of().strength(0.6f ).sound(SoundType.MOSS)));
+            () -> new AdaptiveFleshBlock(BlockBehaviour.Properties.of().strength(1f ).sound(SoundType.WART_BLOCK)));
+
+    public static final RegistryObject<Block> AUGMENT_TABLE = registerBlock("augment_table",
+            () -> new AugmentTableBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD).noOcclusion()));
 
 
     // Helpfull methods

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mattsmodulararmory:block/augment_table"
+    },
+    "facing=east": {
+      "model": "mattsmodulararmory:block/augment_table",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mattsmodulararmory:block/augment_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mattsmodulararmory:block/augment_table",
+      "y": 270
+    }
+  }
+}
