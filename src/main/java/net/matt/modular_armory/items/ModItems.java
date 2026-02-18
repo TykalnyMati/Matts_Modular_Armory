@@ -3,7 +3,10 @@ package net.matt.modular_armory.items;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.items.custom.FleshMealItem;
 import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.item.ShovelItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -19,6 +22,16 @@ public class ModItems {
     public static final RegistryObject<Item> MODULAR_CLAY_EXTRACTOR = ITEMS.register("modular_clay_extractor", () -> new ModularClayExtractorItem(new Item.Properties().durability(16)));
 
     public static final RegistryObject<Item> FLESH_MEAL = ITEMS.register("flesh_meal", () -> new FleshMealItem(new Item.Properties()));
+
+    // Tools
+    public static final RegistryObject<Item> MODULAR_CLAY_PICKAXE = ITEMS.register("modular_clay_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.MODULAR_CLAY, 1.0f, -2.8f))));
+
+    public static final RegistryObject<Item> MODULAR_CLAY_AXE = ITEMS.register("modular_clay_axe",
+            () -> new AxeItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(AxeItem.createAttributes(ModToolTiers.MODULAR_CLAY, 7.0f, -3.2f))));
+
+    public static final RegistryObject<Item> MODULAR_CLAY_SHOVEL = ITEMS.register("modular_clay_shovel",
+            () -> new ShovelItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.MODULAR_CLAY, 1.5f, -3.0f))));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
