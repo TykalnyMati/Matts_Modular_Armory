@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "modular_clay",
+  "ingredients": [
+    {
+      "item": "mattsmodulararmory:modular_clay_block"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "mattsmodulararmory:modular_clay"
+  }
+}

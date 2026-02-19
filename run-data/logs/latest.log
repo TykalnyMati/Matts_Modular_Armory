@@ -1,0 +1,27 @@
+[19lut2026 14:54:17.778] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 17, --assetsDir, C:\Users\matis\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, mattsmodulararmory, --all, --output, D:\Minecraft mods\MattsModularArmory 1.21\src\generated\resources, --existing, D:\Minecraft mods\MattsModularArmory 1.21\src\main\resources]
+[19lut2026 14:54:17.785] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.9+10-LTS
+[19lut2026 14:54:17.787] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.1 starting: java version 21.0.9 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[19lut2026 14:54:17.890] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
+[19lut2026 14:54:17.982] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=jar:file:///C:/Users/matis/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.7/8ab114ac385e6dbdad5efafe28aba4df8120915f/mixin-0.8.7.jar!/ Service=ModLauncher Env=UNKNOWN
+[19lut2026 14:54:18.940] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[19lut2026 14:54:19.681] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\matis\.gradle\caches\forge_gradle\assets, --assetIndex, 17, --mod, mattsmodulararmory, --all, --output, D:\Minecraft mods\MattsModularArmory 1.21\src\generated\resources, --existing, D:\Minecraft mods\MattsModularArmory 1.21\src\main\resources]
+[19lut2026 14:54:24.391] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 51.0.33, for MC 1.21 with MCP 20240613.102039
+[19lut2026 14:54:24.391] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v51.0.33 Initialized
+[19lut2026 14:54:24.410] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
+[19lut2026 14:54:24.873] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [mattsmodulararmory]
+[19lut2026 14:54:24.931] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/matis/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21-51.0.33_mapped_parchment_2024.11.17-1.21.1/forge-1.21-51.0.33_mapped_parchment_2024.11.17-1.21.1-recomp.jar%230!/assets/.mcassetsroot' uses unexpected schema
+[19lut2026 14:54:24.931] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/matis/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21-51.0.33_mapped_parchment_2024.11.17-1.21.1/forge-1.21-51.0.33_mapped_parchment_2024.11.17-1.21.1-recomp.jar%230!/data/.mcassetsroot' uses unexpected schema
+[19lut2026 14:54:25.043] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[19lut2026 14:54:25.187] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 142 ms
+[19lut2026 14:54:25.187] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[19lut2026 14:54:25.216] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 28 ms
+[19lut2026 14:54:25.216] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id mattsmodulararmory
+[19lut2026 14:54:25.222] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id mattsmodulararmory finished after 6 ms
+[19lut2026 14:54:25.222] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id mattsmodulararmory
+[19lut2026 14:54:25.223] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id mattsmodulararmory finished after 0 ms
+[19lut2026 14:54:25.223] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: mattsmodulararmory
+[19lut2026 14:54:25.237] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: mattsmodulararmory finished after 13 ms
+[19lut2026 14:54:25.237] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: mattsmodulararmory
+[19lut2026 14:54:25.332] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: mattsmodulararmory finished after 94 ms
+[19lut2026 14:54:25.332] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 289 ms
+[19lut2026 14:54:25.337] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 33, old count: 25, new count: 34, removed stale: 0, written: 8

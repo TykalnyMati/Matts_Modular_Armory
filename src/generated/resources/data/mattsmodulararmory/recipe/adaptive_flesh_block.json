@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:nether_wart"
+    },
+    "B": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "C": {
+      "item": "mattsmodulararmory:modular_clay_block"
+    },
+    "D": {
+      "item": "minecraft:blaze_powder"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "BCB",
+    "DBD"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:adaptive_flesh_block"
+  }
+}
