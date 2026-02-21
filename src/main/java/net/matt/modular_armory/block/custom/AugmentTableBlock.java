@@ -31,12 +31,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class AugmentTableBlock extends BaseEntityBlock {
     public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 16, 16);
-    // Custom hitbox shape
-//    public static final VoxelShape SHAPE = Block.box(0, 0, 0, 4, 12, 4);
-//    public static final VoxelShape leg_2 = Block.box(8, 0, 0, 4, 12, 4);
-//    public static final VoxelShape leg_3 = Block.box(0, 0, 8, 4, 12, 4);
-//    public static final VoxelShape leg_4 = Block.box(8, 0, 8, 4, 12, 4);
-//    public static final VoxelShape top = Block.box(0, 12, 0, 16, 4, 16);
 
     public static final MapCodec<AugmentTableBlock> CODEC = simpleCodec(AugmentTableBlock::new);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -82,8 +76,8 @@ public class AugmentTableBlock extends BaseEntityBlock {
     @Override
     protected void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pMovedByPiston) {
         if(pState.getBlock() != pNewState.getBlock()) {
-            if(pLevel.getBlockEntity(pPos) instanceof AugmentTableBlockEntity augumentTableBlockEntity) {
-                augumentTableBlockEntity.drops();
+            if(pLevel.getBlockEntity(pPos) instanceof AugmentTableBlockEntity augmentTableBlockEntity) {
+                augmentTableBlockEntity.drops();
                 pLevel.updateNeighbourForOutputSignal(pPos, this);
             }
         }
@@ -93,9 +87,9 @@ public class AugmentTableBlock extends BaseEntityBlock {
     // Does stuff
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if(pLevel.getBlockEntity(pPos) instanceof AugmentTableBlockEntity augumentTableBlockEntity) {
+        if(pLevel.getBlockEntity(pPos) instanceof AugmentTableBlockEntity augmentTableBlockEntity) {
             if(!pLevel.isClientSide()) {
-                ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(augumentTableBlockEntity, Component.literal("Augment Table")), pPos);
+                ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(augmentTableBlockEntity, Component.literal("Augment Table")), pPos);
                 return ItemInteractionResult.SUCCESS;
             }
 
@@ -103,15 +97,15 @@ public class AugmentTableBlock extends BaseEntityBlock {
                 return ItemInteractionResult.SUCCESS;
             }
 
-//            if(augumentTableBlockEntity.inventory.getStackInSlot(0).isEmpty() && !pStack.isEmpty()) {
-//                augumentTableBlockEntity.inventory.insertItem(0, pStack.copy(), false);
+//            if(augmentTableBlockEntity.inventory.getStackInSlot(0).isEmpty() && !pStack.isEmpty()) {
+//                augmentTableBlockEntity.inventory.insertItem(0, pStack.copy(), false);
 //                pStack.shrink(1);
 //                pLevel.playSound(pPlayer, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f);
 //                return ItemInteractionResult.SUCCESS;
 //            } else if(pStack.isEmpty()) {
-//                ItemStack stackOnTable = augumentTableBlockEntity.inventory.extractItem(0, 1, false);
+//                ItemStack stackOnTable = augmentTableBlockEntity.inventory.extractItem(0, 1, false);
 //                pPlayer.setItemInHand(InteractionHand.MAIN_HAND, stackOnTable);
-//                augumentTableBlockEntity.clearContents();
+//                augmentTableBlockEntity.clearContents();
 //                pLevel.playSound(pPlayer, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
 //                return ItemInteractionResult.SUCCESS;
 //            }

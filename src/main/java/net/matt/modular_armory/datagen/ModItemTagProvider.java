@@ -1,6 +1,8 @@
 package net.matt.modular_armory.datagen;
 
 import net.matt.modular_armory.MattsModularArmory;
+import net.matt.modular_armory.items.ModItems;
+import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -17,6 +19,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-
+        tag(ModTags.Items.MODULAR_ITEMS)
+                .add(ModItems.MODULAR_CLAY_AXE.get())
+                .add(ModItems.MODULAR_CLAY_SHOVEL.get());
     }
 }

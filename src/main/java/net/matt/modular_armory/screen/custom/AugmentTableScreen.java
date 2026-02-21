@@ -8,6 +8,7 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.inventory.Slot;
 
 public class AugmentTableScreen extends AbstractContainerScreen<AugmentTableMenu> {
     private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "textures/gui/augment_table/augment_table_gui.png");
@@ -26,6 +27,22 @@ public class AugmentTableScreen extends AbstractContainerScreen<AugmentTableMenu
         int y = (height - imageHeight) / 2;
 
         pGuiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
+
+        // Blacking out inactive slots
+        for (Slot slot : this.menu.slots) {
+            if (!slot.isActive()) {
+                int slot_x = leftPos + slot.x;
+                int slot_y = topPos + slot.y;
+
+                pGuiGraphics.fill(
+                        slot_x,
+                        slot_y,
+                        slot_x + 16,
+                        slot_y + 16,
+                        0x88000000 // semi-transparent black
+                );
+            }
+        }
     }
 
     @Override

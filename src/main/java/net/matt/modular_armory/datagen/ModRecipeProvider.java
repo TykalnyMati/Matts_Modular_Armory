@@ -36,6 +36,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 .group("modular_clay")
                 .save(pRecipeOutput, MattsModularArmory.MOD_ID + ":modular_clay_from_block");
 
+        // Modular Clay Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MODULAR_CLAY_BLOCK.get())
+                .pattern("AA")
+                .pattern("AA")
+                .define('A', ModItems.MODULAR_CLAY.get())
+                .unlockedBy(getHasName(ModItems.MODULAR_CLAY.get()), has(ModItems.MODULAR_CLAY.get()))
+                .save(pRecipeOutput);
+
         // Basic Modular Plate
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BASIC_MODULAR_PLATE.get())
                 .pattern("AAA")

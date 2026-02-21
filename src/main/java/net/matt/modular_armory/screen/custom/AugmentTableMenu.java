@@ -3,12 +3,11 @@ package net.matt.modular_armory.screen.custom;
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.custom.AugmentTableBlockEntity;
 import net.matt.modular_armory.screen.ModMenuTypes;
+import net.matt.modular_armory.util.ModTags;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -17,6 +16,13 @@ import net.minecraftforge.items.SlotItemHandler;
 public class AugmentTableMenu extends AbstractContainerMenu {
     public final AugmentTableBlockEntity blockEntity;
     private final Level level;
+
+    private final int[][] slotPositions = {
+            {80, 35}, {62, 17}, {80, 17},
+            {98, 17}, {62, 35}, {98, 35},
+            {62, 53}, {80, 53}, {98, 53}};
+
+    private boolean augmentSlotsActive = false;
 
     public AugmentTableMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
         this(pContainerId, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()));
@@ -30,8 +36,31 @@ public class AugmentTableMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, 0, 80, 35));
+        // Middle slot
+        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, 0, slotPositions[0][0], slotPositions[0][1]));
+
+        // 1st augment slot
+        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, 1, slotPositions[1][0], slotPositions[1][1]) {
+            @Override
+            public boolean isActive() {
+                ItemStack stack = ((AugmentTableBlockEntity) blockEntity).inventory.getStackInSlot(0);
+                augmentSlotsActive = stack.is(ModTags.Items.MODULAR_ITEMS);
+                return augmentSlotsActive;
+            }
+        });
+
+        // Other augment slots
+        for (int i = 2; i < 9; i++) {
+            this.addSlot(new SlotItemHandler(this.blockEntity.inventory, i, slotPositions[i][0], slotPositions[i][1]) {
+                @Override
+                public boolean isActive() {
+                    return augmentSlotsActive;
+                }
+            });
+        }
     }
+
+    // todo Make this work for other slots (now it only works for 0 slot)
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
@@ -66,7 +95,7 @@ public class AugmentTableMenu extends AbstractContainerMenu {
             }
         } else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
             // This is a TE slot so merge the stack into the players inventory
-            if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, false)) {
+            if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, true)) {
                 return ItemStack.EMPTY;
             }
         } else {

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.renderer.AugmentTableBlockEntityRenderer;
+import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.items.ModCreativeModeTabs;
 import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.screen.ModMenuTypes;
@@ -49,6 +50,9 @@ public class MattsModularArmory {
 
         // Adding Blocks
         ModBlocks.register(modEventBus);
+
+        // Adding Data Components
+        ModDataComponentTypes.register(modEventBus);
 
         // Adding Block Entities
         ModBlockEntities.register(modEventBus);

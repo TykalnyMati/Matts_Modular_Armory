@@ -32,12 +32,12 @@ public class AugmentTableBlockEntityRenderer implements BlockEntityRenderer<Augm
         pPoseStack.scale(0.5f, 0.5f, 0.5f);
         pPoseStack.mulPose(Axis.YP.rotationDegrees(pBlockEntity.getRenderingRotation()));
 
-        itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, getLightlevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()),
+        itemRenderer.renderStatic(stack, ItemDisplayContext.FIXED, getLightLevel(pBlockEntity.getLevel(), pBlockEntity.getBlockPos()),
                 OverlayTexture.NO_OVERLAY, pPoseStack, pBufferSource, pBlockEntity.getLevel(), 1);
         pPoseStack.popPose();
     }
 
-    public int getLightlevel(Level level, BlockPos pos) {
+    public int getLightLevel(Level level, BlockPos pos) {
         int bLight = level.getBrightness(LightLayer.BLOCK, pos);
         int sLight = level.getBrightness(LightLayer.SKY, pos);
         return LightTexture.pack(bLight, sLight);
