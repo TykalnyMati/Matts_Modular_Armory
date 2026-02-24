@@ -1,6 +1,9 @@
 package net.matt.modular_armory.block.entity.custom;
 
 import net.matt.modular_armory.block.entity.ModBlockEntities;
+import net.matt.modular_armory.recipe.ExposerRecipe;
+import net.matt.modular_armory.recipe.ExposerRecipeInput;
+import net.matt.modular_armory.recipe.ModRecipes;
 import net.matt.modular_armory.screen.custom.ExposerMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -18,6 +21,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -26,6 +30,8 @@ import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.Optional;
 
 public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
     public final ItemStackHandler itemHandler = new ItemStackHandler(2) {
@@ -144,7 +150,8 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private void craftItem() {
-        ItemStack output = new ItemStack(Blocks.MUD, 1);
+        Optional<RecipeHolder<ExposerRecipe>> recipe = getCurrentRecipe();
+        ItemStack output = recipe.get().value().output();
 
         itemHandler.extractItem(INPUT_SLOT, 1, false);
         itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
@@ -160,8 +167,13 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     private boolean hasRecipe() {
-        Item input = Blocks.DIRT.asItem();
-        ItemStack output = new ItemStack(Blocks.MUD, 1);
+        Optional<RecipeHolder<ExposerRecipe>> recipe = getCurrentRecipe();
+
+        if (recipe.isEmpty()) {
+            return false;
+        }
+
+        ItemStack output = recipe.get().value().output();
 
         BlockPos currentBlock = this.getBlockPos();
         BlockPos[] surroundingBlocks = new BlockPos[]{currentBlock.above(), currentBlock.north(), currentBlock.east(), currentBlock.south(), currentBlock.west(), currentBlock.below()};
@@ -174,7 +186,12 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
             }
         }
 
-        return adjustedToWater && itemHandler.getStackInSlot(INPUT_SLOT).is(input) && canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
+        return adjustedToWater && canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
+    }
+
+    private Optional<RecipeHolder<ExposerRecipe>> getCurrentRecipe() {
+        return this.level.getRecipeManager()
+                .getRecipeFor(ModRecipes.EXPOSER_TYPE.get(), new ExposerRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)), level);
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {

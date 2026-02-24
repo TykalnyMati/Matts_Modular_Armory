@@ -1,7 +1,6 @@
 package net.matt.modular_armory.block.custom;
 
 import com.mojang.serialization.MapCodec;
-import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.custom.ExposerBlockEntity;
 import net.minecraft.core.BlockPos;

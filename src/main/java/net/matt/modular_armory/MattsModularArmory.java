@@ -7,6 +7,7 @@ import net.matt.modular_armory.block.entity.renderer.AugmentTableBlockEntityRend
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.items.ModCreativeModeTabs;
 import net.matt.modular_armory.items.ModItems;
+import net.matt.modular_armory.recipe.ModRecipes;
 import net.matt.modular_armory.screen.ModMenuTypes;
 import net.matt.modular_armory.screen.custom.AugmentTableScreen;
 import net.matt.modular_armory.screen.custom.ExposerScreen;
@@ -62,6 +63,9 @@ public class MattsModularArmory {
 
         // Adding Menus
         ModMenuTypes.register(modEventBus);
+
+        // Adding Custom Recipies
+        ModRecipes.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
