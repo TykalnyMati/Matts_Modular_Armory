@@ -162,7 +162,19 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
     private boolean hasRecipe() {
         Item input = Blocks.DIRT.asItem();
         ItemStack output = new ItemStack(Blocks.MUD, 1);
-        return itemHandler.getStackInSlot(INPUT_SLOT).is(input) && canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
+
+        BlockPos currentBlock = this.getBlockPos();
+        BlockPos[] surroundingBlocks = new BlockPos[]{currentBlock.above(), currentBlock.north(), currentBlock.east(), currentBlock.south(), currentBlock.west(), currentBlock.below()};
+
+        boolean adjustedToWater = false;
+        for (BlockPos blocktest : surroundingBlocks) {
+            if (level.getBlockState(blocktest).is(Blocks.WATER)) {
+                adjustedToWater = true;
+                break;
+            }
+        }
+
+        return adjustedToWater && itemHandler.getStackInSlot(INPUT_SLOT).is(input) && canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
