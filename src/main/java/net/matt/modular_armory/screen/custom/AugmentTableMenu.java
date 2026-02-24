@@ -117,7 +117,7 @@ public class AugmentTableMenu extends AbstractContainerMenu {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), pPlayer, ModBlocks.AUGMENT_TABLE.get());
     }
 
-    // Helper methods
+    // Helper methods for adding player inventory
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 9; j++) {

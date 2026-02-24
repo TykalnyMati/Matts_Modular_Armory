@@ -9,6 +9,7 @@ import net.matt.modular_armory.items.ModCreativeModeTabs;
 import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.screen.ModMenuTypes;
 import net.matt.modular_armory.screen.custom.AugmentTableScreen;
+import net.matt.modular_armory.screen.custom.ExposerScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -24,6 +25,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+
+import java.awt.*;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(MattsModularArmory.MOD_ID)
@@ -92,8 +95,8 @@ public class MattsModularArmory {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
             MenuScreens.register(ModMenuTypes.AUGMENT_TABLE_MENU.get(), AugmentTableScreen::new);
+            MenuScreens.register(ModMenuTypes.EXPOSER_MENU.get(), ExposerScreen::new);
         }
 
         @SubscribeEvent

@@ -30,8 +30,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> AUGMENT_TABLE = registerBlock("augment_table",
             () -> new AugmentTableBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD).noOcclusion()));
 
-    public static final RegistryObject<Block> EXPOSER_BLOCK = registerBlock("exposer",
-            () -> new ExposerBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.STONE)));
+    public static final RegistryObject<Block> EXPOSER = registerBlock("exposer",
+            () -> new ExposerBlock(BlockBehaviour.Properties.of().strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
 
 
     // Helpfull methods

@@ -17,7 +17,7 @@ public class ModBlockEntities {
             () -> BlockEntityType.Builder.of(AugmentTableBlockEntity::new, ModBlocks.AUGMENT_TABLE.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<ExposerBlockEntity>> EXPOSER_BE = BLOCK_ENTITIES.register("exposer_be",
-            () -> BlockEntityType.Builder.of(ExposerBlockEntity::new, ModBlocks.EXPOSER_BLOCK.get()).build(null));
+            () -> BlockEntityType.Builder.of(ExposerBlockEntity::new, ModBlocks.EXPOSER.get()).build(null));
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

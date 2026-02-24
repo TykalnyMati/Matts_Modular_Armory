@@ -1,7 +1,10 @@
-// 1.21	2026-02-18T22:03:22.6731768	Block States: mattsmodulararmory
+// 1.21	2026-02-24T12:15:12.82237	Block States: mattsmodulararmory
 e3f0f0f1487220f5c7c621106e5b657d7a004132 assets/mattsmodulararmory/blockstates/adaptive_flesh_block.json
+7bd27bcde0d54c108f232407db3dbcb2e7a3e0fa assets/mattsmodulararmory/blockstates/exposer.json
 8f480ef42aaf0ecb7c25164132a555e8f8480406 assets/mattsmodulararmory/blockstates/modular_clay_block.json
 354129f669c4e5095a2c52e246b4a74a41be6ac3 assets/mattsmodulararmory/models/block/adaptive_flesh_block.json
+39e103adedc724c8d8706723beba0096ad1227cb assets/mattsmodulararmory/models/block/exposer.json
 bd85678ad1e0ba8ec572318e6bda030c7769b139 assets/mattsmodulararmory/models/block/modular_clay_block.json
 3f52f484a3c566dfe846585f8f22d5f425be2910 assets/mattsmodulararmory/models/item/adaptive_flesh_block.json
+02099f1c5efc13edc2fcb330fdd049d98ea02013 assets/mattsmodulararmory/models/item/exposer.json
 2f0383299f0830d496ec4c2d8ec4ce44dcb8cd42 assets/mattsmodulararmory/models/item/modular_clay_block.json

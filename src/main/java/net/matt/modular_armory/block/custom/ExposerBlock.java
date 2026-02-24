@@ -2,6 +2,7 @@ package net.matt.modular_armory.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.matt.modular_armory.block.ModBlocks;
+import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.custom.ExposerBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
@@ -35,7 +36,7 @@ public class ExposerBlock extends BaseEntityBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return
+        return new ExposerBlockEntity(pPos, pState);
     }
 
     @Override
@@ -57,7 +58,7 @@ public class ExposerBlock extends BaseEntityBlock {
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-        if (!plevel.isClientSide()) {
+        if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
 
             if (entity instanceof ExposerBlockEntity exposerBlockEntity) {
@@ -77,7 +78,7 @@ public class ExposerBlock extends BaseEntityBlock {
             return null;
         }
 
-        return createTickerHelper(pBlockEntityType, ModBlocks.EXPOSER_BE.get(),
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.EXPOSER_BE.get(),
                 (level, blockPos, blockState, exposerBlockEntity) -> exposerBlockEntity.tick(level, blockPos, blockState));
     }
 }

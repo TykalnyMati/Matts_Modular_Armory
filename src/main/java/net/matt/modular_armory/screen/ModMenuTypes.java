@@ -2,6 +2,7 @@ package net.matt.modular_armory.screen;
 
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.screen.custom.AugmentTableMenu;
+import net.matt.modular_armory.screen.custom.ExposerMenu;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;
@@ -13,7 +14,8 @@ public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS = DeferredRegister.create(Registries.MENU, MattsModularArmory.MOD_ID);
 
 
-    public static final RegistryObject<MenuType<AugmentTableMenu>> AUGMENT_TABLE_MENU = MENUS.register("augument_table_name", () -> IForgeMenuType.create(AugmentTableMenu::new));
+    public static final RegistryObject<MenuType<AugmentTableMenu>> AUGMENT_TABLE_MENU = MENUS.register("augument_table_menu", () -> IForgeMenuType.create(AugmentTableMenu::new));
+    public static final RegistryObject<MenuType<ExposerMenu>> EXPOSER_MENU = MENUS.register("exposer_menu", () -> IForgeMenuType.create(ExposerMenu::new));
 
     public static void register(IEventBus eventBus) {
         MENUS.register(eventBus);
