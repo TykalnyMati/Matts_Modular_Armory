@@ -31,6 +31,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
@@ -153,7 +154,9 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
         Optional<RecipeHolder<ExposerRecipe>> recipe = getCurrentRecipe();
         ItemStack output = recipe.get().value().output();
 
-        itemHandler.extractItem(INPUT_SLOT, 1, false);
+        if (!recipe.get().value().inputItem().isEmpty()) {
+            itemHandler.extractItem(INPUT_SLOT, 1, false);
+        }
         itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),
                 itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + output.getCount()));
     }
@@ -174,19 +177,31 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         ItemStack output = recipe.get().value().output();
+        List<BlockState> requiredSurroundingBlocks = recipe.get().value().surroundings();
 
         BlockPos currentBlock = this.getBlockPos();
         BlockPos[] surroundingBlocks = new BlockPos[]{currentBlock.above(), currentBlock.north(), currentBlock.east(), currentBlock.south(), currentBlock.west(), currentBlock.below()};
 
-        boolean adjustedToWater = false;
-        for (BlockPos blocktest : surroundingBlocks) {
-            if (level.getBlockState(blocktest).is(Blocks.WATER)) {
-                adjustedToWater = true;
-                break;
+        int numberOfNeededBlocks = requiredSurroundingBlocks.size();
+        int numberOfCorrectBlocks = 0;
+        boolean adjustedToRequiredBlocks = false;
+        try {
+            for (BlockPos blockTestLocation : surroundingBlocks) {
+                BlockState blockToTest = level.getBlockState(blockTestLocation);
+                if (requiredSurroundingBlocks.contains(blockToTest)) {
+                    numberOfCorrectBlocks++;
+                }
+
+                if (numberOfCorrectBlocks == numberOfNeededBlocks) {
+                    adjustedToRequiredBlocks = true;
+                    break;
+                }
             }
+        } catch (NullPointerException e) {
+            return false;
         }
 
-        return adjustedToWater && canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
+        return adjustedToRequiredBlocks && canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
     }
 
     private Optional<RecipeHolder<ExposerRecipe>> getCurrentRecipe() {

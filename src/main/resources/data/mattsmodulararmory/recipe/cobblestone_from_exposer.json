@@ -1,0 +1,18 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "minecraft:cobblestone"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:lava"
+    },
+    {
+      "Name": "minecraft:water"
+    }
+  ],
+  "result": {
+    "id": "minecraft:cobblestone",
+    "count": 1
+  }
+}

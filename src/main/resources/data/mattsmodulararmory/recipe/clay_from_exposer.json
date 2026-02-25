@@ -3,6 +3,11 @@
   "ingredient": {
     "item": "minecraft:mud"
   },
+  "surroundings": [
+    {
+      "Name": "minecraft:lava"
+    }
+  ],
   "result": {
     "id": "minecraft:clay",
     "count": 1

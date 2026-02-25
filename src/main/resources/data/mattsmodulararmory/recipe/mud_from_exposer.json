@@ -3,6 +3,14 @@
   "ingredient": {
     "item": "minecraft:dirt"
   },
+  "surroundings": [
+    {
+      "Name": "minecraft:water"
+    },
+    {
+      "Name": "minecraft:water"
+    }
+  ],
   "result": {
     "id": "minecraft:mud",
     "count": 1
