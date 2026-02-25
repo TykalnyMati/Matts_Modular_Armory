@@ -11,11 +11,12 @@
       "Name": "minecraft:water"
     },
     {
-      "Name": "minecraft:bedrock"
+      "Name": "minecraft:deepslate"
     }
   ],
   "result": {
     "id": "minecraft:cobbled_deepslate",
     "count": 1
-  }
+  },
+  "time": 72
 }

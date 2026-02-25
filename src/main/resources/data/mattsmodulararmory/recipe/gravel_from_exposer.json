@@ -1,18 +1,22 @@
 {
   "type": "mattsmodulararmory:exposer",
   "ingredient": {
-    "item": "mattsmodulararmory:cobblestone"
+    "item": "minecraft:cobblestone"
   },
   "surroundings": [
+    {
+      "Name": "minecraft:iron_block"
+    },
     {
       "Name": "minecraft:piston"
     },
     {
-      "Name": "minecraft:piston"
+      "Name": "minecraft:obsidian"
     }
   ],
   "result": {
     "id": "minecraft:gravel",
     "count": 1
-  }
+  },
+  "time": 72
 }
