@@ -33,7 +33,9 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
@@ -171,6 +173,46 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
         progress++;
     }
 
+//    private boolean hasRecipe() {
+//        Optional<RecipeHolder<ExposerRecipe>> recipe = getCurrentRecipe();
+//
+//        if (recipe.isEmpty()) {
+//            return false;
+//        }
+//
+//        ItemStack output = recipe.get().value().output();
+//        List<BlockState> requiredSurroundingBlocks = recipe.get().value().surroundings();
+//
+//        BlockPos currentBlock = this.getBlockPos();
+//        BlockPos[] surroundingBlocks = new BlockPos[]{currentBlock.above(), currentBlock.north(), currentBlock.east(), currentBlock.south(), currentBlock.west(), currentBlock.below()};
+//
+//        int numberOfNeededBlocks = requiredSurroundingBlocks.size();
+//        int numberOfCorrectBlocks = 0;
+//        boolean adjustedToRequiredBlocks = false;
+//        try {
+//            for (BlockPos blockTestLocation : surroundingBlocks) {
+//                BlockState blockToTest = level.getBlockState(blockTestLocation);
+//                if (requiredSurroundingBlocks.contains(blockToTest)) {
+//                    numberOfCorrectBlocks++;
+//                }
+//
+//                if (numberOfCorrectBlocks == numberOfNeededBlocks) {
+//                    adjustedToRequiredBlocks = true;
+//                    break;
+//                }
+//            }
+//        } catch (NullPointerException e) {
+//            return false;
+//        }
+//
+//        return adjustedToRequiredBlocks && canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
+//    }
+
+//    private Optional<RecipeHolder<ExposerRecipe>> getCurrentRecipe() {
+//        return this.level.getRecipeManager()
+//                .getRecipeFor(ModRecipes.EXPOSER_TYPE.get(), new ExposerRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)), level);
+//    }
+
     private boolean hasRecipe() {
         Optional<RecipeHolder<ExposerRecipe>> recipe = getCurrentRecipe();
 
@@ -179,36 +221,79 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
         }
 
         ItemStack output = recipe.get().value().output();
-        List<BlockState> requiredSurroundingBlocks = recipe.get().value().surroundings();
 
-        BlockPos currentBlock = this.getBlockPos();
-        BlockPos[] surroundingBlocks = new BlockPos[]{currentBlock.above(), currentBlock.north(), currentBlock.east(), currentBlock.south(), currentBlock.west(), currentBlock.below()};
+        // Might cause problems, but I wouldn't worry about it for now
+        this.maxProgress = recipe.get().value().time();
 
-        int numberOfNeededBlocks = requiredSurroundingBlocks.size();
-        int numberOfCorrectBlocks = 0;
-        boolean adjustedToRequiredBlocks = false;
-        try {
-            for (BlockPos blockTestLocation : surroundingBlocks) {
-                BlockState blockToTest = level.getBlockState(blockTestLocation);
-                if (requiredSurroundingBlocks.contains(blockToTest)) {
-                    numberOfCorrectBlocks++;
-                }
-
-                if (numberOfCorrectBlocks == numberOfNeededBlocks) {
-                    adjustedToRequiredBlocks = true;
-                    break;
-                }
-            }
-        } catch (NullPointerException e) {
-            return false;
-        }
-
-        return adjustedToRequiredBlocks && canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
+        return canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
     }
 
     private Optional<RecipeHolder<ExposerRecipe>> getCurrentRecipe() {
-        return this.level.getRecipeManager()
-                .getRecipeFor(ModRecipes.EXPOSER_TYPE.get(), new ExposerRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)), level);
+        if (level == null) {
+            return Optional.empty();
+        }
+
+        List<RecipeHolder<ExposerRecipe>> recipes =
+                level.getRecipeManager().getAllRecipesFor(ModRecipes.EXPOSER_TYPE.get());
+
+        ItemStack inputStack = itemHandler.getStackInSlot(INPUT_SLOT);
+
+        for (RecipeHolder<ExposerRecipe> holder : recipes) {
+            ExposerRecipe recipe = holder.value();
+
+            if (matchesInput(recipe, inputStack) && matchesEnvironment(recipe)) {
+                return Optional.of(holder);
+            }
+        }
+
+        return Optional.empty();
+    }
+
+    private boolean matchesInput(ExposerRecipe recipe, ItemStack stack) {
+        return recipe.inputItem().test(stack);
+    }
+
+    private boolean matchesEnvironment(ExposerRecipe recipe) {
+        if (level == null) {
+            return false;
+        }
+
+        List<BlockState> required = recipe.surroundings();
+        if (required.isEmpty()) {
+            return true;
+        }
+
+        BlockPos pos = getBlockPos();
+
+        BlockPos[] around = new BlockPos[]{
+                pos.above(),
+                pos.below(),
+                pos.north(),
+                pos.south(),
+                pos.east(),
+                pos.west()
+        };
+
+        int matched = 0;
+        List<Boolean> alreadyMatched = new ArrayList<>();
+        for (int i = 0; i < required.size(); i++) {
+            alreadyMatched.add(false);
+        }
+
+        for (BlockPos testPos : around) {
+            BlockState state = level.getBlockState(testPos);
+
+            for (int i = 0; i < required.size(); i++) {
+                BlockState requiredState = required.get(i);
+                if (state.is(requiredState.getBlock()) && !alreadyMatched.get(i)) {
+                    matched++;
+                    alreadyMatched.set(i, true);
+                    break;
+                }
+            }
+        }
+
+        return matched >= required.size();
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {

@@ -1,0 +1,19 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "minecraft:copper_block"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:water_cauldron"
+    },
+    {
+      "Name": "minecraft:piston"
+    }
+  ],
+  "result": {
+    "id": "minecraft:exposed_copper",
+    "count": 1
+  },
+  "time": 200
+}

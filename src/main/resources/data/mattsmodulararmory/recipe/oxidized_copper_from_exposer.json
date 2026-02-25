@@ -1,0 +1,25 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "minecraft:weathered_copper"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:water_cauldron"
+    },
+    {
+      "Name": "minecraft:piston"
+    },
+    {
+      "Name": "minecraft:coal_block"
+    },
+    {
+      "Name": "minecraft:iron_block"
+    }
+  ],
+  "result": {
+    "id": "minecraft:oxidized_copper",
+    "count": 1
+  },
+  "time": 200
+}

@@ -1,5 +1,6 @@
 package net.matt.modular_armory.recipe;
 
+import com.mojang.serialization.Codec;
 import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -19,7 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
-public record ExposerRecipe(Ingredient inputItem, List<BlockState> surroundings, ItemStack output) implements Recipe<ExposerRecipeInput> {
+public record ExposerRecipe(Ingredient inputItem, List<BlockState> surroundings, ItemStack output, Integer time) implements Recipe<ExposerRecipeInput> {
     @Override
     public NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> list = NonNullList.create();
@@ -64,7 +65,7 @@ public record ExposerRecipe(Ingredient inputItem, List<BlockState> surroundings,
     public static class Serializer implements RecipeSerializer<ExposerRecipe> {
         public static final MapCodec<ExposerRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
             Ingredient.CODEC_NONEMPTY.fieldOf("ingredient").forGetter(ExposerRecipe::inputItem),
-                BlockState.CODEC.listOf().fieldOf("surroundings").flatXmap(
+            BlockState.CODEC.listOf().fieldOf("surroundings").flatXmap(
                         surroundings -> {
                             if (surroundings.isEmpty()) {
                                 return DataResult.error(() -> "surroundings list cannot be empty");
@@ -73,7 +74,8 @@ public record ExposerRecipe(Ingredient inputItem, List<BlockState> surroundings,
                         },
                         DataResult::success
                         ).forGetter(ExposerRecipe::surroundings),
-                ItemStack.CODEC.fieldOf("result").forGetter(ExposerRecipe::output)
+            ItemStack.CODEC.fieldOf("result").forGetter(ExposerRecipe::output),
+            Codec.INT.fieldOf("time").forGetter(ExposerRecipe::time)
         ).apply(inst, ExposerRecipe::new));
 
         private static final StreamCodec<ByteBuf, BlockState> BLOCKSTATE_STREAM_CODEC =
@@ -106,6 +108,7 @@ public record ExposerRecipe(Ingredient inputItem, List<BlockState> surroundings,
                 Ingredient.CONTENTS_STREAM_CODEC, ExposerRecipe::inputItem,
                 BLOCKSTATE_LIST_STREAM_CODEC.mapStream(buf -> buf), ExposerRecipe::surroundings,
                 ItemStack.STREAM_CODEC, ExposerRecipe::output,
+                ByteBufCodecs.INT, ExposerRecipe::time,
                 ExposerRecipe::new
         );
 
