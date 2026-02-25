@@ -17,6 +17,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BASIC_MODULAR_PLATE.get());
         basicItem(ModItems.MODULAR_CLAY_EXTRACTOR.get());
         basicItem(ModItems.FLESH_MEAL.get());
+        basicItem(ModItems.EXPOSER_SLOT_PLUG.get());
 
         basicItem(ModItems.MODULAR_CLAY_PICKAXE.get());
         basicItem(ModItems.MODULAR_CLAY_AXE.get());

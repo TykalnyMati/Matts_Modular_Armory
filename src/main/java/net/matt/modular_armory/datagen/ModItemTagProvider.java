@@ -20,6 +20,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
         tag(ModTags.Items.MODULAR_ITEMS)
+                .add(ModItems.MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.MODULAR_CLAY_AXE.get())
                 .add(ModItems.MODULAR_CLAY_SHOVEL.get());
     }

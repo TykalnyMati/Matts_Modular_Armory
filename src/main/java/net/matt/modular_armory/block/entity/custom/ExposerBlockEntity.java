@@ -1,6 +1,7 @@
 package net.matt.modular_armory.block.entity.custom;
 
 import net.matt.modular_armory.block.entity.ModBlockEntities;
+import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.recipe.ExposerRecipe;
 import net.matt.modular_armory.recipe.ExposerRecipeInput;
 import net.matt.modular_armory.recipe.ModRecipes;
@@ -21,6 +22,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -153,8 +155,8 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
     private void craftItem() {
         Optional<RecipeHolder<ExposerRecipe>> recipe = getCurrentRecipe();
         ItemStack output = recipe.get().value().output();
-
-        if (!recipe.get().value().inputItem().isEmpty()) {
+        Ingredient input = recipe.get().value().inputItem();
+        if (input.getItems()[0].getItem() != ModItems.EXPOSER_SLOT_PLUG.get()) {
             itemHandler.extractItem(INPUT_SLOT, 1, false);
         }
         itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(output.getItem(),

@@ -1,7 +1,7 @@
 {
   "type": "mattsmodulararmory:exposer",
   "ingredient": {
-    "item": "minecraft:cobblestone"
+    "item": "mattsmodulararmory:exposer_slot_plug"
   },
   "surroundings": [
     {

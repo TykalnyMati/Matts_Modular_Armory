@@ -1,0 +1,21 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "mattsmodulararmory:exposer_slot_plug"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:lava"
+    },
+    {
+      "Name": "minecraft:blue_ice"
+    },
+    {
+      "Name": "minecraft:soul_soil"
+    }
+  ],
+  "result": {
+    "id": "minecraft:basalt",
+    "count": 1
+  }
+}

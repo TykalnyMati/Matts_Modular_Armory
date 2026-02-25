@@ -1,0 +1,21 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "mattsmodulararmory:exposer_slot_plug"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:lava"
+    },
+    {
+      "Name": "minecraft:packed_ice"
+    },
+    {
+      "Name": "minecraft:soul_soil"
+    }
+  ],
+  "result": {
+    "id": "minecraft:blackstone",
+    "count": 1
+  }
+}

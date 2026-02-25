@@ -5,13 +5,14 @@
   "item.mattsmodulararmory.basic_modular_plate": "Basic Modular Plate",
   "item.mattsmodulararmory.modular_clay_extractor": "Modular Clay Extractor",
   "item.mattsmodulararmory.flesh_meal": "Flesh Meal",
+  "item.mattsmodulararmory.exposer_slot_plug": "Exposer Slot Plug",
+
+  "tooltip.mattsmodulararmory.flesh_meal0": "Spreads ",
+  "tooltip.mattsmodulararmory.flesh_meal1": "Adaptive Flesh",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",
   "item.mattsmodulararmory.modular_clay_shovel": "Modular Clay Shovel",
-
-  "tooltip.mattsmodulararmory.flesh_meal0": "Spreads ",
-  "tooltip.mattsmodulararmory.flesh_meal1": "Adaptive Flesh",
 
   "block.mattsmodulararmory.modular_clay_block": "Block of Modular Clay",
   "block.mattsmodulararmory.adaptive_flesh_block": "Block of Adaptive Flesh",

@@ -25,6 +25,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.ADAPTIVE_FLESH_BLOCK.get());
                         output.accept(ModBlocks.AUGMENT_TABLE.get());
                         output.accept(ModBlocks.EXPOSER.get());
+                        output.accept(ModItems.EXPOSER_SLOT_PLUG.get());
 
                         output.accept(ModItems.MODULAR_CLAY_PICKAXE.get());
                         output.accept(ModItems.MODULAR_CLAY_AXE.get());
