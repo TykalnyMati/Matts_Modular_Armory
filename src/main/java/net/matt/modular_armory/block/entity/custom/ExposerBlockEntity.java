@@ -3,7 +3,6 @@ package net.matt.modular_armory.block.entity.custom;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.recipe.ExposerRecipe;
-import net.matt.modular_armory.recipe.ExposerRecipeInput;
 import net.matt.modular_armory.recipe.ModRecipes;
 import net.matt.modular_armory.screen.custom.ExposerMenu;
 import net.minecraft.core.BlockPos;
@@ -20,12 +19,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.util.LazyOptional;
@@ -35,7 +32,6 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
@@ -223,7 +219,9 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
         ItemStack output = recipe.get().value().output();
 
         // Might cause problems, but I wouldn't worry about it for now
-        this.maxProgress = recipe.get().value().time();
+        if (this.progress <= 0) {
+            this.maxProgress = recipe.get().value().time();
+        }
 
         return canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
     }
