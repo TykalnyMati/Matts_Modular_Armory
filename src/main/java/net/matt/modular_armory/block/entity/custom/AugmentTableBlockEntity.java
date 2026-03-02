@@ -53,12 +53,6 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
                 if (slot == 0) {
                     ItemStack current = inventory.getStackInSlot(0);
 
-                    // Item removed
-                    if (!lastMainStack.isEmpty() && current.isEmpty()) {
-                        saveAugmentsToItem(lastMainStack);
-                        clearAugmentSlots();
-                    }
-
                     // Item inserted
                     if (!current.isEmpty()) {
                         loadAugmentsFromItem(current);
@@ -70,6 +64,20 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         }
+
+        @Override
+        public ItemStack extractItem(int slot, int amount, boolean simulate) {
+            if (slot == 0 && !simulate) {
+                ItemStack stack = getStackInSlot(slot);
+                // todo add check if the item is a modular tool to remove possible errors
+                if (!stack.isEmpty()) {
+                    saveAugmentsToItem(stack);
+                    clearAugmentSlots();
+                }
+            }
+
+            return super.extractItem(slot, amount, simulate);
+        }
     };
 
     // Saving augments into the item
@@ -77,10 +85,14 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
         List<ItemStack> augments = new ArrayList<>();
 
         for (int i = 1; i < 9; i++) {
-            augments.add(inventory.getStackInSlot(i).copy());
+            ItemStack itemStack = inventory.getStackInSlot(i);
+            if (!itemStack.isEmpty()) {
+                augments.add(itemStack.copy());
+            }
         }
 
         stack.set(ModDataComponentTypes.AUGMENTS.get(), augments);
+        clearAugmentSlots();
     }
 
     // Loading augments from the item
@@ -95,8 +107,10 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
             return;
         }
 
+        clearAugmentSlots();
+
         int listIndex = 0;
-        for (int i = 1; i < 9; i++) {
+        for (int i = 1; i < 9 && listIndex < augments.size(); i++) {
             inventory.setStackInSlot(i, augments.get(listIndex).copy());
             listIndex++;
         }
@@ -126,6 +140,7 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
     }
 
     public void drops() {
+        saveAugmentsToItem(this.lastMainStack);
         SimpleContainer inv = new SimpleContainer(inventory.getSlots());
         for (int i = 0; i < inventory.getSlots(); i++) {
             inv.setItem(i, inventory.getStackInSlot(i));

@@ -1,5 +1,6 @@
 package net.matt.modular_armory.component;
 
+import com.mojang.serialization.Codec;
 import net.matt.modular_armory.MattsModularArmory;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
@@ -18,7 +19,7 @@ public class ModDataComponentTypes {
 
     //
     public static final RegistryObject<DataComponentType<List<ItemStack>>> AUGMENTS = register("augments",
-            builder -> builder.persistent(ItemStack.CODEC.listOf())
+            builder -> builder.persistent(Codec.list(ItemStack.CODEC))
                     .networkSynchronized(ByteBufCodecs.collection(ArrayList::new, ItemStack.STREAM_CODEC))
     );
 
