@@ -3,6 +3,7 @@ package net.matt.modular_armory.block.entity.custom;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.screen.custom.AugmentTableMenu;
+import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -10,6 +11,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -69,9 +72,10 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
         public ItemStack extractItem(int slot, int amount, boolean simulate) {
             if (slot == 0 && !simulate) {
                 ItemStack stack = getStackInSlot(slot);
-                // todo add check if the item is a modular tool to remove possible errors
-                if (!stack.isEmpty()) {
+
+                if (!stack.isEmpty() && stack.is(ModTags.Items.MODULAR_ITEMS)) {
                     saveAugmentsToItem(stack);
+                    level.playSound(null, getBlockPos(), SoundEvents.SMITHING_TABLE_USE, SoundSource.BLOCKS);
                     clearAugmentSlots();
                 }
             }

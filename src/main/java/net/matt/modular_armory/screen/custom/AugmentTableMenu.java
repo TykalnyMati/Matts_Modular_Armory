@@ -61,6 +61,7 @@ public class AugmentTableMenu extends AbstractContainerMenu {
     }
 
     // todo Make this work for other slots (now it only works for 0 slot)
+    // todo Removing the item with shift-click doesn't apply augments
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
