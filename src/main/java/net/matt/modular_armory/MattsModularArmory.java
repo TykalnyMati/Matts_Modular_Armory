@@ -64,7 +64,7 @@ public class MattsModularArmory {
         // Adding Menus
         ModMenuTypes.register(modEventBus);
 
-        // Adding Custom Recipies
+        // Adding Custom Recipes
         ModRecipes.register(modEventBus);
 
         // Register the item to a creative tab
@@ -79,14 +79,7 @@ public class MattsModularArmory {
     }
 
     // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        // Not needed, all the mod items are in its own tab
-//        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-//            event.accept(ModItems.MODULAR_CLAY);
-//            event.accept(ModItems.RAW_MODULAR_PLATE);
-//            event.accept(ModBlocks.MODULAR_CLAY_BLOCK);
-//        }
-    }
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {}
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
@@ -107,5 +100,6 @@ public class MattsModularArmory {
         public static void registerBBR(EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(ModBlockEntities.AUGMENT_TABLE_BE.get(), AugmentTableBlockEntityRenderer::new);
         }
+
     }
 }

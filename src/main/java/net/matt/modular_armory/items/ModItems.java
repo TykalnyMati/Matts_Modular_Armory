@@ -3,6 +3,7 @@ package net.matt.modular_armory.items;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.items.custom.FleshMealItem;
 import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
+import net.matt.modular_armory.items.tools.ModularPickaxeItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
@@ -27,7 +28,7 @@ public class ModItems {
 
     // Tools
     public static final RegistryObject<Item> MODULAR_CLAY_PICKAXE = ITEMS.register("modular_clay_pickaxe",
-            () -> new PickaxeItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.MODULAR_CLAY, 1.0f, -2.8f))));
+            () -> new ModularPickaxeItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.MODULAR_CLAY, 1.0f, -2.8f))));
 
     public static final RegistryObject<Item> MODULAR_CLAY_AXE = ITEMS.register("modular_clay_axe",
             () -> new AxeItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(AxeItem.createAttributes(ModToolTiers.MODULAR_CLAY, 7.0f, -3.2f))));

@@ -39,8 +39,11 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
             int slotSize = 1;
 
             if (slot != 0) {
-                if (stack.is(Items.SUGAR_CANE)) {
-                    slotSize = 12;
+                if (stack.is(Items.REDSTONE)) {
+                    slotSize = 7;
+                }
+                if (stack.is(Items.OBSIDIAN)) {
+                    slotSize = 8;
                 }
             }
 

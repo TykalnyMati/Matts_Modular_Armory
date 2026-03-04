@@ -3,8 +3,12 @@ package net.matt.modular_armory.datagen;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.items.ModItems;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.RegistryObject;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
@@ -19,8 +23,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.FLESH_MEAL.get());
         basicItem(ModItems.EXPOSER_SLOT_PLUG.get());
 
-        basicItem(ModItems.MODULAR_CLAY_PICKAXE.get());
-        basicItem(ModItems.MODULAR_CLAY_AXE.get());
-        basicItem(ModItems.MODULAR_CLAY_SHOVEL.get());
+        handHeldItem(ModItems.MODULAR_CLAY_PICKAXE);
+        handHeldItem(ModItems.MODULAR_CLAY_AXE);
+        handHeldItem(ModItems.MODULAR_CLAY_SHOVEL);
+    }
+
+    private ItemModelBuilder handHeldItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(),
+                ResourceLocation.parse("item/handheld")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "item/" + item.getId().getPath()));
     }
 }
