@@ -3,6 +3,7 @@ package net.matt.modular_armory.items;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.items.custom.FleshMealItem;
 import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
+import net.matt.modular_armory.items.tools.ModularAxeItem;
 import net.matt.modular_armory.items.tools.ModularPickaxeItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
@@ -31,10 +32,16 @@ public class ModItems {
             () -> new ModularPickaxeItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.MODULAR_CLAY, 1.0f, -2.8f))));
 
     public static final RegistryObject<Item> MODULAR_CLAY_AXE = ITEMS.register("modular_clay_axe",
-            () -> new AxeItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(AxeItem.createAttributes(ModToolTiers.MODULAR_CLAY, 7.0f, -3.2f))));
+            () -> new ModularAxeItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(AxeItem.createAttributes(ModToolTiers.MODULAR_CLAY, 7.0f, -3.2f))));
 
     public static final RegistryObject<Item> MODULAR_CLAY_SHOVEL = ITEMS.register("modular_clay_shovel",
             () -> new ShovelItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.MODULAR_CLAY, 1.5f, -3.0f))));
+
+    // Augments
+    public static final RegistryObject<Item> EFFICIENCY_AUGMENT = ITEMS.register("efficiency_augment", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> UNBREAKING_AUGMENT = ITEMS.register("unbreaking_augment", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SILK_TOUCH_AUGMENT = ITEMS.register("silk_touch_augment", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FORTUNE_AUGMENT = ITEMS.register("fortune_augment", () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

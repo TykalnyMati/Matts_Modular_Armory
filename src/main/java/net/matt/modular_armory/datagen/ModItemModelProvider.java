@@ -26,6 +26,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         handHeldItem(ModItems.MODULAR_CLAY_PICKAXE);
         handHeldItem(ModItems.MODULAR_CLAY_AXE);
         handHeldItem(ModItems.MODULAR_CLAY_SHOVEL);
+
+        basicItem(ModItems.EFFICIENCY_AUGMENT.get());
+        basicItem(ModItems.UNBREAKING_AUGMENT.get());
+        basicItem(ModItems.SILK_TOUCH_AUGMENT.get());
+        basicItem(ModItems.FORTUNE_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(RegistryObject<Item> item) {

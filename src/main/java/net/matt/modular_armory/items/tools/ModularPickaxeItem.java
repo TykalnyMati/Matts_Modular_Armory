@@ -1,6 +1,5 @@
 package net.matt.modular_armory.items.tools;
 
-import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
@@ -37,13 +36,16 @@ public class ModularPickaxeItem extends PickaxeItem {
         }
 
         if (!level.isClientSide() && state.getDestroySpeed(level, pos) > 0.0F) {
+            int fortuneLevel = getAugmentBonuses(stack).FORTUNE;
+
+            // Silk touch check
             if (getAugmentBonuses(stack).SILK_TOUCH) {
                 // if tool isn't correct
                 if (!isCorrectToolForDrops(stack, state) && state.requiresCorrectToolForDrops()) {
                     return false;
                 }
 
-                BlockEntity blockEntity = (((ServerLevel) level)).getBlockEntity(pos);
+                BlockEntity blockEntity = level.getBlockEntity(pos);
 
                 // Silk Holder test
                 Holder<Enchantment> silkHolder =
@@ -64,11 +66,45 @@ public class ModularPickaxeItem extends PickaxeItem {
                 List<ItemStack> drops = state.getDrops(builder);
 
                 // Remove block without vanilla drops
-                ((ServerLevel) level).removeBlock(pos, false);
+                level.removeBlock(pos, false);
 
                 // Spawn custom drops
                 for (ItemStack drop : drops) {
-                    Block.popResource(((ServerLevel) level), pos, drop);
+                    Block.popResource(level, pos, drop);
+                }
+            } else // Fortune check
+                if (fortuneLevel > 0) {
+                // if tool isn't correct
+                if (!isCorrectToolForDrops(stack, state) && state.requiresCorrectToolForDrops()) {
+                    return false;
+                }
+
+                BlockEntity blockEntity = level.getBlockEntity(pos);
+
+                // Fortune Holder test
+                Holder<Enchantment> fortuneHolder =
+                        level.registryAccess()
+                                .registryOrThrow(Registries.ENCHANTMENT)
+                                .getHolderOrThrow(Enchantments.FORTUNE);
+
+                // Create tool copy and inject fortune enchant
+                ItemStack fortuneTool = stack.copy();
+                fortuneTool.enchant(fortuneHolder, fortuneLevel);
+
+                LootParams.Builder builder = new LootParams.Builder(((ServerLevel) level))
+                        .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+                        .withParameter(LootContextParams.TOOL, fortuneTool)
+                        .withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity)
+                        .withParameter(LootContextParams.THIS_ENTITY, entity);
+
+                List<ItemStack> drops = state.getDrops(builder);
+
+                // Remove block without vanilla drops
+                level.removeBlock(pos, false);
+
+                // Spawn custom drops
+                for (ItemStack drop : drops) {
+                    Block.popResource(level, pos, drop);
                 }
             }
             damageTool(stack, entity);
@@ -150,7 +186,7 @@ public class ModularPickaxeItem extends PickaxeItem {
         float base = super.getDestroySpeed(stack, state);
 
         if (state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
-            base += getAugmentBonuses(stack).MINING_BONUS;;
+            base += getAugmentBonuses(stack).MINING_BONUS;
         }
         return base;
 
@@ -165,29 +201,8 @@ public class ModularPickaxeItem extends PickaxeItem {
         return super.isCorrectToolForDrops(stack, state);
     }
 
-    private List<ItemStack> getAugments(ItemStack stack) {
-        if (!stack.has(ModDataComponentTypes.AUGMENTS.get())) {
-            return List.of();
-        }
-
-        return stack.get(ModDataComponentTypes.AUGMENTS.get());
-    }
-
     private AugumentObject getAugmentBonuses(ItemStack stack) {
-        AugumentObject Bonuses = new AugumentObject();
-
-        for (ItemStack augment : getAugments(stack)) {
-            if (augment.is(Items.REDSTONE)) {
-                Bonuses.MINING_BONUS += (float) (1.0f * (Math.pow(augment.getCount(), 2) + 1));
-            }
-            if (augment.is(Items.OBSIDIAN)) {
-                Bonuses.UNBREAKING += (augment.getCount());
-            }
-            if (augment.is(Items.WHITE_WOOL)) {
-                Bonuses.SILK_TOUCH = true;
-            }
-        }
-
+        AugumentObject Bonuses = new AugumentObject(stack);
         return Bonuses;
     }
 }

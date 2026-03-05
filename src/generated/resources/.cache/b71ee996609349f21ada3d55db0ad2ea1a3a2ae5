@@ -1,9 +1,13 @@
-// 1.21.1	2026-03-04T12:55:08.4586948	Item Models: mattsmodulararmory
+// 1.21.1	2026-03-05T14:29:02.8581673	Item Models: mattsmodulararmory
 9fb96289ec659d7cd22f156564cd5bbdb831b655 assets/mattsmodulararmory/models/item/basic_modular_plate.json
+115a61e62d9bd883cf12d29f4ad6d9c5343b0f0c assets/mattsmodulararmory/models/item/efficiency_augment.json
 bdbaf79b27bd889fed0d02c99d258c354c814c83 assets/mattsmodulararmory/models/item/exposer_slot_plug.json
 c829364b78f83634a2a578d789ca23f554a2d34e assets/mattsmodulararmory/models/item/flesh_meal.json
+d8dcc54dffb53312c42efb31d5bf647657e8fe1f assets/mattsmodulararmory/models/item/fortune_augment.json
 9313e9a86f7413889944fc617c76a67e7aabacfd assets/mattsmodulararmory/models/item/modular_clay.json
 c54f64e8ac016e556ecf3cd74e990b2fbbac64bf assets/mattsmodulararmory/models/item/modular_clay_axe.json
 26c93a55de5bb9a1111c940602b69d23449292eb assets/mattsmodulararmory/models/item/modular_clay_extractor.json
 73c24eef4af9c45d4b13ddf79973b23e82178b9a assets/mattsmodulararmory/models/item/modular_clay_pickaxe.json
 3ce82cd4eeebaff81f4239fef604a9d38b274649 assets/mattsmodulararmory/models/item/modular_clay_shovel.json
+e254ad7a8f9a91e7609a9018d476f72feb4b662a assets/mattsmodulararmory/models/item/silk_touch_augment.json
+eea2dbdf83976bca98b8a73329ae5d3aaacebe3d assets/mattsmodulararmory/models/item/unbreaking_augment.json

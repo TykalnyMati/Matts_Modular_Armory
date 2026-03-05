@@ -10,6 +10,11 @@
   "tooltip.mattsmodulararmory.flesh_meal0": "Spreads ",
   "tooltip.mattsmodulararmory.flesh_meal1": "Adaptive Flesh",
 
+  "item.mattsmodulararmory.efficiency_augment": "Efficiency Augment",
+  "item.mattsmodulararmory.unbreaking_augment": "Unbreaking Augment",
+  "item.mattsmodulararmory.silk_touch_augment": "Silk Touch Augment",
+  "item.mattsmodulararmory.fortune_augment": "Fortune Augment",
+
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",
   "item.mattsmodulararmory.modular_clay_shovel": "Modular Clay Shovel",

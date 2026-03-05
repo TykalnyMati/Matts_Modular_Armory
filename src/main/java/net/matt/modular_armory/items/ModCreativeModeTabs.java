@@ -30,6 +30,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODULAR_CLAY_PICKAXE.get());
                         output.accept(ModItems.MODULAR_CLAY_AXE.get());
                         output.accept(ModItems.MODULAR_CLAY_SHOVEL.get());
+
+                        output.accept(ModItems.EFFICIENCY_AUGMENT.get());
+                        output.accept(ModItems.UNBREAKING_AUGMENT.get());
+                        output.accept(ModItems.SILK_TOUCH_AUGMENT.get());
+                        output.accept(ModItems.FORTUNE_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

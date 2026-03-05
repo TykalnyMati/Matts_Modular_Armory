@@ -2,10 +2,12 @@ package net.matt.modular_armory.block.entity.custom;
 
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.component.ModDataComponentTypes;
+import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.screen.custom.AugmentTableMenu;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
@@ -37,14 +39,31 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
         @Override
         protected int getStackLimit(int slot, @NotNull ItemStack stack) {
             int slotSize = 1;
+            ItemStack modularSlot = inventory.getStackInSlot(0);
+
+            if (modularSlot.isEmpty()) {
+                return slotSize;
+            }
+
+            int tier = 0;
+            if (modularSlot.is(ModTags.Items.MODULAR_TIER_0)) {
+                tier = 0;
+            } else if (modularSlot.is(ModTags.Items.MODULAR_TIER_1)) {
+                tier = 1;
+            } else if (modularSlot.is(ModTags.Items.MODULAR_TIER_2)) {
+                tier = 2;
+            } else if (modularSlot.is(ModTags.Items.MODULAR_TIER_3)) {
+                tier = 3;
+            }
 
             if (slot != 0) {
-                if (stack.is(Items.REDSTONE)) {
-                    slotSize = 7;
-                }
-                if (stack.is(Items.OBSIDIAN)) {
-                    slotSize = 8;
-                }
+                slotSize = switch (BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()) {
+                    case "mattsmodulararmory:efficiency_augment" -> 1 + 2 * tier;
+                    case "mattsmodulararmory:unbreaking_augment" -> 2 + 2 * tier;
+                    case "mattsmodulararmory:silk_touch_augment" -> 1;
+                    case "mattsmodulararmory:fortune_augment" -> 1 + tier;
+                    default -> slotSize;
+                };
             }
 
             return slotSize;
