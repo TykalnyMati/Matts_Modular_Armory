@@ -128,10 +128,20 @@ public class AugmentTableMenu extends AbstractContainerMenu {
                     return ItemStack.EMPTY;
                 }
 
-                // Checks if an augment is already inserted
+                // Check existing augment slots
                 for (int i = augmentStart; i < augmentEnd; i++) {
-                    if(this.getSlot(i).getItem().is(sourceStack.getItem())) {
-                        return ItemStack.EMPTY;
+                    Slot slot = this.getSlot(i);
+                    ItemStack stack = slot.getItem();
+
+                    if (!stack.isEmpty() && stack.is(sourceStack.getItem())) {
+                        int max = Math.min(slot.getMaxStackSize(), stack.getMaxStackSize());
+
+                        if (stack.getCount() < max) {
+                            if (!moveItemStackTo(sourceStack, i, i + 1, false)) {
+                                return ItemStack.EMPTY;
+                            }
+                            return sourceStack;
+                        }
                     }
                 }
 
