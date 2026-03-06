@@ -60,9 +60,6 @@ public class AugmentTableMenu extends AbstractContainerMenu {
         }
     }
 
-    // todo Make this work for other slots (now it only works for 0 slot)
-    // todo Removing the item with shift-click doesn't apply augments
-
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
     // For this container, we can see both the tile inventory's slots as well as the player inventory slots and the hotbar.
@@ -79,38 +76,89 @@ public class AugmentTableMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 1;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 9;  // must be the number of slots you have!
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int pIndex) {
-        Slot sourceSlot = slots.get(pIndex);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
-        ItemStack sourceStack = sourceSlot.getItem();
-        ItemStack copyOfSourceStack = sourceStack.copy();
+    public ItemStack quickMoveStack(Player player, int index) {
+        Slot sourceSlot = slots.get(index);
+        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;
 
-        // Check if the slot clicked is one of the vanilla container slots
-        if (pIndex < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
-            // This is a vanilla container slot so merge the stack into the tile inventory
-            if (!moveItemStackTo(sourceStack, TE_INVENTORY_FIRST_SLOT_INDEX, TE_INVENTORY_FIRST_SLOT_INDEX
-                    + TE_INVENTORY_SLOT_COUNT, false)) {
-                return ItemStack.EMPTY;  // EMPTY_ITEM
+        ItemStack sourceStack = sourceSlot.getItem();
+        ItemStack copy = sourceStack.copy();
+
+        int toolSlot = TE_INVENTORY_FIRST_SLOT_INDEX;
+        int augmentStart = TE_INVENTORY_FIRST_SLOT_INDEX + 1;
+        int augmentEnd = TE_INVENTORY_FIRST_SLOT_INDEX + 9;
+
+        // TOOL SLOT → PLAYER
+        if (index == toolSlot) {
+
+            if (blockEntity instanceof AugmentTableBlockEntity table) {
+                table.wrappedSaveAugmentsToItem(sourceStack);
+                table.clearAugmentSlots();
             }
-        } else if (pIndex < TE_INVENTORY_FIRST_SLOT_INDEX + TE_INVENTORY_SLOT_COUNT) {
-            // This is a TE slot so merge the stack into the players inventory
+
             if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, true)) {
                 return ItemStack.EMPTY;
             }
-        } else {
-            System.out.println("Invalid slotIndex:" + pIndex);
+        }
+
+        // AUGMENT SLOT → PLAYER
+        else if (index >= augmentStart && index < augmentEnd) {
+
+            if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, true)) {
+                return ItemStack.EMPTY;
+            }
+        }
+
+        // PLAYER → MACHINE
+        else if (index < VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT) {
+
+            // TOOL
+            if (sourceStack.is(ModTags.Items.MODULAR_ITEMS)) {
+
+                if (!moveItemStackTo(sourceStack, toolSlot, toolSlot + 1, false)) {
+                    return ItemStack.EMPTY;
+                }
+            }
+
+            // AUGMENTS
+            else if (sourceStack.is(ModTags.Items.MODULAR_ITEMS_AUGMENT)) {
+                // Checks if the slots are supposed to be open
+                if (!this.getSlot(toolSlot).getItem().is(ModTags.Items.MODULAR_ITEMS)) {
+                    return ItemStack.EMPTY;
+                }
+
+                // Checks if an augment is already inserted
+                for (int i = augmentStart; i < augmentEnd; i++) {
+                    if(this.getSlot(i).getItem().is(sourceStack.getItem())) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+
+                if (!moveItemStackTo(sourceStack, augmentStart, augmentEnd, false)) {
+                    return ItemStack.EMPTY;
+                }
+            }
+
+            // EVERYTHING ELSE
+            else {
+                return ItemStack.EMPTY;
+            }
+        }
+
+        // FAILSAFE
+        else {
             return ItemStack.EMPTY;
         }
-        // If stack size == 0 (the entire stack was moved) set slot contents to null
+
         if (sourceStack.getCount() == 0) {
             sourceSlot.set(ItemStack.EMPTY);
         } else {
             sourceSlot.setChanged();
         }
-        sourceSlot.onTake(playerIn, sourceStack);
-        return copyOfSourceStack;
+
+        sourceSlot.onTake(player, sourceStack);
+        return copy;
     }
 
     @Override

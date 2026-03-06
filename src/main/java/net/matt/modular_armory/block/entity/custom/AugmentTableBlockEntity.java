@@ -2,7 +2,6 @@ package net.matt.modular_armory.block.entity.custom;
 
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.component.ModDataComponentTypes;
-import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.screen.custom.AugmentTableMenu;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
@@ -22,7 +21,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
@@ -33,26 +31,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider {
-    private ItemStack lastMainStack = ItemStack.EMPTY;
 
     public final ItemStackHandler inventory = new ItemStackHandler(9) {
         @Override
         protected int getStackLimit(int slot, @NotNull ItemStack stack) {
             int slotSize = 1;
-            ItemStack modularSlot = inventory.getStackInSlot(0);
+            ItemStack modularItemStack = inventory.getStackInSlot(0);
 
-            if (modularSlot.isEmpty()) {
+            if (modularItemStack.isEmpty()) {
                 return slotSize;
             }
 
+            if (!inventory.getStackInSlot(0).isEmpty()) {
+                slotSize = 0;
+            }
+
             int tier = 0;
-            if (modularSlot.is(ModTags.Items.MODULAR_TIER_0)) {
+            if (modularItemStack.is(ModTags.Items.MODULAR_TIER_0)) {
                 tier = 0;
-            } else if (modularSlot.is(ModTags.Items.MODULAR_TIER_1)) {
+            } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_1)) {
                 tier = 1;
-            } else if (modularSlot.is(ModTags.Items.MODULAR_TIER_2)) {
+            } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_2)) {
                 tier = 2;
-            } else if (modularSlot.is(ModTags.Items.MODULAR_TIER_3)) {
+            } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_3)) {
                 tier = 3;
             }
 
@@ -82,8 +83,6 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
                     if (!current.isEmpty()) {
                         loadAugmentsFromItem(current);
                     }
-
-                    lastMainStack = current.copy();
                 }
 
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
@@ -94,17 +93,33 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
         public ItemStack extractItem(int slot, int amount, boolean simulate) {
             if (slot == 0 && !simulate) {
                 ItemStack stack = getStackInSlot(slot);
-
-                if (!stack.isEmpty() && stack.is(ModTags.Items.MODULAR_ITEMS)) {
-                    saveAugmentsToItem(stack);
-                    level.playSound(null, getBlockPos(), SoundEvents.SMITHING_TABLE_USE, SoundSource.BLOCKS);
-                    clearAugmentSlots();
-                }
+                wrappedSaveAugmentsToItem(stack);
             }
 
             return super.extractItem(slot, amount, simulate);
         }
+
+        @Override
+        public @NotNull ItemStack insertItem(int slot, @NotNull ItemStack stack, boolean simulate) {
+            // Find if this item type already exists in another slot
+            for (int i = 0; i < getSlots(); i++) {
+                if (i != slot && !getStackInSlot(i).isEmpty() && ItemStack.isSameItemSameComponents(getStackInSlot(i), stack)) {
+                    // If it exists elsewhere, reject insertion
+                    return stack;
+                }
+            }
+            // Otherwise, use default behavior
+            return super.insertItem(slot, stack, simulate);
+        }
     };
+
+    public void wrappedSaveAugmentsToItem(ItemStack stack) {
+        if (!stack.isEmpty() && stack.is(ModTags.Items.MODULAR_ITEMS)) {
+            saveAugmentsToItem(stack);
+            level.playSound(null, getBlockPos(), SoundEvents.SMITHING_TABLE_USE, SoundSource.BLOCKS);
+            clearAugmentSlots();
+        }
+    }
 
     // Saving augments into the item
     private void saveAugmentsToItem(ItemStack stack) {
@@ -118,7 +133,6 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
         }
 
         stack.set(ModDataComponentTypes.AUGMENTS.get(), augments);
-        clearAugmentSlots();
     }
 
     // Loading augments from the item
@@ -143,7 +157,7 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
     }
 
     // Clearing after the items have been transferred
-    private void clearAugmentSlots() {
+    public void clearAugmentSlots() {
         for (int i = 1; i < 9; i++) {
             inventory.setStackInSlot(i, ItemStack.EMPTY);
         }
@@ -166,7 +180,7 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
     }
 
     public void drops() {
-        saveAugmentsToItem(this.lastMainStack);
+        wrappedSaveAugmentsToItem(inventory.getStackInSlot(0));
         SimpleContainer inv = new SimpleContainer(inventory.getSlots());
         for (int i = 0; i < inventory.getSlots(); i++) {
             inv.setItem(i, inventory.getStackInSlot(i));

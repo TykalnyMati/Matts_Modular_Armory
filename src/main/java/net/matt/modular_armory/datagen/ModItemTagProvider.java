@@ -28,5 +28,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.MODULAR_CLAY_AXE.get())
                 .add(ModItems.MODULAR_CLAY_SHOVEL.get());
+
+
+
+        tag(ModTags.Items.MODULAR_ITEMS_AUGMENT)
+                .add(ModItems.EFFICIENCY_AUGMENT.get())
+                .add(ModItems.UNBREAKING_AUGMENT.get())
+                .add(ModItems.SILK_TOUCH_AUGMENT.get())
+                .add(ModItems.FORTUNE_AUGMENT.get());
     }
 }
