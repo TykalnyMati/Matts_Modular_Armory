@@ -1,30 +1,40 @@
 package net.matt.modular_armory.items.tools;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Optional;
 
 public class ModularAxeItem extends AxeItem {
     public ModularAxeItem(Tier tier, Properties properties) {
@@ -200,6 +210,71 @@ public class ModularAxeItem extends AxeItem {
         }
 
         return super.isCorrectToolForDrops(stack, state);
+    }
+
+    // For stripping
+    @Override
+    public InteractionResult useOn(UseOnContext pContext) {
+        Level level = pContext.getLevel();
+        BlockPos blockpos = pContext.getClickedPos();
+        Player player = pContext.getPlayer();
+        if (playerHasShieldUseIntent(pContext)) {
+            return InteractionResult.PASS;
+        } else {
+            var modded = level.getBlockState(blockpos).getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.AXE_STRIP, false);
+            Optional<BlockState> optional = modded != null ? Optional.of(modded) : this.evaluateNewBlockState(level, blockpos, player, level.getBlockState(blockpos));
+            if (optional.isEmpty()) {
+                return InteractionResult.PASS;
+            } else {
+                ItemStack itemstack = pContext.getItemInHand();
+                if (player instanceof ServerPlayer) {
+                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer)player, blockpos, itemstack);
+                }
+
+                level.setBlock(blockpos, optional.get(), 11);
+                level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, optional.get()));
+                if (player != null) {
+                    damageTool(itemstack, player);
+                }
+
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+        }
+    }
+
+    private static boolean playerHasShieldUseIntent(UseOnContext pContext) {
+        Player player = pContext.getPlayer();
+        return pContext.getHand().equals(InteractionHand.MAIN_HAND) && player.getOffhandItem().is(Items.SHIELD) && !player.isSecondaryUseActive();
+    }
+
+    private Optional<BlockState> evaluateNewBlockState(Level pLevel, BlockPos pPos, @Nullable Player pPlayer, BlockState pState) {
+        Optional<BlockState> optional = this.getStripped(pState);
+        if (optional.isPresent()) {
+            pLevel.playSound(pPlayer, pPos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
+            return optional;
+        } else {
+            Optional<BlockState> optional1 = WeatheringCopper.getPrevious(pState);
+            if (optional1.isPresent()) {
+                pLevel.playSound(pPlayer, pPos, SoundEvents.AXE_SCRAPE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                pLevel.levelEvent(pPlayer, 3005, pPos, 0);
+                return optional1;
+            } else {
+                Optional<BlockState> optional2 = Optional.ofNullable(HoneycombItem.WAX_OFF_BY_BLOCK.get().get(pState.getBlock()))
+                        .map(p_150694_ -> p_150694_.withPropertiesOf(pState));
+                if (optional2.isPresent()) {
+                    pLevel.playSound(pPlayer, pPos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
+                    pLevel.levelEvent(pPlayer, 3004, pPos, 0);
+                    return optional2;
+                } else {
+                    return Optional.empty();
+                }
+            }
+        }
+    }
+
+    private Optional<BlockState> getStripped(BlockState pUnstrippedState) {
+        return Optional.ofNullable(STRIPPABLES.get(pUnstrippedState.getBlock()))
+                .map(p_150689_ -> p_150689_.defaultBlockState().setValue(RotatedPillarBlock.AXIS, pUnstrippedState.getValue(RotatedPillarBlock.AXIS)));
     }
 
     private AugumentObject getAugmentBonuses(ItemStack stack) {
