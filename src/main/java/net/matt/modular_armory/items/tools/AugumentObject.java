@@ -11,6 +11,7 @@ public class AugumentObject {
     public int UNBREAKING;
     public boolean SILK_TOUCH;
     public int FORTUNE;
+    public boolean MENDING;
 
     public AugumentObject(ItemStack stack) {
         for (ItemStack augment : getAugments(stack)) {
@@ -25,6 +26,9 @@ public class AugumentObject {
             }
             if (augment.is(ModItems.FORTUNE_AUGMENT.get())) {
                 this.FORTUNE = (augment.getCount());
+            }
+            if (augment.is(ModItems.MENDING_AUGMENT.get())) {
+                this.MENDING = true;
             }
         }
     }

@@ -31,15 +31,15 @@ public class ModularPickaxeItem extends PickaxeItem {
 
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
+        AugumentObject bonuses = getAugmentBonuses(stack);
+
         if (isBroken(stack)) {
             return false;
         }
 
         if (!level.isClientSide() && state.getDestroySpeed(level, pos) > 0.0F) {
-            int fortuneLevel = getAugmentBonuses(stack).FORTUNE;
-
             // Silk touch check
-            if (getAugmentBonuses(stack).SILK_TOUCH) {
+            if (bonuses.SILK_TOUCH) {
                 // if tool isn't correct
                 if (!isCorrectToolForDrops(stack, state) && state.requiresCorrectToolForDrops()) {
                     return false;
@@ -73,7 +73,7 @@ public class ModularPickaxeItem extends PickaxeItem {
                     Block.popResource(level, pos, drop);
                 }
             } else // Fortune check
-                if (fortuneLevel > 0) {
+                if (bonuses.FORTUNE > 0) {
                 // if tool isn't correct
                 if (!isCorrectToolForDrops(stack, state) && state.requiresCorrectToolForDrops()) {
                     return false;
@@ -89,7 +89,7 @@ public class ModularPickaxeItem extends PickaxeItem {
 
                 // Create tool copy and inject fortune enchant
                 ItemStack fortuneTool = stack.copy();
-                fortuneTool.enchant(fortuneHolder, fortuneLevel);
+                fortuneTool.enchant(fortuneHolder, bonuses.FORTUNE);
 
                 LootParams.Builder builder = new LootParams.Builder(((ServerLevel) level))
                         .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
@@ -143,8 +143,9 @@ public class ModularPickaxeItem extends PickaxeItem {
     }
 
     private void damageTool(ItemStack stack, LivingEntity entity) {
+        int bonusesUnbreaking = getAugmentBonuses(stack).UNBREAKING;
         // Unbreaking augment
-        if (getAugmentBonuses(stack).UNBREAKING * 0.125f >= 1f || entity.getRandom().nextFloat() < getAugmentBonuses(stack).UNBREAKING * 0.125f) {
+        if (bonusesUnbreaking * 0.125f >= 1f || entity.getRandom().nextFloat() < bonusesUnbreaking * 0.125f) {
             return;
         }
 
@@ -171,6 +172,23 @@ public class ModularPickaxeItem extends PickaxeItem {
         }
 
         stack.hurtAndBreak(1, entity, EquipmentSlot.MAINHAND);
+    }
+
+    public int repairFromXp (ItemStack stack, int xpAmount) {
+        if (!getAugmentBonuses(stack).MENDING) {
+            return xpAmount;
+        }
+
+        if (stack.getDamageValue() <= 0) {
+            return xpAmount;
+        }
+
+        int repairAmount = xpAmount * 2;
+        int newDamage = Math.max(0, stack.getDamageValue() - repairAmount);
+        int remainingXp = xpAmount - repairAmount / 2;
+
+        stack.setDamageValue(newDamage);
+        return remainingXp;
     }
 
     public boolean isBroken(ItemStack item) {

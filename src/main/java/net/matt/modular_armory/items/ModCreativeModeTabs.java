@@ -43,6 +43,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.UNBREAKING_AUGMENT.get());
                         output.accept(ModItems.SILK_TOUCH_AUGMENT.get());
                         output.accept(ModItems.FORTUNE_AUGMENT.get());
+                        output.accept(ModItems.MENDING_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {
