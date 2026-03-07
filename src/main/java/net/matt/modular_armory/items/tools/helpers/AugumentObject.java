@@ -1,4 +1,4 @@
-package net.matt.modular_armory.items.tools;
+package net.matt.modular_armory.items.tools.helpers;
 
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.items.ModItems;

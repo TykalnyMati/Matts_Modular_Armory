@@ -1,233 +1,57 @@
 package net.matt.modular_armory.items.tools;
 
+import com.google.common.collect.ImmutableMap;
+import net.matt.modular_armory.items.tools.helpers.ModularGenericDiggerItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.WeatheringCopper;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
-import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
-import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
-public class ModularAxeItem extends AxeItem {
+public class ModularAxeItem extends ModularGenericDiggerItem {
+    protected static final Map<Block, Block> STRIPPABLES = new ImmutableMap.Builder<Block, Block>()
+            .put(Blocks.OAK_WOOD, Blocks.STRIPPED_OAK_WOOD)
+            .put(Blocks.OAK_LOG, Blocks.STRIPPED_OAK_LOG)
+            .put(Blocks.DARK_OAK_WOOD, Blocks.STRIPPED_DARK_OAK_WOOD)
+            .put(Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG)
+            .put(Blocks.ACACIA_WOOD, Blocks.STRIPPED_ACACIA_WOOD)
+            .put(Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG)
+            .put(Blocks.CHERRY_WOOD, Blocks.STRIPPED_CHERRY_WOOD)
+            .put(Blocks.CHERRY_LOG, Blocks.STRIPPED_CHERRY_LOG)
+            .put(Blocks.BIRCH_WOOD, Blocks.STRIPPED_BIRCH_WOOD)
+            .put(Blocks.BIRCH_LOG, Blocks.STRIPPED_BIRCH_LOG)
+            .put(Blocks.JUNGLE_WOOD, Blocks.STRIPPED_JUNGLE_WOOD)
+            .put(Blocks.JUNGLE_LOG, Blocks.STRIPPED_JUNGLE_LOG)
+            .put(Blocks.SPRUCE_WOOD, Blocks.STRIPPED_SPRUCE_WOOD)
+            .put(Blocks.SPRUCE_LOG, Blocks.STRIPPED_SPRUCE_LOG)
+            .put(Blocks.WARPED_STEM, Blocks.STRIPPED_WARPED_STEM)
+            .put(Blocks.WARPED_HYPHAE, Blocks.STRIPPED_WARPED_HYPHAE)
+            .put(Blocks.CRIMSON_STEM, Blocks.STRIPPED_CRIMSON_STEM)
+            .put(Blocks.CRIMSON_HYPHAE, Blocks.STRIPPED_CRIMSON_HYPHAE)
+            .put(Blocks.MANGROVE_WOOD, Blocks.STRIPPED_MANGROVE_WOOD)
+            .put(Blocks.MANGROVE_LOG, Blocks.STRIPPED_MANGROVE_LOG)
+            .put(Blocks.BAMBOO_BLOCK, Blocks.STRIPPED_BAMBOO_BLOCK)
+            .build();
+
     public ModularAxeItem(Tier tier, Properties properties) {
-        super(tier, properties);
-    }
-
-    @Override
-    public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
-        AugumentObject bonuses = getAugmentBonuses(stack);
-
-        if (isBroken(stack)) {
-            return false;
-        }
-
-        if (!level.isClientSide() && state.getDestroySpeed(level, pos) > 0.0F) {
-            // Silk touch check
-            if (bonuses.SILK_TOUCH) {
-                // if tool isn't correct
-                if (!isCorrectToolForDrops(stack, state) && state.requiresCorrectToolForDrops()) {
-                    return false;
-                }
-
-                BlockEntity blockEntity = level.getBlockEntity(pos);
-
-                // Silk Holder test
-                Holder<Enchantment> silkHolder =
-                        level.registryAccess()
-                                .registryOrThrow(Registries.ENCHANTMENT)
-                                .getHolderOrThrow(Enchantments.SILK_TOUCH);
-
-                // Create tool copy and inject silk enchant
-                ItemStack silkTool = stack.copy();
-                silkTool.enchant(silkHolder, 1);
-
-                LootParams.Builder builder = new LootParams.Builder(((ServerLevel) level))
-                        .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-                        .withParameter(LootContextParams.TOOL, silkTool)
-                        .withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity)
-                        .withParameter(LootContextParams.THIS_ENTITY, entity);
-
-                List<ItemStack> drops = state.getDrops(builder);
-
-                // Remove block without vanilla drops
-                level.removeBlock(pos, false);
-
-                // Spawn custom drops
-                for (ItemStack drop : drops) {
-                    Block.popResource(level, pos, drop);
-                }
-            } else // Fortune check
-                if (bonuses.FORTUNE > 0) {
-                    // if tool isn't correct
-                    if (!isCorrectToolForDrops(stack, state) && state.requiresCorrectToolForDrops()) {
-                        return false;
-                    }
-
-                    BlockEntity blockEntity = level.getBlockEntity(pos);
-
-                    // Fortune Holder test
-                    Holder<Enchantment> fortuneHolder =
-                            level.registryAccess()
-                                    .registryOrThrow(Registries.ENCHANTMENT)
-                                    .getHolderOrThrow(Enchantments.FORTUNE);
-
-                    // Create tool copy and inject fortune enchant
-                    ItemStack fortuneTool = stack.copy();
-                    fortuneTool.enchant(fortuneHolder, bonuses.FORTUNE);
-
-                    LootParams.Builder builder = new LootParams.Builder(((ServerLevel) level))
-                            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-                            .withParameter(LootContextParams.TOOL, fortuneTool)
-                            .withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity)
-                            .withParameter(LootContextParams.THIS_ENTITY, entity);
-
-                    List<ItemStack> drops = state.getDrops(builder);
-
-                    // Remove block without vanilla drops
-                    level.removeBlock(pos, false);
-
-                    // Spawn custom drops
-                    for (ItemStack drop : drops) {
-                        Block.popResource(level, pos, drop);
-                    }
-                }
-            damageTool(stack, entity);
-        }
-
-        return true;
-    }
-
-    @Override
-    public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        return !isBroken(stack);
-    }
-
-    @Override
-    public void postHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-        damageTool(pStack, pAttacker);
-    }
-
-    @Override
-    public ItemAttributeModifiers getDefaultAttributeModifiers(ItemStack stack) {
-        if (isBroken(stack)) {
-            return ItemAttributeModifiers.EMPTY;
-        }
-
-        return super.getDefaultAttributeModifiers(stack);
-    }
-
-    @Override
-    public float getAttackDamageBonus(Entity target, float baseDamage, DamageSource source) {
-        if (isBroken(source.getWeaponItem())) {
-            return -baseDamage + 1;
-        }
-
-        return super.getAttackDamageBonus(target, baseDamage, source);
-    }
-
-    private void damageTool(ItemStack stack, LivingEntity entity) {
-        int bonusesUnbreaking = getAugmentBonuses(stack).UNBREAKING;
-        // Unbreaking augment
-        if (bonusesUnbreaking * 0.125f >= 1f || entity.getRandom().nextFloat() < bonusesUnbreaking * 0.125f) {
-            return;
-        }
-
-        if (isBroken(stack)) {
-            stack.setDamageValue(stack.getMaxDamage() - 1);
-            return;
-        }
-
-        if (stack.getDamageValue() + 1 >= stack.getMaxDamage() - 1) {
-            stack.setDamageValue(stack.getMaxDamage() - 1);
-
-            if (!entity.level().isClientSide()) {
-                entity.level().playSound(
-                        null,
-                        entity.blockPosition(),
-                        SoundEvents.ITEM_BREAK,
-                        entity.getSoundSource(),
-                        1.0F,
-                        1.0F
-                );
-            }
-
-            return;
-        }
-
-        stack.hurtAndBreak(1, entity, EquipmentSlot.MAINHAND);
-    }
-
-    public int repairFromXp (ItemStack stack, int xpAmount) {
-        if (!getAugmentBonuses(stack).MENDING) {
-            return xpAmount;
-        }
-
-        if (stack.getDamageValue() <= 0) {
-            return xpAmount;
-        }
-
-        int repairAmount = xpAmount * 2;
-        int newDamage = Math.max(0, stack.getDamageValue() - repairAmount);
-        int remainingXp = xpAmount - repairAmount / 2;
-
-        stack.setDamageValue(newDamage);
-        return remainingXp;
-    }
-
-    public boolean isBroken(ItemStack item) {
-        return item.getDamageValue() >= item.getMaxDamage() - 1;
-    }
-
-    @Override
-    public float getDestroySpeed(ItemStack stack, BlockState state) {
-        if (isBroken(stack)) {
-            return 0.1F;
-        }
-
-        float base = super.getDestroySpeed(stack, state);
-
-        if (state.is(BlockTags.MINEABLE_WITH_AXE)) {
-            base += getAugmentBonuses(stack).MINING_BONUS;
-        }
-        return base;
-
-    }
-
-    @Override
-    public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
-        if (isBroken(stack)) {
-            return false;
-        }
-
-        return super.isCorrectToolForDrops(stack, state);
+        super(tier, BlockTags.MINEABLE_WITH_AXE, properties);
     }
 
     // For stripping
@@ -295,8 +119,14 @@ public class ModularAxeItem extends AxeItem {
                 .map(p_150689_ -> p_150689_.defaultBlockState().setValue(RotatedPillarBlock.AXIS, pUnstrippedState.getValue(RotatedPillarBlock.AXIS)));
     }
 
-    private AugumentObject getAugmentBonuses(ItemStack stack) {
-        AugumentObject Bonuses = new AugumentObject(stack);
-        return Bonuses;
+    @Override
+    public boolean canPerformAction(ItemStack stack, net.minecraftforge.common.ToolAction toolAction) {
+        return net.minecraftforge.common.ToolActions.DEFAULT_AXE_ACTIONS.contains(toolAction);
+    }
+
+    @org.jetbrains.annotations.Nullable
+    public static BlockState getAxeStrippingState(BlockState originalState) {
+        Block block = STRIPPABLES.get(originalState.getBlock());
+        return block != null ? block.defaultBlockState().setValue(RotatedPillarBlock.AXIS, originalState.getValue(RotatedPillarBlock.AXIS)) : null;
     }
 }
