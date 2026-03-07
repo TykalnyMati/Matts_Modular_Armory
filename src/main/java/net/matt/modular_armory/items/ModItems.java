@@ -5,6 +5,7 @@ import net.matt.modular_armory.items.custom.FleshMealItem;
 import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
 import net.matt.modular_armory.items.tools.ModularAxeItem;
 import net.matt.modular_armory.items.tools.ModularPickaxeItem;
+import net.matt.modular_armory.items.tools.ModularShovelItem;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
@@ -36,7 +37,7 @@ public class ModItems {
             () -> new ModularAxeItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(AxeItem.createAttributes(ModToolTiers.MODULAR_CLAY, 7.0f, -3.2f))));
 
     public static final RegistryObject<Item> MODULAR_CLAY_SHOVEL = ITEMS.register("modular_clay_shovel",
-            () -> new ShovelItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.MODULAR_CLAY, 1.5f, -3.0f))));
+            () -> new ModularShovelItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.MODULAR_CLAY, 1.5f, -3.0f))));
 
     // Advanced Modular Clay
     public static final RegistryObject<Item> ADVANCED_MODULAR_CLAY_PICKAXE = ITEMS.register("advanced_modular_clay_pickaxe",
