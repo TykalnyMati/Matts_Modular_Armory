@@ -19,6 +19,10 @@
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",
   "item.mattsmodulararmory.modular_clay_shovel": "Modular Clay Shovel",
 
+  "item.mattsmodulararmory.advanced_modular_clay_pickaxe": "Advanced Modular Pickaxe",
+
+  "item.mattsmodulararmory.adaptive_flesh_pickaxe": "Adaptive Flesh Pickaxe",
+
   "block.mattsmodulararmory.modular_clay_block": "Block of Modular Clay",
   "block.mattsmodulararmory.adaptive_flesh_block": "Block of Adaptive Flesh",
   "block.mattsmodulararmory.augment_table": "Augment Table",

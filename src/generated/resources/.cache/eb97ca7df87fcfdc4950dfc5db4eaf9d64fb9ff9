@@ -1,4 +1,6 @@
-// 1.21.1	2026-03-06T20:14:04.7405145	Tags for minecraft:item mod id mattsmodulararmory
-9a4b86a224d58ee0712791860a8c8a5c46ca573c data/mattsmodulararmory/tags/item/modular_items.json
+// 1.21.1	2026-03-07T17:06:17.8427226	Tags for minecraft:item mod id mattsmodulararmory
+aa60876f194434efca4365e13917fb93f1399f53 data/mattsmodulararmory/tags/item/modular_items.json
 6ca6f76ae4cd1d615576b5cc53285731f2c5cf6b data/mattsmodulararmory/tags/item/modular_items_augment.json
 9a4b86a224d58ee0712791860a8c8a5c46ca573c data/mattsmodulararmory/tags/item/modular_tier_0.json
+ad5dfc4b4258e7566a80d81e358af9a42fd0b8ce data/mattsmodulararmory/tags/item/modular_tier_1.json
+8ea6224e4db9c8c2e63ddd5af4b037675e589619 data/mattsmodulararmory/tags/item/modular_tier_2.json

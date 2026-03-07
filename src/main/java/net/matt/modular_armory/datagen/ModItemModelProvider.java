@@ -23,9 +23,16 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.FLESH_MEAL.get());
         basicItem(ModItems.EXPOSER_SLOT_PLUG.get());
 
+        // Tier 0 modular items
         handHeldItem(ModItems.MODULAR_CLAY_PICKAXE);
         handHeldItem(ModItems.MODULAR_CLAY_AXE);
         handHeldItem(ModItems.MODULAR_CLAY_SHOVEL);
+
+        // Tier 1 modular items
+        handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE);
+
+        // Tier 2 modular items
+        handHeldItem(ModItems.ADAPTIVE_FLESH_PICKAXE);
 
         basicItem(ModItems.EFFICIENCY_AUGMENT.get());
         basicItem(ModItems.UNBREAKING_AUGMENT.get());

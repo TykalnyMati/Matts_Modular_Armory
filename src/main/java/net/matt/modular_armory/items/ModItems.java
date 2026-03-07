@@ -28,6 +28,7 @@ public class ModItems {
     public static final RegistryObject<Item> EXPOSER_SLOT_PLUG = ITEMS.register("exposer_slot_plug", () -> new Item(new Item.Properties().stacksTo(1)));
 
     // Tools
+    // Modular Clay
     public static final RegistryObject<Item> MODULAR_CLAY_PICKAXE = ITEMS.register("modular_clay_pickaxe",
             () -> new ModularPickaxeItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.MODULAR_CLAY, 1.0f, -2.8f))));
 
@@ -36,6 +37,16 @@ public class ModItems {
 
     public static final RegistryObject<Item> MODULAR_CLAY_SHOVEL = ITEMS.register("modular_clay_shovel",
             () -> new ShovelItem(ModToolTiers.MODULAR_CLAY, new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.MODULAR_CLAY, 1.5f, -3.0f))));
+
+    // Advanced Modular Clay
+    public static final RegistryObject<Item> ADVANCED_MODULAR_CLAY_PICKAXE = ITEMS.register("advanced_modular_clay_pickaxe",
+            () -> new ModularPickaxeItem(ModToolTiers.ADVANCED_MODULAR_CLAY, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.ADVANCED_MODULAR_CLAY, 1.0f, -2.8f))));
+
+
+    // Adaptive Flesh
+    public static final RegistryObject<Item> ADAPTIVE_FLESH_PICKAXE = ITEMS.register("adaptive_flesh_pickaxe",
+            () -> new ModularPickaxeItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, 1.5f, -2.4f))));
+
 
     // Augments
     public static final RegistryObject<Item> EFFICIENCY_AUGMENT = ITEMS.register("efficiency_augment", () -> new Item(new Item.Properties()));

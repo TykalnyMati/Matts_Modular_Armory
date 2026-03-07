@@ -22,19 +22,28 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.MODULAR_ITEMS)
                 .add(ModItems.MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.MODULAR_CLAY_AXE.get())
-                .add(ModItems.MODULAR_CLAY_SHOVEL.get());
+                .add(ModItems.MODULAR_CLAY_SHOVEL.get())
+
+                .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
+
+                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
 
         tag(ModTags.Items.MODULAR_TIER_0)
                 .add(ModItems.MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.MODULAR_CLAY_AXE.get())
                 .add(ModItems.MODULAR_CLAY_SHOVEL.get());
 
+        tag(ModTags.Items.MODULAR_TIER_1)
+                .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get());
 
+        tag(ModTags.Items.MODULAR_TIER_2)
+                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
 
         tag(ModTags.Items.MODULAR_ITEMS_AUGMENT)
                 .add(ModItems.EFFICIENCY_AUGMENT.get())
                 .add(ModItems.UNBREAKING_AUGMENT.get())
                 .add(ModItems.SILK_TOUCH_AUGMENT.get())
                 .add(ModItems.FORTUNE_AUGMENT.get());
+
     }
 }
