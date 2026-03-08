@@ -31,9 +31,11 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         // Tier 1 modular items
         handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE);
+        handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_AXE);
 
         // Tier 2 modular items
         handHeldItem(ModItems.ADAPTIVE_FLESH_PICKAXE);
+        handHeldItem(ModItems.ADAPTIVE_FLESH_AXE);
 
         basicItem(ModItems.EFFICIENCY_AUGMENT.get());
         basicItem(ModItems.UNBREAKING_AUGMENT.get());

@@ -35,9 +35,11 @@ public class ModCreativeModeTabs {
 
                         // Tier 1 modular items
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get());
+                        output.accept(ModItems.ADVANCED_MODULAR_CLAY_AXE.get());
 
                         // Tier 2 modular items
                         output.accept(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
+                        output.accept(ModItems.ADAPTIVE_FLESH_AXE.get());
 
                         // Augments
                         output.accept(ModItems.EFFICIENCY_AUGMENT.get());

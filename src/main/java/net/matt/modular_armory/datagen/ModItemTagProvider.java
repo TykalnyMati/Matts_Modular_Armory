@@ -27,8 +27,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_HOE.get())
 
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
 
-                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
+                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_AXE.get());
 
         // Modular Tools tag
         tag(ModTags.Items.MODULAR_TOOL)
@@ -38,12 +40,16 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_HOE.get())
 
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
 
-                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
+                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_AXE.get());
 
         // Modular Weapons tag
         tag(ModTags.Items.MODULAR_WEAPON)
-                .add(ModItems.MODULAR_CLAY_AXE.get());
+                .add(ModItems.MODULAR_CLAY_AXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_AXE.get());
 
         // Modular Items Tier 0
         tag(ModTags.Items.MODULAR_TIER_0)
@@ -54,11 +60,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         // Modular Items Tier 1
         tag(ModTags.Items.MODULAR_TIER_1)
-                .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get());
 
         // Modular Items Tier 2
         tag(ModTags.Items.MODULAR_TIER_2)
-                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
+                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_AXE.get());
 
         // Augments
         tag(ModTags.Items.MODULAR_ITEMS_AUGMENT)
