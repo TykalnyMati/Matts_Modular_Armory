@@ -24,6 +24,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.MODULAR_CLAY_AXE.get())
                 .add(ModItems.MODULAR_CLAY_SHOVEL.get())
+                .add(ModItems.MODULAR_CLAY_HOE.get())
 
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
 
@@ -33,7 +34,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.MODULAR_TIER_0)
                 .add(ModItems.MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.MODULAR_CLAY_AXE.get())
-                .add(ModItems.MODULAR_CLAY_SHOVEL.get());
+                .add(ModItems.MODULAR_CLAY_SHOVEL.get())
+                .add(ModItems.MODULAR_CLAY_HOE.get());
 
         // Modular Items Tier 1
         tag(ModTags.Items.MODULAR_TIER_1)

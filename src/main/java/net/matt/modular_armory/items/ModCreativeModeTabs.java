@@ -31,6 +31,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODULAR_CLAY_PICKAXE.get());
                         output.accept(ModItems.MODULAR_CLAY_AXE.get());
                         output.accept(ModItems.MODULAR_CLAY_SHOVEL.get());
+                        output.accept(ModItems.MODULAR_CLAY_HOE.get());
 
                         // Tier 1 modular items
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get());

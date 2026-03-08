@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-07T20:45:07.6431279	Item Models: mattsmodulararmory
+// 1.21.1	2026-03-08T12:44:21.8826723	Item Models: mattsmodulararmory
 2fa6e3a6ffe24666f268eb14abc7977e2215a62a assets/mattsmodulararmory/models/item/adaptive_flesh_pickaxe.json
 d4133d24880d1fc3c86b3e819aca4d539ee801e0 assets/mattsmodulararmory/models/item/advanced_modular_clay_pickaxe.json
 9fb96289ec659d7cd22f156564cd5bbdb831b655 assets/mattsmodulararmory/models/item/basic_modular_plate.json
@@ -10,6 +10,7 @@ d8dcc54dffb53312c42efb31d5bf647657e8fe1f assets/mattsmodulararmory/models/item/f
 9313e9a86f7413889944fc617c76a67e7aabacfd assets/mattsmodulararmory/models/item/modular_clay.json
 c54f64e8ac016e556ecf3cd74e990b2fbbac64bf assets/mattsmodulararmory/models/item/modular_clay_axe.json
 26c93a55de5bb9a1111c940602b69d23449292eb assets/mattsmodulararmory/models/item/modular_clay_extractor.json
+e86a371e37d9ff23faecbb25a1bfde6c5708d49e assets/mattsmodulararmory/models/item/modular_clay_hoe.json
 73c24eef4af9c45d4b13ddf79973b23e82178b9a assets/mattsmodulararmory/models/item/modular_clay_pickaxe.json
 3ce82cd4eeebaff81f4239fef604a9d38b274649 assets/mattsmodulararmory/models/item/modular_clay_shovel.json
 e254ad7a8f9a91e7609a9018d476f72feb4b662a assets/mattsmodulararmory/models/item/silk_touch_augment.json

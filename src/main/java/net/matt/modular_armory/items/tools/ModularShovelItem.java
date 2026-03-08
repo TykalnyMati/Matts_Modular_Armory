@@ -26,15 +26,13 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import java.util.Map;
 
 public class ModularShovelItem extends ModularGenericDiggerItem {
-    protected static final Map<Block, BlockState> FLATTENABLES = Maps.newHashMap(
-            new Builder()
-                    .put(Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.defaultBlockState())
-                    .put(Blocks.DIRT, Blocks.DIRT_PATH.defaultBlockState())
-                    .put(Blocks.PODZOL, Blocks.DIRT_PATH.defaultBlockState())
-                    .put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.defaultBlockState())
-                    .put(Blocks.MYCELIUM, Blocks.DIRT_PATH.defaultBlockState())
-                    .put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.defaultBlockState())
-                    .build()
+    protected static final Map<Block, BlockState> FLATTENABLES = Map.of(
+            Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.defaultBlockState(),
+            Blocks.DIRT, Blocks.DIRT_PATH.defaultBlockState(),
+            Blocks.PODZOL, Blocks.DIRT_PATH.defaultBlockState(),
+            Blocks.COARSE_DIRT, Blocks.DIRT_PATH.defaultBlockState(),
+            Blocks.MYCELIUM, Blocks.DIRT_PATH.defaultBlockState(),
+            Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.defaultBlockState()
     );
 
     public ModularShovelItem(Tier tier, Properties properties) {
