@@ -164,7 +164,7 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
         ItemStack weapon = source.getWeaponItem();
         if (weapon == null) return super.getAttackDamageBonus(target, baseDamage, source);
 
-        float sharpness = getAugmentBonuses(weapon).SHARPNESS;
+        float sharpness = 0.5f * getAugmentBonuses(weapon).SHARPNESS + 0.5f;
 
         if (sharpness > 0) {
             return super.getAttackDamageBonus(target, baseDamage, source) + sharpness;

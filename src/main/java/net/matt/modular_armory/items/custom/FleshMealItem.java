@@ -57,8 +57,8 @@ public class FleshMealItem extends Item {
 
     @Override
     public void appendHoverText(@NotNull ItemStack pStack, @NotNull TooltipContext pContext, List<Component> pTooltipComponents, @NotNull TooltipFlag pTooltipFlag) {
-        pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.flesh_meal0").append(
-                Component.translatable("tooltip.mattsmodulararmory.flesh_meal1").withStyle(ChatFormatting.RED)));
+        pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.flesh_meal0")
+                .append(Component.translatable("tooltip.mattsmodulararmory.flesh_meal1").withStyle(ChatFormatting.RED)));
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 }

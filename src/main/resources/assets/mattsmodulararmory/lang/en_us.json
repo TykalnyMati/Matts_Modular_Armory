@@ -10,12 +10,21 @@
   "tooltip.mattsmodulararmory.flesh_meal0": "Spreads ",
   "tooltip.mattsmodulararmory.flesh_meal1": "Adaptive Flesh",
 
-  "item.mattsmodulararmory.efficiency_augment": "Efficiency Augment",
   "item.mattsmodulararmory.unbreaking_augment": "Unbreaking Augment",
+  "item.mattsmodulararmory.mending_augment": "Mending Augment",
+  "item.mattsmodulararmory.efficiency_augment": "Efficiency Augment",
   "item.mattsmodulararmory.silk_touch_augment": "Silk Touch Augment",
   "item.mattsmodulararmory.fortune_augment": "Fortune Augment",
-  "item.mattsmodulararmory.mending_augment": "Mending Augment",
   "item.mattsmodulararmory.sharpness_augment": "Sharpness Augment",
+
+  "tooltip.mattsmodulararmory.augments": "Augments",
+  "tooltip.mattsmodulararmory.unbreaking_augment": "Unbreaking",
+  "tooltip.mattsmodulararmory.unbreaking_augment_full": "Unbreakable",
+  "tooltip.mattsmodulararmory.mending_augment": "Mending",
+  "tooltip.mattsmodulararmory.efficiency_augment": "Efficiency",
+  "tooltip.mattsmodulararmory.silk_touch_augment": "Silk Touch",
+  "tooltip.mattsmodulararmory.fortune_augment": "Fortune",
+  "tooltip.mattsmodulararmory.sharpness_augment": "Sharpness",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",

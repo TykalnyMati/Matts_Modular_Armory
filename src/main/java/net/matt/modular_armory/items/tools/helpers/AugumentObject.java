@@ -7,27 +7,27 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 
 public class AugumentObject {
-    public float MINING_BONUS;
     public int UNBREAKING;
+    public boolean MENDING;
+    public float EFFICIENCY;
     public boolean SILK_TOUCH;
     public int FORTUNE;
-    public boolean MENDING;
     public float SHARPNESS;
 
     public AugumentObject(ItemStack stack) {
         for (ItemStack augment : getAugments(stack)) {
             switch (BuiltInRegistries.ITEM.getKey(augment.getItem()).toString()) {
                 // Generic augments
-                case "mattsmodulararmory:unbreaking_augment" -> this.UNBREAKING += (augment.getCount());
+                case "mattsmodulararmory:unbreaking_augment" -> this.UNBREAKING += augment.getCount();
                 case "mattsmodulararmory:mending_augment" -> this.MENDING = true;
 
                 // Tool specific augments
-                case "mattsmodulararmory:efficiency_augment" -> this.MINING_BONUS += (float) (1.0f * (Math.pow(augment.getCount(), 2) + 1));
+                case "mattsmodulararmory:efficiency_augment" -> this.EFFICIENCY += augment.getCount();
                 case "mattsmodulararmory:silk_touch_augment" -> this.SILK_TOUCH = true;
-                case "mattsmodulararmory:fortune_augment" -> this.FORTUNE = (augment.getCount());
+                case "mattsmodulararmory:fortune_augment" -> this.FORTUNE = augment.getCount();
 
                 // Weapon specific augments
-                case "mattsmodulararmory:sharpness_augment" -> this.SHARPNESS = 0.5f * augment.getCount() + 0.5f;
+                case "mattsmodulararmory:sharpness_augment" -> this.SHARPNESS = augment.getCount();
             }
         }
     }

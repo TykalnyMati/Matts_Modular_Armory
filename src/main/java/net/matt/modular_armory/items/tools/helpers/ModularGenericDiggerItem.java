@@ -1,8 +1,10 @@
 package net.matt.modular_armory.items.tools.helpers;
 
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
@@ -11,6 +13,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -154,7 +157,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularDigge
         float base = super.getDestroySpeed(stack, state);
 
         if (state.is(mineableTag)) {
-            base += getAugmentBonuses(stack).MINING_BONUS;
+            base += (float) (1.0f * (Math.pow(getAugmentBonuses(stack).EFFICIENCY, 2) + 1));
         }
         return base;
 
@@ -167,5 +170,62 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularDigge
         }
 
         return super.isCorrectToolForDrops(stack, state);
+    }
+
+    // Tooltips
+    @Override
+    public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        AugumentObject bonuses = new AugumentObject(pStack);
+
+        pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.augments").withStyle(ChatFormatting.GRAY)
+                .append(Component.literal(":").withStyle(ChatFormatting.GRAY)));
+
+        if (bonuses.UNBREAKING >= 8) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.unbreaking_augment_full").withStyle(ChatFormatting.DARK_AQUA));
+        } else if (bonuses.UNBREAKING > 0) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.unbreaking_augment").withStyle(ChatFormatting.DARK_AQUA)
+                    .append(Component.literal(": " + toRoman(bonuses.UNBREAKING)).withStyle(ChatFormatting.DARK_AQUA)));
+        }
+
+        if (bonuses.MENDING) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.mending_augment").withStyle(ChatFormatting.GREEN)
+                    .append(Component.literal(": On").withStyle(ChatFormatting.GREEN)));
+        }
+
+        if (bonuses.EFFICIENCY > 0) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.efficiency_augment").withStyle(ChatFormatting.YELLOW)
+                    .append(Component.literal(": " + toRoman((int)bonuses.EFFICIENCY)).withStyle(ChatFormatting.YELLOW)));
+        }
+
+        if (bonuses.SILK_TOUCH) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.silk_touch_augment").withStyle(ChatFormatting.LIGHT_PURPLE)
+                    .append(Component.literal(": On").withStyle(ChatFormatting.LIGHT_PURPLE)));
+        } else if (bonuses.FORTUNE > 0) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fortune_augment").withStyle(ChatFormatting.BLUE)
+                    .append(Component.literal(": " + toRoman(bonuses.FORTUNE)).withStyle(ChatFormatting.BLUE)));
+        }
+
+        if (bonuses.SHARPNESS > 0) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.sharpness_augment").withStyle(ChatFormatting.DARK_RED)
+                    .append(Component.literal(": " + toRoman((int)bonuses.SHARPNESS)).withStyle(ChatFormatting.DARK_RED)));
+        }
+
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+    }
+
+    public static String toRoman(int number) {
+        return switch (number) {
+            case 1 -> "I";
+            case 2 -> "II";
+            case 3 -> "III";
+            case 4 -> "IV";
+            case 5 -> "V";
+            case 6 -> "VI";
+            case 7 -> "VII";
+            case 8 -> "VIII";
+            case 9 -> "IX";
+            case 10 -> "X";
+            default -> String.valueOf(number);
+        };
     }
 }

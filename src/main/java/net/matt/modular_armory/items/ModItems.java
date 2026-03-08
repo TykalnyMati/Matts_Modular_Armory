@@ -7,10 +7,7 @@ import net.matt.modular_armory.items.tools.ModularAxeItem;
 import net.matt.modular_armory.items.tools.ModularHoeItem;
 import net.matt.modular_armory.items.tools.ModularPickaxeItem;
 import net.matt.modular_armory.items.tools.ModularShovelItem;
-import net.minecraft.world.item.AxeItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -54,10 +51,10 @@ public class ModItems {
 
     // Adaptive Flesh
     public static final RegistryObject<Item> ADAPTIVE_FLESH_PICKAXE = ITEMS.register("adaptive_flesh_pickaxe",
-            () -> new ModularPickaxeItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().attributes(PickaxeItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, 1.5f, -2.4f))));
+            () -> new ModularPickaxeItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().rarity(Rarity.UNCOMMON).attributes(PickaxeItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, 1.5f, -2.4f))));
 
     public static final RegistryObject<Item> ADAPTIVE_FLESH_AXE = ITEMS.register("adaptive_flesh_axe",
-            () -> new ModularAxeItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().attributes(AxeItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, 5.5f, -3.0f))));
+            () -> new ModularAxeItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().rarity(Rarity.UNCOMMON).attributes(AxeItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, 5.5f, -3.0f))));
 
 
     // Augments
