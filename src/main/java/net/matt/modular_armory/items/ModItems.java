@@ -60,6 +60,7 @@ public class ModItems {
     public static final RegistryObject<Item> SILK_TOUCH_AUGMENT = ITEMS.register("silk_touch_augment", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FORTUNE_AUGMENT = ITEMS.register("fortune_augment", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> MENDING_AUGMENT = ITEMS.register("mending_augment", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SHARPNESS_AUGMENT = ITEMS.register("sharpness_augment", () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

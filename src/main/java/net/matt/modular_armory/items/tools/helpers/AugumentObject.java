@@ -1,7 +1,7 @@
 package net.matt.modular_armory.items.tools.helpers;
 
 import net.matt.modular_armory.component.ModDataComponentTypes;
-import net.matt.modular_armory.items.ModItems;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -12,23 +12,22 @@ public class AugumentObject {
     public boolean SILK_TOUCH;
     public int FORTUNE;
     public boolean MENDING;
+    public float SHARPNESS;
 
     public AugumentObject(ItemStack stack) {
         for (ItemStack augment : getAugments(stack)) {
-            if (augment.is(ModItems.EFFICIENCY_AUGMENT.get())) {
-                this.MINING_BONUS += (float) (1.0f * (Math.pow(augment.getCount(), 2) + 1));
-            }
-            if (augment.is(ModItems.UNBREAKING_AUGMENT.get())) {
-                this.UNBREAKING += (augment.getCount());
-            }
-            if (augment.is(ModItems.SILK_TOUCH_AUGMENT.get())) {
-                this.SILK_TOUCH = true;
-            }
-            if (augment.is(ModItems.FORTUNE_AUGMENT.get())) {
-                this.FORTUNE = (augment.getCount());
-            }
-            if (augment.is(ModItems.MENDING_AUGMENT.get())) {
-                this.MENDING = true;
+            switch (BuiltInRegistries.ITEM.getKey(augment.getItem()).toString()) {
+                // Generic augments
+                case "mattsmodulararmory:unbreaking_augment" -> this.UNBREAKING += (augment.getCount());
+                case "mattsmodulararmory:mending_augment" -> this.MENDING = true;
+
+                // Tool specific augments
+                case "mattsmodulararmory:efficiency_augment" -> this.MINING_BONUS += (float) (1.0f * (Math.pow(augment.getCount(), 2) + 1));
+                case "mattsmodulararmory:silk_touch_augment" -> this.SILK_TOUCH = true;
+                case "mattsmodulararmory:fortune_augment" -> this.FORTUNE = (augment.getCount());
+
+                // Weapon specific augments
+                case "mattsmodulararmory:sharpness_augment" -> this.SHARPNESS = 0.5f * augment.getCount() + 0.5f;
             }
         }
     }

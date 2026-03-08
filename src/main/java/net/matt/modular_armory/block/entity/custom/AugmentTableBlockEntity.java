@@ -57,13 +57,27 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
                 tier = 3;
             }
 
-            if (slot != 0) {
+            // Generic Augments
+            slotSize = switch (BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()) {
+                case "mattsmodulararmory:unbreaking_augment" -> 2 + 2 * tier;
+                case "mattsmodulararmory:mending_augment" -> tier != 0 ? 1 : 0;
+                default -> slotSize;
+            };
+
+            // Tool Augments
+            if (modularItemStack.is(ModTags.Items.MODULAR_TOOL) && slot != 0) {
                 slotSize = switch (BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()) {
                     case "mattsmodulararmory:efficiency_augment" -> 1 + 2 * tier;
-                    case "mattsmodulararmory:unbreaking_augment" -> 2 + 2 * tier;
                     case "mattsmodulararmory:silk_touch_augment" -> 1;
                     case "mattsmodulararmory:fortune_augment" -> 1 + tier;
-                    case "mattsmodulararmory:mending_augment" -> tier != 0 ? 1 : 0;
+                    default -> slotSize;
+                };
+            }
+
+            // Weapon Augments
+            if (modularItemStack.is(ModTags.Items.MODULAR_WEAPON) && slot != 0) {
+                slotSize = switch (BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()) {
+                    case "mattsmodulararmory:efficiency_augment", "mattsmodulararmory:sharpness_augment" -> 1 + 2 * tier;
                     default -> slotSize;
                 };
             }

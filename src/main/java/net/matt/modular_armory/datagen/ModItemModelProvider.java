@@ -40,6 +40,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SILK_TOUCH_AUGMENT.get());
         basicItem(ModItems.FORTUNE_AUGMENT.get());
         basicItem(ModItems.MENDING_AUGMENT.get());
+        basicItem(ModItems.SHARPNESS_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(RegistryObject<Item> item) {

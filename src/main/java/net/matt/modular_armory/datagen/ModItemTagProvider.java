@@ -30,6 +30,21 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
                 .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
 
+        // Modular Tools tag
+        tag(ModTags.Items.MODULAR_TOOL)
+                .add(ModItems.MODULAR_CLAY_PICKAXE.get())
+                .add(ModItems.MODULAR_CLAY_AXE.get())
+                .add(ModItems.MODULAR_CLAY_SHOVEL.get())
+                .add(ModItems.MODULAR_CLAY_HOE.get())
+
+                .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
+
+                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
+
+        // Modular Weapons tag
+        tag(ModTags.Items.MODULAR_WEAPON)
+                .add(ModItems.MODULAR_CLAY_AXE.get());
+
         // Modular Items Tier 0
         tag(ModTags.Items.MODULAR_TIER_0)
                 .add(ModItems.MODULAR_CLAY_PICKAXE.get())
@@ -51,7 +66,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.UNBREAKING_AUGMENT.get())
                 .add(ModItems.SILK_TOUCH_AUGMENT.get())
                 .add(ModItems.FORTUNE_AUGMENT.get())
-                .add(ModItems.MENDING_AUGMENT.get());
+                .add(ModItems.MENDING_AUGMENT.get())
+                .add(ModItems.SHARPNESS_AUGMENT.get());
 
     }
 }

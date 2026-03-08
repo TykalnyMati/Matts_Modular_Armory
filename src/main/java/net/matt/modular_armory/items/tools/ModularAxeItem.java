@@ -4,12 +4,16 @@ import com.google.common.collect.ImmutableMap;
 import net.matt.modular_armory.items.tools.helpers.ModularGenericDiggerItem;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -58,6 +62,23 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
     @Override
     public void postHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
         damageTool(pStack, pAttacker);
+
+        float sharpness = getAugmentBonuses(pStack).SHARPNESS;
+
+        if (sharpness > 0 && pAttacker.level() instanceof ServerLevel serverLevel) {
+
+            serverLevel.sendParticles(
+                    ParticleTypes.ENCHANTED_HIT,
+                    pTarget.getRandomX(0.5D),
+                    pTarget.getRandomY(),
+                    pTarget.getRandomZ(0.5D),
+                    24,
+                    0.0D,
+                    0.5D,
+                    0.0D,
+                    0.5D
+            );
+        }
     }
 
     // For stripping
@@ -134,5 +155,21 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
     public static BlockState getAxeStrippingState(BlockState originalState) {
         Block block = STRIPPABLES.get(originalState.getBlock());
         return block != null ? block.defaultBlockState().setValue(RotatedPillarBlock.AXIS, originalState.getValue(RotatedPillarBlock.AXIS)) : null;
+    }
+
+    // Damage calculations
+
+    @Override
+    public float getAttackDamageBonus(Entity target, float baseDamage, DamageSource source) {
+        ItemStack weapon = source.getWeaponItem();
+        if (weapon == null) return super.getAttackDamageBonus(target, baseDamage, source);
+
+        float sharpness = getAugmentBonuses(weapon).SHARPNESS;
+
+        if (sharpness > 0) {
+            return super.getAttackDamageBonus(target, baseDamage, source) + sharpness;
+        }
+
+        return super.getAttackDamageBonus(target, baseDamage, source);
     }
 }
