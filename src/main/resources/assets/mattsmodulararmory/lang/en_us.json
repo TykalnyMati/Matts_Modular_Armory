@@ -37,9 +37,13 @@
 
   "item.mattsmodulararmory.advanced_modular_clay_pickaxe": "Advanced Modular Pickaxe",
   "item.mattsmodulararmory.advanced_modular_clay_axe": "Advanced Modular Axe",
+  "item.mattsmodulararmory.advanced_modular_clay_shovel": "Advanced Modular Shovel",
+  "item.mattsmodulararmory.advanced_modular_clay_hoe": "Advanced Modular Hoe",
 
   "item.mattsmodulararmory.adaptive_flesh_pickaxe": "Adaptive Flesh Pickaxe",
   "item.mattsmodulararmory.adaptive_flesh_axe": "Adaptive Flesh Axe",
+  "item.mattsmodulararmory.adaptive_flesh_shovel": "Adaptive Flesh Shovel",
+  "item.mattsmodulararmory.adaptive_flesh_hoe": "Adaptive Flesh Hoe",
 
   "block.mattsmodulararmory.modular_clay_block": "Block of Modular Clay",
   "block.mattsmodulararmory.adaptive_flesh_block": "Block of Adaptive Flesh",

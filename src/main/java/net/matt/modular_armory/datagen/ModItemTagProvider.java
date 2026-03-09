@@ -28,9 +28,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get())
 
                 .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
-                .add(ModItems.ADAPTIVE_FLESH_AXE.get());
+                .add(ModItems.ADAPTIVE_FLESH_AXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
+                .add(ModItems.ADAPTIVE_FLESH_HOE.get());
 
         // Modular Tools tag
         tag(ModTags.Items.MODULAR_TOOL)
@@ -41,9 +45,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get())
 
                 .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
-                .add(ModItems.ADAPTIVE_FLESH_AXE.get());
+                .add(ModItems.ADAPTIVE_FLESH_AXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
+                .add(ModItems.ADAPTIVE_FLESH_HOE.get());
 
         // Modular Weapons tag
         tag(ModTags.Items.MODULAR_WEAPON)
@@ -61,12 +69,16 @@ public class ModItemTagProvider extends ItemTagsProvider {
         // Modular Items Tier 1
         tag(ModTags.Items.MODULAR_TIER_1)
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
-                .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get());
 
         // Modular Items Tier 2
         tag(ModTags.Items.MODULAR_TIER_2)
                 .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
-                .add(ModItems.ADAPTIVE_FLESH_AXE.get());
+                .add(ModItems.ADAPTIVE_FLESH_AXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
+                .add(ModItems.ADAPTIVE_FLESH_HOE.get());
 
         // Augments
         tag(ModTags.Items.MODULAR_ITEMS_AUGMENT)

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "mattsmodulararmory:item/advanced_modular_clay_shovel"
+  }
+}

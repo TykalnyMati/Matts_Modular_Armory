@@ -28,18 +28,22 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.EXPOSER_SLOT_PLUG.get());
 
                         // Tier 0 modular items
+                        output.accept(ModItems.MODULAR_CLAY_SHOVEL.get());
                         output.accept(ModItems.MODULAR_CLAY_PICKAXE.get());
                         output.accept(ModItems.MODULAR_CLAY_AXE.get());
-                        output.accept(ModItems.MODULAR_CLAY_SHOVEL.get());
                         output.accept(ModItems.MODULAR_CLAY_HOE.get());
 
                         // Tier 1 modular items
+                        output.accept(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get());
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get());
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_AXE.get());
+                        output.accept(ModItems.ADVANCED_MODULAR_CLAY_HOE.get());
 
                         // Tier 2 modular items
+                        output.accept(ModItems.ADAPTIVE_FLESH_SHOVEL.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_AXE.get());
+                        output.accept(ModItems.ADAPTIVE_FLESH_HOE.get());
 
                         // Augments
                         output.accept(ModItems.EFFICIENCY_AUGMENT.get());
