@@ -48,6 +48,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FORTUNE_AUGMENT.get());
                         output.accept(ModItems.MENDING_AUGMENT.get());
                         output.accept(ModItems.SHARPNESS_AUGMENT.get());
+                        output.accept(ModItems.SMITE_AUGMENT.get());
+                        output.accept(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

@@ -12,7 +12,9 @@ public class AugumentObject {
     public float EFFICIENCY;
     public boolean SILK_TOUCH;
     public int FORTUNE;
-    public float SHARPNESS;
+    public int SHARPNESS;
+    public int SMITE;
+    public int BANE_OF_ARTHROPODS;
 
     public AugumentObject(ItemStack stack) {
         for (ItemStack augment : getAugments(stack)) {
@@ -28,6 +30,8 @@ public class AugumentObject {
 
                 // Weapon specific augments
                 case "mattsmodulararmory:sharpness_augment" -> this.SHARPNESS = augment.getCount();
+                case "mattsmodulararmory:smite_augment" -> this.SMITE = augment.getCount();
+                case "mattsmodulararmory:bane_of_arthropods_augment" -> this.BANE_OF_ARTHROPODS = augment.getCount();
             }
         }
     }

@@ -205,7 +205,13 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularDigge
 
         if (bonuses.SHARPNESS > 0) {
             pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.sharpness_augment").withStyle(ChatFormatting.DARK_RED)
-                    .append(Component.literal(": " + toRoman((int)bonuses.SHARPNESS)).withStyle(ChatFormatting.DARK_RED)));
+                    .append(Component.literal(": " + toRoman(bonuses.SHARPNESS)).withStyle(ChatFormatting.DARK_RED)));
+        } else if (bonuses.SMITE > 0) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.smite_augment").withStyle(ChatFormatting.DARK_RED)
+                    .append(Component.literal(": " + toRoman(bonuses.SMITE)).withStyle(ChatFormatting.DARK_RED)));
+        } else if (bonuses.BANE_OF_ARTHROPODS > 0) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.bane_of_arthropods_augment").withStyle(ChatFormatting.DARK_RED)
+                    .append(Component.literal(": " + toRoman(bonuses.BANE_OF_ARTHROPODS)).withStyle(ChatFormatting.DARK_RED)));
         }
 
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);

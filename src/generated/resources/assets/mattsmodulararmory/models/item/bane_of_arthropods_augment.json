@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mattsmodulararmory:item/bane_of_arthropods_augment"
+  }
+}

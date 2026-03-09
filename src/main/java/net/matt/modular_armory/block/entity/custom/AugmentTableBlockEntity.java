@@ -77,7 +77,7 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
             // Weapon Augments
             if (modularItemStack.is(ModTags.Items.MODULAR_WEAPON) && slot != 0) {
                 slotSize = switch (BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()) {
-                    case "mattsmodulararmory:efficiency_augment", "mattsmodulararmory:sharpness_augment" -> 1 + 2 * tier;
+                    case "mattsmodulararmory:sharpness_augment", "mattsmodulararmory:smite_augment", "mattsmodulararmory:bane_of_arthropods_augment" -> 1 + 2 * tier;
                     default -> slotSize;
                 };
             }
