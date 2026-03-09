@@ -172,6 +172,17 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularDigge
         return super.isCorrectToolForDrops(stack, state);
     }
 
+    // Anvil repairing and enchanting
+    @Override
+    public boolean isValidRepairItem(ItemStack pToRepair, ItemStack pRepair) {
+        return false;
+    }
+
+    @Override
+    public boolean isBookEnchantable(ItemStack stack, ItemStack book) {
+        return false;
+    }
+
     // Tooltips
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
