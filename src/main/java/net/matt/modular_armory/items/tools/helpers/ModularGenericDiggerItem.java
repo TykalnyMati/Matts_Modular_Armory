@@ -188,8 +188,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularDigge
         }
 
         if (bonuses.MENDING) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.mending_augment").withStyle(ChatFormatting.GREEN)
-                    .append(Component.literal(": On").withStyle(ChatFormatting.GREEN)));
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.mending_augment").withStyle(ChatFormatting.GREEN));
         }
 
         if (bonuses.EFFICIENCY > 0) {
@@ -198,8 +197,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularDigge
         }
 
         if (bonuses.SILK_TOUCH) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.silk_touch_augment").withStyle(ChatFormatting.LIGHT_PURPLE)
-                    .append(Component.literal(": On").withStyle(ChatFormatting.LIGHT_PURPLE)));
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.silk_touch_augment").withStyle(ChatFormatting.LIGHT_PURPLE));
         } else if (bonuses.FORTUNE > 0) {
             pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fortune_augment").withStyle(ChatFormatting.BLUE)
                     .append(Component.literal(": " + toRoman(bonuses.FORTUNE)).withStyle(ChatFormatting.BLUE)));
