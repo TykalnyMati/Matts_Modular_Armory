@@ -62,6 +62,10 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
 
     @Override
     public void postHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
+        if (isBroken(pStack)) {
+            return;
+        }
+
         damageTool(pStack, pAttacker);
 
         AugumentObject bonuses = getAugmentBonuses(pStack);
@@ -94,6 +98,10 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
                         0.5D
                 );
             }
+        }
+
+        if (bonuses.FIRE_ASPECT > 0) {
+            pTarget.igniteForSeconds(bonuses.FIRE_ASPECT * 4);
         }
     }
 

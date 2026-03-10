@@ -51,6 +51,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SHARPNESS_AUGMENT.get());
         basicItem(ModItems.SMITE_AUGMENT.get());
         basicItem(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get());
+        basicItem(ModItems.FIRE_ASPECT_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(RegistryObject<Item> item) {

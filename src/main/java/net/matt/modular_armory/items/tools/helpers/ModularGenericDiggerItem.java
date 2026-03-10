@@ -125,6 +125,10 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
 
     @Override
     public void postHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
+        if (isBroken(pStack)) {
+            return;
+        }
+
         damageTool(pStack, pAttacker);
         damageTool(pStack, pAttacker);
     }

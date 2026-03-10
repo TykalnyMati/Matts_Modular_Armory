@@ -79,6 +79,7 @@ public class ModItems {
     public static final RegistryObject<Item> SHARPNESS_AUGMENT = ITEMS.register("sharpness_augment", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SMITE_AUGMENT = ITEMS.register("smite_augment", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BANE_OF_ARTHROPODS_AUGMENT = ITEMS.register("bane_of_arthropods_augment", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FIRE_ASPECT_AUGMENT = ITEMS.register("fire_aspect_augment", () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

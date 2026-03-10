@@ -17,6 +17,8 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraftforge.common.ToolAction;
+import net.minecraftforge.common.ToolActions;
 
 import java.util.List;
 
@@ -61,6 +63,10 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
 
     @Override
     public void postHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
+        if (isBroken(pStack)) {
+            return;
+        }
+
         damageTool(pStack, pAttacker);
 
         AugumentObject bonuses = getAugmentBonuses(pStack);
@@ -94,6 +100,19 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
                 );
             }
         }
+
+        if (bonuses.FIRE_ASPECT > 0) {
+            pTarget.igniteForSeconds(bonuses.FIRE_ASPECT * 4);
+        }
+    }
+
+    // Disabling the sweeping action
+    @Override
+    public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
+        if (isBroken(stack) && toolAction == ToolActions.SWORD_SWEEP) {
+            return false;
+        }
+        return super.canPerformAction(stack, toolAction);
     }
 
     public static ItemAttributeModifiers createAttributes(Tier pTier, float pAttackDamage, float pAttackSpeed) {

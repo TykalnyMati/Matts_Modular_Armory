@@ -19,6 +19,7 @@ public class AugumentObject {
     public int SHARPNESS;
     public int SMITE;
     public int BANE_OF_ARTHROPODS;
+    public int FIRE_ASPECT;
 
     public AugumentObject(ItemStack stack) {
         for (ItemStack augment : getAugments(stack)) {
@@ -36,6 +37,7 @@ public class AugumentObject {
                 case "mattsmodulararmory:sharpness_augment" -> this.SHARPNESS = augment.getCount();
                 case "mattsmodulararmory:smite_augment" -> this.SMITE = augment.getCount();
                 case "mattsmodulararmory:bane_of_arthropods_augment" -> this.BANE_OF_ARTHROPODS = augment.getCount();
+                case "mattsmodulararmory:fire_aspect_augment" -> this.FIRE_ASPECT = augment.getCount();
             }
         }
     }
@@ -84,6 +86,11 @@ public class AugumentObject {
         } else if (this.BANE_OF_ARTHROPODS > 0) {
             pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.bane_of_arthropods_augment").withStyle(ChatFormatting.DARK_RED)
                     .append(Component.literal(": " + toRoman(this.BANE_OF_ARTHROPODS)).withStyle(ChatFormatting.DARK_RED)));
+        }
+
+        if (this.FIRE_ASPECT > 0) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fire_aspect_augment").withStyle(ChatFormatting.YELLOW)
+                    .append(Component.literal(": " + toRoman(this.FIRE_ASPECT)).withStyle(ChatFormatting.YELLOW)));
         }
 
         return pTooltipComponents;
