@@ -13,7 +13,7 @@ import java.util.List;
 public class AugumentObject {
     public int UNBREAKING;
     public boolean MENDING;
-    public float EFFICIENCY;
+    public int EFFICIENCY;
     public boolean SILK_TOUCH;
     public int FORTUNE;
     public int SHARPNESS;

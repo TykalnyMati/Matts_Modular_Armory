@@ -1,7 +1,6 @@
 package net.matt.modular_armory.items.tools.helpers;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -9,16 +8,15 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DiggerItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -36,86 +34,76 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
 
     @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
-        AugumentObject bonuses = getAugmentBonuses(stack);
-
         if (isBroken(stack)) {
             return false;
         }
 
         if (!level.isClientSide() && state.getDestroySpeed(level, pos) > 0.0F) {
-            // Silk touch check
-            if (bonuses.SILK_TOUCH) {
-                // if tool isn't correct
-                if (!isCorrectToolForDrops(stack, state) && state.requiresCorrectToolForDrops()) {
-                    return false;
-                }
-
-                BlockEntity blockEntity = level.getBlockEntity(pos);
-
-                // Silk Holder test
-                Holder<Enchantment> silkHolder =
-                        level.registryAccess()
-                                .registryOrThrow(Registries.ENCHANTMENT)
-                                .getHolderOrThrow(Enchantments.SILK_TOUCH);
-
-                // Create tool copy and inject silk enchant
-                ItemStack silkTool = stack.copy();
-                silkTool.enchant(silkHolder, 1);
-
-                LootParams.Builder builder = new LootParams.Builder(((ServerLevel) level))
-                        .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-                        .withParameter(LootContextParams.TOOL, silkTool)
-                        .withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity)
-                        .withParameter(LootContextParams.THIS_ENTITY, entity);
-
-                List<ItemStack> drops = state.getDrops(builder);
-
-                // Remove block without vanilla drops
-                level.removeBlock(pos, false);
-
-                // Spawn custom drops
-                for (ItemStack drop : drops) {
-                    Block.popResource(level, pos, drop);
-                }
-            } else // Fortune check
-                if (bonuses.FORTUNE > 0) {
-                    // if tool isn't correct
-                    if (!isCorrectToolForDrops(stack, state) && state.requiresCorrectToolForDrops()) {
-                        return false;
-                    }
-
-                    BlockEntity blockEntity = level.getBlockEntity(pos);
-
-                    // Fortune Holder test
-                    Holder<Enchantment> fortuneHolder =
-                            level.registryAccess()
-                                    .registryOrThrow(Registries.ENCHANTMENT)
-                                    .getHolderOrThrow(Enchantments.FORTUNE);
-
-                    // Create tool copy and inject fortune enchant
-                    ItemStack fortuneTool = stack.copy();
-                    fortuneTool.enchant(fortuneHolder, bonuses.FORTUNE);
-
-                    LootParams.Builder builder = new LootParams.Builder(((ServerLevel) level))
-                            .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
-                            .withParameter(LootContextParams.TOOL, fortuneTool)
-                            .withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity)
-                            .withParameter(LootContextParams.THIS_ENTITY, entity);
-
-                    List<ItemStack> drops = state.getDrops(builder);
-
-                    // Remove block without vanilla drops
-                    level.removeBlock(pos, false);
-
-                    // Spawn custom drops
-                    for (ItemStack drop : drops) {
-                        Block.popResource(level, pos, drop);
-                    }
-                }
             damageTool(stack, entity);
         }
 
         return true;
+    }
+
+    @Override
+    public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, Player player) {
+        if (isBroken(itemstack)) {
+            return false; // Let vanilla handle the "cannot break" state
+        }
+
+        Level level = player.level();
+        if (level.isClientSide) {
+            return false;
+        }
+
+        BlockState state = level.getBlockState(pos);
+        if (isCorrectToolForDrops(itemstack, state)) {
+            return false;
+        }
+
+        AugumentObject bonuses = getAugmentBonuses(itemstack);
+        ServerLevel serverLevel = (ServerLevel) level;
+
+        // Only intercept if we have Silk or Fortune and the tool is correct
+        if ((bonuses.SILK_TOUCH || bonuses.FORTUNE > 0)) {
+
+            // Create Simulation Tool
+            ItemStack simulationTool = itemstack.copy();
+            if (bonuses.SILK_TOUCH) {
+                simulationTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), 1);
+            } else {
+                simulationTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE), bonuses.FORTUNE);
+            }
+
+            // Calculate Item Drops
+            LootParams.Builder builder = new LootParams.Builder(serverLevel)
+                    .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+                    .withParameter(LootContextParams.TOOL, simulationTool)
+                    .withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(pos))
+                    .withParameter(LootContextParams.THIS_ENTITY, player);
+
+            List<ItemStack> drops = state.getDrops(builder);
+
+            // Handle Experience (XP)
+            // If it's Silk Touch, we skip this entirely (XP = 0)
+            // If it's Fortune, we manually spawn the XP since we are bypassing vanilla
+            if (!bonuses.SILK_TOUCH) {
+                int xp = state.getExpDrop(level, level.random, pos, bonuses.FORTUNE, 0);
+                if (xp > 0) {
+                    state.getBlock().popExperience(serverLevel, pos, xp);
+                }
+            }
+
+            // Finalize the break
+            level.removeBlock(pos, false);
+            for (ItemStack drop : drops) {
+                Block.popResource(level, pos, drop);
+            }
+
+            return true;
+        }
+
+        return false;
     }
 
     @Override
