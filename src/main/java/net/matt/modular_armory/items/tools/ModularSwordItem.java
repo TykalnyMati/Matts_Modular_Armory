@@ -2,6 +2,7 @@ package net.matt.modular_armory.items.tools;
 
 import net.matt.modular_armory.items.tools.helpers.AugumentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -17,6 +18,8 @@ import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.ToolAction;
 import net.minecraftforge.common.ToolActions;
 
@@ -126,6 +129,28 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
                         Attributes.ATTACK_SPEED, new AttributeModifier(BASE_ATTACK_SPEED_ID, (double)pAttackSpeed, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND
                 )
                 .build();
+    }
+
+    // Mining
+    @Override
+    public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
+        if (isBroken(stack)) {
+            return false;
+        }
+
+        damageTool(stack, entity);
+        damageTool(stack, entity);
+
+        return true;
+    }
+
+    @Override
+    public float getDestroySpeed(ItemStack stack, BlockState state) {
+        if (isBroken(stack)) {
+            return 0.1F;
+        }
+
+        return super.getDestroySpeed(stack, state);
     }
 
     // Anvil repairing and enchanting
