@@ -3,13 +3,23 @@ package net.matt.modular_armory.events;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.items.tools.ModularAxeItem;
 import net.matt.modular_armory.items.tools.ModularPickaxeItem;
+import net.matt.modular_armory.items.tools.ModularSwordItem;
+import net.matt.modular_armory.items.tools.helpers.AugumentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.RecipeHolder;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.GrindstoneEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -108,5 +118,43 @@ public class ModEvents {
             if (menu.getSlot(i).getItem().getItem() instanceof ModularItemInterface) count++;
         }
         return count;
+    }
+
+    // Mobs drop Cooked items when a weapon has the Fire Aspect Augment
+    @SubscribeEvent
+    public static void onLivingDrops(LivingDropsEvent event) {
+        DamageSource source = event.getSource();
+        Entity attacker = source.getEntity();
+
+        // Check if the killer is a living entity holding our modular sword
+        if (attacker instanceof LivingEntity livingAttacker) {
+            ItemStack weapon = livingAttacker.getMainHandItem();
+
+            if (weapon.getItem() instanceof ModularSwordItem sword && !sword.isBroken(weapon)) {
+                AugumentObject bonuses = sword.getAugmentBonuses(weapon);
+
+                // If the weapon has Fire Aspect, convert meat drops to cooked versions
+                if (bonuses.FIRE_ASPECT > 0) {
+                    for (ItemEntity drop : event.getDrops()) {
+                        ItemStack stack = drop.getItem();
+                        ItemStack cooked = getCookedVariant(livingAttacker.level(), stack);
+
+                        if (!cooked.isEmpty()) {
+                            cooked.setCount(stack.getCount());
+                            drop.setItem(cooked);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Helper to find the cooked version of a food item using the furnace recipes.
+    private static ItemStack getCookedVariant(Level level, ItemStack rawStack) {
+        return level.getRecipeManager()
+                .getRecipeFor(RecipeType.SMELTING, new net.minecraft.world.item.crafting.SingleRecipeInput(rawStack), level)
+                .map(RecipeHolder::value)
+                .map(recipe -> recipe.getResultItem(level.registryAccess()))
+                .orElse(ItemStack.EMPTY);
     }
 }
