@@ -19,6 +19,7 @@
   "item.mattsmodulararmory.smite_augment": "Smite Augment",
   "item.mattsmodulararmory.bane_of_arthropods_augment": "Bane of Arthropods Augment",
   "item.mattsmodulararmory.fire_aspect_augment": "Fire Aspect Augment",
+  "item.mattsmodulararmory.auto_smelt_augment": "Auto Smelt Augment",
 
   "tooltip.mattsmodulararmory.augments": "Augments",
   "tooltip.mattsmodulararmory.unbreaking_augment": "Unbreaking",
@@ -31,6 +32,7 @@
   "tooltip.mattsmodulararmory.smite_augment": "Smite",
   "tooltip.mattsmodulararmory.bane_of_arthropods_augment": "Bane of Arthropods",
   "tooltip.mattsmodulararmory.fire_aspect_augment": "Fire Aspect",
+  "tooltip.mattsmodulararmory.auto_smelt_augment": "Auto Smelt",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",

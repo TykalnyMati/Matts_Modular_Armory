@@ -81,6 +81,9 @@ public class ModItems {
     public static final RegistryObject<Item> BANE_OF_ARTHROPODS_AUGMENT = ITEMS.register("bane_of_arthropods_augment", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FIRE_ASPECT_AUGMENT = ITEMS.register("fire_aspect_augment", () -> new Item(new Item.Properties()));
 
+    // Custom Augments
+    public static final RegistryObject<Item> AUTO_SMELT_AUGMENT = ITEMS.register("auto_smelt_augment", () -> new Item(new Item.Properties()));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

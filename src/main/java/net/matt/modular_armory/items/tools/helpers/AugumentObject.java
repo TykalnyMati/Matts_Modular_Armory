@@ -21,6 +21,9 @@ public class AugumentObject {
     public int BANE_OF_ARTHROPODS;
     public int FIRE_ASPECT;
 
+    // Custom Augment values
+    public boolean AUTO_SMELT;
+
     public AugumentObject(ItemStack stack) {
         for (ItemStack augment : getAugments(stack)) {
             switch (BuiltInRegistries.ITEM.getKey(augment.getItem()).toString()) {
@@ -32,6 +35,7 @@ public class AugumentObject {
                 case "mattsmodulararmory:efficiency_augment" -> this.EFFICIENCY += augment.getCount();
                 case "mattsmodulararmory:silk_touch_augment" -> this.SILK_TOUCH = true;
                 case "mattsmodulararmory:fortune_augment" -> this.FORTUNE = augment.getCount();
+                case "mattsmodulararmory:auto_smelt_augment" -> this.AUTO_SMELT = true;
 
                 // Weapon specific augments
                 case "mattsmodulararmory:sharpness_augment" -> this.SHARPNESS = augment.getCount();
@@ -75,6 +79,10 @@ public class AugumentObject {
         } else if (this.FORTUNE > 0) {
             pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fortune_augment").withStyle(ChatFormatting.BLUE)
                     .append(Component.literal(": " + toRoman(this.FORTUNE)).withStyle(ChatFormatting.BLUE)));
+        }
+
+        if (this.AUTO_SMELT) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.auto_smelt_augment").withStyle(ChatFormatting.DARK_RED));
         }
 
         if (this.SHARPNESS > 0) {

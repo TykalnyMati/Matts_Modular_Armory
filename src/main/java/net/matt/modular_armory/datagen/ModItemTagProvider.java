@@ -97,7 +97,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.SHARPNESS_AUGMENT.get())
                 .add(ModItems.SMITE_AUGMENT.get())
                 .add(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get())
-                .add(ModItems.FIRE_ASPECT_AUGMENT.get());
+                .add(ModItems.FIRE_ASPECT_AUGMENT.get())
+
+                // Custom Augments
+                .add(ModItems.AUTO_SMELT_AUGMENT.get());
 
     }
 }

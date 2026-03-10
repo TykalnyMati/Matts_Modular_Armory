@@ -57,6 +57,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SMITE_AUGMENT.get());
                         output.accept(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get());
                         output.accept(ModItems.FIRE_ASPECT_AUGMENT.get());
+
+                        // Custom Augments
+                        output.accept(ModItems.AUTO_SMELT_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

@@ -1,6 +1,7 @@
 package net.matt.modular_armory.items.tools.helpers;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -9,11 +10,9 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.DiggerItem;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -57,7 +56,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         }
 
         BlockState state = level.getBlockState(pos);
-        if (isCorrectToolForDrops(itemstack, state)) {
+        if (!isCorrectToolForDrops(itemstack, state) && state.requiresCorrectToolForDrops()) {
             return false;
         }
 
@@ -65,7 +64,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         ServerLevel serverLevel = (ServerLevel) level;
 
         // Only intercept if we have Silk or Fortune and the tool is correct
-        if ((bonuses.SILK_TOUCH || bonuses.FORTUNE > 0)) {
+        if ((bonuses.SILK_TOUCH || bonuses.FORTUNE > 0 || bonuses.AUTO_SMELT)) {
 
             // Create Simulation Tool
             ItemStack simulationTool = itemstack.copy();
@@ -94,16 +93,60 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                 }
             }
 
+            // Auto smelting
+            if (bonuses.AUTO_SMELT && !bonuses.SILK_TOUCH) {
+                for (int i = 0; i < drops.size(); i++) {
+                    ItemStack originalStack = drops.get(i);
+                    ItemStack smeltedResult = getSmeltingResult(serverLevel, originalStack);
+
+                    if (!smeltedResult.isEmpty()) {
+                        // Keep the count from the original drop (handles Fortune synergy!)
+                        ItemStack finalStack = smeltedResult.copy();
+                        finalStack.setCount(originalStack.getCount() * smeltedResult.getCount());
+                        drops.set(i, finalStack);
+
+                        // Optional: Spawn some "smelting" XP for the player
+                        float smeltingXp = getSmeltingExperience(serverLevel, originalStack);
+                        if (smeltingXp > 0) {
+                            // Cast to int, but handle the remainder randomly (vanilla style)
+                            int xpToDrop = (int) smeltingXp + (serverLevel.random.nextFloat() < (smeltingXp % 1) ? 1 : 0);
+                            if (xpToDrop > 0) {
+                                state.getBlock().popExperience(serverLevel, pos, xpToDrop);
+                            }
+                        }
+
+                        // Optional: Spawn fire particles to show smelting happened
+                        serverLevel.sendParticles(ParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5, 0.2, 0.2, 0.2, 0.05);
+                        damageTool(itemstack, player);
+                    }
+                }
+            }
+
             // Finalize the break
             level.removeBlock(pos, false);
             for (ItemStack drop : drops) {
                 Block.popResource(level, pos, drop);
             }
 
+            damageTool(itemstack, player);
             return true;
         }
 
         return false;
+    }
+
+    private ItemStack getSmeltingResult(Level level, ItemStack input) {
+        return level.getRecipeManager()
+                .getRecipeFor(RecipeType.SMELTING, new net.minecraft.world.item.crafting.SingleRecipeInput(input), level)
+                .map(recipe -> recipe.value().getResultItem(level.registryAccess()))
+                .orElse(ItemStack.EMPTY);
+    }
+
+    private float getSmeltingExperience(Level level, ItemStack input) {
+        return level.getRecipeManager()
+                .getRecipeFor(RecipeType.SMELTING, new net.minecraft.world.item.crafting.SingleRecipeInput(input), level)
+                .map(recipe -> recipe.value().getExperience())
+                .orElse(0.0f);
     }
 
     @Override

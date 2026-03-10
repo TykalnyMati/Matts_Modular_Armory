@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-10T15:37:05.3503741	Item Models: mattsmodulararmory
+// 1.21.1	2026-03-10T23:37:06.3366407	Item Models: mattsmodulararmory
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 6d073ddd6d0570130fc739d091a1df63c3237e43 assets/mattsmodulararmory/models/item/adaptive_flesh_hoe.json
 2fa6e3a6ffe24666f268eb14abc7977e2215a62a assets/mattsmodulararmory/models/item/adaptive_flesh_pickaxe.json
@@ -8,6 +8,7 @@ c29d4adb0186afcd1e3b0d0e155a9decc650f7fc assets/mattsmodulararmory/models/item/a
 d4133d24880d1fc3c86b3e819aca4d539ee801e0 assets/mattsmodulararmory/models/item/advanced_modular_clay_pickaxe.json
 9454acda200c3fdf468488c72ae07e5d1d8485e1 assets/mattsmodulararmory/models/item/advanced_modular_clay_shovel.json
 ff1e1481948d925bf89e20272360fe67223c7fff assets/mattsmodulararmory/models/item/advanced_modular_clay_sword.json
+49498347635ccbbedfd29cdf6a5622aa777befb2 assets/mattsmodulararmory/models/item/auto_smelt_augment.json
 ec1048ddbe32f67d5021a44d7e6387184b1224e5 assets/mattsmodulararmory/models/item/bane_of_arthropods_augment.json
 9fb96289ec659d7cd22f156564cd5bbdb831b655 assets/mattsmodulararmory/models/item/basic_modular_plate.json
 115a61e62d9bd883cf12d29f4ad6d9c5343b0f0c assets/mattsmodulararmory/models/item/efficiency_augment.json

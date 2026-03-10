@@ -8,6 +8,7 @@
     "mattsmodulararmory:sharpness_augment",
     "mattsmodulararmory:smite_augment",
     "mattsmodulararmory:bane_of_arthropods_augment",
-    "mattsmodulararmory:fire_aspect_augment"
+    "mattsmodulararmory:fire_aspect_augment",
+    "mattsmodulararmory:auto_smelt_augment"
   ]
 }

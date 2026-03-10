@@ -43,6 +43,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handHeldItem(ModItems.ADAPTIVE_FLESH_SHOVEL);
         handHeldItem(ModItems.ADAPTIVE_FLESH_HOE);
 
+        // Augments
         basicItem(ModItems.EFFICIENCY_AUGMENT.get());
         basicItem(ModItems.UNBREAKING_AUGMENT.get());
         basicItem(ModItems.SILK_TOUCH_AUGMENT.get());
@@ -52,6 +53,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SMITE_AUGMENT.get());
         basicItem(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get());
         basicItem(ModItems.FIRE_ASPECT_AUGMENT.get());
+
+        // Custom Augments
+        basicItem(ModItems.AUTO_SMELT_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(RegistryObject<Item> item) {

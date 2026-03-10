@@ -70,6 +70,7 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
                     case "mattsmodulararmory:efficiency_augment" -> 1 + 2 * tier;
                     case "mattsmodulararmory:silk_touch_augment" -> 1;
                     case "mattsmodulararmory:fortune_augment" -> 1 + tier;
+                    case "mattsmodulararmory:auto_smelt_augment" -> tier == 0 ? 0 : 1;
                     default -> slotSize;
                 };
             }
