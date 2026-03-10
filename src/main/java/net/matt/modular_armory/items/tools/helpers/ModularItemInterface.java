@@ -5,7 +5,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
-public interface ModularDiggerToolItem {
+public interface ModularItemInterface {
     default void damageTool(ItemStack stack, LivingEntity entity) {
         int bonusesUnbreaking = getAugmentBonuses(stack).UNBREAKING;
         // Unbreaking augment
@@ -63,4 +63,5 @@ public interface ModularDiggerToolItem {
         stack.setDamageValue(newDamage);
         return remainingXp;
     }
+
 }

@@ -25,11 +25,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_AXE.get())
                 .add(ModItems.MODULAR_CLAY_SHOVEL.get())
                 .add(ModItems.MODULAR_CLAY_HOE.get())
+                .add(ModItems.MODULAR_CLAY_SWORD.get())
 
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
 
                 .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
                 .add(ModItems.ADAPTIVE_FLESH_AXE.get())
@@ -57,21 +59,26 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.MODULAR_WEAPON)
                 .add(ModItems.MODULAR_CLAY_AXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
-                .add(ModItems.ADAPTIVE_FLESH_AXE.get());
+                .add(ModItems.ADAPTIVE_FLESH_AXE.get())
+
+                .add(ModItems.MODULAR_CLAY_SWORD.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get());
 
         // Modular Items Tier 0
         tag(ModTags.Items.MODULAR_TIER_0)
                 .add(ModItems.MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.MODULAR_CLAY_AXE.get())
                 .add(ModItems.MODULAR_CLAY_SHOVEL.get())
-                .add(ModItems.MODULAR_CLAY_HOE.get());
+                .add(ModItems.MODULAR_CLAY_HOE.get())
+                .add(ModItems.MODULAR_CLAY_SWORD.get());
 
         // Modular Items Tier 1
         tag(ModTags.Items.MODULAR_TIER_1)
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get())
-                .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get());
 
         // Modular Items Tier 2
         tag(ModTags.Items.MODULAR_TIER_2)

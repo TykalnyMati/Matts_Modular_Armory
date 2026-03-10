@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-09T18:41:34.3329721	Item Models: mattsmodulararmory
+// 1.21.1	2026-03-10T10:45:08.9784049	Item Models: mattsmodulararmory
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 6d073ddd6d0570130fc739d091a1df63c3237e43 assets/mattsmodulararmory/models/item/adaptive_flesh_hoe.json
 2fa6e3a6ffe24666f268eb14abc7977e2215a62a assets/mattsmodulararmory/models/item/adaptive_flesh_pickaxe.json
@@ -7,6 +7,7 @@ c4214d045f5686e5b600e00ff5c0495250565ab3 assets/mattsmodulararmory/models/item/a
 c29d4adb0186afcd1e3b0d0e155a9decc650f7fc assets/mattsmodulararmory/models/item/advanced_modular_clay_hoe.json
 d4133d24880d1fc3c86b3e819aca4d539ee801e0 assets/mattsmodulararmory/models/item/advanced_modular_clay_pickaxe.json
 9454acda200c3fdf468488c72ae07e5d1d8485e1 assets/mattsmodulararmory/models/item/advanced_modular_clay_shovel.json
+ff1e1481948d925bf89e20272360fe67223c7fff assets/mattsmodulararmory/models/item/advanced_modular_clay_sword.json
 ec1048ddbe32f67d5021a44d7e6387184b1224e5 assets/mattsmodulararmory/models/item/bane_of_arthropods_augment.json
 9fb96289ec659d7cd22f156564cd5bbdb831b655 assets/mattsmodulararmory/models/item/basic_modular_plate.json
 115a61e62d9bd883cf12d29f4ad6d9c5343b0f0c assets/mattsmodulararmory/models/item/efficiency_augment.json
@@ -20,6 +21,7 @@ c54f64e8ac016e556ecf3cd74e990b2fbbac64bf assets/mattsmodulararmory/models/item/m
 e86a371e37d9ff23faecbb25a1bfde6c5708d49e assets/mattsmodulararmory/models/item/modular_clay_hoe.json
 73c24eef4af9c45d4b13ddf79973b23e82178b9a assets/mattsmodulararmory/models/item/modular_clay_pickaxe.json
 3ce82cd4eeebaff81f4239fef604a9d38b274649 assets/mattsmodulararmory/models/item/modular_clay_shovel.json
+7188ac467e25d5c16e65756dddbb5ad9dfdb17f4 assets/mattsmodulararmory/models/item/modular_clay_sword.json
 43fc75185e1b3a65e638f55cba9a628ad4ff9680 assets/mattsmodulararmory/models/item/sharpness_augment.json
 e254ad7a8f9a91e7609a9018d476f72feb4b662a assets/mattsmodulararmory/models/item/silk_touch_augment.json
 09f409f7b633b135818ff6038b18ec708ecabb57 assets/mattsmodulararmory/models/item/smite_augment.json

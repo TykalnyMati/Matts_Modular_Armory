@@ -3,7 +3,7 @@ package net.matt.modular_armory.events;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.items.tools.ModularAxeItem;
 import net.matt.modular_armory.items.tools.ModularPickaxeItem;
-import net.matt.modular_armory.items.tools.helpers.ModularDiggerToolItem;
+import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
@@ -50,8 +50,8 @@ public class ModEvents {
         ItemStack top = event.getTopItem();
         ItemStack bottom = event.getBottomItem();
 
-        if (top.getItem() instanceof ModularDiggerToolItem ||
-                bottom.getItem() instanceof ModularDiggerToolItem) {
+        if (top.getItem() instanceof ModularItemInterface ||
+                bottom.getItem() instanceof ModularItemInterface) {
 
             event.setCanceled(true);
         }
@@ -60,7 +60,7 @@ public class ModEvents {
     // Canceling repairing in an anvil
     @SubscribeEvent
     public static void onAnvilUpdate(AnvilUpdateEvent event) {
-        if (event.getLeft().getItem() instanceof ModularDiggerToolItem && !event.getRight().isEmpty()) {
+        if (event.getLeft().getItem() instanceof ModularItemInterface && !event.getRight().isEmpty()) {
             event.setCanceled(true);
         }
     }
@@ -76,7 +76,7 @@ public class ModEvents {
             // --- FIX FOR CRAFTING GRID ---
             if (menu instanceof CraftingMenu || menu instanceof InventoryMenu) {
                 Slot resultSlot = menu.getSlot(0);
-                if (resultSlot.getItem().getItem() instanceof ModularDiggerToolItem) {
+                if (resultSlot.getItem().getItem() instanceof ModularItemInterface) {
                     if (countModularTools(menu, menu instanceof InventoryMenu ? 1 : 1, menu instanceof InventoryMenu ? 5 : 10) >= 2) {
                         resultSlot.set(ItemStack.EMPTY);
                     }
@@ -89,13 +89,13 @@ public class ModEvents {
                 ItemStack right = anvil.getSlot(1).getItem();
 
                 // If it's our tool and there is a "sacrifice" item in slot 1
-                if (left.getItem() instanceof ModularDiggerToolItem && !right.isEmpty()) {
+                if (left.getItem() instanceof ModularItemInterface && !right.isEmpty()) {
                     // Force the output slot (Slot 2) to stay empty
                     anvil.getSlot(2).set(ItemStack.EMPTY);
                 }
 
                 // If our tool is the sacrifice
-                if (right.getItem() instanceof ModularDiggerToolItem) {
+                if (right.getItem() instanceof ModularItemInterface) {
                     anvil.getSlot(2).set(ItemStack.EMPTY);
                 }
             }
@@ -105,7 +105,7 @@ public class ModEvents {
     private static int countModularTools(AbstractContainerMenu menu, int start, int end) {
         int count = 0;
         for (int i = start; i < end; i++) {
-            if (menu.getSlot(i).getItem().getItem() instanceof ModularDiggerToolItem) count++;
+            if (menu.getSlot(i).getItem().getItem() instanceof ModularItemInterface) count++;
         }
         return count;
     }

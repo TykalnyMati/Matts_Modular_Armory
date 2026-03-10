@@ -26,7 +26,6 @@ import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
-import net.minecraftforge.common.Tags;
 
 import javax.annotation.Nullable;
 import java.util.Map;
@@ -178,7 +177,13 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
     @Override
     public float getAttackDamageBonus(Entity target, float baseDamage, DamageSource source) {
         ItemStack weapon = source.getWeaponItem();
-        if (weapon == null) return super.getAttackDamageBonus(target, baseDamage, source);
+        if (weapon == null) {
+            return super.getAttackDamageBonus(target, baseDamage, source);
+        }
+
+        if (isBroken(source.getWeaponItem())) {
+            return -baseDamage + 1;
+        }
 
         AugumentObject bonuses = getAugmentBonuses(weapon);
 

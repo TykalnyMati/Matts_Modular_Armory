@@ -28,12 +28,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         handHeldItem(ModItems.MODULAR_CLAY_AXE);
         handHeldItem(ModItems.MODULAR_CLAY_SHOVEL);
         handHeldItem(ModItems.MODULAR_CLAY_HOE);
+        handHeldItem(ModItems.MODULAR_CLAY_SWORD);
 
         // Tier 1 modular items
         handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE);
         handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_AXE);
         handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL);
         handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_HOE);
+        handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_SWORD);
 
         // Tier 2 modular items
         handHeldItem(ModItems.ADAPTIVE_FLESH_PICKAXE);
