@@ -44,14 +44,18 @@ public class ModItemModelProvider extends ItemModelProvider {
         handHeldItem(ModItems.ADAPTIVE_FLESH_HOE);
 
         // Augments
-        basicItem(ModItems.EFFICIENCY_AUGMENT.get());
         basicItem(ModItems.UNBREAKING_AUGMENT.get());
+        basicItem(ModItems.MENDING_AUGMENT.get());
+
+        basicItem(ModItems.EFFICIENCY_AUGMENT.get());
         basicItem(ModItems.SILK_TOUCH_AUGMENT.get());
         basicItem(ModItems.FORTUNE_AUGMENT.get());
-        basicItem(ModItems.MENDING_AUGMENT.get());
+
         basicItem(ModItems.SHARPNESS_AUGMENT.get());
         basicItem(ModItems.SMITE_AUGMENT.get());
         basicItem(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get());
+        basicItem(ModItems.LOOTING_AUGMENT.get());
+        basicItem(ModItems.KNOCKBACK_AUGMENT.get());
         basicItem(ModItems.FIRE_ASPECT_AUGMENT.get());
 
         // Custom Augments

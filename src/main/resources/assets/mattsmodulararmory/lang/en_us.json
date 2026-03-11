@@ -18,6 +18,8 @@
   "item.mattsmodulararmory.sharpness_augment": "Sharpness Augment",
   "item.mattsmodulararmory.smite_augment": "Smite Augment",
   "item.mattsmodulararmory.bane_of_arthropods_augment": "Bane of Arthropods Augment",
+  "item.mattsmodulararmory.looting_augment": "Looting Augment",
+  "item.mattsmodulararmory.knockback_augment": "Knockback Augment",
   "item.mattsmodulararmory.fire_aspect_augment": "Fire Aspect Augment",
   "item.mattsmodulararmory.auto_smelt_augment": "Auto Smelt Augment",
 
@@ -31,6 +33,8 @@
   "tooltip.mattsmodulararmory.sharpness_augment": "Sharpness",
   "tooltip.mattsmodulararmory.smite_augment": "Smite",
   "tooltip.mattsmodulararmory.bane_of_arthropods_augment": "Bane of Arthropods",
+  "tooltip.mattsmodulararmory.looting_augment": "Looting",
+  "tooltip.mattsmodulararmory.knockback_augment": "Knockback",
   "tooltip.mattsmodulararmory.fire_aspect_augment": "Fire Aspect",
   "tooltip.mattsmodulararmory.auto_smelt_augment": "Auto Smelt",
 
@@ -47,6 +51,8 @@
   "tooltip.mattsmodulararmory.description.sharpness_augment": "Increases overall melee damage\nTakes priority over specialized damage augments",
   "tooltip.mattsmodulararmory.description.smite_augment": "Increases damage dealt to undead mobs\nTakes priority over Bane of Arthropods",
   "tooltip.mattsmodulararmory.description.bane_of_arthropods_augment": "Increases damage and applies Slowness to arthropods",
+  "tooltip.mattsmodulararmory.description.knockback_augment": "Increases the distance enemies are pushed back",
+  "tooltip.mattsmodulararmory.description.looting_augment": "Increases the amount and rarity of mob drops",
   "tooltip.mattsmodulararmory.description.fire_aspect_augment": "Sets the targets ablaze upon attack\nDuration increases with level",
 
   "tooltip.mattsmodulararmory.description.auto_smelt_augment": "Smelts mined blocks at the cost of extra durability\nWorks with fortune",

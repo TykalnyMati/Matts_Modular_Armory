@@ -89,14 +89,18 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         // Augments
         tag(ModTags.Items.MODULAR_ITEMS_AUGMENT)
-                .add(ModItems.EFFICIENCY_AUGMENT.get())
                 .add(ModItems.UNBREAKING_AUGMENT.get())
+                .add(ModItems.MENDING_AUGMENT.get())
+
+                .add(ModItems.EFFICIENCY_AUGMENT.get())
                 .add(ModItems.SILK_TOUCH_AUGMENT.get())
                 .add(ModItems.FORTUNE_AUGMENT.get())
-                .add(ModItems.MENDING_AUGMENT.get())
+
                 .add(ModItems.SHARPNESS_AUGMENT.get())
                 .add(ModItems.SMITE_AUGMENT.get())
                 .add(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get())
+                .add(ModItems.LOOTING_AUGMENT.get())
+                .add(ModItems.KNOCKBACK_AUGMENT.get())
                 .add(ModItems.FIRE_ASPECT_AUGMENT.get())
 
                 // Custom Augments
