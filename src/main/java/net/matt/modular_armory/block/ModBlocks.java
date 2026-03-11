@@ -4,6 +4,7 @@ import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.block.custom.AdaptiveFleshBlock;
 import net.matt.modular_armory.block.custom.AugmentTableBlock;
 import net.matt.modular_armory.block.custom.ExposerBlock;
+import net.matt.modular_armory.block.custom.RepairTableBlock;
 import net.matt.modular_armory.items.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -32,6 +33,9 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> EXPOSER = registerBlock("exposer",
             () -> new ExposerBlock(BlockBehaviour.Properties.of().strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> REPAIR_TABLE = registerBlock("repair_table",
+            () -> new RepairTableBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD)));
 
 
     // Helpfull methods

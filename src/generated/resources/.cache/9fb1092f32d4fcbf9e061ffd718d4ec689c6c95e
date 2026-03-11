@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-04T12:55:08.4557039	Recipes
+// 1.21.1	2026-03-11T19:39:31.0411157	Recipes
 8e4b94d5f37525ad95276358895c635da53e0681 data/mattsmodulararmory/advancement/recipes/misc/adaptive_flesh_block.json
 ad846ccfa6bca11558869ffecbcd165d3a5df855 data/mattsmodulararmory/advancement/recipes/misc/augment_table.json
 00d4ca3aa4e3a8fa019517f1bd5fdfd3e109dcb8 data/mattsmodulararmory/advancement/recipes/misc/basic_modular_plate.json
@@ -7,6 +7,7 @@ ad846ccfa6bca11558869ffecbcd165d3a5df855 data/mattsmodulararmory/advancement/rec
 7ae0896e7d3db13636836ec364afa0b44d26c87c data/mattsmodulararmory/advancement/recipes/misc/modular_clay_block.json
 2888ec8b93df4a03b9c741435ad3a33bd7e858f6 data/mattsmodulararmory/advancement/recipes/misc/modular_clay_extractor.json
 fbbd965437de1a96f98eaa6fb3e258068a019722 data/mattsmodulararmory/advancement/recipes/misc/modular_clay_from_block.json
+65c181deb71cc8056cb71cab69ed5e7b3dfd680b data/mattsmodulararmory/advancement/recipes/misc/repair_table.json
 2fa2b6d9e09194e03150b5fd01943c7849a935d9 data/mattsmodulararmory/recipe/adaptive_flesh_block.json
 532153007a5bbbebf7529f8c1008fc1dd1cdcb98 data/mattsmodulararmory/recipe/augment_table.json
 68be0b6ea2043fece1f749496dd968b2e1cd943f data/mattsmodulararmory/recipe/basic_modular_plate.json
@@ -15,3 +16,4 @@ a5c215d16e8c4b239f15127dd52c3ce1655a3553 data/mattsmodulararmory/recipe/modular_
 fd03eb93418fe145dce7cbcbeed48449b146f4d4 data/mattsmodulararmory/recipe/modular_clay_block.json
 78dcf699f7effb26dba2e698cbe84d8934be21b3 data/mattsmodulararmory/recipe/modular_clay_extractor.json
 8ad91a9be2a357e609ec32a44f5b12b171d3b0c7 data/mattsmodulararmory/recipe/modular_clay_from_block.json
+9ca3f64479491a1c83e8cd219ccd47386eede482 data/mattsmodulararmory/recipe/repair_table.json

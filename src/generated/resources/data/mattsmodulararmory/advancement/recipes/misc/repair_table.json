@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_repair_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:basic_modular_plate"
+          },
+          {
+            "items": "#minecraft:planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:repair_table"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_repair_table"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:repair_table"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:basic_modular_plate"
+    },
+    "B": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "AA ",
+    "BB ",
+    "BB "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:repair_table"
+  }
+}

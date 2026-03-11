@@ -96,5 +96,17 @@ public class ModRecipeProvider extends RecipeProvider {
                         ItemPredicate.Builder.item().of(ModItems.BASIC_MODULAR_PLATE.get()).build(),
                         ItemPredicate.Builder.item().of(ItemTags.PLANKS).build()))
                 .save(pRecipeOutput);
+
+        // Repair Table
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.REPAIR_TABLE.get())
+                .pattern("AA ")
+                .pattern("BB ")
+                .pattern("BB ")
+                .define('A', ModItems.BASIC_MODULAR_PLATE.get())
+                .define('B', ItemTags.PLANKS)
+                .unlockedBy("has_items_for_repair_table", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.BASIC_MODULAR_PLATE.get()).build(),
+                        ItemPredicate.Builder.item().of(ItemTags.PLANKS).build()))
+                .save(pRecipeOutput);
     }
 }
