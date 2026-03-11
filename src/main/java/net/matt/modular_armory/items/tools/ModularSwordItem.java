@@ -8,6 +8,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
@@ -43,20 +45,21 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
         }
 
         AugumentObject bonuses = getAugmentBonuses(weapon);
+        float bonusDamage = 0.0f;
 
         int sharpness = bonuses.SHARPNESS;
         int smite = bonuses.SMITE;
         int bane_of_arthropods = bonuses.BANE_OF_ARTHROPODS;
 
         if (sharpness > 0) {
-            return super.getAttackDamageBonus(target, baseDamage, source) + 0.5f * sharpness  + 0.5f;
+            bonusDamage = 0.5f * sharpness  + 0.5f;
         } else if (smite > 0 && target.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
-            return super.getAttackDamageBonus(target, baseDamage, source) + 2.5f * smite;
+            bonusDamage = 2.5f * smite;
         } else if (bane_of_arthropods > 0 && target.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
-            return super.getAttackDamageBonus(target, baseDamage, source) + 2.5f * bane_of_arthropods;
+            bonusDamage = 2.5f * bane_of_arthropods;
         }
 
-        return super.getAttackDamageBonus(target, baseDamage, source);
+        return bonusDamage;
     }
 
     @Override
@@ -87,6 +90,15 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
                 DO_ENCHANTED_PARTICLES = true;
             } else if (bane_of_arthropods > 0 && pTarget.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
                 DO_ENCHANTED_PARTICLES = true;
+
+                // Random value between 1 and 1.5 seconds per level
+                int duration = 20 + pAttacker.getRandom().nextInt(10 * bonuses.BANE_OF_ARTHROPODS);
+
+                pTarget.addEffect(new MobEffectInstance(
+                        MobEffects.MOVEMENT_SLOWDOWN,
+                        duration,
+                        3
+                ));
             }
 
             if (DO_ENCHANTED_PARTICLES) {
