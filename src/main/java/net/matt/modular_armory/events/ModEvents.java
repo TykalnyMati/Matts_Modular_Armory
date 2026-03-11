@@ -20,6 +20,7 @@ import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.GrindstoneEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+import net.minecraftforge.event.entity.living.LootingLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -156,5 +157,24 @@ public class ModEvents {
                 .map(RecipeHolder::value)
                 .map(recipe -> recipe.getResultItem(level.registryAccess()))
                 .orElse(ItemStack.EMPTY);
+    }
+
+    // Looting augment handling
+    @SubscribeEvent
+    public static void onLootingLevel(LootingLevelEvent event) {
+        // Verify the damage came from a living entity (the player)
+        if (event.getDamageSource() != null && event.getDamageSource().getDirectEntity() instanceof LivingEntity attacker) {
+            ItemStack weapon = attacker.getMainHandItem();
+
+            // Check if it's one of your modular tools and not broken
+            if (weapon.getItem() instanceof ModularItemInterface modularTool && !modularTool.isBroken(weapon)) {
+                AugumentObject bonuses = modularTool.getAugmentBonuses(weapon);
+
+                // Add the augment level to the existing looting level
+                if (bonuses.LOOTING > 0) {
+                    event.setLootingLevel(event.getLootingLevel() + bonuses.LOOTING);
+                }
+            }
+        }
     }
 }
