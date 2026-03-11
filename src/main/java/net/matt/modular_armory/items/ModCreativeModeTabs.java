@@ -48,11 +48,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ADAPTIVE_FLESH_HOE.get());
 
                         // Augments
-                        output.accept(ModItems.EFFICIENCY_AUGMENT.get());
                         output.accept(ModItems.UNBREAKING_AUGMENT.get());
+                        output.accept(ModItems.MENDING_AUGMENT.get());
+
                         output.accept(ModItems.SILK_TOUCH_AUGMENT.get());
                         output.accept(ModItems.FORTUNE_AUGMENT.get());
-                        output.accept(ModItems.MENDING_AUGMENT.get());
+                        output.accept(ModItems.EFFICIENCY_AUGMENT.get());
+
                         output.accept(ModItems.SHARPNESS_AUGMENT.get());
                         output.accept(ModItems.SMITE_AUGMENT.get());
                         output.accept(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get());

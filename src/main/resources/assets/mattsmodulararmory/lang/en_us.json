@@ -34,6 +34,23 @@
   "tooltip.mattsmodulararmory.fire_aspect_augment": "Fire Aspect",
   "tooltip.mattsmodulararmory.auto_smelt_augment": "Auto Smelt",
 
+  "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
+  "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
+  "tooltip.mattsmodulararmory.augment_type.weapons": "Weapons",
+  "tooltip.mattsmodulararmory.augment_type.armor": "Armor",
+
+  "tooltip.mattsmodulararmory.description.unbreaking_augment": "Reduces the chance to consume durability by 12.5%\nBecomes unbreakable with 8 augments",
+  "tooltip.mattsmodulararmory.description.mending_augment": "Repairs items with XP",
+  "tooltip.mattsmodulararmory.description.efficiency_augment": "Increases mining speed",
+  "tooltip.mattsmodulararmory.description.silk_touch_augment": "Mines delicate blocks as themselves\nOverrides other drop changing effects",
+  "tooltip.mattsmodulararmory.description.fortune_augment": "Increases the amount of drops from ores",
+  "tooltip.mattsmodulararmory.description.sharpness_augment": "Increases overall melee damage\nTakes priority over specialized damage augments",
+  "tooltip.mattsmodulararmory.description.smite_augment": "Increases damage dealt to undead mobs\nTakes priority over Bane of Arthropods",
+  "tooltip.mattsmodulararmory.description.bane_of_arthropods_augment": "Increases damage and applies Slowness to arthropods",
+  "tooltip.mattsmodulararmory.description.fire_aspect_augment": "Sets the targets ablaze upon attack\nDuration increases with level",
+
+  "tooltip.mattsmodulararmory.description.auto_smelt_augment": "Smelts mined blocks at the cost of extra durability\nWorks with fortune",
+
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",
   "item.mattsmodulararmory.modular_clay_shovel": "Modular Clay Shovel",
