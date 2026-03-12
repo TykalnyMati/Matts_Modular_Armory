@@ -11,6 +11,7 @@ import net.matt.modular_armory.recipe.ModRecipes;
 import net.matt.modular_armory.screen.ModMenuTypes;
 import net.matt.modular_armory.screen.custom.AugmentTableScreen;
 import net.matt.modular_armory.screen.custom.ExposerScreen;
+import net.matt.modular_armory.screen.custom.RepairTableScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -94,6 +95,7 @@ public class MattsModularArmory {
         public static void onClientSetup(FMLClientSetupEvent event) {
             MenuScreens.register(ModMenuTypes.AUGMENT_TABLE_MENU.get(), AugmentTableScreen::new);
             MenuScreens.register(ModMenuTypes.EXPOSER_MENU.get(), ExposerScreen::new);
+            MenuScreens.register(ModMenuTypes.REPAIR_TABLE_MENU.get(), RepairTableScreen::new);
         }
 
         @SubscribeEvent
