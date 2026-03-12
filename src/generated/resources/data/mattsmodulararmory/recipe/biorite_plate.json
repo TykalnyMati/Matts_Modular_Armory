@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "C": {
+      "item": "mattsmodulararmory:adaptive_flesh_plate"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    "ABD",
+    "BCB",
+    "DBA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:biorite_plate"
+  }
+}

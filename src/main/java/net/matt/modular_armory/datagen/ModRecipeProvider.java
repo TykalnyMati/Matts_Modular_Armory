@@ -45,12 +45,52 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(pRecipeOutput);
 
         // Basic Modular Plate
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BASIC_MODULAR_PLATE.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BASIC_MODULAR_PLATE.get(), 2)
                 .pattern("AAA")
                 .pattern("A A")
                 .pattern("AAA")
                 .define('A', ModItems.MODULAR_CLAY.get())
                 .unlockedBy(getHasName(ModItems.MODULAR_CLAY.get()), has(ModItems.MODULAR_CLAY.get()))
+                .save(pRecipeOutput);
+
+        // Advanced Modular Plate
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_MODULAR_PLATE.get())
+                .pattern(" A ")
+                .pattern("ABA")
+                .pattern(" A ")
+                .define('A', Items.IRON_INGOT)
+                .define('B', ModItems.BASIC_MODULAR_PLATE.get())
+                .unlockedBy("has_iron_and_basic_plate", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT, ModItems.BASIC_MODULAR_PLATE.get()))
+                .save(pRecipeOutput);
+
+        // Adaptive Flesh Block - from adaptive flesh
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.ADAPTIVE_FLESH_BLOCK.get())
+                .pattern("AA")
+                .pattern("AA")
+                .define('A', ModItems.ADAPTIVE_FLESH.get())
+                .unlockedBy(getHasName(ModItems.ADAPTIVE_FLESH.get()), has(ModItems.ADAPTIVE_FLESH.get()))
+                .save(pRecipeOutput, MattsModularArmory.MOD_ID + ":adaptive_flesh_block_from_flesh");
+
+        // Adaptive Flesh Plate
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADAPTIVE_FLESH_PLATE.get(), 2)
+                .pattern("AAA")
+                .pattern("ABA")
+                .pattern("AAA")
+                .define('A', ModItems.ADAPTIVE_FLESH.get())
+                .define('B', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .unlockedBy("has_adaptive_flesh_and_advanced_modular_plate", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ADAPTIVE_FLESH.get(), ModItems.ADVANCED_MODULAR_PLATE.get()))
+                .save(pRecipeOutput);
+
+        // Biorite Plate
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BIORITE_PLATE.get())
+                .pattern("ABD")
+                .pattern("BCB")
+                .pattern("DBA")
+                .define('A', Items.IRON_INGOT)
+                .define('B', Items.NETHERITE_SCRAP)
+                .define('C', ModItems.ADAPTIVE_FLESH_PLATE.get())
+                .define('D', Items.DIAMOND)
+                .unlockedBy("has_items_for_biorite_plate", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT, Items.NETHERITE_SCRAP, ModItems.ADAPTIVE_FLESH_PLATE.get(), Items.DIAMOND))
                 .save(pRecipeOutput);
 
         // Modular Clay Extractor

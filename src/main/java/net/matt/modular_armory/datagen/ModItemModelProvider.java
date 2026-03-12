@@ -20,7 +20,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.MODULAR_CLAY.get());
         basicItem(ModItems.BASIC_MODULAR_PLATE.get());
         basicItem(ModItems.MODULAR_CLAY_EXTRACTOR.get());
+        basicItem(ModItems.ADVANCED_MODULAR_PLATE.get());
         basicItem(ModItems.FLESH_MEAL.get());
+        basicItem(ModItems.ADAPTIVE_FLESH.get());
+        basicItem(ModItems.ADAPTIVE_FLESH_PLATE.get());
+        basicItem(ModItems.BIORITE_PLATE.get());
         basicItem(ModItems.EXPOSER_SLOT_PLUG.get());
 
         // Tier 0 modular items

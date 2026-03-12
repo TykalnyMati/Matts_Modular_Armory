@@ -20,9 +20,17 @@ public class ModItems {
 
     public static final RegistryObject<Item> BASIC_MODULAR_PLATE = ITEMS.register("basic_modular_plate", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> ADVANCED_MODULAR_PLATE = ITEMS.register("advanced_modular_plate", () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> MODULAR_CLAY_EXTRACTOR = ITEMS.register("modular_clay_extractor", () -> new ModularClayExtractorItem(new Item.Properties().durability(16)));
 
     public static final RegistryObject<Item> FLESH_MEAL = ITEMS.register("flesh_meal", () -> new FleshMealItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> ADAPTIVE_FLESH = ITEMS.register("adaptive_flesh", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ADAPTIVE_FLESH_PLATE = ITEMS.register("adaptive_flesh_plate", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> BIORITE_PLATE = ITEMS.register("biorite_plate", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> EXPOSER_SLOT_PLUG = ITEMS.register("exposer_slot_plug", () -> new Item(new Item.Properties().stacksTo(1)));
 

@@ -84,13 +84,13 @@ public class RepairTableMenu extends ItemCombinerMenu {
         if (tool.is(ModTags.Items.MODULAR_TIER_0) && material.is(ModItems.BASIC_MODULAR_PLATE.get())) {
             return true;
         }
-        if (tool.is(ModTags.Items.MODULAR_TIER_1) && material.is(ModItems.BASIC_MODULAR_PLATE.get())) {
+        if (tool.is(ModTags.Items.MODULAR_TIER_1) && material.is(ModItems.ADVANCED_MODULAR_PLATE.get())) {
             return true;
         }
-        if (tool.is(ModTags.Items.MODULAR_TIER_2) && material.is(ModItems.BASIC_MODULAR_PLATE.get())) {
+        if (tool.is(ModTags.Items.MODULAR_TIER_2) && material.is(ModItems.ADAPTIVE_FLESH_PLATE.get())) {
             return true;
         }
-        if (tool.is(ModTags.Items.MODULAR_TIER_3) && material.is(ModItems.BASIC_MODULAR_PLATE.get())) {
+        if (tool.is(ModTags.Items.MODULAR_TIER_3) && material.is(ModItems.BIORITE_PLATE.get())) {
             return true;
         }
         return false;

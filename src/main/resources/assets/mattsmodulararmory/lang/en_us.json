@@ -4,7 +4,11 @@
   "item.mattsmodulararmory.modular_clay": "Modular Clay",
   "item.mattsmodulararmory.basic_modular_plate": "Basic Modular Plate",
   "item.mattsmodulararmory.modular_clay_extractor": "Modular Clay Extractor",
+  "item.mattsmodulararmory.advanced_modular_plate": "Advanced Modular Plate",
   "item.mattsmodulararmory.flesh_meal": "Flesh Meal",
+  "item.mattsmodulararmory.adaptive_flesh": "Adaptive Flesh",
+  "item.mattsmodulararmory.adaptive_flesh_plate": "Adaptive Flesh Plate",
+  "item.mattsmodulararmory.biorite_plate": "Biorite Plate",
   "item.mattsmodulararmory.exposer_slot_plug": "Exposer Slot Plug",
 
   "tooltip.mattsmodulararmory.flesh_meal0": "Spreads ",

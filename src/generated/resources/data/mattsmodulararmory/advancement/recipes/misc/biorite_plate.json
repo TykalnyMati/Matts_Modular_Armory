@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_biorite_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:iron_ingot"
+          },
+          {
+            "items": "minecraft:netherite_scrap"
+          },
+          {
+            "items": "mattsmodulararmory:adaptive_flesh_plate"
+          },
+          {
+            "items": "minecraft:diamond"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:biorite_plate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_biorite_plate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:biorite_plate"
+    ]
+  }
+}

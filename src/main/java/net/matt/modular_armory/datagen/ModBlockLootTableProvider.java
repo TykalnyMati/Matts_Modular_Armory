@@ -29,7 +29,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider{
     protected void generate() {
         this.add(ModBlocks.MODULAR_CLAY_BLOCK.get(),
                 block -> createMultipleDrops(ModBlocks.MODULAR_CLAY_BLOCK.get(), ModItems.MODULAR_CLAY.get(), 4f, 4f));
-        dropSelf(ModBlocks.ADAPTIVE_FLESH_BLOCK.get());
+        this.add(ModBlocks.ADAPTIVE_FLESH_BLOCK.get(),
+                block -> createMultipleDrops(ModBlocks.ADAPTIVE_FLESH_BLOCK.get(), ModItems.ADAPTIVE_FLESH.get(), 4f, 4f));
         dropSelf(ModBlocks.AUGMENT_TABLE.get());
         dropSelf(ModBlocks.EXPOSER.get());
         dropSelf(ModBlocks.REPAIR_TABLE.get());

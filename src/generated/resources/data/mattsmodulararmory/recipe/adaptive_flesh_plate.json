@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:adaptive_flesh"
+    },
+    "B": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 2,
+    "id": "mattsmodulararmory:adaptive_flesh_plate"
+  }
+}
