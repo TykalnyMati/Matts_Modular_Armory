@@ -37,7 +37,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_AXE.get())
                 .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
                 .add(ModItems.ADAPTIVE_FLESH_HOE.get())
-                .add(ModItems.ADAPTIVE_FLESH_SWORD.get());
+                .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
+
+                .add(ModItems.BIORITE_PICKAXE.get());
 
         // Modular Tools tag
         tag(ModTags.Items.MODULAR_TOOL)
@@ -54,7 +56,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
                 .add(ModItems.ADAPTIVE_FLESH_AXE.get())
                 .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
-                .add(ModItems.ADAPTIVE_FLESH_HOE.get());
+                .add(ModItems.ADAPTIVE_FLESH_HOE.get())
+
+                .add(ModItems.BIORITE_PICKAXE.get());
 
         // Modular Weapons tag
         tag(ModTags.Items.MODULAR_WEAPON)
@@ -89,6 +93,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
                 .add(ModItems.ADAPTIVE_FLESH_HOE.get())
                 .add(ModItems.ADAPTIVE_FLESH_SWORD.get());
+
+        // Modular Items Tier 3
+        tag(ModTags.Items.MODULAR_TIER_3)
+                .add(ModItems.BIORITE_PICKAXE.get());
 
         // Augments
         tag(ModTags.Items.MODULAR_ITEMS_AUGMENT)

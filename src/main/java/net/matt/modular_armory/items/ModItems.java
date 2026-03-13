@@ -84,6 +84,13 @@ public class ModItems {
     public static final RegistryObject<Item> ADAPTIVE_FLESH_SWORD = ITEMS.register("adaptive_flesh_sword",
             () -> new ModularSwordItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().rarity(Rarity.UNCOMMON).attributes(HoeItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, 4f, -2.0f))));
 
+    // Biorite
+
+
+
+    public static final RegistryObject<Item> BIORITE_PICKAXE = ITEMS.register("biorite_pickaxe",
+            () -> new ModularPickaxeItem(ModToolTiers.BIORITE, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(PickaxeItem.createAttributes(ModToolTiers.BIORITE, 2.0f, -2.2f))));
+
     // Augments
     public static final RegistryObject<Item> UNBREAKING_AUGMENT = ITEMS.register("unbreaking_augment", () -> new AugmentGeneric(new Item.Properties(), "unbreaking_augment", "generic", List.of(2, 4, 6, 8)));
     public static final RegistryObject<Item> MENDING_AUGMENT = ITEMS.register("mending_augment", () -> new AugmentGeneric(new Item.Properties(), "mending_augment", "generic", List.of(0, 1, 1, 1)));

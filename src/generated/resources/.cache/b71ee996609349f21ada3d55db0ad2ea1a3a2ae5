@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-13T17:37:40.2887459	Item Models: mattsmodulararmory
+// 1.21.1	2026-03-13T19:35:26.4332979	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 6d073ddd6d0570130fc739d091a1df63c3237e43 assets/mattsmodulararmory/models/item/adaptive_flesh_hoe.json
@@ -15,6 +15,7 @@ c615226ba1ba0039129b32bdb14220d426e03282 assets/mattsmodulararmory/models/item/a
 49498347635ccbbedfd29cdf6a5622aa777befb2 assets/mattsmodulararmory/models/item/auto_smelt_augment.json
 ec1048ddbe32f67d5021a44d7e6387184b1224e5 assets/mattsmodulararmory/models/item/bane_of_arthropods_augment.json
 9fb96289ec659d7cd22f156564cd5bbdb831b655 assets/mattsmodulararmory/models/item/basic_modular_plate.json
+a504d362c74a013f4dc8bfb6bf11756d2a9ca0c5 assets/mattsmodulararmory/models/item/biorite_pickaxe.json
 81d057a5be02c4882daa96b8a9e13491748f323c assets/mattsmodulararmory/models/item/biorite_plate.json
 115a61e62d9bd883cf12d29f4ad6d9c5343b0f0c assets/mattsmodulararmory/models/item/efficiency_augment.json
 bdbaf79b27bd889fed0d02c99d258c354c814c83 assets/mattsmodulararmory/models/item/exposer_slot_plug.json

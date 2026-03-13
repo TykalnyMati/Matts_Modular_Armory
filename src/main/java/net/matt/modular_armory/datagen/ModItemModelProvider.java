@@ -48,6 +48,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         handHeldItem(ModItems.ADAPTIVE_FLESH_HOE);
         handHeldItem(ModItems.ADAPTIVE_FLESH_SWORD);
 
+        // Tier 3 modular items
+        handHeldItem(ModItems.BIORITE_PICKAXE);
+
         // Augments
         basicItem(ModItems.UNBREAKING_AUGMENT.get());
         basicItem(ModItems.MENDING_AUGMENT.get());

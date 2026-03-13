@@ -53,6 +53,11 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ADAPTIVE_FLESH_AXE.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_HOE.get());
 
+                        // Tier 3 modular items
+
+
+                        output.accept(ModItems.BIORITE_PICKAXE.get());
+
                         // Augments
                         output.accept(ModItems.UNBREAKING_AUGMENT.get());
                         output.accept(ModItems.MENDING_AUGMENT.get());

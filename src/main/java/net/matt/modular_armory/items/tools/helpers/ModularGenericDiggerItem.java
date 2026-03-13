@@ -46,8 +46,12 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
 
     @Override
     public boolean onBlockStartBreak(ItemStack itemstack, BlockPos pos, Player player) {
+        if (player.isCreative()) {
+            return false;
+        }
+
         if (isBroken(itemstack)) {
-            return false; // Let vanilla handle the "cannot break" state
+            return false;
         }
 
         Level level = player.level();
@@ -110,6 +114,12 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                         if (smeltingXp > 0) {
                             // Cast to int, but handle the remainder randomly (vanilla style)
                             int xpToDrop = (int) smeltingXp + (serverLevel.random.nextFloat() < (smeltingXp % 1) ? 1 : 0);
+
+                            // Apply fortune for xp
+                            if (bonuses.FORTUNE > 0) {
+                                xpToDrop *= bonuses.FORTUNE;
+                            }
+
                             if (xpToDrop > 0) {
                                 state.getBlock().popExperience(serverLevel, pos, xpToDrop);
                             }

@@ -59,7 +59,7 @@
   "tooltip.mattsmodulararmory.description.looting_augment": "Increases the amount and rarity of mob drops",
   "tooltip.mattsmodulararmory.description.fire_aspect_augment": "Sets the targets ablaze upon attack\nDuration increases with level",
 
-  "tooltip.mattsmodulararmory.description.auto_smelt_augment": "Smelts mined blocks at the cost of extra durability\nWorks with fortune",
+  "tooltip.mattsmodulararmory.description.auto_smelt_augment": "Smelts mined blocks at the cost of extra durability\nCan drop experience that would appear after smelting\nWorks with fortune",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",
@@ -79,11 +79,13 @@
   "item.mattsmodulararmory.adaptive_flesh_hoe": "Adaptive Flesh Hoe",
   "item.mattsmodulararmory.adaptive_flesh_sword": "Adaptive Flesh Sword",
 
+  "item.mattsmodulararmory.biorite_pickaxe": "Biorite Pickaxe",
+
   "block.mattsmodulararmory.modular_clay_block": "Block of Modular Clay",
   "block.mattsmodulararmory.adaptive_flesh_block": "Block of Adaptive Flesh",
   "block.mattsmodulararmory.augment_table": "Augment Table",
   "block.mattsmodulararmory.exposer": "Block Exposer",
   "block.mattsmodulararmory.repair_table": "Repair Table",
-  "container.matsmodulararmory.repair": "Repair Items"
+  "container.mattsmodulararmory.repair": "Repair Items"
 
 }
