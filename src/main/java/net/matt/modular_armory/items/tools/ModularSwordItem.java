@@ -130,10 +130,6 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
                 pAttacker.setDeltaMovement(pAttacker.getDeltaMovement().multiply(0.6D, 1.0D, 0.6D));
             }
         }
-
-        if (bonuses.FIRE_ASPECT > 0) {
-            pTarget.igniteForSeconds(bonuses.FIRE_ASPECT * 4);
-        }
     }
 
     // Disabling the sweeping action

@@ -47,6 +47,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_HOE.get());
 
                         // Tier 2 modular items
+                        output.accept(ModItems.ADAPTIVE_FLESH_SWORD.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_SHOVEL.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_AXE.get());

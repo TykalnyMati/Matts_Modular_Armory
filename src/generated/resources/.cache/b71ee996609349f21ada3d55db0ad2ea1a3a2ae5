@@ -1,10 +1,11 @@
-// 1.21.1	2026-03-12T21:47:15.9716116	Item Models: mattsmodulararmory
+// 1.21.1	2026-03-13T17:37:40.2887459	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 6d073ddd6d0570130fc739d091a1df63c3237e43 assets/mattsmodulararmory/models/item/adaptive_flesh_hoe.json
 2fa6e3a6ffe24666f268eb14abc7977e2215a62a assets/mattsmodulararmory/models/item/adaptive_flesh_pickaxe.json
 41e39b548355c693b4c7d2fbcdbc553c833a7f57 assets/mattsmodulararmory/models/item/adaptive_flesh_plate.json
 d48121b86869f4b062076c9f54ebf4cf370ee47f assets/mattsmodulararmory/models/item/adaptive_flesh_shovel.json
+7b7f9fa24d9199c93eaf2e32f117b2b7ad5702ab assets/mattsmodulararmory/models/item/adaptive_flesh_sword.json
 c4214d045f5686e5b600e00ff5c0495250565ab3 assets/mattsmodulararmory/models/item/advanced_modular_clay_axe.json
 c29d4adb0186afcd1e3b0d0e155a9decc650f7fc assets/mattsmodulararmory/models/item/advanced_modular_clay_hoe.json
 d4133d24880d1fc3c86b3e819aca4d539ee801e0 assets/mattsmodulararmory/models/item/advanced_modular_clay_pickaxe.json

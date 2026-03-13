@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "mattsmodulararmory:item/adaptive_flesh_sword"
+  }
+}

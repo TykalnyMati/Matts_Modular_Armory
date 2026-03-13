@@ -26,7 +26,7 @@ public class ModBlocks {
             () -> new Block(BlockBehaviour.Properties.of().strength(0.6f ).sound(SoundType.GRAVEL)));
 
     public static final RegistryObject<Block> ADAPTIVE_FLESH_BLOCK = registerBlock("adaptive_flesh_block",
-            () -> new AdaptiveFleshBlock(BlockBehaviour.Properties.of().strength(1f ).sound(SoundType.WART_BLOCK)));
+            () -> new AdaptiveFleshBlock(BlockBehaviour.Properties.of().strength(1f ).sound(SoundType.MUD)));
 
     public static final RegistryObject<Block> AUGMENT_TABLE = registerBlock("augment_table",
             () -> new AugmentTableBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD).noOcclusion()));

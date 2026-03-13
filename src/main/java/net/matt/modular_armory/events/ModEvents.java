@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.GrindstoneEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LootingLevelEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
@@ -34,22 +35,27 @@ public class ModEvents {
         Player player = event.getEntity();
         ItemStack mainHandItem = player.getMainHandItem();
         ItemStack offhandItem = player.getOffhandItem();
+        Iterable<ItemStack> equippedItems = player.getArmorSlots();
 
         int remainingXp = event.getAmount();
 
         // First repairs in main hand
-        if (mainHandItem.getItem() instanceof ModularPickaxeItem pickaxe) {
-            remainingXp = pickaxe.repairFromXp(mainHandItem, remainingXp);
-        } else if (mainHandItem.getItem() instanceof ModularAxeItem axe) {
-            remainingXp = axe.repairFromXp(mainHandItem, remainingXp);
+        if (mainHandItem.getItem() instanceof ModularItemInterface modularItem) {
+            remainingXp = modularItem.repairFromXp(mainHandItem, remainingXp);
         }
 
         // Repairs in offhand
-        if (offhandItem.getItem() instanceof ModularPickaxeItem pickaxe) {
-            remainingXp = pickaxe.repairFromXp(offhandItem, remainingXp);
-        } else if (offhandItem.getItem() instanceof ModularAxeItem axe) {
-            remainingXp = axe.repairFromXp(offhandItem, remainingXp);
+        if (offhandItem.getItem() instanceof ModularItemInterface modularItem) {
+            remainingXp = modularItem.repairFromXp(offhandItem, remainingXp);
         }
+
+        // Repairs worn armor
+        for (ItemStack equippedItem : equippedItems) {
+            if (equippedItem.getItem() instanceof  ModularItemInterface modularItem) {
+                remainingXp = modularItem.repairFromXp(equippedItem, remainingXp);
+            }
+        }
+
 
         // Reduce the amount of XP player gets
         event.setAmount(remainingXp);
@@ -173,6 +179,24 @@ public class ModEvents {
                 // Add the augment level to the existing looting level
                 if (bonuses.LOOTING > 0) {
                     event.setLootingLevel(event.getLootingLevel() + bonuses.LOOTING);
+                }
+            }
+        }
+    }
+
+    // Fire Aspect augment handling
+    @SubscribeEvent
+    public static void applyModularFireAspect(LivingDamageEvent event) {
+        if (event.getSource().getDirectEntity() instanceof Player player) {
+            ItemStack weapon = player.getWeaponItem();
+
+            // Check if it's a modular item
+            if (weapon.getItem() instanceof ModularItemInterface modularItem && !modularItem.isBroken(weapon)) {
+                AugumentObject bonuses = modularItem.getAugmentBonuses(weapon);
+
+                // If it has Fire Aspect, ignite the entity(ies) being damaged
+                if (bonuses.FIRE_ASPECT > 0) {
+                    event.getEntity().igniteForSeconds(bonuses.FIRE_ASPECT * 4);
                 }
             }
         }

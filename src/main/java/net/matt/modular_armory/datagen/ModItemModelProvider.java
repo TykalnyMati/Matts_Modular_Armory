@@ -46,6 +46,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handHeldItem(ModItems.ADAPTIVE_FLESH_AXE);
         handHeldItem(ModItems.ADAPTIVE_FLESH_SHOVEL);
         handHeldItem(ModItems.ADAPTIVE_FLESH_HOE);
+        handHeldItem(ModItems.ADAPTIVE_FLESH_SWORD);
 
         // Augments
         basicItem(ModItems.UNBREAKING_AUGMENT.get());

@@ -30,7 +30,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> ADAPTIVE_FLESH_PLATE = ITEMS.register("adaptive_flesh_plate", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> BIORITE_PLATE = ITEMS.register("biorite_plate", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BIORITE_PLATE = ITEMS.register("biorite_plate", () -> new Item(new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> EXPOSER_SLOT_PLUG = ITEMS.register("exposer_slot_plug", () -> new Item(new Item.Properties().stacksTo(1)));
 
@@ -80,6 +80,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> ADAPTIVE_FLESH_HOE = ITEMS.register("adaptive_flesh_hoe",
             () -> new ModularHoeItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().rarity(Rarity.UNCOMMON).attributes(HoeItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, -2.5f, 0.4f))));
+
+    public static final RegistryObject<Item> ADAPTIVE_FLESH_SWORD = ITEMS.register("adaptive_flesh_sword",
+            () -> new ModularSwordItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().rarity(Rarity.UNCOMMON).attributes(HoeItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, 4f, -2.0f))));
 
     // Augments
     public static final RegistryObject<Item> UNBREAKING_AUGMENT = ITEMS.register("unbreaking_augment", () -> new AugmentGeneric(new Item.Properties(), "unbreaking_augment", "generic", List.of(2, 4, 6, 8)));
