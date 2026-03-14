@@ -18,7 +18,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.MODULAR_CLAY_BLOCK);
         blockWithItem(ModBlocks.ADAPTIVE_FLESH_BLOCK);
         blockWithItem(ModBlocks.EXPOSER);
-        blockWithItem(ModBlocks.MODULAR_ASSEMBLER);
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

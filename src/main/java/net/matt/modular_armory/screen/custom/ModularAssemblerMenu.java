@@ -1,5 +1,6 @@
 package net.matt.modular_armory.screen.custom;
 
+import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
@@ -211,7 +212,7 @@ public class ModularAssemblerMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player pPlayer) {
-        return true;
+        return stillValid(this.access, pPlayer, ModBlocks.MODULAR_ASSEMBLER.get());
     }
 
     @Override

@@ -72,7 +72,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(pRecipeOutput, MattsModularArmory.MOD_ID + ":adaptive_flesh_block_from_flesh");
 
         // Adaptive Flesh Plate
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADAPTIVE_FLESH_PLATE.get(), 2)
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADAPTIVE_FLESH_PLATE.get())
                 .pattern("AAA")
                 .pattern("ABA")
                 .pattern("AAA")
@@ -86,11 +86,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("ABD")
                 .pattern("BCB")
                 .pattern("DBA")
-                .define('A', Items.IRON_INGOT)
+                .define('A', Blocks.SCULK)
                 .define('B', Items.NETHERITE_SCRAP)
                 .define('C', ModItems.ADAPTIVE_FLESH_PLATE.get())
                 .define('D', Items.DIAMOND)
-                .unlockedBy("has_items_for_biorite_plate", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT, Items.NETHERITE_SCRAP, ModItems.ADAPTIVE_FLESH_PLATE.get(), Items.DIAMOND))
+                .unlockedBy("has_items_for_biorite_plate", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.SCULK, Items.NETHERITE_SCRAP, ModItems.ADAPTIVE_FLESH_PLATE.get(), Items.DIAMOND))
                 .save(pRecipeOutput);
 
         // Modular Clay Extractor
