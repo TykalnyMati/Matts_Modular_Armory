@@ -148,5 +148,17 @@ public class ModRecipeProvider extends RecipeProvider {
                         ItemPredicate.Builder.item().of(ModItems.BASIC_MODULAR_PLATE.get()).build(),
                         ItemPredicate.Builder.item().of(ItemTags.PLANKS).build()))
                 .save(pRecipeOutput);
+
+        // Modular Assembler
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MODULAR_ASSEMBLER.get())
+                .pattern("AAA")
+                .pattern("BBB")
+                .pattern("AAA")
+                .define('A', ItemTags.PLANKS)
+                .define('B', ModItems.BASIC_MODULAR_PLATE.get())
+                .unlockedBy("has_items_for_modular_assembler", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.BASIC_MODULAR_PLATE.get()).build(),
+                        ItemPredicate.Builder.item().of(ItemTags.PLANKS).build()))
+                .save(pRecipeOutput);
     }
 }

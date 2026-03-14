@@ -27,6 +27,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ADAPTIVE_FLESH.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_PLATE.get());
                         output.accept(ModItems.BIORITE_PLATE.get());
+                        output.accept(ModBlocks.MODULAR_ASSEMBLER.get());
                         output.accept(ModBlocks.AUGMENT_TABLE.get());
                         output.accept(ModBlocks.REPAIR_TABLE.get());
                         output.accept(ModBlocks.EXPOSER.get());

@@ -86,6 +86,8 @@
   "block.mattsmodulararmory.augment_table": "Augment Table",
   "block.mattsmodulararmory.exposer": "Block Exposer",
   "block.mattsmodulararmory.repair_table": "Repair Table",
-  "container.mattsmodulararmory.repair": "Repair Items"
-
+  "container.mattsmodulararmory.repair": "Repair Items",
+  "block.mattsmodulararmory.modular_assembler": "Modular Assembler",
+  "container.mattsmodulararmory.modular_assembler": "Modular Assembler",
+  "container.mattsmodulararmory.modular_assembler_cost_tooltip": "Cost:"
 }

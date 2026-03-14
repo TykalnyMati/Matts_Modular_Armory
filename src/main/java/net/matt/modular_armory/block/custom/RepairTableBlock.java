@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 public class RepairTableBlock extends CraftingTableBlock {
     public static final MapCodec<RepairTableBlock> CODEC = simpleCodec(RepairTableBlock::new);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
-    private static final Component CONTAINER_TITLE = Component.translatable("container.matsmodulararmory.repair");
+    private static final Component CONTAINER_TITLE = Component.translatable("container.mattsmodulararmory.repair");
 
     public RepairTableBlock(Properties pProperties) {
         super(pProperties);

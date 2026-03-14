@@ -24,7 +24,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.ADAPTIVE_FLESH_BLOCK.get())
                 .add(ModBlocks.AUGMENT_TABLE.get())
-                .add(ModBlocks.REPAIR_TABLE.get());
+                .add(ModBlocks.REPAIR_TABLE.get())
+                .add(ModBlocks.MODULAR_ASSEMBLER.get());
 
         tag(BlockTags.MINEABLE_WITH_SHOVEL)
                 .add(ModBlocks.MODULAR_CLAY_BLOCK.get());
