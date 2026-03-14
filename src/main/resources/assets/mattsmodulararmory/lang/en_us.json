@@ -84,9 +84,15 @@
   "block.mattsmodulararmory.modular_clay_block": "Block of Modular Clay",
   "block.mattsmodulararmory.adaptive_flesh_block": "Block of Adaptive Flesh",
   "block.mattsmodulararmory.augment_table": "Augment Table",
+
   "block.mattsmodulararmory.exposer": "Block Exposer",
+  "tooltip.mattsmodulararmory.exposer": "Transforms or creates blocks depending on it's surroundings",
+  "container.mattsmodulararmory.exposer.liquid": "In Block Form",
+  "container.mattsmodulararmory.exposer.water_cauldron": "Filled with Water",
+
   "block.mattsmodulararmory.repair_table": "Repair Table",
   "container.mattsmodulararmory.repair": "Repair Items",
+
   "block.mattsmodulararmory.modular_assembler": "Modular Assembler",
   "container.mattsmodulararmory.modular_assembler": "Modular Assembler",
   "container.mattsmodulararmory.modular_assembler_cost_tooltip": "Cost:"

@@ -5,17 +5,23 @@ import com.mojang.serialization.DataResult;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.component.ItemLore;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
@@ -25,6 +31,40 @@ public record ExposerRecipe(Ingredient inputItem, List<BlockState> surroundings,
     public NonNullList<Ingredient> getIngredients() {
         NonNullList<Ingredient> list = NonNullList.create();
         list.add(inputItem);
+        return list;
+    }
+
+    public NonNullList<ItemStack> getSurroundings() {
+        NonNullList<ItemStack> list = NonNullList.create();
+        for (BlockState adjacent : surroundings) {
+            if (adjacent.getBlock() == Blocks.WATER) {
+                ItemStack waterBucket = new ItemStack(Items.WATER_BUCKET);
+
+                waterBucket.set(DataComponents.LORE, new ItemLore(List.of(
+                        Component.translatable("container.mattsmodulararmory.exposer.liquid").withStyle(ChatFormatting.BLUE)
+                )));
+
+                list.add(waterBucket);
+            } else if (adjacent.getBlock() == Blocks.LAVA) {
+                ItemStack lavaBucket = new ItemStack(Items.LAVA_BUCKET);
+
+                lavaBucket.set(DataComponents.LORE, new ItemLore(List.of(
+                        Component.translatable("container.mattsmodulararmory.exposer.liquid").withStyle(ChatFormatting.BLUE)
+                )));
+
+                list.add(lavaBucket);
+            } else if (adjacent.getBlock() == Blocks.WATER_CAULDRON) {
+                ItemStack cauldron = new ItemStack(Items.CAULDRON);
+
+                cauldron.set(DataComponents.LORE, new ItemLore(List.of(
+                        Component.translatable("container.mattsmodulararmory.exposer.water_cauldron").withStyle(ChatFormatting.BLUE)
+                )));
+
+                list.add(cauldron);
+            } else {
+                list.add(new ItemStack(adjacent.getBlock()));
+            }
+        }
         return list;
     }
 

@@ -54,6 +54,17 @@ public class ExposerRecipeCategory implements IRecipeCategory<ExposerRecipe> {
     public void setRecipe(IRecipeLayoutBuilder iRecipeLayoutBuilder, ExposerRecipe exposerRecipe, IFocusGroup iFocusGroup) {
         iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 44, 24).addIngredients(exposerRecipe.getIngredients().get(0));
 
+        int x = 0;
+        int y = 0;
+        for (ItemStack adjacent : exposerRecipe.getSurroundings()) {
+            iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 16 * x, 16 * y).addItemStack(adjacent);
+            ++y;
+            if (y > 2) {
+                ++x;
+                y = 0;
+            }
+        }
+
         iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.OUTPUT, 94, 24).addItemStack(exposerRecipe.getResultItem(null));
     }
 }

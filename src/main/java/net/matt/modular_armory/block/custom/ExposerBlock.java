@@ -3,6 +3,7 @@ package net.matt.modular_armory.block.custom;
 import com.mojang.serialization.MapCodec;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.custom.ExposerBlockEntity;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -10,7 +11,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
@@ -20,6 +23,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ExposerBlock extends BaseEntityBlock {
     public static final MapCodec<ExposerBlock> CODEC = simpleCodec(ExposerBlock::new);
@@ -79,5 +84,12 @@ public class ExposerBlock extends BaseEntityBlock {
 
         return createTickerHelper(pBlockEntityType, ModBlockEntities.EXPOSER_BE.get(),
                 (level, blockPos, blockState, exposerBlockEntity) -> exposerBlockEntity.tick(level, blockPos, blockState));
+    }
+
+    @Override
+    public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.exposer").withStyle(ChatFormatting.GRAY));
+
+        super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 }
