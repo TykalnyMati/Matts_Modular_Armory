@@ -108,14 +108,6 @@ public class ModularAssemblerScreen extends AbstractContainerScreen<ModularAssem
         }
     }
 
-    public int getCostForTooltip(Item item) {
-        String name = item.toString();
-        if (name.contains("pickaxe") || name.contains("axe")) return 3;
-        if (name.contains("sword") || name.contains("hoe")) return 2;
-        if (name.contains("shovel")) return 1;
-        return 1;
-    }
-
     private void renderButtons(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, int pX, int pY, int pLastIndex) {
         for (int i = this.startIndex; i < pLastIndex && i < this.menu.getNumRecipes(); ++i) {
             int j = i - this.startIndex;
@@ -138,13 +130,24 @@ public class ModularAssemblerScreen extends AbstractContainerScreen<ModularAssem
 
     private void renderRecipes(GuiGraphics pGuiGraphics, int pX, int pY, int pLastIndex) {
         List<ItemStack> list = this.menu.getAvailableTools();
+        float scale = 0.9F;
         for (int i = this.startIndex; i < pLastIndex && i < list.size(); ++i) {
             int j = i - this.startIndex;
             int iconX = pX + j % 4 * 16;
             int row = j / 4;
             int iconY = pY + row * 18 + 1;
 
-            pGuiGraphics.renderItem(list.get(i), iconX, iconY);
+            pGuiGraphics.pose().pushPose();
+
+            pGuiGraphics.pose().translate(iconX, iconY, 0);
+
+            pGuiGraphics.pose().translate(8.0f, 8.0f, 0);
+            pGuiGraphics.pose().scale(scale, scale, 1.0f);
+            pGuiGraphics.pose().translate(-8.0f, -8.0f, 0);
+
+            pGuiGraphics.renderItem(list.get(i), 0, 0);
+
+            pGuiGraphics.pose().popPose();
         }
     }
 
