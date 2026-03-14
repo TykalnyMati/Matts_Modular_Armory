@@ -6,6 +6,7 @@ import net.matt.modular_armory.recipe.ExposerRecipe;
 import net.matt.modular_armory.recipe.ModRecipes;
 import net.matt.modular_armory.screen.custom.ExposerMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -30,6 +31,7 @@ import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -49,6 +51,7 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
     private static final int OUTPUT_SLOT = 1;
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+    private LazyOptional<IItemHandler> sidedItemHandler = LazyOptional.empty();
 
     protected final ContainerData data;
     private int progress = 0;
@@ -85,13 +88,63 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
     @Override
     public void onLoad() {
         super.onLoad();
+        // Full access for the Menu/Screen
         lazyItemHandler = LazyOptional.of(() -> itemHandler);
+
+        // Restricted access for automation
+        sidedItemHandler = LazyOptional.of(() -> new IItemHandler() {
+            @Override
+            public int getSlots() {
+                return itemHandler.getSlots();
+            }
+
+            @Override
+            public ItemStack getStackInSlot(int slot) {
+                return itemHandler.getStackInSlot(slot);
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                return itemHandler.getSlotLimit(slot);
+            }
+
+            @Override
+            public boolean isItemValid(int slot, ItemStack stack) {
+                return slot == INPUT_SLOT && itemHandler.isItemValid(slot, stack);
+            }
+
+            @Override
+            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+                // Can only push into slot 0
+                return (slot == INPUT_SLOT) ? itemHandler.insertItem(slot, stack, simulate) : stack;
+            }
+
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                // Can only pull from slot 1
+                return (slot == OUTPUT_SLOT) ? itemHandler.extractItem(slot, amount, simulate) : ItemStack.EMPTY;
+            }
+        });
+    }
+
+    @Override
+    public <T> LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> cap, @Nullable Direction side) {
+        if (cap == net.minecraftforge.common.capabilities.ForgeCapabilities.ITEM_HANDLER) {
+            // Decides which item handler to use depending on what it's interacting it, player via GUI or a hopper/pipe
+            if (side == null) {
+                return lazyItemHandler.cast();
+            } else {
+                return sidedItemHandler.cast();
+            }
+        }
+        return super.getCapability(cap, side);
     }
 
     @Override
     public void invalidateCaps() {
         super.invalidateCaps();
         lazyItemHandler.invalidate();
+        sidedItemHandler.invalidate();
     }
 
     public void drops() {
@@ -168,46 +221,6 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
     private void increaseCraftingProgress() {
         progress++;
     }
-
-//    private boolean hasRecipe() {
-//        Optional<RecipeHolder<ExposerRecipe>> recipe = getCurrentRecipe();
-//
-//        if (recipe.isEmpty()) {
-//            return false;
-//        }
-//
-//        ItemStack output = recipe.get().value().output();
-//        List<BlockState> requiredSurroundingBlocks = recipe.get().value().surroundings();
-//
-//        BlockPos currentBlock = this.getBlockPos();
-//        BlockPos[] surroundingBlocks = new BlockPos[]{currentBlock.above(), currentBlock.north(), currentBlock.east(), currentBlock.south(), currentBlock.west(), currentBlock.below()};
-//
-//        int numberOfNeededBlocks = requiredSurroundingBlocks.size();
-//        int numberOfCorrectBlocks = 0;
-//        boolean adjustedToRequiredBlocks = false;
-//        try {
-//            for (BlockPos blockTestLocation : surroundingBlocks) {
-//                BlockState blockToTest = level.getBlockState(blockTestLocation);
-//                if (requiredSurroundingBlocks.contains(blockToTest)) {
-//                    numberOfCorrectBlocks++;
-//                }
-//
-//                if (numberOfCorrectBlocks == numberOfNeededBlocks) {
-//                    adjustedToRequiredBlocks = true;
-//                    break;
-//                }
-//            }
-//        } catch (NullPointerException e) {
-//            return false;
-//        }
-//
-//        return adjustedToRequiredBlocks && canInsertItemIntoOutputSlot(output) && canInsertAmountIntoOutputSlot(output.getCount());
-//    }
-
-//    private Optional<RecipeHolder<ExposerRecipe>> getCurrentRecipe() {
-//        return this.level.getRecipeManager()
-//                .getRecipeFor(ModRecipes.EXPOSER_TYPE.get(), new ExposerRecipeInput(itemHandler.getStackInSlot(INPUT_SLOT)), level);
-//    }
 
     private boolean hasRecipe() {
         Optional<RecipeHolder<ExposerRecipe>> recipe = getCurrentRecipe();
