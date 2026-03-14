@@ -93,10 +93,15 @@ public class ModularAssemblerMenu extends AbstractContainerMenu {
     // Custom costs
     public int getCostFor(Item item) {
         String name = item.toString();
-        if (name.contains("pickaxe") || name.contains("axe")) return 3;
-        if (name.contains("sword") || name.contains("hoe")) return 2;
-        if (name.contains("shovel")) return 1;
-        return 1;
+        if (name.contains("pickaxe") || name.contains("axe")) {
+            return 3;
+        } else if (name.contains("sword") || name.contains("hoe")) {
+            return 2;
+        } else if (name.contains("shovel")) {
+            return 1;
+        } else {
+            return 1;
+        }
     }
 
     @Override
