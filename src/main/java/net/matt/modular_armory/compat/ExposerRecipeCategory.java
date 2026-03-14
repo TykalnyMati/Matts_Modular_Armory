@@ -51,13 +51,20 @@ public class ExposerRecipeCategory implements IRecipeCategory<ExposerRecipe> {
     }
 
     @Override
+    public void draw(ExposerRecipe recipe, mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, net.minecraft.client.gui.GuiGraphics graphics, double mouseX, double mouseY) {
+        Component label = Component.translatable("container.mattsmodulararmory.exposer.adjacent");
+
+        graphics.drawString(net.minecraft.client.Minecraft.getInstance().font, label, 0, 0, 0x404040, false);
+    }
+
+    @Override
     public void setRecipe(IRecipeLayoutBuilder iRecipeLayoutBuilder, ExposerRecipe exposerRecipe, IFocusGroup iFocusGroup) {
         iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 44, 24).addIngredients(exposerRecipe.getIngredients().get(0));
 
         int x = 0;
         int y = 0;
         for (ItemStack adjacent : exposerRecipe.getSurroundings()) {
-            iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 16 * x, 16 * y).addItemStack(adjacent);
+            iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 16 * x, 16 * y + 10).addItemStack(adjacent);
             ++y;
             if (y > 2) {
                 ++x;
