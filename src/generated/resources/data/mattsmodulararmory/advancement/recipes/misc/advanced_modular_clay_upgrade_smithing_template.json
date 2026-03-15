@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_advanced_modular_clay_upgrade_smithing_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:basic_modular_plate"
+          },
+          {
+            "items": "mattsmodulararmory:advanced_modular_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:advanced_modular_clay_upgrade_smithing_template"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_advanced_modular_clay_upgrade_smithing_template"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:advanced_modular_clay_upgrade_smithing_template"
+    ]
+  }
+}

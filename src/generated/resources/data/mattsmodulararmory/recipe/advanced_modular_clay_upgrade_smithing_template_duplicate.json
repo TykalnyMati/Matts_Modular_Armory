@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mattsmodulararmory:advanced_modular_clay_upgrade_smithing_template"
+    },
+    {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "mattsmodulararmory:advanced_modular_clay_upgrade_smithing_template"
+  }
+}

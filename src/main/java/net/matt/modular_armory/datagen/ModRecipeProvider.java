@@ -9,9 +9,12 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class ModRecipeProvider extends RecipeProvider {
@@ -160,5 +163,54 @@ public class ModRecipeProvider extends RecipeProvider {
                         ItemPredicate.Builder.item().of(ModItems.BASIC_MODULAR_PLATE.get()).build(),
                         ItemPredicate.Builder.item().of(ItemTags.PLANKS).build()))
                 .save(pRecipeOutput);
+
+        // Advanced Modular Clay Upgrade Smithing Template
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get())
+                .pattern(" A ")
+                .pattern("ABA")
+                .pattern(" A ")
+                .define('A', ModItems.BASIC_MODULAR_PLATE.get())
+                .define('B', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .unlockedBy("has_items_for_advanced_modular_clay_upgrade_smithing_template", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.BASIC_MODULAR_PLATE.get()).build(),
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()).build()))
+                .save(pRecipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get(), 2)
+                .requires(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get())
+                .requires(ModItems.ADVANCED_MODULAR_PLATE.get(), 2)
+                .unlockedBy("has_items_for_advanced_modular_clay_upgrade_smithing_template_duplicate", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get()).build(),
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()).build()))
+                .save(pRecipeOutput, MattsModularArmory.MOD_ID + ":advanced_modular_clay_upgrade_smithing_template_duplicate");
+
+        // Advanced Modular Clay Tool Upgrades
+        // Transforms Modular Clay -> Advanced Modular Clay using the Template and an Advanced Modular Clay Plate
+        List<Item> ModularClayTools = List.of(
+                ModItems.MODULAR_CLAY_SWORD.get(),
+                ModItems.MODULAR_CLAY_PICKAXE.get(),
+                ModItems.MODULAR_CLAY_AXE.get(),
+                ModItems.MODULAR_CLAY_SHOVEL.get(),
+                ModItems.MODULAR_CLAY_HOE.get()
+        );
+
+        List<Item> AdvancedModularClayTools = List.of(
+                ModItems.ADVANCED_MODULAR_CLAY_SWORD.get(),
+                ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get(),
+                ModItems.ADVANCED_MODULAR_CLAY_AXE.get(),
+                ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get(),
+                ModItems.ADVANCED_MODULAR_CLAY_HOE.get()
+        );
+
+        for (int i = 0; i < ModularClayTools.size(); i++) {
+            SmithingTransformRecipeBuilder.smithing(
+                            Ingredient.of(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get()), // Template
+                            Ingredient.of(ModularClayTools.get(i)),                                        // Base Item
+                            Ingredient.of(ModItems.ADVANCED_MODULAR_PLATE.get()),                          // Addition
+                            RecipeCategory.TOOLS,
+                            AdvancedModularClayTools.get(i))                                               // Result
+                    .unlocks(getHasName(ModItems.ADVANCED_MODULAR_PLATE.get()), has(ModItems.ADVANCED_MODULAR_PLATE.get()))
+                    .save(pRecipeOutput, MattsModularArmory.MOD_ID + ":" + getConversionRecipeName(AdvancedModularClayTools.get(i), ModularClayTools.get(i)));
+        }
     }
 }

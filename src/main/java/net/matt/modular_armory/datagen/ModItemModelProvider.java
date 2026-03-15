@@ -27,6 +27,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BIORITE_PLATE.get());
         basicItem(ModItems.EXPOSER_SLOT_PLUG.get());
 
+        // Smithing Template Upgrades
+        basicItem(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());
+
         // Tier 0 modular items
         handHeldItem(ModItems.MODULAR_CLAY_PICKAXE);
         handHeldItem(ModItems.MODULAR_CLAY_AXE);

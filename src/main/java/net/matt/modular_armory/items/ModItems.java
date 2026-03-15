@@ -5,6 +5,9 @@ import net.matt.modular_armory.items.custom.FleshMealItem;
 import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
 import net.matt.modular_armory.items.tools.*;
 import net.matt.modular_armory.items.tools.helpers.AugmentGeneric;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -90,6 +93,22 @@ public class ModItems {
 
     public static final RegistryObject<Item> BIORITE_PICKAXE = ITEMS.register("biorite_pickaxe",
             () -> new ModularPickaxeItem(ModToolTiers.BIORITE, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(PickaxeItem.createAttributes(ModToolTiers.BIORITE, 2.0f, -2.2f))));
+
+    // Upgrades
+    public static final RegistryObject<Item> ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("advanced_modular_clay_upgrade_smithing_template",
+            () -> new SmithingTemplateItem(
+                    Component.translatable("item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
+                    Component.translatable("item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
+                    Component.translatable("upgrade.mattsmodulararmory.advanced_modular_clay_upgrade").withStyle(ChatFormatting.GRAY),
+                    Component.translatable("item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.base_slot_description"),
+                    Component.translatable("item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.additions_slot_description"),
+                    List.of(ResourceLocation.withDefaultNamespace("item/empty_slot_sword"),
+                            ResourceLocation.withDefaultNamespace("item/empty_slot_pickaxe"),
+                            ResourceLocation.withDefaultNamespace("item/empty_slot_axe"),
+                            ResourceLocation.withDefaultNamespace("item/empty_slot_shovel"),
+                            ResourceLocation.withDefaultNamespace("item/empty_slot_hoe")),
+                    List.of(ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "item/empty_slot_plate"))
+            ));
 
     // Augments
     public static final RegistryObject<Item> UNBREAKING_AUGMENT = ITEMS.register("unbreaking_augment", () -> new AugmentGeneric(new Item.Properties(), "unbreaking_augment", "generic", List.of(2, 4, 6, 8)));

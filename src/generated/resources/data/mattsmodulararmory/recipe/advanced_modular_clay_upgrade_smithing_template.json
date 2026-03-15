@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:basic_modular_plate"
+    },
+    "B": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ABA",
+    " A "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:advanced_modular_clay_upgrade_smithing_template"
+  }
+}

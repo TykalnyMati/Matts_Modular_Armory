@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "mattsmodulararmory:advanced_modular_plate"
+  },
+  "base": {
+    "item": "mattsmodulararmory:modular_clay_axe"
+  },
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:advanced_modular_clay_axe"
+  },
+  "template": {
+    "item": "mattsmodulararmory:advanced_modular_clay_upgrade_smithing_template"
+  }
+}

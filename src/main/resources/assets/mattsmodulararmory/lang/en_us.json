@@ -5,14 +5,22 @@
   "item.mattsmodulararmory.basic_modular_plate": "Basic Modular Plate",
   "item.mattsmodulararmory.modular_clay_extractor": "Modular Clay Extractor",
   "item.mattsmodulararmory.advanced_modular_plate": "Advanced Modular Plate",
+
   "item.mattsmodulararmory.flesh_meal": "Flesh Meal",
+  "tooltip.mattsmodulararmory.flesh_meal0": "Spreads ",
+  "tooltip.mattsmodulararmory.flesh_meal1": "Adaptive Flesh",
+
   "item.mattsmodulararmory.adaptive_flesh": "Adaptive Flesh",
   "item.mattsmodulararmory.adaptive_flesh_plate": "Adaptive Flesh Plate",
   "item.mattsmodulararmory.biorite_plate": "Biorite Plate",
   "item.mattsmodulararmory.exposer_slot_plug": "Exposer Slot Plug",
 
-  "tooltip.mattsmodulararmory.flesh_meal0": "Spreads ",
-  "tooltip.mattsmodulararmory.flesh_meal1": "Adaptive Flesh",
+  "item.mattsmodulararmory.advanced_modular_clay_upgrade_smithing_template": "Smithing Template",
+  "upgrade.mattsmodulararmory.advanced_modular_clay_upgrade": "Advanced Modular Clay Upgrade",
+  "item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.applies_to": "Modular Clay Equipment",
+  "item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.ingredients": "Advanced Modular Plate",
+  "item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.base_slot_description": "Add modular clay armor, weapon, or tool",
+  "item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.additions_slot_description": "Add Advanced Modular Plate",
 
   "item.mattsmodulararmory.unbreaking_augment": "Unbreaking Augment",
   "item.mattsmodulararmory.mending_augment": "Mending Augment",

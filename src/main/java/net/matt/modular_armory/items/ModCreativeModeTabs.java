@@ -33,6 +33,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.EXPOSER.get());
                         output.accept(ModItems.EXPOSER_SLOT_PLUG.get());
 
+                        output.accept(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());
+
                         // Tier 0 modular items
                         output.accept(ModItems.MODULAR_CLAY_SWORD.get());
                         output.accept(ModItems.MODULAR_CLAY_SHOVEL.get());
