@@ -124,7 +124,7 @@ public class ModularAssemblerMenu extends AbstractContainerMenu {
 
             // Tier 0: Modular Clay
             if (plate == ModItems.BASIC_MODULAR_PLATE.get()) {
-                addToolsToTier(
+                addItemsToTier(
                         ModItems.MODULAR_CLAY_SWORD.get(),
                         ModItems.MODULAR_CLAY_PICKAXE.get(),
                         ModItems.MODULAR_CLAY_AXE.get(),
@@ -135,7 +135,7 @@ public class ModularAssemblerMenu extends AbstractContainerMenu {
 
             // Tier 1: Advanced Modular Clay
             else if (plate == ModItems.ADVANCED_MODULAR_PLATE.get()) {
-                addToolsToTier(
+                addItemsToTier(
                         ModItems.ADVANCED_MODULAR_CLAY_SWORD.get(),
                         ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get(),
                         ModItems.ADVANCED_MODULAR_CLAY_AXE.get(),
@@ -146,7 +146,7 @@ public class ModularAssemblerMenu extends AbstractContainerMenu {
 
             // Tier 2: Adaptive Flesh
             else if (plate == ModItems.ADAPTIVE_FLESH_PLATE.get()) {
-                addToolsToTier(
+                addItemsToTier(
                         ModItems.ADAPTIVE_FLESH_SWORD.get(),
                         ModItems.ADAPTIVE_FLESH_PICKAXE.get(),
                         ModItems.ADAPTIVE_FLESH_AXE.get(),
@@ -157,18 +157,18 @@ public class ModularAssemblerMenu extends AbstractContainerMenu {
 
             // Tier 3: Biorite
             else if (plate == ModItems.BIORITE_PLATE.get()) {
-//                addToolsToTier(
-//                        ModItems..get(),
-//                        ModItems.BIORITE_PICKAXE.get(),
-//                        ModItems..get(),
-//                        ModItems..get(),
-//                        ModItems..get()
-//                );
+                addItemsToTier(
+                        ModItems.BIORITE_SWORD.get(),
+                        ModItems.BIORITE_PICKAXE.get(),
+                        ModItems.BIORITE_AXE.get(),
+                        ModItems.BIORITE_SHOVEL.get(),
+                        ModItems.BIORITE_HOE.get()
+                );
             }
         }
     }
 
-    private void addToolsToTier(Item... items) {
+    private void addItemsToTier(Item... items) {
         for (Item item : items) {
             this.availableTools.add(new ItemStack(item));
         }

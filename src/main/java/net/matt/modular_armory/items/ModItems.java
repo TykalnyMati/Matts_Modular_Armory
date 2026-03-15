@@ -85,14 +85,23 @@ public class ModItems {
             () -> new ModularHoeItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().rarity(Rarity.UNCOMMON).attributes(HoeItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, -2.5f, 0.4f))));
 
     public static final RegistryObject<Item> ADAPTIVE_FLESH_SWORD = ITEMS.register("adaptive_flesh_sword",
-            () -> new ModularSwordItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().rarity(Rarity.UNCOMMON).attributes(HoeItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, 4f, -2.0f))));
+            () -> new ModularSwordItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().rarity(Rarity.UNCOMMON).attributes(ModularSwordItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, 4f, -2.0f))));
 
     // Biorite
-
-
+    public static final RegistryObject<Item> BIORITE_SHOVEL = ITEMS.register("biorite_shovel",
+            () -> new ModularShovelItem(ModToolTiers.BIORITE, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(ShovelItem.createAttributes(ModToolTiers.BIORITE, 2.5f, -2.0f))));
 
     public static final RegistryObject<Item> BIORITE_PICKAXE = ITEMS.register("biorite_pickaxe",
             () -> new ModularPickaxeItem(ModToolTiers.BIORITE, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(PickaxeItem.createAttributes(ModToolTiers.BIORITE, 2.0f, -2.2f))));
+
+    public static final RegistryObject<Item> BIORITE_AXE = ITEMS.register("biorite_axe",
+            () -> new ModularAxeItem(ModToolTiers.BIORITE, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(AxeItem.createAttributes(ModToolTiers.BIORITE, 6.0f, -2.6f))));
+
+    public static final RegistryObject<Item> BIORITE_HOE = ITEMS.register("biorite_hoe",
+            () -> new ModularHoeItem(ModToolTiers.BIORITE, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(HoeItem.createAttributes(ModToolTiers.BIORITE, -3.0f, 0.6f))));
+
+    public static final RegistryObject<Item> BIORITE_SWORD = ITEMS.register("biorite_sword",
+            () -> new ModularSwordItem(ModToolTiers.BIORITE, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(ModularSwordItem.createAttributes(ModToolTiers.BIORITE, 4.5f, -1.8f))));
 
     // Upgrades
     public static final RegistryObject<Item> ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("advanced_modular_clay_upgrade_smithing_template",

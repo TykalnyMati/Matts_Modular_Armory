@@ -39,7 +39,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_HOE.get())
                 .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
 
-                .add(ModItems.BIORITE_PICKAXE.get());
+                .add(ModItems.BIORITE_PICKAXE.get())
+                .add(ModItems.BIORITE_AXE.get())
+                .add(ModItems.BIORITE_SHOVEL.get())
+                .add(ModItems.BIORITE_HOE.get())
+                .add(ModItems.BIORITE_SWORD.get());
 
         // Modular Tools tag
         tag(ModTags.Items.MODULAR_TOOL)
@@ -58,17 +62,22 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
                 .add(ModItems.ADAPTIVE_FLESH_HOE.get())
 
-                .add(ModItems.BIORITE_PICKAXE.get());
+                .add(ModItems.BIORITE_PICKAXE.get())
+                .add(ModItems.BIORITE_AXE.get())
+                .add(ModItems.BIORITE_SHOVEL.get())
+                .add(ModItems.BIORITE_HOE.get());
 
         // Modular Weapons tag
         tag(ModTags.Items.MODULAR_WEAPON)
                 .add(ModItems.MODULAR_CLAY_AXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
                 .add(ModItems.ADAPTIVE_FLESH_AXE.get())
+                .add(ModItems.BIORITE_AXE.get())
 
                 .add(ModItems.MODULAR_CLAY_SWORD.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
-                .add(ModItems.ADAPTIVE_FLESH_SWORD.get());
+                .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
+                .add(ModItems.BIORITE_SWORD.get());
 
         // Modular Items Tier 0
         tag(ModTags.Items.MODULAR_TIER_0)
@@ -96,7 +105,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         // Modular Items Tier 3
         tag(ModTags.Items.MODULAR_TIER_3)
-                .add(ModItems.BIORITE_PICKAXE.get());
+                .add(ModItems.BIORITE_PICKAXE.get())
+                .add(ModItems.BIORITE_AXE.get())
+                .add(ModItems.BIORITE_SHOVEL.get())
+                .add(ModItems.BIORITE_HOE.get())
+                .add(ModItems.BIORITE_SWORD.get());
 
         // Augments
         tag(ModTags.Items.MODULAR_ITEMS_AUGMENT)

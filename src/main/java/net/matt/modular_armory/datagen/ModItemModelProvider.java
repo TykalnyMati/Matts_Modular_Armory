@@ -53,6 +53,10 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         // Tier 3 modular items
         handHeldItem(ModItems.BIORITE_PICKAXE);
+        handHeldItem(ModItems.BIORITE_AXE);
+        handHeldItem(ModItems.BIORITE_SHOVEL);
+        handHeldItem(ModItems.BIORITE_HOE);
+        handHeldItem(ModItems.BIORITE_SWORD);
 
         // Augments
         basicItem(ModItems.UNBREAKING_AUGMENT.get());

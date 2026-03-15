@@ -1,5 +1,9 @@
 {
   "values": [
-    "mattsmodulararmory:biorite_pickaxe"
+    "mattsmodulararmory:biorite_pickaxe",
+    "mattsmodulararmory:biorite_axe",
+    "mattsmodulararmory:biorite_shovel",
+    "mattsmodulararmory:biorite_hoe",
+    "mattsmodulararmory:biorite_sword"
   ]
 }

@@ -15,6 +15,10 @@
     "mattsmodulararmory:adaptive_flesh_shovel",
     "mattsmodulararmory:adaptive_flesh_hoe",
     "mattsmodulararmory:adaptive_flesh_sword",
-    "mattsmodulararmory:biorite_pickaxe"
+    "mattsmodulararmory:biorite_pickaxe",
+    "mattsmodulararmory:biorite_axe",
+    "mattsmodulararmory:biorite_shovel",
+    "mattsmodulararmory:biorite_hoe",
+    "mattsmodulararmory:biorite_sword"
   ]
 }
