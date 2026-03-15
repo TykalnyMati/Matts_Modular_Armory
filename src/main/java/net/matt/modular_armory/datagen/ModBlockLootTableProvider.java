@@ -30,7 +30,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider{
         this.add(ModBlocks.MODULAR_CLAY_BLOCK.get(),
                 block -> createMultipleDrops(ModBlocks.MODULAR_CLAY_BLOCK.get(), ModItems.MODULAR_CLAY.get(), 4f, 4f));
         this.add(ModBlocks.ADAPTIVE_FLESH_BLOCK.get(),
-                block -> createMultipleDrops(ModBlocks.ADAPTIVE_FLESH_BLOCK.get(), ModItems.ADAPTIVE_FLESH.get(), 4f, 4f));
+                block -> createMultipleDrops(ModBlocks.ADAPTIVE_FLESH_BLOCK.get(), ModItems.ADAPTIVE_FLESH.get(), 1f, 4f));
         dropSelf(ModBlocks.AUGMENT_TABLE.get());
         dropSelf(ModBlocks.EXPOSER.get());
         dropSelf(ModBlocks.REPAIR_TABLE.get());
@@ -50,7 +50,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider{
                         pBlock,
                         LootItem.lootTableItem(item)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))
-                                .apply(ApplyBonusCount.addOreBonusCount(registrylookup.getOrThrow(Enchantments.FORTUNE)))
                 )
         );
     }

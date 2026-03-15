@@ -8,6 +8,9 @@ import net.matt.modular_armory.items.tools.helpers.AugmentGeneric;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -29,7 +32,19 @@ public class ModItems {
 
     public static final RegistryObject<Item> FLESH_MEAL = ITEMS.register("flesh_meal", () -> new FleshMealItem(new Item.Properties()));
 
-    public static final RegistryObject<Item> ADAPTIVE_FLESH = ITEMS.register("adaptive_flesh", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ADAPTIVE_FLESH = ITEMS.register("adaptive_flesh", () -> new Item(new Item.Properties()
+            .food(new FoodProperties.Builder()
+                    .nutrition(1)
+                    .saturationModifier(0.3f)
+                    .fast()
+                    // 20% chance of getting Hunger
+                    .effect(new MobEffectInstance(MobEffects.HUNGER, 200, 0), 0.2f)
+                    // 20% chance of getting Nausea
+                    .effect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0), 0.2f)
+                    // 5% change of getting Regeneration
+                    .effect(new MobEffectInstance(MobEffects.REGENERATION, 80, 1), 0.05f)
+                    .build())
+    ));
 
     public static final RegistryObject<Item> ADAPTIVE_FLESH_PLATE = ITEMS.register("adaptive_flesh_plate", () -> new Item(new Item.Properties()));
 

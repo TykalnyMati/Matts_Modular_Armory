@@ -7,7 +7,7 @@
   "item.mattsmodulararmory.advanced_modular_plate": "Advanced Modular Plate",
 
   "item.mattsmodulararmory.flesh_meal": "Flesh Meal",
-  "tooltip.mattsmodulararmory.flesh_meal0": "Spreads ",
+  "tooltip.mattsmodulararmory.flesh_meal0": "Feeds ",
   "tooltip.mattsmodulararmory.flesh_meal1": "Adaptive Flesh",
 
   "item.mattsmodulararmory.adaptive_flesh": "Adaptive Flesh",
@@ -108,7 +108,14 @@
   "item.mattsmodulararmory.biorite_sword": "Biorite Sword",
 
   "block.mattsmodulararmory.modular_clay_block": "Block of Modular Clay",
+
   "block.mattsmodulararmory.adaptive_flesh_block": "Block of Adaptive Flesh",
+  "tooltip.mattsmodulararmory.adaptive_flesh_block0": "Spreads ",
+  "tooltip.mattsmodulararmory.adaptive_flesh_block1": "to nearby ",
+  "tooltip.mattsmodulararmory.adaptive_flesh_block2": "Blocks of Modular Clay ",
+  "tooltip.mattsmodulararmory.adaptive_flesh_block3": "after being ",
+  "tooltip.mattsmodulararmory.adaptive_flesh_block4": "Fed",
+
   "block.mattsmodulararmory.augment_table": "Augment Table",
 
   "block.mattsmodulararmory.exposer": "Block Exposer",
