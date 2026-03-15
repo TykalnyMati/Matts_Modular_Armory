@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "mattsmodulararmory:basic_modular_plate"
+      "item": "mattsmodulararmory:advanced_modular_plate"
     },
     "B": {
-      "item": "mattsmodulararmory:advanced_modular_plate"
+      "item": "mattsmodulararmory:basic_modular_plate"
     }
   },
   "pattern": [

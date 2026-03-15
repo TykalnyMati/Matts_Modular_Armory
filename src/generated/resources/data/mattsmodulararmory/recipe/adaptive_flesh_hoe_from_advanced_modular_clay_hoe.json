@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "mattsmodulararmory:adaptive_flesh_plate"
+  },
+  "base": {
+    "item": "mattsmodulararmory:advanced_modular_clay_hoe"
+  },
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:adaptive_flesh_hoe"
+  },
+  "template": {
+    "item": "mattsmodulararmory:adaptive_flesh_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_adaptive_flesh_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:adaptive_flesh_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:adaptive_flesh_sword_from_advanced_modular_clay_sword"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_adaptive_flesh_plate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:adaptive_flesh_sword_from_advanced_modular_clay_sword"
+    ]
+  }
+}

@@ -22,6 +22,13 @@
   "item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.base_slot_description": "Add modular clay armor, weapon, or tool",
   "item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.additions_slot_description": "Add Advanced Modular Plate",
 
+  "item.mattsmodulararmory.adaptive_flesh_upgrade_smithing_template": "Smithing Template",
+  "upgrade.mattsmodulararmory.adaptive_flesh_upgrade": "Adaptive Flesh Upgrade",
+  "item.mattsmodulararmory.smithing_template.adaptive_flesh_upgrade.applies_to": "Advanced Modular Clay Equipment",
+  "item.mattsmodulararmory.smithing_template.adaptive_flesh_upgrade.ingredients": "Adaptive Flesh Plate",
+  "item.mattsmodulararmory.smithing_template.adaptive_flesh_upgrade.base_slot_description": "Add advanced modular clay armor, weapon, or tool",
+  "item.mattsmodulararmory.smithing_template.adaptive_flesh_upgrade.additions_slot_description": "Add Adaptive Flesh Plate",
+
   "item.mattsmodulararmory.unbreaking_augment": "Unbreaking Augment",
   "item.mattsmodulararmory.mending_augment": "Mending Augment",
   "item.mattsmodulararmory.efficiency_augment": "Efficiency Augment",
