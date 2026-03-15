@@ -134,6 +134,21 @@ public class ModItems {
                     List.of(ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "item/empty_slot_plate"))
             ));
 
+    public static final RegistryObject<Item> BIORITE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("biorite_upgrade_smithing_template",
+            () -> new SmithingTemplateItem(
+                    Component.translatable("item.mattsmodulararmory.smithing_template.biorite_upgrade.applies_to").withStyle(ChatFormatting.BLUE),
+                    Component.translatable("item.mattsmodulararmory.smithing_template.biorite_upgrade.ingredients").withStyle(ChatFormatting.BLUE),
+                    Component.translatable("upgrade.mattsmodulararmory.biorite_upgrade").withStyle(ChatFormatting.GRAY),
+                    Component.translatable("item.mattsmodulararmory.smithing_template.biorite_upgrade.base_slot_description"),
+                    Component.translatable("item.mattsmodulararmory.smithing_template.biorite_upgrade.additions_slot_description"),
+                    List.of(ResourceLocation.withDefaultNamespace("item/empty_slot_sword"),
+                            ResourceLocation.withDefaultNamespace("item/empty_slot_pickaxe"),
+                            ResourceLocation.withDefaultNamespace("item/empty_slot_axe"),
+                            ResourceLocation.withDefaultNamespace("item/empty_slot_shovel"),
+                            ResourceLocation.withDefaultNamespace("item/empty_slot_hoe")),
+                    List.of(ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "item/empty_slot_plate"))
+            ));
+
     // Augments
     public static final RegistryObject<Item> UNBREAKING_AUGMENT = ITEMS.register("unbreaking_augment", () -> new AugmentGeneric(new Item.Properties(), "unbreaking_augment", "generic", List.of(2, 4, 6, 8)));
     public static final RegistryObject<Item> MENDING_AUGMENT = ITEMS.register("mending_augment", () -> new AugmentGeneric(new Item.Properties(), "mending_augment", "generic", List.of(0, 1, 1, 1)));

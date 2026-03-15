@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_biorite_upgrade_smithing_template_duplicate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:biorite_upgrade_smithing_template"
+          },
+          {
+            "items": "mattsmodulararmory:biorite_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:biorite_upgrade_smithing_template_duplicate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_biorite_upgrade_smithing_template_duplicate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:biorite_upgrade_smithing_template_duplicate"
+    ]
+  }
+}

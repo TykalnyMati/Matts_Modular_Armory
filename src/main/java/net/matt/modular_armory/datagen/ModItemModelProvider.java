@@ -30,6 +30,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         // Smithing Template Upgrades
         basicItem(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());
         basicItem(ModItems.ADAPTIVE_FLESH_UPGRADE_SMITHING_TEMPLATE.get());
+        basicItem(ModItems.BIORITE_UPGRADE_SMITHING_TEMPLATE.get());
 
         // Tier 0 modular items
         handHeldItem(ModItems.MODULAR_CLAY_PICKAXE);

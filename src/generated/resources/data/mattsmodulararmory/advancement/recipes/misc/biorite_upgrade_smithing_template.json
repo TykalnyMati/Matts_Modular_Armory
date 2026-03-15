@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_biorite_upgrade_smithing_template": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:biorite_plate"
+          },
+          {
+            "items": "mattsmodulararmory:adaptive_flesh_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:biorite_upgrade_smithing_template"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_biorite_upgrade_smithing_template"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:biorite_upgrade_smithing_template"
+    ]
+  }
+}

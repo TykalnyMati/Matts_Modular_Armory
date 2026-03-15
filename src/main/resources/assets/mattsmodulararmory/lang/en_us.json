@@ -29,6 +29,13 @@
   "item.mattsmodulararmory.smithing_template.adaptive_flesh_upgrade.base_slot_description": "Add advanced modular clay armor, weapon, or tool",
   "item.mattsmodulararmory.smithing_template.adaptive_flesh_upgrade.additions_slot_description": "Add Adaptive Flesh Plate",
 
+  "item.mattsmodulararmory.biorite_upgrade_smithing_template": "Smithing Template",
+  "upgrade.mattsmodulararmory.biorite_upgrade": "Biorite Upgrade",
+  "item.mattsmodulararmory.smithing_template.biorite_upgrade.applies_to": "Adaptive Flesh Equipment",
+  "item.mattsmodulararmory.smithing_template.biorite_upgrade.ingredients": "Biorite Plate",
+  "item.mattsmodulararmory.smithing_template.biorite_upgrade.base_slot_description": "Add adaptive flesh armor, weapon, or tool",
+  "item.mattsmodulararmory.smithing_template.biorite_upgrade.additions_slot_description": "Add Biorite Plate",
+
   "item.mattsmodulararmory.unbreaking_augment": "Unbreaking Augment",
   "item.mattsmodulararmory.mending_augment": "Mending Augment",
   "item.mattsmodulararmory.efficiency_augment": "Efficiency Augment",

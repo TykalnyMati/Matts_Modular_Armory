@@ -253,5 +253,46 @@ public class ModRecipeProvider extends RecipeProvider {
                     .unlocks(getHasName(ModItems.ADAPTIVE_FLESH_PLATE.get()), has(ModItems.ADAPTIVE_FLESH_PLATE.get()))
                     .save(pRecipeOutput, MattsModularArmory.MOD_ID + ":" + getConversionRecipeName(AdaptiveFleshItems.get(i), AdvancedModularClayItems.get(i)));
         }
+
+        // Biorite Upgrade Smithing Template
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BIORITE_UPGRADE_SMITHING_TEMPLATE.get())
+                .pattern(" A ")
+                .pattern("ABA")
+                .pattern(" A ")
+                .define('A', ModItems.BIORITE_PLATE.get())
+                .define('B', ModItems.ADAPTIVE_FLESH_PLATE.get())
+                .unlockedBy("has_items_for_biorite_upgrade_smithing_template", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.BIORITE_PLATE.get()).build(),
+                        ItemPredicate.Builder.item().of(ModItems.ADAPTIVE_FLESH_PLATE.get()).build()))
+                .save(pRecipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BIORITE_UPGRADE_SMITHING_TEMPLATE.get(), 2)
+                .requires(ModItems.BIORITE_UPGRADE_SMITHING_TEMPLATE.get())
+                .requires(ModItems.BIORITE_PLATE.get(), 2)
+                .unlockedBy("has_items_for_biorite_upgrade_smithing_template_duplicate", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.BIORITE_UPGRADE_SMITHING_TEMPLATE.get()).build(),
+                        ItemPredicate.Builder.item().of(ModItems.BIORITE_PLATE.get()).build()))
+                .save(pRecipeOutput, MattsModularArmory.MOD_ID + ":biorite_upgrade_smithing_template_duplicate");
+
+        // Biorite Item Upgrades
+        // Transforms Adaptive Flesh -> Biorite using the Template and a Biorite Plate
+        List<Item> BioriteItems = List.of(
+                ModItems.BIORITE_SWORD.get(),
+                ModItems.BIORITE_PICKAXE.get(),
+                ModItems.BIORITE_AXE.get(),
+                ModItems.BIORITE_SHOVEL.get(),
+                ModItems.BIORITE_HOE.get()
+        );
+
+        for (int i = 0; i < AdaptiveFleshItems.size(); i++) {
+            SmithingTransformRecipeBuilder.smithing(
+                            Ingredient.of(ModItems.BIORITE_UPGRADE_SMITHING_TEMPLATE.get()), // Template
+                            Ingredient.of(AdaptiveFleshItems.get(i)),                                        // Base Item
+                            Ingredient.of(ModItems.BIORITE_PLATE.get()),                          // Addition
+                            RecipeCategory.TOOLS,
+                            BioriteItems.get(i))                                               // Result
+                    .unlocks(getHasName(ModItems.BIORITE_PLATE.get()), has(ModItems.BIORITE_PLATE.get()))
+                    .save(pRecipeOutput, MattsModularArmory.MOD_ID + ":" + getConversionRecipeName(BioriteItems.get(i), AdaptiveFleshItems.get(i)));
+        }
     }
 }

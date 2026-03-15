@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "mattsmodulararmory:biorite_plate"
+  },
+  "base": {
+    "item": "mattsmodulararmory:adaptive_flesh_hoe"
+  },
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:biorite_hoe"
+  },
+  "template": {
+    "item": "mattsmodulararmory:biorite_upgrade_smithing_template"
+  }
+}
