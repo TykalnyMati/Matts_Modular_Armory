@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_exposer_slot_plug": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:advanced_modular_plate"
+          },
+          {
+            "items": "#minecraft:stone_bricks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:exposer_slot_plug"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_exposer_slot_plug"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:exposer_slot_plug"
+    ]
+  }
+}

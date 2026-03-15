@@ -164,6 +164,30 @@ public class ModRecipeProvider extends RecipeProvider {
                         ItemPredicate.Builder.item().of(ItemTags.PLANKS).build()))
                 .save(pRecipeOutput);
 
+        // Exposer
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.EXPOSER.get())
+                .pattern("ABA")
+                .pattern("B B")
+                .pattern("ABA")
+                .define('A', ItemTags.STONE_BRICKS)
+                .define('B', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .unlockedBy("has_items_for_exposer", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()).build(),
+                        ItemPredicate.Builder.item().of(ItemTags.STONE_BRICKS).build()))
+                .save(pRecipeOutput);
+
+        // Exposer Slot Plug
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EXPOSER_SLOT_PLUG.get())
+                .pattern(" A ")
+                .pattern("ABA")
+                .pattern(" A ")
+                .define('A', ItemTags.STONE_BRICKS)
+                .define('B', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .unlockedBy("has_items_for_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()).build(),
+                        ItemPredicate.Builder.item().of(ItemTags.STONE_BRICKS).build()))
+                .save(pRecipeOutput);
+
         // Advanced Modular Clay Upgrade Smithing Template
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get())
                 .pattern(" A ")

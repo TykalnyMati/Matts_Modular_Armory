@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "tag": "minecraft:stone_bricks"
+    },
+    "B": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "B B",
+    "ABA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:exposer"
+  }
+}
