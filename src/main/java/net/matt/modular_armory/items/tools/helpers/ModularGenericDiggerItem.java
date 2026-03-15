@@ -5,6 +5,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -20,6 +21,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.Tags;
 
 import java.util.List;
 
@@ -199,9 +201,10 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         }
 
         float base = super.getDestroySpeed(stack, state);
+        AugumentObject bonuses = getAugmentBonuses(stack);
 
         if (state.is(mineableTag)) {
-            base += (float) (1.0f * (Math.pow(getAugmentBonuses(stack).EFFICIENCY, 2) + 1));
+            base += (float) (1.0f * (Math.pow(bonuses.EFFICIENCY, 2) + 1 + (bonuses.DIAMOND_SHARPENED ? 2 : 0)));
         }
         return base;
 
@@ -211,6 +214,12 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
     public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
         if (isBroken(stack)) {
             return false;
+        }
+
+        if (getAugmentBonuses(stack).DIAMOND_SHARPENED) {
+            if (state.is(mineableTag) && state.is(BlockTags.NEEDS_DIAMOND_TOOL)) {
+                return true;
+            }
         }
 
         return super.isCorrectToolForDrops(stack, state);

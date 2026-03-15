@@ -48,6 +48,7 @@
   "item.mattsmodulararmory.knockback_augment": "Knockback Augment",
   "item.mattsmodulararmory.fire_aspect_augment": "Fire Aspect Augment",
   "item.mattsmodulararmory.auto_smelt_augment": "Auto Smelt Augment",
+  "item.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened Augment",
 
   "tooltip.mattsmodulararmory.augments": "Augments",
   "tooltip.mattsmodulararmory.unbreaking_augment": "Unbreaking",
@@ -63,6 +64,7 @@
   "tooltip.mattsmodulararmory.knockback_augment": "Knockback",
   "tooltip.mattsmodulararmory.fire_aspect_augment": "Fire Aspect",
   "tooltip.mattsmodulararmory.auto_smelt_augment": "Auto Smelt",
+  "tooltip.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened",
 
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
   "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
@@ -82,6 +84,7 @@
   "tooltip.mattsmodulararmory.description.fire_aspect_augment": "Sets the targets ablaze upon attack\nDuration increases with level",
 
   "tooltip.mattsmodulararmory.description.auto_smelt_augment": "Smelts mined blocks at the cost of extra durability\nCan drop experience that would appear after smelting\nWorks with fortune",
+  "tooltip.mattsmodulararmory.description.diamond_sharpened_augment": "Allows for the destruction of blocks that would require a diamond tool\nSlightly increases mining speed",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",

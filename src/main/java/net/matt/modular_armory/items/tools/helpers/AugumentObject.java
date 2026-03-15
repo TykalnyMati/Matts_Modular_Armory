@@ -25,6 +25,7 @@ public class AugumentObject {
 
     // Custom Augment values
     public boolean AUTO_SMELT;
+    public boolean DIAMOND_SHARPENED;
 
     public AugumentObject(ItemStack stack) {
         for (ItemStack augment : getAugments(stack)) {
@@ -38,6 +39,7 @@ public class AugumentObject {
                 case "mattsmodulararmory:silk_touch_augment" -> this.SILK_TOUCH = true;
                 case "mattsmodulararmory:fortune_augment" -> this.FORTUNE = augment.getCount();
                 case "mattsmodulararmory:auto_smelt_augment" -> this.AUTO_SMELT = true;
+                case "mattsmodulararmory:diamond_sharpened_augment" -> this.DIAMOND_SHARPENED = true;
 
                 // Weapon specific augments
                 case "mattsmodulararmory:sharpness_augment" -> this.SHARPNESS = augment.getCount();
@@ -83,6 +85,10 @@ public class AugumentObject {
         } else if (this.FORTUNE > 0) {
             pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fortune_augment").withStyle(ChatFormatting.BLUE)
                     .append(Component.literal(": " + toRoman(this.FORTUNE)).withStyle(ChatFormatting.BLUE)));
+        }
+
+        if (this.DIAMOND_SHARPENED) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.diamond_sharpened_augment").withStyle(ChatFormatting.AQUA));
         }
 
         if (this.AUTO_SMELT) {

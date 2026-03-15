@@ -67,6 +67,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.EFFICIENCY_AUGMENT.get());
         basicItem(ModItems.SILK_TOUCH_AUGMENT.get());
         basicItem(ModItems.FORTUNE_AUGMENT.get());
+        basicItem(ModItems.DIAMOND_SHARPENED_AUGMENT.get());
 
         basicItem(ModItems.SHARPNESS_AUGMENT.get());
         basicItem(ModItems.SMITE_AUGMENT.get());

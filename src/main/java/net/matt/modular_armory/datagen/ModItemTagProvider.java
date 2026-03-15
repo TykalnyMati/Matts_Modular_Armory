@@ -119,6 +119,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.EFFICIENCY_AUGMENT.get())
                 .add(ModItems.SILK_TOUCH_AUGMENT.get())
                 .add(ModItems.FORTUNE_AUGMENT.get())
+                .add(ModItems.DIAMOND_SHARPENED_AUGMENT.get())
 
                 .add(ModItems.SHARPNESS_AUGMENT.get())
                 .add(ModItems.SMITE_AUGMENT.get())
