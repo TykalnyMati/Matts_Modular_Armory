@@ -4,9 +4,7 @@ import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
 
 import java.util.List;
 
@@ -26,6 +24,8 @@ public class AugumentObject {
     // Custom Augment values
     public boolean AUTO_SMELT;
     public boolean DIAMOND_SHARPENED;
+
+    public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
     public AugumentObject(ItemStack stack) {
         for (ItemStack augment : getAugments(stack)) {
@@ -60,8 +60,25 @@ public class AugumentObject {
         return stack.get(ModDataComponentTypes.AUGMENTS.get());
     }
 
-    public List<Component> getTooltips(List<Component> pTooltipComponents, boolean displayOn) {
+    public List<Component> getTooltips(List<Component> pTooltipComponents, boolean displayOn, int tier, int randomIndex) {
         if (displayOn) {
+            if (tier > 1) {
+                ChatFormatting[] colors = {ChatFormatting.GRAY, ChatFormatting.WHITE, ChatFormatting.DARK_RED, ChatFormatting.AQUA};
+                String flavorText = "";
+
+                if (tier == 3) {
+                    flavorText = "tooltip.mattsmodulararmory.biorite_flavor." + randomIndex;
+                } else if (tier == 2) {
+                    flavorText = "tooltip.mattsmodulararmory.adaptive_flesh_flavor." + randomIndex;
+                }
+
+                pTooltipComponents.add(Component.literal("§k|§r ")
+                        .append(Component.translatable(flavorText))
+                        .append(Component.literal(" §k|"))
+                        .withStyle(colors[tier])
+                        .withStyle(ChatFormatting.ITALIC));
+            }
+
             pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.augments").withStyle(ChatFormatting.GRAY)
                     .append(Component.literal(":").withStyle(ChatFormatting.GRAY)));
 

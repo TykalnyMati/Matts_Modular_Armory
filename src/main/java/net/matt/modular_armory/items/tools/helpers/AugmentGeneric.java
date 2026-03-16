@@ -36,7 +36,7 @@ public class AugmentGeneric extends Item {
         if (augmentLevels.isEmpty()) {
             pTooltipComponents.add(Component.literal("1").withStyle(ChatFormatting.GRAY));
         } else {
-            ChatFormatting[] colors = {ChatFormatting.GRAY, ChatFormatting.WHITE, ChatFormatting.RED, ChatFormatting.AQUA};
+            ChatFormatting[] colors = {ChatFormatting.GRAY, ChatFormatting.WHITE, ChatFormatting.DARK_RED, ChatFormatting.AQUA};
             MutableComponent levelsLine = Component.empty();
 
             for (int i = 0; i < augmentLevels.size(); i++) {

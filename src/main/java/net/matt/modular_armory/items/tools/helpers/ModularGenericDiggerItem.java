@@ -239,10 +239,30 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
     }
 
     // Tooltips
+    private static long lastHoverTime = 0;
+    private static int sessionRandomOffset = 0;
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         boolean hasAugments = pStack.has(ModDataComponentTypes.AUGMENTS.get());
-        List<Component> toolTips = new AugumentObject(pStack).getTooltips(pTooltipComponents, hasAugments);
+        int tier = 0;
+        if (pStack.is(ModTags.Items.MODULAR_TIER_3)) {
+            tier = 3;
+        } else if (pStack.is(ModTags.Items.MODULAR_TIER_2)) {
+            tier = 2;
+        }
+
+        // Randomizing flavor text
+        if (tier > 1) {
+            long currentTime = System.currentTimeMillis();
+            int totalFlavors = AugumentObject.TOTAL_FLAVOR_TEXT_AMOUNT;
+
+            if (currentTime - lastHoverTime > 100) {
+                sessionRandomOffset = new java.util.Random().nextInt(totalFlavors);
+            }
+            lastHoverTime = currentTime;
+        }
+
+        List<Component> toolTips = new AugumentObject(pStack).getTooltips(pTooltipComponents, hasAugments, tier, sessionRandomOffset);
 
         super.appendHoverText(pStack, pContext, toolTips, pTooltipFlag);
     }
