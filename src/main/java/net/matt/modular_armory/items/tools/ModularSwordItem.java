@@ -1,5 +1,6 @@
 package net.matt.modular_armory.items.tools;
 
+import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.items.tools.helpers.AugumentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.minecraft.core.BlockPos;
@@ -190,7 +191,8 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
     // Tooltips
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        List<Component> toolTips = new AugumentObject(pStack).getTooltips(pTooltipComponents);
+        boolean hasAugments = pStack.has(ModDataComponentTypes.AUGMENTS.get());
+        List<Component> toolTips = new AugumentObject(pStack).getTooltips(pTooltipComponents, hasAugments);
 
         super.appendHoverText(pStack, pContext, toolTips, pTooltipFlag);
     }

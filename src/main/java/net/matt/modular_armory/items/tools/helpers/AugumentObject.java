@@ -60,65 +60,67 @@ public class AugumentObject {
         return stack.get(ModDataComponentTypes.AUGMENTS.get());
     }
 
-    public List<Component> getTooltips(List<Component> pTooltipComponents) {
-        pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.augments").withStyle(ChatFormatting.GRAY)
-                .append(Component.literal(":").withStyle(ChatFormatting.GRAY)));
+    public List<Component> getTooltips(List<Component> pTooltipComponents, boolean displayOn) {
+        if (displayOn) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.augments").withStyle(ChatFormatting.GRAY)
+                    .append(Component.literal(":").withStyle(ChatFormatting.GRAY)));
 
-        if (this.UNBREAKING >= 8) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.unbreaking_augment_full").withStyle(ChatFormatting.DARK_AQUA));
-        } else if (this.UNBREAKING > 0) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.unbreaking_augment").withStyle(ChatFormatting.DARK_AQUA)
-                    .append(Component.literal(": " + toRoman(this.UNBREAKING)).withStyle(ChatFormatting.DARK_AQUA)));
-        }
+            if (this.UNBREAKING >= 8) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.unbreaking_augment_full").withStyle(ChatFormatting.DARK_AQUA));
+            } else if (this.UNBREAKING > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.unbreaking_augment").withStyle(ChatFormatting.DARK_AQUA)
+                        .append(Component.literal(": " + toRoman(this.UNBREAKING)).withStyle(ChatFormatting.DARK_AQUA)));
+            }
 
-        if (this.MENDING) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.mending_augment").withStyle(ChatFormatting.GREEN));
-        }
+            if (this.MENDING) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.mending_augment").withStyle(ChatFormatting.GREEN));
+            }
 
-        if (this.EFFICIENCY > 0) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.efficiency_augment").withStyle(ChatFormatting.YELLOW)
-                    .append(Component.literal(": " + toRoman((int)this.EFFICIENCY)).withStyle(ChatFormatting.YELLOW)));
-        }
+            if (this.EFFICIENCY > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.efficiency_augment").withStyle(ChatFormatting.YELLOW)
+                        .append(Component.literal(": " + toRoman((int) this.EFFICIENCY)).withStyle(ChatFormatting.YELLOW)));
+            }
 
-        if (this.SILK_TOUCH) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.silk_touch_augment").withStyle(ChatFormatting.LIGHT_PURPLE));
-        } else if (this.FORTUNE > 0) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fortune_augment").withStyle(ChatFormatting.BLUE)
-                    .append(Component.literal(": " + toRoman(this.FORTUNE)).withStyle(ChatFormatting.BLUE)));
-        }
+            if (this.SILK_TOUCH) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.silk_touch_augment").withStyle(ChatFormatting.LIGHT_PURPLE));
+            } else if (this.FORTUNE > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fortune_augment").withStyle(ChatFormatting.BLUE)
+                        .append(Component.literal(": " + toRoman(this.FORTUNE)).withStyle(ChatFormatting.BLUE)));
+            }
 
-        if (this.DIAMOND_SHARPENED) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.diamond_sharpened_augment").withStyle(ChatFormatting.AQUA));
-        }
+            if (this.DIAMOND_SHARPENED) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.diamond_sharpened_augment").withStyle(ChatFormatting.AQUA));
+            }
 
-        if (this.AUTO_SMELT) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.auto_smelt_augment").withStyle(ChatFormatting.DARK_RED));
-        }
+            if (this.AUTO_SMELT) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.auto_smelt_augment").withStyle(ChatFormatting.DARK_RED));
+            }
 
-        if (this.SHARPNESS > 0) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.sharpness_augment").withStyle(ChatFormatting.DARK_RED)
-                    .append(Component.literal(": " + toRoman(this.SHARPNESS)).withStyle(ChatFormatting.DARK_RED)));
-        } else if (this.SMITE > 0) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.smite_augment").withStyle(ChatFormatting.DARK_RED)
-                    .append(Component.literal(": " + toRoman(this.SMITE)).withStyle(ChatFormatting.DARK_RED)));
-        } else if (this.BANE_OF_ARTHROPODS > 0) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.bane_of_arthropods_augment").withStyle(ChatFormatting.DARK_RED)
-                    .append(Component.literal(": " + toRoman(this.BANE_OF_ARTHROPODS)).withStyle(ChatFormatting.DARK_RED)));
-        }
+            if (this.SHARPNESS > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.sharpness_augment").withStyle(ChatFormatting.DARK_RED)
+                        .append(Component.literal(": " + toRoman(this.SHARPNESS)).withStyle(ChatFormatting.DARK_RED)));
+            } else if (this.SMITE > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.smite_augment").withStyle(ChatFormatting.DARK_RED)
+                        .append(Component.literal(": " + toRoman(this.SMITE)).withStyle(ChatFormatting.DARK_RED)));
+            } else if (this.BANE_OF_ARTHROPODS > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.bane_of_arthropods_augment").withStyle(ChatFormatting.DARK_RED)
+                        .append(Component.literal(": " + toRoman(this.BANE_OF_ARTHROPODS)).withStyle(ChatFormatting.DARK_RED)));
+            }
 
-        if (this.LOOTING > 0) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.looting_augment").withStyle(ChatFormatting.BLUE)
-                    .append(Component.literal(": " + toRoman(this.LOOTING)).withStyle(ChatFormatting.BLUE)));
-        }
+            if (this.LOOTING > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.looting_augment").withStyle(ChatFormatting.BLUE)
+                        .append(Component.literal(": " + toRoman(this.LOOTING)).withStyle(ChatFormatting.BLUE)));
+            }
 
-        if (this.KNOCKBACK > 0) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.knockback_augment").withStyle(ChatFormatting.WHITE)
-                    .append(Component.literal(": " + toRoman(this.KNOCKBACK)).withStyle(ChatFormatting.WHITE)));
-        }
+            if (this.KNOCKBACK > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.knockback_augment").withStyle(ChatFormatting.WHITE)
+                        .append(Component.literal(": " + toRoman(this.KNOCKBACK)).withStyle(ChatFormatting.WHITE)));
+            }
 
-        if (this.FIRE_ASPECT > 0) {
-            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fire_aspect_augment").withStyle(ChatFormatting.YELLOW)
-                    .append(Component.literal(": " + toRoman(this.FIRE_ASPECT)).withStyle(ChatFormatting.YELLOW)));
+            if (this.FIRE_ASPECT > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fire_aspect_augment").withStyle(ChatFormatting.YELLOW)
+                        .append(Component.literal(": " + toRoman(this.FIRE_ASPECT)).withStyle(ChatFormatting.YELLOW)));
+            }
         }
 
         return pTooltipComponents;

@@ -1,5 +1,7 @@
 package net.matt.modular_armory.items.tools.helpers;
 
+import net.matt.modular_armory.component.ModDataComponentTypes;
+import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
@@ -239,7 +241,8 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
     // Tooltips
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
-        List<Component> toolTips = new AugumentObject(pStack).getTooltips(pTooltipComponents);
+        boolean hasAugments = pStack.has(ModDataComponentTypes.AUGMENTS.get());
+        List<Component> toolTips = new AugumentObject(pStack).getTooltips(pTooltipComponents, hasAugments);
 
         super.appendHoverText(pStack, pContext, toolTips, pTooltipFlag);
     }
