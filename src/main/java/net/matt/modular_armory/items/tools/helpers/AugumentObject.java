@@ -72,9 +72,9 @@ public class AugumentObject {
                     flavorText = "tooltip.mattsmodulararmory.adaptive_flesh_flavor." + randomIndex;
                 }
 
-                pTooltipComponents.add(Component.literal("§k|§r ")
+                pTooltipComponents.add(Component.literal("§k|abc")
                         .append(Component.translatable(flavorText))
-                        .append(Component.literal(" §k|"))
+                        .append(Component.literal("§k|abc"))
                         .withStyle(colors[tier])
                         .withStyle(ChatFormatting.ITALIC));
             }
