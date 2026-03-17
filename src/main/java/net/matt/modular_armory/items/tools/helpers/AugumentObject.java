@@ -17,6 +17,7 @@ public class AugumentObject {
     public int SHARPNESS;
     public int SMITE;
     public int BANE_OF_ARTHROPODS;
+    public int IMPALING;
     public int LOOTING;
     public int KNOCKBACK;
     public int FIRE_ASPECT;
@@ -45,6 +46,7 @@ public class AugumentObject {
                 case "mattsmodulararmory:sharpness_augment" -> this.SHARPNESS = augment.getCount();
                 case "mattsmodulararmory:smite_augment" -> this.SMITE = augment.getCount();
                 case "mattsmodulararmory:bane_of_arthropods_augment" -> this.BANE_OF_ARTHROPODS = augment.getCount();
+                case "mattsmodulararmory:impaling_augment" -> this.IMPALING = augment.getCount();
                 case "mattsmodulararmory:looting_augment" -> this.LOOTING = augment.getCount();
                 case "mattsmodulararmory:knockback_augment" -> this.KNOCKBACK = augment.getCount();
                 case "mattsmodulararmory:fire_aspect_augment" -> this.FIRE_ASPECT = augment.getCount();
@@ -122,6 +124,9 @@ public class AugumentObject {
             } else if (this.BANE_OF_ARTHROPODS > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.bane_of_arthropods_augment").withStyle(ChatFormatting.DARK_RED)
                         .append(Component.literal(": " + toRoman(this.BANE_OF_ARTHROPODS)).withStyle(ChatFormatting.DARK_RED)));
+            } else if (this.IMPALING > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.impaling_augment").withStyle(ChatFormatting.DARK_RED)
+                        .append(Component.literal(": " + toRoman(this.IMPALING)).withStyle(ChatFormatting.DARK_RED)));
             }
 
             if (this.LOOTING > 0) {

@@ -124,6 +124,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.SHARPNESS_AUGMENT.get())
                 .add(ModItems.SMITE_AUGMENT.get())
                 .add(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get())
+                .add(ModItems.IMPALING_AUGMENT.get())
                 .add(ModItems.LOOTING_AUGMENT.get())
                 .add(ModItems.KNOCKBACK_AUGMENT.get())
                 .add(ModItems.FIRE_ASPECT_AUGMENT.get())

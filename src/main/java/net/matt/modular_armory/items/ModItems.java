@@ -179,6 +179,7 @@ public class ModItems {
     public static final RegistryObject<Item> SHARPNESS_AUGMENT = ITEMS.register("sharpness_augment", () -> new AugmentGeneric(new Item.Properties(), "sharpness_augment", "weapons", List.of(1, 3, 5, 7)));
     public static final RegistryObject<Item> SMITE_AUGMENT = ITEMS.register("smite_augment", () -> new AugmentGeneric(new Item.Properties(), "smite_augment", "weapons", List.of(1, 3, 5, 7)));
     public static final RegistryObject<Item> BANE_OF_ARTHROPODS_AUGMENT = ITEMS.register("bane_of_arthropods_augment", () -> new AugmentGeneric(new Item.Properties(), "bane_of_arthropods_augment", "weapons", List.of(1, 3, 5, 7)));
+    public static final RegistryObject<Item> IMPALING_AUGMENT = ITEMS.register("impaling_augment", () -> new AugmentGeneric(new Item.Properties(), "impaling_augment", "weapons", List.of(1, 3, 5, 7)));
     public static final RegistryObject<Item> LOOTING_AUGMENT = ITEMS.register("looting_augment", () -> new AugmentGeneric(new Item.Properties(), "looting_augment", "weapons", List.of(1, 2, 3, 4)));
     public static final RegistryObject<Item> KNOCKBACK_AUGMENT = ITEMS.register("knockback_augment", () -> new AugmentGeneric(new Item.Properties(), "knockback_augment", "weapons", List.of(1, 2, 2, 3)));
     public static final RegistryObject<Item> FIRE_ASPECT_AUGMENT = ITEMS.register("fire_aspect_augment", () -> new AugmentGeneric(new Item.Properties(), "fire_aspect_augment", "weapons", List.of(1, 1, 2, 3)));

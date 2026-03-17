@@ -77,6 +77,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SHARPNESS_AUGMENT.get());
                         output.accept(ModItems.SMITE_AUGMENT.get());
                         output.accept(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get());
+                        output.accept(ModItems.IMPALING_AUGMENT.get());
                         output.accept(ModItems.LOOTING_AUGMENT.get());
                         output.accept(ModItems.KNOCKBACK_AUGMENT.get());
                         output.accept(ModItems.FIRE_ASPECT_AUGMENT.get());

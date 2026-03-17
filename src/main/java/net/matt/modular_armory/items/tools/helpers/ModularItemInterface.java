@@ -1,6 +1,13 @@
 package net.matt.modular_armory.items.tools.helpers;
 
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.tags.EntityTypeTags;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -64,4 +71,110 @@ public interface ModularItemInterface {
         return remainingXp;
     }
 
+    default float getWeaponAttackDamageBonus(Entity target, float baseDamage, DamageSource source) {
+        ItemStack weapon = source.getWeaponItem();
+
+        if (isBroken(weapon)) {
+            return -baseDamage + 1;
+        }
+
+        AugumentObject bonuses = getAugmentBonuses(weapon);
+        float bonusDamage = 0.0f;
+
+        int sharpness = bonuses.SHARPNESS;
+        int smite = bonuses.SMITE;
+        int bane_of_arthropods = bonuses.BANE_OF_ARTHROPODS;
+        int impaling = bonuses.IMPALING;
+
+        if (sharpness > 0) {
+            bonusDamage = 0.5f * sharpness  + 0.5f;
+        } else if (smite > 0) {
+            if (target.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
+                bonusDamage = 2.5f * smite;
+            }
+        } else if (bane_of_arthropods > 0) {
+            if (target.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
+                bonusDamage = 2.5f * bane_of_arthropods;
+            }
+        } else if (impaling > 0) {
+            if (target.getType().is(EntityTypeTags.SENSITIVE_TO_IMPALING)) {
+                bonusDamage = 2.5f * impaling;
+            }
+        }
+
+        return bonusDamage;
+    }
+
+    default void postWeaponHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
+        if (isBroken(pStack)) {
+            return;
+        }
+
+        damageTool(pStack, pAttacker);
+
+        AugumentObject bonuses = getAugmentBonuses(pStack);
+
+        int sharpness = bonuses.SHARPNESS;
+        int smite = bonuses.SMITE;
+        int bane_of_arthropods = bonuses.BANE_OF_ARTHROPODS;
+        int impaling = bonuses.IMPALING;
+        int knockback = bonuses.KNOCKBACK;
+
+        boolean DO_ENCHANTED_PARTICLES = false;
+
+        if (pAttacker.level() instanceof ServerLevel serverLevel) {
+            // Testing damaging effects
+            if (sharpness > 0) {
+                DO_ENCHANTED_PARTICLES = true;
+            } else if (smite > 0) {
+                if (pTarget.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
+                    DO_ENCHANTED_PARTICLES = true;
+                }
+            } else if (bane_of_arthropods > 0) {
+                if (pTarget.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
+                    DO_ENCHANTED_PARTICLES = true;
+
+                    // Random value between 1 and 1 + 0.5 seconds per level
+                    int duration = 20 + pAttacker.getRandom().nextInt(10 * bonuses.BANE_OF_ARTHROPODS);
+
+                    pTarget.addEffect(new MobEffectInstance(
+                            MobEffects.MOVEMENT_SLOWDOWN,
+                            duration,
+                            3
+                    ));
+                }
+            } else if (impaling > 0) {
+                if (pTarget.getType().is(EntityTypeTags.SENSITIVE_TO_IMPALING)) {
+                    DO_ENCHANTED_PARTICLES = true;
+                }
+            }
+
+            // Spawn particles
+            if (DO_ENCHANTED_PARTICLES) {
+                serverLevel.sendParticles(
+                        ParticleTypes.ENCHANTED_HIT,
+                        pTarget.getRandomX(0.5D),
+                        pTarget.getRandomY(),
+                        pTarget.getRandomZ(0.5D),
+                        24,
+                        0.0D,
+                        0.5D,
+                        0.0D,
+                        0.5D
+                );
+            }
+
+            // Knockback augment
+            if (knockback > 0) {
+                float strength = 0.5F * knockback;
+
+                double dx = Math.sin(pAttacker.getYRot() * Math.PI / 180.0);
+                double dz = -Math.cos(pAttacker.getYRot() * Math.PI / 180.0);
+
+                pTarget.knockback(strength, dx, dz);
+
+                pAttacker.setDeltaMovement(pAttacker.getDeltaMovement().multiply(0.6D, 1.0D, 0.6D));
+            }
+        }
+    }
 }

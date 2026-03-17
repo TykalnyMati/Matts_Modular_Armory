@@ -72,6 +72,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SHARPNESS_AUGMENT.get());
         basicItem(ModItems.SMITE_AUGMENT.get());
         basicItem(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get());
+        basicItem(ModItems.IMPALING_AUGMENT.get());
         basicItem(ModItems.LOOTING_AUGMENT.get());
         basicItem(ModItems.KNOCKBACK_AUGMENT.get());
         basicItem(ModItems.FIRE_ASPECT_AUGMENT.get());
