@@ -35,7 +35,7 @@ public class ModularHoeItem extends ModularGenericDiggerItem {
         BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.HOE_TILL, false);
         Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of(ctx -> true, changeIntoState(toolModifiedState));
         if (pair == null) {
-            return InteractionResult.PASS;
+            return super.useOn(pContext);
         } else {
             Predicate<UseOnContext> predicate = pair.getFirst();
             Consumer<UseOnContext> consumer = pair.getSecond();
@@ -51,7 +51,7 @@ public class ModularHoeItem extends ModularGenericDiggerItem {
 
                 return InteractionResult.sidedSuccess(level.isClientSide);
             } else {
-                return InteractionResult.PASS;
+                return super.useOn(pContext);
             }
         }
     }

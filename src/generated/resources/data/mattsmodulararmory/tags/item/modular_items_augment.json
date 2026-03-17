@@ -5,7 +5,6 @@
     "mattsmodulararmory:efficiency_augment",
     "mattsmodulararmory:silk_touch_augment",
     "mattsmodulararmory:fortune_augment",
-    "mattsmodulararmory:diamond_sharpened_augment",
     "mattsmodulararmory:sharpness_augment",
     "mattsmodulararmory:smite_augment",
     "mattsmodulararmory:bane_of_arthropods_augment",
@@ -13,6 +12,8 @@
     "mattsmodulararmory:looting_augment",
     "mattsmodulararmory:knockback_augment",
     "mattsmodulararmory:fire_aspect_augment",
-    "mattsmodulararmory:auto_smelt_augment"
+    "mattsmodulararmory:auto_smelt_augment",
+    "mattsmodulararmory:diamond_sharpened_augment",
+    "mattsmodulararmory:illuminator_augment"
   ]
 }

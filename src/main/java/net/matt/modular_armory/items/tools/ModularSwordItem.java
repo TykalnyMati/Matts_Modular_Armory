@@ -84,8 +84,7 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
             return false;
         }
 
-        damageTool(stack, entity);
-        damageTool(stack, entity);
+        damageTool(stack, entity, 2);
 
         return true;
     }

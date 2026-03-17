@@ -45,6 +45,12 @@ public interface ModularItemInterface {
         stack.hurtAndBreak(1, entity, EquipmentSlot.MAINHAND);
     }
 
+    default void damageTool(ItemStack stack, LivingEntity entity, int amount) {
+        for (int i = 0; i < amount; i++) {
+            damageTool(stack, entity);
+        }
+    }
+
     default boolean isBroken(ItemStack item) {
         return item.getDamageValue() >= item.getMaxDamage() - 1;
     }

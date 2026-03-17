@@ -48,8 +48,10 @@
   "item.mattsmodulararmory.looting_augment": "Looting Augment",
   "item.mattsmodulararmory.knockback_augment": "Knockback Augment",
   "item.mattsmodulararmory.fire_aspect_augment": "Fire Aspect Augment",
+
   "item.mattsmodulararmory.auto_smelt_augment": "Auto Smelt Augment",
   "item.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened Augment",
+  "item.mattsmodulararmory.illuminator_augment": "Illuminator Augment",
 
   "tooltip.mattsmodulararmory.augments": "Augments",
   "tooltip.mattsmodulararmory.unbreaking_augment": "Unbreaking",
@@ -65,8 +67,10 @@
   "tooltip.mattsmodulararmory.looting_augment": "Looting",
   "tooltip.mattsmodulararmory.knockback_augment": "Knockback",
   "tooltip.mattsmodulararmory.fire_aspect_augment": "Fire Aspect",
+
   "tooltip.mattsmodulararmory.auto_smelt_augment": "Auto Smelt",
   "tooltip.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened",
+  "tooltip.mattsmodulararmory.illuminator_augment": "Illuminator",
 
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
   "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
@@ -88,6 +92,7 @@
 
   "tooltip.mattsmodulararmory.description.auto_smelt_augment": "Smelts mined blocks at the cost of extra durability\nCan drop experience that would appear after smelting\nWorks with fortune",
   "tooltip.mattsmodulararmory.description.diamond_sharpened_augment": "Allows for the destruction of blocks that would require a diamond tool\nSlightly increases mining speed",
+  "tooltip.mattsmodulararmory.description.illuminator_augment": "Places a light after interacting",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",
@@ -227,7 +232,7 @@
   "block.mattsmodulararmory.augment_table": "Augment Table",
 
   "block.mattsmodulararmory.exposer": "Block Exposer",
-  "tooltip.mattsmodulararmory.exposer": "Transforms or creates blocks depending on it's surroundings",
+  "tooltip.mattsmodulararmory.exposer": "Transforms or creates blocks depending on its surroundings",
   "container.mattsmodulararmory.exposer.adjacent": "Adjacent to any side:",
   "container.mattsmodulararmory.exposer.liquid": "In Block Form",
   "container.mattsmodulararmory.exposer.water_cauldron": "Filled with Water",

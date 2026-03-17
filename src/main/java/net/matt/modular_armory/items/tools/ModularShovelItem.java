@@ -46,7 +46,7 @@ public class ModularShovelItem extends ModularGenericDiggerItem {
         BlockPos blockpos = pContext.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
         if (pContext.getClickedFace() == Direction.DOWN) {
-            return InteractionResult.PASS;
+            return super.useOn(pContext);
         } else {
             Player player = pContext.getPlayer();
             BlockState blockstate1 = blockstate.getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.SHOVEL_FLATTEN, false);
@@ -74,7 +74,7 @@ public class ModularShovelItem extends ModularGenericDiggerItem {
 
                 return InteractionResult.sidedSuccess(level.isClientSide);
             } else {
-                return InteractionResult.PASS;
+                return super.useOn(pContext);
             }
         }
     }

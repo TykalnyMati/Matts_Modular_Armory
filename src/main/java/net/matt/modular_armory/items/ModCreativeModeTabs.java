@@ -73,6 +73,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SILK_TOUCH_AUGMENT.get());
                         output.accept(ModItems.FORTUNE_AUGMENT.get());
                         output.accept(ModItems.DIAMOND_SHARPENED_AUGMENT.get());
+                        output.accept(ModItems.ILLUMINATOR_AUGMENT.get());
 
                         output.accept(ModItems.SHARPNESS_AUGMENT.get());
                         output.accept(ModItems.SMITE_AUGMENT.get());

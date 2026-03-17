@@ -3,18 +3,22 @@ package net.matt.modular_armory.items.tools.helpers;
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
@@ -22,8 +26,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.Tags;
 
 import java.util.List;
 
@@ -164,6 +168,46 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
     }
 
     @Override
+    public InteractionResult useOn(UseOnContext pContext) {
+        ItemStack stack = pContext.getItemInHand();
+        Player player = pContext.getPlayer();
+        Level level = player.level();
+        BlockPos pos = pContext.getClickedPos();
+        Direction facing = pContext.getClickedFace();
+
+        if (isBroken(stack) || player == null) {
+            return InteractionResult.PASS;
+        }
+
+        AugumentObject bonuses = getAugmentBonuses(stack);
+
+        if (bonuses.ILLUMINATOR) {
+            BlockPos placePos = pos.relative(facing);
+
+            if (level.getBlockState(placePos).canBeReplaced()) {
+                // Change the torch item to a custom Light Block
+                ItemStack lightStack = new ItemStack(Items.TORCH);
+                BlockPlaceContext lightContext = new BlockPlaceContext(
+                        level,
+                        player,
+                        pContext.getHand(),
+                        lightStack,
+                        new BlockHitResult(pContext.getClickLocation(), facing, pos, pContext.isInside())
+                );
+                InteractionResult result = Items.TORCH.useOn(lightContext);
+
+                if (result.consumesAction()) {
+                    damageTool(stack, player, 5);
+
+                    return InteractionResult.sidedSuccess(level.isClientSide);
+                }
+            }
+        }
+
+        return super.useOn(pContext);
+    }
+
+    @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         return !isBroken(stack);
     }
@@ -174,8 +218,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             return;
         }
 
-        damageTool(pStack, pAttacker);
-        damageTool(pStack, pAttacker);
+        damageTool(pStack, pAttacker, 2);
     }
 
     @Override

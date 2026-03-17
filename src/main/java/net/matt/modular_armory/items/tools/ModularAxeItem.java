@@ -90,7 +90,7 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
             var modded = level.getBlockState(blockpos).getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.AXE_STRIP, false);
             Optional<BlockState> optional = modded != null ? Optional.of(modded) : this.evaluateNewBlockState(level, blockpos, player, level.getBlockState(blockpos));
             if (optional.isEmpty()) {
-                return InteractionResult.PASS;
+                return super.useOn(pContext);
             } else {
                 ItemStack itemstack = pContext.getItemInHand();
                 if (player instanceof ServerPlayer) {

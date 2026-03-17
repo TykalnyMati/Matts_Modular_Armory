@@ -173,7 +173,6 @@ public class ModItems {
     public static final RegistryObject<Item> EFFICIENCY_AUGMENT = ITEMS.register("efficiency_augment", () -> new AugmentGeneric(new Item.Properties(), "efficiency_augment", "tools", List.of(1, 3, 5, 7)));
     public static final RegistryObject<Item> SILK_TOUCH_AUGMENT = ITEMS.register("silk_touch_augment", () -> new AugmentGeneric(new Item.Properties(), "silk_touch_augment", "tools", List.of(1, 1, 1, 1)));
     public static final RegistryObject<Item> FORTUNE_AUGMENT = ITEMS.register("fortune_augment", () -> new AugmentGeneric(new Item.Properties(), "fortune_augment", "tools", List.of(1, 2, 3, 4)));
-    public static final RegistryObject<Item> DIAMOND_SHARPENED_AUGMENT = ITEMS.register("diamond_sharpened_augment", () -> new AugmentGeneric(new Item.Properties(), "diamond_sharpened_augment", "tools", List.of(0, 1, 1, 1)));
 
     // Weapons
     public static final RegistryObject<Item> SHARPNESS_AUGMENT = ITEMS.register("sharpness_augment", () -> new AugmentGeneric(new Item.Properties(), "sharpness_augment", "weapons", List.of(1, 3, 5, 7)));
@@ -186,6 +185,8 @@ public class ModItems {
 
     // Custom Augments
     public static final RegistryObject<Item> AUTO_SMELT_AUGMENT = ITEMS.register("auto_smelt_augment", () -> new AugmentGeneric(new Item.Properties(), "auto_smelt_augment", "tools", List.of(0, 1, 1, 1)));
+    public static final RegistryObject<Item> DIAMOND_SHARPENED_AUGMENT = ITEMS.register("diamond_sharpened_augment", () -> new AugmentGeneric(new Item.Properties(), "diamond_sharpened_augment", "tools", List.of(0, 1, 1, 1)));
+    public static final RegistryObject<Item> ILLUMINATOR_AUGMENT = ITEMS.register("illuminator_augment", () -> new AugmentGeneric(new Item.Properties(), "illuminator_augment", "tools", List.of(0, 1, 1, 1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
