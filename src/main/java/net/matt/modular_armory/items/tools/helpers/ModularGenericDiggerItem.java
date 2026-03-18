@@ -1,5 +1,7 @@
 package net.matt.modular_armory.items.tools.helpers;
 
+import net.matt.modular_armory.block.ModBlocks;
+import net.matt.modular_armory.block.entity.custom.ScaffoldingAugmentBlockEntity;
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.util.ModTags;
@@ -25,6 +27,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -199,8 +202,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             BlockPos placePos = pos.relative(facing);
 
             if (level.getBlockState(placePos).canBeReplaced()) {
-                // TODO Change cobblestone to a custom scaffolding block
-                ItemStack scaffoldingStack = new ItemStack(Items.TORCH);
+                ItemStack scaffoldingStack = new ItemStack(ModBlocks.SCAFFOLDING_AUGMENT_BLOCK.get().asItem());
                 BlockPlaceContext scaffoldingContext = new BlockPlaceContext(
                         level,
                         player,
@@ -208,10 +210,16 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                         scaffoldingStack,
                         new BlockHitResult(pContext.getClickLocation(), facing, pos, pContext.isInside())
                 );
-                InteractionResult result = Blocks.COBBLESTONE.asItem().useOn(scaffoldingContext);
+                InteractionResult result = ModBlocks.SCAFFOLDING_AUGMENT_BLOCK.get().asItem().useOn(scaffoldingContext);
 
                 if (result.consumesAction()) {
-                    damageTool(stack, player, 5);
+                    if (!level.isClientSide) {
+                        BlockEntity be = level.getBlockEntity(placePos);
+                        if (be instanceof ScaffoldingAugmentBlockEntity scaffoldingBE) {
+                            scaffoldingBE.setMaxLife(bonuses.SCAFFOLDING);
+                        }
+                    }
+                    damageTool(stack, player, 2);
 
                     return InteractionResult.sidedSuccess(level.isClientSide);
                 }
