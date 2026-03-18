@@ -25,6 +25,7 @@ public class AugumentObject {
     // Custom Augment values
     public boolean AUTO_SMELT;
     public boolean DIAMOND_SHARPENED;
+    public int MODULAR_CLAY_EXTRACTOR;
     public boolean ILLUMINATOR;
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
@@ -42,6 +43,7 @@ public class AugumentObject {
                 case "mattsmodulararmory:fortune_augment" -> this.FORTUNE = augment.getCount();
                 case "mattsmodulararmory:auto_smelt_augment" -> this.AUTO_SMELT = true;
                 case "mattsmodulararmory:diamond_sharpened_augment" -> this.DIAMOND_SHARPENED = true;
+                case "mattsmodulararmory:modular_clay_extractor_augment" -> this.MODULAR_CLAY_EXTRACTOR = augment.getCount();
                 case "mattsmodulararmory:illuminator_augment" -> this.ILLUMINATOR = true;
 
                 // Weapon specific augments
@@ -115,6 +117,10 @@ public class AugumentObject {
 
             if (this.AUTO_SMELT) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.auto_smelt_augment").withStyle(ChatFormatting.DARK_RED));
+            }
+
+            if (this.MODULAR_CLAY_EXTRACTOR > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.modular_clay_extractor_augment").withStyle(ChatFormatting.DARK_GRAY));
             }
 
             if (this.ILLUMINATOR) {

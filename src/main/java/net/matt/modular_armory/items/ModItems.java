@@ -186,6 +186,7 @@ public class ModItems {
     // Custom Augments
     public static final RegistryObject<Item> AUTO_SMELT_AUGMENT = ITEMS.register("auto_smelt_augment", () -> new AugmentGeneric(new Item.Properties(), "auto_smelt_augment", "tools", List.of(0, 1, 1, 1)));
     public static final RegistryObject<Item> DIAMOND_SHARPENED_AUGMENT = ITEMS.register("diamond_sharpened_augment", () -> new AugmentGeneric(new Item.Properties(), "diamond_sharpened_augment", "tools", List.of(0, 1, 1, 1)));
+    public static final RegistryObject<Item> MODULAR_CLAY_EXTRACTOR_AUGMENT = ITEMS.register("modular_clay_extractor_augment", () -> new AugmentGeneric(new Item.Properties(), "modular_clay_extractor_augment", "tools", List.of(1, 2, 3, 4)));
     public static final RegistryObject<Item> ILLUMINATOR_AUGMENT = ITEMS.register("illuminator_augment", () -> new AugmentGeneric(new Item.Properties(), "illuminator_augment", "tools", List.of(0, 1, 1, 1)));
 
     public static void register(IEventBus eventBus) {

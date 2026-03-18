@@ -79,6 +79,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         // Custom Augments
         basicItem(ModItems.AUTO_SMELT_AUGMENT.get());
         basicItem(ModItems.DIAMOND_SHARPENED_AUGMENT.get());
+        basicItem(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get());
         basicItem(ModItems.ILLUMINATOR_AUGMENT.get());
     }
 

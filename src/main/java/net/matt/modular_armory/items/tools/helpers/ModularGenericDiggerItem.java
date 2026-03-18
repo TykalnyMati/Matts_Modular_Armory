@@ -1,6 +1,7 @@
 package net.matt.modular_armory.items.tools.helpers;
 
 import net.matt.modular_armory.component.ModDataComponentTypes;
+import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -23,6 +24,7 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
@@ -30,6 +32,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
+
+import static net.minecraft.world.level.block.Block.popResource;
+import static net.minecraft.world.level.block.Block.popResourceFromFace;
 
 public class ModularGenericDiggerItem extends DiggerItem implements ModularItemInterface {
     private final TagKey<Block> mineableTag;
@@ -181,11 +186,21 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
 
         AugumentObject bonuses = getAugmentBonuses(stack);
 
+        if (bonuses.MODULAR_CLAY_EXTRACTOR > 0 && level.getBlockState(pContext.getClickedPos()).getBlock() == Blocks.CLAY) {
+            level.setBlockAndUpdate(pContext.getClickedPos(), Blocks.DIRT.defaultBlockState());
+
+            int amount = 2 + new java.util.Random().nextInt(2 + bonuses.MODULAR_CLAY_EXTRACTOR);
+            popResourceFromFace(level, pContext.getClickedPos(), facing, new ItemStack(ModItems.MODULAR_CLAY.get(), amount));
+
+            damageTool(stack, player, 5);
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
         if (bonuses.ILLUMINATOR) {
             BlockPos placePos = pos.relative(facing);
 
             if (level.getBlockState(placePos).canBeReplaced()) {
-                // Change the torch item to a custom Light Block
+                // TODO Change the torch item to a custom Light Block
                 ItemStack lightStack = new ItemStack(Items.TORCH);
                 BlockPlaceContext lightContext = new BlockPlaceContext(
                         level,

@@ -18,6 +18,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Map;
 
 import static net.minecraft.world.level.block.Block.popResource;
+import static net.minecraft.world.level.block.Block.popResourceFromFace;
 
 public class ModularClayExtractorItem extends Item {
     private static final Map<Block, Block> CHANGE_MAP = Map.of(
@@ -40,7 +41,9 @@ public class ModularClayExtractorItem extends Item {
                 // Usefull for droping XP
                 //clickedBlock.popExperience(((ServerLevel) level), pContext.getClickedPos(), 10);
 
-                popResource(level, pContext.getClickedPos(), new ItemStack(ModItems.MODULAR_CLAY.get(), 3));
+                // between 2/3
+                int amount = 2 + new java.util.Random().nextInt(2);
+                popResourceFromFace(level, pContext.getClickedPos(), pContext.getClickedFace(), new ItemStack(ModItems.MODULAR_CLAY.get(), amount));
 
                 pContext.getItemInHand().hurtAndBreak(1, ((ServerLevel) level), ((ServerPlayer) pContext.getPlayer()), item -> {
                     assert pContext.getPlayer() != null;

@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-17T18:33:43.400166	Item Models: mattsmodulararmory
+// 1.21.1	2026-03-18T12:03:55.0678832	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 6d073ddd6d0570130fc739d091a1df63c3237e43 assets/mattsmodulararmory/models/item/adaptive_flesh_hoe.json
@@ -38,6 +38,7 @@ d8dcc54dffb53312c42efb31d5bf647657e8fe1f assets/mattsmodulararmory/models/item/f
 9313e9a86f7413889944fc617c76a67e7aabacfd assets/mattsmodulararmory/models/item/modular_clay.json
 c54f64e8ac016e556ecf3cd74e990b2fbbac64bf assets/mattsmodulararmory/models/item/modular_clay_axe.json
 26c93a55de5bb9a1111c940602b69d23449292eb assets/mattsmodulararmory/models/item/modular_clay_extractor.json
+c722cadeea7a568849654b7dac805b33c25f75ac assets/mattsmodulararmory/models/item/modular_clay_extractor_augment.json
 e86a371e37d9ff23faecbb25a1bfde6c5708d49e assets/mattsmodulararmory/models/item/modular_clay_hoe.json
 73c24eef4af9c45d4b13ddf79973b23e82178b9a assets/mattsmodulararmory/models/item/modular_clay_pickaxe.json
 3ce82cd4eeebaff81f4239fef604a9d38b274649 assets/mattsmodulararmory/models/item/modular_clay_shovel.json
