@@ -33,7 +33,6 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
-import static net.minecraft.world.level.block.Block.popResource;
 import static net.minecraft.world.level.block.Block.popResourceFromFace;
 
 public class ModularGenericDiggerItem extends DiggerItem implements ModularItemInterface {
@@ -187,16 +186,37 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         AugumentObject bonuses = getAugmentBonuses(stack);
 
         if (bonuses.MODULAR_CLAY_EXTRACTOR > 0 && level.getBlockState(pContext.getClickedPos()).getBlock() == Blocks.CLAY) {
-            level.setBlockAndUpdate(pContext.getClickedPos(), Blocks.DIRT.defaultBlockState());
+            level.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
 
             int amount = 2 + new java.util.Random().nextInt(2 + bonuses.MODULAR_CLAY_EXTRACTOR);
-            popResourceFromFace(level, pContext.getClickedPos(), facing, new ItemStack(ModItems.MODULAR_CLAY.get(), amount));
+            popResourceFromFace(level, pos, facing, new ItemStack(ModItems.MODULAR_CLAY.get(), amount));
 
             damageTool(stack, player, 5);
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        if (bonuses.ILLUMINATOR) {
+        if (bonuses.SCAFFOLDING > 0) {
+            BlockPos placePos = pos.relative(facing);
+
+            if (level.getBlockState(placePos).canBeReplaced()) {
+                // TODO Change cobblestone to a custom scaffolding block
+                ItemStack scaffoldingStack = new ItemStack(Items.TORCH);
+                BlockPlaceContext scaffoldingContext = new BlockPlaceContext(
+                        level,
+                        player,
+                        pContext.getHand(),
+                        scaffoldingStack,
+                        new BlockHitResult(pContext.getClickLocation(), facing, pos, pContext.isInside())
+                );
+                InteractionResult result = Blocks.COBBLESTONE.asItem().useOn(scaffoldingContext);
+
+                if (result.consumesAction()) {
+                    damageTool(stack, player, 5);
+
+                    return InteractionResult.sidedSuccess(level.isClientSide);
+                }
+            }
+        } else if (bonuses.ILLUMINATOR) {
             BlockPos placePos = pos.relative(facing);
 
             if (level.getBlockState(placePos).canBeReplaced()) {
