@@ -1,17 +1,12 @@
 package net.matt.modular_armory.items.tools;
 
 import net.matt.modular_armory.component.ModDataComponentTypes;
-import net.matt.modular_armory.items.tools.helpers.AugumentObject;
+import net.matt.modular_armory.items.tools.helpers.AugmentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
@@ -125,7 +120,7 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
         // Randomizing flavor text
         if (tier > 1) {
             long currentTime = System.currentTimeMillis();
-            int totalFlavors = AugumentObject.TOTAL_FLAVOR_TEXT_AMOUNT;
+            int totalFlavors = AugmentObject.TOTAL_FLAVOR_TEXT_AMOUNT;
 
             if (currentTime - lastHoverTime > 100) {
                 sessionRandomOffset = new java.util.Random().nextInt(totalFlavors);
@@ -133,7 +128,7 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
             lastHoverTime = currentTime;
         }
 
-        List<Component> toolTips = new AugumentObject(pStack).getTooltips(pTooltipComponents, hasAugments, tier, sessionRandomOffset);
+        List<Component> toolTips = new AugmentObject(pStack).getTooltips(pTooltipComponents, hasAugments, tier, sessionRandomOffset);
 
         super.appendHoverText(pStack, pContext, toolTips, pTooltipFlag);
     }

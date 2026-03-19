@@ -55,8 +55,8 @@ public interface ModularItemInterface {
         return item.getDamageValue() >= item.getMaxDamage() - 1;
     }
 
-    default AugumentObject getAugmentBonuses(ItemStack stack) {
-        AugumentObject Bonuses = new AugumentObject(stack);
+    default AugmentObject getAugmentBonuses(ItemStack stack) {
+        AugmentObject Bonuses = new AugmentObject(stack);
         return Bonuses;
     }
 
@@ -84,7 +84,7 @@ public interface ModularItemInterface {
             return -baseDamage + 1;
         }
 
-        AugumentObject bonuses = getAugmentBonuses(weapon);
+        AugmentObject bonuses = getAugmentBonuses(weapon);
         float bonusDamage = 0.0f;
 
         int sharpness = bonuses.SHARPNESS;
@@ -118,7 +118,7 @@ public interface ModularItemInterface {
 
         damageTool(pStack, pAttacker);
 
-        AugumentObject bonuses = getAugmentBonuses(pStack);
+        AugmentObject bonuses = getAugmentBonuses(pStack);
 
         int sharpness = bonuses.SHARPNESS;
         int smite = bonuses.SMITE;

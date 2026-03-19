@@ -8,7 +8,7 @@ import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
 
-public class AugumentObject {
+public class AugmentObject {
     public int UNBREAKING;
     public boolean MENDING;
     public int EFFICIENCY;
@@ -31,7 +31,7 @@ public class AugumentObject {
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
-    public AugumentObject(ItemStack stack) {
+    public AugmentObject(ItemStack stack) {
         for (ItemStack augment : getAugments(stack)) {
             switch (BuiltInRegistries.ITEM.getKey(augment.getItem()).toString()) {
                 // Generic augments

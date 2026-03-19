@@ -1,10 +1,8 @@
 package net.matt.modular_armory.events;
 
 import net.matt.modular_armory.MattsModularArmory;
-import net.matt.modular_armory.items.tools.ModularAxeItem;
-import net.matt.modular_armory.items.tools.ModularPickaxeItem;
 import net.matt.modular_armory.items.tools.ModularSwordItem;
-import net.matt.modular_armory.items.tools.helpers.AugumentObject;
+import net.matt.modular_armory.items.tools.helpers.AugmentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -138,7 +136,7 @@ public class ModEvents {
             ItemStack weapon = livingAttacker.getMainHandItem();
 
             if (weapon.getItem() instanceof ModularSwordItem sword && !sword.isBroken(weapon)) {
-                AugumentObject bonuses = sword.getAugmentBonuses(weapon);
+                AugmentObject bonuses = sword.getAugmentBonuses(weapon);
 
                 // If the weapon has Fire Aspect, convert meat drops to cooked versions
                 if (bonuses.FIRE_ASPECT > 0) {
@@ -174,7 +172,7 @@ public class ModEvents {
 
             // Check if it's one of your modular tools and not broken
             if (weapon.getItem() instanceof ModularItemInterface modularTool && !modularTool.isBroken(weapon)) {
-                AugumentObject bonuses = modularTool.getAugmentBonuses(weapon);
+                AugmentObject bonuses = modularTool.getAugmentBonuses(weapon);
 
                 // Add the augment level to the existing looting level
                 if (bonuses.LOOTING > 0) {
@@ -192,7 +190,7 @@ public class ModEvents {
 
             // Check if it's a modular item
             if (weapon.getItem() instanceof ModularItemInterface modularItem && !modularItem.isBroken(weapon)) {
-                AugumentObject bonuses = modularItem.getAugmentBonuses(weapon);
+                AugmentObject bonuses = modularItem.getAugmentBonuses(weapon);
 
                 // If it has Fire Aspect, ignite the entity(ies) being damaged
                 if (bonuses.FIRE_ASPECT > 0) {

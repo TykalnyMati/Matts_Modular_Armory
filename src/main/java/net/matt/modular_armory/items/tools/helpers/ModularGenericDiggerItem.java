@@ -79,7 +79,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             return false;
         }
 
-        AugumentObject bonuses = getAugmentBonuses(itemstack);
+        AugmentObject bonuses = getAugmentBonuses(itemstack);
         ServerLevel serverLevel = (ServerLevel) level;
 
         // Only intercept if we have Silk or Fortune and the tool is correct
@@ -186,7 +186,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             return InteractionResult.PASS;
         }
 
-        AugumentObject bonuses = getAugmentBonuses(stack);
+        AugmentObject bonuses = getAugmentBonuses(stack);
 
         if (bonuses.MODULAR_CLAY_EXTRACTOR > 0 && level.getBlockState(pContext.getClickedPos()).getBlock() == Blocks.CLAY) {
             level.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
@@ -265,6 +265,16 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
     }
 
     @Override
+    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        if (!pLevel.isClientSide && pIsSelected && pEntity instanceof Player player && !isBroken(pStack)) {
+            AugmentObject bonuses = getAugmentBonuses(pStack);
+
+        }
+
+        super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
+    }
+
+    @Override
     public ItemAttributeModifiers getDefaultAttributeModifiers(ItemStack stack) {
         if (isBroken(stack)) {
             return ItemAttributeModifiers.EMPTY;
@@ -289,7 +299,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         }
 
         float base = super.getDestroySpeed(stack, state);
-        AugumentObject bonuses = getAugmentBonuses(stack);
+        AugmentObject bonuses = getAugmentBonuses(stack);
 
         if (state.is(mineableTag)) {
             base += (float) (1.0f * (Math.pow(bonuses.EFFICIENCY, 2) + 1 + (bonuses.DIAMOND_SHARPENED ? 2 : 0)));
@@ -340,7 +350,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         // Randomizing flavor text
         if (tier > 1) {
             long currentTime = System.currentTimeMillis();
-            int totalFlavors = AugumentObject.TOTAL_FLAVOR_TEXT_AMOUNT;
+            int totalFlavors = AugmentObject.TOTAL_FLAVOR_TEXT_AMOUNT;
 
             if (currentTime - lastHoverTime > 100) {
                 sessionRandomOffset = new java.util.Random().nextInt(totalFlavors);
@@ -348,7 +358,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             lastHoverTime = currentTime;
         }
 
-        List<Component> toolTips = new AugumentObject(pStack).getTooltips(pTooltipComponents, hasAugments, tier, sessionRandomOffset);
+        List<Component> toolTips = new AugmentObject(pStack).getTooltips(pTooltipComponents, hasAugments, tier, sessionRandomOffset);
 
         super.appendHoverText(pStack, pContext, toolTips, pTooltipFlag);
     }
