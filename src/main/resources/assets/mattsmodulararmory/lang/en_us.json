@@ -54,6 +54,7 @@
   "item.mattsmodulararmory.modular_clay_extractor_augment": "Modular Clay Extractor Augment",
   "item.mattsmodulararmory.scaffolding_augment": "Scaffolding Augment",
   "item.mattsmodulararmory.illuminator_augment": "Illuminator Augment",
+  "item.mattsmodulararmory.magnet_augment": "Magnet Augment",
 
   "tooltip.mattsmodulararmory.augments": "Augments",
   "tooltip.mattsmodulararmory.unbreaking_augment": "Unbreaking",
@@ -75,11 +76,13 @@
   "tooltip.mattsmodulararmory.modular_clay_extractor_augment": "Modular Clay Extractor",
   "tooltip.mattsmodulararmory.scaffolding_augment": "Scaffolding",
   "tooltip.mattsmodulararmory.illuminator_augment": "Illuminator",
+  "tooltip.mattsmodulararmory.magnet_augment": "Magnet",
 
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
   "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
   "tooltip.mattsmodulararmory.augment_type.weapons": "Weapons",
   "tooltip.mattsmodulararmory.augment_type.armor": "Armor",
+  "tooltip.mattsmodulararmory.augment_type.tools_and_weapons": "Tools and Weapons",
 
   "tooltip.mattsmodulararmory.description.unbreaking_augment": "Reduces the chance to consume durability by 12.5%\nBecomes unbreakable with 8 augments",
   "tooltip.mattsmodulararmory.description.mending_augment": "Repairs items with XP",
@@ -99,6 +102,7 @@
   "tooltip.mattsmodulararmory.description.modular_clay_extractor_augment": "Allows for the extraction of Modular Clay when interacting with Clay\nAmount increases with level",
   "tooltip.mattsmodulararmory.description.scaffolding_augment": "Places a temporary block that disappears after nothing is standing on it for some time\nTime for the block to disappear increases with level",
   "tooltip.mattsmodulararmory.description.illuminator_augment": "Places a light when interacting",
+  "tooltip.mattsmodulararmory.description.magnet_augment": "Attracts nearby items when the item is held",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",

@@ -10,7 +10,13 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.List;
 
 public interface ModularItemInterface {
     default void damageTool(ItemStack stack, LivingEntity entity) {
@@ -180,6 +186,40 @@ public interface ModularItemInterface {
                 pTarget.knockback(strength, dx, dz);
 
                 pAttacker.setDeltaMovement(pAttacker.getDeltaMovement().multiply(0.6D, 1.0D, 0.6D));
+            }
+        }
+    }
+
+    default void handleHeldItem(ItemStack pStack, Level pLevel, Entity pEntity) {
+        if (pEntity instanceof Player player) {
+            AugmentObject bonuses = getAugmentBonuses(pStack);
+
+            if (bonuses.MAGNET) {
+                double range = 5.0; // + (bonuses.MAGNET * 2.0);
+
+                // Find all Item Entities in that range
+                List<ItemEntity> items = pLevel.getEntitiesOfClass(
+                        net.minecraft.world.entity.item.ItemEntity.class,
+                        player.getBoundingBox().inflate(range)
+                );
+
+                for (net.minecraft.world.entity.item.ItemEntity item : items) {
+                    // Ignore items that have a pickup delay
+                    if (item.hasPickUpDelay()) {
+                        continue;
+                    }
+
+                    // Calculate the vector from the item to the player
+                    Vec3 moveVec = player.position().add(0, 0.5, 0).subtract(item.position());
+
+                    // Only pull if the item is not too close
+                    if (moveVec.length() > 0.5) {
+                        moveVec = moveVec.normalize().scale(0.1);
+
+                        // Apply the velocity to the item
+                        item.setDeltaMovement(item.getDeltaMovement().add(moveVec));
+                    }
+                }
             }
         }
     }

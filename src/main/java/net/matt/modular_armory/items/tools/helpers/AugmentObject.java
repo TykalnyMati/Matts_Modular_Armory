@@ -28,6 +28,7 @@ public class AugmentObject {
     public int MODULAR_CLAY_EXTRACTOR;
     public int SCAFFOLDING;
     public boolean ILLUMINATOR;
+    public boolean MAGNET;
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
@@ -48,6 +49,7 @@ public class AugmentObject {
                 case "mattsmodulararmory:modular_clay_extractor_augment" -> this.MODULAR_CLAY_EXTRACTOR = augment.getCount();
                 case "mattsmodulararmory:scaffolding_augment" -> this.SCAFFOLDING = augment.getCount();
                 case "mattsmodulararmory:illuminator_augment" -> this.ILLUMINATOR = true;
+                case "mattsmodulararmory:magnet_augment" -> this.MAGNET = true;
 
                 // Weapon specific augments
                 case "mattsmodulararmory:sharpness_augment" -> this.SHARPNESS = augment.getCount();
@@ -122,8 +124,13 @@ public class AugmentObject {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.auto_smelt_augment").withStyle(ChatFormatting.DARK_RED));
             }
 
+            if (this.MAGNET) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.magnet_augment").withStyle(ChatFormatting.WHITE));
+            }
+
             if (this.MODULAR_CLAY_EXTRACTOR > 0) {
-                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.modular_clay_extractor_augment").withStyle(ChatFormatting.GRAY));
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.modular_clay_extractor_augment")
+                        .append(Component.literal(": " + toRoman(this.MODULAR_CLAY_EXTRACTOR))).withStyle(ChatFormatting.GRAY));
             }
 
             if (this.SCAFFOLDING > 0) {

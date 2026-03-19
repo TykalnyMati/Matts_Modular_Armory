@@ -133,7 +133,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.DIAMOND_SHARPENED_AUGMENT.get())
                 .add(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get())
                 .add(ModItems.SCAFFOLDING_AUGMENT.get())
-                .add(ModItems.ILLUMINATOR_AUGMENT.get());
+                .add(ModItems.ILLUMINATOR_AUGMENT.get())
+                .add(ModItems.MAGNET_AUGMENT.get());
 
     }
 }

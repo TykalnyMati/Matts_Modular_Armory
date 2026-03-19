@@ -189,6 +189,7 @@ public class ModItems {
     public static final RegistryObject<Item> MODULAR_CLAY_EXTRACTOR_AUGMENT = ITEMS.register("modular_clay_extractor_augment", () -> new AugmentGeneric(new Item.Properties(), "modular_clay_extractor_augment", "tools", List.of(1, 2, 3, 4)));
     public static final RegistryObject<Item> SCAFFOLDING_AUGMENT = ITEMS.register("scaffolding_augment", () -> new AugmentGeneric(new Item.Properties(), "scaffolding_augment", "tools", List.of(1, 2, 3, 4)));
     public static final RegistryObject<Item> ILLUMINATOR_AUGMENT = ITEMS.register("illuminator_augment", () -> new AugmentGeneric(new Item.Properties(), "illuminator_augment", "tools", List.of(0, 1, 1, 1)));
+    public static final RegistryObject<Item> MAGNET_AUGMENT = ITEMS.register("magnet_augment", () -> new AugmentGeneric(new Item.Properties(), "magnet_augment", "tools_and_weapons", List.of(0, 1, 1, 1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

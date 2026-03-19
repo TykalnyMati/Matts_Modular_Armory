@@ -76,6 +76,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get());
                         output.accept(ModItems.SCAFFOLDING_AUGMENT.get());
                         output.accept(ModItems.ILLUMINATOR_AUGMENT.get());
+                        output.accept(ModItems.MAGNET_AUGMENT.get());
 
                         output.accept(ModItems.SHARPNESS_AUGMENT.get());
                         output.accept(ModItems.SMITE_AUGMENT.get());

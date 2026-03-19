@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-18T12:46:50.0944542	Item Models: mattsmodulararmory
+// 1.21.1	2026-03-19T10:25:44.3864328	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 6d073ddd6d0570130fc739d091a1df63c3237e43 assets/mattsmodulararmory/models/item/adaptive_flesh_hoe.json
@@ -34,6 +34,7 @@ d8dcc54dffb53312c42efb31d5bf647657e8fe1f assets/mattsmodulararmory/models/item/f
 5dc880793072692d4a49e79ad4c1b41447810d87 assets/mattsmodulararmory/models/item/impaling_augment.json
 17de936a75b45912c6037342d3413ab64750f769 assets/mattsmodulararmory/models/item/knockback_augment.json
 1fead3ae8cb5fc29681e49e40b61bcd96e65b444 assets/mattsmodulararmory/models/item/looting_augment.json
+64552a314e0349d741a2e54b11a5b9a028f85304 assets/mattsmodulararmory/models/item/magnet_augment.json
 8141c0ad38298d2e0b48c03e6b359fd016550301 assets/mattsmodulararmory/models/item/mending_augment.json
 9313e9a86f7413889944fc617c76a67e7aabacfd assets/mattsmodulararmory/models/item/modular_clay.json
 c54f64e8ac016e556ecf3cd74e990b2fbbac64bf assets/mattsmodulararmory/models/item/modular_clay_axe.json

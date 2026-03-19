@@ -82,6 +82,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get());
         basicItem(ModItems.SCAFFOLDING_AUGMENT.get());
         basicItem(ModItems.ILLUMINATOR_AUGMENT.get());
+        basicItem(ModItems.MAGNET_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(RegistryObject<Item> item) {
