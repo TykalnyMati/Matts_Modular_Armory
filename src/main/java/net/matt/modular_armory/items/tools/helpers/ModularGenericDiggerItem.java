@@ -201,7 +201,8 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         if (bonuses.SCAFFOLDING > 0) {
             BlockPos placePos = pos.relative(facing);
 
-            if (level.getBlockState(placePos).canBeReplaced()) {
+            // Try to replace the block (like grass)
+            if (level.getBlockState(pos).canBeReplaced()) {
                 ItemStack scaffoldingStack = new ItemStack(ModBlocks.SCAFFOLDING_AUGMENT_BLOCK.get().asItem());
                 BlockPlaceContext scaffoldingContext = new BlockPlaceContext(
                         level,
@@ -209,6 +210,30 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                         pContext.getHand(),
                         scaffoldingStack,
                         new BlockHitResult(pContext.getClickLocation(), facing, pos, pContext.isInside())
+                );
+                InteractionResult result = ModBlocks.SCAFFOLDING_AUGMENT_BLOCK.get().asItem().useOn(scaffoldingContext);
+
+                if (result.consumesAction()) {
+                    if (!level.isClientSide) {
+                        BlockEntity be = level.getBlockEntity(pos);
+                        if (be instanceof ScaffoldingAugmentBlockEntity scaffoldingBE) {
+                            scaffoldingBE.setMaxLife(bonuses.SCAFFOLDING);
+                        }
+                    }
+                    damageTool(stack, player, 2);
+
+                    return InteractionResult.sidedSuccess(level.isClientSide);
+                }
+            }
+            // Try to place the block relative to the clicked side
+            else if (level.getBlockState(placePos).canBeReplaced()) {
+                ItemStack scaffoldingStack = new ItemStack(ModBlocks.SCAFFOLDING_AUGMENT_BLOCK.get().asItem());
+                BlockPlaceContext scaffoldingContext = new BlockPlaceContext(
+                        level,
+                        player,
+                        pContext.getHand(),
+                        scaffoldingStack,
+                        new BlockHitResult(pContext.getClickLocation(), facing, placePos, pContext.isInside())
                 );
                 InteractionResult result = ModBlocks.SCAFFOLDING_AUGMENT_BLOCK.get().asItem().useOn(scaffoldingContext);
 

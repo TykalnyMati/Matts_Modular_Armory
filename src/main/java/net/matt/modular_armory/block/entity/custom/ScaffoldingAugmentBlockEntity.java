@@ -18,7 +18,9 @@ public class ScaffoldingAugmentBlockEntity extends BlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, ScaffoldingAugmentBlockEntity be) {
-        if (level.isClientSide) return;
+        if (level.isClientSide) {
+            return;
+        }
 
         // Check for entities standing on it
         boolean hasEntity = !level.getEntities(null, new AABB(pos).move(0, 0.5, 0)).isEmpty();
@@ -45,14 +47,16 @@ public class ScaffoldingAugmentBlockEntity extends BlockEntity {
     }
 
     public void setMaxLife(int tier) {
-        this.MAX_LIFE = 40 + tier * 20;
+        this.MAX_LIFE = 40 + ((tier - 1) * 20);
         this.setChanged();
     }
 
     @Override
     public void setRemoved() {
         // Remove cracks if the block is broken early
-        if (level != null) level.destroyBlockProgress(this.hashCode(), worldPosition, -1);
+        if (level != null) {
+            level.destroyBlockProgress(this.hashCode(), worldPosition, -1);
+        }
         super.setRemoved();
     }
 
