@@ -3,17 +3,29 @@
 
   "item.mattsmodulararmory.modular_clay": "Modular Clay",
   "item.mattsmodulararmory.basic_modular_plate": "Basic Modular Plate",
+  "tooltip.mattsmodulararmory.generic_plate": "Insert into the Modular Assembler to create: ",
+  "tooltip.mattsmodulararmory.basic_modular_plate": "Modular Clay Items",
+
   "item.mattsmodulararmory.modular_clay_extractor": "Modular Clay Extractor",
+  "tooltip.mattsmodulararmory.modular_clay_extractor": "Extracts modular clay by turning clay into dirt",
+
   "item.mattsmodulararmory.advanced_modular_plate": "Advanced Modular Plate",
+  "tooltip.mattsmodulararmory.advanced_modular_plate": "Advanced Modular Clay Items",
 
   "item.mattsmodulararmory.flesh_meal": "Flesh Meal",
   "tooltip.mattsmodulararmory.flesh_meal0": "Feeds ",
   "tooltip.mattsmodulararmory.flesh_meal1": "Adaptive Flesh",
 
   "item.mattsmodulararmory.adaptive_flesh": "Adaptive Flesh",
+
   "item.mattsmodulararmory.adaptive_flesh_plate": "Adaptive Flesh Plate",
+  "tooltip.mattsmodulararmory.adaptive_flesh_plate": "Adaptive Flesh Items",
+
   "item.mattsmodulararmory.biorite_plate": "Biorite Plate",
+  "tooltip.mattsmodulararmory.biorite_plate": "Biorite Items",
+
   "item.mattsmodulararmory.exposer_slot_plug": "Exposer Slot Plug",
+  "tooltip.mattsmodulararmory.exposer_slot_plug": "Insert into the Exposer to allow for item creation",
 
   "item.mattsmodulararmory.advanced_modular_clay_upgrade_smithing_template": "Smithing Template",
   "upgrade.mattsmodulararmory.advanced_modular_clay_upgrade": "Advanced Modular Clay Upgrade",
@@ -240,17 +252,20 @@
   "tooltip.mattsmodulararmory.adaptive_flesh_block4": "Fed",
 
   "block.mattsmodulararmory.augment_table": "Augment Table",
+  "tooltip.mattsmodulararmory.augment_table": "Allows for the augmentation of modular items",
 
   "block.mattsmodulararmory.exposer": "Block Exposer",
-  "tooltip.mattsmodulararmory.exposer": "Transforms or creates blocks depending on its surroundings",
+  "tooltip.mattsmodulararmory.exposer": "Transforms or creates items depending on its surroundings",
   "container.mattsmodulararmory.exposer.adjacent": "Adjacent to any side:",
   "container.mattsmodulararmory.exposer.liquid": "In Block Form",
   "container.mattsmodulararmory.exposer.water_cauldron": "Filled with Water",
 
   "block.mattsmodulararmory.repair_table": "Repair Table",
+  "tooltip.mattsmodulararmory.repair_table": "Allows for the repair of modular items",
   "container.mattsmodulararmory.repair": "Repair Items",
 
   "block.mattsmodulararmory.modular_assembler": "Modular Assembler",
+  "tooltip.mattsmodulararmory.modular_assembler": "Allows for the creation of modular items using plates",
   "container.mattsmodulararmory.modular_assembler": "Modular Assembler",
   "container.mattsmodulararmory.modular_assembler_cost_tooltip": "Cost:"
 }

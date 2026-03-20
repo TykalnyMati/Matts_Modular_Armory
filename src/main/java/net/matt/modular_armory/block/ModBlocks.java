@@ -38,7 +38,7 @@ public class ModBlocks {
             () -> new ModularAssemblerBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD)));
 
     public static final RegistryObject<Block> SCAFFOLDING_AUGMENT_BLOCK = registerBlock("scaffolding_augment_block",
-            () -> new ScaffoldingAugmentBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.STONE)));
+            () -> new ScaffoldingAugmentBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.SCAFFOLDING)));
 
     // Helpfull methods
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
