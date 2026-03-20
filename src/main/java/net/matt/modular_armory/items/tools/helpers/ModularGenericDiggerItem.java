@@ -253,8 +253,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             BlockPos placePos = pos.relative(facing);
 
             if (level.getBlockState(placePos).canBeReplaced()) {
-                // TODO Change the torch item to a custom Light Block
-                ItemStack lightStack = new ItemStack(Items.TORCH);
+                ItemStack lightStack = new ItemStack(ModBlocks.ILLUMINATOR_AUGMENT_BLOCK.get());
                 BlockPlaceContext lightContext = new BlockPlaceContext(
                         level,
                         player,
@@ -262,7 +261,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                         lightStack,
                         new BlockHitResult(pContext.getClickLocation(), facing, pos, pContext.isInside())
                 );
-                InteractionResult result = Items.TORCH.useOn(lightContext);
+                InteractionResult result = ModBlocks.ILLUMINATOR_AUGMENT_BLOCK.get().asItem().useOn(lightContext);
 
                 if (result.consumesAction()) {
                     damageTool(stack, player, 5);

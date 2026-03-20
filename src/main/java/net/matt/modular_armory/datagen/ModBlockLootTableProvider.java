@@ -36,7 +36,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider{
         dropSelf(ModBlocks.EXPOSER.get());
         dropSelf(ModBlocks.REPAIR_TABLE.get());
         dropSelf(ModBlocks.MODULAR_ASSEMBLER.get());
-        dropOther(ModBlocks.SCAFFOLDING_AUGMENT_BLOCK.get(), Items.AIR);
     }
 
     @Override

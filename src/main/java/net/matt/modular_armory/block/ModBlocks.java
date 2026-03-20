@@ -38,7 +38,10 @@ public class ModBlocks {
             () -> new ModularAssemblerBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD)));
 
     public static final RegistryObject<Block> SCAFFOLDING_AUGMENT_BLOCK = registerBlock("scaffolding_augment_block",
-            () -> new ScaffoldingAugmentBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.SCAFFOLDING)));
+            () -> new ScaffoldingAugmentBlock(BlockBehaviour.Properties.of().noLootTable().strength(2f).sound(SoundType.SCAFFOLDING)));
+
+    public static final RegistryObject<Block> ILLUMINATOR_AUGMENT_BLOCK = registerBlock("illuminator_augment_block",
+            () -> new IlluminatorAugmentBlock(BlockBehaviour.Properties.of().replaceable().noLootTable().instabreak().sound(SoundType.AMETHYST_CLUSTER)));
 
     // Helpfull methods
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
