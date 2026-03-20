@@ -8,10 +8,12 @@ import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Blocks;
 
 import java.util.List;
@@ -318,5 +320,258 @@ public class ModRecipeProvider extends RecipeProvider {
                     .unlocks(getHasName(ModItems.BIORITE_PLATE.get()), has(ModItems.BIORITE_PLATE.get()))
                     .save(pRecipeOutput, MattsModularArmory.MOD_ID + ":" + getConversionRecipeName(BioriteItems.get(i), AdaptiveFleshItems.get(i)));
         }
+
+        // Augments
+        // Unbreaking Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.UNBREAKING_AUGMENT.get())
+                .pattern("CBC")
+                .pattern("BAB")
+                .pattern("CBC")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.OBSIDIAN)
+                .define('C', Blocks.IRON_BLOCK)
+                .unlockedBy("has_items_for_unbreaking_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.OBSIDIAN,
+                        Blocks.IRON_BLOCK))
+                .save(pRecipeOutput);
+
+        // Mending Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MENDING_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.EXPERIENCE_BOTTLE)
+                .define('C', Blocks.LAPIS_BLOCK)
+                .unlockedBy("has_items_for_mending_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.EXPERIENCE_BOTTLE,
+                        Blocks.LAPIS_BLOCK))
+                .save(pRecipeOutput);
+
+        // Efficiency Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EFFICIENCY_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.REDSTONE)
+                .define('C', Blocks.REDSTONE_BLOCK)
+                .unlockedBy("has_items_for_efficiency_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.REDSTONE,
+                        Blocks.REDSTONE_BLOCK))
+                .save(pRecipeOutput);
+
+        // Silk Touch Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SILK_TOUCH_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.STRING)
+                .define('C', ItemTags.WOOL)
+                .unlockedBy("has_items_for_silk_touch_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()).build(),
+                        ItemPredicate.Builder.item().of(Items.STRING).build(),
+                        ItemPredicate.Builder.item().of(ItemTags.WOOL).build()))
+                .save(pRecipeOutput);
+
+        // Fortune Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FORTUNE_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.LAPIS_LAZULI)
+                .define('C', Blocks.LAPIS_BLOCK)
+                .unlockedBy("has_items_for_fortune_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.LAPIS_LAZULI,
+                        Blocks.LAPIS_BLOCK))
+                .save(pRecipeOutput);
+
+        // Sharpness Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SHARPNESS_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.QUARTZ)
+                .define('C', Blocks.QUARTZ_BLOCK)
+                .unlockedBy("has_items_for_sharpness_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.QUARTZ,
+                        Blocks.QUARTZ_BLOCK))
+                .save(pRecipeOutput);
+
+        // Smite Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SMITE_AUGMENT.get())
+                .pattern("BDC")
+                .pattern("DAD")
+                .pattern("CDB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.ROTTEN_FLESH)
+                .define('C', Items.BONE)
+                .define('D', Blocks.QUARTZ_BLOCK)
+                .unlockedBy("has_items_for_smite_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.ROTTEN_FLESH,
+                        Items.BONE,
+                        Blocks.QUARTZ_BLOCK))
+                .save(pRecipeOutput);
+
+        // Bane of Arthropods Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BANE_OF_ARTHROPODS_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.STRING)
+                .define('C', Blocks.QUARTZ_BLOCK)
+                .unlockedBy("has_items_for_bane_of_arthropods_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.STRING,
+                        Blocks.QUARTZ_BLOCK))
+                .save(pRecipeOutput);
+
+        // Impaling Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.IMPALING_AUGMENT.get())
+                .pattern("BDC")
+                .pattern("DAD")
+                .pattern("CDB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', ItemTags.FISHES)
+                .define('C', Items.PRISMARINE_SHARD)
+                .define('D', Blocks.QUARTZ_BLOCK)
+                .unlockedBy("has_items_for_impaling_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()).build(),
+                        ItemPredicate.Builder.item().of(ItemTags.FISHES).build(),
+                        ItemPredicate.Builder.item().of(Items.PRISMARINE_SHARD).build(),
+                        ItemPredicate.Builder.item().of(Blocks.QUARTZ_BLOCK).build()))
+                .save(pRecipeOutput);
+
+        // Looting Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.LOOTING_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.QUARTZ)
+                .define('C', Blocks.LAPIS_BLOCK)
+                .unlockedBy("has_items_for_looting_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.QUARTZ,
+                        Blocks.LAPIS_BLOCK))
+                .save(pRecipeOutput);
+
+        // Knockback Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.KNOCKBACK_AUGMENT.get())
+                .pattern(" C ")
+                .pattern("BAB")
+                .pattern(" C ")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.PISTON)
+                .define('C', Items.QUARTZ)
+                .unlockedBy("has_items_for_knockback_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.PISTON,
+                        Items.QUARTZ))
+                .save(pRecipeOutput);
+
+        // Fire Aspect Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FIRE_ASPECT_AUGMENT.get())
+                .pattern(" B ")
+                .pattern("BAB")
+                .pattern(" B ")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.BLAZE_POWDER)
+                .unlockedBy("has_items_for_fire_aspect_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.BLAZE_POWDER))
+                .save(pRecipeOutput);
+
+        // Auto Smelt Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AUTO_SMELT_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.BLAZE_POWDER)
+                .define('C', Blocks.FURNACE)
+                .unlockedBy("has_items_for_auto_smelt_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.BLAZE_POWDER,
+                        Blocks.FURNACE))
+                .save(pRecipeOutput);
+
+        // Diamond Sharpened Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DIAMOND_SHARPENED_AUGMENT.get())
+                .pattern(" B ")
+                .pattern("CAC")
+                .pattern(" B ")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.IRON_INGOT)
+                .define('C', Items.DIAMOND)
+                .unlockedBy("has_items_for_diamond_sharpened_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.IRON_INGOT,
+                        Items.DIAMOND))
+                .save(pRecipeOutput);
+
+        // Modular Clay Extractor Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("CAC")
+                .pattern("BBB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', ModItems.MODULAR_CLAY.get())
+                .define('C', ModItems.MODULAR_CLAY_EXTRACTOR.get())
+                .unlockedBy("has_items_for_modular_clay_extractor_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        ModItems.MODULAR_CLAY.get(),
+                        ModItems.MODULAR_CLAY_EXTRACTOR.get()))
+                .save(pRecipeOutput);
+
+        // Scaffolding Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SCAFFOLDING_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("BAB")
+                .pattern("BBB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.SCAFFOLDING)
+                .unlockedBy("has_items_for_scaffolding_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.SCAFFOLDING))
+                .save(pRecipeOutput);
+
+        // Illuminator Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ILLUMINATOR_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.GLOWSTONE_DUST)
+                .define('C', Blocks.GLOWSTONE)
+                .unlockedBy("has_items_for_illuminator_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.GLOWSTONE_DUST,
+                        Blocks.GLOWSTONE))
+                .save(pRecipeOutput);
+
+        // Magnet Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGNET_AUGMENT.get())
+                .pattern("B B")
+                .pattern("CAC")
+                .pattern(" B ")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.REDSTONE_BLOCK)
+                .define('C', Blocks.IRON_BLOCK)
+                .unlockedBy("has_items_for_magnet_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.REDSTONE_BLOCK,
+                        Blocks.IRON_BLOCK))
+                .save(pRecipeOutput);
     }
 }

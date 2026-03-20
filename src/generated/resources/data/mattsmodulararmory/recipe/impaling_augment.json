@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    "B": {
+      "tag": "minecraft:fishes"
+    },
+    "C": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "D": {
+      "item": "minecraft:quartz_block"
+    }
+  },
+  "pattern": [
+    "BDC",
+    "DAD",
+    "CDB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:impaling_augment"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    "B": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "C": {
+      "item": "minecraft:bone"
+    },
+    "D": {
+      "item": "minecraft:quartz_block"
+    }
+  },
+  "pattern": [
+    "BDC",
+    "DAD",
+    "CDB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:smite_augment"
+  }
+}
