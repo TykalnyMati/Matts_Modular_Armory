@@ -32,6 +32,7 @@ import java.util.List;
 
 public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider {
 
+    boolean isClearing = false;
     public final ItemStackHandler inventory = new ItemStackHandler(9) {
         @Override
         protected int getStackLimit(int slot, @NotNull ItemStack stack) {
@@ -98,10 +99,18 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
             if (!level.isClientSide()) {
                 if (slot == 0) {
                     ItemStack current = inventory.getStackInSlot(0);
-
                     // Item inserted
                     if (!current.isEmpty()) {
                         loadAugmentsFromItem(current);
+                    }else {
+                        isClearing = true;
+                        clearAugmentSlots();
+                        isClearing = false;
+                    }
+                } else if(!isClearing) {
+                    ItemStack item = inventory.getStackInSlot(0);
+                    if (!item.isEmpty()) {
+                        saveAugmentsToItem(item);
                     }
                 }
 
@@ -137,7 +146,7 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
         if (!stack.isEmpty() && stack.is(ModTags.Items.MODULAR_ITEMS)) {
             saveAugmentsToItem(stack);
             level.playSound(null, getBlockPos(), SoundEvents.SMITHING_TABLE_USE, SoundSource.BLOCKS);
-            clearAugmentSlots();
+            //clearAugmentSlots();
         }
     }
 

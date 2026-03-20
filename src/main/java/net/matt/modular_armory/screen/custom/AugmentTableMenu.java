@@ -94,7 +94,6 @@ public class AugmentTableMenu extends AbstractContainerMenu {
 
             if (blockEntity instanceof AugmentTableBlockEntity table) {
                 table.wrappedSaveAugmentsToItem(sourceStack);
-                table.clearAugmentSlots();
             }
 
             if (!moveItemStackTo(sourceStack, VANILLA_FIRST_SLOT_INDEX, VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT, true)) {
@@ -232,6 +231,21 @@ public class AugmentTableMenu extends AbstractContainerMenu {
 
         sourceSlot.onTake(player, sourceStack);
         return copy;
+    }
+
+    @Override
+    public void clicked(int slotId, int button, ClickType clickType, Player player) {
+        if (slotId == TE_INVENTORY_FIRST_SLOT_INDEX) {
+            ItemStack stack = this.getSlot(slotId).getItem();
+
+            if (!stack.isEmpty() && (clickType == ClickType.SWAP)) {
+                if (!this.level.isClientSide) {
+                    this.blockEntity.wrappedSaveAugmentsToItem(stack);
+                }
+            }
+        }
+
+        super.clicked(slotId, button, clickType, player);
     }
 
     @Override
