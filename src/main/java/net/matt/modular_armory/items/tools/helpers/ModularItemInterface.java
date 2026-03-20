@@ -195,7 +195,7 @@ public interface ModularItemInterface {
             AugmentObject bonuses = getAugmentBonuses(pStack);
 
             if (bonuses.MAGNET) {
-                double range = 5.0;
+                double range = 4.0;
 
                 // Find all Item Entities in that range
                 List<ItemEntity> items = pLevel.getEntitiesOfClass(
@@ -214,10 +214,13 @@ public interface ModularItemInterface {
 
                     // Only pull if the item is not too close
                     if (moveVec.length() > 0.5) {
-                        moveVec = moveVec.normalize().scale(0.01);
+                        Vec3 pull = moveVec.normalize().scale(0.2);
 
                         // Apply the velocity to the item
-                        item.setDeltaMovement(item.getDeltaMovement().add(moveVec));
+                        item.setDeltaMovement(pull);
+
+                        // Syncs the server and the player
+                        item.hasImpulse = true;
                     }
                 }
             }
