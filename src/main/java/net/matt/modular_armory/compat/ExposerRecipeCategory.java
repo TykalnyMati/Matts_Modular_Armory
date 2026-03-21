@@ -32,7 +32,7 @@ public class ExposerRecipeCategory implements IRecipeCategory<ExposerRecipe> {
         this.background = helper.createDrawable(TEXTURE, 10, 10, 120, 60);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.EXPOSER.get()));
 
-        this.animatedArrow = helper.createAnimatedRecipeArrow(60);
+        this.animatedArrow = helper.createAnimatedRecipeArrow(80);
     }
 
     @Override
