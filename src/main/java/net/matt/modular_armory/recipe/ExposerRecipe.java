@@ -34,6 +34,10 @@ public record ExposerRecipe(Ingredient inputItem, List<BlockState> surroundings,
         return list;
     }
 
+    public int getTime() {
+        return time;
+    }
+
     public NonNullList<ItemStack> getSurroundings() {
         NonNullList<ItemStack> list = NonNullList.create();
         for (BlockState adjacent : surroundings) {

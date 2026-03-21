@@ -3,6 +3,7 @@ package net.matt.modular_armory.compat;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -25,9 +26,13 @@ public class ExposerRecipeCategory implements IRecipeCategory<ExposerRecipe> {
     private final IDrawable background;
     private final IDrawable icon;
 
+    private final IDrawableAnimated animatedArrow;
+
     public ExposerRecipeCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 10, 10, 150, 60);
+        this.background = helper.createDrawable(TEXTURE, 10, 10, 120, 60);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.EXPOSER.get()));
+
+        this.animatedArrow = helper.createAnimatedRecipeArrow(60);
     }
 
     @Override
@@ -53,8 +58,13 @@ public class ExposerRecipeCategory implements IRecipeCategory<ExposerRecipe> {
     @Override
     public void draw(ExposerRecipe recipe, mezz.jei.api.gui.ingredient.IRecipeSlotsView recipeSlotsView, net.minecraft.client.gui.GuiGraphics graphics, double mouseX, double mouseY) {
         Component label = Component.translatable("container.mattsmodulararmory.exposer.adjacent");
-
         graphics.drawString(net.minecraft.client.Minecraft.getInstance().font, label, 0, 0, 0x404040, false);
+
+        int recipeTime = recipe.getTime() / 20;
+        Component time = Component.literal(String.valueOf(recipeTime) + "s");
+        graphics.drawString(net.minecraft.client.Minecraft.getInstance().font, time, 64, 45, 0x404040, false);
+
+        animatedArrow.draw(graphics, 64, 25);
     }
 
     @Override
