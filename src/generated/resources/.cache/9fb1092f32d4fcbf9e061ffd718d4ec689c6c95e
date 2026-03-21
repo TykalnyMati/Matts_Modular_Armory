@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-20T22:55:47.5085335	Recipes
+// 1.21.1	2026-03-21T21:32:36.2071301	Recipes
 8e4b94d5f37525ad95276358895c635da53e0681 data/mattsmodulararmory/advancement/recipes/misc/adaptive_flesh_block.json
 77c9950bf8408382056a5f4d93429d91e13768f0 data/mattsmodulararmory/advancement/recipes/misc/adaptive_flesh_block_from_flesh.json
 4c7ee98417fd30e4053c654774b7475c9a685893 data/mattsmodulararmory/advancement/recipes/misc/adaptive_flesh_plate.json
@@ -89,7 +89,7 @@ e9cef44dc067887ca3af71ace71d68683667c226 data/mattsmodulararmory/recipe/biorite_
 38fe083db710a410e9a3b2a5a1ef40df3c11b5dd data/mattsmodulararmory/recipe/exposer.json
 f5f916f6c6e894585eac089b4be29d545222b382 data/mattsmodulararmory/recipe/exposer_slot_plug.json
 d111ffcbe15f9a589422c12362ce015b5ec5fea8 data/mattsmodulararmory/recipe/fire_aspect_augment.json
-95f6921ab7a8760d4bd15c79cd39e67558b2c4c4 data/mattsmodulararmory/recipe/flesh_meal.json
+86f298b5ff4fe00472293e577a04c961acd9e171 data/mattsmodulararmory/recipe/flesh_meal.json
 bd2edf2709b5fcad44d2819a52156fedca0316d1 data/mattsmodulararmory/recipe/fortune_augment.json
 5077e88c5f82ae33b8a53a3c822313aa9b00364c data/mattsmodulararmory/recipe/illuminator_augment.json
 ff2bd1aa1a27268cb51dcb37812cc37c30e0d596 data/mattsmodulararmory/recipe/impaling_augment.json

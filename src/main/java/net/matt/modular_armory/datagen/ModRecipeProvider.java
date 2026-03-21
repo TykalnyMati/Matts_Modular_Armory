@@ -109,7 +109,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(pRecipeOutput);
 
         // Flesh Meal
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLESH_MEAL.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLESH_MEAL.get(), 3)
                 .pattern(" A ")
                 .pattern("ABA")
                 .pattern(" A ")
