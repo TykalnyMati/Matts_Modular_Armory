@@ -6,6 +6,7 @@ import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
@@ -26,6 +27,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_SHOVEL.get())
                 .add(ModItems.MODULAR_CLAY_HOE.get())
                 .add(ModItems.MODULAR_CLAY_SWORD.get())
+                .add(ModItems.MODULAR_CLAY_HELMET.get())
+                .add(ModItems.MODULAR_CLAY_CHESTPLATE.get())
+                .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
+                .add(ModItems.MODULAR_CLAY_BOOTS.get())
 
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
@@ -79,13 +84,24 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
                 .add(ModItems.BIORITE_SWORD.get());
 
+        // Modular Armor tag
+        tag(ModTags.Items.MODULAR_ARMOR)
+                .add(ModItems.MODULAR_CLAY_HELMET.get())
+                .add(ModItems.MODULAR_CLAY_CHESTPLATE.get())
+                .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
+                .add(ModItems.MODULAR_CLAY_BOOTS.get());
+
         // Modular Items Tier 0
         tag(ModTags.Items.MODULAR_TIER_0)
                 .add(ModItems.MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.MODULAR_CLAY_AXE.get())
                 .add(ModItems.MODULAR_CLAY_SHOVEL.get())
                 .add(ModItems.MODULAR_CLAY_HOE.get())
-                .add(ModItems.MODULAR_CLAY_SWORD.get());
+                .add(ModItems.MODULAR_CLAY_SWORD.get())
+                .add(ModItems.MODULAR_CLAY_HELMET.get())
+                .add(ModItems.MODULAR_CLAY_CHESTPLATE.get())
+                .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
+                .add(ModItems.MODULAR_CLAY_BOOTS.get());
 
         // Modular Items Tier 1
         tag(ModTags.Items.MODULAR_TIER_1)
@@ -136,5 +152,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ILLUMINATOR_AUGMENT.get())
                 .add(ModItems.MAGNET_AUGMENT.get());
 
+        // NeoForge Tags
+        tag(ItemTags.TRIMMABLE_ARMOR)
+                .add(ModItems.MODULAR_CLAY_HELMET.get())
+                .add(ModItems.MODULAR_CLAY_CHESTPLATE.get())
+                .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
+                .add(ModItems.MODULAR_CLAY_BOOTS.get());
     }
 }

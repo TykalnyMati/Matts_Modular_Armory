@@ -46,7 +46,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         }
 
         if (!level.isClientSide() && state.getDestroySpeed(level, pos) > 0.0F) {
-            damageTool(stack, entity);
+            damageModularItem(stack, entity);
         }
 
         return true;
@@ -86,7 +86,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             int amount = 2 + new java.util.Random().nextInt(2 + bonuses.MODULAR_CLAY_EXTRACTOR);
             popResourceFromFace(level, pos, facing, new ItemStack(ModItems.MODULAR_CLAY.get(), amount));
 
-            damageTool(stack, player, 5);
+            damageModularItem(stack, player, 5);
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
@@ -112,7 +112,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                             scaffoldingBE.setMaxLife(bonuses.SCAFFOLDING);
                         }
                     }
-                    damageTool(stack, player, 2);
+                    damageModularItem(stack, player, 2);
 
                     return InteractionResult.sidedSuccess(level.isClientSide);
                 }
@@ -136,7 +136,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                             scaffoldingBE.setMaxLife(bonuses.SCAFFOLDING);
                         }
                     }
-                    damageTool(stack, player, 2);
+                    damageModularItem(stack, player, 2);
 
                     return InteractionResult.sidedSuccess(level.isClientSide);
                 }
@@ -156,7 +156,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                 InteractionResult result = ModBlocks.ILLUMINATOR_AUGMENT_BLOCK.get().asItem().useOn(lightContext);
 
                 if (result.consumesAction()) {
-                    damageTool(stack, player, 5);
+                    damageModularItem(stack, player, 5);
 
                     return InteractionResult.sidedSuccess(level.isClientSide);
                 }
@@ -177,7 +177,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             return;
         }
 
-        damageTool(pStack, pAttacker, 2);
+        damageModularItem(pStack, pAttacker, 2);
     }
 
     @Override
@@ -273,7 +273,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             lastHoverTime = currentTime;
         }
 
-        List<Component> toolTips = new AugmentObject(pStack).getTooltips(pTooltipComponents, hasAugments, tier, sessionRandomOffset);
+        List<Component> toolTips = new AugmentObject(pStack).getTooltips(pTooltipComponents, hasAugments, isBroken(pStack), tier, sessionRandomOffset);
 
         super.appendHoverText(pStack, pContext, toolTips, pTooltipFlag);
     }

@@ -1,5 +1,6 @@
 package net.matt.modular_armory.items.tools.helpers;
 
+import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -8,7 +9,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +19,7 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 
 public interface ModularItemInterface {
-    default void damageTool(ItemStack stack, LivingEntity entity) {
+    default void damageModularItem(ItemStack stack, LivingEntity entity) {
         int bonusesUnbreaking = getAugmentBonuses(stack).UNBREAKING;
         // Unbreaking augment
         if (bonusesUnbreaking * 0.125f >= 1f || entity.getRandom().nextFloat() < bonusesUnbreaking * 0.125f) {
@@ -43,17 +43,22 @@ public interface ModularItemInterface {
                         1.0F,
                         1.0F
                 );
+
+                if (entity.level() instanceof ServerLevel serverLevel) {
+                    // This spawns the "explosion of tool bits" particles
+                    serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, stack),
+                            entity.getX(), entity.getY() + 1.0, entity.getZ(),
+                            5, 0.1, 0.1, 0.1, 0.05);
+                }
             }
-
-            return;
+        } else {
+            stack.setDamageValue(stack.getDamageValue() + 1);
         }
-
-        stack.hurtAndBreak(1, entity, EquipmentSlot.MAINHAND);
     }
 
-    default void damageTool(ItemStack stack, LivingEntity entity, int amount) {
+    default void damageModularItem(ItemStack stack, LivingEntity entity, int amount) {
         for (int i = 0; i < amount; i++) {
-            damageTool(stack, entity);
+            damageModularItem(stack, entity);
         }
     }
 
@@ -122,7 +127,7 @@ public interface ModularItemInterface {
             return;
         }
 
-        damageTool(pStack, pAttacker);
+        damageModularItem(pStack, pAttacker);
 
         AugmentObject bonuses = getAugmentBonuses(pStack);
 

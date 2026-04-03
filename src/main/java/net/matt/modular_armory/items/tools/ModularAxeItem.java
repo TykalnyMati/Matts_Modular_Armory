@@ -20,7 +20,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
-import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.common.ItemAbilities;
@@ -79,7 +78,7 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
                 level.setBlock(blockpos, optional.get(), 11);
                 level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, optional.get()));
                 if (player != null) {
-                    damageTool(itemstack, player);
+                    damageModularItem(itemstack, player);
                 }
 
                 return InteractionResult.sidedSuccess(level.isClientSide);

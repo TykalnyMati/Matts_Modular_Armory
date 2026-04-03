@@ -67,7 +67,7 @@ public class ModularShovelItem extends ModularGenericDiggerItem {
                     level.setBlock(blockpos, blockstate2, 11);
                     level.gameEvent(GameEvent.BLOCK_CHANGE, blockpos, GameEvent.Context.of(player, blockstate2));
                     if (player != null) {
-                        damageTool(pContext.getItemInHand(), player);
+                        damageModularItem(pContext.getItemInHand(), player);
                     }
                 }
 

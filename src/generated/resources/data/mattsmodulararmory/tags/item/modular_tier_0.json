@@ -4,6 +4,10 @@
     "mattsmodulararmory:modular_clay_axe",
     "mattsmodulararmory:modular_clay_shovel",
     "mattsmodulararmory:modular_clay_hoe",
-    "mattsmodulararmory:modular_clay_sword"
+    "mattsmodulararmory:modular_clay_sword",
+    "mattsmodulararmory:modular_clay_helmet",
+    "mattsmodulararmory:modular_clay_chestplate",
+    "mattsmodulararmory:modular_clay_leggings",
+    "mattsmodulararmory:modular_clay_boots"
   ]
 }

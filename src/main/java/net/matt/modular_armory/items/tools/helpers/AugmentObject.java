@@ -71,7 +71,11 @@ public class AugmentObject {
         return stack.get(ModDataComponentTypes.AUGMENTS.get());
     }
 
-    public List<Component> getTooltips(List<Component> pTooltipComponents, boolean displayOn, int tier, int randomIndex) {
+    public List<Component> getTooltips(List<Component> pTooltipComponents, boolean displayOn, boolean isBroken, int tier, int randomIndex) {
+        if (isBroken) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.broken").withStyle(ChatFormatting.DARK_RED));
+        }
+
         if (displayOn) {
             if (tier > 1) {
                 ChatFormatting[] colors = {ChatFormatting.GRAY, ChatFormatting.WHITE, ChatFormatting.DARK_RED, ChatFormatting.AQUA};

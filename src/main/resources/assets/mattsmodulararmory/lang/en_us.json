@@ -68,6 +68,7 @@
   "item.mattsmodulararmory.illuminator_augment": "Illuminator Augment",
   "item.mattsmodulararmory.magnet_augment": "Magnet Augment",
 
+  "tooltip.mattsmodulararmory.broken": "Broken",
   "tooltip.mattsmodulararmory.augments": "Augments",
   "tooltip.mattsmodulararmory.unbreaking_augment": "Unbreaking",
   "tooltip.mattsmodulararmory.unbreaking_augment_full": "Unbreakable",
@@ -121,6 +122,10 @@
   "item.mattsmodulararmory.modular_clay_shovel": "Modular Clay Shovel",
   "item.mattsmodulararmory.modular_clay_hoe": "Modular Clay Hoe",
   "item.mattsmodulararmory.modular_clay_sword": "Modular Clay Sword",
+  "item.mattsmodulararmory.modular_clay_helmet": "Modular Clay Helmet",
+  "item.mattsmodulararmory.modular_clay_chestplate": "Modular Clay Chestplate",
+  "item.mattsmodulararmory.modular_clay_leggings": "Modular Clay Leggings",
+  "item.mattsmodulararmory.modular_clay_boots": "Modular Clay Boots",
 
   "item.mattsmodulararmory.advanced_modular_clay_pickaxe": "Advanced Modular Pickaxe",
   "item.mattsmodulararmory.advanced_modular_clay_axe": "Advanced Modular Axe",

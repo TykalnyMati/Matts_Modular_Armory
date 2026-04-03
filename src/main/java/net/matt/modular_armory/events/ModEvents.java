@@ -318,7 +318,7 @@ public class ModEvents {
 
                             // Spawn fire particles to show smelting happened
                             serverLevel.sendParticles(ParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5, 0.2, 0.2, 0.2, 0.05);
-                            modularTool.damageTool(itemStack, player);
+                            modularTool.damageModularItem(itemStack, player);
                         }
                     }
                 }
@@ -328,7 +328,7 @@ public class ModEvents {
                     Block.popResource(level, pos, drop);
                 }
 
-                modularTool.damageTool(itemStack, player);
+                modularTool.damageModularItem(itemStack, player);
             }
         }
     }

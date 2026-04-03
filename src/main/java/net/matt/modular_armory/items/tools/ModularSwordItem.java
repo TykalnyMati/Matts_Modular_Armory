@@ -88,7 +88,7 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
             return false;
         }
 
-        damageTool(stack, entity, 2);
+        damageModularItem(stack, entity, 2);
 
         return true;
     }
@@ -137,7 +137,7 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
             lastHoverTime = currentTime;
         }
 
-        List<Component> toolTips = new AugmentObject(pStack).getTooltips(pTooltipComponents, hasAugments, tier, sessionRandomOffset);
+        List<Component> toolTips = new AugmentObject(pStack).getTooltips(pTooltipComponents, hasAugments, isBroken(pStack), tier, sessionRandomOffset);
 
         super.appendHoverText(pStack, pContext, toolTips, pTooltipFlag);
     }

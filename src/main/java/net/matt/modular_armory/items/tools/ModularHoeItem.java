@@ -51,7 +51,7 @@ public class ModularHoeItem extends ModularGenericDiggerItem {
                 if (!level.isClientSide) {
                     consumer.accept(pContext);
                     if (player != null) {
-                        damageTool(pContext.getItemInHand(), player);
+                        damageModularItem(pContext.getItemInHand(), player);
                     }
                 }
 
