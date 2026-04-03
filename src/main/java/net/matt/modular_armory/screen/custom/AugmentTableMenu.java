@@ -11,7 +11,8 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.items.SlotItemHandler;
+import net.neoforged.neoforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class AugmentTableMenu extends AbstractContainerMenu {
     public final AugmentTableBlockEntity blockEntity;
@@ -37,7 +38,12 @@ public class AugmentTableMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         // Middle slot
-        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, 0, slotPositions[0][0], slotPositions[0][1]));
+        this.addSlot(new SlotItemHandler(this.blockEntity.inventory, 0, slotPositions[0][0], slotPositions[0][1]) {
+            @Override
+            public int getMaxStackSize(@NotNull ItemStack stack) {
+                return 1;
+            }
+        });
 
         // 1st augment slot
         this.addSlot(new SlotItemHandler(this.blockEntity.inventory, 1, slotPositions[1][0], slotPositions[1][1]) {
@@ -47,6 +53,19 @@ public class AugmentTableMenu extends AbstractContainerMenu {
                 augmentSlotsActive = stack.is(ModTags.Items.MODULAR_ITEMS);
                 return augmentSlotsActive;
             }
+
+            @Override
+            public int getMaxStackSize(@NotNull ItemStack stack) {
+                return ((AugmentTableBlockEntity) blockEntity).getDynamicLimit(this.getSlotIndex(), stack);
+            }
+
+            @Override
+            public boolean mayPlace(@NotNull ItemStack stack) {
+                if (!super.mayPlace(stack)) {
+                    return false;
+                }
+                return !((AugmentTableBlockEntity) blockEntity).hasItemInAnotherSlot(this.getSlotIndex(), stack);
+            }
         });
 
         // Other augment slots
@@ -55,6 +74,19 @@ public class AugmentTableMenu extends AbstractContainerMenu {
                 @Override
                 public boolean isActive() {
                     return augmentSlotsActive;
+                }
+
+                @Override
+                public int getMaxStackSize(@NotNull ItemStack stack) {
+                    return ((AugmentTableBlockEntity) blockEntity).getDynamicLimit(this.getSlotIndex(), stack);
+                }
+
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) {
+                    if (!super.mayPlace(stack)) {
+                        return false;
+                    }
+                    return !((AugmentTableBlockEntity) blockEntity).hasItemInAnotherSlot(this.getSlotIndex(), stack);
                 }
             });
         }
@@ -156,7 +188,7 @@ public class AugmentTableMenu extends AbstractContainerMenu {
                 // Try inserting into empty slots
                 for (int i = augmentStart; i < augmentEnd; i++) {
                     Slot slot = this.getSlot(i);
-                    if (slot.getItem().isEmpty() && slot.getMaxStackSize(sourceStack) > 0) {
+                    if (slot.getItem().isEmpty() && slot.mayPlace(sourceStack) && slot.getMaxStackSize(sourceStack) > 0) {
                         int max = slot.getMaxStackSize(sourceStack);
                         int move = Math.min(max, sourceStack.getCount());
 
@@ -177,40 +209,6 @@ public class AugmentTableMenu extends AbstractContainerMenu {
                     return ItemStack.EMPTY;
                 }
             }
-
-//            // AUGMENTS OLD
-//            else if (sourceStack.is(ModTags.Items.MODULAR_ITEMS_AUGMENT)) {
-//                // Checks if the slots are supposed to be open
-//                if (!this.getSlot(toolSlot).getItem().is(ModTags.Items.MODULAR_ITEMS)) {
-//                    return ItemStack.EMPTY;
-//                }
-//
-//                // Check existing augment slots
-//                for (int i = augmentStart; i < augmentEnd; i++) {
-//                    Slot slot = this.getSlot(i);
-//                    ItemStack stack = slot.getItem();
-//
-//                    if (!stack.isEmpty() && stack.is(sourceStack.getItem())) {
-//                        int max = Math.min(slot.getMaxStackSize(), stack.getMaxStackSize());
-//
-//                        if (stack.getCount() < max) {
-//                            if (!moveItemStackTo(sourceStack, i, i + 1, false)) {
-//                                return ItemStack.EMPTY;
-//                            }
-//                            return sourceStack;
-//                        }
-//                    }
-//
-//                    // Check if augment allowed
-//                    if (slot.getMaxStackSize(sourceStack) <= 0) {
-//                        return ItemStack.EMPTY;
-//                    }
-//                }
-//
-//                if (!moveItemStackTo(sourceStack, augmentStart, augmentEnd, false)) {
-//                    return ItemStack.EMPTY;
-//                }
-//            }
 
             // EVERYTHING ELSE
             else {

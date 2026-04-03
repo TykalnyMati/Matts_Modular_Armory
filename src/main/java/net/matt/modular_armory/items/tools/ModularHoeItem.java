@@ -8,7 +8,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -19,6 +18,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -32,8 +33,13 @@ public class ModularHoeItem extends ModularGenericDiggerItem {
     public InteractionResult useOn(UseOnContext pContext) {
         Level level = pContext.getLevel();
         BlockPos blockpos = pContext.getClickedPos();
-        BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.HOE_TILL, false);
+        BlockState toolModifiedState = level.getBlockState(blockpos).getToolModifiedState(pContext, ItemAbilities.HOE_TILL, false);
         Pair<Predicate<UseOnContext>, Consumer<UseOnContext>> pair = toolModifiedState == null ? null : Pair.of(ctx -> true, changeIntoState(toolModifiedState));
+
+        if (isBroken(pContext.getItemInHand())) {
+            return super.useOn(pContext);
+        }
+
         if (pair == null) {
             return super.useOn(pContext);
         } else {
@@ -45,7 +51,7 @@ public class ModularHoeItem extends ModularGenericDiggerItem {
                 if (!level.isClientSide) {
                     consumer.accept(pContext);
                     if (player != null) {
-                        pContext.getItemInHand().hurtAndBreak(1, player, LivingEntity.getSlotForHand(pContext.getHand()));
+                        damageTool(pContext.getItemInHand(), player);
                     }
                 }
 
@@ -56,27 +62,26 @@ public class ModularHoeItem extends ModularGenericDiggerItem {
         }
     }
 
-    public static Consumer<UseOnContext> changeIntoState(BlockState pState) {
-        return p_327147_ -> {
-            p_327147_.getLevel().setBlock(p_327147_.getClickedPos(), pState, 11);
-            p_327147_.getLevel().gameEvent(GameEvent.BLOCK_CHANGE, p_327147_.getClickedPos(), GameEvent.Context.of(p_327147_.getPlayer(), pState));
+    public static Consumer<UseOnContext> changeIntoState(BlockState state) {
+        return (p_316061_) -> {
+            p_316061_.getLevel().setBlock(p_316061_.getClickedPos(), state, 11);
+            p_316061_.getLevel().gameEvent(GameEvent.BLOCK_CHANGE, p_316061_.getClickedPos(), GameEvent.Context.of(p_316061_.getPlayer(), state));
         };
     }
 
-    public static Consumer<UseOnContext> changeIntoStateAndDropItem(BlockState pState, ItemLike pItemToDrop) {
-        return p_327150_ -> {
-            p_327150_.getLevel().setBlock(p_327150_.getClickedPos(), pState, 11);
-            p_327150_.getLevel().gameEvent(GameEvent.BLOCK_CHANGE, p_327150_.getClickedPos(), GameEvent.Context.of(p_327150_.getPlayer(), pState));
-            Block.popResourceFromFace(p_327150_.getLevel(), p_327150_.getClickedPos(), p_327150_.getClickedFace(), new ItemStack(pItemToDrop));
+    public static Consumer<UseOnContext> changeIntoStateAndDropItem(BlockState state, ItemLike itemToDrop) {
+        return (p_316064_) -> {
+            p_316064_.getLevel().setBlock(p_316064_.getClickedPos(), state, 11);
+            p_316064_.getLevel().gameEvent(GameEvent.BLOCK_CHANGE, p_316064_.getClickedPos(), GameEvent.Context.of(p_316064_.getPlayer(), state));
+            Block.popResourceFromFace(p_316064_.getLevel(), p_316064_.getClickedPos(), p_316064_.getClickedFace(), new ItemStack(itemToDrop));
         };
     }
 
-    public static boolean onlyIfAirAbove(UseOnContext p_150857_) {
-        return p_150857_.getClickedFace() != Direction.DOWN && p_150857_.getLevel().getBlockState(p_150857_.getClickedPos().above()).isAir();
+    public static boolean onlyIfAirAbove(UseOnContext context) {
+        return context.getClickedFace() != Direction.DOWN && context.getLevel().getBlockState(context.getClickedPos().above()).isAir();
     }
 
-    @Override
-    public boolean canPerformAction(ItemStack stack, net.minecraftforge.common.ToolAction toolAction) {
-        return net.minecraftforge.common.ToolActions.DEFAULT_HOE_ACTIONS.contains(toolAction);
+    public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+        return ItemAbilities.DEFAULT_HOE_ACTIONS.contains(itemAbility);
     }
 }

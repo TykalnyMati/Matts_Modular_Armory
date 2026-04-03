@@ -26,9 +26,8 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.items.IItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
 
@@ -49,9 +48,6 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
 
     private static final int INPUT_SLOT = 0;
     private static final int OUTPUT_SLOT = 1;
-
-    private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
-    private LazyOptional<IItemHandler> sidedItemHandler = LazyOptional.empty();
 
     protected final ContainerData data;
     private int progress = 0;
@@ -85,14 +81,12 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
         };
     }
 
-    @Override
-    public void onLoad() {
-        super.onLoad();
-        // Full access for the Menu/Screen
-        lazyItemHandler = LazyOptional.of(() -> itemHandler);
+    public IItemHandler getItemHandlerCapability(@Nullable Direction side) {
+        if (side == null) {
+            return itemHandler;
+        }
 
-        // Restricted access for automation
-        sidedItemHandler = LazyOptional.of(() -> new IItemHandler() {
+        return new IItemHandler() {
             @Override
             public int getSlots() {
                 return itemHandler.getSlots();
@@ -124,27 +118,7 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
                 // Can only pull from slot 1
                 return (slot == OUTPUT_SLOT) ? itemHandler.extractItem(slot, amount, simulate) : ItemStack.EMPTY;
             }
-        });
-    }
-
-    @Override
-    public <T> LazyOptional<T> getCapability(net.minecraftforge.common.capabilities.Capability<T> cap, @Nullable Direction side) {
-        if (cap == net.minecraftforge.common.capabilities.ForgeCapabilities.ITEM_HANDLER) {
-            // Decides which item handler to use depending on what it's interacting it, player via GUI or a hopper/pipe
-            if (side == null) {
-                return lazyItemHandler.cast();
-            } else {
-                return sidedItemHandler.cast();
-            }
-        }
-        return super.getCapability(cap, side);
-    }
-
-    @Override
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        lazyItemHandler.invalidate();
-        sidedItemHandler.invalidate();
+        };
     }
 
     public void drops() {

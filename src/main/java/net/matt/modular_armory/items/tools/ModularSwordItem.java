@@ -19,8 +19,8 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.common.ToolAction;
-import net.minecraftforge.common.ToolActions;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 
 import java.util.List;
 
@@ -61,11 +61,11 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
 
     // Disabling the sweeping action
     @Override
-    public boolean canPerformAction(ItemStack stack, ToolAction toolAction) {
-        if (isBroken(stack) && toolAction == ToolActions.SWORD_SWEEP) {
+    public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+        if (isBroken(stack) && itemAbility == ItemAbilities.SWORD_SWEEP) {
             return false;
         }
-        return super.canPerformAction(stack, toolAction);
+        return ItemAbilities.DEFAULT_SWORD_ACTIONS.contains(itemAbility);
     }
 
     public static ItemAttributeModifiers createAttributes(Tier pTier, float pAttackDamage, float pAttackSpeed) {

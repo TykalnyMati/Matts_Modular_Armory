@@ -23,7 +23,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -31,64 +31,83 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider {
-
     boolean isClearing = false;
+
+    public int getDynamicLimit(int slot, ItemStack stack) {
+        int slotSize = 1;
+        ItemStack modularItemStack = inventory.getStackInSlot(0);
+
+        if (slot == 0) {
+            return 1;
+        }
+
+        if (!modularItemStack.isEmpty()) {
+            slotSize = 0;
+        }
+
+        int tier = 0;
+        if (modularItemStack.is(ModTags.Items.MODULAR_TIER_0)) {
+            tier = 0;
+        } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_1)) {
+            tier = 1;
+        } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_2)) {
+            tier = 2;
+        } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_3)) {
+            tier = 3;
+        }
+
+        String itemName = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+
+        // Generic Augments
+        slotSize = switch (itemName) {
+            case "mattsmodulararmory:unbreaking_augment" -> 2 + 2 * tier;
+            case "mattsmodulararmory:mending_augment" -> tier != 0 ? 1 : 0;
+            default -> slotSize;
+        };
+
+        // Tool Augments
+        if (modularItemStack.is(ModTags.Items.MODULAR_TOOL)) {
+            slotSize = switch (itemName) {
+                case "mattsmodulararmory:efficiency_augment" -> 1 + 2 * tier;
+                case "mattsmodulararmory:silk_touch_augment" -> 1;
+                case "mattsmodulararmory:fortune_augment", "mattsmodulararmory:modular_clay_extractor_augment", "mattsmodulararmory:scaffolding_augment" -> 1 + tier;
+                case "mattsmodulararmory:auto_smelt_augment", "mattsmodulararmory:diamond_sharpened_augment", "mattsmodulararmory:illuminator_augment", "mattsmodulararmory:magnet_augment" -> tier == 0 ? 0 : 1;
+                default -> slotSize;
+            };
+        }
+
+        // Weapon Augments
+        if (modularItemStack.is(ModTags.Items.MODULAR_WEAPON)) {
+            slotSize = switch (itemName) {
+                case "mattsmodulararmory:sharpness_augment", "mattsmodulararmory:smite_augment", "mattsmodulararmory:bane_of_arthropods_augment", "mattsmodulararmory:impaling_augment" -> 1 + 2 * tier;
+                case "mattsmodulararmory:looting_augment" -> 1 + tier;
+                case "mattsmodulararmory:knockback_augment" -> tier < 2 ? 1 + tier : tier;
+                case "mattsmodulararmory:fire_aspect_augment" -> Math.max(tier, 1);
+                case "mattsmodulararmory:magnet_augment" -> tier == 0 ? 0 : 1;
+                default -> slotSize;
+            };
+        }
+
+        return slotSize;
+    }
+
+    public boolean hasItemInAnotherSlot(int currentSlot, ItemStack stack) {
+        for (int i = 1; i < 9; i++) {
+            if (i != currentSlot) {
+                ItemStack slotStack = inventory.getStackInSlot(i);
+                if (!slotStack.isEmpty() && ItemStack.isSameItemSameComponents(slotStack, stack)) {
+                    // Duplicate found
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public final ItemStackHandler inventory = new ItemStackHandler(9) {
         @Override
         protected int getStackLimit(int slot, @NotNull ItemStack stack) {
-            int slotSize = 1;
-            ItemStack modularItemStack = inventory.getStackInSlot(0);
-
-            if (modularItemStack.isEmpty()) {
-                return slotSize;
-            }
-
-            if (!inventory.getStackInSlot(0).isEmpty()) {
-                slotSize = 0;
-            }
-
-            int tier = 0;
-            if (modularItemStack.is(ModTags.Items.MODULAR_TIER_0)) {
-                tier = 0;
-            } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_1)) {
-                tier = 1;
-            } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_2)) {
-                tier = 2;
-            } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_3)) {
-                tier = 3;
-            }
-
-            // Generic Augments
-            slotSize = switch (BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()) {
-                case "mattsmodulararmory:unbreaking_augment" -> 2 + 2 * tier;
-                case "mattsmodulararmory:mending_augment" -> tier != 0 ? 1 : 0;
-                default -> slotSize;
-            };
-
-            // Tool Augments
-            if (modularItemStack.is(ModTags.Items.MODULAR_TOOL) && slot != 0) {
-                slotSize = switch (BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()) {
-                    case "mattsmodulararmory:efficiency_augment" -> 1 + 2 * tier;
-                    case "mattsmodulararmory:silk_touch_augment" -> 1;
-                    case "mattsmodulararmory:fortune_augment", "mattsmodulararmory:modular_clay_extractor_augment", "mattsmodulararmory:scaffolding_augment" -> 1 + tier;
-                    case "mattsmodulararmory:auto_smelt_augment", "mattsmodulararmory:diamond_sharpened_augment", "mattsmodulararmory:illuminator_augment", "mattsmodulararmory:magnet_augment" -> tier == 0 ? 0 : 1;
-                    default -> slotSize;
-                };
-            }
-
-            // Weapon Augments
-            if (modularItemStack.is(ModTags.Items.MODULAR_WEAPON) && slot != 0) {
-                slotSize = switch (BuiltInRegistries.ITEM.getKey(stack.getItem()).toString()) {
-                    case "mattsmodulararmory:sharpness_augment", "mattsmodulararmory:smite_augment", "mattsmodulararmory:bane_of_arthropods_augment", "mattsmodulararmory:impaling_augment" -> 1 + 2 * tier;
-                    case "mattsmodulararmory:looting_augment" -> 1 + tier;
-                    case "mattsmodulararmory:knockback_augment" -> tier < 2 ? 1 + tier : tier;
-                    case "mattsmodulararmory:fire_aspect_augment" -> Math.max(tier, 1);
-                    case "mattsmodulararmory:magnet_augment" -> tier == 0 ? 0 : 1;
-                    default -> slotSize;
-                };
-            }
-
-            return slotSize;
+            return getDynamicLimit(slot, stack);
         }
 
         @Override

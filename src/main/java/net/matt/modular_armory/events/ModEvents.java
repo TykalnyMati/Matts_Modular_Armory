@@ -1,9 +1,14 @@
 package net.matt.modular_armory.events;
 
 import net.matt.modular_armory.MattsModularArmory;
-import net.matt.modular_armory.items.tools.ModularSwordItem;
 import net.matt.modular_armory.items.tools.helpers.AugmentObject;
+import net.matt.modular_armory.items.tools.helpers.ModularGenericDiggerItem;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -13,18 +18,29 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.AnvilUpdateEvent;
-import net.minecraftforge.event.GrindstoneEvent;
-import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.LivingDamageEvent;
-import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LootingLevelEvent;
-import net.minecraftforge.event.entity.player.PlayerXpEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.AnvilUpdateEvent;
+import net.neoforged.neoforge.event.GrindstoneEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
+import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
+import net.neoforged.neoforge.event.tick.PlayerTickEvent;
+import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 
-@Mod.EventBusSubscriber(modid = MattsModularArmory.MOD_ID)
+import java.util.List;
+
+@EventBusSubscriber(modid = MattsModularArmory.MOD_ID)
 public class ModEvents {
 
     // Detecting Xp collection
@@ -84,35 +100,34 @@ public class ModEvents {
     // This checks the player's open container every tick. If it's a crafting grid
     // and the result is a modular tool repair attempt, it wipes the output slot.
     @SubscribeEvent
-    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
-        if (event.phase == TickEvent.Phase.END && event.player != null) {
-            AbstractContainerMenu menu = event.player.containerMenu;
+    public static void onPlayerTick(PlayerTickEvent.Post event) {
+        Player player = event.getEntity();
+        AbstractContainerMenu menu = player.containerMenu;
 
-            // --- FIX FOR CRAFTING GRID ---
-            if (menu instanceof CraftingMenu || menu instanceof InventoryMenu) {
-                Slot resultSlot = menu.getSlot(0);
-                if (resultSlot.getItem().getItem() instanceof ModularItemInterface) {
-                    if (countModularTools(menu, menu instanceof InventoryMenu ? 1 : 1, menu instanceof InventoryMenu ? 5 : 10) >= 2) {
-                        resultSlot.set(ItemStack.EMPTY);
-                    }
+        // --- FIX FOR CRAFTING GRID ---
+        if (menu instanceof CraftingMenu || menu instanceof InventoryMenu) {
+            Slot resultSlot = menu.getSlot(0);
+            if (resultSlot.getItem().getItem() instanceof ModularItemInterface) {
+                if (countModularTools(menu, menu instanceof InventoryMenu ? 1 : 1, menu instanceof InventoryMenu ? 5 : 10) >= 2) {
+                    resultSlot.set(ItemStack.EMPTY);
                 }
             }
+        }
 
-            // --- FIX FOR ANVIL (The Safety Net) ---
-            if (menu instanceof AnvilMenu anvil) {
-                ItemStack left = anvil.getSlot(0).getItem();
-                ItemStack right = anvil.getSlot(1).getItem();
+        // --- FIX FOR ANVIL ---
+        if (menu instanceof AnvilMenu anvil) {
+            ItemStack left = anvil.getSlot(0).getItem();
+            ItemStack right = anvil.getSlot(1).getItem();
 
-                // If it's our tool and there is a "sacrifice" item in slot 1
-                if (left.getItem() instanceof ModularItemInterface && !right.isEmpty()) {
-                    // Force the output slot (Slot 2) to stay empty
-                    anvil.getSlot(2).set(ItemStack.EMPTY);
-                }
+            // If it's our tool and there is a "sacrifice" item in slot 1
+            if (left.getItem() instanceof ModularItemInterface && !right.isEmpty()) {
+                // Force the output slot (Slot 2) to stay empty
+                anvil.getSlot(2).set(ItemStack.EMPTY);
+            }
 
-                // If our tool is the sacrifice
-                if (right.getItem() instanceof ModularItemInterface) {
-                    anvil.getSlot(2).set(ItemStack.EMPTY);
-                }
+            // If our tool is the sacrifice
+            if (right.getItem() instanceof ModularItemInterface) {
+                anvil.getSlot(2).set(ItemStack.EMPTY);
             }
         }
     }
@@ -125,7 +140,7 @@ public class ModEvents {
         return count;
     }
 
-    // Mobs drop Cooked items when a weapon has the Fire Aspect Augment
+    // Mobs drop more and cooked items when a weapon has the Fire Aspect Augment
     @SubscribeEvent
     public static void onLivingDrops(LivingDropsEvent event) {
         DamageSource source = event.getSource();
@@ -135,8 +150,40 @@ public class ModEvents {
         if (attacker instanceof LivingEntity livingAttacker) {
             ItemStack weapon = livingAttacker.getMainHandItem();
 
-            if (weapon.getItem() instanceof ModularSwordItem sword && !sword.isBroken(weapon)) {
+            if (weapon.getItem() instanceof ModularItemInterface sword && !sword.isBroken(weapon) && livingAttacker.level() instanceof ServerLevel serverLevel) {
                 AugmentObject bonuses = sword.getAugmentBonuses(weapon);
+                LivingEntity victim = event.getEntity();
+
+                // Looting augment handling (kinda scuffed)
+                if (bonuses.LOOTING > 0) {
+                    // Saving the weapon's original enchantments
+                    var originalEnchants = weapon.getOrDefault(DataComponents.ENCHANTMENTS, ItemEnchantments.EMPTY);
+
+                    // Temporarily apply Looting to the REAL weapon
+                    weapon.enchant(serverLevel.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.LOOTING), bonuses.LOOTING);
+
+                    // Build params. We DO NOT need the TOOL parameter for entities.
+                    LootParams lootParams = new LootParams.Builder(serverLevel)
+                            .withParameter(LootContextParams.THIS_ENTITY, victim)
+                            .withParameter(LootContextParams.ORIGIN, victim.position())
+                            .withParameter(LootContextParams.DAMAGE_SOURCE, source)
+                            .withOptionalParameter(LootContextParams.ATTACKING_ENTITY, livingAttacker)
+                            .withOptionalParameter(LootContextParams.DIRECT_ATTACKING_ENTITY, livingAttacker)
+                            .create(LootContextParamSets.ENTITY);
+
+                    // Roll the loot table
+                    LootTable loottable = serverLevel.getServer().reloadableRegistries().getLootTable(victim.getLootTable());
+                    List<ItemStack> newDrops = loottable.getRandomItems(lootParams);
+
+                    // Restore the weapon to its original state IMMEDIATELY
+                    weapon.set(DataComponents.ENCHANTMENTS, originalEnchants);
+
+                    // Replace the drops
+                    event.getDrops().clear();
+                    for (ItemStack stack : newDrops) {
+                        event.getDrops().add(new ItemEntity(serverLevel, victim.getX(), victim.getY(), victim.getZ(), stack));
+                    }
+                }
 
                 // If the weapon has Fire Aspect, convert meat drops to cooked versions
                 if (bonuses.FIRE_ASPECT > 0) {
@@ -163,28 +210,9 @@ public class ModEvents {
                 .orElse(ItemStack.EMPTY);
     }
 
-    // Looting augment handling
-    @SubscribeEvent
-    public static void onLootingLevel(LootingLevelEvent event) {
-        // Verify the damage came from a living entity (the player)
-        if (event.getDamageSource() != null && event.getDamageSource().getDirectEntity() instanceof LivingEntity attacker) {
-            ItemStack weapon = attacker.getMainHandItem();
-
-            // Check if it's one of your modular tools and not broken
-            if (weapon.getItem() instanceof ModularItemInterface modularTool && !modularTool.isBroken(weapon)) {
-                AugmentObject bonuses = modularTool.getAugmentBonuses(weapon);
-
-                // Add the augment level to the existing looting level
-                if (bonuses.LOOTING > 0) {
-                    event.setLootingLevel(event.getLootingLevel() + bonuses.LOOTING);
-                }
-            }
-        }
-    }
-
     // Fire Aspect augment handling
     @SubscribeEvent
-    public static void applyModularFireAspect(LivingDamageEvent event) {
+    public static void applyModularFireAspect(LivingDamageEvent.Post event) {
         if (event.getSource().getDirectEntity() instanceof Player player) {
             ItemStack weapon = player.getWeaponItem();
 
@@ -196,6 +224,111 @@ public class ModEvents {
                 if (bonuses.FIRE_ASPECT > 0) {
                     event.getEntity().igniteForSeconds(bonuses.FIRE_ASPECT * 4);
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onBlockBreak(BlockEvent.BreakEvent event) {
+        Player player = event.getPlayer();
+
+        if (player.isCreative()) {
+            return;
+        }
+
+        ItemStack itemStack = player.getMainHandItem();
+
+        if (itemStack.getItem() instanceof ModularGenericDiggerItem modularTool) {
+            if (modularTool.isBroken(itemStack)) {
+                return;
+            }
+
+            Level level = (Level) event.getLevel();
+            if (level.isClientSide()) {
+                return;
+            }
+
+            BlockPos pos = event.getPos();
+            BlockState state = event.getState();
+            ServerLevel serverLevel = (ServerLevel) level;
+
+            if (!modularTool.isCorrectToolForDrops(itemStack, state) && state.requiresCorrectToolForDrops()) {
+                return;
+            }
+
+            AugmentObject bonuses = modularTool.getAugmentBonuses(itemStack);
+
+            // Only intercept if we have Silk or Fortune and the tool is correct
+            if ((bonuses.SILK_TOUCH || bonuses.FORTUNE > 0 || bonuses.AUTO_SMELT)) {
+                // Create Simulation Tool
+                ItemStack simulationTool = itemStack.copy();
+                if (bonuses.SILK_TOUCH) {
+                    simulationTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), 1);
+                } else {
+                    simulationTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE), bonuses.FORTUNE);
+                }
+
+                // Calculate Item Drops
+                LootParams.Builder builder = new LootParams.Builder(serverLevel)
+                        .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
+                        .withParameter(LootContextParams.TOOL, simulationTool)
+                        .withOptionalParameter(LootContextParams.BLOCK_ENTITY, level.getBlockEntity(pos))
+                        .withParameter(LootContextParams.THIS_ENTITY, player)
+                        .withParameter(LootContextParams.BLOCK_STATE, state);
+
+                List<ItemStack> drops = state.getDrops(builder);
+
+                // Handle Experience (XP)
+                // If it's Silk Touch, skip entirely (XP = 0)
+                // If it's Fortune, manually spawn the XP
+                if (!bonuses.SILK_TOUCH) {
+                    int xp = state.getExpDrop(serverLevel, pos, level.getBlockEntity(pos), player, simulationTool);
+                    if (xp > 0) {
+                        state.getBlock().popExperience(serverLevel, pos, xp);
+                    }
+                }
+
+                // Auto smelting
+                if (bonuses.AUTO_SMELT && !bonuses.SILK_TOUCH) {
+                    for (int i = 0; i < drops.size(); i++) {
+                        ItemStack originalStack = drops.get(i);
+                        ItemStack smeltedResult = modularTool.getSmeltingResult(serverLevel, originalStack);
+
+                        if (!smeltedResult.isEmpty()) {
+                            // Keep the count from the original drop (handles Fortune)
+                            ItemStack finalStack = smeltedResult.copy();
+                            finalStack.setCount(originalStack.getCount() * smeltedResult.getCount());
+                            drops.set(i, finalStack);
+
+                            // Optional: Spawn some "smelting" XP for the player
+                            float smeltingXp = modularTool.getSmeltingExperience(serverLevel, originalStack);
+                            if (smeltingXp > 0) {
+                                // Cast to int, but handle the remainder randomly (vanilla style)
+                                int xpToDrop = (int) smeltingXp + (serverLevel.random.nextFloat() < (smeltingXp % 1) ? 1 : 0);
+
+                                // Apply fortune for xp
+                                if (bonuses.FORTUNE > 0) {
+                                    xpToDrop *= bonuses.FORTUNE;
+                                }
+
+                                if (xpToDrop > 0) {
+                                    state.getBlock().popExperience(serverLevel, pos, xpToDrop);
+                                }
+                            }
+
+                            // Spawn fire particles to show smelting happened
+                            serverLevel.sendParticles(ParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5, 0.2, 0.2, 0.2, 0.05);
+                            modularTool.damageTool(itemStack, player);
+                        }
+                    }
+                }
+                // Finalize the break
+                level.removeBlock(pos, false);
+                for (ItemStack drop : drops) {
+                    Block.popResource(level, pos, drop);
+                }
+
+                modularTool.damageTool(itemStack, player);
             }
         }
     }

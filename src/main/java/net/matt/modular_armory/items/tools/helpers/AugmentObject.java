@@ -120,7 +120,7 @@ public class AugmentObject {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.diamond_sharpened_augment").withStyle(ChatFormatting.AQUA));
             }
 
-            if (this.AUTO_SMELT) {
+            if (this.AUTO_SMELT && !this.SILK_TOUCH) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.auto_smelt_augment").withStyle(ChatFormatting.DARK_RED));
             }
 

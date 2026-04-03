@@ -1,7 +1,7 @@
 package net.matt.modular_armory.items.tools;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
-import com.google.common.collect.ImmutableMap.Builder;
 
 import net.matt.modular_armory.items.tools.helpers.ModularGenericDiggerItem;
 import net.minecraft.core.BlockPos;
@@ -10,10 +10,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
@@ -22,18 +20,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CampfireBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
 
 public class ModularShovelItem extends ModularGenericDiggerItem {
-    protected static final Map<Block, BlockState> FLATTENABLES = Map.of(
-            Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.defaultBlockState(),
-            Blocks.DIRT, Blocks.DIRT_PATH.defaultBlockState(),
-            Blocks.PODZOL, Blocks.DIRT_PATH.defaultBlockState(),
-            Blocks.COARSE_DIRT, Blocks.DIRT_PATH.defaultBlockState(),
-            Blocks.MYCELIUM, Blocks.DIRT_PATH.defaultBlockState(),
-            Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.defaultBlockState()
-    );
+    protected static final Map<Block, BlockState> FLATTENABLES;
 
     public ModularShovelItem(Tier tier, Properties properties) {
         super(tier, BlockTags.MINEABLE_WITH_SHOVEL, properties);
@@ -45,11 +39,16 @@ public class ModularShovelItem extends ModularGenericDiggerItem {
         Level level = pContext.getLevel();
         BlockPos blockpos = pContext.getClickedPos();
         BlockState blockstate = level.getBlockState(blockpos);
+
+        if (isBroken(pContext.getItemInHand())) {
+            return super.useOn(pContext);
+        }
+
         if (pContext.getClickedFace() == Direction.DOWN) {
             return super.useOn(pContext);
         } else {
             Player player = pContext.getPlayer();
-            BlockState blockstate1 = blockstate.getToolModifiedState(pContext, net.minecraftforge.common.ToolActions.SHOVEL_FLATTEN, false);
+            BlockState blockstate1 = blockstate.getToolModifiedState(pContext, ItemAbilities.SHOVEL_FLATTEN, false);
             BlockState blockstate2 = null;
             if (blockstate1 != null && level.isEmptyBlock(blockpos.above())) {
                 level.playSound(player, blockpos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -79,13 +78,15 @@ public class ModularShovelItem extends ModularGenericDiggerItem {
         }
     }
 
-    @org.jetbrains.annotations.Nullable
-    public static BlockState getShovelPathingState(BlockState originalState) {
-        return FLATTENABLES.get(originalState.getBlock());
+    public static @Nullable BlockState getShovelPathingState(BlockState originalState) {
+        return (BlockState)FLATTENABLES.get(originalState.getBlock());
     }
 
-    @Override
-    public boolean canPerformAction(ItemStack stack, net.minecraftforge.common.ToolAction toolAction) {
-        return net.minecraftforge.common.ToolActions.DEFAULT_SHOVEL_ACTIONS.contains(toolAction);
+    public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+        return ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(itemAbility);
+    }
+
+    static {
+        FLATTENABLES = Maps.newHashMap((new ImmutableMap.Builder()).put(Blocks.GRASS_BLOCK, Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.DIRT, Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.PODZOL, Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.COARSE_DIRT, Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.MYCELIUM, Blocks.DIRT_PATH.defaultBlockState()).put(Blocks.ROOTED_DIRT, Blocks.DIRT_PATH.defaultBlockState()).build());
     }
 }

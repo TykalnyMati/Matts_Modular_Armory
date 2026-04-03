@@ -5,6 +5,7 @@ import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.renderer.AugmentTableBlockEntityRenderer;
 import net.matt.modular_armory.component.ModDataComponentTypes;
+import net.matt.modular_armory.datagen.DataGenerators;
 import net.matt.modular_armory.items.ModCreativeModeTabs;
 import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.recipe.ModRecipes;
@@ -13,25 +14,24 @@ import net.matt.modular_armory.screen.custom.AugmentTableScreen;
 import net.matt.modular_armory.screen.custom.ExposerScreen;
 import net.matt.modular_armory.screen.custom.ModularAssemblerScreen;
 import net.matt.modular_armory.screen.custom.RepairTableScreen;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.config.ModConfig;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
 import java.awt.*;
 
-// The value here should match an entry in the META-INF/mods.toml file
+// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(MattsModularArmory.MOD_ID)
 public class MattsModularArmory {
     // Define mod id in a common place for everything to reference
@@ -39,14 +39,10 @@ public class MattsModularArmory {
     // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public MattsModularArmory()
+    public MattsModularArmory(IEventBus modEventBus, ModContainer container)
     {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
-
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
 
         // Adding Creative tab
         ModCreativeModeTabs.register(modEventBus);
@@ -72,12 +68,38 @@ public class MattsModularArmory {
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
 
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        // Registering inventories
+        modEventBus.addListener(this::registerCapabilities);
+
+        // Register our mod's NeoForgeConfigSpec so that NeoForge can create and load the config file for us
+        modEventBus.addListener(Config::bake);
+        container.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+
+        if (net.neoforged.fml.loading.FMLEnvironment.dist.isClient()) {
+            modEventBus.addListener(ClientModEvents::onClientSetup);
+            modEventBus.addListener(ClientModEvents::registerScreens);
+            modEventBus.addListener(ClientModEvents::registerRenderers);
+        }
+
+        modEventBus.addListener(DataGenerators::gatherData);
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
+    private void commonSetup(final FMLCommonSetupEvent event) {}
 
+    private void registerCapabilities(RegisterCapabilitiesEvent event) {
+        // Register Augment Table (Simple handler for all sides)
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.AUGMENT_TABLE_BE.get(),
+                (be, side) -> be.inventory
+        );
+
+        // Register Exposer (Sided handler logic from the BE)
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.EXPOSER_BE.get(),
+                (be, side) -> be.getItemHandlerCapability(side)
+        );
     }
 
     // Add the example block item to the building blocks tab
@@ -85,25 +107,23 @@ public class MattsModularArmory {
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
+    public void onServerStarting(ServerStartingEvent event) {}
 
-    }
-
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
-        @SubscribeEvent
+
         public static void onClientSetup(FMLClientSetupEvent event) {
-            MenuScreens.register(ModMenuTypes.AUGMENT_TABLE_MENU.get(), AugmentTableScreen::new);
-            MenuScreens.register(ModMenuTypes.EXPOSER_MENU.get(), ExposerScreen::new);
-            MenuScreens.register(ModMenuTypes.REPAIR_TABLE_MENU.get(), RepairTableScreen::new);
-            MenuScreens.register(ModMenuTypes.MODULAR_ASSEMBLER_MENU.get(), ModularAssemblerScreen::new);
+            // General client setup if needed
         }
 
-        @SubscribeEvent
-        public static void registerBBR(EntityRenderersEvent.RegisterRenderers event) {
+        public static void registerScreens(RegisterMenuScreensEvent event) {
+            event.register(ModMenuTypes.AUGMENT_TABLE_MENU.get(), AugmentTableScreen::new);
+            event.register(ModMenuTypes.EXPOSER_MENU.get(), ExposerScreen::new);
+            event.register(ModMenuTypes.REPAIR_TABLE_MENU.get(), RepairTableScreen::new);
+            event.register(ModMenuTypes.MODULAR_ASSEMBLER_MENU.get(), ModularAssemblerScreen::new);
+        }
+
+        public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(ModBlockEntities.AUGMENT_TABLE_BE.get(), AugmentTableBlockEntityRenderer::new);
         }
-
     }
 }
