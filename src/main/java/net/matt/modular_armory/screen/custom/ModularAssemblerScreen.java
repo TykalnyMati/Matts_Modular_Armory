@@ -88,7 +88,7 @@ public class ModularAssemblerScreen extends AbstractContainerScreen<ModularAssem
                             this.minecraft.options.advancedItemTooltips ? TooltipFlag.Default.ADVANCED : TooltipFlag.Default.NORMAL
                     ));
 
-                    int cost = this.menu.getCostFor(stack.getItem());
+                    int cost = this.menu.getCostAtIndex(l);
                     int currentPlates = this.menu.inputSlot.getItem().getCount();
                     ChatFormatting color = (currentPlates >= cost) ? ChatFormatting.GOLD : ChatFormatting.RED;
 

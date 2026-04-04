@@ -21,6 +21,14 @@ public class ModRecipes {
         }
     });
 
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<ModularAssemblerRecipe>> MODULAR_ASSEMBLER_SERIALIZER = SERIALIZERS.register("modular_assembler", ModularAssemblerRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeType<?>, RecipeType<ModularAssemblerRecipe>> MODULAR_ASSEMBLER_TYPE = TYPES.register("modular_assembler", () -> new RecipeType<ModularAssemblerRecipe>() {
+        @Override
+        public String toString() {
+            return "modular_assembler";
+        }
+    });
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
         TYPES.register(eventBus);

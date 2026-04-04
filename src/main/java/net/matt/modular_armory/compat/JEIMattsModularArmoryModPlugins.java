@@ -10,7 +10,9 @@ import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.recipe.ExposerRecipe;
 import net.matt.modular_armory.recipe.ModRecipes;
+import net.matt.modular_armory.recipe.ModularAssemblerRecipe;
 import net.matt.modular_armory.screen.custom.ExposerScreen;
+import net.matt.modular_armory.screen.custom.ModularAssemblerScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -29,15 +31,8 @@ public class JEIMattsModularArmoryModPlugins implements IModPlugin {
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new ExposerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new ModularAssemblerRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
-
-//    @Override
-//    public void registerRecipes(IRecipeRegistration registration) {
-//        RecipeManager recipeManager = Minecraft.getInstance().level.getRecipeManager();
-//
-//        List<ExposerRecipe> exposerRecipes = recipeManager.getAllRecipesFor(ModRecipes.EXPOSER_TYPE.get()).stream().map(RecipeHolder::value).toList();
-//        registration.addRecipes(ExposerRecipeCategory.EXPOSER_RECIPE_RECIPE_TYPE, exposerRecipes);
-//    }
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
@@ -55,7 +50,14 @@ public class JEIMattsModularArmoryModPlugins implements IModPlugin {
                 .map(RecipeHolder::value)
                 .toList();
 
+        List<ModularAssemblerRecipe> modularAssemblerRecipes = recipeManager
+                .getAllRecipesFor(ModRecipes.MODULAR_ASSEMBLER_TYPE.get())
+                .stream()
+                .map(RecipeHolder::value)
+                .toList();
+
         registration.addRecipes(ExposerRecipeCategory.EXPOSER_RECIPE_RECIPE_TYPE, exposerRecipes);
+        registration.addRecipes(ModularAssemblerRecipeCategory.MODULAR_ASSEMBLER_RECIPE_RECIPE_TYPE, modularAssemblerRecipes);
     }
 
     @Override
@@ -66,5 +68,6 @@ public class JEIMattsModularArmoryModPlugins implements IModPlugin {
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.EXPOSER.get().asItem()), ExposerRecipeCategory.EXPOSER_RECIPE_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.MODULAR_ASSEMBLER.get().asItem()), ModularAssemblerRecipeCategory.MODULAR_ASSEMBLER_RECIPE_RECIPE_TYPE);
     }
 }

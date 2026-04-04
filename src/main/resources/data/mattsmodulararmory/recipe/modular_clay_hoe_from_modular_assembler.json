@@ -1,0 +1,11 @@
+{
+  "type": "mattsmodulararmory:modular_assembler",
+  "ingredient": {
+    "item": "mattsmodulararmory:basic_modular_plate"
+  },
+  "result": {
+    "id": "mattsmodulararmory:modular_clay_hoe",
+    "count": 1
+  },
+  "amount": 2
+}
