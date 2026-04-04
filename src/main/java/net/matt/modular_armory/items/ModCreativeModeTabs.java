@@ -76,11 +76,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.EFFICIENCY_AUGMENT.get());
                         output.accept(ModItems.SILK_TOUCH_AUGMENT.get());
                         output.accept(ModItems.FORTUNE_AUGMENT.get());
-                        output.accept(ModItems.DIAMOND_SHARPENED_AUGMENT.get());
-                        output.accept(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get());
-                        output.accept(ModItems.SCAFFOLDING_AUGMENT.get());
-                        output.accept(ModItems.ILLUMINATOR_AUGMENT.get());
-                        output.accept(ModItems.MAGNET_AUGMENT.get());
 
                         output.accept(ModItems.SHARPNESS_AUGMENT.get());
                         output.accept(ModItems.SMITE_AUGMENT.get());
@@ -90,8 +85,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.KNOCKBACK_AUGMENT.get());
                         output.accept(ModItems.FIRE_ASPECT_AUGMENT.get());
 
+                        output.accept(ModItems.PROTECTION_AUGMENT.get());
+
                         // Custom Augments
                         output.accept(ModItems.AUTO_SMELT_AUGMENT.get());
+                        output.accept(ModItems.DIAMOND_SHARPENED_AUGMENT.get());
+                        output.accept(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get());
+                        output.accept(ModItems.SCAFFOLDING_AUGMENT.get());
+                        output.accept(ModItems.ILLUMINATOR_AUGMENT.get());
+                        output.accept(ModItems.MAGNET_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

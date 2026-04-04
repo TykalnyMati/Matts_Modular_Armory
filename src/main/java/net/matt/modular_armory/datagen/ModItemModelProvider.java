@@ -103,6 +103,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.KNOCKBACK_AUGMENT.get());
         basicItem(ModItems.FIRE_ASPECT_AUGMENT.get());
 
+        basicItem(ModItems.PROTECTION_AUGMENT.get());
+
         // Custom Augments
         basicItem(ModItems.AUTO_SMELT_AUGMENT.get());
         basicItem(ModItems.DIAMOND_SHARPENED_AUGMENT.get());

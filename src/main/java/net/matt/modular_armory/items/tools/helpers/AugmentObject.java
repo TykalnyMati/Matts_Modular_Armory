@@ -9,11 +9,16 @@ import net.minecraft.world.item.ItemStack;
 import java.util.List;
 
 public class AugmentObject {
+    // Generic Augment values
     public int UNBREAKING;
     public boolean MENDING;
+
+    // Tool Augment values
     public int EFFICIENCY;
     public boolean SILK_TOUCH;
     public int FORTUNE;
+
+    // Weapon Augment values
     public int SHARPNESS;
     public int SMITE;
     public int BANE_OF_ARTHROPODS;
@@ -21,6 +26,9 @@ public class AugmentObject {
     public int LOOTING;
     public int KNOCKBACK;
     public int FIRE_ASPECT;
+
+    // Armor Augment values
+    public int PROTECTION;
 
     // Custom Augment values
     public boolean AUTO_SMELT;
@@ -59,6 +67,9 @@ public class AugmentObject {
                 case "mattsmodulararmory:looting_augment" -> this.LOOTING = augment.getCount();
                 case "mattsmodulararmory:knockback_augment" -> this.KNOCKBACK = augment.getCount();
                 case "mattsmodulararmory:fire_aspect_augment" -> this.FIRE_ASPECT = augment.getCount();
+
+                // Armor specific augments
+                case "mattsmodulararmory:protection_augment" -> this.PROTECTION = augment.getCount();
             }
         }
     }
@@ -171,6 +182,11 @@ public class AugmentObject {
             if (this.FIRE_ASPECT > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fire_aspect_augment").withStyle(ChatFormatting.YELLOW)
                         .append(Component.literal(": " + toRoman(this.FIRE_ASPECT)).withStyle(ChatFormatting.YELLOW)));
+            }
+
+            if (this.PROTECTION > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.protection_augment")
+                        .append(Component.literal(": " + toRoman(this.PROTECTION))).withStyle(ChatFormatting.DARK_AQUA));
             }
         }
 

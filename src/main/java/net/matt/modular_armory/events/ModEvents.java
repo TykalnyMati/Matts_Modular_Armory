@@ -228,6 +228,7 @@ public class ModEvents {
         }
     }
 
+    // Mining augments handling
     @SubscribeEvent
     public static void onBlockBreak(BlockEvent.BreakEvent event) {
         Player player = event.getPlayer();

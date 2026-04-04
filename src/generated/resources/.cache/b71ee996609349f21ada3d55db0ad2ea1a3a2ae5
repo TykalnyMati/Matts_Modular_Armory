@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-04T00:37:46.2631544	Item Models: mattsmodulararmory
+// 1.21.1	2026-04-04T18:03:25.8250252	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 6d073ddd6d0570130fc739d091a1df63c3237e43 assets/mattsmodulararmory/models/item/adaptive_flesh_hoe.json
@@ -88,6 +88,7 @@ ff3167fa11add78d9cdc4944292c97518932081e assets/mattsmodulararmory/models/item/m
 73c24eef4af9c45d4b13ddf79973b23e82178b9a assets/mattsmodulararmory/models/item/modular_clay_pickaxe.json
 3ce82cd4eeebaff81f4239fef604a9d38b274649 assets/mattsmodulararmory/models/item/modular_clay_shovel.json
 7188ac467e25d5c16e65756dddbb5ad9dfdb17f4 assets/mattsmodulararmory/models/item/modular_clay_sword.json
+4600afa4ee3471917211e46b81a9ac7fe1e44bc8 assets/mattsmodulararmory/models/item/protection_augment.json
 8170dc07a2cb97f7d665011b6d99913726dd0d87 assets/mattsmodulararmory/models/item/scaffolding_augment.json
 43fc75185e1b3a65e638f55cba9a628ad4ff9680 assets/mattsmodulararmory/models/item/sharpness_augment.json
 e254ad7a8f9a91e7609a9018d476f72feb4b662a assets/mattsmodulararmory/models/item/silk_touch_augment.json

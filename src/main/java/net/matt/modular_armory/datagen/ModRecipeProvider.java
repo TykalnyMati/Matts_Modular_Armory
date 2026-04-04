@@ -490,6 +490,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.BLAZE_POWDER))
                 .save(pRecipeOutput);
 
+        // Protection Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PROTECTION_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("BAB")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.IRON_INGOT)
+                .define('C', Blocks.IRON_BLOCK)
+                .unlockedBy("has_items_for_protection_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.IRON_INGOT,
+                        Blocks.IRON_BLOCK))
+                .save(pRecipeOutput);
+
         // Auto Smelt Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AUTO_SMELT_AUGMENT.get())
                 .pattern("BCB")

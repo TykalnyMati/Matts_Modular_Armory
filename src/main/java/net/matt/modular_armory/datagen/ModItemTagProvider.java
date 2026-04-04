@@ -144,6 +144,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.KNOCKBACK_AUGMENT.get())
                 .add(ModItems.FIRE_ASPECT_AUGMENT.get())
 
+                .add(ModItems.PROTECTION_AUGMENT.get())
+
                 // Custom Augments
                 .add(ModItems.AUTO_SMELT_AUGMENT.get())
                 .add(ModItems.DIAMOND_SHARPENED_AUGMENT.get())

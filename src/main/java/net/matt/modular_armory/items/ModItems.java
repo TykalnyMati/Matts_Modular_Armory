@@ -111,19 +111,19 @@ public class ModItems {
 
     public static final DeferredHolder<Item, Item> MODULAR_CLAY_HELMET = ITEMS.register("modular_clay_helmet",
             () -> new ModularArmorItem(ModArmorMaterials.MODULAR_CLAY_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
-                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(7))));
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(10))));
 
     public static final DeferredHolder<Item, Item> MODULAR_CLAY_CHESTPLATE = ITEMS.register("modular_clay_chestplate",
             () -> new ModularArmorItem(ModArmorMaterials.MODULAR_CLAY_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
-                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(7))));
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(10))));
 
     public static final DeferredHolder<Item, Item> MODULAR_CLAY_LEGGINGS = ITEMS.register("modular_clay_leggings",
             () -> new ModularArmorItem(ModArmorMaterials.MODULAR_CLAY_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
-                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(7))));
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(10))));
 
     public static final DeferredHolder<Item, Item> MODULAR_CLAY_BOOTS = ITEMS.register("modular_clay_boots",
             () -> new ModularArmorItem(ModArmorMaterials.MODULAR_CLAY_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
-                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(7))));
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(10))));
 
     // Advanced Modular Clay
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_SHOVEL = ITEMS.register("advanced_modular_clay_shovel",
@@ -238,6 +238,9 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> LOOTING_AUGMENT = ITEMS.register("looting_augment", () -> new AugmentGeneric(new Item.Properties(), "looting_augment", "weapons", List.of(1, 2, 3, 4)));
     public static final DeferredHolder<Item, Item> KNOCKBACK_AUGMENT = ITEMS.register("knockback_augment", () -> new AugmentGeneric(new Item.Properties(), "knockback_augment", "weapons", List.of(1, 2, 2, 3)));
     public static final DeferredHolder<Item, Item> FIRE_ASPECT_AUGMENT = ITEMS.register("fire_aspect_augment", () -> new AugmentGeneric(new Item.Properties(), "fire_aspect_augment", "weapons", List.of(1, 1, 2, 3)));
+
+    // Armor
+    public static final DeferredHolder<Item, Item> PROTECTION_AUGMENT = ITEMS.register("protection_augment", () -> new AugmentGeneric(new Item.Properties(), "protection_augment", "armor", List.of(1, 3, 5, 7)));
 
     // Custom Augments
     public static final DeferredHolder<Item, Item> AUTO_SMELT_AUGMENT = ITEMS.register("auto_smelt_augment", () -> new AugmentGeneric(new Item.Properties(), "auto_smelt_augment", "tools", List.of(0, 1, 1, 1)));
