@@ -28,6 +28,14 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.BODY, 4);
             }), 0, 0.0f, 0.0f, SoundEvents.ARMOR_EQUIP_CHAIN, ItemStack.EMPTY::getItem);
 
+    public static final Holder<ArmorMaterial> ADVANCED_MODULAR_CLAY_ARMOR_MATERIAL = register("advanced_modular_clay",
+            Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
+                attribute.put(ArmorItem.Type.BOOTS, 2);
+                attribute.put(ArmorItem.Type.LEGGINGS, 5);
+                attribute.put(ArmorItem.Type.CHESTPLATE, 6);
+                attribute.put(ArmorItem.Type.HELMET, 3);
+                attribute.put(ArmorItem.Type.BODY, 5);
+            }), 0, 0.0f, 0.0f, SoundEvents.ARMOR_EQUIP_IRON, ItemStack.EMPTY::getItem);
 
     private static Holder<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> typeProtection, int enchantability, float toughness, float knockbackResistance, Holder<SoundEvent> equipSound, Supplier<Item> ingredientItem) {
         ResourceLocation location = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, name);

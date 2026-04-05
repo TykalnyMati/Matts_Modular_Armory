@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mattsmodulararmory:item/advanced_modular_clay_helmet",
+    "layer1": "minecraft:trims/items/helmet_trim_iron"
+  }
+}

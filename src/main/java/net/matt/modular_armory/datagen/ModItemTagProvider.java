@@ -37,6 +37,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HELMET.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get())
 
                 .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
                 .add(ModItems.ADAPTIVE_FLESH_AXE.get())
@@ -89,7 +93,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_HELMET.get())
                 .add(ModItems.MODULAR_CLAY_CHESTPLATE.get())
                 .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
-                .add(ModItems.MODULAR_CLAY_BOOTS.get());
+                .add(ModItems.MODULAR_CLAY_BOOTS.get())
+
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HELMET.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get());
 
         // Modular Items Tier 0
         tag(ModTags.Items.MODULAR_TIER_0)
@@ -109,7 +118,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get())
-                .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HELMET.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get());
 
         // Modular Items Tier 2
         tag(ModTags.Items.MODULAR_TIER_2)
@@ -159,6 +172,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_HELMET.get())
                 .add(ModItems.MODULAR_CLAY_CHESTPLATE.get())
                 .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
-                .add(ModItems.MODULAR_CLAY_BOOTS.get());
+                .add(ModItems.MODULAR_CLAY_BOOTS.get())
+
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HELMET.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get());
     }
 }

@@ -141,6 +141,21 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_SWORD = ITEMS.register("advanced_modular_clay_sword",
             () -> new ModularSwordItem(ModToolTiers.ADVANCED_MODULAR_CLAY, new Item.Properties().attributes(ModularSwordItem.createAttributes(ModToolTiers.ADVANCED_MODULAR_CLAY, 3.5f, -2.2f))));
 
+    public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_HELMET = ITEMS.register("advanced_modular_clay_helmet",
+            () -> new ModularArmorItem(ModArmorMaterials.ADVANCED_MODULAR_CLAY_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(17))));
+
+    public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_CHESTPLATE = ITEMS.register("advanced_modular_clay_chestplate",
+            () -> new ModularArmorItem(ModArmorMaterials.ADVANCED_MODULAR_CLAY_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(17))));
+
+    public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_LEGGINGS = ITEMS.register("advanced_modular_clay_leggings",
+            () -> new ModularArmorItem(ModArmorMaterials.ADVANCED_MODULAR_CLAY_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(17))));
+
+    public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_BOOTS = ITEMS.register("advanced_modular_clay_boots",
+            () -> new ModularArmorItem(ModArmorMaterials.ADVANCED_MODULAR_CLAY_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(17))));
 
     // Adaptive Flesh
     public static final DeferredHolder<Item, Item> ADAPTIVE_FLESH_SHOVEL = ITEMS.register("adaptive_flesh_shovel",

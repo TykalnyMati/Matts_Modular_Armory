@@ -72,6 +72,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL);
         handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_HOE);
         handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_SWORD);
+        trimmedArmorItem(ModItems.ADVANCED_MODULAR_CLAY_HELMET);
+        trimmedArmorItem(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE);
+        trimmedArmorItem(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS);
+        trimmedArmorItem(ModItems.ADVANCED_MODULAR_CLAY_BOOTS);
 
         // Tier 2 modular items
         handHeldItem(ModItems.ADAPTIVE_FLESH_PICKAXE);
