@@ -520,6 +520,46 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.IRON_BLOCK))
                 .save(pRecipeOutput);
 
+        // Blast Protection Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BLAST_PROTECTION_AUGMENT.get())
+                .pattern(" B ")
+                .pattern("BAB")
+                .pattern(" B ")
+                .define('A', ModItems.PROTECTION_AUGMENT.get())
+                .define('B', Blocks.OBSIDIAN)
+                .unlockedBy("has_items_for_blast_protection_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.PROTECTION_AUGMENT.get(),
+                        Blocks.OBSIDIAN))
+                .save(pRecipeOutput);
+
+        // Projectile Protection Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PROJECTILE_PROTECTION_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("BAB")
+                .pattern(" B ")
+                .define('A', ModItems.PROTECTION_AUGMENT.get())
+                .define('B', ItemTags.PLANKS)
+                .define('C', Items.IRON_INGOT)
+                .unlockedBy("has_items_for_projectile_protection_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.PROTECTION_AUGMENT.get()).build(),
+                        ItemPredicate.Builder.item().of(ItemTags.PLANKS).build(),
+                        ItemPredicate.Builder.item().of(Items.IRON_INGOT).build()))
+                .save(pRecipeOutput);
+
+        // Fire Protection Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FIRE_PROTECTION_AUGMENT.get())
+                .pattern(" B ")
+                .pattern("CAC")
+                .pattern(" B ")
+                .define('A', ModItems.PROTECTION_AUGMENT.get())
+                .define('B', Items.BLAZE_POWDER)
+                .define('C', Blocks.MAGMA_BLOCK)
+                .unlockedBy("has_items_for_fire_protection_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.PROTECTION_AUGMENT.get(),
+                        Items.BLAZE_POWDER,
+                        Blocks.MAGMA_BLOCK))
+                .save(pRecipeOutput);
+
         // Auto Smelt Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AUTO_SMELT_AUGMENT.get())
                 .pattern("BCB")

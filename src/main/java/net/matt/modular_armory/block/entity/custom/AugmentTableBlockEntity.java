@@ -91,7 +91,7 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
         // Armor Augments
         if (modularItemStack.is(ModTags.Items.MODULAR_ARMOR)) {
             slotSize = switch (itemName) {
-                case "mattsmodulararmory:protection_augment" -> 1 + 2 * tier;
+                case "mattsmodulararmory:protection_augment", "mattsmodulararmory:blast_protection_augment", "mattsmodulararmory:projectile_protection_augment", "mattsmodulararmory:fire_protection_augment" -> 1 + 2 * tier;
                 default -> slotSize;
             };
         }

@@ -61,6 +61,9 @@
   "item.mattsmodulararmory.knockback_augment": "Knockback Augment",
   "item.mattsmodulararmory.fire_aspect_augment": "Fire Aspect Augment",
   "item.mattsmodulararmory.protection_augment": "Protection Augment",
+  "item.mattsmodulararmory.blast_protection_augment": "Blast Protection Augment",
+  "item.mattsmodulararmory.projectile_protection_augment": "Projectile Protection Augment",
+  "item.mattsmodulararmory.fire_protection_augment": "Fire Protection Augment",
 
   "item.mattsmodulararmory.auto_smelt_augment": "Auto Smelt Augment",
   "item.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened Augment",
@@ -85,6 +88,9 @@
   "tooltip.mattsmodulararmory.knockback_augment": "Knockback",
   "tooltip.mattsmodulararmory.fire_aspect_augment": "Fire Aspect",
   "tooltip.mattsmodulararmory.protection_augment": "Protection",
+  "tooltip.mattsmodulararmory.blast_protection_augment": "Blast Protection",
+  "tooltip.mattsmodulararmory.projectile_protection_augment": "Projectile Protection",
+  "tooltip.mattsmodulararmory.fire_protection_augment": "Fire Protection",
 
   "tooltip.mattsmodulararmory.auto_smelt_augment": "Auto Smelt",
   "tooltip.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened",
@@ -112,6 +118,9 @@
   "tooltip.mattsmodulararmory.description.looting_augment": "Increases the amount and rarity of mob drops",
   "tooltip.mattsmodulararmory.description.fire_aspect_augment": "Sets the targets ablaze upon attack\nDuration increases with level",
   "tooltip.mattsmodulararmory.description.protection_augment": "Reduces overall damage taken\nTakes priority over specialized protection augments",
+  "tooltip.mattsmodulararmory.description.blast_protection_augment": "Reduces damage taken from explosions\nIncompatible with other protection augments",
+  "tooltip.mattsmodulararmory.description.projectile_protection_augment": "Reduces damage taken from projectiles\nIncompatible with other protection augments",
+  "tooltip.mattsmodulararmory.description.fire_protection_augment": "Reduces damage taken from fire\nIncompatible with other protection augments",
 
   "tooltip.mattsmodulararmory.description.auto_smelt_augment": "Smelts mined blocks at the cost of extra durability\nCan drop experience that would appear after smelting\nWorks with fortune",
   "tooltip.mattsmodulararmory.description.diamond_sharpened_augment": "Allows for the destruction of blocks that would require a diamond tool\nSlightly increases mining speed",

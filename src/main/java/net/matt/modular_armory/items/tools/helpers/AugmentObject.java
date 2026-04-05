@@ -29,6 +29,9 @@ public class AugmentObject {
 
     // Armor Augment values
     public int PROTECTION;
+    public int BLAST_PROTECTION;
+    public int PROJECTILE_PROTECTION;
+    public int FIRE_PROTECTION;
 
     // Custom Augment values
     public boolean AUTO_SMELT;
@@ -70,6 +73,9 @@ public class AugmentObject {
 
                 // Armor specific augments
                 case "mattsmodulararmory:protection_augment" -> this.PROTECTION = augment.getCount();
+                case "mattsmodulararmory:blast_protection_augment" -> this.BLAST_PROTECTION = augment.getCount();
+                case "mattsmodulararmory:projectile_protection_augment" -> this.PROJECTILE_PROTECTION = augment.getCount();
+                case "mattsmodulararmory:fire_protection_augment" -> this.FIRE_PROTECTION = augment.getCount();
             }
         }
     }
@@ -187,6 +193,15 @@ public class AugmentObject {
             if (this.PROTECTION > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.protection_augment")
                         .append(Component.literal(": " + toRoman(this.PROTECTION))).withStyle(ChatFormatting.DARK_AQUA));
+            } else if (this.BLAST_PROTECTION > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.blast_protection_augment")
+                        .append(Component.literal(": " + toRoman(this.BLAST_PROTECTION))).withStyle(ChatFormatting.DARK_AQUA));
+            } else if (this.PROJECTILE_PROTECTION > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.projectile_protection_augment")
+                        .append(Component.literal(": " + toRoman(this.PROJECTILE_PROTECTION))).withStyle(ChatFormatting.DARK_AQUA));
+            } else if (this.FIRE_PROTECTION > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fire_protection_augment")
+                        .append(Component.literal(": " + toRoman(this.FIRE_PROTECTION))).withStyle(ChatFormatting.DARK_AQUA));
             }
         }
 

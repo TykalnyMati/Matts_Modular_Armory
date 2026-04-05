@@ -90,6 +90,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FIRE_ASPECT_AUGMENT.get());
 
                         output.accept(ModItems.PROTECTION_AUGMENT.get());
+                        output.accept(ModItems.BLAST_PROTECTION_AUGMENT.get());
+                        output.accept(ModItems.PROJECTILE_PROTECTION_AUGMENT.get());
+                        output.accept(ModItems.FIRE_PROTECTION_AUGMENT.get());
 
                         // Custom Augments
                         output.accept(ModItems.AUTO_SMELT_AUGMENT.get());

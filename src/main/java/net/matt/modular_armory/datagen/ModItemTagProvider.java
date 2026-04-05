@@ -158,6 +158,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.FIRE_ASPECT_AUGMENT.get())
 
                 .add(ModItems.PROTECTION_AUGMENT.get())
+                .add(ModItems.BLAST_PROTECTION_AUGMENT.get())
+                .add(ModItems.PROJECTILE_PROTECTION_AUGMENT.get())
+                .add(ModItems.FIRE_PROTECTION_AUGMENT.get())
 
                 // Custom Augments
                 .add(ModItems.AUTO_SMELT_AUGMENT.get())

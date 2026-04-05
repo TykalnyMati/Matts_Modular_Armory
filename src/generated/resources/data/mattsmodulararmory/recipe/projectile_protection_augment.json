@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:protection_augment"
+    },
+    "B": {
+      "tag": "minecraft:planks"
+    },
+    "C": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "BCB",
+    "BAB",
+    " B "
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:projectile_protection_augment"
+  }
+}
