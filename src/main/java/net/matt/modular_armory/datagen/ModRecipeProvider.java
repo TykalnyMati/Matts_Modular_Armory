@@ -560,6 +560,18 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.MAGMA_BLOCK))
                 .save(pRecipeOutput);
 
+        // Thorns Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.THORNS_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("BAB")
+                .pattern("BBB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.CACTUS)
+                .unlockedBy("has_items_for_thorns_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.CACTUS))
+                .save(pRecipeOutput);
+
         // Auto Smelt Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AUTO_SMELT_AUGMENT.get())
                 .pattern("BCB")

@@ -72,4 +72,31 @@ public class ModArmorEvents {
             event.setNewDamage(newDamage);
         }
     }
+
+    // Thorns augment handling
+    @SubscribeEvent
+    public static void onLivingDamageThorns(LivingDamageEvent.Post event) {
+        LivingEntity victim = event.getEntity();
+
+        if (event.getSource().getEntity() instanceof LivingEntity attacker) {
+
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                if (slot.isArmor()) {
+                    ItemStack stack = victim.getItemBySlot(slot);
+
+                    if (stack.getItem() instanceof ModularItemInterface armorItem && !armorItem.isBroken(stack)) {
+                        AugmentObject bonuses = armorItem.getAugmentBonuses(stack);
+
+                        if (bonuses.THORNS > 0) {
+                            if (victim.getRandom().nextFloat() < (bonuses.THORNS * 0.15f)) {
+                                float damageAmount = bonuses.THORNS + victim.getRandom().nextInt(2);
+                                attacker.hurt(victim.damageSources().thorns(victim), damageAmount);
+                                armorItem.damageModularItem(stack, victim, 2);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

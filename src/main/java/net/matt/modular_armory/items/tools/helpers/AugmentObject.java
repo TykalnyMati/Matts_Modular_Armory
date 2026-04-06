@@ -32,6 +32,7 @@ public class AugmentObject {
     public int BLAST_PROTECTION;
     public int PROJECTILE_PROTECTION;
     public int FIRE_PROTECTION;
+    public int THORNS;
 
     // Custom Augment values
     public boolean AUTO_SMELT;
@@ -76,6 +77,7 @@ public class AugmentObject {
                 case "mattsmodulararmory:blast_protection_augment" -> this.BLAST_PROTECTION = augment.getCount();
                 case "mattsmodulararmory:projectile_protection_augment" -> this.PROJECTILE_PROTECTION = augment.getCount();
                 case "mattsmodulararmory:fire_protection_augment" -> this.FIRE_PROTECTION = augment.getCount();
+                case "mattsmodulararmory:thorns_augment" -> this.THORNS = augment.getCount();
             }
         }
     }
@@ -114,6 +116,7 @@ public class AugmentObject {
             pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.augments").withStyle(ChatFormatting.GRAY)
                     .append(Component.literal(":").withStyle(ChatFormatting.GRAY)));
 
+            // GENERIC
             if (this.UNBREAKING >= 8) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.unbreaking_augment_full").withStyle(ChatFormatting.DARK_AQUA));
             } else if (this.UNBREAKING > 0) {
@@ -125,6 +128,7 @@ public class AugmentObject {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.mending_augment").withStyle(ChatFormatting.GREEN));
             }
 
+            // TOOLS
             if (this.EFFICIENCY > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.efficiency_augment").withStyle(ChatFormatting.YELLOW)
                         .append(Component.literal(": " + toRoman((int) this.EFFICIENCY)).withStyle(ChatFormatting.YELLOW)));
@@ -161,6 +165,7 @@ public class AugmentObject {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.illuminator_augment").withStyle(ChatFormatting.YELLOW));
             }
 
+            // WEAPONS
             if (this.SHARPNESS > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.sharpness_augment").withStyle(ChatFormatting.DARK_RED)
                         .append(Component.literal(": " + toRoman(this.SHARPNESS)).withStyle(ChatFormatting.DARK_RED)));
@@ -190,6 +195,7 @@ public class AugmentObject {
                         .append(Component.literal(": " + toRoman(this.FIRE_ASPECT)).withStyle(ChatFormatting.YELLOW)));
             }
 
+            // ARMOR
             if (this.PROTECTION > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.protection_augment")
                         .append(Component.literal(": " + toRoman(this.PROTECTION))).withStyle(ChatFormatting.DARK_AQUA));
@@ -202,6 +208,11 @@ public class AugmentObject {
             } else if (this.FIRE_PROTECTION > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fire_protection_augment")
                         .append(Component.literal(": " + toRoman(this.FIRE_PROTECTION))).withStyle(ChatFormatting.DARK_AQUA));
+            }
+
+            if (this.THORNS > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.thorns_augment")
+                        .append(Component.literal(": " + toRoman(this.THORNS))).withStyle(ChatFormatting.DARK_RED));
             }
         }
 

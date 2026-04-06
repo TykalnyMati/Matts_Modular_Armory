@@ -38,6 +38,8 @@ import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @EventBusSubscriber(modid = MattsModularArmory.MOD_ID)
@@ -47,31 +49,32 @@ public class ModEvents {
     @SubscribeEvent
     public static void onXpChange(PlayerXpEvent.XpChange event) {
         Player player = event.getEntity();
-        ItemStack mainHandItem = player.getMainHandItem();
-        ItemStack offhandItem = player.getOffhandItem();
-        Iterable<ItemStack> equippedItems = player.getArmorSlots();
-
         int remainingXp = event.getAmount();
 
-        // First repairs in main hand
-        if (mainHandItem.getItem() instanceof ModularItemInterface modularItem) {
-            remainingXp = modularItem.repairFromXp(mainHandItem, remainingXp);
+        if (remainingXp <= 0) {
+            return;
         }
 
-        // Repairs in offhand
-        if (offhandItem.getItem() instanceof ModularItemInterface modularItem) {
-            remainingXp = modularItem.repairFromXp(offhandItem, remainingXp);
+        List<ItemStack> repairCandidates = new ArrayList<>();
+
+        repairCandidates.add(player.getMainHandItem());
+        repairCandidates.add(player.getOffhandItem());
+        for (ItemStack armorStack : player.getArmorSlots()) {
+            repairCandidates.add(armorStack);
         }
 
-        // Repairs worn armor
-        for (ItemStack equippedItem : equippedItems) {
-            if (equippedItem.getItem() instanceof  ModularItemInterface modularItem) {
-                remainingXp = modularItem.repairFromXp(equippedItem, remainingXp);
+        Collections.shuffle(repairCandidates);
+
+        for (ItemStack stack : repairCandidates) {
+            if (remainingXp <= 0) {
+                break;
+            }
+
+            if (stack.getItem() instanceof ModularItemInterface modularItem) {
+                remainingXp = modularItem.repairFromXp(stack, remainingXp);
             }
         }
 
-
-        // Reduce the amount of XP player gets
         event.setAmount(remainingXp);
     }
 
