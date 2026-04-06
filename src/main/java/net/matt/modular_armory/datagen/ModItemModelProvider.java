@@ -83,6 +83,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         handHeldItem(ModItems.ADAPTIVE_FLESH_SHOVEL);
         handHeldItem(ModItems.ADAPTIVE_FLESH_HOE);
         handHeldItem(ModItems.ADAPTIVE_FLESH_SWORD);
+        trimmedArmorItem(ModItems.ADAPTIVE_FLESH_HELMET);
+        trimmedArmorItem(ModItems.ADAPTIVE_FLESH_CHESTPLATE);
+        trimmedArmorItem(ModItems.ADAPTIVE_FLESH_LEGGINGS);
+        trimmedArmorItem(ModItems.ADAPTIVE_FLESH_BOOTS);
 
         // Tier 3 modular items
         handHeldItem(ModItems.BIORITE_PICKAXE);

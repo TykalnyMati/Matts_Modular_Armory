@@ -47,6 +47,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
                 .add(ModItems.ADAPTIVE_FLESH_HOE.get())
                 .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
+                .add(ModItems.ADAPTIVE_FLESH_HELMET.get())
+                .add(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get())
+                .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
+                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get())
 
                 .add(ModItems.BIORITE_PICKAXE.get())
                 .add(ModItems.BIORITE_AXE.get())
@@ -98,7 +102,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADVANCED_MODULAR_CLAY_HELMET.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
-                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get())
+
+                .add(ModItems.ADAPTIVE_FLESH_HELMET.get())
+                .add(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get())
+                .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
+                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get());
 
         // Modular Items Tier 0
         tag(ModTags.Items.MODULAR_TIER_0)
@@ -130,7 +139,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_AXE.get())
                 .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
                 .add(ModItems.ADAPTIVE_FLESH_HOE.get())
-                .add(ModItems.ADAPTIVE_FLESH_SWORD.get());
+                .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
+                .add(ModItems.ADAPTIVE_FLESH_HELMET.get())
+                .add(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get())
+                .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
+                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get());
 
         // Modular Items Tier 3
         tag(ModTags.Items.MODULAR_TIER_3)
@@ -181,6 +194,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADVANCED_MODULAR_CLAY_HELMET.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
-                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get())
+
+                .add(ModItems.ADAPTIVE_FLESH_HELMET.get())
+                .add(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get())
+                .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
+                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get());
     }
 }

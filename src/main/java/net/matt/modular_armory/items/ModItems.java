@@ -173,6 +173,22 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> ADAPTIVE_FLESH_SWORD = ITEMS.register("adaptive_flesh_sword",
             () -> new ModularSwordItem(ModToolTiers.ADAPTIVE_FLESH, new Item.Properties().rarity(Rarity.UNCOMMON).attributes(ModularSwordItem.createAttributes(ModToolTiers.ADAPTIVE_FLESH, 4f, -2.0f))));
 
+    public static final DeferredHolder<Item, Item> ADAPTIVE_FLESH_HELMET = ITEMS.register("adaptive_flesh_helmet",
+            () -> new ModularArmorItem(ModArmorMaterials.ADAPTIVE_FLESH_ARMOR_MATERIAL, ArmorItem.Type.HELMET,
+                    new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(30))));
+
+    public static final DeferredHolder<Item, Item> ADAPTIVE_FLESH_CHESTPLATE = ITEMS.register("adaptive_flesh_chestplate",
+            () -> new ModularArmorItem(ModArmorMaterials.ADAPTIVE_FLESH_ARMOR_MATERIAL, ArmorItem.Type.CHESTPLATE,
+                    new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(30))));
+
+    public static final DeferredHolder<Item, Item> ADAPTIVE_FLESH_LEGGINGS = ITEMS.register("adaptive_flesh_leggings",
+            () -> new ModularArmorItem(ModArmorMaterials.ADAPTIVE_FLESH_ARMOR_MATERIAL, ArmorItem.Type.LEGGINGS,
+                    new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(30))));
+
+    public static final DeferredHolder<Item, Item> ADAPTIVE_FLESH_BOOTS = ITEMS.register("adaptive_flesh_boots",
+            () -> new ModularArmorItem(ModArmorMaterials.ADAPTIVE_FLESH_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
+                    new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(30))));
+
     // Biorite
     public static final DeferredHolder<Item, Item> BIORITE_SHOVEL = ITEMS.register("biorite_shovel",
             () -> new ModularShovelItem(ModToolTiers.BIORITE, new Item.Properties().rarity(Rarity.RARE).fireResistant().attributes(ShovelItem.createAttributes(ModToolTiers.BIORITE, 2.5f, -2.0f))));

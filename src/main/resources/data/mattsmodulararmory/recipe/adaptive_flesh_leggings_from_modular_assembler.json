@@ -1,0 +1,11 @@
+{
+  "type": "mattsmodulararmory:modular_assembler",
+  "ingredient": {
+    "item": "mattsmodulararmory:adaptive_flesh_plate"
+  },
+  "result": {
+    "id": "mattsmodulararmory:adaptive_flesh_leggings",
+    "count": 1
+  },
+  "amount": 7
+}

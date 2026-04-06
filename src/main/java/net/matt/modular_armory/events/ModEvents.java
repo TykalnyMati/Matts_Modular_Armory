@@ -216,8 +216,8 @@ public class ModEvents {
     // Fire Aspect augment handling
     @SubscribeEvent
     public static void applyModularFireAspect(LivingDamageEvent.Post event) {
-        if (event.getSource().getDirectEntity() instanceof Player player) {
-            ItemStack weapon = player.getWeaponItem();
+        if (event.getSource().getDirectEntity() instanceof LivingEntity entity) {
+            ItemStack weapon = entity.getWeaponItem();
 
             // Check if it's a modular item
             if (weapon.getItem() instanceof ModularItemInterface modularItem && !modularItem.isBroken(weapon)) {

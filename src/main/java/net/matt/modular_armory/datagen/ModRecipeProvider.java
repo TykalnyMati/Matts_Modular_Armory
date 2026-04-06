@@ -272,15 +272,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModItems.ADAPTIVE_FLESH_PICKAXE.get(),
                 ModItems.ADAPTIVE_FLESH_AXE.get(),
                 ModItems.ADAPTIVE_FLESH_SHOVEL.get(),
-                ModItems.ADAPTIVE_FLESH_HOE.get()
-        );
-
-        AdvancedModularClayItems = List.of(
-                ModItems.ADVANCED_MODULAR_CLAY_SWORD.get(),
-                ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get(),
-                ModItems.ADVANCED_MODULAR_CLAY_AXE.get(),
-                ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get(),
-                ModItems.ADVANCED_MODULAR_CLAY_HOE.get()
+                ModItems.ADAPTIVE_FLESH_HOE.get(),
+                ModItems.ADAPTIVE_FLESH_HELMET.get(),
+                ModItems.ADAPTIVE_FLESH_CHESTPLATE.get(),
+                ModItems.ADAPTIVE_FLESH_LEGGINGS.get(),
+                ModItems.ADAPTIVE_FLESH_BOOTS.get()
         );
 
         for (int i = 0; i < AdvancedModularClayItems.size(); i++) {
@@ -322,6 +318,14 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModItems.BIORITE_AXE.get(),
                 ModItems.BIORITE_SHOVEL.get(),
                 ModItems.BIORITE_HOE.get()
+        );
+
+        AdaptiveFleshItems = List.of(
+                ModItems.ADAPTIVE_FLESH_SWORD.get(),
+                ModItems.ADAPTIVE_FLESH_PICKAXE.get(),
+                ModItems.ADAPTIVE_FLESH_AXE.get(),
+                ModItems.ADAPTIVE_FLESH_SHOVEL.get(),
+                ModItems.ADAPTIVE_FLESH_HOE.get()
         );
 
         for (int i = 0; i < AdaptiveFleshItems.size(); i++) {

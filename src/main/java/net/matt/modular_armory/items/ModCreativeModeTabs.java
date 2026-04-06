@@ -65,6 +65,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ADAPTIVE_FLESH_PICKAXE.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_AXE.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_HOE.get());
+                        output.accept(ModItems.ADAPTIVE_FLESH_HELMET.get());
+                        output.accept(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get());
+                        output.accept(ModItems.ADAPTIVE_FLESH_LEGGINGS.get());
+                        output.accept(ModItems.ADAPTIVE_FLESH_BOOTS.get());
 
                         // Tier 3 modular items
                         output.accept(ModItems.BIORITE_SWORD.get());

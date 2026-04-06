@@ -157,6 +157,10 @@
   "item.mattsmodulararmory.adaptive_flesh_shovel": "Adaptive Flesh Shovel",
   "item.mattsmodulararmory.adaptive_flesh_hoe": "Adaptive Flesh Hoe",
   "item.mattsmodulararmory.adaptive_flesh_sword": "Adaptive Flesh Sword",
+  "item.mattsmodulararmory.adaptive_flesh_helmet": "Adaptive Flesh Helmet",
+  "item.mattsmodulararmory.adaptive_flesh_chestplate": "Adaptive Flesh Chestplate",
+  "item.mattsmodulararmory.adaptive_flesh_leggings": "Adaptive Flesh Leggings",
+  "item.mattsmodulararmory.adaptive_flesh_boots": "Adaptive Flesh Boots",
 
   "tooltip.mattsmodulararmory.adaptive_flesh_flavor.0": "Hunmgry",
   "tooltip.mattsmodulararmory.adaptive_flesh_flavor.1": "Brrrugh",
