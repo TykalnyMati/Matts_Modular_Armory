@@ -94,6 +94,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         handHeldItem(ModItems.BIORITE_SHOVEL);
         handHeldItem(ModItems.BIORITE_HOE);
         handHeldItem(ModItems.BIORITE_SWORD);
+        trimmedArmorItem(ModItems.BIORITE_HELMET);
+        trimmedArmorItem(ModItems.BIORITE_CHESTPLATE);
+        trimmedArmorItem(ModItems.BIORITE_LEGGINGS);
+        trimmedArmorItem(ModItems.BIORITE_BOOTS);
 
         // Augments
         basicItem(ModItems.UNBREAKING_AUGMENT.get());

@@ -1,11 +1,11 @@
-// 1.21.1	2026-04-06T19:48:10.6682196	Tags for minecraft:item mod id mattsmodulararmory
-280299f4e5f2affcf99799b3aa564b5e6f71d5a6 data/mattsmodulararmory/tags/item/modular_armor.json
-e7e79fe6b479bc0cef129380b7631f1831f17946 data/mattsmodulararmory/tags/item/modular_items.json
+// 1.21.1	2026-04-07T20:22:54.6339953	Tags for minecraft:item mod id mattsmodulararmory
+576b480961ae951552a90d18a851cb100b5b8134 data/mattsmodulararmory/tags/item/modular_armor.json
+e28db23deb359059903dd378e9ad2b60304804cc data/mattsmodulararmory/tags/item/modular_items.json
 a5f3ae833ee66d84526749cfc93da1a8817020ef data/mattsmodulararmory/tags/item/modular_items_augment.json
 62b067aee0e104f96860df1aee0a7f05a829d237 data/mattsmodulararmory/tags/item/modular_tier_0.json
 decc3d74ba57d3dfd7a44487bf1326c4b0cfbe71 data/mattsmodulararmory/tags/item/modular_tier_1.json
 f8055a949d657eb6c51e84b98a02c590f3ff01a7 data/mattsmodulararmory/tags/item/modular_tier_2.json
-90e3260e63ad3d8956abd05bebe1e8c8466f2793 data/mattsmodulararmory/tags/item/modular_tier_3.json
+8ba7d97b2be2f66250c88456c00cb9debe4a8c12 data/mattsmodulararmory/tags/item/modular_tier_3.json
 400aed6c0a4dbdc3425a5c0111cd54098ab60fb1 data/mattsmodulararmory/tags/item/modular_tool.json
 9c76f7a7c3712d4f6fb7c8e27e1dffc730d97acf data/mattsmodulararmory/tags/item/modular_weapon.json
-280299f4e5f2affcf99799b3aa564b5e6f71d5a6 data/minecraft/tags/item/trimmable_armor.json
+576b480961ae951552a90d18a851cb100b5b8134 data/minecraft/tags/item/trimmable_armor.json

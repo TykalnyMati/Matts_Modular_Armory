@@ -76,6 +76,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BIORITE_PICKAXE.get());
                         output.accept(ModItems.BIORITE_AXE.get());
                         output.accept(ModItems.BIORITE_HOE.get());
+                        output.accept(ModItems.BIORITE_HELMET.get());
+                        output.accept(ModItems.BIORITE_CHESTPLATE.get());
+                        output.accept(ModItems.BIORITE_LEGGINGS.get());
+                        output.accept(ModItems.BIORITE_BOOTS.get());
 
                         // Augments
                         output.accept(ModItems.UNBREAKING_AUGMENT.get());

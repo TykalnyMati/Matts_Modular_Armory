@@ -11,6 +11,10 @@
     "mattsmodulararmory:adaptive_flesh_helmet",
     "mattsmodulararmory:adaptive_flesh_chestplate",
     "mattsmodulararmory:adaptive_flesh_leggings",
-    "mattsmodulararmory:adaptive_flesh_boots"
+    "mattsmodulararmory:adaptive_flesh_boots",
+    "mattsmodulararmory:biorite_helmet",
+    "mattsmodulararmory:biorite_chestplate",
+    "mattsmodulararmory:biorite_leggings",
+    "mattsmodulararmory:biorite_boots"
   ]
 }

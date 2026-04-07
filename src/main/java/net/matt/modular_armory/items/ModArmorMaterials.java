@@ -46,6 +46,15 @@ public class ModArmorMaterials {
                 attribute.put(ArmorItem.Type.BODY, 11);
             }), 0, 2.0f, 0.05f, SoundEvents.ARMOR_EQUIP_LEATHER, ItemStack.EMPTY::getItem);
 
+    public static final Holder<ArmorMaterial> BIORITE_ARMOR_MATERIAL = register("biorite",
+            Util.make(new EnumMap<>(ArmorItem.Type.class), attribute -> {
+                attribute.put(ArmorItem.Type.BOOTS, 4);
+                attribute.put(ArmorItem.Type.LEGGINGS, 8);
+                attribute.put(ArmorItem.Type.CHESTPLATE, 10);
+                attribute.put(ArmorItem.Type.HELMET, 4);
+                attribute.put(ArmorItem.Type.BODY, 14);
+            }), 0, 4.0f, 0.15f, SoundEvents.ARMOR_EQUIP_NETHERITE, ItemStack.EMPTY::getItem);
+
     private static Holder<ArmorMaterial> register(String name, EnumMap<ArmorItem.Type, Integer> typeProtection, int enchantability, float toughness, float knockbackResistance, Holder<SoundEvent> equipSound, Supplier<Item> ingredientItem) {
         ResourceLocation location = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, name);
         Supplier<Ingredient> ingredient = () -> Ingredient.of(ingredientItem.get());

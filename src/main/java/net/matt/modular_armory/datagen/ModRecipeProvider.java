@@ -317,15 +317,11 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModItems.BIORITE_PICKAXE.get(),
                 ModItems.BIORITE_AXE.get(),
                 ModItems.BIORITE_SHOVEL.get(),
-                ModItems.BIORITE_HOE.get()
-        );
-
-        AdaptiveFleshItems = List.of(
-                ModItems.ADAPTIVE_FLESH_SWORD.get(),
-                ModItems.ADAPTIVE_FLESH_PICKAXE.get(),
-                ModItems.ADAPTIVE_FLESH_AXE.get(),
-                ModItems.ADAPTIVE_FLESH_SHOVEL.get(),
-                ModItems.ADAPTIVE_FLESH_HOE.get()
+                ModItems.BIORITE_HOE.get(),
+                ModItems.BIORITE_HELMET.get(),
+                ModItems.BIORITE_CHESTPLATE.get(),
+                ModItems.BIORITE_LEGGINGS.get(),
+                ModItems.BIORITE_BOOTS.get()
         );
 
         for (int i = 0; i < AdaptiveFleshItems.size(); i++) {

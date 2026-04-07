@@ -218,6 +218,10 @@
   "item.mattsmodulararmory.biorite_shovel": "Biorite Shovel",
   "item.mattsmodulararmory.biorite_hoe": "Biorite Hoe",
   "item.mattsmodulararmory.biorite_sword": "Biorite Sword",
+  "item.mattsmodulararmory.biorite_helmet": "Biorite Helmet",
+  "item.mattsmodulararmory.biorite_chestplate": "Biorite Chestplate",
+  "item.mattsmodulararmory.biorite_leggings": "Biorite Leggings",
+  "item.mattsmodulararmory.biorite_boots": "Biorite Boots",
 
   "tooltip.mattsmodulararmory.biorite_flavor.0": "Kept You waiting?",
   "tooltip.mattsmodulararmory.biorite_flavor.1": "What's up Boss?",

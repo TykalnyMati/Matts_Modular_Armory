@@ -56,7 +56,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BIORITE_AXE.get())
                 .add(ModItems.BIORITE_SHOVEL.get())
                 .add(ModItems.BIORITE_HOE.get())
-                .add(ModItems.BIORITE_SWORD.get());
+                .add(ModItems.BIORITE_SWORD.get())
+                .add(ModItems.BIORITE_HELMET.get())
+                .add(ModItems.BIORITE_CHESTPLATE.get())
+                .add(ModItems.BIORITE_LEGGINGS.get())
+                .add(ModItems.BIORITE_BOOTS.get());
 
         // Modular Tools tag
         tag(ModTags.Items.MODULAR_TOOL)
@@ -107,7 +111,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_HELMET.get())
                 .add(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get())
                 .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
-                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get());
+                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get())
+
+                .add(ModItems.BIORITE_HELMET.get())
+                .add(ModItems.BIORITE_CHESTPLATE.get())
+                .add(ModItems.BIORITE_LEGGINGS.get())
+                .add(ModItems.BIORITE_BOOTS.get());
 
         // Modular Items Tier 0
         tag(ModTags.Items.MODULAR_TIER_0)
@@ -151,7 +160,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BIORITE_AXE.get())
                 .add(ModItems.BIORITE_SHOVEL.get())
                 .add(ModItems.BIORITE_HOE.get())
-                .add(ModItems.BIORITE_SWORD.get());
+                .add(ModItems.BIORITE_SWORD.get())
+                .add(ModItems.BIORITE_HELMET.get())
+                .add(ModItems.BIORITE_CHESTPLATE.get())
+                .add(ModItems.BIORITE_LEGGINGS.get())
+                .add(ModItems.BIORITE_BOOTS.get());
 
         // Augments
         tag(ModTags.Items.MODULAR_ITEMS_AUGMENT)
@@ -199,6 +212,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_HELMET.get())
                 .add(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get())
                 .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
-                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get());
+                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get())
+
+                .add(ModItems.BIORITE_HELMET.get())
+                .add(ModItems.BIORITE_CHESTPLATE.get())
+                .add(ModItems.BIORITE_LEGGINGS.get())
+                .add(ModItems.BIORITE_BOOTS.get());
     }
 }

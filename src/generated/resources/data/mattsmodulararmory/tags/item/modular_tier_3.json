@@ -4,6 +4,10 @@
     "mattsmodulararmory:biorite_axe",
     "mattsmodulararmory:biorite_shovel",
     "mattsmodulararmory:biorite_hoe",
-    "mattsmodulararmory:biorite_sword"
+    "mattsmodulararmory:biorite_sword",
+    "mattsmodulararmory:biorite_helmet",
+    "mattsmodulararmory:biorite_chestplate",
+    "mattsmodulararmory:biorite_leggings",
+    "mattsmodulararmory:biorite_boots"
   ]
 }
