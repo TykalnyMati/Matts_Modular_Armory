@@ -43,6 +43,14 @@ public class AugmentTableMenu extends AbstractContainerMenu {
             public int getMaxStackSize(@NotNull ItemStack stack) {
                 return 1;
             }
+
+            @Override
+            public boolean mayPlace(@NotNull ItemStack stack) {
+                if (!super.mayPlace(stack)) {
+                    return false;
+                }
+                return ((AugmentTableBlockEntity) blockEntity).inventory.getStackInSlot(0).isEmpty();
+            }
         });
 
         // 1st augment slot
