@@ -108,7 +108,7 @@ public class AugmentObject {
 
                 pTooltipComponents.add(Component.literal("§k|abc")
                         .append(Component.translatable(flavorText))
-                        .append(Component.literal("§k|abc"))
+                        .append(Component.literal("§kabc|"))
                         .withStyle(colors[tier])
                         .withStyle(ChatFormatting.ITALIC));
             }

@@ -86,6 +86,7 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
     // Tooltips
     private static long lastHoverTime = 0;
     private static int sessionRandomOffset = 0;
+    private static int lastStackId = 0;
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         boolean hasAugments = pStack.has(ModDataComponentTypes.AUGMENTS.get());
@@ -100,8 +101,10 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
         if (tier > 1) {
             long currentTime = System.currentTimeMillis();
             int totalFlavors = AugmentObject.TOTAL_FLAVOR_TEXT_AMOUNT;
+            int stackId = System.identityHashCode(pStack);
 
-            if (currentTime - lastHoverTime > 100) {
+            if (currentTime - lastHoverTime > 100 || stackId != lastStackId) {
+                lastStackId = stackId;
                 sessionRandomOffset = new java.util.Random().nextInt(totalFlavors);
             }
             lastHoverTime = currentTime;

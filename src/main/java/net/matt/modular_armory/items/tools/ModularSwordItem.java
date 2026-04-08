@@ -12,10 +12,7 @@ import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -116,6 +113,7 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
     // Tooltips
     private static long lastHoverTime = 0;
     private static int sessionRandomOffset = 0;
+    private static int lastStackId = 0;
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         boolean hasAugments = pStack.has(ModDataComponentTypes.AUGMENTS.get());
@@ -130,8 +128,10 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
         if (tier > 1) {
             long currentTime = System.currentTimeMillis();
             int totalFlavors = AugmentObject.TOTAL_FLAVOR_TEXT_AMOUNT;
+            int stackId = System.identityHashCode(pStack);
 
-            if (currentTime - lastHoverTime > 100) {
+            if (currentTime - lastHoverTime > 100 || stackId != lastStackId) {
+                lastStackId = stackId;
                 sessionRandomOffset = new java.util.Random().nextInt(totalFlavors);
             }
             lastHoverTime = currentTime;
