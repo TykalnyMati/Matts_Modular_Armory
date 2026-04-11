@@ -197,6 +197,31 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ILLUMINATOR_AUGMENT.get())
                 .add(ModItems.MAGNET_AUGMENT.get());
 
+        // Armor Tags
+        tag(ModTags.Items.MODULAR_HELMET)
+                .add(ModItems.MODULAR_CLAY_HELMET.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HELMET.get())
+                .add(ModItems.ADAPTIVE_FLESH_HELMET.get())
+                .add(ModItems.BIORITE_HELMET.get());
+
+        tag(ModTags.Items.MODULAR_CHESTPLATE)
+                .add(ModItems.MODULAR_CLAY_CHESTPLATE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get())
+                .add(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get())
+                .add(ModItems.BIORITE_CHESTPLATE.get());
+
+        tag(ModTags.Items.MODULAR_LEGGINGS)
+                .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
+                .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
+                .add(ModItems.BIORITE_LEGGINGS.get());
+
+        tag(ModTags.Items.MODULAR_BOOTS)
+                .add(ModItems.MODULAR_CLAY_BOOTS.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get())
+                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get())
+                .add(ModItems.BIORITE_BOOTS.get());
+
         // NeoForge Tags
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.MODULAR_CLAY_HELMET.get())

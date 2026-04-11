@@ -79,6 +79,17 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
             if (modularItemStack.is(ModTags.Items.MODULAR_ARMOR) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_ARMOR)) {
                 slotSize = augmentItem.augmentLevels.get(tier);
             }
+
+            // Specific Armor Piece Augments
+            if (modularItemStack.is(ModTags.Items.MODULAR_HELMET) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_HELMET)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            } else if (modularItemStack.is(ModTags.Items.MODULAR_CHESTPLATE) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_CHESTPLATE)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            } else if (modularItemStack.is(ModTags.Items.MODULAR_LEGGINGS) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_LEGGINGS)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            } else if (modularItemStack.is(ModTags.Items.MODULAR_BOOTS) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_BOOTS)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            }
         }
 
         return slotSize;

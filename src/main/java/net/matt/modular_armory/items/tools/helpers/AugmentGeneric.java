@@ -34,6 +34,10 @@ public class AugmentGeneric extends Item {
                 augmentTypes.add(ModTags.Items.MODULAR_TOOL);
                 augmentTypes.add(ModTags.Items.MODULAR_WEAPON);
             case Types.ARMOR: augmentTypes.add(ModTags.Items.MODULAR_ARMOR);
+            case Types.ARMOR_HEAD: augmentTypes.add(ModTags.Items.MODULAR_HELMET);
+            case Types.ARMOR_CHEST: augmentTypes.add(ModTags.Items.MODULAR_CHESTPLATE);
+            case Types.ARMOR_LEGS: augmentTypes.add(ModTags.Items.MODULAR_LEGGINGS);
+            case Types.ARMOR_FEET: augmentTypes.add(ModTags.Items.MODULAR_BOOTS);
         }
     }
 
@@ -78,5 +82,9 @@ public class AugmentGeneric extends Item {
         static public final String WEAPONS = "weapons";
         static public final String TOOLS_AND_WEAPONS = "tools_and_weapons";
         static public final String ARMOR = "armor";
+        static public final String ARMOR_HEAD = "armor_head";
+        static public final String ARMOR_CHEST = "armor_chest";
+        static public final String ARMOR_LEGS = "armor_legs";
+        static public final String ARMOR_FEET = "armor_feet";
     }
 }
