@@ -34,6 +34,9 @@ public class AugmentObject {
     public int FIRE_PROTECTION;
     public int THORNS;
 
+    public int RESPIRATION;
+    public int AQUA_AFFINITY;
+
     // Custom Augment values
     public boolean AUTO_SMELT;
     public boolean DIAMOND_SHARPENED;
@@ -78,6 +81,9 @@ public class AugmentObject {
                 case "mattsmodulararmory:projectile_protection_augment" -> this.PROJECTILE_PROTECTION = augment.getCount();
                 case "mattsmodulararmory:fire_protection_augment" -> this.FIRE_PROTECTION = augment.getCount();
                 case "mattsmodulararmory:thorns_augment" -> this.THORNS = augment.getCount();
+
+                case "mattsmodulararmory:respiration_augment" -> this.RESPIRATION = augment.getCount();
+                case "mattsmodulararmory:aqua_affinity_augment" -> this.AQUA_AFFINITY = augment.getCount();
             }
         }
     }
@@ -213,6 +219,16 @@ public class AugmentObject {
             if (this.THORNS > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.thorns_augment")
                         .append(Component.literal(": " + toRoman(this.THORNS))).withStyle(ChatFormatting.DARK_RED));
+            }
+
+            if (this.RESPIRATION > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.respiration_augment")
+                        .append(Component.literal(": " + toRoman(this.RESPIRATION))).withStyle(ChatFormatting.AQUA));
+            }
+
+            if (this.AQUA_AFFINITY > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.aqua_affinity_augment")
+                        .append(Component.literal(": " + toRoman(this.AQUA_AFFINITY))).withStyle(ChatFormatting.AQUA));
             }
         }
 

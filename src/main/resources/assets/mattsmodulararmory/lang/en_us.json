@@ -65,6 +65,8 @@
   "item.mattsmodulararmory.projectile_protection_augment": "Projectile Protection Augment",
   "item.mattsmodulararmory.fire_protection_augment": "Fire Protection Augment",
   "item.mattsmodulararmory.thorns_augment": "Thorns Augment",
+  "item.mattsmodulararmory.respiration_augment": "Respiration Augment",
+  "item.mattsmodulararmory.aqua_affinity_augment": "Aqua Affinity Augment",
 
   "item.mattsmodulararmory.auto_smelt_augment": "Auto Smelt Augment",
   "item.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened Augment",
@@ -93,6 +95,8 @@
   "tooltip.mattsmodulararmory.projectile_protection_augment": "Projectile Protection",
   "tooltip.mattsmodulararmory.fire_protection_augment": "Fire Protection",
   "tooltip.mattsmodulararmory.thorns_augment": "Thorns",
+  "tooltip.mattsmodulararmory.respiration_augment": "Respiration",
+  "tooltip.mattsmodulararmory.aqua_affinity_augment": "Aqua Affinity",
 
   "tooltip.mattsmodulararmory.auto_smelt_augment": "Auto Smelt",
   "tooltip.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened",
@@ -104,8 +108,12 @@
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
   "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
   "tooltip.mattsmodulararmory.augment_type.weapons": "Weapons",
-  "tooltip.mattsmodulararmory.augment_type.armor": "Armor",
   "tooltip.mattsmodulararmory.augment_type.tools_and_weapons": "Tools and Weapons",
+  "tooltip.mattsmodulararmory.augment_type.armor": "Armor",
+  "tooltip.mattsmodulararmory.augment_type.armor_head": "Armor: Head",
+  "tooltip.mattsmodulararmory.augment_type.armor_chest": "Armor: Chest",
+  "tooltip.mattsmodulararmory.augment_type.armor_legs": "Armor: Legs",
+  "tooltip.mattsmodulararmory.augment_type.armor_feet": "Armor: Feet",
 
   "tooltip.mattsmodulararmory.description.unbreaking_augment": "Reduces the chance to consume durability by 12.5%\nBecomes unbreakable with 8 augments",
   "tooltip.mattsmodulararmory.description.mending_augment": "Repairs items with XP",
@@ -124,6 +132,8 @@
   "tooltip.mattsmodulararmory.description.projectile_protection_augment": "Reduces damage taken from projectiles\nIncompatible with other protection augments",
   "tooltip.mattsmodulararmory.description.fire_protection_augment": "Reduces damage taken from fire\nIncompatible with other protection augments",
   "tooltip.mattsmodulararmory.description.thorns_augment": "Chance to damage attackers at the cost of extra durability",
+  "tooltip.mattsmodulararmory.description.respiration_augment": "Extends breathing time underwater",
+  "tooltip.mattsmodulararmory.description.aqua_affinity_augment": "Increases underwater mining speed\nAdditional level increases it even further",
 
   "tooltip.mattsmodulararmory.description.auto_smelt_augment": "Smelts mined blocks at the cost of extra durability\nCan drop experience that would appear after smelting\nWorks with fortune",
   "tooltip.mattsmodulararmory.description.diamond_sharpened_augment": "Allows for the destruction of blocks that would require a diamond tool\nSlightly increases mining speed",

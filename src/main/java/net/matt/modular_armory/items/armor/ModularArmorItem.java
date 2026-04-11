@@ -39,6 +39,7 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
         ItemAttributeModifiers modifiers = super.getDefaultAttributeModifiers(stack);
         AugmentObject bonuses = new AugmentObject(stack);
 
+        // Protections
         if (bonuses.PROTECTION > 0) {
 
         } else if (bonuses.BLAST_PROTECTION > 0) {
@@ -65,6 +66,38 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
             modifiers = modifiers.withModifierAdded(
                     Attributes.BURNING_TIME,
                     new AttributeModifier(modifierId, burnTimeReduction, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.bySlot(this.getType().getSlot())
+            );
+        }
+
+        // Respiration
+        if (bonuses.RESPIRATION > 0) {
+            ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID,
+                    "respiration_" + this.getType().getName());
+
+            modifiers = modifiers.withModifierAdded(
+                    Attributes.OXYGEN_BONUS,
+                    new AttributeModifier(modifierId, bonuses.RESPIRATION, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.bySlot(this.getType().getSlot())
+            );
+        }
+
+        // Aqua Affinity
+        if (bonuses.AQUA_AFFINITY > 0) {
+            ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID,
+                    "aqua_affinity_" + this.getType().getName());
+
+            double aquaBonus = 0;
+
+            if (bonuses.AQUA_AFFINITY == 1) {
+                aquaBonus = 0.8;
+            } else if (bonuses.AQUA_AFFINITY >= 2) {
+                aquaBonus = 1.3;
+            }
+
+            modifiers = modifiers.withModifierAdded(
+                    Attributes.SUBMERGED_MINING_SPEED,
+                    new AttributeModifier(modifierId, aquaBonus, AttributeModifier.Operation.ADD_VALUE),
                     EquipmentSlotGroup.bySlot(this.getType().getSlot())
             );
         }

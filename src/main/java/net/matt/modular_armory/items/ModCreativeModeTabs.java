@@ -103,6 +103,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FIRE_PROTECTION_AUGMENT.get());
                         output.accept(ModItems.THORNS_AUGMENT.get());
 
+                        output.accept(ModItems.RESPIRATION_AUGMENT.get());
+                        output.accept(ModItems.AQUA_AFFINITY_AUGMENT.get());
+
                         // Custom Augments
                         output.accept(ModItems.AUTO_SMELT_AUGMENT.get());
                         output.accept(ModItems.DIAMOND_SHARPENED_AUGMENT.get());

@@ -572,6 +572,32 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.CACTUS))
                 .save(pRecipeOutput);
 
+        // Respiration Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RESPIRATION_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("BAB")
+                .pattern("BBB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.GLASS_BOTTLE)
+                .unlockedBy("has_items_for_respiration_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.GLASS_BOTTLE))
+                .save(pRecipeOutput);
+
+        // Respiration Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AQUA_AFFINITY_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.PRISMARINE_SHARD)
+                .define('C', Blocks.PRISMARINE)
+                .unlockedBy("has_items_for_aqua_affinity_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.PRISMARINE_SHARD,
+                        Blocks.PRISMARINE))
+                .save(pRecipeOutput);
+
         // Auto Smelt Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AUTO_SMELT_AUGMENT.get())
                 .pattern("BCB")
