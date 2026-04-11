@@ -269,37 +269,37 @@ public class ModItems {
 
     // Augments
     // Generic
-    public static final DeferredHolder<Item, Item> UNBREAKING_AUGMENT = ITEMS.register("unbreaking_augment", () -> new AugmentGeneric(new Item.Properties(), "unbreaking_augment", "generic", List.of(2, 4, 6, 8)));
-    public static final DeferredHolder<Item, Item> MENDING_AUGMENT = ITEMS.register("mending_augment", () -> new AugmentGeneric(new Item.Properties(), "mending_augment", "generic", List.of(0, 1, 1, 1)));
+    public static final DeferredHolder<Item, Item> UNBREAKING_AUGMENT = ITEMS.register("unbreaking_augment", () -> new AugmentGeneric(new Item.Properties(), "unbreaking_augment", AugmentGeneric.Types.GENERIC, List.of(2, 4, 6, 8)));
+    public static final DeferredHolder<Item, Item> MENDING_AUGMENT = ITEMS.register("mending_augment", () -> new AugmentGeneric(new Item.Properties(), "mending_augment", AugmentGeneric.Types.GENERIC, List.of(0, 1, 1, 1)));
 
     // Tools
-    public static final DeferredHolder<Item, Item> EFFICIENCY_AUGMENT = ITEMS.register("efficiency_augment", () -> new AugmentGeneric(new Item.Properties(), "efficiency_augment", "tools", List.of(1, 3, 5, 7)));
-    public static final DeferredHolder<Item, Item> SILK_TOUCH_AUGMENT = ITEMS.register("silk_touch_augment", () -> new AugmentGeneric(new Item.Properties(), "silk_touch_augment", "tools", List.of(1, 1, 1, 1)));
-    public static final DeferredHolder<Item, Item> FORTUNE_AUGMENT = ITEMS.register("fortune_augment", () -> new AugmentGeneric(new Item.Properties(), "fortune_augment", "tools", List.of(1, 2, 3, 4)));
+    public static final DeferredHolder<Item, Item> EFFICIENCY_AUGMENT = ITEMS.register("efficiency_augment", () -> new AugmentGeneric(new Item.Properties(), "efficiency_augment", AugmentGeneric.Types.TOOLS, List.of(1, 3, 5, 7)));
+    public static final DeferredHolder<Item, Item> SILK_TOUCH_AUGMENT = ITEMS.register("silk_touch_augment", () -> new AugmentGeneric(new Item.Properties(), "silk_touch_augment", AugmentGeneric.Types.TOOLS, List.of(1, 1, 1, 1)));
+    public static final DeferredHolder<Item, Item> FORTUNE_AUGMENT = ITEMS.register("fortune_augment", () -> new AugmentGeneric(new Item.Properties(), "fortune_augment", AugmentGeneric.Types.TOOLS, List.of(1, 2, 3, 4)));
 
     // Weapons
-    public static final DeferredHolder<Item, Item> SHARPNESS_AUGMENT = ITEMS.register("sharpness_augment", () -> new AugmentGeneric(new Item.Properties(), "sharpness_augment", "weapons", List.of(1, 3, 5, 7)));
-    public static final DeferredHolder<Item, Item> SMITE_AUGMENT = ITEMS.register("smite_augment", () -> new AugmentGeneric(new Item.Properties(), "smite_augment", "weapons", List.of(1, 3, 5, 7)));
-    public static final DeferredHolder<Item, Item> BANE_OF_ARTHROPODS_AUGMENT = ITEMS.register("bane_of_arthropods_augment", () -> new AugmentGeneric(new Item.Properties(), "bane_of_arthropods_augment", "weapons", List.of(1, 3, 5, 7)));
-    public static final DeferredHolder<Item, Item> IMPALING_AUGMENT = ITEMS.register("impaling_augment", () -> new AugmentGeneric(new Item.Properties(), "impaling_augment", "weapons", List.of(1, 3, 5, 7)));
-    public static final DeferredHolder<Item, Item> LOOTING_AUGMENT = ITEMS.register("looting_augment", () -> new AugmentGeneric(new Item.Properties(), "looting_augment", "weapons", List.of(1, 2, 3, 4)));
-    public static final DeferredHolder<Item, Item> KNOCKBACK_AUGMENT = ITEMS.register("knockback_augment", () -> new AugmentGeneric(new Item.Properties(), "knockback_augment", "weapons", List.of(1, 2, 2, 3)));
-    public static final DeferredHolder<Item, Item> FIRE_ASPECT_AUGMENT = ITEMS.register("fire_aspect_augment", () -> new AugmentGeneric(new Item.Properties(), "fire_aspect_augment", "weapons", List.of(1, 1, 2, 3)));
+    public static final DeferredHolder<Item, Item> SHARPNESS_AUGMENT = ITEMS.register("sharpness_augment", () -> new AugmentGeneric(new Item.Properties(), "sharpness_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 3, 5, 7)));
+    public static final DeferredHolder<Item, Item> SMITE_AUGMENT = ITEMS.register("smite_augment", () -> new AugmentGeneric(new Item.Properties(), "smite_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 3, 5, 7)));
+    public static final DeferredHolder<Item, Item> BANE_OF_ARTHROPODS_AUGMENT = ITEMS.register("bane_of_arthropods_augment", () -> new AugmentGeneric(new Item.Properties(), "bane_of_arthropods_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 3, 5, 7)));
+    public static final DeferredHolder<Item, Item> IMPALING_AUGMENT = ITEMS.register("impaling_augment", () -> new AugmentGeneric(new Item.Properties(), "impaling_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 3, 5, 7)));
+    public static final DeferredHolder<Item, Item> LOOTING_AUGMENT = ITEMS.register("looting_augment", () -> new AugmentGeneric(new Item.Properties(), "looting_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 2, 3, 4)));
+    public static final DeferredHolder<Item, Item> KNOCKBACK_AUGMENT = ITEMS.register("knockback_augment", () -> new AugmentGeneric(new Item.Properties(), "knockback_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 2, 2, 3)));
+    public static final DeferredHolder<Item, Item> FIRE_ASPECT_AUGMENT = ITEMS.register("fire_aspect_augment", () -> new AugmentGeneric(new Item.Properties(), "fire_aspect_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 1, 2, 3)));
 
     // Armor
-    public static final DeferredHolder<Item, Item> PROTECTION_AUGMENT = ITEMS.register("protection_augment", () -> new AugmentGeneric(new Item.Properties(), "protection_augment", "armor", List.of(1, 3, 5, 7)));
-    public static final DeferredHolder<Item, Item> BLAST_PROTECTION_AUGMENT = ITEMS.register("blast_protection_augment", () -> new AugmentGeneric(new Item.Properties(), "blast_protection_augment", "armor", List.of(1, 3, 5, 7)));
-    public static final DeferredHolder<Item, Item> PROJECTILE_PROTECTION_AUGMENT = ITEMS.register("projectile_protection_augment", () -> new AugmentGeneric(new Item.Properties(), "projectile_protection_augment", "armor", List.of(1, 3, 5, 7)));
-    public static final DeferredHolder<Item, Item> FIRE_PROTECTION_AUGMENT = ITEMS.register("fire_protection_augment", () -> new AugmentGeneric(new Item.Properties().fireResistant(), "fire_protection_augment", "armor", List.of(1, 3, 5, 7)));
-    public static final DeferredHolder<Item, Item> THORNS_AUGMENT = ITEMS.register("thorns_augment", () -> new AugmentGeneric(new Item.Properties(), "thorns_augment", "armor", List.of(1, 2, 3, 4)));
+    public static final DeferredHolder<Item, Item> PROTECTION_AUGMENT = ITEMS.register("protection_augment", () -> new AugmentGeneric(new Item.Properties(), "protection_augment", AugmentGeneric.Types.ARMOR, List.of(1, 3, 5, 7)));
+    public static final DeferredHolder<Item, Item> BLAST_PROTECTION_AUGMENT = ITEMS.register("blast_protection_augment", () -> new AugmentGeneric(new Item.Properties(), "blast_protection_augment", AugmentGeneric.Types.ARMOR, List.of(1, 3, 5, 7)));
+    public static final DeferredHolder<Item, Item> PROJECTILE_PROTECTION_AUGMENT = ITEMS.register("projectile_protection_augment", () -> new AugmentGeneric(new Item.Properties(), "projectile_protection_augment", AugmentGeneric.Types.ARMOR, List.of(1, 3, 5, 7)));
+    public static final DeferredHolder<Item, Item> FIRE_PROTECTION_AUGMENT = ITEMS.register("fire_protection_augment", () -> new AugmentGeneric(new Item.Properties().fireResistant(), "fire_protection_augment", AugmentGeneric.Types.ARMOR, List.of(1, 3, 5, 7)));
+    public static final DeferredHolder<Item, Item> THORNS_AUGMENT = ITEMS.register("thorns_augment", () -> new AugmentGeneric(new Item.Properties(), "thorns_augment", AugmentGeneric.Types.ARMOR, List.of(1, 2, 3, 4)));
 
     // Custom Augments
-    public static final DeferredHolder<Item, Item> AUTO_SMELT_AUGMENT = ITEMS.register("auto_smelt_augment", () -> new AugmentGeneric(new Item.Properties(), "auto_smelt_augment", "tools", List.of(0, 1, 1, 1)));
-    public static final DeferredHolder<Item, Item> DIAMOND_SHARPENED_AUGMENT = ITEMS.register("diamond_sharpened_augment", () -> new AugmentGeneric(new Item.Properties(), "diamond_sharpened_augment", "tools", List.of(0, 1, 1, 1)));
-    public static final DeferredHolder<Item, Item> MODULAR_CLAY_EXTRACTOR_AUGMENT = ITEMS.register("modular_clay_extractor_augment", () -> new AugmentGeneric(new Item.Properties(), "modular_clay_extractor_augment", "tools", List.of(1, 2, 3, 4)));
-    public static final DeferredHolder<Item, Item> SCAFFOLDING_AUGMENT = ITEMS.register("scaffolding_augment", () -> new AugmentGeneric(new Item.Properties(), "scaffolding_augment", "tools", List.of(1, 2, 3, 4)));
-    public static final DeferredHolder<Item, Item> ILLUMINATOR_AUGMENT = ITEMS.register("illuminator_augment", () -> new AugmentGeneric(new Item.Properties(), "illuminator_augment", "tools", List.of(0, 1, 1, 1)));
-    public static final DeferredHolder<Item, Item> MAGNET_AUGMENT = ITEMS.register("magnet_augment", () -> new AugmentGeneric(new Item.Properties(), "magnet_augment", "tools_and_weapons", List.of(0, 1, 1, 1)));
+    public static final DeferredHolder<Item, Item> AUTO_SMELT_AUGMENT = ITEMS.register("auto_smelt_augment", () -> new AugmentGeneric(new Item.Properties(), "auto_smelt_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1)));
+    public static final DeferredHolder<Item, Item> DIAMOND_SHARPENED_AUGMENT = ITEMS.register("diamond_sharpened_augment", () -> new AugmentGeneric(new Item.Properties(), "diamond_sharpened_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1)));
+    public static final DeferredHolder<Item, Item> MODULAR_CLAY_EXTRACTOR_AUGMENT = ITEMS.register("modular_clay_extractor_augment", () -> new AugmentGeneric(new Item.Properties(), "modular_clay_extractor_augment", AugmentGeneric.Types.TOOLS, List.of(1, 2, 3, 4)));
+    public static final DeferredHolder<Item, Item> SCAFFOLDING_AUGMENT = ITEMS.register("scaffolding_augment", () -> new AugmentGeneric(new Item.Properties(), "scaffolding_augment", AugmentGeneric.Types.TOOLS, List.of(1, 2, 3, 4)));
+    public static final DeferredHolder<Item, Item> ILLUMINATOR_AUGMENT = ITEMS.register("illuminator_augment", () -> new AugmentGeneric(new Item.Properties(), "illuminator_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1)));
+    public static final DeferredHolder<Item, Item> MAGNET_AUGMENT = ITEMS.register("magnet_augment", () -> new AugmentGeneric(new Item.Properties(), "magnet_augment", AugmentGeneric.Types.TOOLS_AND_WEAPONS, List.of(0, 1, 1, 1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

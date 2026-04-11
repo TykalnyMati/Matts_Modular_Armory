@@ -2,6 +2,7 @@ package net.matt.modular_armory.block.entity.custom;
 
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.component.ModDataComponentTypes;
+import net.matt.modular_armory.items.tools.helpers.AugmentGeneric;
 import net.matt.modular_armory.screen.custom.AugmentTableMenu;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
@@ -20,6 +21,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -56,45 +58,27 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
             tier = 3;
         }
 
-        String itemName = BuiltInRegistries.ITEM.getKey(stack.getItem()).toString();
+        if (stack.getItem() instanceof AugmentGeneric augmentItem) {
 
-        // Generic Augments
-        slotSize = switch (itemName) {
-            case "mattsmodulararmory:unbreaking_augment" -> 2 + 2 * tier;
-            case "mattsmodulararmory:mending_augment" -> tier != 0 ? 1 : 0;
-            default -> slotSize;
-        };
+            // Generic Augments
+            if (augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_ITEMS)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            }
 
-        // Tool Augments
-        if (modularItemStack.is(ModTags.Items.MODULAR_TOOL)) {
-            slotSize = switch (itemName) {
-                case "mattsmodulararmory:efficiency_augment" -> 1 + 2 * tier;
-                case "mattsmodulararmory:silk_touch_augment" -> 1;
-                case "mattsmodulararmory:fortune_augment", "mattsmodulararmory:modular_clay_extractor_augment", "mattsmodulararmory:scaffolding_augment" -> 1 + tier;
-                case "mattsmodulararmory:auto_smelt_augment", "mattsmodulararmory:diamond_sharpened_augment", "mattsmodulararmory:illuminator_augment", "mattsmodulararmory:magnet_augment" -> tier == 0 ? 0 : 1;
-                default -> slotSize;
-            };
-        }
+            // Tool Augments
+            if (modularItemStack.is(ModTags.Items.MODULAR_TOOL) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_TOOL)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            }
 
-        // Weapon Augments
-        if (modularItemStack.is(ModTags.Items.MODULAR_WEAPON)) {
-            slotSize = switch (itemName) {
-                case "mattsmodulararmory:sharpness_augment", "mattsmodulararmory:smite_augment", "mattsmodulararmory:bane_of_arthropods_augment", "mattsmodulararmory:impaling_augment" -> 1 + 2 * tier;
-                case "mattsmodulararmory:looting_augment" -> 1 + tier;
-                case "mattsmodulararmory:knockback_augment" -> tier < 2 ? 1 + tier : tier;
-                case "mattsmodulararmory:fire_aspect_augment" -> Math.max(tier, 1);
-                case "mattsmodulararmory:magnet_augment" -> tier == 0 ? 0 : 1;
-                default -> slotSize;
-            };
-        }
+            // Weapon Augments
+            if (modularItemStack.is(ModTags.Items.MODULAR_WEAPON) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_WEAPON)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            }
 
-        // Armor Augments
-        if (modularItemStack.is(ModTags.Items.MODULAR_ARMOR)) {
-            slotSize = switch (itemName) {
-                case "mattsmodulararmory:protection_augment", "mattsmodulararmory:blast_protection_augment", "mattsmodulararmory:projectile_protection_augment", "mattsmodulararmory:fire_protection_augment" -> 1 + 2 * tier;
-                case "mattsmodulararmory:thorns_augment" -> 1 + tier;
-                default -> slotSize;
-            };
+            // Armor Augments
+            if (modularItemStack.is(ModTags.Items.MODULAR_ARMOR) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_ARMOR)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            }
         }
 
         return slotSize;

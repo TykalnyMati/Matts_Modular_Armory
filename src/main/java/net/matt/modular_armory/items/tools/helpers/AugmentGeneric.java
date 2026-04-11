@@ -1,24 +1,40 @@
 package net.matt.modular_armory.items.tools.helpers;
 
 import net.matt.modular_armory.MattsModularArmory;
+import net.matt.modular_armory.util.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class AugmentGeneric extends Item {
-    String descriptionLocation;
-    String typeLocation;
-    List<Integer> augmentLevels;
+    private final String descriptionLocation;
+    private final String typeLocation;
+    public final List<Integer> augmentLevels;
+    public List<TagKey<Item>> augmentTypes = new ArrayList<>();
+
     public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels) {
         super(pProperties);
         this.descriptionLocation = "tooltip." + MattsModularArmory.MOD_ID + ".description." + augmentName;
         this.typeLocation = "tooltip." + MattsModularArmory.MOD_ID + ".augment_type." + augmentType;
         this.augmentLevels = augmentLevels;
+
+        switch (augmentType) {
+            case Types.GENERIC: augmentTypes.add(ModTags.Items.MODULAR_ITEMS);
+            case Types.TOOLS: augmentTypes.add(ModTags.Items.MODULAR_TOOL);
+            case Types.WEAPONS: augmentTypes.add(ModTags.Items.MODULAR_WEAPON);
+            case Types.TOOLS_AND_WEAPONS:
+                augmentTypes.add(ModTags.Items.MODULAR_TOOL);
+                augmentTypes.add(ModTags.Items.MODULAR_WEAPON);
+            case Types.ARMOR: augmentTypes.add(ModTags.Items.MODULAR_ARMOR);
+        }
     }
 
     @Override
@@ -53,5 +69,14 @@ public class AugmentGeneric extends Item {
         }
 
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+    }
+
+    public static class Types {
+        // Values for selecting type
+        static public final String GENERIC = "generic";
+        static public final String TOOLS = "tools";
+        static public final String WEAPONS = "weapons";
+        static public final String TOOLS_AND_WEAPONS = "tools_and_weapons";
+        static public final String ARMOR = "armor";
     }
 }
