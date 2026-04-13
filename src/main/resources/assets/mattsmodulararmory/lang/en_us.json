@@ -69,6 +69,9 @@
   "item.mattsmodulararmory.aqua_affinity_augment": "Aqua Affinity Augment",
   "item.mattsmodulararmory.swift_sneak_augment": "Swift Sneak Augment",
 
+  "item.mattsmodulararmory.depth_strider_augment": "Depth Strider Augment",
+  "item.mattsmodulararmory.soul_speed_augment": "Soul Speed Augment",
+
   "item.mattsmodulararmory.auto_smelt_augment": "Auto Smelt Augment",
   "item.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened Augment",
   "item.mattsmodulararmory.modular_clay_extractor_augment": "Modular Clay Extractor Augment",
@@ -99,6 +102,9 @@
   "tooltip.mattsmodulararmory.respiration_augment": "Respiration",
   "tooltip.mattsmodulararmory.aqua_affinity_augment": "Aqua Affinity",
   "tooltip.mattsmodulararmory.swift_sneak_augment": "Swift Sneak",
+
+  "tooltip.mattsmodulararmory.depth_strider_augment": "Depth Strider",
+  "tooltip.mattsmodulararmory.soul_speed_augment": "Soul Speed",
 
   "tooltip.mattsmodulararmory.auto_smelt_augment": "Auto Smelt",
   "tooltip.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened",
@@ -137,6 +143,9 @@
   "tooltip.mattsmodulararmory.description.respiration_augment": "Extends breathing time underwater",
   "tooltip.mattsmodulararmory.description.aqua_affinity_augment": "Increases underwater mining speed\nAdditional level increases it even further",
   "tooltip.mattsmodulararmory.description.swift_sneak_augment": "Increases movement speed when crouching",
+
+  "tooltip.mattsmodulararmory.description.depth_strider_augment": "Increases movement speed underwater",
+  "tooltip.mattsmodulararmory.description.soul_speed_augment": "Increases movement speed on soul sand",
 
   "tooltip.mattsmodulararmory.description.auto_smelt_augment": "Smelts mined blocks at the cost of extra durability\nCan drop experience that would appear after smelting\nWorks with fortune",
   "tooltip.mattsmodulararmory.description.diamond_sharpened_augment": "Allows for the destruction of blocks that would require a diamond tool\nSlightly increases mining speed",

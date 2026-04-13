@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_items_for_aqua_affinity_augment": {
+    "has_items_for_swift_sneak_augment": {
       "conditions": {
         "items": [
           {
@@ -27,7 +27,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_items_for_aqua_affinity_augment"
+      "has_items_for_swift_sneak_augment"
     ]
   ],
   "rewards": {

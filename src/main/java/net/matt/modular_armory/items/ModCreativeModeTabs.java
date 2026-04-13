@@ -108,6 +108,10 @@ public class ModCreativeModeTabs {
 
                         output.accept(ModItems.SWIFT_SNEAK_AUGMENT.get());
 
+
+                        output.accept(ModItems.DEPTH_STRIDER_AUGMENT.get());
+                        output.accept(ModItems.SOUL_SPEED_AUGMENT.get());
+
                         // Custom Augments
                         output.accept(ModItems.AUTO_SMELT_AUGMENT.get());
                         output.accept(ModItems.DIAMOND_SHARPENED_AUGMENT.get());

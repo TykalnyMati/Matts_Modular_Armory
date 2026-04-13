@@ -606,10 +606,38 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
                 .define('B', Blocks.SCULK)
                 .define('C', Items.ECHO_SHARD)
-                .unlockedBy("has_items_for_aqua_affinity_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                .unlockedBy("has_items_for_swift_sneak_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
                         ModItems.ADVANCED_MODULAR_PLATE.get(),
                         Blocks.SCULK,
                         Items.ECHO_SHARD))
+                .save(pRecipeOutput);
+
+        // Depth Strider Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DEPTH_STRIDER_AUGMENT.get())
+                .pattern("B B")
+                .pattern("BAB")
+                .pattern("C C")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.PRISMARINE_SHARD)
+                .define('C', ItemTags.FISHES)
+                .unlockedBy("has_items_for_depth_strider_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()),
+                        ItemPredicate.Builder.item().of(Items.PRISMARINE_SHARD),
+                        ItemPredicate.Builder.item().of(ItemTags.FISHES)))
+                .save(pRecipeOutput);
+
+        // Soul Speed Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SOUL_SPEED_AUGMENT.get())
+                .pattern("B B")
+                .pattern("BAB")
+                .pattern("C C")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.GOLD_INGOT)
+                .define('C', Blocks.SOUL_SAND)
+                .unlockedBy("has_items_for_soul_speed_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.GOLD_INGOT,
+                        Blocks.SOUL_SAND))
                 .save(pRecipeOutput);
 
         // Auto Smelt Augment

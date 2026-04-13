@@ -39,6 +39,10 @@ public class AugmentObject {
 
     public int SWIFT_SNEAK;
 
+
+    public int DEPTH_STRIDER;
+    public int SOUL_SPEED;
+
     // Custom Augment values
     public boolean AUTO_SMELT;
     public boolean DIAMOND_SHARPENED;
@@ -88,6 +92,10 @@ public class AugmentObject {
                 case "mattsmodulararmory:aqua_affinity_augment" -> this.AQUA_AFFINITY = augment.getCount();
 
                 case "mattsmodulararmory:swift_sneak_augment" -> this.SWIFT_SNEAK = augment.getCount();
+
+
+                case "mattsmodulararmory:depth_strider_augment" -> this.DEPTH_STRIDER = augment.getCount();
+                case "mattsmodulararmory:soul_speed_augment" -> this.SOUL_SPEED = augment.getCount();
             }
         }
     }
@@ -238,6 +246,16 @@ public class AugmentObject {
             if (this.SWIFT_SNEAK > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.swift_sneak_augment")
                         .append(Component.literal(": " + toRoman(this.SWIFT_SNEAK))).withStyle(ChatFormatting.AQUA));
+            }
+
+            if (this.DEPTH_STRIDER > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.depth_strider_augment")
+                        .append(Component.literal(": " + toRoman(this.SWIFT_SNEAK))).withStyle(ChatFormatting.AQUA));
+            }
+
+            if (this.SOUL_SPEED > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.soul_speed_augment")
+                        .append(Component.literal(": " + toRoman(this.SWIFT_SNEAK))).withStyle(ChatFormatting.DARK_BLUE));
             }
 
         }

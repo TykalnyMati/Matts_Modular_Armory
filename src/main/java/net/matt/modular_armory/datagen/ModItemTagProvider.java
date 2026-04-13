@@ -194,6 +194,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
                 .add(ModItems.SWIFT_SNEAK_AUGMENT.get())
 
+
+                .add(ModItems.DEPTH_STRIDER_AUGMENT.get())
+                .add(ModItems.SOUL_SPEED_AUGMENT.get())
+
                 // Custom Augments
                 .add(ModItems.AUTO_SMELT_AUGMENT.get())
                 .add(ModItems.DIAMOND_SHARPENED_AUGMENT.get())
