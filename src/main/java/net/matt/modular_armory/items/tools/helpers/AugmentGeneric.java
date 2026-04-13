@@ -27,17 +27,18 @@ public class AugmentGeneric extends Item {
         this.augmentLevels = augmentLevels;
 
         switch (augmentType) {
-            case Types.GENERIC: augmentTypes.add(ModTags.Items.MODULAR_ITEMS);
-            case Types.TOOLS: augmentTypes.add(ModTags.Items.MODULAR_TOOL);
-            case Types.WEAPONS: augmentTypes.add(ModTags.Items.MODULAR_WEAPON);
-            case Types.TOOLS_AND_WEAPONS:
-                augmentTypes.add(ModTags.Items.MODULAR_TOOL);
-                augmentTypes.add(ModTags.Items.MODULAR_WEAPON);
-            case Types.ARMOR: augmentTypes.add(ModTags.Items.MODULAR_ARMOR);
-            case Types.ARMOR_HEAD: augmentTypes.add(ModTags.Items.MODULAR_HELMET);
-            case Types.ARMOR_CHEST: augmentTypes.add(ModTags.Items.MODULAR_CHESTPLATE);
-            case Types.ARMOR_LEGS: augmentTypes.add(ModTags.Items.MODULAR_LEGGINGS);
-            case Types.ARMOR_FEET: augmentTypes.add(ModTags.Items.MODULAR_BOOTS);
+            case Types.GENERIC -> this.augmentTypes.add(ModTags.Items.MODULAR_ITEMS);
+            case Types.TOOLS -> this.augmentTypes.add(ModTags.Items.MODULAR_TOOL);
+            case Types.WEAPONS -> this.augmentTypes.add(ModTags.Items.MODULAR_WEAPON);
+            case Types.TOOLS_AND_WEAPONS -> {
+                this.augmentTypes.add(ModTags.Items.MODULAR_TOOL);
+                this.augmentTypes.add(ModTags.Items.MODULAR_WEAPON);
+            }
+            case Types.ARMOR -> this.augmentTypes.add(ModTags.Items.MODULAR_ARMOR);
+            case Types.ARMOR_HEAD -> this.augmentTypes.add(ModTags.Items.MODULAR_HELMET);
+            case Types.ARMOR_CHEST -> this.augmentTypes.add(ModTags.Items.MODULAR_CHESTPLATE);
+            case Types.ARMOR_LEGS -> this.augmentTypes.add(ModTags.Items.MODULAR_LEGGINGS);
+            case Types.ARMOR_FEET -> this.augmentTypes.add(ModTags.Items.MODULAR_BOOTS);
         }
     }
 
