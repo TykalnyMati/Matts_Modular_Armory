@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-11T18:57:58.8771358	Item Models: mattsmodulararmory
+// 1.21.1	2026-04-13T21:50:51.5221151	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -230,5 +230,6 @@ bf756a0b979492a93468ea8df22a5794c62d4f26 assets/mattsmodulararmory/models/item/p
 43fc75185e1b3a65e638f55cba9a628ad4ff9680 assets/mattsmodulararmory/models/item/sharpness_augment.json
 e254ad7a8f9a91e7609a9018d476f72feb4b662a assets/mattsmodulararmory/models/item/silk_touch_augment.json
 09f409f7b633b135818ff6038b18ec708ecabb57 assets/mattsmodulararmory/models/item/smite_augment.json
+432a6366c7b7dd1e4b4b5ac40c401952fed24cf6 assets/mattsmodulararmory/models/item/swift_sneak_augment.json
 c9ab4955d38b4c81dae67f01ab771b86596dc519 assets/mattsmodulararmory/models/item/thorns_augment.json
 eea2dbdf83976bca98b8a73329ae5d3aaacebe3d assets/mattsmodulararmory/models/item/unbreaking_augment.json

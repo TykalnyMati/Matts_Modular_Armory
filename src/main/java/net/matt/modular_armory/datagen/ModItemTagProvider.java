@@ -192,6 +192,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.RESPIRATION_AUGMENT.get())
                 .add(ModItems.AQUA_AFFINITY_AUGMENT.get())
 
+                .add(ModItems.SWIFT_SNEAK_AUGMENT.get())
+
                 // Custom Augments
                 .add(ModItems.AUTO_SMELT_AUGMENT.get())
                 .add(ModItems.DIAMOND_SHARPENED_AUGMENT.get())

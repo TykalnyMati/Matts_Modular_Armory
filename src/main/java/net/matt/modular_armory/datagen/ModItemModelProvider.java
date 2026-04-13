@@ -124,6 +124,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.RESPIRATION_AUGMENT.get());
         basicItem(ModItems.AQUA_AFFINITY_AUGMENT.get());
 
+        basicItem(ModItems.SWIFT_SNEAK_AUGMENT.get());
+
         // Custom Augments
         basicItem(ModItems.AUTO_SMELT_AUGMENT.get());
         basicItem(ModItems.DIAMOND_SHARPENED_AUGMENT.get());

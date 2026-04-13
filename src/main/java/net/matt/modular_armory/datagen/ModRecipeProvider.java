@@ -584,7 +584,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.GLASS_BOTTLE))
                 .save(pRecipeOutput);
 
-        // Respiration Augment
+        // Aqua Affinity Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AQUA_AFFINITY_AUGMENT.get())
                 .pattern("BCB")
                 .pattern("CAC")
@@ -596,6 +596,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         ModItems.ADVANCED_MODULAR_PLATE.get(),
                         Items.PRISMARINE_SHARD,
                         Blocks.PRISMARINE))
+                .save(pRecipeOutput);
+
+        // Swift Sneak Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SWIFT_SNEAK_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("BAB")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.SCULK)
+                .define('C', Items.ECHO_SHARD)
+                .unlockedBy("has_items_for_aqua_affinity_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.SCULK,
+                        Items.ECHO_SHARD))
                 .save(pRecipeOutput);
 
         // Auto Smelt Augment

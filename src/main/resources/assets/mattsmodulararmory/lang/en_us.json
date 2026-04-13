@@ -67,6 +67,7 @@
   "item.mattsmodulararmory.thorns_augment": "Thorns Augment",
   "item.mattsmodulararmory.respiration_augment": "Respiration Augment",
   "item.mattsmodulararmory.aqua_affinity_augment": "Aqua Affinity Augment",
+  "item.mattsmodulararmory.swift_sneak_augment": "Swift Sneak Augment",
 
   "item.mattsmodulararmory.auto_smelt_augment": "Auto Smelt Augment",
   "item.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened Augment",
@@ -97,6 +98,7 @@
   "tooltip.mattsmodulararmory.thorns_augment": "Thorns",
   "tooltip.mattsmodulararmory.respiration_augment": "Respiration",
   "tooltip.mattsmodulararmory.aqua_affinity_augment": "Aqua Affinity",
+  "tooltip.mattsmodulararmory.swift_sneak_augment": "Swift Sneak",
 
   "tooltip.mattsmodulararmory.auto_smelt_augment": "Auto Smelt",
   "tooltip.mattsmodulararmory.diamond_sharpened_augment": "Diamond Sharpened",
@@ -134,6 +136,7 @@
   "tooltip.mattsmodulararmory.description.thorns_augment": "Chance to damage attackers at the cost of extra durability",
   "tooltip.mattsmodulararmory.description.respiration_augment": "Extends breathing time underwater",
   "tooltip.mattsmodulararmory.description.aqua_affinity_augment": "Increases underwater mining speed\nAdditional level increases it even further",
+  "tooltip.mattsmodulararmory.description.swift_sneak_augment": "Increases movement speed when crouching",
 
   "tooltip.mattsmodulararmory.description.auto_smelt_augment": "Smelts mined blocks at the cost of extra durability\nCan drop experience that would appear after smelting\nWorks with fortune",
   "tooltip.mattsmodulararmory.description.diamond_sharpened_augment": "Allows for the destruction of blocks that would require a diamond tool\nSlightly increases mining speed",

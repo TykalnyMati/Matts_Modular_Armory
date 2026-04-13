@@ -37,6 +37,8 @@ public class AugmentObject {
     public int RESPIRATION;
     public int AQUA_AFFINITY;
 
+    public int SWIFT_SNEAK;
+
     // Custom Augment values
     public boolean AUTO_SMELT;
     public boolean DIAMOND_SHARPENED;
@@ -84,6 +86,8 @@ public class AugmentObject {
 
                 case "mattsmodulararmory:respiration_augment" -> this.RESPIRATION = augment.getCount();
                 case "mattsmodulararmory:aqua_affinity_augment" -> this.AQUA_AFFINITY = augment.getCount();
+
+                case "mattsmodulararmory:swift_sneak_augment" -> this.SWIFT_SNEAK = augment.getCount();
             }
         }
     }
@@ -230,6 +234,12 @@ public class AugmentObject {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.aqua_affinity_augment")
                         .append(Component.literal(": " + toRoman(this.AQUA_AFFINITY))).withStyle(ChatFormatting.AQUA));
             }
+
+            if (this.SWIFT_SNEAK > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.swift_sneak_augment")
+                        .append(Component.literal(": " + toRoman(this.SWIFT_SNEAK))).withStyle(ChatFormatting.AQUA));
+            }
+
         }
 
         return pTooltipComponents;

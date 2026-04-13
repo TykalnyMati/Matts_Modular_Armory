@@ -297,6 +297,9 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> RESPIRATION_AUGMENT = ITEMS.register("respiration_augment", () -> new AugmentGeneric(new Item.Properties(), "respiration_augment", AugmentGeneric.Types.ARMOR_HEAD, List.of(1, 2, 3, 4)));
     public static final DeferredHolder<Item, Item> AQUA_AFFINITY_AUGMENT = ITEMS.register("aqua_affinity_augment", () -> new AugmentGeneric(new Item.Properties(), "aqua_affinity_augment", AugmentGeneric.Types.ARMOR_HEAD, List.of(1, 1, 2, 2)));
 
+    // Leggings
+    public static final DeferredHolder<Item, Item> SWIFT_SNEAK_AUGMENT = ITEMS.register("swift_sneak_augment", () -> new AugmentGeneric(new Item.Properties(), "swift_sneak_augment", AugmentGeneric.Types.ARMOR_LEGS, List.of(1, 2, 3, 4)));
+
 
     // Custom Augments
     public static final DeferredHolder<Item, Item> AUTO_SMELT_AUGMENT = ITEMS.register("auto_smelt_augment", () -> new AugmentGeneric(new Item.Properties(), "auto_smelt_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1)));

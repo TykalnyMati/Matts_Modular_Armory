@@ -102,6 +102,21 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
             );
         }
 
+        // Swift Sneak
+        if (bonuses.SWIFT_SNEAK > 0) {
+            ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID,
+                    "swift_sneak_" + this.getType().getName());
+
+            double sneakBonus = bonuses.SWIFT_SNEAK * 0.15;
+
+            modifiers = modifiers.withModifierAdded(
+                    Attributes.SNEAKING_SPEED,
+                    new AttributeModifier(modifierId, sneakBonus, AttributeModifier.Operation.ADD_VALUE),
+                    EquipmentSlotGroup.bySlot(this.getType().getSlot())
+            );
+        }
+
+
         return modifiers;
     }
 
