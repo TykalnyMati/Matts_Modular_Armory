@@ -158,8 +158,8 @@ public class ModArmorEvents {
                 if (isPhysicallyMoving) {
 
                     // 4% to damage boots
-                    if (livingEntity.getRandom().nextFloat() < 0.04f) {
-                        armorItem.damageModularItem(boots, livingEntity, 2);
+                    if (livingEntity.getRandom().nextFloat() < 0.02f) {
+                        armorItem.damageModularItem(boots, livingEntity);
                     }
 
                     if (livingEntity.getRandom().nextFloat() > 0.30f) {
