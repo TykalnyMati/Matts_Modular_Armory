@@ -250,12 +250,12 @@ public class AugmentObject {
 
             if (this.DEPTH_STRIDER > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.depth_strider_augment")
-                        .append(Component.literal(": " + toRoman(this.SWIFT_SNEAK))).withStyle(ChatFormatting.AQUA));
+                        .append(Component.literal(": " + toRoman(this.DEPTH_STRIDER))).withStyle(ChatFormatting.AQUA));
             }
 
             if (this.SOUL_SPEED > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.soul_speed_augment")
-                        .append(Component.literal(": " + toRoman(this.SWIFT_SNEAK))).withStyle(ChatFormatting.DARK_BLUE));
+                        .append(Component.literal(": " + toRoman(this.SOUL_SPEED))).withStyle(ChatFormatting.DARK_BLUE));
             }
 
         }
