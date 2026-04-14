@@ -194,7 +194,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
                 .add(ModItems.SWIFT_SNEAK_AUGMENT.get())
 
-
+                .add(ModItems.FEATHER_FALLING_AUGMENT.get())
+                .add(ModItems.FROST_WALKER_AUGMENT.get())
                 .add(ModItems.DEPTH_STRIDER_AUGMENT.get())
                 .add(ModItems.SOUL_SPEED_AUGMENT.get())
 

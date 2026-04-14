@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-13T23:22:53.2263597	Item Models: mattsmodulararmory
+// 1.21.1	2026-04-14T19:45:30.0444978	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -162,10 +162,12 @@ fa0d672145786a4abfdd4e43546c2204a7e9f37e assets/mattsmodulararmory/models/item/d
 9650e51fef7bf509237dae4ae28cb7e43f438e5e assets/mattsmodulararmory/models/item/diamond_sharpened_augment.json
 115a61e62d9bd883cf12d29f4ad6d9c5343b0f0c assets/mattsmodulararmory/models/item/efficiency_augment.json
 bdbaf79b27bd889fed0d02c99d258c354c814c83 assets/mattsmodulararmory/models/item/exposer_slot_plug.json
+a4e506c93ff7da49f4d866cbc12d4142df9497d0 assets/mattsmodulararmory/models/item/feather_falling_augment.json
 f8a020b61730afca9b64de85a97510f4aa8eebfb assets/mattsmodulararmory/models/item/fire_aspect_augment.json
 84a14ab5e6b55e4c4ff0aa0186d8d9429cb95c6f assets/mattsmodulararmory/models/item/fire_protection_augment.json
 c829364b78f83634a2a578d789ca23f554a2d34e assets/mattsmodulararmory/models/item/flesh_meal.json
 d8dcc54dffb53312c42efb31d5bf647657e8fe1f assets/mattsmodulararmory/models/item/fortune_augment.json
+1032fb05baaf0bbeb4be03748e7e2cb0972f0346 assets/mattsmodulararmory/models/item/frost_walker_augment.json
 795993a126fa17bfa9149fc0fa74e0411eff03fb assets/mattsmodulararmory/models/item/illuminator_augment.json
 5dc880793072692d4a49e79ad4c1b41447810d87 assets/mattsmodulararmory/models/item/impaling_augment.json
 17de936a75b45912c6037342d3413ab64750f769 assets/mattsmodulararmory/models/item/knockback_augment.json

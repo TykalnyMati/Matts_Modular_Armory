@@ -39,7 +39,8 @@ public class AugmentObject {
 
     public int SWIFT_SNEAK;
 
-
+    public int FEATHER_FALLING;
+    public int FROST_WALKER;
     public int DEPTH_STRIDER;
     public int SOUL_SPEED;
 
@@ -93,7 +94,8 @@ public class AugmentObject {
 
                 case "mattsmodulararmory:swift_sneak_augment" -> this.SWIFT_SNEAK = augment.getCount();
 
-
+                case "mattsmodulararmory:feather_falling_augment" -> this.FEATHER_FALLING = augment.getCount();
+                case "mattsmodulararmory:frost_walker_augment" -> this.FROST_WALKER = augment.getCount();
                 case "mattsmodulararmory:depth_strider_augment" -> this.DEPTH_STRIDER = augment.getCount();
                 case "mattsmodulararmory:soul_speed_augment" -> this.SOUL_SPEED = augment.getCount();
             }
@@ -251,14 +253,22 @@ public class AugmentObject {
             }
 
             // Boots
-            if (this.DEPTH_STRIDER > 0) {
+            if (this.FEATHER_FALLING > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.feather_falling_augment")
+                        .append(Component.literal(": " + toRoman(this.FEATHER_FALLING))).withStyle(ChatFormatting.DARK_AQUA));
+            }
+
+            if (this.FROST_WALKER > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.frost_walker_augment")
+                        .append(Component.literal(": " + toRoman(this.FROST_WALKER))).withStyle(ChatFormatting.AQUA));
+            } else if (this.DEPTH_STRIDER > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.depth_strider_augment")
                         .append(Component.literal(": " + toRoman(this.DEPTH_STRIDER))).withStyle(ChatFormatting.AQUA));
             }
 
             if (this.SOUL_SPEED > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.soul_speed_augment")
-                        .append(Component.literal(": " + toRoman(this.SOUL_SPEED))).withStyle(ChatFormatting.DARK_BLUE));
+                        .append(Component.literal(": " + toRoman(this.SOUL_SPEED))).withStyle(ChatFormatting.BLUE));
             }
 
         }

@@ -301,10 +301,10 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> SWIFT_SNEAK_AUGMENT = ITEMS.register("swift_sneak_augment", () -> new AugmentGeneric(new Item.Properties(), "swift_sneak_augment", AugmentGeneric.Types.ARMOR_LEGS, List.of(1, 2, 3, 4)));
 
     // Boots
-
+    public static final DeferredHolder<Item, Item> FEATHER_FALLING_AUGMENT = ITEMS.register("feather_falling_augment", () -> new AugmentGeneric(new Item.Properties(), "feather_falling_augment", AugmentGeneric.Types.ARMOR_FEET, List.of(1, 3, 5, 7)));
+    public static final DeferredHolder<Item, Item> FROST_WALKER_AUGMENT = ITEMS.register("frost_walker_augment", () -> new AugmentGeneric(new Item.Properties(), "frost_walker_augment", AugmentGeneric.Types.ARMOR_FEET, List.of(1, 2, 3, 3)));
     public static final DeferredHolder<Item, Item> DEPTH_STRIDER_AUGMENT = ITEMS.register("depth_strider_augment", () -> new AugmentGeneric(new Item.Properties(), "depth_strider_augment", AugmentGeneric.Types.ARMOR_FEET, List.of(1, 2, 3, 3)));
     public static final DeferredHolder<Item, Item> SOUL_SPEED_AUGMENT = ITEMS.register("soul_speed_augment", () -> new AugmentGeneric(new Item.Properties(), "soul_speed_augment", AugmentGeneric.Types.ARMOR_FEET, List.of(1, 2, 3, 4)));
-
 
     // Custom Augments
     public static final DeferredHolder<Item, Item> AUTO_SMELT_AUGMENT = ITEMS.register("auto_smelt_augment", () -> new AugmentGeneric(new Item.Properties(), "auto_smelt_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1)));

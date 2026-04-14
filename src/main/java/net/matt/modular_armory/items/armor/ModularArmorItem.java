@@ -117,7 +117,7 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
         }
 
         // Depth Strider
-        if (bonuses.DEPTH_STRIDER > 0) {
+        if (bonuses.DEPTH_STRIDER > 0 && bonuses.FROST_WALKER <= 0) {
             ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID,
                     "depth_strider_" + this.getType().getName());
 

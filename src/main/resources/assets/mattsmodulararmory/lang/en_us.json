@@ -68,7 +68,8 @@
   "item.mattsmodulararmory.respiration_augment": "Respiration Augment",
   "item.mattsmodulararmory.aqua_affinity_augment": "Aqua Affinity Augment",
   "item.mattsmodulararmory.swift_sneak_augment": "Swift Sneak Augment",
-
+  "item.mattsmodulararmory.feather_falling_augment": "Feather Falling Augment",
+  "item.mattsmodulararmory.frost_walker_augment": "Frost Walker Augment",
   "item.mattsmodulararmory.depth_strider_augment": "Depth Strider Augment",
   "item.mattsmodulararmory.soul_speed_augment": "Soul Speed Augment",
 
@@ -102,7 +103,8 @@
   "tooltip.mattsmodulararmory.respiration_augment": "Respiration",
   "tooltip.mattsmodulararmory.aqua_affinity_augment": "Aqua Affinity",
   "tooltip.mattsmodulararmory.swift_sneak_augment": "Swift Sneak",
-
+  "tooltip.mattsmodulararmory.feather_falling_augment": "Feather Falling",
+  "tooltip.mattsmodulararmory.frost_walker_augment": "Frost Walker",
   "tooltip.mattsmodulararmory.depth_strider_augment": "Depth Strider",
   "tooltip.mattsmodulararmory.soul_speed_augment": "Soul Speed",
 
@@ -143,7 +145,8 @@
   "tooltip.mattsmodulararmory.description.respiration_augment": "Extends breathing time underwater",
   "tooltip.mattsmodulararmory.description.aqua_affinity_augment": "Increases underwater mining speed\nAdditional level increases it even further",
   "tooltip.mattsmodulararmory.description.swift_sneak_augment": "Increases movement speed when crouching",
-
+  "tooltip.mattsmodulararmory.description.feather_falling_augment": "Reduces fall damage",
+  "tooltip.mattsmodulararmory.description.frost_walker_augment": "Leaves a trail of ice when walking over water\nOverrides Depth Strider",
   "tooltip.mattsmodulararmory.description.depth_strider_augment": "Increases movement speed underwater",
   "tooltip.mattsmodulararmory.description.soul_speed_augment": "Increases movement speed on soul sand",
 

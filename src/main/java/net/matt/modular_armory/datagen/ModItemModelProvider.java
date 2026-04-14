@@ -126,6 +126,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         basicItem(ModItems.SWIFT_SNEAK_AUGMENT.get());
 
+        basicItem(ModItems.FEATHER_FALLING_AUGMENT.get());
+        basicItem(ModItems.FROST_WALKER_AUGMENT.get());
         basicItem(ModItems.DEPTH_STRIDER_AUGMENT.get());
         basicItem(ModItems.SOUL_SPEED_AUGMENT.get());
 

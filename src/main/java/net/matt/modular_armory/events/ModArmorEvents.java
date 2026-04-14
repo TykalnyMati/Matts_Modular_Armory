@@ -3,6 +3,7 @@ package net.matt.modular_armory.events;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.items.tools.helpers.AugmentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -16,6 +17,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -63,6 +67,12 @@ public class ModArmorEvents {
                     } else if (bonuses.FIRE_PROTECTION > 0) {
                         if (source.is(DamageTypeTags.IS_FIRE)) {
                             totalEPF += bonuses.FIRE_PROTECTION * 2;
+                        }
+                    }
+
+                    if (bonuses.FEATHER_FALLING > 0) {
+                        if (source.is(DamageTypeTags.IS_FALL)) {
+                            totalEPF += bonuses.FEATHER_FALLING * 12;
                         }
                     }
                 }
@@ -116,6 +126,29 @@ public class ModArmorEvents {
 
             if (boots.getItem() instanceof ModularItemInterface modularItem && !modularItem.isBroken(boots)) {
                 AugmentObject bonuses = modularItem.getAugmentBonuses(boots);
+
+                if (bonuses.FROST_WALKER > 0 && livingEntity.onGround()) {
+                    Vec3 delta = livingEntity.getKnownMovement();
+                    boolean isPhysicallyMoving = delta.horizontalDistance() > 0.001f;
+
+                    if (isPhysicallyMoving) {
+                        int radius = Math.min(6, 2 + bonuses.FROST_WALKER);
+                        BlockState frostState = Blocks.FROSTED_ICE.defaultBlockState();
+                        BlockPos pos = livingEntity.blockPosition();
+
+                        for (BlockPos nearbyPos : BlockPos.betweenClosed(pos.offset(-radius, -1, -radius), pos.offset(radius, -1, radius))) {
+                            if (nearbyPos.closerToCenterThan(livingEntity.position(), radius) && !livingEntity.level().isClientSide()) {
+                                BlockState currentState = livingEntity.level().getBlockState(nearbyPos);
+                                BlockState aboveState = livingEntity.level().getBlockState(nearbyPos.above());
+
+                                if (currentState.is(Blocks.WATER) && currentState.getValue(LiquidBlock.LEVEL) == 0 && aboveState.isAir() && frostState.canSurvive(livingEntity.level(), nearbyPos)) {
+                                    livingEntity.level().setBlockAndUpdate(nearbyPos, frostState);
+                                    livingEntity.level().scheduleTick(nearbyPos, Blocks.FROSTED_ICE, livingEntity.getRandom().nextInt(20, 40));
+                                }
+                            }
+                        }
+                    }
+                }
 
                 if (bonuses.SOUL_SPEED > 0) {
                     handleSoulSpeed(livingEntity, boots, modularItem, bonuses);

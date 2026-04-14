@@ -108,7 +108,8 @@ public class ModCreativeModeTabs {
 
                         output.accept(ModItems.SWIFT_SNEAK_AUGMENT.get());
 
-
+                        output.accept(ModItems.FEATHER_FALLING_AUGMENT.get());
+                        output.accept(ModItems.FROST_WALKER_AUGMENT.get());
                         output.accept(ModItems.DEPTH_STRIDER_AUGMENT.get());
                         output.accept(ModItems.SOUL_SPEED_AUGMENT.get());
 

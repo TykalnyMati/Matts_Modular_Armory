@@ -612,6 +612,34 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.ECHO_SHARD))
                 .save(pRecipeOutput);
 
+        // Feather Falling Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FEATHER_FALLING_AUGMENT.get())
+                .pattern("B B")
+                .pattern("BAB")
+                .pattern("CCC")
+                .define('A', ModItems.PROTECTION_AUGMENT.get())
+                .define('B', Items.FEATHER)
+                .define('C', ItemTags.WOOL)
+                .unlockedBy("has_items_for_feather_falling_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.PROTECTION_AUGMENT.get()),
+                        ItemPredicate.Builder.item().of(Items.FEATHER),
+                        ItemPredicate.Builder.item().of(ItemTags.WOOL)))
+                .save(pRecipeOutput);
+
+        // Frost Walker Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FROST_WALKER_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("BAB")
+                .pattern("CCC")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.PACKED_ICE)
+                .define('C', Blocks.BLUE_ICE)
+                .unlockedBy("has_items_for_frost_walker_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.PACKED_ICE,
+                        Blocks.BLUE_ICE))
+                .save(pRecipeOutput);
+
         // Depth Strider Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DEPTH_STRIDER_AUGMENT.get())
                 .pattern("B B")
