@@ -233,6 +233,7 @@ public class AugmentObject {
                         .append(Component.literal(": " + toRoman(this.THORNS))).withStyle(ChatFormatting.DARK_RED));
             }
 
+            // Helmet
             if (this.RESPIRATION > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.respiration_augment")
                         .append(Component.literal(": " + toRoman(this.RESPIRATION))).withStyle(ChatFormatting.AQUA));
@@ -243,11 +244,13 @@ public class AugmentObject {
                         .append(Component.literal(": " + toRoman(this.AQUA_AFFINITY))).withStyle(ChatFormatting.AQUA));
             }
 
+            // Leggings
             if (this.SWIFT_SNEAK > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.swift_sneak_augment")
                         .append(Component.literal(": " + toRoman(this.SWIFT_SNEAK))).withStyle(ChatFormatting.AQUA));
             }
 
+            // Boots
             if (this.DEPTH_STRIDER > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.depth_strider_augment")
                         .append(Component.literal(": " + toRoman(this.DEPTH_STRIDER))).withStyle(ChatFormatting.AQUA));
