@@ -15,6 +15,8 @@ import net.matt.modular_armory.recipe.ExposerRecipe;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
 
 public class ExposerRecipeCategory implements IRecipeCategory<ExposerRecipe> {
@@ -74,7 +76,16 @@ public class ExposerRecipeCategory implements IRecipeCategory<ExposerRecipe> {
         int x = 0;
         int y = 0;
         for (ItemStack adjacent : exposerRecipe.getSurroundings()) {
-            iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 16 * x, 16 * y + 10).addItemStack(adjacent);
+            var slot = iRecipeLayoutBuilder.addSlot(RecipeIngredientRole.INPUT, 16 * x, 16 * y + 10);
+
+            if (adjacent.is(Items.WATER_BUCKET)) {
+                slot.addFluidStack(Fluids.WATER);
+            } else if (adjacent.is(Items.LAVA_BUCKET)) {
+                slot.addFluidStack(Fluids.LAVA);
+            } else {
+                slot.addItemStack(adjacent);
+            }
+
             ++y;
             if (y > 2) {
                 ++x;
