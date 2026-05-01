@@ -238,9 +238,14 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         return super.isCorrectToolForDrops(stack, state);
     }
 
-    // Anvil repairing and enchanting
+    // Anvil and grindstone repairing, enchanting
     @Override
     public boolean isValidRepairItem(ItemStack pToRepair, ItemStack pRepair) {
+        return false;
+    }
+
+    @Override
+    public boolean canGrindstoneRepair(ItemStack stack) {
         return false;
     }
 
