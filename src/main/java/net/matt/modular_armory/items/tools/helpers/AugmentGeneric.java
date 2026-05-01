@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class AugmentGeneric extends Item {
+    private final String augmentID;
     private final String descriptionLocation;
     private final String typeLocation;
     public final List<Integer> augmentLevels;
@@ -22,6 +23,7 @@ public class AugmentGeneric extends Item {
 
     public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels) {
         super(pProperties);
+        this.augmentID = augmentName;
         this.descriptionLocation = "tooltip." + MattsModularArmory.MOD_ID + ".description." + augmentName;
         this.typeLocation = "tooltip." + MattsModularArmory.MOD_ID + ".augment_type." + augmentType;
         this.augmentLevels = augmentLevels;
@@ -40,6 +42,10 @@ public class AugmentGeneric extends Item {
             case Types.ARMOR_LEGS -> this.augmentTypes.add(ModTags.Items.MODULAR_LEGGINGS);
             case Types.ARMOR_FEET -> this.augmentTypes.add(ModTags.Items.MODULAR_BOOTS);
         }
+    }
+
+    public String getAugmentID() {
+        return augmentID;
     }
 
     @Override

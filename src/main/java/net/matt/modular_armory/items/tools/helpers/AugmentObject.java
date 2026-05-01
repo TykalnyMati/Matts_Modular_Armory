@@ -55,49 +55,51 @@ public class AugmentObject {
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
     public AugmentObject(ItemStack stack) {
-        for (ItemStack augment : getAugments(stack)) {
-            switch (BuiltInRegistries.ITEM.getKey(augment.getItem()).toString()) {
-                // Generic augments
-                case "mattsmodulararmory:unbreaking_augment" -> this.UNBREAKING += augment.getCount();
-                case "mattsmodulararmory:mending_augment" -> this.MENDING = true;
+        for (ItemStack augmentStack : getAugments(stack)) {
+            if (augmentStack.getItem() instanceof AugmentGeneric augment) {
+                switch (augment.getAugmentID()) {
+                    // Generic augments
+                    case "unbreaking_augment" -> this.UNBREAKING += augmentStack.getCount();
+                    case "mending_augment" -> this.MENDING = true;
 
-                // Tool specific augments
-                case "mattsmodulararmory:efficiency_augment" -> this.EFFICIENCY += augment.getCount();
-                case "mattsmodulararmory:silk_touch_augment" -> this.SILK_TOUCH = true;
-                case "mattsmodulararmory:fortune_augment" -> this.FORTUNE = augment.getCount();
+                    // Tool specific augments
+                    case "efficiency_augment" -> this.EFFICIENCY += augmentStack.getCount();
+                    case "silk_touch_augment" -> this.SILK_TOUCH = true;
+                    case "fortune_augment" -> this.FORTUNE = augmentStack.getCount();
 
-                case "mattsmodulararmory:auto_smelt_augment" -> this.AUTO_SMELT = true;
-                case "mattsmodulararmory:diamond_sharpened_augment" -> this.DIAMOND_SHARPENED = true;
-                case "mattsmodulararmory:modular_clay_extractor_augment" -> this.MODULAR_CLAY_EXTRACTOR = augment.getCount();
-                case "mattsmodulararmory:scaffolding_augment" -> this.SCAFFOLDING = augment.getCount();
-                case "mattsmodulararmory:illuminator_augment" -> this.ILLUMINATOR = true;
-                case "mattsmodulararmory:magnet_augment" -> this.MAGNET = true;
+                    case "auto_smelt_augment" -> this.AUTO_SMELT = true;
+                    case "diamond_sharpened_augment" -> this.DIAMOND_SHARPENED = true;
+                    case "modular_clay_extractor_augment" -> this.MODULAR_CLAY_EXTRACTOR = augmentStack.getCount();
+                    case "scaffolding_augment" -> this.SCAFFOLDING = augmentStack.getCount();
+                    case "illuminator_augment" -> this.ILLUMINATOR = true;
+                    case "magnet_augment" -> this.MAGNET = true;
 
-                // Weapon specific augments
-                case "mattsmodulararmory:sharpness_augment" -> this.SHARPNESS = augment.getCount();
-                case "mattsmodulararmory:smite_augment" -> this.SMITE = augment.getCount();
-                case "mattsmodulararmory:bane_of_arthropods_augment" -> this.BANE_OF_ARTHROPODS = augment.getCount();
-                case "mattsmodulararmory:impaling_augment" -> this.IMPALING = augment.getCount();
-                case "mattsmodulararmory:looting_augment" -> this.LOOTING = augment.getCount();
-                case "mattsmodulararmory:knockback_augment" -> this.KNOCKBACK = augment.getCount();
-                case "mattsmodulararmory:fire_aspect_augment" -> this.FIRE_ASPECT = augment.getCount();
+                    // Weapon specific augments
+                    case "sharpness_augment" -> this.SHARPNESS = augmentStack.getCount();
+                    case "smite_augment" -> this.SMITE = augmentStack.getCount();
+                    case "bane_of_arthropods_augment" -> this.BANE_OF_ARTHROPODS = augmentStack.getCount();
+                    case "impaling_augment" -> this.IMPALING = augmentStack.getCount();
+                    case "looting_augment" -> this.LOOTING = augmentStack.getCount();
+                    case "knockback_augment" -> this.KNOCKBACK = augmentStack.getCount();
+                    case "fire_aspect_augment" -> this.FIRE_ASPECT = augmentStack.getCount();
 
-                // Armor specific augments
-                case "mattsmodulararmory:protection_augment" -> this.PROTECTION = augment.getCount();
-                case "mattsmodulararmory:blast_protection_augment" -> this.BLAST_PROTECTION = augment.getCount();
-                case "mattsmodulararmory:projectile_protection_augment" -> this.PROJECTILE_PROTECTION = augment.getCount();
-                case "mattsmodulararmory:fire_protection_augment" -> this.FIRE_PROTECTION = augment.getCount();
-                case "mattsmodulararmory:thorns_augment" -> this.THORNS = augment.getCount();
+                    // Armor specific augments
+                    case "protection_augment" -> this.PROTECTION = augmentStack.getCount();
+                    case "blast_protection_augment" -> this.BLAST_PROTECTION = augmentStack.getCount();
+                    case "projectile_protection_augment" -> this.PROJECTILE_PROTECTION = augmentStack.getCount();
+                    case "fire_protection_augment" -> this.FIRE_PROTECTION = augmentStack.getCount();
+                    case "thorns_augment" -> this.THORNS = augmentStack.getCount();
 
-                case "mattsmodulararmory:respiration_augment" -> this.RESPIRATION = augment.getCount();
-                case "mattsmodulararmory:aqua_affinity_augment" -> this.AQUA_AFFINITY = augment.getCount();
+                    case "respiration_augment" -> this.RESPIRATION = augmentStack.getCount();
+                    case "aqua_affinity_augment" -> this.AQUA_AFFINITY = augmentStack.getCount();
 
-                case "mattsmodulararmory:swift_sneak_augment" -> this.SWIFT_SNEAK = augment.getCount();
+                    case "swift_sneak_augment" -> this.SWIFT_SNEAK = augmentStack.getCount();
 
-                case "mattsmodulararmory:feather_falling_augment" -> this.FEATHER_FALLING = augment.getCount();
-                case "mattsmodulararmory:frost_walker_augment" -> this.FROST_WALKER = augment.getCount();
-                case "mattsmodulararmory:depth_strider_augment" -> this.DEPTH_STRIDER = augment.getCount();
-                case "mattsmodulararmory:soul_speed_augment" -> this.SOUL_SPEED = augment.getCount();
+                    case "feather_falling_augment" -> this.FEATHER_FALLING = augmentStack.getCount();
+                    case "frost_walker_augment" -> this.FROST_WALKER = augmentStack.getCount();
+                    case "depth_strider_augment" -> this.DEPTH_STRIDER = augmentStack.getCount();
+                    case "soul_speed_augment" -> this.SOUL_SPEED = augmentStack.getCount();
+                }
             }
         }
     }
