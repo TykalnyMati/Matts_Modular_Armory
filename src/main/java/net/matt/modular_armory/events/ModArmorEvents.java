@@ -122,6 +122,10 @@ public class ModArmorEvents {
     @SubscribeEvent
     public static void onLivingTick(EntityTickEvent.Pre event) {
         if(event.getEntity() instanceof LivingEntity livingEntity) {
+            if (livingEntity.level().isClientSide()) {
+                return;
+            }
+
             ItemStack boots = livingEntity.getItemBySlot(EquipmentSlot.FEET);
 
             if (boots.getItem() instanceof ModularItemInterface modularItem && !modularItem.isBroken(boots)) {
@@ -209,13 +213,16 @@ public class ModArmorEvents {
     }
 
     private static void removeSoulSpeedModifiers(LivingEntity entity) {
-        var speed = entity.getAttribute(Attributes.MOVEMENT_SPEED);
-        var efficiency = entity.getAttribute(Attributes.MOVEMENT_EFFICIENCY);
+        if (entity.level().isClientSide()) {
+            return;
+        }
 
+        var speed = entity.getAttribute(Attributes.MOVEMENT_SPEED);
         if (speed != null && speed.getModifier(SOUL_SPEED_BOOST_ID) != null) {
             speed.removeModifier(SOUL_SPEED_BOOST_ID);
         }
 
+        var efficiency = entity.getAttribute(Attributes.MOVEMENT_EFFICIENCY);
         if (efficiency != null && efficiency.getModifier(SOUL_SPEED_BOOST_ID) != null) {
             efficiency.removeModifier(SOUL_SPEED_BOOST_ID);
         }
