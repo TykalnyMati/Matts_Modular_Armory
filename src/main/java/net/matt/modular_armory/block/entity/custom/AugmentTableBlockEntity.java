@@ -233,10 +233,11 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
 
     public void drops() {
         wrappedSaveAugmentsToItem(inventory.getStackInSlot(0));
-        SimpleContainer inv = new SimpleContainer(inventory.getSlots());
-        for (int i = 0; i < inventory.getSlots(); i++) {
-            inv.setItem(i, inventory.getStackInSlot(i));
-        }
+        SimpleContainer inv = new SimpleContainer(inventory.getStackInSlot(0));
+//        SimpleContainer inv = new SimpleContainer(inventory.getSlots());
+//        for (int i = 0; i < inventory.getSlots(); i++) {
+//            inv.setItem(i, inventory.getStackInSlot(i));
+//        }
 
         Containers.dropContents(this.level, this.worldPosition, inv);
     }
