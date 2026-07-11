@@ -28,14 +28,23 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class AugmentTableBlock extends BaseEntityBlock {
-    public static final VoxelShape SHAPE = Block.box(0, 0, 0, 16, 16, 16);
+    // Setting shape
+    public static final VoxelShape TOP = Block.box(0, 12, 0, 16, 16, 16);
+    public static final VoxelShape LEG1 = Block.box(0, 0, 0, 4, 12, 4);
+    public static final VoxelShape LEG2 = Block.box(12, 0, 0, 16, 12, 4);
+    public static final VoxelShape LEG3 = Block.box(0, 0, 12, 4, 12, 16);
+    public static final VoxelShape LEG4 = Block.box(12, 0, 12, 16, 12, 16);
+    public static final VoxelShape SHAPE = Shapes.or(TOP, LEG1, LEG2, LEG3, LEG4);
+
 
     public static final MapCodec<AugmentTableBlock> CODEC = simpleCodec(AugmentTableBlock::new);
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
