@@ -4,6 +4,7 @@ import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.custom.AugmentTableBlockEntity;
 import net.matt.modular_armory.block.entity.custom.ExposerBlockEntity;
+import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
 import net.matt.modular_armory.block.entity.custom.ScaffoldingAugmentBlockEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -19,6 +20,9 @@ public class ModBlockEntities {
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ExposerBlockEntity>> EXPOSER_BE = BLOCK_ENTITIES.register("exposer_be",
             () -> BlockEntityType.Builder.of(ExposerBlockEntity::new, ModBlocks.EXPOSER.get()).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ModularMinerBlockEntity>> MODULAR_MINER_BE = BLOCK_ENTITIES.register("modular_miner_be",
+            () -> BlockEntityType.Builder.of(ModularMinerBlockEntity::new, ModBlocks.MODULAR_MINER.get()).build(null));
 
     public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<ScaffoldingAugmentBlockEntity>> SCAFFOLDING_AUGMENT_BE = BLOCK_ENTITIES.register("scaffolding_augment_be",
             () -> BlockEntityType.Builder.of(ScaffoldingAugmentBlockEntity::new, ModBlocks.SCAFFOLDING_AUGMENT_BLOCK.get()).build(null));

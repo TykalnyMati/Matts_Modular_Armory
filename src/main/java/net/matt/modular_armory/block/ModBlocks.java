@@ -37,6 +37,9 @@ public class ModBlocks {
     public static final DeferredHolder<Block, Block> MODULAR_ASSEMBLER = registerBlock("modular_assembler",
             () -> new ModularAssemblerBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD)));
 
+    public static final DeferredHolder<Block, Block> MODULAR_MINER = registerBlock("modular_miner",
+            () -> new ModularMinerBlock(BlockBehaviour.Properties.of().strength(2f).requiresCorrectToolForDrops().sound(SoundType.STONE)));
+
     public static final DeferredHolder<Block, Block> SCAFFOLDING_AUGMENT_BLOCK = registerBlock("scaffolding_augment_block",
             () -> new ScaffoldingAugmentBlock(BlockBehaviour.Properties.of().noLootTable().strength(2f).sound(SoundType.SCAFFOLDING)));
 

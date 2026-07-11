@@ -326,6 +326,9 @@
   "container.mattsmodulararmory.modular_assembler": "Modular Assembler",
   "container.mattsmodulararmory.modular_assembler_cost_tooltip": "Cost:",
 
+  "block.mattsmodulararmory.modular_miner": "Modular Miner",
+  "tooltip.mattsmodulararmory.modular_miner": "Mines blocks in an area in front of it",
+
   "block.mattsmodulararmory.scaffolding_augment_block": "Scaffolding",
   "block.mattsmodulararmory.illuminator_augment_block": "Light"
 }

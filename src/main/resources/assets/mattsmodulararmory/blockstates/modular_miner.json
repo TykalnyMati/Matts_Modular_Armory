@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mattsmodulararmory:block/modular_miner"
+    },
+    "facing=east": {
+      "model": "mattsmodulararmory:block/modular_miner",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mattsmodulararmory:block/modular_miner",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mattsmodulararmory:block/modular_miner",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "mattsmodulararmory:block/modular_miner",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "mattsmodulararmory:block/modular_miner",
+      "x": 90
+    }
+  }
+}

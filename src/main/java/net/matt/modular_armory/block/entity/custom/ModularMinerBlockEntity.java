@@ -1,0 +1,195 @@
+package net.matt.modular_armory.block.entity.custom;
+
+import net.matt.modular_armory.block.custom.ModularMinerBlock;
+import net.matt.modular_armory.block.entity.ModBlockEntities;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LiquidBlock;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.items.ItemStackHandler;
+
+import java.util.List;
+
+public class ModularMinerBlockEntity extends BlockEntity {
+    // Inventory indexes
+    public static final int OUTPUT_START = 0;
+    public static final int FILTER_SLOT = 9;
+    public static final int AUGMENT_START = 10;
+    public static final int RANGE_LENGTH_SLOT = 12;
+    public static final int RANGE_WIDTH_SLOT = 13;
+    public static final int RANGE_HEIGHT_SLOT = 14;
+
+    // Inventory slots
+    public static final int OUTPUT_SLOTS = 9;
+    public static final int AUGMENT_SLOTS = 2;
+
+    private int tickCounter = 0;
+    private int miningTime = 20;
+
+    // Scan tracking
+    private int currentDepth = 1;
+    private int currentWidth = 0;
+    private int currentHeight = 0;
+    private boolean movingPositiveWidth = true;
+
+    public final ItemStackHandler itemHandler = new ItemStackHandler(15) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            if (!level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        }
+    };
+
+    // Might need to add container data
+    public ModularMinerBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.MODULAR_MINER_BE.get(), pos, state);
+    }
+
+    public static void serverTick(Level level, BlockPos pos, BlockState state, ModularMinerBlockEntity modularMinerBlock) {
+        modularMinerBlock.tickCounter++;
+        if (modularMinerBlock.tickCounter >= modularMinerBlock.miningTime) {
+            modularMinerBlock.tickCounter = 0;
+            modularMinerBlock.mineNextBlock((ServerLevel) level, pos, state);
+        }
+    }
+
+    private void mineNextBlock(ServerLevel level, BlockPos pos, BlockState state) {
+        Direction facing = state.getValue(ModularMinerBlock.FACING);
+
+        int maxExtraWidth = getRangeBonus(RANGE_WIDTH_SLOT);
+        int maxExtraHeight = getRangeBonus(RANGE_HEIGHT_SLOT);
+        int maxLength = 1 + getRangeBonus(RANGE_LENGTH_SLOT);
+
+        // Maximum number of blocks that can be checked in a tick
+        int positionsChecked = 0;
+        int maxChecksPerTick = 16;
+
+        BlockPos.MutableBlockPos targetPos = new BlockPos.MutableBlockPos();
+        while (positionsChecked < maxChecksPerTick) {
+            calculateRelativeOffset(pos, facing, currentDepth, currentWidth, currentHeight, targetPos);
+            BlockState targetState = level.getBlockState(targetPos);
+
+            // Goes to the next position
+            advanceScanPosition(maxExtraWidth, maxExtraHeight, maxLength);
+            positionsChecked++;
+
+            // Mines a block if possible, skips air, unbreakable blocks and fluids
+            if (!targetState.isAir() && targetState.getDestroySpeed(level, targetPos) >= 0 && !(targetState.getBlock() instanceof LiquidBlock)) {
+                mineBlock(level, targetPos, targetState);
+                return;
+            }
+        }
+    }
+
+    private void advanceScanPosition(int maxExtraWidth, int maxExtraHeight, int maxLength) {
+        // Sweeps left to right, or right to left
+        if (movingPositiveWidth) {
+            if (currentWidth < maxExtraWidth) {
+                currentWidth++;
+                return;
+            } else {
+                movingPositiveWidth = false;
+            }
+        } else {
+            if (currentWidth > -maxExtraWidth) {
+                currentWidth--;
+                return;
+            } else {
+                movingPositiveWidth = true;
+            }
+        }
+
+        // Move forward to the next column
+        if (currentDepth < maxLength) {
+            currentDepth++;
+            return;
+        } else {
+            currentDepth = 1;
+        }
+
+        // Move to next row
+        if (currentHeight > -maxExtraHeight) {
+            currentHeight--;
+            currentWidth = movingPositiveWidth ? -maxExtraWidth : maxExtraWidth;
+            return;
+        } else {
+            currentHeight = maxExtraHeight;
+            currentWidth = movingPositiveWidth ? -maxExtraWidth : maxExtraWidth;
+        }
+
+        resetScan();
+    }
+
+    private void resetScan() {
+        int maxExtraWidth = getRangeBonus(RANGE_WIDTH_SLOT);
+        int maxExtraHeight = getRangeBonus(RANGE_HEIGHT_SLOT);
+
+        this.currentDepth = 1;
+        this.currentWidth = -maxExtraWidth;
+        this.currentHeight = maxExtraHeight;
+        this.movingPositiveWidth = true;
+        setChanged();
+    }
+
+    private void mineBlock(ServerLevel level, BlockPos targetPos, BlockState targetState) {
+        // Helper tool for applying augments
+        ItemStack helperTool = ItemStack.EMPTY;
+        List<ItemStack> drops = Block.getDrops(targetState, level, targetPos, level.getBlockEntity(targetPos), null, helperTool);
+
+        //TODO replace with inventory check to see if there is space for items
+        if (hasRoomForDrops(drops)) {
+            level.destroyBlock(targetPos, true);
+//            for (ItemStack drop : drops) {
+//                ModularMinerBlock.popResource(level, targetPos, drop);
+//            }
+            setChanged();
+        }
+    }
+
+    // TODO add reading the amount of upgrades from inventory
+    private int getRangeBonus(int slot) {
+        return 3;
+    }
+
+    private void calculateRelativeOffset(BlockPos origin, Direction facing, int depth, int width, int height, BlockPos.MutableBlockPos target) {
+        int forwardX = facing.getStepX() * depth;
+        int forwardY = facing.getStepY() * depth;
+        int forwardZ = facing.getStepZ() * depth;
+
+        int lateralX = 0;
+        int lateralY = 0;
+        int lateralZ = 0;
+
+        int verticalX = 0;
+        int verticalY = 0;
+        int verticalZ = 0;
+
+
+        if (facing.getAxis() == Direction.Axis.Y) {
+            lateralX = width;
+            verticalZ = height;
+        } else {
+            Direction right = facing.getClockWise();
+            lateralX = right.getStepX() * width;
+            lateralZ = right.getStepZ() * width;
+            verticalY = height;
+        }
+
+        target.set(
+                origin.getX() + forwardX + lateralX + verticalX,
+                origin.getY() + forwardY + lateralY + verticalY,
+                origin.getZ() + forwardZ + lateralZ + verticalZ
+        );
+    }
+
+    private boolean hasRoomForDrops(List<ItemStack> drops) {
+        return true;
+    }
+}
