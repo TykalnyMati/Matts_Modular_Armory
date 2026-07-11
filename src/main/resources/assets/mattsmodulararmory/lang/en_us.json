@@ -324,5 +324,8 @@
   "block.mattsmodulararmory.modular_assembler": "Modular Assembler",
   "tooltip.mattsmodulararmory.modular_assembler": "Allows for the creation of modular items using plates",
   "container.mattsmodulararmory.modular_assembler": "Modular Assembler",
-  "container.mattsmodulararmory.modular_assembler_cost_tooltip": "Cost:"
+  "container.mattsmodulararmory.modular_assembler_cost_tooltip": "Cost:",
+
+  "block.mattsmodulararmory.scaffolding_augment_block": "Scaffolding",
+  "block.mattsmodulararmory.illuminator_augment_block": "Light"
 }
