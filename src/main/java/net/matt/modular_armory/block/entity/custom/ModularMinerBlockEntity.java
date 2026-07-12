@@ -2,9 +2,15 @@ package net.matt.modular_armory.block.entity.custom;
 
 import net.matt.modular_armory.block.custom.ModularMinerBlock;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
+import net.matt.modular_armory.screen.custom.ModularMinerMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -12,10 +18,11 @@ import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class ModularMinerBlockEntity extends BlockEntity {
+public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider {
     // Inventory indexes
     public static final int OUTPUT_START = 0;
     public static final int FILTER_SLOT = 9;
@@ -52,11 +59,11 @@ public class ModularMinerBlockEntity extends BlockEntity {
         super(ModBlockEntities.MODULAR_MINER_BE.get(), pos, state);
     }
 
-    public static void serverTick(Level level, BlockPos pos, BlockState state, ModularMinerBlockEntity modularMinerBlock) {
-        modularMinerBlock.tickCounter++;
-        if (modularMinerBlock.tickCounter >= modularMinerBlock.miningTime) {
-            modularMinerBlock.tickCounter = 0;
-            modularMinerBlock.mineNextBlock((ServerLevel) level, pos, state);
+    public void tick(Level level, BlockPos pos, BlockState state) {
+        this.tickCounter++;
+        if (this.tickCounter >= this.miningTime) {
+            this.tickCounter = 0;
+            this.mineNextBlock((ServerLevel) level, pos, state);
         }
     }
 
@@ -191,5 +198,15 @@ public class ModularMinerBlockEntity extends BlockEntity {
 
     private boolean hasRoomForDrops(List<ItemStack> drops) {
         return true;
+    }
+
+    @Override
+    public Component getDisplayName() {
+        return Component.translatable("block.mattsmodulararmory.modular_miner");
+    }
+
+    @Override
+    public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+        return new ModularMinerMenu(pContainerId, pPlayerInventory, this);
     }
 }

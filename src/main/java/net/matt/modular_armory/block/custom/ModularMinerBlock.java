@@ -7,9 +7,10 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -82,16 +83,28 @@ public class ModularMinerBlock extends BaseEntityBlock {
 
     @Override
     public ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
-//        if (!level.isClientSide && level.getBlockEntity(pos) instanceof ModularMinerBlockEntity miner) {
-//            // Menu logic
-//        }
-        return ItemInteractionResult.SUCCESS;
+        if (!pLevel.isClientSide()) {
+            BlockEntity entity = pLevel.getBlockEntity(pPos);
+
+            if (entity instanceof ModularMinerBlockEntity modularMinerBlockEntity) {
+                ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(modularMinerBlockEntity, Component.literal("Modular Miner")), pPos);
+            } else {
+                throw new IllegalStateException("Container provider is missing!");
+            }
+        }
+
+        return ItemInteractionResult.sidedSuccess(pLevel.isClientSide());
     }
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
-        return level.isClientSide ? null : createTickerHelper(type, ModBlockEntities.MODULAR_MINER_BE.get(), ModularMinerBlockEntity::serverTick);
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
+        if (pLevel.isClientSide()) {
+            return null;
+        }
+
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.MODULAR_MINER_BE.get(),
+                (level, blockPos, blockState, modularMinerBlockEntity) -> modularMinerBlockEntity.tick(level, blockPos, blockState));
     }
 
     @Override

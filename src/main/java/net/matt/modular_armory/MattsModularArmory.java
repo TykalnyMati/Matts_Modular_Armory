@@ -10,10 +10,7 @@ import net.matt.modular_armory.items.ModCreativeModeTabs;
 import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.recipe.ModRecipes;
 import net.matt.modular_armory.screen.ModMenuTypes;
-import net.matt.modular_armory.screen.custom.AugmentTableScreen;
-import net.matt.modular_armory.screen.custom.ExposerScreen;
-import net.matt.modular_armory.screen.custom.ModularAssemblerScreen;
-import net.matt.modular_armory.screen.custom.RepairTableScreen;
+import net.matt.modular_armory.screen.custom.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -120,6 +117,7 @@ public class MattsModularArmory {
             event.register(ModMenuTypes.EXPOSER_MENU.get(), ExposerScreen::new);
             event.register(ModMenuTypes.REPAIR_TABLE_MENU.get(), RepairTableScreen::new);
             event.register(ModMenuTypes.MODULAR_ASSEMBLER_MENU.get(), ModularAssemblerScreen::new);
+            event.register(ModMenuTypes.MODULAR_MINER_MENU.get(), ModularMinerScreen::new);
         }
 
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
