@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.SimpleMenuProvider;
@@ -68,17 +69,15 @@ public class ModularMinerBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-//        if (!state.is(newState.getBlock())) {
-//            BlockEntity blockEntity = level.getBlockEntity(pos);
-//            if (blockEntity instanceof ModularMinerBlockEntity miner) {
-//                // Drop items inside NeoForge IItemHandler
-//                for (int i = 0; i < miner.getItemHandler().getSlots(); i++) {
-//                    Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), miner.getItemHandler().getStackInSlot(i));
-//                }
-//            }
-//            super.onRemove(state, level, pos, newState, isMoving);
-//        }
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
+        if (pState.getBlock() != pNewState.getBlock()) {
+            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+            if (blockEntity instanceof ModularMinerBlockEntity modularMinerBlockEntity) {
+                modularMinerBlockEntity.drops();
+            }
+        }
+
+        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
     }
 
     @Override

@@ -7,9 +7,7 @@ import net.matt.modular_armory.screen.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
-import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -19,15 +17,17 @@ import org.jetbrains.annotations.NotNull;
 public class ModularMinerMenu extends AbstractContainerMenu {
     public final ModularMinerBlockEntity blockEntity;
     private final Level level;
+    private final ContainerData data;
 
     public ModularMinerMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
-        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()));
+        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
-    public ModularMinerMenu(int pContainerId, Inventory inventory, BlockEntity entity) {
+    public ModularMinerMenu(int pContainerId, Inventory inventory, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.MODULAR_MINER_MENU.get(), pContainerId);
         this.blockEntity = ((ModularMinerBlockEntity) entity);
         this.level = inventory.player.level();
+        this.data = data;
 
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);

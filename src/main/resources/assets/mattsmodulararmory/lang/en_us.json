@@ -328,6 +328,9 @@
 
   "block.mattsmodulararmory.modular_miner": "Modular Miner",
   "tooltip.mattsmodulararmory.modular_miner": "Mines blocks in an area in front of it",
+  "tooltip.mattsmodulararmory.redstone.high": "Active on High Signal",
+  "tooltip.mattsmodulararmory.redstone.low": "Active on Low Signal",
+  "tooltip.mattsmodulararmory.redstone.ignore": "Ignore Signal",
 
   "block.mattsmodulararmory.scaffolding_augment_block": "Scaffolding",
   "block.mattsmodulararmory.illuminator_augment_block": "Light"

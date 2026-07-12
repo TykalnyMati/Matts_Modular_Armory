@@ -5,12 +5,17 @@ import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.screen.custom.ModularMinerMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -44,6 +49,10 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
     private int currentHeight = 0;
     private boolean movingPositiveWidth = true;
 
+    // Redstone mode 0 - Active on High, 1 - Active on Low, 2 - Ignore Signal
+    private int redstoneMode = 0;
+    protected final ContainerData data;
+
     public final ItemStackHandler itemHandler = new ItemStackHandler(15) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -54,12 +63,49 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         }
     };
 
-    // Might need to add container data
     public ModularMinerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MODULAR_MINER_BE.get(), pos, state);
+
+        data = new ContainerData() {
+            @Override
+            public int get(int i) {
+                return switch (i) {
+                    case 0 -> ModularMinerBlockEntity.this.redstoneMode;
+                    default -> 0;
+                };
+            }
+
+            @Override
+            public void set(int i, int value) {
+                switch (i) {
+                    case 0 -> ModularMinerBlockEntity.this.redstoneMode = value;
+                }
+            }
+
+            @Override
+            public int getCount() {
+                return 1;
+            }
+        };
+    }
+
+    public int getRedstoneMode() {
+        return this.redstoneMode;
+    }
+
+    public void setRedstoneMode(int mode) {
+        this.redstoneMode = mode % 3;
+        setChanged();
     }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
+        // Checking if the block should be active
+        switch (redstoneMode) {
+            case 0 -> { if (!level.hasNeighborSignal(pos)) return; } // Active on High
+            case 1 -> { if (level.hasNeighborSignal(pos)) return; }  // Active on Low
+            default -> {} // Ignore Signal
+        }
+
         this.tickCounter++;
         if (this.tickCounter >= this.miningTime) {
             this.tickCounter = 0;
@@ -207,6 +253,43 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return new ModularMinerMenu(pContainerId, pPlayerInventory, this);
+        return new ModularMinerMenu(pContainerId, pPlayerInventory, this, this.data);
+    }
+
+    public void drops() {
+        SimpleContainer inventory = new SimpleContainer(itemHandler.getSlots());
+        for (int i = 0; i < itemHandler.getSlots(); i++) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i));
+        }
+
+        Containers.dropContents(this.level, this.worldPosition, inventory);
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
+        pTag.putInt("miner.tickCounter", tickCounter);
+        pTag.putInt("miner.miningTime", miningTime);
+        pTag.putInt("miner.currentDepth", currentDepth);
+        pTag.putInt("miner.currentWidth", currentWidth);
+        pTag.putInt("miner.currentHeight", currentHeight);
+        pTag.putBoolean("miner.movingPositiveWidth", movingPositiveWidth);
+        pTag.putInt("miner.redstoneMode", redstoneMode);
+
+        super.saveAdditional(pTag, pRegistries);
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
+        super.loadAdditional(pTag, pRegistries);
+
+        itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
+        this.tickCounter = pTag.getInt("miner.tickCounter");
+        this.miningTime = pTag.getInt("miner.miningTime");
+        this.currentDepth = pTag.getInt("miner.currentDepth");
+        this.currentWidth = pTag.getInt("miner.currentWidth");
+        this.currentHeight = pTag.getInt("miner.currentHeight");
+        this.movingPositiveWidth = pTag.getBoolean("miner.movingPositiveWidth");
+        this.redstoneMode = pTag.getInt("miner.redstoneMode");
     }
 }
