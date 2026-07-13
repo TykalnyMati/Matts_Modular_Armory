@@ -107,9 +107,11 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         }
 
         this.tickCounter++;
-        if (this.tickCounter >= this.miningTime) {
+        if (this.tickCounter >= this.miningTime && !isInventoryFull()) {
             this.tickCounter = 0;
             this.mineNextBlock((ServerLevel) level, pos, state);
+        } else if (this.tickCounter > 2 * this.miningTime) {
+            this.tickCounter = 2 * this.miningTime;
         }
     }
 
@@ -193,15 +195,22 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
 
     private void mineBlock(ServerLevel level, BlockPos targetPos, BlockState targetState) {
         // Helper tool for applying augments
+        // TODO add applying augments to the tool
         ItemStack helperTool = ItemStack.EMPTY;
         List<ItemStack> drops = Block.getDrops(targetState, level, targetPos, level.getBlockEntity(targetPos), null, helperTool);
 
-        //TODO replace with inventory check to see if there is space for items
         if (hasRoomForDrops(drops)) {
-            level.destroyBlock(targetPos, true);
-//            for (ItemStack drop : drops) {
-//                ModularMinerBlock.popResource(level, targetPos, drop);
-//            }
+            for (ItemStack drop : drops) {
+                ItemStack remainder = drop.copy();
+                for (int i = OUTPUT_START; i < OUTPUT_START + OUTPUT_SLOTS; i++) {
+                    remainder = itemHandler.insertItem(i, remainder, false);
+                    if (remainder.isEmpty()) {
+                        break;
+                    }
+                }
+            }
+
+            level.destroyBlock(targetPos, false);
             setChanged();
         }
     }
@@ -243,6 +252,38 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
     }
 
     private boolean hasRoomForDrops(List<ItemStack> drops) {
+        for (ItemStack drop : drops) {
+            // Copy used only for checking if items will fit
+            ItemStack remainder = drop.copy();
+
+            for (int i = OUTPUT_START; i < OUTPUT_START + OUTPUT_SLOTS; i++) {
+                remainder = itemHandler.insertItem(i, remainder, true);
+                if (remainder.isEmpty()) {
+                    break;
+                }
+            }
+
+            // If the inventory can't fit all drops
+            if (!remainder.isEmpty()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isInventoryFull() {
+        for (int i = OUTPUT_START; i < OUTPUT_START + OUTPUT_SLOTS; i++) {
+            ItemStack stack = itemHandler.getStackInSlot(i);
+
+            if (stack.isEmpty()) {
+                return false;
+            }
+
+            if (stack.getCount() < stack.getMaxStackSize() && stack.getCount() < itemHandler.getSlotLimit(i)) {
+                return false;
+            }
+        }
+
         return true;
     }
 
