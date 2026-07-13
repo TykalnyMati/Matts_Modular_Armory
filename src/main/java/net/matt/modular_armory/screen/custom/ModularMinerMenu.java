@@ -4,6 +4,7 @@ import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.custom.ExposerBlockEntity;
 import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
 import net.matt.modular_armory.screen.ModMenuTypes;
+import net.matt.modular_armory.util.ModTags;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -32,7 +33,7 @@ public class ModularMinerMenu extends AbstractContainerMenu {
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
 
-        // Output slots
+        // Output Slots
         int[][] outputSlotsPositions = new int[][] {
                 {26, 17}, {44, 17}, {62, 17},
                 {26, 35}, {44, 35}, {62, 35},
@@ -42,6 +43,24 @@ public class ModularMinerMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(blockEntity.itemHandler, i, outputSlotsPositions[i][0], outputSlotsPositions[i][1]) {
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
+                    return false;
+                }
+            });
+        }
+
+        // Range Slots
+        int [][] rangeSlotsPositions = new int[][] {
+                {152, 53},
+                {152, 35},
+                {152, 17}
+        };
+        for (int i = 0; i < 3; i++) {
+            this.addSlot(new SlotItemHandler(blockEntity.itemHandler, i + ModularMinerBlockEntity.RANGE_LENGTH_SLOT, rangeSlotsPositions[i][0], rangeSlotsPositions[i][1]) {
+                @Override
+                public boolean mayPlace(ItemStack stack) {
+                    if (stack.is(ModTags.Items.MODULAR_ITEMS_AUGMENT)) {
+                        return super.mayPlace(stack);
+                    }
                     return false;
                 }
             });

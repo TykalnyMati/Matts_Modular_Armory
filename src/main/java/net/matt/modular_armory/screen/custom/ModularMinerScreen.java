@@ -2,6 +2,7 @@ package net.matt.modular_armory.screen.custom;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.matt.modular_armory.MattsModularArmory;
+import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
 import net.matt.modular_armory.network.RedstoneModePayload;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -30,6 +31,7 @@ public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
+        // Redstone Mode Button
         this.addRenderableWidget(new RedstoneControlButton(x + 11, y + 71, 10, 10, (button) -> {
             int nextMode = (this.menu.blockEntity.getRedstoneMode() + 1) % 3;
 
@@ -104,5 +106,27 @@ public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu
     public void render(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY, float pPartialTick) {
         super.render(pGuiGraphics, pMouseX, pMouseY, pPartialTick);
         renderTooltip(pGuiGraphics, pMouseX, pMouseY);
+    }
+
+    @Override
+    protected void renderTooltip(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
+        super.renderTooltip(pGuiGraphics, pMouseX, pMouseY);
+
+        if (this.hoveredSlot != null && !this.hoveredSlot.hasItem()) {
+            int slotIndex = this.hoveredSlot.getContainerSlot();
+
+            if (!(this.hoveredSlot.container instanceof Inventory)) {
+                String key = switch (slotIndex) {
+                    case ModularMinerBlockEntity.RANGE_LENGTH_SLOT -> "tooltip.mattsmodulararmory.range_slot.length";
+                    case ModularMinerBlockEntity.RANGE_WIDTH_SLOT -> "tooltip.mattsmodulararmory.range_slot.width";
+                    case ModularMinerBlockEntity.RANGE_HEIGHT_SLOT -> "tooltip.mattsmodulararmory.range_slot.height";
+                    default -> null;
+                };
+
+                if (key != null) {
+                    pGuiGraphics.renderTooltip(this.font, Component.translatable(key), pMouseX, pMouseY);
+                }
+            }
+        }
     }
 }
