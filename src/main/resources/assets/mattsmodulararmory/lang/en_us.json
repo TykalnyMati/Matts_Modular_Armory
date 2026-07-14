@@ -27,6 +27,22 @@
   "item.mattsmodulararmory.exposer_slot_plug": "Exposer Slot Plug",
   "tooltip.mattsmodulararmory.exposer_slot_plug": "Insert into the Exposer to allow for item creation",
 
+  "item.mattsmodulararmory.addon_template": "Addon Template",
+  "tooltip.mattsmodulararmory.addon_template": "Used for crafting more specific addon types",
+
+  "item.mattsmodulararmory.blank_range_addon": "Blank Range Addon",
+  "tooltip.mattsmodulararmory.blank_range_addon": "Used for crafting range addons",
+
+  "tooltip.mattsmodulararmory.range_addon_tier": "Tier: ",
+  "tooltip.mattsmodulararmory.range_addon_text": "Increases range by: ",
+
+  "item.mattsmodulararmory.range_addon_coal": "Range Addon Coal",
+  "tooltip.mattsmodulararmory.addon_tier.coal": "Coal",
+
+  "item.mattsmodulararmory.range_addon_copper": "Range Addon Copper",
+  "tooltip.mattsmodulararmory.addon_tier.copper": "Copper",
+
+
   "item.mattsmodulararmory.advanced_modular_clay_upgrade_smithing_template": "Smithing Template",
   "upgrade.mattsmodulararmory.advanced_modular_clay_upgrade": "Advanced Modular Clay Upgrade",
   "item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.applies_to": "Modular Clay Equipment",

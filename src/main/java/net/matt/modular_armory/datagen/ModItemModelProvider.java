@@ -50,6 +50,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BIORITE_PLATE.get());
         basicItem(ModItems.EXPOSER_SLOT_PLUG.get());
 
+        // Addons
+        basicItem(ModItems.ADDON_TEMPLATE.get());
+        basicItem(ModItems.BLANK_RANGE_ADDON.get());
+        basicItem(ModItems.RANGE_ADDON_COAL.get());
+        basicItem(ModItems.RANGE_ADDON_COPPER.get());
+
         // Smithing Template Upgrades
         basicItem(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());
         basicItem(ModItems.ADAPTIVE_FLESH_UPGRADE_SMITHING_TEMPLATE.get());

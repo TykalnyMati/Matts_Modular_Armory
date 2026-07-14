@@ -2,6 +2,7 @@ package net.matt.modular_armory.block.entity.custom;
 
 import net.matt.modular_armory.block.custom.ModularMinerBlock;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
+import net.matt.modular_armory.items.addons.ModularRangeAddon;
 import net.matt.modular_armory.screen.custom.ModularMinerMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -16,6 +17,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -59,6 +61,15 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
             setChanged();
             if (!level.isClientSide()) {
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        }
+
+        @Override
+        public int getSlotLimit(int slot) {
+            if (slot == RANGE_LENGTH_SLOT || slot == RANGE_WIDTH_SLOT || slot == RANGE_HEIGHT_SLOT) {
+                return 1;
+            } else {
+                return super.getSlotLimit(slot);
             }
         }
     };
@@ -215,9 +226,14 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         }
     }
 
-    // TODO add reading the amount of upgrades from inventory
     private int getRangeBonus(int slot) {
-        return 3;
+        Item upgrade = itemHandler.getStackInSlot(slot).getItem();
+
+        if (upgrade instanceof ModularRangeAddon modularRangeAddon) {
+            return modularRangeAddon.getRangeIncrease();
+        } else {
+            return 0;
+        }
     }
 
     private void calculateRelativeOffset(BlockPos origin, Direction facing, int depth, int width, int height, BlockPos.MutableBlockPos target) {

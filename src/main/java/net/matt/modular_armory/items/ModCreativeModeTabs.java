@@ -32,7 +32,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.REPAIR_TABLE.get());
                         output.accept(ModBlocks.EXPOSER.get());
                         output.accept(ModItems.EXPOSER_SLOT_PLUG.get());
+
+                        // Machines
                         output.accept(ModBlocks.MODULAR_MINER.get());
+
+                        // Addons
+                        output.accept(ModItems.ADDON_TEMPLATE.get());
+                        output.accept(ModItems.BLANK_RANGE_ADDON.get());
+                        output.accept(ModItems.RANGE_ADDON_COAL.get());
+                        output.accept(ModItems.RANGE_ADDON_COPPER.get());
 
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_UPGRADE_SMITHING_TEMPLATE.get());

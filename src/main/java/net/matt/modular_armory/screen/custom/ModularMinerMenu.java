@@ -58,7 +58,7 @@ public class ModularMinerMenu extends AbstractContainerMenu {
             this.addSlot(new SlotItemHandler(blockEntity.itemHandler, i + ModularMinerBlockEntity.RANGE_LENGTH_SLOT, rangeSlotsPositions[i][0], rangeSlotsPositions[i][1]) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
-                    if (stack.is(ModTags.Items.MODULAR_ITEMS_AUGMENT)) {
+                    if (stack.is(ModTags.Items.MODULAR_RANGE_ADDON)) {
                         return super.mayPlace(stack);
                     }
                     return false;

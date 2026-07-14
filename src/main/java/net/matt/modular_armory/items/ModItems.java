@@ -1,6 +1,7 @@
 package net.matt.modular_armory.items;
 
 import net.matt.modular_armory.MattsModularArmory;
+import net.matt.modular_armory.items.addons.ModularRangeAddon;
 import net.matt.modular_armory.items.armor.ModularArmorItem;
 import net.matt.modular_armory.items.custom.FleshMealItem;
 import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
@@ -91,6 +92,31 @@ public class ModItems {
             super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
         }
     });
+
+    public static final DeferredHolder<Item, Item> ADDON_TEMPLATE = ITEMS.register("addon_template", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.addon_template").withStyle(ChatFormatting.GRAY));
+
+            super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        }
+    });
+
+    public static final DeferredHolder<Item, Item> BLANK_RANGE_ADDON = ITEMS.register("blank_range_addon", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.blank_range_addon").withStyle(ChatFormatting.GRAY));
+
+            super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        }
+    });
+
+    // Range Addons
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_COAL = ITEMS.register("range_addon_coal",
+            () -> new ModularRangeAddon(new Item.Properties(), "coal", 0x2e2e2e, 1));
+
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_COPPER = ITEMS.register("range_addon_copper",
+            () -> new ModularRangeAddon(new Item.Properties(), "copper", 0xfc9982, 2));
 
     // Tools, Weapons & Armor
     // Modular Clay

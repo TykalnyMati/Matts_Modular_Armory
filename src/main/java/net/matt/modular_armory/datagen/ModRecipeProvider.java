@@ -58,12 +58,12 @@ public class ModRecipeProvider extends RecipeProvider {
 
         // Advanced Modular Plate
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_MODULAR_PLATE.get())
-                .pattern(" A ")
+                .pattern("AAA")
                 .pattern("ABA")
-                .pattern(" A ")
-                .define('A', Items.IRON_INGOT)
+                .pattern("AAA")
+                .define('A', Items.IRON_NUGGET)
                 .define('B', ModItems.BASIC_MODULAR_PLATE.get())
-                .unlockedBy("has_iron_and_basic_plate", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT, ModItems.BASIC_MODULAR_PLATE.get()))
+                .unlockedBy("has_iron_and_basic_plate", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_NUGGET, ModItems.BASIC_MODULAR_PLATE.get()))
                 .save(pRecipeOutput);
 
         // Adaptive Flesh Block - from adaptive flesh
@@ -186,6 +186,47 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_items_for_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(
                         ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()).build(),
                         ItemPredicate.Builder.item().of(ItemTags.STONE_BRICKS).build()))
+                .save(pRecipeOutput);
+
+        // TODO add modular miner recipe
+
+        // Addon Template
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADDON_TEMPLATE.get(), 3)
+                .pattern("A")
+                .pattern("B")
+                .pattern("B")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.PAPER)
+                .unlockedBy("has_items_for_addon_template", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ADVANCED_MODULAR_PLATE.get(), Items.PAPER))
+                .save(pRecipeOutput);
+
+        // Blank Range Addon
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLANK_RANGE_ADDON.get())
+                .requires(ModItems.ADDON_TEMPLATE.get())
+                .requires(Blocks.PISTON)
+                .unlockedBy("has_items_for_blank_range_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ADDON_TEMPLATE.get(), Blocks.PISTON))
+                .save(pRecipeOutput);
+
+        // Range Addon Coal
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_COAL.get())
+                .pattern("A A")
+                .pattern("ABA")
+                .pattern("A A")
+                .define('A', ItemTags.COALS)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_coal", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ItemTags.COALS).build(),
+                        ItemPredicate.Builder.item().of(ModItems.BLANK_RANGE_ADDON.get()).build()))
+                .save(pRecipeOutput);
+
+        // Range Addon Copper
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_COPPER.get())
+                .pattern("A A")
+                .pattern("ABA")
+                .pattern("A A")
+                .define('A', Items.COPPER_INGOT)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_copper", InventoryChangeTrigger.TriggerInstance.hasItems(Items.COPPER_INGOT, ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Advanced Modular Clay Upgrade Smithing Template

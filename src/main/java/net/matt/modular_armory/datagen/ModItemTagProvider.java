@@ -232,6 +232,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_BOOTS.get())
                 .add(ModItems.BIORITE_BOOTS.get());
 
+        // Range Addons
+        tag(ModTags.Items.MODULAR_RANGE_ADDON)
+                .add(ModItems.RANGE_ADDON_COAL.get())
+                .add(ModItems.RANGE_ADDON_COPPER.get());
+
         // NeoForge Tags
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.MODULAR_CLAY_HELMET.get())
