@@ -19,6 +19,10 @@ public class ModularMinerBlockEntityRenderer implements BlockEntityRenderer<Modu
 
     @Override
     public void render(ModularMinerBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, @NotNull MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {
+        if (!pBlockEntity.getRangeDisplayState()) {
+            return;
+        }
+
         Direction facing = pBlockEntity.getFacing();
 
         int maxExtraWidth = pBlockEntity.getRangeBonus(ModularMinerBlockEntity.RANGE_WIDTH_SLOT);
@@ -76,6 +80,23 @@ public class ModularMinerBlockEntityRenderer implements BlockEntityRenderer<Modu
                 area,
                 0.352f, 0.976f, 0.913f, 0.75f
         );
+    }
+
+    // Changing the bounding box so that the render display will still be visible if the modular miner is off-screen
+    @Override
+    public AABB getRenderBoundingBox(ModularMinerBlockEntity modularMinerBlockEntity) {
+        AABB baseBox = new AABB(modularMinerBlockEntity.getBlockPos());
+
+        if (!modularMinerBlockEntity.getRangeDisplayState()) {
+            return baseBox;
+        }
+
+        int maxExtraWidth = modularMinerBlockEntity.getRangeBonus(ModularMinerBlockEntity.RANGE_WIDTH_SLOT);
+        int maxExtraHeight = modularMinerBlockEntity.getRangeBonus(ModularMinerBlockEntity.RANGE_HEIGHT_SLOT);
+        int maxLength = 1 + modularMinerBlockEntity.getRangeBonus(ModularMinerBlockEntity.RANGE_LENGTH_SLOT);
+
+        int maxReach = Math.max(maxLength, Math.max(maxExtraWidth, maxExtraHeight));
+        return baseBox.inflate(maxReach + 1);
     }
 
     @Override

@@ -58,6 +58,9 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
 
     // Redstone mode 0 - Active on High, 1 - Active on Low, 2 - Ignore Signal
     private int redstoneMode = 0;
+
+    // Display false - off, true - on
+    private boolean rangeDisplayState = false;
     protected final ContainerData data;
 
     public final ItemStackHandler itemHandler = new ItemStackHandler(15) {
@@ -87,6 +90,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
             public int get(int i) {
                 return switch (i) {
                     case 0 -> ModularMinerBlockEntity.this.redstoneMode;
+                    case 1 -> ModularMinerBlockEntity.this.rangeDisplayState ? 1 : 0;
                     default -> 0;
                 };
             }
@@ -95,12 +99,13 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
             public void set(int i, int value) {
                 switch (i) {
                     case 0 -> ModularMinerBlockEntity.this.redstoneMode = value;
+                    case 1 -> ModularMinerBlockEntity.this.rangeDisplayState = (value == 1);
                 }
             }
 
             @Override
             public int getCount() {
-                return 1;
+                return 2;
             }
         };
     }
@@ -109,9 +114,20 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         return this.redstoneMode;
     }
 
+    public boolean getRangeDisplayState() {
+        return this.rangeDisplayState;
+    }
+
     public void setRedstoneMode(int mode) {
         this.redstoneMode = mode % 3;
         setChanged();
+    }
+
+    public void setRangeDisplayState(boolean state) {
+        if (this.rangeDisplayState != state) {
+            this.rangeDisplayState = state;
+            this.setChanged();
+        }
     }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
@@ -387,6 +403,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         pTag.putInt("miner.currentHeight", currentHeight);
         pTag.putBoolean("miner.movingPositiveWidth", movingPositiveWidth);
         pTag.putInt("miner.redstoneMode", redstoneMode);
+        pTag.putBoolean("miner.rangeDisplayState", rangeDisplayState);
 
         super.saveAdditional(pTag, pRegistries);
     }
@@ -403,6 +420,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         this.currentHeight = pTag.getInt("miner.currentHeight");
         this.movingPositiveWidth = pTag.getBoolean("miner.movingPositiveWidth");
         this.redstoneMode = pTag.getInt("miner.redstoneMode");
+        this.rangeDisplayState = pTag.getBoolean("miner.rangeDisplayState");
     }
 
     @Override

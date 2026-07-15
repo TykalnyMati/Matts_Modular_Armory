@@ -19,12 +19,31 @@ public class ModPackets {
                 RedstoneModePayload.CODEC,
                 ModPackets::handleRedstoneMode
         );
+
+        registrar.playToServer(
+                RangeDisplayStatePayload.TYPE,
+                RangeDisplayStatePayload.CODEC,
+                ModPackets::handleRangeDisplayState
+        );
     }
 
     private static void handleRedstoneMode(final RedstoneModePayload payload, final IPayloadContext context) {
         context.enqueueWork(() -> {
             if (context.player().level().getBlockEntity(payload.pos()) instanceof ModularMinerBlockEntity modularMinerBlockEntity) {
                 modularMinerBlockEntity.setRedstoneMode(payload.mode());
+            }
+        });
+    }
+
+    private static void handleRangeDisplayState(final RangeDisplayStatePayload payload, final IPayloadContext context) {
+        context.enqueueWork(() -> {
+            if (context.player().level().getBlockEntity(payload.pos()) instanceof ModularMinerBlockEntity modularMinerBlockEntity) {
+                modularMinerBlockEntity.setRangeDisplayState(payload.state());
+
+                var level = modularMinerBlockEntity.getLevel();
+                if (level != null && !level.isClientSide()) {
+                    level.sendBlockUpdated(payload.pos(), modularMinerBlockEntity.getBlockState(), modularMinerBlockEntity.getBlockState(), 3);
+                }
             }
         });
     }

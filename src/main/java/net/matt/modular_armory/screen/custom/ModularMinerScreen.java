@@ -3,6 +3,7 @@ package net.matt.modular_armory.screen.custom;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
+import net.matt.modular_armory.network.RangeDisplayStatePayload;
 import net.matt.modular_armory.network.RedstoneModePayload;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -39,8 +40,19 @@ public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu
 
             PacketDistributor.sendToServer(new RedstoneModePayload(this.menu.blockEntity.getBlockPos(), nextMode));
 
-            updateButtonTooltip(button, nextMode);
-        })).setTooltip(getModeTooltip(this.menu.blockEntity.getRedstoneMode()));
+            updateRedstoneModeButtonTooltip(button, nextMode);
+        })).setTooltip(getRedstoneModeTooltip(this.menu.blockEntity.getRedstoneMode()));
+
+        this.addRenderableWidget(new RangeDisplayButton(x + 155, y + 71, 10, 10, (button) -> {
+            boolean nextState = (!this.menu.blockEntity.getRangeDisplayState());
+
+            this.menu.blockEntity.setRangeDisplayState(nextState);
+
+            // add packet
+            PacketDistributor.sendToServer(new RangeDisplayStatePayload(this.menu.blockEntity.getBlockPos(), nextState));
+
+            updateRangeDisplayButtonTooltip(button, nextState);
+        })).setTooltip(getRangeDisplayTooltip(this.menu.blockEntity.getRangeDisplayState()));
     }
 
     private class RedstoneControlButton extends Button {
@@ -77,6 +89,36 @@ public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu
         }
     }
 
+    private class RangeDisplayButton extends Button {
+        public RangeDisplayButton(int x, int y, int width, int height, OnPress onPress) {
+            super(x, y, width, height, Component.empty(), onPress, DEFAULT_NARRATION);
+        }
+
+        // Prevents the button from staying focused
+        @Override
+        public boolean isFocused() {
+            return false;
+        }
+
+        // Prevents taking keyboard inputs
+        @Override
+        public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+            return false;
+        }
+
+        @Override
+        protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+            super.renderWidget(guiGraphics, mouseX, mouseY, partialTick);
+
+            boolean state = ModularMinerScreen.this.menu.blockEntity.getRangeDisplayState();
+
+            int xCord = state ? 188 : 178;
+            int yCord = 11;
+
+            guiGraphics.blit(GUI_TEXTURE, this.getX() + 1, this.getY() + 1, xCord, yCord, 8, 8);
+        }
+    }
+
     @Override
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
@@ -89,16 +131,26 @@ public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu
         pGuiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
     }
 
-    private void updateButtonTooltip(Button button, int mode) {
-        button.setTooltip(getModeTooltip(mode));
+    private void updateRedstoneModeButtonTooltip(Button button, int mode) {
+        button.setTooltip(getRedstoneModeTooltip(mode));
     }
 
-    private Tooltip getModeTooltip(int mode) {
+    private void updateRangeDisplayButtonTooltip(Button button, boolean state) {
+        button.setTooltip(getRangeDisplayTooltip(state));
+    }
+
+    private Tooltip getRedstoneModeTooltip(int mode) {
         String key = switch (mode) {
             case 1 -> "tooltip.mattsmodulararmory.redstone.low";
             case 2 -> "tooltip.mattsmodulararmory.redstone.ignore";
             default -> "tooltip.mattsmodulararmory.redstone.high";
         };
+        return Tooltip.create(Component.translatable(key));
+    }
+
+    private Tooltip getRangeDisplayTooltip(boolean state) {
+        String key = state ? "tooltip.mattsmodulararmory.range_display.true" : "tooltip.mattsmodulararmory.range_display.false";
+
         return Tooltip.create(Component.translatable(key));
     }
 
