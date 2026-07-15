@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.renderer.AugmentTableBlockEntityRenderer;
+import net.matt.modular_armory.block.entity.renderer.ModularMinerBlockEntityRenderer;
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.datagen.DataGenerators;
 import net.matt.modular_armory.items.ModCreativeModeTabs;
@@ -91,10 +92,17 @@ public class MattsModularArmory {
                 (be, side) -> be.inventory
         );
 
-        // Register Exposer (Sided handler logic from the BE)
+        // Register Exposer (Can insert and extract from any side)
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 ModBlockEntities.EXPOSER_BE.get(),
+                (be, side) -> be.getItemHandlerCapability(side)
+        );
+
+        // Register Modular Miner (Can only extract from any side)
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.MODULAR_MINER_BE.get(),
                 (be, side) -> be.getItemHandlerCapability(side)
         );
     }
@@ -122,6 +130,7 @@ public class MattsModularArmory {
 
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(ModBlockEntities.AUGMENT_TABLE_BE.get(), AugmentTableBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntities.MODULAR_MINER_BE.get(), ModularMinerBlockEntityRenderer::new);
         }
     }
 }

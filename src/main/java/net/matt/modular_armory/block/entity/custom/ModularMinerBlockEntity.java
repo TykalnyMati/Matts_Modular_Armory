@@ -9,6 +9,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
@@ -24,7 +27,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -226,7 +231,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         }
     }
 
-    private int getRangeBonus(int slot) {
+    public int getRangeBonus(int slot) {
         Item upgrade = itemHandler.getStackInSlot(slot).getItem();
 
         if (upgrade instanceof ModularRangeAddon modularRangeAddon) {
@@ -234,6 +239,14 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         } else {
             return 0;
         }
+    }
+
+    public Direction getFacing() {
+        BlockState state = this.getBlockState();
+        if (state.hasProperty(ModularMinerBlock.FACING)) {
+            return state.getValue(ModularMinerBlock.FACING);
+        }
+        return Direction.NORTH;
     }
 
     private void calculateRelativeOffset(BlockPos origin, Direction facing, int depth, int width, int height, BlockPos.MutableBlockPos target) {
@@ -322,6 +335,48 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
+    public IItemHandler getItemHandlerCapability(@Nullable Direction side) {
+        if (side == null) {
+            return itemHandler;
+        }
+
+        IItemHandler outputView = new RangedWrapper(itemHandler, OUTPUT_START, OUTPUT_START + OUTPUT_SLOTS);
+
+        return new IItemHandler() {
+            @Override
+            public int getSlots() {
+                return outputView.getSlots();
+            }
+
+            @Override
+            public ItemStack getStackInSlot(int slot) {
+                return outputView.getStackInSlot(slot);
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                return outputView.getSlotLimit(slot);
+            }
+
+            @Override
+            public boolean isItemValid(int slot, ItemStack stack) {
+                return outputView.isItemValid(slot, stack);
+            }
+
+            @Override
+            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+                // Cannot push into
+                return stack;
+            }
+
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                // Can only pull from slots 0 - 8
+                return outputView.extractItem(slot, amount, simulate);
+            }
+        };
+    }
+
     @Override
     protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
@@ -348,5 +403,16 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         this.currentHeight = pTag.getInt("miner.currentHeight");
         this.movingPositiveWidth = pTag.getBoolean("miner.movingPositiveWidth");
         this.redstoneMode = pTag.getInt("miner.redstoneMode");
+    }
+
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider pRegistries) {
+        return saveWithoutMetadata(pRegistries);
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 }
