@@ -41,6 +41,15 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BLANK_RANGE_ADDON.get());
                         output.accept(ModItems.RANGE_ADDON_COAL.get());
                         output.accept(ModItems.RANGE_ADDON_COPPER.get());
+                        output.accept(ModItems.RANGE_ADDON_IRON.get());
+                        output.accept(ModItems.RANGE_ADDON_QUARTZ.get());
+                        output.accept(ModItems.RANGE_ADDON_REDSTONE.get());
+                        output.accept(ModItems.RANGE_ADDON_GLOWSTONE.get());
+                        output.accept(ModItems.RANGE_ADDON_GOLD.get());
+                        output.accept(ModItems.RANGE_ADDON_AMETHYST.get());
+                        output.accept(ModItems.RANGE_ADDON_LAPIS.get());
+                        output.accept(ModItems.RANGE_ADDON_DIAMOND.get());
+                        output.accept(ModItems.RANGE_ADDON_EMERALD.get());
 
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_UPGRADE_SMITHING_TEMPLATE.get());

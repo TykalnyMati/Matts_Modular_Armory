@@ -118,6 +118,33 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> RANGE_ADDON_COPPER = ITEMS.register("range_addon_copper",
             () -> new ModularRangeAddon(new Item.Properties(), "copper", 0xfc9982, 2));
 
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_IRON = ITEMS.register("range_addon_iron",
+            () -> new ModularRangeAddon(new Item.Properties(), "iron", 0xffffff, 3));
+
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_QUARTZ = ITEMS.register("range_addon_quartz",
+            () -> new ModularRangeAddon(new Item.Properties(), "quartz", 0xf7f5f2, 4));
+
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_REDSTONE = ITEMS.register("range_addon_redstone",
+            () -> new ModularRangeAddon(new Item.Properties(), "redstone", 0xff0000, 5));
+
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_GLOWSTONE = ITEMS.register("range_addon_glowstone",
+            () -> new ModularRangeAddon(new Item.Properties(), "glowstone", 0xf9d49c, 6));
+
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_GOLD = ITEMS.register("range_addon_gold",
+            () -> new ModularRangeAddon(new Item.Properties(), "gold", 0xfdf55f, 7));
+
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_AMETHYST = ITEMS.register("range_addon_amethyst",
+            () -> new ModularRangeAddon(new Item.Properties(), "amethyst", 0xfecbe6, 8));
+
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_LAPIS = ITEMS.register("range_addon_lapis",
+            () -> new ModularRangeAddon(new Item.Properties(), "lapis", 0x5a82e2, 9));
+
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_DIAMOND = ITEMS.register("range_addon_diamond",
+            () -> new ModularRangeAddon(new Item.Properties(), "diamond", 0xa1fbe8, 10));
+
+    public static final DeferredHolder<Item, Item> RANGE_ADDON_EMERALD = ITEMS.register("range_addon_emerald",
+            () -> new ModularRangeAddon(new Item.Properties(), "emerald", 0x17dd62, 11));
+
     // Tools, Weapons & Armor
     // Modular Clay
     public static final DeferredHolder<Item, Item> MODULAR_CLAY_SHOVEL = ITEMS.register("modular_clay_shovel",

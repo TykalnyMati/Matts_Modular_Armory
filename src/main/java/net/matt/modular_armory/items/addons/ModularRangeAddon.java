@@ -31,8 +31,9 @@ public class ModularRangeAddon extends Item {
         pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.range_addon_tier").withStyle(ChatFormatting.GRAY)
                 .append(Component.translatable(tooltipKey).withStyle(Style.EMPTY.withColor(hexColor))));
 
-        pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.range_addon_text")
-                .append(Integer.toString(getRangeIncrease())).withStyle(ChatFormatting.GRAY));
+        pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.range_addon_text").withStyle(ChatFormatting.GRAY)
+                .append(Component.translatable("tooltip.mattsmodulararmory.range_addon_text2").withStyle(Style.EMPTY.withColor(hexColor)))
+                .append(Component.literal(Integer.toString(getRangeIncrease())).withStyle(Style.EMPTY.withColor(hexColor))));
 
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }

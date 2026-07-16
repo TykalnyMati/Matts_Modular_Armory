@@ -229,6 +229,92 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_items_for_range_addon_copper", InventoryChangeTrigger.TriggerInstance.hasItems(Items.COPPER_INGOT, ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
+        // Range Addon Iron
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_IRON.get())
+                .pattern("A A")
+                .pattern("ABA")
+                .pattern("A A")
+                .define('A', Items.IRON_INGOT)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_iron", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT, ModItems.BLANK_RANGE_ADDON.get()))
+                .save(pRecipeOutput);
+
+        // Range Addon Quartz
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_QUARTZ.get())
+                .pattern("A A")
+                .pattern("ABA")
+                .pattern("A A")
+                .define('A', Items.QUARTZ)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_quartz", InventoryChangeTrigger.TriggerInstance.hasItems(Items.QUARTZ, ModItems.BLANK_RANGE_ADDON.get()))
+                .save(pRecipeOutput);
+
+        // Range Addon Redstone
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_REDSTONE.get())
+                .pattern("A A")
+                .pattern("ABA")
+                .pattern("A A")
+                .define('A', Items.REDSTONE)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_redstone", InventoryChangeTrigger.TriggerInstance.hasItems(Items.REDSTONE, ModItems.BLANK_RANGE_ADDON.get()))
+                .save(pRecipeOutput);
+
+        // Range Addon Glowstone
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_GLOWSTONE.get())
+                .pattern("A A")
+                .pattern("ABA")
+                .pattern("A A")
+                .define('A', Items.GLOWSTONE_DUST)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_glowstone", InventoryChangeTrigger.TriggerInstance.hasItems(Items.GLOWSTONE_DUST, ModItems.BLANK_RANGE_ADDON.get()))
+                .save(pRecipeOutput);
+
+        // Range Addon Gold
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_GOLD.get())
+                .pattern("A A")
+                .pattern("ABA")
+                .pattern("A A")
+                .define('A', Items.GOLD_INGOT)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_gold", InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_INGOT, ModItems.BLANK_RANGE_ADDON.get()))
+                .save(pRecipeOutput);
+
+        // Range Addon Amethyst
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_AMETHYST.get())
+                .pattern("A A")
+                .pattern("ABA")
+                .pattern("A A")
+                .define('A', Items.AMETHYST_SHARD)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_amethyst", InventoryChangeTrigger.TriggerInstance.hasItems(Items.AMETHYST_SHARD, ModItems.BLANK_RANGE_ADDON.get()))
+                .save(pRecipeOutput);
+
+        // Range Addon Lapis
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_LAPIS.get())
+                .pattern("A A")
+                .pattern("ABA")
+                .pattern("A A")
+                .define('A', Items.LAPIS_LAZULI)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_lapis", InventoryChangeTrigger.TriggerInstance.hasItems(Items.LAPIS_LAZULI, ModItems.BLANK_RANGE_ADDON.get()))
+                .save(pRecipeOutput);
+
+        // Range Addon Diamond
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_DIAMOND.get())
+                .pattern("ABA")
+                .define('A', Items.DIAMOND)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_diamond", InventoryChangeTrigger.TriggerInstance.hasItems(Items.DIAMOND, ModItems.BLANK_RANGE_ADDON.get()))
+                .save(pRecipeOutput);
+
+        // Range Addon Emerald
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RANGE_ADDON_EMERALD.get())
+                .pattern("ABA")
+                .define('A', Items.EMERALD)
+                .define('B', ModItems.BLANK_RANGE_ADDON.get())
+                .unlockedBy("has_items_for_range_addon_emerald", InventoryChangeTrigger.TriggerInstance.hasItems(Items.EMERALD, ModItems.BLANK_RANGE_ADDON.get()))
+                .save(pRecipeOutput);
+
         // Advanced Modular Clay Upgrade Smithing Template
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get())
                 .pattern(" A ")

@@ -1,6 +1,15 @@
 {
   "values": [
     "mattsmodulararmory:range_addon_coal",
-    "mattsmodulararmory:range_addon_copper"
+    "mattsmodulararmory:range_addon_copper",
+    "mattsmodulararmory:range_addon_iron",
+    "mattsmodulararmory:range_addon_quartz",
+    "mattsmodulararmory:range_addon_redstone",
+    "mattsmodulararmory:range_addon_glowstone",
+    "mattsmodulararmory:range_addon_gold",
+    "mattsmodulararmory:range_addon_amethyst",
+    "mattsmodulararmory:range_addon_lapis",
+    "mattsmodulararmory:range_addon_diamond",
+    "mattsmodulararmory:range_addon_emerald"
   ]
 }

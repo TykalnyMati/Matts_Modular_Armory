@@ -55,6 +55,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BLANK_RANGE_ADDON.get());
         basicItem(ModItems.RANGE_ADDON_COAL.get());
         basicItem(ModItems.RANGE_ADDON_COPPER.get());
+        basicItem(ModItems.RANGE_ADDON_IRON.get());
+        basicItem(ModItems.RANGE_ADDON_QUARTZ.get());
+        basicItem(ModItems.RANGE_ADDON_REDSTONE.get());
+        basicItem(ModItems.RANGE_ADDON_GLOWSTONE.get());
+        basicItem(ModItems.RANGE_ADDON_GOLD.get());
+        basicItem(ModItems.RANGE_ADDON_AMETHYST.get());
+        basicItem(ModItems.RANGE_ADDON_LAPIS.get());
+        basicItem(ModItems.RANGE_ADDON_DIAMOND.get());
+        basicItem(ModItems.RANGE_ADDON_EMERALD.get());
 
         // Smithing Template Upgrades
         basicItem(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());

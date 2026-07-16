@@ -34,7 +34,8 @@
   "tooltip.mattsmodulararmory.blank_range_addon": "Used for crafting range addons",
 
   "tooltip.mattsmodulararmory.range_addon_tier": "Tier: ",
-  "tooltip.mattsmodulararmory.range_addon_text": "Increases range by: ",
+  "tooltip.mattsmodulararmory.range_addon_text": "Increases range ",
+  "tooltip.mattsmodulararmory.range_addon_text2": "by: ",
 
   "item.mattsmodulararmory.range_addon_coal": "Range Addon Coal",
   "tooltip.mattsmodulararmory.addon_tier.coal": "Coal",
@@ -42,6 +43,32 @@
   "item.mattsmodulararmory.range_addon_copper": "Range Addon Copper",
   "tooltip.mattsmodulararmory.addon_tier.copper": "Copper",
 
+  "item.mattsmodulararmory.range_addon_iron": "Range Addon Iron",
+  "tooltip.mattsmodulararmory.addon_tier.iron": "Iron",
+
+  "item.mattsmodulararmory.range_addon_quartz": "Range Addon Quartz",
+  "tooltip.mattsmodulararmory.addon_tier.quartz": "Quartz",
+
+  "item.mattsmodulararmory.range_addon_redstone": "Range Addon Redstone",
+  "tooltip.mattsmodulararmory.addon_tier.redstone": "Redstone",
+
+  "item.mattsmodulararmory.range_addon_glowstone": "Range Addon Glowstone",
+  "tooltip.mattsmodulararmory.addon_tier.glowstone": "Glowstone",
+
+  "item.mattsmodulararmory.range_addon_gold": "Range Addon Gold",
+  "tooltip.mattsmodulararmory.addon_tier.gold": "Gold",
+
+  "item.mattsmodulararmory.range_addon_amethyst": "Range Addon Amethyst",
+  "tooltip.mattsmodulararmory.addon_tier.amethyst": "Amethyst",
+
+  "item.mattsmodulararmory.range_addon_lapis": "Range Addon Lapis",
+  "tooltip.mattsmodulararmory.addon_tier.lapis": "Lapis",
+
+  "item.mattsmodulararmory.range_addon_diamond": "Range Addon Diamond",
+  "tooltip.mattsmodulararmory.addon_tier.diamond": "Diamond",
+
+  "item.mattsmodulararmory.range_addon_emerald": "Range Addon Emerald",
+  "tooltip.mattsmodulararmory.addon_tier.emerald": "Emerald",
 
   "item.mattsmodulararmory.advanced_modular_clay_upgrade_smithing_template": "Smithing Template",
   "upgrade.mattsmodulararmory.advanced_modular_clay_upgrade": "Advanced Modular Clay Upgrade",

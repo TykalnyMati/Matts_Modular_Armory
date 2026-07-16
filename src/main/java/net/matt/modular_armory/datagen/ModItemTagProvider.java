@@ -235,7 +235,16 @@ public class ModItemTagProvider extends ItemTagsProvider {
         // Range Addons
         tag(ModTags.Items.MODULAR_RANGE_ADDON)
                 .add(ModItems.RANGE_ADDON_COAL.get())
-                .add(ModItems.RANGE_ADDON_COPPER.get());
+                .add(ModItems.RANGE_ADDON_COPPER.get())
+                .add(ModItems.RANGE_ADDON_IRON.get())
+                .add(ModItems.RANGE_ADDON_QUARTZ.get())
+                .add(ModItems.RANGE_ADDON_REDSTONE.get())
+                .add(ModItems.RANGE_ADDON_GLOWSTONE.get())
+                .add(ModItems.RANGE_ADDON_GOLD.get())
+                .add(ModItems.RANGE_ADDON_AMETHYST.get())
+                .add(ModItems.RANGE_ADDON_LAPIS.get())
+                .add(ModItems.RANGE_ADDON_DIAMOND.get())
+                .add(ModItems.RANGE_ADDON_EMERALD.get());
 
         // NeoForge Tags
         tag(ItemTags.TRIMMABLE_ARMOR)
