@@ -71,6 +71,8 @@
   "tooltip.mattsmodulararmory.addon_tier.emerald": "Emerald",
 
   "item.mattsmodulararmory.basic_filter": "Basic Filter",
+  "tooltip.mattsmodulararmory.filter.whitelist": "Whitelist",
+  "tooltip.mattsmodulararmory.filter.blacklist": "Blacklist",
 
 
 

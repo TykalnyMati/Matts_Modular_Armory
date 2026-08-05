@@ -12,7 +12,6 @@ import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.items.SlotItemHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +19,7 @@ import java.util.List;
 public class FilterMenu extends AbstractContainerMenu {
     private final ItemStack filterItem;
     private boolean isUpdating = false;
+    private boolean isWhitelist;
 
     private final ItemStackHandler filterInventory = new ItemStackHandler(9) {
         @Override
@@ -47,6 +47,9 @@ public class FilterMenu extends AbstractContainerMenu {
         super(ModMenuTypes.FILTER_MENU.get(), containerId);
         this.filterItem = filterItem;
 
+        // Unloading the whitelist state
+        this.isWhitelist = filterItem.getOrDefault(ModDataComponentTypes.FILTER_IS_WHITELIST.get(), true);
+
         // Unloading items from data component into the menu
         if (filterItem.has(ModDataComponentTypes.FILTERED_ITEMS.get())) {
             List<ItemStack> filteredItems = filterItem.get(ModDataComponentTypes.FILTERED_ITEMS.get());
@@ -73,6 +76,20 @@ public class FilterMenu extends AbstractContainerMenu {
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
+    }
+
+    public boolean isWhitelist() {
+        return this.isWhitelist;
+    }
+
+    @Override
+    public boolean clickMenuButton(Player pPlayer, int buttonId) {
+        if (buttonId == 0) {
+            this.isWhitelist = !this.isWhitelist;
+            this.filterItem.set(ModDataComponentTypes.FILTER_IS_WHITELIST.get(), this.isWhitelist);
+            return true;
+        }
+        return false;
     }
 
     private List<ItemStack> getItemsInFilter() {
@@ -108,6 +125,12 @@ public class FilterMenu extends AbstractContainerMenu {
 
     @Override
     public void clicked(int slotId, int button, ClickType clickType, Player player) {
+        if (clickType == ClickType.SWAP) {
+            if (button == player.getInventory().selected) {
+                return;
+            }
+        }
+
         if (slotId >= 0 && slotId < 9) {
             Slot slot = this.slots.get(slotId);
             if (slot instanceof GhostSlot ghostSlot) {

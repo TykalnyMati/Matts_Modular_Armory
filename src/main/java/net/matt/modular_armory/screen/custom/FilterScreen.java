@@ -4,6 +4,8 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.screen.custom.helpers.GhostSlot;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -16,6 +18,64 @@ public class FilterScreen extends AbstractContainerScreen<FilterMenu> {
 
     public FilterScreen(FilterMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
+    }
+
+    @Override
+    protected void init() {
+        super.init();
+
+        int x = (this.width - this.imageWidth) / 2;
+        int y = (this.height - this.imageHeight) / 2;
+
+        // List Mode Button
+        this.addRenderableWidget(new ListModeButton(x + 133, y + 34, 18, 18, (button) -> {
+            if (this.minecraft != null && this.minecraft.gameMode != null && this.minecraft.player != null) {
+                this.minecraft.gameMode.handleInventoryButtonClick(this.menu.containerId, 0);
+
+                this.menu.clickMenuButton(this.minecraft.player, 0);
+
+                updateListButtonTooltip(button);
+            }
+        })).setTooltip(getModeTooltip());
+    }
+
+    private class ListModeButton extends Button {
+        public ListModeButton(int x, int y, int width, int height, OnPress onPress) {
+            super(x, y, width, height, Component.empty(), onPress, DEFAULT_NARRATION);
+        }
+
+        // Prevents the button from staying focused
+        @Override
+        public boolean isFocused() {
+            return false;
+        }
+
+        // Prevents taking keyboard inputs
+        @Override
+        public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
+            return false;
+        }
+
+        @Override
+        protected void renderWidget(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+            super.renderWidget(guiGraphics, mouseX, mouseY, partialTick);
+
+            boolean mode = FilterScreen.this.menu.isWhitelist();
+
+            int xCord = mode ? 178 : 196;
+            int yCord = 1;
+
+            guiGraphics.blit(GUI_TEXTURE, this.getX() + 1, this.getY() + 1, xCord, yCord, 16, 16);
+        }
+    }
+
+    private Tooltip getModeTooltip() {
+        String key = this.menu.isWhitelist() ? "tooltip.mattsmodulararmory.filter.whitelist" : "tooltip.mattsmodulararmory.filter.blacklist";
+        return Tooltip.create(Component.translatable(key));
+    }
+
+    private void updateListButtonTooltip(Button button) {
+        button.setTooltip(getModeTooltip());
     }
 
     @Override

@@ -27,6 +27,11 @@ public class ModDataComponentTypes {
                     .networkSynchronized(ByteBufCodecs.collection(ArrayList::new, ItemStack.OPTIONAL_STREAM_CODEC))
     );
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> FILTER_IS_WHITELIST = register("filter_whitelist",
+            builder -> builder.persistent(Codec.BOOL)
+                    .networkSynchronized(ByteBufCodecs.BOOL)
+    );
+
     private static <T> DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {
         return DATA_COMPONENT_TYPES.register(name, () -> builderOperator.apply(DataComponentType.builder()).build());
     }

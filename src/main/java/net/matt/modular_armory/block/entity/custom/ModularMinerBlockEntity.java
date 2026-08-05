@@ -202,11 +202,15 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
             return true;
         }
 
+        boolean isWhitelist = filterStack.getOrDefault(
+                ModDataComponentTypes.FILTER_IS_WHITELIST.get(),
+                true
+        );
+
         // Converts the targeted block into an item
         ItemStack targetBlockItem = new ItemStack(targetState.getBlock().asItem());
-        // TODO add whitelist handling
         if (targetBlockItem.isEmpty()) {
-            return false;
+            return !isWhitelist;
         }
 
         boolean matchesFilter = false;
@@ -217,7 +221,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
             }
         }
 
-        return matchesFilter;
+        return isWhitelist == matchesFilter;
     }
 
     private void advanceScanPosition(int maxExtraWidth, int maxExtraHeight, int maxLength) {

@@ -19,6 +19,10 @@ public class FilterItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
+        if (hand != InteractionHand.MAIN_HAND) {
+            return InteractionResultHolder.fail(stack);
+        }
+
         if (!level.isClientSide) {
             player.openMenu(new SimpleMenuProvider(
                     (containerId, playerInventory, p) -> new FilterMenu(containerId, playerInventory, stack),
