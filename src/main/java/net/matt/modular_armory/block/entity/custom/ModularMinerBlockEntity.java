@@ -157,11 +157,18 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
 
         // Maximum number of blocks that can be checked in a tick
         int positionsChecked = 0;
-        int maxChecksPerTick = 16;
+        int maxChecksPerTick = Math.max(8, ((maxLength * ((2 * maxExtraWidth) + 1) * ((2 * maxExtraHeight) + 1)) / 8));
 
         BlockPos.MutableBlockPos targetPos = new BlockPos.MutableBlockPos();
         while (positionsChecked < maxChecksPerTick) {
             calculateRelativeOffset(pos, facing, currentDepth, currentWidth, currentHeight, targetPos);
+
+            if (!level.isLoaded(targetPos)) {
+                advanceScanPosition(maxExtraWidth, maxExtraHeight, maxLength);
+                positionsChecked++;
+                continue;
+            }
+
             BlockState targetState = level.getBlockState(targetPos);
 
             // Goes to the next position
