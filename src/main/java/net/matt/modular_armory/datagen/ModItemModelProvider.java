@@ -50,6 +50,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BIORITE_PLATE.get());
         basicItem(ModItems.EXPOSER_SLOT_PLUG.get());
 
+        basicItem(ModItems.BASIC_FILTER.get());
+
         // Addons
         basicItem(ModItems.ADDON_TEMPLATE.get());
         basicItem(ModItems.BLANK_RANGE_ADDON.get());

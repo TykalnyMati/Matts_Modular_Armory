@@ -1,6 +1,7 @@
 package net.matt.modular_armory.items;
 
 import net.matt.modular_armory.MattsModularArmory;
+import net.matt.modular_armory.items.addons.FilterItem;
 import net.matt.modular_armory.items.addons.ModularRangeAddon;
 import net.matt.modular_armory.items.armor.ModularArmorItem;
 import net.matt.modular_armory.items.custom.FleshMealItem;
@@ -144,6 +145,10 @@ public class ModItems {
 
     public static final DeferredHolder<Item, Item> RANGE_ADDON_EMERALD = ITEMS.register("range_addon_emerald",
             () -> new ModularRangeAddon(new Item.Properties(), "emerald", 0x17dd62, 11));
+
+    // Basic Filter
+    public static final DeferredHolder<Item, Item> BASIC_FILTER = ITEMS.register("basic_filter",
+            () -> new FilterItem(new Item.Properties()));
 
     // Tools, Weapons & Armor
     // Modular Clay

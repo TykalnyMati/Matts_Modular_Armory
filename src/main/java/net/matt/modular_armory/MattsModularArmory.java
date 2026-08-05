@@ -126,6 +126,7 @@ public class MattsModularArmory {
             event.register(ModMenuTypes.REPAIR_TABLE_MENU.get(), RepairTableScreen::new);
             event.register(ModMenuTypes.MODULAR_ASSEMBLER_MENU.get(), ModularAssemblerScreen::new);
             event.register(ModMenuTypes.MODULAR_MINER_MENU.get(), ModularMinerScreen::new);
+            event.register(ModMenuTypes.FILTER_MENU.get(), FilterScreen::new);
         }
 
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {

@@ -315,6 +315,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_items_for_range_addon_emerald", InventoryChangeTrigger.TriggerInstance.hasItems(Items.EMERALD, ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
+        // Basic Filter
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BASIC_FILTER.get())
+                .pattern("ABA")
+                .pattern(" C ")
+                .define('A', Items.STRING)
+                .define('B', ModItems.ADDON_TEMPLATE.get())
+                .define('C', Blocks.HOPPER)
+                .unlockedBy("has_items_for_basic_filter", InventoryChangeTrigger.TriggerInstance.hasItems(Items.STRING, ModItems.ADDON_TEMPLATE.get(), Blocks.HOPPER))
+                .save(pRecipeOutput);
+
         // Advanced Modular Clay Upgrade Smithing Template
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get())
                 .pattern(" A ")

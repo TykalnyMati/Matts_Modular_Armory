@@ -17,10 +17,14 @@ import java.util.function.UnaryOperator;
 public class ModDataComponentTypes {
     public static final DeferredRegister<DataComponentType<?>> DATA_COMPONENT_TYPES = DeferredRegister.create(Registries.DATA_COMPONENT_TYPE , MattsModularArmory.MOD_ID);
 
-    //
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<List<ItemStack>>> AUGMENTS = register("augments",
             builder -> builder.persistent(Codec.list(ItemStack.CODEC))
                     .networkSynchronized(ByteBufCodecs.collection(ArrayList::new, ItemStack.STREAM_CODEC))
+    );
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<List<ItemStack>>> FILTERED_ITEMS = register("filtered_items",
+            builder -> builder.persistent(Codec.list(ItemStack.OPTIONAL_CODEC))
+                    .networkSynchronized(ByteBufCodecs.collection(ArrayList::new, ItemStack.OPTIONAL_STREAM_CODEC))
     );
 
     private static <T> DeferredHolder<DataComponentType<?>, DataComponentType<T>> register(String name, UnaryOperator<DataComponentType.Builder<T>> builderOperator) {

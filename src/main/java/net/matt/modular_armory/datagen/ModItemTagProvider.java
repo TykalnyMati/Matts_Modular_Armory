@@ -246,6 +246,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.RANGE_ADDON_DIAMOND.get())
                 .add(ModItems.RANGE_ADDON_EMERALD.get());
 
+        // Filters
+        tag(ModTags.Items.FILTER)
+                .add(ModItems.BASIC_FILTER.get());
+
         // NeoForge Tags
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.MODULAR_CLAY_HELMET.get())

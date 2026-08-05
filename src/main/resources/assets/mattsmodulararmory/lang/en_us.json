@@ -70,6 +70,10 @@
   "item.mattsmodulararmory.range_addon_emerald": "Range Addon Emerald",
   "tooltip.mattsmodulararmory.addon_tier.emerald": "Emerald",
 
+  "item.mattsmodulararmory.basic_filter": "Basic Filter",
+
+
+
   "item.mattsmodulararmory.advanced_modular_clay_upgrade_smithing_template": "Smithing Template",
   "upgrade.mattsmodulararmory.advanced_modular_clay_upgrade": "Advanced Modular Clay Upgrade",
   "item.mattsmodulararmory.smithing_template.advanced_modular_clay_upgrade.applies_to": "Modular Clay Equipment",

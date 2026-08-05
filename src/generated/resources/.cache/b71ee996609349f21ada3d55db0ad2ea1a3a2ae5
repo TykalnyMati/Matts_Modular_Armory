@@ -1,4 +1,4 @@
-// 1.21.1	2026-07-16T19:47:59.8912016	Item Models: mattsmodulararmory
+// 1.21.1	2026-07-17T23:00:30.3514492	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -106,6 +106,7 @@ c615226ba1ba0039129b32bdb14220d426e03282 assets/mattsmodulararmory/models/item/a
 58bb8bac2502c2468477f387ce94205297e4e0f6 assets/mattsmodulararmory/models/item/aqua_affinity_augment.json
 49498347635ccbbedfd29cdf6a5622aa777befb2 assets/mattsmodulararmory/models/item/auto_smelt_augment.json
 ec1048ddbe32f67d5021a44d7e6387184b1224e5 assets/mattsmodulararmory/models/item/bane_of_arthropods_augment.json
+047ba03f09f628ad6c359f571ff0123a25e18e3e assets/mattsmodulararmory/models/item/basic_filter.json
 9fb96289ec659d7cd22f156564cd5bbdb831b655 assets/mattsmodulararmory/models/item/basic_modular_plate.json
 b4ff08e1b02d2d497f20f746cdfe9f402f992601 assets/mattsmodulararmory/models/item/biorite_axe.json
 e7b0522d098782f39704c161a4e5248fc19a1453 assets/mattsmodulararmory/models/item/biorite_boots.json

@@ -36,6 +36,8 @@ public class ModTags {
 
         public static final TagKey<Item> MODULAR_RANGE_ADDON = createTag("modular_range_addon");
 
+        public static final TagKey<Item> FILTER = createTag("filter");
+
         private static TagKey<Item> createTag(String name) {
             return ItemTags.create(ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, name));
         }

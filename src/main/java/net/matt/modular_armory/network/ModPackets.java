@@ -25,6 +25,12 @@ public class ModPackets {
                 RangeDisplayStatePayload.CODEC,
                 ModPackets::handleRangeDisplayState
         );
+
+        registrar.playToServer(
+                SetGhostSlotPayload.TYPE,
+                SetGhostSlotPayload.STREAM_CODEC,
+                SetGhostSlotPayload::handleData
+        );
     }
 
     private static void handleRedstoneMode(final RedstoneModePayload payload, final IPayloadContext context) {

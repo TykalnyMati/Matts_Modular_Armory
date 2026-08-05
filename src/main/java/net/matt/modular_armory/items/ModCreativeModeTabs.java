@@ -51,6 +51,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RANGE_ADDON_DIAMOND.get());
                         output.accept(ModItems.RANGE_ADDON_EMERALD.get());
 
+                        output.accept(ModItems.BASIC_FILTER.get());
+
+                        // Smiting Templates
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_UPGRADE_SMITHING_TEMPLATE.get());
                         output.accept(ModItems.BIORITE_UPGRADE_SMITHING_TEMPLATE.get());
