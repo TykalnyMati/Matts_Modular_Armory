@@ -2,6 +2,7 @@ package net.matt.modular_armory.block.entity.custom;
 
 import net.matt.modular_armory.block.custom.ModularMinerBlock;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
+import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.items.addons.ModularRangeAddon;
 import net.matt.modular_armory.screen.custom.ModularMinerMenu;
 import net.minecraft.core.BlockPos;
@@ -168,11 +169,48 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
             positionsChecked++;
 
             // Mines a block if possible, skips air, unbreakable blocks and fluids
-            if (!targetState.isAir() && targetState.getDestroySpeed(level, targetPos) >= 0 && !(targetState.getBlock() instanceof LiquidBlock)) {
+            if (!targetState.isAir()
+                    && targetState.getDestroySpeed(level, targetPos) >= 0
+                    && !(targetState.getBlock() instanceof LiquidBlock)
+                    && passesFilter(targetState, level, targetPos) ) {
                 mineBlock(level, targetPos, targetState);
                 return;
             }
         }
+    }
+
+    private boolean passesFilter(BlockState targetState, ServerLevel serverLevel, BlockPos targetPos) {
+        ItemStack filterStack = itemHandler.getStackInSlot(FILTER_SLOT);
+
+        if (filterStack.isEmpty()) {
+            return true;
+        }
+
+        List<ItemStack> filteredItems = filterStack.getOrDefault(
+                ModDataComponentTypes.FILTERED_ITEMS.get(),
+                List.of()
+        );
+
+        if (filteredItems.isEmpty()) {
+            return true;
+        }
+
+        // Converts the targeted block into an item
+        ItemStack targetBlockItem = new ItemStack(targetState.getBlock().asItem());
+        // TODO add whitelist handling
+        if (targetBlockItem.isEmpty()) {
+            return false;
+        }
+
+        boolean matchesFilter = false;
+        for (ItemStack filterItem : filteredItems) {
+            if (!filterItem.isEmpty() && ItemStack.isSameItem(filterItem, targetBlockItem)) {
+                matchesFilter = true;
+                break;
+            }
+        }
+
+        return matchesFilter;
     }
 
     private void advanceScanPosition(int maxExtraWidth, int maxExtraHeight, int maxLength) {

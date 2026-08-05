@@ -1,6 +1,7 @@
 package net.matt.modular_armory.screen.custom;
 
 import net.matt.modular_armory.block.ModBlocks;
+import net.matt.modular_armory.block.custom.ModularMinerBlock;
 import net.matt.modular_armory.block.entity.custom.ExposerBlockEntity;
 import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
 import net.matt.modular_armory.screen.ModMenuTypes;
@@ -65,6 +66,18 @@ public class ModularMinerMenu extends AbstractContainerMenu {
                 }
             });
         }
+
+        // Filter Slot
+
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, ModularMinerBlockEntity.FILTER_SLOT, 116, 17) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                if (stack.is(ModTags.Items.FILTER)) {
+                    return super.mayPlace(stack);
+                }
+                return false;
+            }
+        });
     }
 
     // TODO implement quick moving to filter/upgrade/range slots
