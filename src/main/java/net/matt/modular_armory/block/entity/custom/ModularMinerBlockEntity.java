@@ -2,6 +2,7 @@ package net.matt.modular_armory.block.entity.custom;
 
 import net.matt.modular_armory.block.custom.ModularMinerBlock;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
+import net.matt.modular_armory.block.entity.custom.helper.CustomEnergyStorage;
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.items.addons.ModularRangeAddon;
 import net.matt.modular_armory.screen.custom.ModularMinerMenu;
@@ -28,6 +29,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.energy.EnergyStorage;
+import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
@@ -48,9 +51,6 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
     public static final int OUTPUT_SLOTS = 9;
     public static final int AUGMENT_SLOTS = 2;
 
-    private int tickCounter = 0;
-    private int miningTime = 20;
-
     // Scan tracking
     private int currentDepth = 1;
     private int currentWidth = 0;
@@ -63,6 +63,15 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
     // Display false - off, true - on
     private boolean rangeDisplayState = false;
     protected final ContainerData data;
+
+    // Mining
+    private static final int BASE_MINING_TIME = 20;
+    private static final int POWERED_MINING_TIME = 5;
+    private static final int MAX_ENERGY_CAPACITY = 50000;
+    private static final int MAX_ENERGY_TRANSFER = 1000;
+    private static final int ENERGY_PER_OPERATION = 100;
+
+    private int tickCounter = 0;
 
     public final ItemStackHandler itemHandler = new ItemStackHandler(15) {
         @Override
@@ -83,6 +92,34 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         }
     };
 
+    public final CustomEnergyStorage energyStorage = new CustomEnergyStorage(MAX_ENERGY_CAPACITY, MAX_ENERGY_TRANSFER, MAX_ENERGY_TRANSFER) {
+        @Override
+        public int receiveEnergy(int toReceive, boolean simulate) {
+            int energyReceived = super.receiveEnergy(toReceive, simulate);
+
+            if (energyReceived > 0 && !simulate) {
+                setChanged();
+                if (level != null && !level.isClientSide()) {
+                    level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+                }
+            }
+            return energyReceived;
+        }
+
+        @Override
+        public int extractEnergy(int toExtract, boolean simulate) {
+            int energyExtracted = super.extractEnergy(toExtract, simulate);
+
+            if (energyExtracted > 0 && !simulate) {
+                setChanged();
+                if (level != null && !level.isClientSide()) {
+                    level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+                }
+            }
+            return energyExtracted;
+        }
+    };
+
     public ModularMinerBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.MODULAR_MINER_BE.get(), pos, state);
 
@@ -92,6 +129,8 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
                 return switch (i) {
                     case 0 -> ModularMinerBlockEntity.this.redstoneMode;
                     case 1 -> ModularMinerBlockEntity.this.rangeDisplayState ? 1 : 0;
+                    case 2 -> ModularMinerBlockEntity.this.energyStorage.getEnergyStored();
+                    case 3 -> ModularMinerBlockEntity.this.energyStorage.getMaxEnergyStored();
                     default -> 0;
                 };
             }
@@ -106,9 +145,13 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
 
             @Override
             public int getCount() {
-                return 2;
+                return 4;
             }
         };
+    }
+
+    public boolean hasEnoughPower() {
+        return this.energyStorage.getEnergyStored() >= ENERGY_PER_OPERATION;
     }
 
     public int getRedstoneMode() {
@@ -139,21 +182,27 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
             default -> {} // Ignore Signal
         }
 
+        int currentRequiredTime = hasEnoughPower() ? POWERED_MINING_TIME : BASE_MINING_TIME;
+
         this.tickCounter++;
-        if (this.tickCounter >= this.miningTime && !isInventoryFull()) {
+        if (this.tickCounter >= currentRequiredTime && !isInventoryFull()) {
             this.tickCounter = 0;
-            this.mineNextBlock((ServerLevel) level, pos, state);
-        } else if (this.tickCounter > 2 * this.miningTime) {
-            this.tickCounter = 2 * this.miningTime;
+            this.mineNextBlock((ServerLevel) level, pos, state, (currentRequiredTime == POWERED_MINING_TIME));
+        } else if (this.tickCounter > 2 * BASE_MINING_TIME) {
+            this.tickCounter = 2 * BASE_MINING_TIME;
         }
     }
 
-    private void mineNextBlock(ServerLevel level, BlockPos pos, BlockState state) {
+    private void mineNextBlock(ServerLevel level, BlockPos pos, BlockState state, boolean consumePower) {
         Direction facing = state.getValue(ModularMinerBlock.FACING);
 
         int maxExtraWidth = getRangeBonus(RANGE_WIDTH_SLOT);
         int maxExtraHeight = getRangeBonus(RANGE_HEIGHT_SLOT);
         int maxLength = 1 + getRangeBonus(RANGE_LENGTH_SLOT);
+
+        if (Math.abs(currentHeight) > maxExtraHeight || Math.abs(currentWidth) > maxExtraWidth || currentDepth > maxLength) {
+            resetScan();
+        }
 
         // Maximum number of blocks that can be checked in a tick
         int positionsChecked = 0;
@@ -180,7 +229,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
                     && targetState.getDestroySpeed(level, targetPos) >= 0
                     && !(targetState.getBlock() instanceof LiquidBlock)
                     && passesFilter(targetState, level, targetPos) ) {
-                mineBlock(level, targetPos, targetState);
+                mineBlock(level, targetPos, targetState, consumePower);
                 return;
             }
         }
@@ -274,7 +323,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         setChanged();
     }
 
-    private void mineBlock(ServerLevel level, BlockPos targetPos, BlockState targetState) {
+    private void mineBlock(ServerLevel level, BlockPos targetPos, BlockState targetState, boolean consumePower) {
         // Helper tool for applying augments
         // TODO add applying augments to the tool
         ItemStack helperTool = ItemStack.EMPTY;
@@ -290,8 +339,12 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
                     }
                 }
             }
-
             level.destroyBlock(targetPos, false);
+
+            if (consumePower) {
+                this.energyStorage.extractEnergy(ENERGY_PER_OPERATION, false);
+            }
+
             setChanged();
         }
     }
@@ -442,11 +495,16 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         };
     }
 
+    public IEnergyStorage getEnergyStorage() {
+        return this.energyStorage;
+    }
+
     @Override
     protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
         pTag.put("inventory", itemHandler.serializeNBT(pRegistries));
+        pTag.putInt("energy", energyStorage.getEnergyStored());
+
         pTag.putInt("miner.tickCounter", tickCounter);
-        pTag.putInt("miner.miningTime", miningTime);
         pTag.putInt("miner.currentDepth", currentDepth);
         pTag.putInt("miner.currentWidth", currentWidth);
         pTag.putInt("miner.currentHeight", currentHeight);
@@ -462,8 +520,13 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         super.loadAdditional(pTag, pRegistries);
 
         itemHandler.deserializeNBT(pRegistries, pTag.getCompound("inventory"));
+
+        if (pTag.contains("energy")) {
+            int savedEnergy = pTag.getInt("energy");
+            this.energyStorage.setEnergyDirectly(savedEnergy - this.energyStorage.getEnergyStored());
+        }
+
         this.tickCounter = pTag.getInt("miner.tickCounter");
-        this.miningTime = pTag.getInt("miner.miningTime");
         this.currentDepth = pTag.getInt("miner.currentDepth");
         this.currentWidth = pTag.getInt("miner.currentWidth");
         this.currentHeight = pTag.getInt("miner.currentHeight");

@@ -48,7 +48,6 @@ public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu
 
             this.menu.blockEntity.setRangeDisplayState(nextState);
 
-            // add packet
             PacketDistributor.sendToServer(new RangeDisplayStatePayload(this.menu.blockEntity.getBlockPos(), nextState));
 
             updateRangeDisplayButtonTooltip(button, nextState);

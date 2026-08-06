@@ -22,7 +22,7 @@ public class ModularMinerMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public ModularMinerMenu(int pContainerId, Inventory inventory, FriendlyByteBuf extraData) {
-        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(pContainerId, inventory, inventory.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
     }
 
     public ModularMinerMenu(int pContainerId, Inventory inventory, BlockEntity entity, ContainerData data) {
@@ -33,6 +33,7 @@ public class ModularMinerMenu extends AbstractContainerMenu {
 
         addPlayerInventory(inventory);
         addPlayerHotbar(inventory);
+        addDataSlots(data);
 
         // Output Slots
         int[][] outputSlotsPositions = new int[][] {
@@ -68,7 +69,6 @@ public class ModularMinerMenu extends AbstractContainerMenu {
         }
 
         // Filter Slot
-
         this.addSlot(new SlotItemHandler(blockEntity.itemHandler, ModularMinerBlockEntity.FILTER_SLOT, 116, 17) {
             @Override
             public boolean mayPlace(ItemStack stack) {

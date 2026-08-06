@@ -100,10 +100,18 @@ public class MattsModularArmory {
         );
 
         // Register Modular Miner (Can only extract from any side)
+        // Inventory
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 ModBlockEntities.MODULAR_MINER_BE.get(),
                 (be, side) -> be.getItemHandlerCapability(side)
+        );
+
+        // Power
+        event.registerBlockEntity(
+                Capabilities.EnergyStorage.BLOCK,
+                ModBlockEntities.MODULAR_MINER_BE.get(),
+                (be, direction) -> be.getEnergyStorage()
         );
     }
 
