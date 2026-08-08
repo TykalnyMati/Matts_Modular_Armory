@@ -15,8 +15,11 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import java.text.DecimalFormat;
+
 public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu> {
     private static final ResourceLocation GUI_TEXTURE = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "textures/gui/modular_miner/modular_miner_gui.png");
+    private static final ResourceLocation ENERGY_TEXTURE = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "textures/gui/energy_progress.png");
 
     public ModularMinerScreen(ModularMinerMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -128,6 +131,20 @@ public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu
         int y = (height - imageHeight) / 2;
 
         pGuiGraphics.blit(GUI_TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
+
+        renderEnergyDisplay(pGuiGraphics, x, y);
+    }
+
+    private void renderEnergyDisplay(GuiGraphics guiGraphics, int x, int y) {
+        if (menu.hasPower()) {
+            int energyProgress = menu.getEnergyDisplayProgress();
+
+            if (energyProgress > 0) {
+                int yOffset = 54 - energyProgress;
+
+                guiGraphics.blit(ENERGY_TEXTURE, x + 9, y + 16 + yOffset, 0, yOffset, 14, energyProgress, 14, 54);
+            }
+        }
     }
 
     private void updateRedstoneModeButtonTooltip(Button button, int mode) {
@@ -159,10 +176,47 @@ public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu
         renderTooltip(pGuiGraphics, pMouseX, pMouseY);
     }
 
+    private Component getEnergyTooltipComponent() {
+        int energyStored = this.menu.getEnergyStored();
+        int maxEnergy = this.menu.getMaxEnergyStored();
+
+        String formattedStored = formatEnergy(energyStored);
+        String formattedMax = formatEnergy(maxEnergy);
+
+        return Component.translatable("tooltip.mattsmodulararmory.energy", formattedStored, formattedMax);
+    }
+
+    private static final DecimalFormat COMPACT_FORMAT = new DecimalFormat("#.#");
+
+    private String formatEnergy(int energy) {
+        if (energy < 1_000) {
+            return String.valueOf(energy);
+        }
+        else if (energy < 1_000_000) {
+            return COMPACT_FORMAT.format(energy / 1_000.0f) + "k";
+        }
+        else if (energy < 1_000_000_000) {
+            return COMPACT_FORMAT.format(energy / 1_000_000.0f) + "M";
+        }
+        else {
+            return COMPACT_FORMAT.format(energy / 1_000_000_000.0f) + "G";
+        }
+    }
+
     @Override
     protected void renderTooltip(GuiGraphics pGuiGraphics, int pMouseX, int pMouseY) {
         super.renderTooltip(pGuiGraphics, pMouseX, pMouseY);
 
+        int x = (this.width - this.imageWidth) / 2;
+        int y = (this.height - this.imageHeight) / 2;
+
+        // Energy Bar
+        if (pMouseX >= x + 9 && pMouseX < x + 23 && pMouseY >= y + 16 && pMouseY < y + 70) {
+            pGuiGraphics.renderTooltip(this.font, getEnergyTooltipComponent(), pMouseX, pMouseY);
+            return;
+        }
+
+        // Slots
         if (this.hoveredSlot != null && !this.hoveredSlot.hasItem()) {
             int slotIndex = this.hoveredSlot.getContainerSlot();
 

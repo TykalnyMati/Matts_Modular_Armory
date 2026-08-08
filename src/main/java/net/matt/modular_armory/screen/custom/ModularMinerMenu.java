@@ -80,6 +80,26 @@ public class ModularMinerMenu extends AbstractContainerMenu {
         });
     }
 
+    public int getEnergyStored() {
+        return data.get(2);
+    }
+
+    public int getMaxEnergyStored() {
+        return data.get(3);
+    }
+
+    public boolean hasPower() {
+        return data.get(2) > 0;
+    }
+
+    public int getEnergyDisplayProgress() {
+        int energyStored = data.get(2);
+        int maxEnergy = data.get(3);
+        int energyProgress = 54;
+
+        return maxEnergy != 0 && energyStored != 0 ? energyStored * energyProgress / maxEnergy : 0;
+    }
+
     // TODO implement quick moving to filter/upgrade/range slots
     @Override
     public ItemStack quickMoveStack(Player player, int i) {
