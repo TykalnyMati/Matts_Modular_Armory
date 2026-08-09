@@ -1,26 +1,49 @@
 {
   "variants": {
-    "facing=north": {
+    "facing=north,lit=false": {
       "model": "mattsmodulararmory:block/modular_miner"
     },
-    "facing=east": {
+    "facing=north,lit=true": {
+      "model": "mattsmodulararmory:block/modular_miner_on"
+    },
+    "facing=east,lit=false": {
       "model": "mattsmodulararmory:block/modular_miner",
       "y": 90
     },
-    "facing=south": {
+    "facing=east,lit=true": {
+      "model": "mattsmodulararmory:block/modular_miner_on",
+      "y": 90
+    },
+    "facing=south,lit=false": {
       "model": "mattsmodulararmory:block/modular_miner",
       "y": 180
     },
-    "facing=west": {
+    "facing=south,lit=true": {
+      "model": "mattsmodulararmory:block/modular_miner_on",
+      "y": 180
+    },
+    "facing=west,lit=false": {
       "model": "mattsmodulararmory:block/modular_miner",
       "y": 270
     },
-    "facing=up": {
+    "facing=west,lit=true": {
+      "model": "mattsmodulararmory:block/modular_miner_on",
+      "y": 270
+    },
+    "facing=up,lit=false": {
       "model": "mattsmodulararmory:block/modular_miner",
       "x": 270
     },
-    "facing=down": {
+    "facing=up,lit=true": {
+      "model": "mattsmodulararmory:block/modular_miner_on",
+      "x": 270
+    },
+    "facing=down,lit=false": {
       "model": "mattsmodulararmory:block/modular_miner",
+      "x": 90
+    },
+    "facing=down,lit=true": {
+      "model": "mattsmodulararmory:block/modular_miner_on",
       "x": 90
     }
   }

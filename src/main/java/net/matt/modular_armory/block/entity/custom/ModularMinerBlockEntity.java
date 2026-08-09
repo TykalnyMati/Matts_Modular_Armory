@@ -173,20 +173,41 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         }
     }
 
-    public void tick(Level level, BlockPos pos, BlockState state) {
+    public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         // Checking if the block should be active
         switch (redstoneMode) {
-            case 0 -> { if (!level.hasNeighborSignal(pos)) return; } // Active on High
-            case 1 -> { if (level.hasNeighborSignal(pos)) return; }  // Active on Low
-            default -> {} // Ignore Signal
+            // Active on High
+            case 0 -> {
+                if (!pLevel.hasNeighborSignal(pPos)) {
+                    if (pState.getValue(ModularMinerBlock.ACTIVE)) {
+                        pLevel.setBlock(pPos, pState.setValue(ModularMinerBlock.ACTIVE, false), Block.UPDATE_ALL);
+                    }
+                    return;
+                }
+            }
+            // Active on Low
+            case 1 -> {
+                if (pLevel.hasNeighborSignal(pPos)) {
+                    if (pState.getValue(ModularMinerBlock.ACTIVE)) {
+                        pLevel.setBlock(pPos, pState.setValue(ModularMinerBlock.ACTIVE, false), Block.UPDATE_ALL);
+                    }
+                    return;
+                }
+            }
+            // Ignore Signal
+            default -> {}
         }
 
         int currentRequiredTime = hasEnoughPower() ? POWERED_MINING_TIME : BASE_MINING_TIME;
 
+        if (!pState.getValue(ModularMinerBlock.ACTIVE)) {
+            pLevel.setBlock(pPos, pState.setValue(ModularMinerBlock.ACTIVE, true), Block.UPDATE_ALL);
+        }
+
         this.tickCounter++;
         if (this.tickCounter >= currentRequiredTime && !isInventoryFull()) {
             this.tickCounter = 0;
-            this.mineNextBlock((ServerLevel) level, pos, state, (currentRequiredTime == POWERED_MINING_TIME));
+            this.mineNextBlock((ServerLevel) pLevel, pPos, pState, (currentRequiredTime == POWERED_MINING_TIME));
         } else if (this.tickCounter > 2 * BASE_MINING_TIME) {
             this.tickCounter = 2 * BASE_MINING_TIME;
         }
