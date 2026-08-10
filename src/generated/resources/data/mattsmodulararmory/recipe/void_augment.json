@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    "B": {
+      "item": "minecraft:obsidian"
+    },
+    "C": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "CAC",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:void_augment"
+  }
+}

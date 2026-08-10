@@ -4,6 +4,7 @@ import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -51,6 +52,7 @@ public class AugmentObject {
     public int SCAFFOLDING;
     public boolean ILLUMINATOR;
     public boolean MAGNET;
+    public boolean VOID;
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
@@ -73,6 +75,7 @@ public class AugmentObject {
                     case "scaffolding_augment" -> this.SCAFFOLDING = augmentStack.getCount();
                     case "illuminator_augment" -> this.ILLUMINATOR = true;
                     case "magnet_augment" -> this.MAGNET = true;
+                    case "void_augment" -> this.VOID = true;
 
                     // Weapon specific augments
                     case "sharpness_augment" -> this.SHARPNESS = augmentStack.getCount();
@@ -156,19 +159,23 @@ public class AugmentObject {
                         .append(Component.literal(": " + toRoman((int) this.EFFICIENCY)).withStyle(ChatFormatting.YELLOW)));
             }
 
-            if (this.SILK_TOUCH) {
-                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.silk_touch_augment").withStyle(ChatFormatting.LIGHT_PURPLE));
-            } else if (this.FORTUNE > 0) {
-                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fortune_augment").withStyle(ChatFormatting.BLUE)
-                        .append(Component.literal(": " + toRoman(this.FORTUNE)).withStyle(ChatFormatting.BLUE)));
+            if (this.VOID) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.void_augment").withStyle(Style.EMPTY.withColor(0x8f36db)));
+            } else {
+                if (this.SILK_TOUCH) {
+                    pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.silk_touch_augment").withStyle(ChatFormatting.LIGHT_PURPLE));
+                } else if (this.FORTUNE > 0) {
+                    pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fortune_augment").withStyle(ChatFormatting.BLUE)
+                            .append(Component.literal(": " + toRoman(this.FORTUNE)).withStyle(ChatFormatting.BLUE)));
+                }
+
+                if (this.AUTO_SMELT && !this.SILK_TOUCH) {
+                    pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.auto_smelt_augment").withStyle(ChatFormatting.DARK_RED));
+                }
             }
 
             if (this.DIAMOND_SHARPENED) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.diamond_sharpened_augment").withStyle(ChatFormatting.AQUA));
-            }
-
-            if (this.AUTO_SMELT && !this.SILK_TOUCH) {
-                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.auto_smelt_augment").withStyle(ChatFormatting.DARK_RED));
             }
 
             if (this.MAGNET) {

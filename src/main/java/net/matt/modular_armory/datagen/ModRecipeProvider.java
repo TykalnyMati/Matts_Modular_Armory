@@ -886,5 +886,19 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.REDSTONE_BLOCK,
                         Blocks.IRON_BLOCK))
                 .save(pRecipeOutput);
+
+        // Void Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOID_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("CAC")
+                .pattern("BBB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.OBSIDIAN)
+                .define('C', Items.ENDER_PEARL)
+                .unlockedBy("has_items_for_void_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.OBSIDIAN,
+                        Items.ENDER_PEARL))
+                .save(pRecipeOutput);
     }
 }

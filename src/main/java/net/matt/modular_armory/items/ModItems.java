@@ -371,6 +371,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> SCAFFOLDING_AUGMENT = ITEMS.register("scaffolding_augment", () -> new AugmentGeneric(new Item.Properties(), "scaffolding_augment", AugmentGeneric.Types.TOOLS, List.of(1, 2, 3, 4)));
     public static final DeferredHolder<Item, Item> ILLUMINATOR_AUGMENT = ITEMS.register("illuminator_augment", () -> new AugmentGeneric(new Item.Properties(), "illuminator_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1)));
     public static final DeferredHolder<Item, Item> MAGNET_AUGMENT = ITEMS.register("magnet_augment", () -> new AugmentGeneric(new Item.Properties(), "magnet_augment", AugmentGeneric.Types.TOOLS_AND_WEAPONS, List.of(0, 1, 1, 1)));
+    public static final DeferredHolder<Item, Item> VOID_AUGMENT = ITEMS.register("void_augment", () -> new AugmentGeneric(new Item.Properties(), "void_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -262,8 +262,8 @@ public class ModEvents {
 
             AugmentObject bonuses = modularTool.getAugmentBonuses(itemStack);
 
-            // Only intercept if we have Silk or Fortune and the tool is correct
-            if ((bonuses.SILK_TOUCH || bonuses.FORTUNE > 0 || bonuses.AUTO_SMELT)) {
+            // Only intercept if the tool has Silk touch, Fortune, Auto Smelt and the tool is correct
+            if ((bonuses.SILK_TOUCH || bonuses.FORTUNE > 0 || bonuses.AUTO_SMELT) && !bonuses.VOID) {
                 // Create Simulation Tool
                 ItemStack simulationTool = itemStack.copy();
                 if (bonuses.SILK_TOUCH) {
@@ -282,8 +282,8 @@ public class ModEvents {
 
                 List<ItemStack> drops = state.getDrops(builder);
 
-                // Handle Experience (XP)
-                // If it's Silk Touch, skip entirely (XP = 0)
+                // Handle Experience
+                // If it's Silk Touch, skip entirely
                 // If it's Fortune, manually spawn the XP
                 if (!bonuses.SILK_TOUCH) {
                     int xp = state.getExpDrop(serverLevel, pos, level.getBlockEntity(pos), player, simulationTool);
@@ -326,13 +326,15 @@ public class ModEvents {
                         }
                     }
                 }
-                // Finalize the break
+                // Break the block
                 level.removeBlock(pos, false);
                 for (ItemStack drop : drops) {
                     Block.popResource(level, pos, drop);
                 }
 
                 modularTool.damageModularItem(itemStack, player);
+            } else if (bonuses.VOID) {
+                level.removeBlock(pos, false);
             }
         }
     }

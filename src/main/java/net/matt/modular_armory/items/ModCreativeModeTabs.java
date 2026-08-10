@@ -141,6 +141,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCAFFOLDING_AUGMENT.get());
                         output.accept(ModItems.ILLUMINATOR_AUGMENT.get());
                         output.accept(ModItems.MAGNET_AUGMENT.get());
+                        output.accept(ModItems.VOID_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

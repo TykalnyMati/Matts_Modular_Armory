@@ -128,6 +128,7 @@
   "item.mattsmodulararmory.scaffolding_augment": "Scaffolding Augment",
   "item.mattsmodulararmory.illuminator_augment": "Illuminator Augment",
   "item.mattsmodulararmory.magnet_augment": "Magnet Augment",
+  "item.mattsmodulararmory.void_augment": "Void Augment",
 
   "tooltip.mattsmodulararmory.broken": "Broken",
   "tooltip.mattsmodulararmory.augments": "Augments",
@@ -163,6 +164,7 @@
   "tooltip.mattsmodulararmory.scaffolding_augment": "Scaffolding",
   "tooltip.mattsmodulararmory.illuminator_augment": "Illuminator",
   "tooltip.mattsmodulararmory.magnet_augment": "Magnet",
+  "tooltip.mattsmodulararmory.void_augment": "Void",
 
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
   "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
@@ -205,6 +207,7 @@
   "tooltip.mattsmodulararmory.description.scaffolding_augment": "Places a temporary block that disappears after nothing is standing on it for some time\nTime for the block to disappear increases with level",
   "tooltip.mattsmodulararmory.description.illuminator_augment": "Places a light when interacting",
   "tooltip.mattsmodulararmory.description.magnet_augment": "Attracts nearby items when the item is held",
+  "tooltip.mattsmodulararmory.description.void_augment": "Voids drops of broken blocks",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",

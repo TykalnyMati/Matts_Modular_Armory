@@ -155,6 +155,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SCAFFOLDING_AUGMENT.get());
         basicItem(ModItems.ILLUMINATOR_AUGMENT.get());
         basicItem(ModItems.MAGNET_AUGMENT.get());
+        basicItem(ModItems.VOID_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(DeferredHolder<Item, ? extends Item> item) {
