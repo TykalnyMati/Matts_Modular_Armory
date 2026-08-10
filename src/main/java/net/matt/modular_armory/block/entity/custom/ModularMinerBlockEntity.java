@@ -41,14 +41,13 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
     // Inventory indexes
     public static final int OUTPUT_START = 0;
     public static final int FILTER_SLOT = 9;
-    public static final int AUGMENT_START = 10;
-    public static final int RANGE_LENGTH_SLOT = 12;
-    public static final int RANGE_WIDTH_SLOT = 13;
-    public static final int RANGE_HEIGHT_SLOT = 14;
+    public static final int AUGMENT_SLOT = 10;
+    public static final int RANGE_LENGTH_SLOT = 11;
+    public static final int RANGE_WIDTH_SLOT = 12;
+    public static final int RANGE_HEIGHT_SLOT = 13;
 
     // Inventory slots
     public static final int OUTPUT_SLOTS = 9;
-    public static final int AUGMENT_SLOTS = 2;
 
     // Scan tracking
     private int currentDepth = 1;
@@ -72,7 +71,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
 
     private int tickCounter = 0;
 
-    public final ItemStackHandler itemHandler = new ItemStackHandler(15) {
+    public final ItemStackHandler itemHandler = new ItemStackHandler(14) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();

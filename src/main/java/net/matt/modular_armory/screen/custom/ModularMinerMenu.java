@@ -1,8 +1,6 @@
 package net.matt.modular_armory.screen.custom;
 
 import net.matt.modular_armory.block.ModBlocks;
-import net.matt.modular_armory.block.custom.ModularMinerBlock;
-import net.matt.modular_armory.block.entity.custom.ExposerBlockEntity;
 import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
 import net.matt.modular_armory.screen.ModMenuTypes;
 import net.matt.modular_armory.util.ModTags;
@@ -73,6 +71,17 @@ public class ModularMinerMenu extends AbstractContainerMenu {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 if (stack.is(ModTags.Items.FILTER)) {
+                    return super.mayPlace(stack);
+                }
+                return false;
+            }
+        });
+
+        // Augment Slot
+        this.addSlot(new SlotItemHandler(blockEntity.itemHandler, ModularMinerBlockEntity.AUGMENT_SLOT, 116, 53) {
+            @Override
+            public boolean mayPlace(ItemStack stack) {
+                if (stack.is(ModTags.Items.MODULAR_ITEMS_AUGMENT)) {
                     return super.mayPlace(stack);
                 }
                 return false;
