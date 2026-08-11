@@ -36,8 +36,13 @@ public class ModCreativeModeTabs {
                         // Machines
                         output.accept(ModBlocks.MODULAR_MINER.get());
 
+                        // Filter
+                        output.accept(ModItems.BASIC_FILTER.get());
+
                         // Addons
                         output.accept(ModItems.ADDON_TEMPLATE.get());
+
+                        // Range Addons
                         output.accept(ModItems.BLANK_RANGE_ADDON.get());
                         output.accept(ModItems.RANGE_ADDON_COAL.get());
                         output.accept(ModItems.RANGE_ADDON_COPPER.get());
@@ -51,7 +56,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RANGE_ADDON_DIAMOND.get());
                         output.accept(ModItems.RANGE_ADDON_EMERALD.get());
 
-                        output.accept(ModItems.BASIC_FILTER.get());
+                        // Augment Addons
+                        output.accept(ModItems.BLANK_AUGMENT_ADDON.get());
+                        output.accept(ModItems.SILK_TOUCH_AUGMENT_ADDON.get());
 
                         // Smiting Templates
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());

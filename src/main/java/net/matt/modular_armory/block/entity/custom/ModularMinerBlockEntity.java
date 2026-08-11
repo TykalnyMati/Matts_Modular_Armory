@@ -1,21 +1,26 @@
 package net.matt.modular_armory.block.entity.custom;
 
+import com.mojang.authlib.GameProfile;
 import net.matt.modular_armory.block.custom.ModularMinerBlock;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.custom.helper.CustomEnergyStorage;
 import net.matt.modular_armory.component.ModDataComponentTypes;
+import net.matt.modular_armory.items.addons.ModularAugmentAddon;
 import net.matt.modular_armory.items.addons.ModularRangeAddon;
 import net.matt.modular_armory.screen.custom.ModularMinerMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -24,18 +29,25 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.common.util.FakePlayer;
+import net.neoforged.neoforge.common.util.FakePlayerFactory;
 import net.neoforged.neoforge.energy.IEnergyStorage;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 
 public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider {
     // Inventory indexes
@@ -68,6 +80,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
     private static final int MAX_ENERGY_CAPACITY = 50000;
     private static final int MAX_ENERGY_TRANSFER = 1000;
     private static final int ENERGY_PER_OPERATION = 100;
+    private static final GameProfile MINER_GAME_PROFILE = new GameProfile(UUID.fromString("41c82c87-da8e-4a84-9e11-92f33f114421"), "[ModularMiner]");
 
     private int tickCounter = 0;
 
@@ -82,10 +95,19 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
 
         @Override
         public int getSlotLimit(int slot) {
-            if (slot == RANGE_LENGTH_SLOT || slot == RANGE_WIDTH_SLOT || slot == RANGE_HEIGHT_SLOT) {
+            if (slot == RANGE_LENGTH_SLOT || slot == RANGE_WIDTH_SLOT || slot == RANGE_HEIGHT_SLOT || slot == FILTER_SLOT) {
                 return 1;
             } else {
                 return super.getSlotLimit(slot);
+            }
+        }
+
+        @Override
+        protected int getStackLimit(int slot, @NotNull ItemStack stack) {
+            if (stack.getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
+                return modularAugmentAddon.getMaxStack();
+            } else {
+                return super.getStackLimit(slot, stack);
             }
         }
     };
@@ -149,7 +171,15 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
     }
 
     public boolean hasEnoughPower() {
-        return this.energyStorage.getEnergyStored() >= ENERGY_PER_OPERATION;
+        return this.energyStorage.getEnergyStored() >= ENERGY_PER_OPERATION + getAugmentPowerRequirements();
+    }
+
+    public int getAugmentPowerRequirements() {
+        if (itemHandler.getStackInSlot(AUGMENT_SLOT).getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
+            return modularAugmentAddon.getPowerUsage();
+        } else {
+            return 0;
+        }
     }
 
     public int getRedstoneMode() {
@@ -197,11 +227,17 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
             default -> {}
         }
 
-        int currentRequiredTime = hasEnoughPower() ? POWERED_MINING_TIME : BASE_MINING_TIME;
-
-        if (!pState.getValue(ModularMinerBlock.ACTIVE)) {
+        if (getAugmentPowerRequirements() > this.energyStorage.getEnergyStored() && pState.getValue(ModularMinerBlock.ACTIVE)) {
+            pLevel.setBlock(pPos, pState.setValue(ModularMinerBlock.ACTIVE, false), Block.UPDATE_ALL);
+        } else if (!pState.getValue(ModularMinerBlock.ACTIVE) && this.energyStorage.getEnergyStored() >= getAugmentPowerRequirements()) {
             pLevel.setBlock(pPos, pState.setValue(ModularMinerBlock.ACTIVE, true), Block.UPDATE_ALL);
         }
+
+        if (this.energyStorage.getEnergyStored() < getAugmentPowerRequirements()) {
+            return;
+        }
+
+        int currentRequiredTime = hasEnoughPower() ? POWERED_MINING_TIME : BASE_MINING_TIME;
 
         this.tickCounter++;
         if (this.tickCounter >= currentRequiredTime && !isInventoryFull()) {
@@ -344,27 +380,58 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
 
     private void mineBlock(ServerLevel level, BlockPos targetPos, BlockState targetState, boolean consumePower) {
         // Helper tool for applying augments
-        // TODO add applying augments to the tool
-        ItemStack helperTool = ItemStack.EMPTY;
-        List<ItemStack> drops = Block.getDrops(targetState, level, targetPos, level.getBlockEntity(targetPos), null, helperTool);
+        ItemStack helperTool;
+
+        if (targetState.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
+            helperTool = new ItemStack(Items.NETHERITE_SHOVEL);
+        } else if (targetState.is(BlockTags.MINEABLE_WITH_AXE)) {
+            helperTool = new ItemStack(Items.NETHERITE_AXE);
+        } else if (targetState.is(BlockTags.MINEABLE_WITH_HOE)) {
+            helperTool = new ItemStack(Items.NETHERITE_HOE);
+        } else {
+            helperTool = new ItemStack(Items.NETHERITE_PICKAXE);
+        }
+
+        if (itemHandler.getStackInSlot(AUGMENT_SLOT).getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
+            if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.SILK_TOUCH)) {
+                helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), 1);
+            }
+        }
+
+        FakePlayer minerPlayer = FakePlayerFactory.get(level, MINER_GAME_PROFILE);
+        minerPlayer.setItemInHand(InteractionHand.MAIN_HAND, helperTool);
+
+        List<ItemStack> drops = Block.getDrops(
+                targetState,
+                level,
+                targetPos,
+                level.getBlockEntity(targetPos),
+                minerPlayer,
+                helperTool);
 
         if (hasRoomForDrops(drops)) {
-            for (ItemStack drop : drops) {
-                ItemStack remainder = drop.copy();
-                for (int i = OUTPUT_START; i < OUTPUT_START + OUTPUT_SLOTS; i++) {
-                    remainder = itemHandler.insertItem(i, remainder, false);
-                    if (remainder.isEmpty()) {
-                        break;
+            if (level.destroyBlock(targetPos, false, minerPlayer)) {
+                for (ItemStack drop : drops) {
+                    ItemStack remainder = drop.copy();
+                    for (int i = OUTPUT_START; i < OUTPUT_START + OUTPUT_SLOTS; i++) {
+                        remainder = itemHandler.insertItem(i, remainder, false);
+                        if (remainder.isEmpty()) {
+                            break;
+                        }
                     }
                 }
-            }
-            level.destroyBlock(targetPos, false);
 
-            if (consumePower) {
-                this.energyStorage.extractEnergy(ENERGY_PER_OPERATION, false);
-            }
 
-            setChanged();
+                if (getAugmentPowerRequirements() > 0) {
+                    this.energyStorage.extractEnergy(getAugmentPowerRequirements(), false);
+                }
+
+                if (consumePower) {
+                    this.energyStorage.extractEnergy(ENERGY_PER_OPERATION, false);
+                }
+
+                setChanged();
+            }
         }
     }
 

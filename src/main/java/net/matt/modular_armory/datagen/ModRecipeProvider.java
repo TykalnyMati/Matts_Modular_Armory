@@ -190,6 +190,16 @@ public class ModRecipeProvider extends RecipeProvider {
 
         // TODO add modular miner recipe
 
+        // Basic Filter
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BASIC_FILTER.get())
+                .pattern("ABA")
+                .pattern(" C ")
+                .define('A', Items.STRING)
+                .define('B', ModItems.ADDON_TEMPLATE.get())
+                .define('C', Blocks.HOPPER)
+                .unlockedBy("has_items_for_basic_filter", InventoryChangeTrigger.TriggerInstance.hasItems(Items.STRING, ModItems.ADDON_TEMPLATE.get(), Blocks.HOPPER))
+                .save(pRecipeOutput);
+
         // Addon Template
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADDON_TEMPLATE.get(), 3)
                 .pattern("A")
@@ -315,14 +325,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_items_for_range_addon_emerald", InventoryChangeTrigger.TriggerInstance.hasItems(Items.EMERALD, ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
-        // Basic Filter
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BASIC_FILTER.get())
-                .pattern("ABA")
-                .pattern(" C ")
-                .define('A', Items.STRING)
-                .define('B', ModItems.ADDON_TEMPLATE.get())
-                .define('C', Blocks.HOPPER)
-                .unlockedBy("has_items_for_basic_filter", InventoryChangeTrigger.TriggerInstance.hasItems(Items.STRING, ModItems.ADDON_TEMPLATE.get(), Blocks.HOPPER))
+        // Blank Augment Addon
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLANK_AUGMENT_ADDON.get())
+                .requires(ModItems.ADDON_TEMPLATE.get())
+                .requires(ModItems.ADVANCED_MODULAR_PLATE.get())
+                .unlockedBy("has_items_for_blank_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ADDON_TEMPLATE.get(), ModItems.ADVANCED_MODULAR_PLATE.get()))
+                .save(pRecipeOutput);
+
+        // Silk Touch Augment Addon
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SILK_TOUCH_AUGMENT_ADDON.get())
+                .requires(ModItems.BLANK_AUGMENT_ADDON.get())
+                .requires(ModItems.SILK_TOUCH_AUGMENT.get())
+                .unlockedBy("has_items_for_silk_touch_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.SILK_TOUCH_AUGMENT.get()))
                 .save(pRecipeOutput);
 
         // Advanced Modular Clay Upgrade Smithing Template

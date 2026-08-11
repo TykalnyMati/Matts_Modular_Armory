@@ -226,6 +226,7 @@ public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu
                     case ModularMinerBlockEntity.RANGE_WIDTH_SLOT -> "tooltip.mattsmodulararmory.range_slot.width";
                     case ModularMinerBlockEntity.RANGE_HEIGHT_SLOT -> "tooltip.mattsmodulararmory.range_slot.height";
                     case ModularMinerBlockEntity.FILTER_SLOT -> "tooltip.mattsmodulararmory.filter_slot";
+                    case ModularMinerBlockEntity.AUGMENT_SLOT -> "tooltip.mattsmodulararmory.augment_addon_slot";
                     default -> null;
                 };
 

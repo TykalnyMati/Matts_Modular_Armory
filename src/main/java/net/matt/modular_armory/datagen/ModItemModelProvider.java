@@ -54,6 +54,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         // Addons
         basicItem(ModItems.ADDON_TEMPLATE.get());
+
+        // Range Addons
         basicItem(ModItems.BLANK_RANGE_ADDON.get());
         basicItem(ModItems.RANGE_ADDON_COAL.get());
         basicItem(ModItems.RANGE_ADDON_COPPER.get());
@@ -66,6 +68,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.RANGE_ADDON_LAPIS.get());
         basicItem(ModItems.RANGE_ADDON_DIAMOND.get());
         basicItem(ModItems.RANGE_ADDON_EMERALD.get());
+
+        // Augment Addons
+        basicItem(ModItems.BLANK_AUGMENT_ADDON.get());
+        basicItem(ModItems.SILK_TOUCH_AUGMENT_ADDON.get());
 
         // Smithing Template Upgrades
         basicItem(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());

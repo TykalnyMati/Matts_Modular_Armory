@@ -74,6 +74,16 @@
   "tooltip.mattsmodulararmory.filter.whitelist": "Whitelist",
   "tooltip.mattsmodulararmory.filter.blacklist": "Blacklist",
 
+  "item.mattsmodulararmory.blank_augment_addon": "Blank Augment Addon",
+  "tooltip.mattsmodulararmory.blank_augment_addon": "Used for crafting augment addons",
+
+  "tooltip.mattsmodulararmory.augment_addon.power_usage1": "Requires: ",
+  "tooltip.mattsmodulararmory.augment_addon.power_usage2": "FE",
+  "tooltip.mattsmodulararmory.augment_addon.power_usage3": " per operation",
+
+  "item.mattsmodulararmory.silk_touch_augment_addon": "Silk Touch Augment Addon",
+  "tooltip.mattsmodulararmory.augment_addon.silk_touch_addon": "Causes the machine to mine delicate blocks as themselves",
+
 
 
   "item.mattsmodulararmory.advanced_modular_clay_upgrade_smithing_template": "Smithing Template",
@@ -390,6 +400,7 @@
   "tooltip.mattsmodulararmory.range_display.true": "Range Display: On",
   "tooltip.mattsmodulararmory.range_display.false": "Range Display: Off",
   "tooltip.mattsmodulararmory.filter_slot": "Filter",
+  "tooltip.mattsmodulararmory.augment_addon_slot": "Augment Addon",
   "tooltip.mattsmodulararmory.energy": "%s / %s FE",
 
   "block.mattsmodulararmory.scaffolding_augment_block": "Scaffolding",
