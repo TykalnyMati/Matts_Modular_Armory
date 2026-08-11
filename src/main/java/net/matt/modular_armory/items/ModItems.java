@@ -2,6 +2,7 @@ package net.matt.modular_armory.items;
 
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.items.addons.FilterItem;
+import net.matt.modular_armory.items.addons.ModularAugmentAddon;
 import net.matt.modular_armory.items.addons.ModularRangeAddon;
 import net.matt.modular_armory.items.armor.ModularArmorItem;
 import net.matt.modular_armory.items.custom.FleshMealItem;
@@ -94,6 +95,7 @@ public class ModItems {
         }
     });
 
+    // Addon Template
     public static final DeferredHolder<Item, Item> ADDON_TEMPLATE = ITEMS.register("addon_template", () -> new Item(new Item.Properties()){
         @Override
         public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
@@ -103,6 +105,7 @@ public class ModItems {
         }
     });
 
+    // Blank Range Addon
     public static final DeferredHolder<Item, Item> BLANK_RANGE_ADDON = ITEMS.register("blank_range_addon", () -> new Item(new Item.Properties()){
         @Override
         public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
@@ -149,6 +152,20 @@ public class ModItems {
     // Basic Filter
     public static final DeferredHolder<Item, Item> BASIC_FILTER = ITEMS.register("basic_filter",
             () -> new FilterItem(new Item.Properties()));
+
+    // Blank Augment Addon
+    public static final DeferredHolder<Item, Item> BLANK_AUGMENT_ADDON = ITEMS.register("blank_augment_addon", () -> new Item(new Item.Properties()){
+        @Override
+        public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.blank_augment_addon").withStyle(ChatFormatting.GRAY));
+
+            super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        }
+    });
+
+    // Augment Addons
+    public static final DeferredHolder<Item, Item> SILK_TOUCH_AUGMENT_ADDON = ITEMS.register("silk_touch_augment_addon",
+            () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.SILK_TOUCH, 10, 1));
 
     // Tools, Weapons & Armor
     // Modular Clay

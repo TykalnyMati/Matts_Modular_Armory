@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mattsmodulararmory:addon_template"
+    },
+    {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:blank_augment_addon"
+  }
+}

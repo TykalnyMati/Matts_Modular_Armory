@@ -251,6 +251,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.FILTER)
                 .add(ModItems.BASIC_FILTER.get());
 
+        // Augment Addons
+        tag(ModTags.Items.MODULAR_AUGMENT_ADDON)
+                .add(ModItems.SILK_TOUCH_AUGMENT_ADDON.get());
+
+
         // NeoForge Tags
         tag(ItemTags.TRIMMABLE_ARMOR)
                 .add(ModItems.MODULAR_CLAY_HELMET.get())

@@ -1,4 +1,4 @@
-// 1.21.1	2026-08-10T17:38:46.6737969	Item Models: mattsmodulararmory
+// 1.21.1	2026-08-10T20:59:59.0219446	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -159,6 +159,7 @@ a504d362c74a013f4dc8bfb6bf11756d2a9ca0c5 assets/mattsmodulararmory/models/item/b
 732b4032368190636c5c358243af1fa225494a38 assets/mattsmodulararmory/models/item/biorite_shovel.json
 d68c54d60398049b69d3e3cdedc0be40ddfa0a1d assets/mattsmodulararmory/models/item/biorite_sword.json
 2f92258be2a23a62eb9d316f6c1ae8a3494b6ae0 assets/mattsmodulararmory/models/item/biorite_upgrade_smithing_template.json
+05369d6ac4f1d4e12f8d28619e5451a4555f5e50 assets/mattsmodulararmory/models/item/blank_augment_addon.json
 d201b458d4441ce53538eac5866b4eb8ff46e260 assets/mattsmodulararmory/models/item/blank_range_addon.json
 1ac0f839caf848a284747de626aa8fa465c2e34e assets/mattsmodulararmory/models/item/blast_protection_augment.json
 fa0d672145786a4abfdd4e43546c2204a7e9f37e assets/mattsmodulararmory/models/item/depth_strider_augment.json
@@ -246,6 +247,7 @@ e814f484fc5036911d88863c8c78c13aa6b5acb6 assets/mattsmodulararmory/models/item/r
 8170dc07a2cb97f7d665011b6d99913726dd0d87 assets/mattsmodulararmory/models/item/scaffolding_augment.json
 43fc75185e1b3a65e638f55cba9a628ad4ff9680 assets/mattsmodulararmory/models/item/sharpness_augment.json
 e254ad7a8f9a91e7609a9018d476f72feb4b662a assets/mattsmodulararmory/models/item/silk_touch_augment.json
+9816f18c98c11253ce45da1cd5caa1a65028c749 assets/mattsmodulararmory/models/item/silk_touch_augment_addon.json
 09f409f7b633b135818ff6038b18ec708ecabb57 assets/mattsmodulararmory/models/item/smite_augment.json
 cd72470c70c7767f88a6b82c6885d77131e08315 assets/mattsmodulararmory/models/item/soul_speed_augment.json
 432a6366c7b7dd1e4b4b5ac40c401952fed24cf6 assets/mattsmodulararmory/models/item/swift_sneak_augment.json
