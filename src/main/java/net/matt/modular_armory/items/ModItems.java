@@ -170,6 +170,9 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> FORTUNE_AUGMENT_ADDON = ITEMS.register("fortune_augment_addon",
             () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.FORTUNE, 25, 4));
 
+    public static final DeferredHolder<Item, Item> VOID_AUGMENT_ADDON = ITEMS.register("void_augment_addon",
+            () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.VOID, 10, 1));
+
     // Tools, Weapons & Armor
     // Modular Clay
     public static final DeferredHolder<Item, Item> MODULAR_CLAY_SHOVEL = ITEMS.register("modular_clay_shovel",

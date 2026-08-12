@@ -394,11 +394,14 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         }
 
         ItemStack augmentAddon = itemHandler.getStackInSlot(AUGMENT_SLOT);
+        boolean skipDrops = false;
         if (augmentAddon.getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
             if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.SILK_TOUCH)) {
                 helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), 1);
             } else if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.FORTUNE)) {
                 helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE), augmentAddon.getCount());
+            } else if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.VOID)) {
+                skipDrops = true;
             }
         }
 
@@ -413,18 +416,19 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
                 minerPlayer,
                 helperTool);
 
-        if (hasRoomForDrops(drops)) {
+        if (hasRoomForDrops(drops) || skipDrops) {
             if (level.destroyBlock(targetPos, false, minerPlayer)) {
-                for (ItemStack drop : drops) {
-                    ItemStack remainder = drop.copy();
-                    for (int i = OUTPUT_START; i < OUTPUT_START + OUTPUT_SLOTS; i++) {
-                        remainder = itemHandler.insertItem(i, remainder, false);
-                        if (remainder.isEmpty()) {
-                            break;
+                if (!skipDrops) {
+                    for (ItemStack drop : drops) {
+                        ItemStack remainder = drop.copy();
+                        for (int i = OUTPUT_START; i < OUTPUT_START + OUTPUT_SLOTS; i++) {
+                            remainder = itemHandler.insertItem(i, remainder, false);
+                            if (remainder.isEmpty()) {
+                                break;
+                            }
                         }
                     }
                 }
-
 
                 if (getAugmentPowerRequirements() > 0) {
                     this.energyStorage.extractEnergy(getAugmentPowerRequirements(), false);

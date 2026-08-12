@@ -58,5 +58,6 @@ public class ModularAugmentAddon extends Item {
         // Values for addons
         static public String SILK_TOUCH = "silk_touch_addon";
         static public String FORTUNE = "fortune_addon";
+        static public String VOID = "void_addon";
     }
 }

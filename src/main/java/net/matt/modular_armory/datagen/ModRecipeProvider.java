@@ -346,6 +346,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_items_for_fortune_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.FORTUNE_AUGMENT.get()))
                 .save(pRecipeOutput);
 
+        // Void Augment Addon
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VOID_AUGMENT_ADDON.get())
+                .requires(ModItems.BLANK_AUGMENT_ADDON.get())
+                .requires(ModItems.VOID_AUGMENT.get())
+                .unlockedBy("has_items_for_void_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.VOID_AUGMENT.get()))
+                .save(pRecipeOutput);
+
         // Advanced Modular Clay Upgrade Smithing Template
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get())
                 .pattern(" A ")

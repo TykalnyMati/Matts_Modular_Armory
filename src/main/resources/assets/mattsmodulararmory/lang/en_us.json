@@ -89,6 +89,9 @@
   "item.mattsmodulararmory.fortune_augment_addon": "Fortune Augment Addon",
   "tooltip.mattsmodulararmory.augment_addon.fortune_addon": "Causes certain blocks to drops more items",
 
+  "item.mattsmodulararmory.void_augment_addon": "Void Augment Addon",
+  "tooltip.mattsmodulararmory.augment_addon.void_addon": "Voids drops of broken blocks",
+
 
 
   "item.mattsmodulararmory.advanced_modular_clay_upgrade_smithing_template": "Smithing Template",

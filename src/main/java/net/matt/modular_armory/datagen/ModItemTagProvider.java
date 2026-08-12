@@ -254,7 +254,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
         // Augment Addons
         tag(ModTags.Items.MODULAR_AUGMENT_ADDON)
                 .add(ModItems.SILK_TOUCH_AUGMENT_ADDON.get())
-                .add(ModItems.FORTUNE_AUGMENT_ADDON.get());
+                .add(ModItems.FORTUNE_AUGMENT_ADDON.get())
+                .add(ModItems.VOID_AUGMENT_ADDON.get());
 
 
         // NeoForge Tags

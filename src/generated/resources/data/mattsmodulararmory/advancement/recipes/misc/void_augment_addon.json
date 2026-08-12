@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_void_augment_addon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:blank_augment_addon"
+          },
+          {
+            "items": "mattsmodulararmory:void_augment"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:void_augment_addon"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_void_augment_addon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:void_augment_addon"
+    ]
+  }
+}
