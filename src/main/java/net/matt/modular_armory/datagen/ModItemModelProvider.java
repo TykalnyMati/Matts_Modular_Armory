@@ -72,6 +72,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         // Augment Addons
         basicItem(ModItems.BLANK_AUGMENT_ADDON.get());
         basicItem(ModItems.SILK_TOUCH_AUGMENT_ADDON.get());
+        basicItem(ModItems.FORTUNE_AUGMENT_ADDON.get());
 
         // Smithing Template Upgrades
         basicItem(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());

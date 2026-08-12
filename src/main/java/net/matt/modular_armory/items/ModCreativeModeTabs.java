@@ -59,6 +59,7 @@ public class ModCreativeModeTabs {
                         // Augment Addons
                         output.accept(ModItems.BLANK_AUGMENT_ADDON.get());
                         output.accept(ModItems.SILK_TOUCH_AUGMENT_ADDON.get());
+                        output.accept(ModItems.FORTUNE_AUGMENT_ADDON.get());
 
                         // Smiting Templates
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());

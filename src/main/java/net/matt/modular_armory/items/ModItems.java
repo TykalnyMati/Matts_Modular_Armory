@@ -117,7 +117,7 @@ public class ModItems {
 
     // Range Addons
     public static final DeferredHolder<Item, Item> RANGE_ADDON_COAL = ITEMS.register("range_addon_coal",
-            () -> new ModularRangeAddon(new Item.Properties(), "coal", 0x2e2e2e, 1));
+            () -> new ModularRangeAddon(new Item.Properties(), "coal", 0x5c5c5c, 1));
 
     public static final DeferredHolder<Item, Item> RANGE_ADDON_COPPER = ITEMS.register("range_addon_copper",
             () -> new ModularRangeAddon(new Item.Properties(), "copper", 0xfc9982, 2));
@@ -166,6 +166,9 @@ public class ModItems {
     // Augment Addons
     public static final DeferredHolder<Item, Item> SILK_TOUCH_AUGMENT_ADDON = ITEMS.register("silk_touch_augment_addon",
             () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.SILK_TOUCH, 10, 1));
+
+    public static final DeferredHolder<Item, Item> FORTUNE_AUGMENT_ADDON = ITEMS.register("fortune_augment_addon",
+            () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.FORTUNE, 25, 4));
 
     // Tools, Weapons & Armor
     // Modular Clay

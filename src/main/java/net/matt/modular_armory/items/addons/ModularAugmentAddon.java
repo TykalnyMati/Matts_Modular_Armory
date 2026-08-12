@@ -45,10 +45,18 @@ public class ModularAugmentAddon extends Item {
                 .append(Component.translatable("tooltip.mattsmodulararmory.augment_addon.power_usage2").withStyle(Style.EMPTY.withColor(0xff0000)))
                 .append(Component.translatable("tooltip.mattsmodulararmory.augment_addon.power_usage3").withStyle(ChatFormatting.GRAY))
                 );
+
+        if (maxStack == 1) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.augment_addon.addon_unstackable").withStyle(ChatFormatting.GRAY));
+        } else {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.augment_addon.addon_stacks")
+                    .append(Component.literal(Integer.toString(maxStack))).withStyle(ChatFormatting.GRAY));
+        }
     }
 
     public static class ADDONS {
         // Values for addons
         static public String SILK_TOUCH = "silk_touch_addon";
+        static public String FORTUNE = "fortune_addon";
     }
 }

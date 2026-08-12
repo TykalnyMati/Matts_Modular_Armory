@@ -339,6 +339,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_items_for_silk_touch_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.SILK_TOUCH_AUGMENT.get()))
                 .save(pRecipeOutput);
 
+        // Fortune Augment Addon
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FORTUNE_AUGMENT_ADDON.get())
+                .requires(ModItems.BLANK_AUGMENT_ADDON.get())
+                .requires(ModItems.FORTUNE_AUGMENT.get())
+                .unlockedBy("has_items_for_fortune_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.FORTUNE_AUGMENT.get()))
+                .save(pRecipeOutput);
+
         // Advanced Modular Clay Upgrade Smithing Template
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get())
                 .pattern(" A ")

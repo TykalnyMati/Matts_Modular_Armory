@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mattsmodulararmory:blank_augment_addon"
+    },
+    {
+      "item": "mattsmodulararmory:fortune_augment"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:fortune_augment_addon"
+  }
+}

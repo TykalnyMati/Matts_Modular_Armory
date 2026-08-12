@@ -175,8 +175,9 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
     }
 
     public int getAugmentPowerRequirements() {
-        if (itemHandler.getStackInSlot(AUGMENT_SLOT).getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
-            return modularAugmentAddon.getPowerUsage();
+        ItemStack augmentAddon = itemHandler.getStackInSlot(AUGMENT_SLOT);
+        if (augmentAddon.getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
+            return modularAugmentAddon.getPowerUsage() * augmentAddon.getCount();
         } else {
             return 0;
         }
@@ -392,9 +393,12 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
             helperTool = new ItemStack(Items.NETHERITE_PICKAXE);
         }
 
-        if (itemHandler.getStackInSlot(AUGMENT_SLOT).getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
+        ItemStack augmentAddon = itemHandler.getStackInSlot(AUGMENT_SLOT);
+        if (augmentAddon.getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
             if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.SILK_TOUCH)) {
                 helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), 1);
+            } else if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.FORTUNE)) {
+                helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE), augmentAddon.getCount());
             }
         }
 
