@@ -173,6 +173,9 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> AUTO_SMELT_AUGMENT_ADDON = ITEMS.register("auto_smelt_augment_addon",
             () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.AUTO_SMELT, 400, 1));
 
+    public static final DeferredHolder<Item, Item> AUTO_SMELTING_FORTUNE_AUGMENT_ADDON = ITEMS.register("auto_smelting_fortune_augment_addon",
+            () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.AUTO_SMELTING_FORTUNE, 275, 4, 450));
+
     public static final DeferredHolder<Item, Item> VOID_AUGMENT_ADDON = ITEMS.register("void_augment_addon",
             () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.VOID, 10, 1));
 

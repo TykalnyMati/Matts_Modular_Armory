@@ -346,11 +346,19 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_items_for_fortune_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.FORTUNE_AUGMENT.get()))
                 .save(pRecipeOutput);
 
-        // Fortune Augment Addon
+        // Auto Smelt Augment Addon
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.AUTO_SMELT_AUGMENT_ADDON.get())
                 .requires(ModItems.BLANK_AUGMENT_ADDON.get())
                 .requires(ModItems.AUTO_SMELT_AUGMENT.get())
                 .unlockedBy("has_items_for_auto_smelt_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.AUTO_SMELT_AUGMENT.get()))
+                .save(pRecipeOutput);
+
+        // Auto Smelting Fortune Augment Addon
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.AUTO_SMELTING_FORTUNE_AUGMENT_ADDON.get())
+                .requires(ModItems.AUTO_SMELT_AUGMENT_ADDON.get())
+                .requires(ModItems.ADAPTIVE_FLESH_PLATE.get())
+                .requires(ModItems.FORTUNE_AUGMENT_ADDON.get())
+                .unlockedBy("has_items_for_auto_smelting_fortune_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.AUTO_SMELT_AUGMENT_ADDON.get(), ModItems.ADAPTIVE_FLESH_PLATE.get(), ModItems.FORTUNE_AUGMENT_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Void Augment Addon

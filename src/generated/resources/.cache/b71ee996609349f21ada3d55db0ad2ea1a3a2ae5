@@ -1,4 +1,4 @@
-// 1.21.1	2026-08-13T18:05:51.3022119	Item Models: mattsmodulararmory
+// 1.21.1	2026-08-13T22:04:50.4918114	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -104,6 +104,7 @@ ff1e1481948d925bf89e20272360fe67223c7fff assets/mattsmodulararmory/models/item/a
 b9b6d061123a42577bf55cedb537fd091e79e8c0 assets/mattsmodulararmory/models/item/advanced_modular_clay_upgrade_smithing_template.json
 c615226ba1ba0039129b32bdb14220d426e03282 assets/mattsmodulararmory/models/item/advanced_modular_plate.json
 58bb8bac2502c2468477f387ce94205297e4e0f6 assets/mattsmodulararmory/models/item/aqua_affinity_augment.json
+b2310247dd608f0066d59ef2a48f1d99fc3c030c assets/mattsmodulararmory/models/item/auto_smelting_fortune_augment_addon.json
 49498347635ccbbedfd29cdf6a5622aa777befb2 assets/mattsmodulararmory/models/item/auto_smelt_augment.json
 1fa1488ff5534f5c18f71db85554e8ad7de73189 assets/mattsmodulararmory/models/item/auto_smelt_augment_addon.json
 ec1048ddbe32f67d5021a44d7e6387184b1224e5 assets/mattsmodulararmory/models/item/bane_of_arthropods_augment.json

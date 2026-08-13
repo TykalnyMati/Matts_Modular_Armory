@@ -80,7 +80,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
     private static final int BASE_MINING_TIME = 20;
     private static final int POWERED_MINING_TIME = 5;
     private static final int MAX_ENERGY_CAPACITY = 50000;
-    private static final int MAX_ENERGY_TRANSFER = 1000;
+    private static final int MAX_ENERGY_TRANSFER = 2500;
     private static final int ENERGY_PER_OPERATION = 100;
     private static final GameProfile MINER_GAME_PROFILE = new GameProfile(UUID.fromString("41c82c87-da8e-4a84-9e11-92f33f114421"), "[ModularMiner]");
 
@@ -179,7 +179,7 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
     public int getAugmentPowerRequirements() {
         ItemStack augmentAddon = itemHandler.getStackInSlot(AUGMENT_SLOT);
         if (augmentAddon.getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
-            return modularAugmentAddon.getPowerUsage() * augmentAddon.getCount();
+            return ((modularAugmentAddon.getPowerUsage() * augmentAddon.getCount()) + modularAugmentAddon.getBonusPowerUsage());
         } else {
             return 0;
         }
@@ -399,14 +399,23 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
         boolean skipDrops = false;
         boolean smeltDrops = false;
         if (augmentAddon.getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
-            if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.SILK_TOUCH)) {
-                helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), 1);
-            } else if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.FORTUNE)) {
-                helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE), augmentAddon.getCount());
-            } else if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.AUTO_SMELT)) {
-               smeltDrops = true;
-            } else if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.VOID)) {
-                skipDrops = true;
+            switch (modularAugmentAddon.getAddonId()) {
+                case ModularAugmentAddon.ADDONS.SILK_TOUCH -> {
+                    helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), 1);
+                }
+                case ModularAugmentAddon.ADDONS.FORTUNE -> {
+                    helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE), augmentAddon.getCount());
+                }
+                case ModularAugmentAddon.ADDONS.AUTO_SMELT -> {
+                    smeltDrops = true;
+                }
+                case ModularAugmentAddon.ADDONS.AUTO_SMELTING_FORTUNE -> {
+                    helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE), augmentAddon.getCount());
+                    smeltDrops = true;
+                }
+                case ModularAugmentAddon.ADDONS.VOID -> {
+                    skipDrops = true;
+                }
             }
         }
 

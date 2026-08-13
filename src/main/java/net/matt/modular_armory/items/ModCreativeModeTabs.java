@@ -61,7 +61,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SILK_TOUCH_AUGMENT_ADDON.get());
                         output.accept(ModItems.FORTUNE_AUGMENT_ADDON.get());
                         output.accept(ModItems.AUTO_SMELT_AUGMENT_ADDON.get());
-
+                        output.accept(ModItems.AUTO_SMELTING_FORTUNE_AUGMENT_ADDON.get());
                         output.accept(ModItems.VOID_AUGMENT_ADDON.get());
 
                         // Smiting Templates

@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_auto_smelting_fortune_augment_addon": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:auto_smelt_augment_addon"
+          },
+          {
+            "items": "mattsmodulararmory:adaptive_flesh_plate"
+          },
+          {
+            "items": "mattsmodulararmory:fortune_augment_addon"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:auto_smelting_fortune_augment_addon"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_auto_smelting_fortune_augment_addon"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:auto_smelting_fortune_augment_addon"
+    ]
+  }
+}

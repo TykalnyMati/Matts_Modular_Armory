@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mattsmodulararmory:auto_smelt_augment_addon"
+    },
+    {
+      "item": "mattsmodulararmory:adaptive_flesh_plate"
+    },
+    {
+      "item": "mattsmodulararmory:fortune_augment_addon"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:auto_smelting_fortune_augment_addon"
+  }
+}
