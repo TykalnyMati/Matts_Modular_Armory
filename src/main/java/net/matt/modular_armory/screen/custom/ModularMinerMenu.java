@@ -119,10 +119,74 @@ public class ModularMinerMenu extends AbstractContainerMenu {
         return maxEnergy != 0 && energyStored != 0 ? energyStored * energyProgress / maxEnergy : 0;
     }
 
-    // TODO implement quick moving to filter/upgrade/range slots
+    // Slot indexes
+    private static final int VANILLA_SLOT_COUNT = 36;
+    private static final int RANGE_SLOT_START = 45;
+    private static final int RANGE_SLOT_COUNT = 3;
+    private static final int FILTER_SLOT_INDEX = 48;
+    private static final int AUGMENT_SLOT_INDEX = 49;
     @Override
-    public ItemStack quickMoveStack(Player player, int i) {
-        return ItemStack.EMPTY;
+    public ItemStack quickMoveStack(Player player, int index) {
+        ItemStack itemStack = ItemStack.EMPTY;
+        Slot slot = this.slots.get(index);
+
+        if (slot != null && slot.hasItem()) {
+            ItemStack itemStack1 = slot.getItem();
+            itemStack = itemStack1.copy();
+
+            // from container to player
+            if (index >= VANILLA_SLOT_COUNT) {
+                if (!this.moveItemStackTo(itemStack1, 0, VANILLA_SLOT_COUNT, true)) {
+                    return ItemStack.EMPTY;
+                }
+                slot.onQuickCraft(itemStack1, itemStack);
+            }
+            // from player to container
+            else {
+                // Range Addons -> Range Slots
+                if (itemStack1.is(ModTags.Items.MODULAR_RANGE_ADDON)) {
+                    if (!this.moveItemStackTo(itemStack1, RANGE_SLOT_START, RANGE_SLOT_START + RANGE_SLOT_COUNT, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                // Filter -> Filter Slot
+                else if (itemStack1.is(ModTags.Items.FILTER)) {
+                    if (!this.moveItemStackTo(itemStack1, FILTER_SLOT_INDEX, FILTER_SLOT_INDEX + 1, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                // Augment Addon -> Augment Slot
+                else if (itemStack1.is(ModTags.Items.MODULAR_AUGMENT_ADDON)) {
+                    if (!this.moveItemStackTo(itemStack1, AUGMENT_SLOT_INDEX, AUGMENT_SLOT_INDEX + 1, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                // Move between Player Inventory and Hotbar if the item doesn't fit
+                else if (index < 27) {
+                    if (!this.moveItemStackTo(itemStack1, 27, 36, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                } else if (index < 36) {
+                    if (!this.moveItemStackTo(itemStack1, 0, 27, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+            }
+
+            if (itemStack1.isEmpty()) {
+                slot.setByPlayer(ItemStack.EMPTY);
+            } else {
+                slot.setChanged();
+            }
+
+            if (itemStack1.getCount() == itemStack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+
+            slot.onTake(player, itemStack1);
+        }
+
+        return itemStack;
     }
 
     @Override
