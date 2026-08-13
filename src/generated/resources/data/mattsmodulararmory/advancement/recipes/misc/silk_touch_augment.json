@@ -8,10 +8,10 @@
             "items": "mattsmodulararmory:advanced_modular_plate"
           },
           {
-            "items": "minecraft:string"
+            "items": "#minecraft:wool"
           },
           {
-            "items": "#minecraft:wool"
+            "items": "minecraft:emerald"
           }
         ]
       },

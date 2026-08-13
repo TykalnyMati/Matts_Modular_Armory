@@ -545,16 +545,16 @@ public class ModRecipeProvider extends RecipeProvider {
 
         // Silk Touch Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SILK_TOUCH_AUGMENT.get())
-                .pattern("BCB")
+                .pattern("BBB")
                 .pattern("CAC")
-                .pattern("BCB")
+                .pattern("BBB")
                 .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
-                .define('B', Items.STRING)
-                .define('C', ItemTags.WOOL)
+                .define('B', ItemTags.WOOL)
+                .define('C', Items.EMERALD)
                 .unlockedBy("has_items_for_silk_touch_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
                         ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()).build(),
-                        ItemPredicate.Builder.item().of(Items.STRING).build(),
-                        ItemPredicate.Builder.item().of(ItemTags.WOOL).build()))
+                        ItemPredicate.Builder.item().of(ItemTags.WOOL).build(),
+                        ItemPredicate.Builder.item().of(Items.EMERALD).build()))
                 .save(pRecipeOutput);
 
         // Fortune Augment
@@ -905,7 +905,7 @@ public class ModRecipeProvider extends RecipeProvider {
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGNET_AUGMENT.get())
                 .pattern("B B")
                 .pattern("CAC")
-                .pattern(" B ")
+                .pattern(" C ")
                 .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
                 .define('B', Blocks.REDSTONE_BLOCK)
                 .define('C', Blocks.IRON_BLOCK)
