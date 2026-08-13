@@ -60,6 +60,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BLANK_AUGMENT_ADDON.get());
                         output.accept(ModItems.SILK_TOUCH_AUGMENT_ADDON.get());
                         output.accept(ModItems.FORTUNE_AUGMENT_ADDON.get());
+                        output.accept(ModItems.AUTO_SMELT_AUGMENT_ADDON.get());
 
                         output.accept(ModItems.VOID_AUGMENT_ADDON.get());
 

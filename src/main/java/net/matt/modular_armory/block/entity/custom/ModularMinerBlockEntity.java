@@ -11,6 +11,7 @@ import net.matt.modular_armory.screen.custom.ModularMinerMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -30,6 +31,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -395,11 +397,14 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
 
         ItemStack augmentAddon = itemHandler.getStackInSlot(AUGMENT_SLOT);
         boolean skipDrops = false;
+        boolean smeltDrops = false;
         if (augmentAddon.getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
             if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.SILK_TOUCH)) {
                 helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), 1);
             } else if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.FORTUNE)) {
                 helperTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE), augmentAddon.getCount());
+            } else if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.AUTO_SMELT)) {
+               smeltDrops = true;
             } else if (Objects.equals(modularAugmentAddon.getAddonId(), ModularAugmentAddon.ADDONS.VOID)) {
                 skipDrops = true;
             }
@@ -416,6 +421,19 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
                 minerPlayer,
                 helperTool);
 
+        if (smeltDrops) {
+            for (int i = 0; i < drops.size(); i++) {
+                ItemStack originalStack = drops.get(i);
+                ItemStack smeltedResult = getSmeltingResult(level, originalStack);
+
+                if (!smeltedResult.isEmpty()) {
+                    ItemStack finalStack = smeltedResult.copy();
+                    finalStack.setCount(originalStack.getCount() * smeltedResult.getCount());
+                    drops.set(i, finalStack);
+                }
+            }
+        }
+
         if (hasRoomForDrops(drops) || skipDrops) {
             if (level.destroyBlock(targetPos, false, minerPlayer)) {
                 if (!skipDrops) {
@@ -430,6 +448,10 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
                     }
                 }
 
+                if (smeltDrops) {
+                    level.sendParticles(ParticleTypes.FLAME, targetPos.getX() + 0.5, targetPos.getY() + 0.5, targetPos.getZ() + 0.5, 5, 0.2, 0.2, 0.2, 0.05);
+                }
+
                 if (getAugmentPowerRequirements() > 0) {
                     this.energyStorage.extractEnergy(getAugmentPowerRequirements(), false);
                 }
@@ -441,6 +463,13 @@ public class ModularMinerBlockEntity extends BlockEntity implements MenuProvider
                 setChanged();
             }
         }
+    }
+
+    public ItemStack getSmeltingResult(Level level, ItemStack input) {
+        return level.getRecipeManager()
+                .getRecipeFor(RecipeType.SMELTING, new net.minecraft.world.item.crafting.SingleRecipeInput(input), level)
+                .map(recipe -> recipe.value().getResultItem(level.registryAccess()))
+                .orElse(ItemStack.EMPTY);
     }
 
     public int getRangeBonus(int slot) {

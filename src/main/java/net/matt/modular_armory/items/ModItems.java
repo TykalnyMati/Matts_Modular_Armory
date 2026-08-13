@@ -165,10 +165,13 @@ public class ModItems {
 
     // Augment Addons
     public static final DeferredHolder<Item, Item> SILK_TOUCH_AUGMENT_ADDON = ITEMS.register("silk_touch_augment_addon",
-            () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.SILK_TOUCH, 10, 1));
+            () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.SILK_TOUCH, 50, 1));
 
     public static final DeferredHolder<Item, Item> FORTUNE_AUGMENT_ADDON = ITEMS.register("fortune_augment_addon",
-            () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.FORTUNE, 25, 4));
+            () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.FORTUNE, 250, 4));
+
+    public static final DeferredHolder<Item, Item> AUTO_SMELT_AUGMENT_ADDON = ITEMS.register("auto_smelt_augment_addon",
+            () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.AUTO_SMELT, 400, 1));
 
     public static final DeferredHolder<Item, Item> VOID_AUGMENT_ADDON = ITEMS.register("void_augment_addon",
             () -> new ModularAugmentAddon(new Item.Properties(), ModularAugmentAddon.ADDONS.VOID, 10, 1));

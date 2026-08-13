@@ -299,15 +299,14 @@ public class ModEvents {
                         ItemStack smeltedResult = modularTool.getSmeltingResult(serverLevel, originalStack);
 
                         if (!smeltedResult.isEmpty()) {
-                            // Keep the count from the original drop (handles Fortune)
+                            // Keep the count from the original drop
                             ItemStack finalStack = smeltedResult.copy();
                             finalStack.setCount(originalStack.getCount() * smeltedResult.getCount());
                             drops.set(i, finalStack);
 
-                            // Optional: Spawn some "smelting" XP for the player
+                            // Spawning XP for the player
                             float smeltingXp = modularTool.getSmeltingExperience(serverLevel, originalStack);
                             if (smeltingXp > 0) {
-                                // Cast to int, but handle the remainder randomly (vanilla style)
                                 int xpToDrop = (int) smeltingXp + (serverLevel.random.nextFloat() < (smeltingXp % 1) ? 1 : 0);
 
                                 // Apply fortune for xp

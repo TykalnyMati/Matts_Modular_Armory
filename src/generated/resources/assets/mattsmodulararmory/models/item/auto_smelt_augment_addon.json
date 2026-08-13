@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mattsmodulararmory:item/auto_smelt_augment_addon"
+  }
+}

@@ -89,6 +89,9 @@
   "item.mattsmodulararmory.fortune_augment_addon": "Fortune Augment Addon",
   "tooltip.mattsmodulararmory.augment_addon.fortune_addon": "Causes certain blocks to drops more items",
 
+  "item.mattsmodulararmory.auto_smelt_augment_addon": "Auto Smelt Augment Addon",
+  "tooltip.mattsmodulararmory.augment_addon.auto_smelt_addon": "Smelts mined blocks",
+
   "item.mattsmodulararmory.void_augment_addon": "Void Augment Addon",
   "tooltip.mattsmodulararmory.augment_addon.void_addon": "Voids drops of broken blocks",
 

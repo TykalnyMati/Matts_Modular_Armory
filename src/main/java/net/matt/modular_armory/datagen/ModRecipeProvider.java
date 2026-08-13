@@ -346,6 +346,13 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_items_for_fortune_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.FORTUNE_AUGMENT.get()))
                 .save(pRecipeOutput);
 
+        // Fortune Augment Addon
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.AUTO_SMELT_AUGMENT_ADDON.get())
+                .requires(ModItems.BLANK_AUGMENT_ADDON.get())
+                .requires(ModItems.AUTO_SMELT_AUGMENT.get())
+                .unlockedBy("has_items_for_auto_smelt_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.AUTO_SMELT_AUGMENT.get()))
+                .save(pRecipeOutput);
+
         // Void Augment Addon
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VOID_AUGMENT_ADDON.get())
                 .requires(ModItems.BLANK_AUGMENT_ADDON.get())
