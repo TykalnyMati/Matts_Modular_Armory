@@ -23,8 +23,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODULAR_CLAY_EXTRACTOR.get());
                         output.accept(ModItems.ADVANCED_MODULAR_PLATE.get());
                         output.accept(ModItems.FLESH_MEAL.get());
-                        output.accept(ModBlocks.ADAPTIVE_FLESH_BLOCK.get());
                         output.accept(ModItems.ADAPTIVE_FLESH.get());
+                        output.accept(ModBlocks.ADAPTIVE_FLESH_BLOCK.get());
+                        output.accept(ModBlocks.INFECTIOUS_ADAPTIVE_FLESH_BLOCK.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_PLATE.get());
                         output.accept(ModItems.BIORITE_PLATE.get());
                         output.accept(ModBlocks.MODULAR_ASSEMBLER.get());

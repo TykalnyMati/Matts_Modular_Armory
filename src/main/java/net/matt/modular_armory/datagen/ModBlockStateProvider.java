@@ -17,6 +17,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     protected void registerStatesAndModels() {
         blockWithItem(ModBlocks.MODULAR_CLAY_BLOCK);
         blockWithItem(ModBlocks.ADAPTIVE_FLESH_BLOCK);
+        blockWithItem(ModBlocks.INFECTIOUS_ADAPTIVE_FLESH_BLOCK);
         blockWithItem(ModBlocks.EXPOSER);
         blockWithItem(ModBlocks.SCAFFOLDING_AUGMENT_BLOCK);
     }

@@ -1,7 +1,8 @@
-// 1.21.1	2026-07-11T18:58:59.5337378	Loot Tables
+// 1.21.1	2026-08-14T00:06:58.586837	Loot Tables
 8424fbf9cf62dd769146009ccc042852c2282cb6 data/mattsmodulararmory/loot_table/blocks/adaptive_flesh_block.json
 e76922001d7322f3a03c2c413c2894270c745eca data/mattsmodulararmory/loot_table/blocks/augment_table.json
 ac494ccc3c56e221fc82897ae5db1c6dafec1db3 data/mattsmodulararmory/loot_table/blocks/exposer.json
+267869a6068912232777af741950d16099848d1e data/mattsmodulararmory/loot_table/blocks/infectious_adaptive_flesh_block.json
 8108786ca039b1a5c29be8cc7464c6390a36f824 data/mattsmodulararmory/loot_table/blocks/modular_assembler.json
 3e482ac5c7e1496a1cfba64dd5f27a2bdb1f4cf5 data/mattsmodulararmory/loot_table/blocks/modular_clay_block.json
 1be5e5c1c388da7fbe6cb16d66611079f8840c45 data/mattsmodulararmory/loot_table/blocks/modular_miner.json

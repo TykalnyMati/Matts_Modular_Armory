@@ -30,6 +30,8 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider{
                 block -> createMultipleDrops(ModBlocks.MODULAR_CLAY_BLOCK.get(), ModItems.MODULAR_CLAY.get(), 4f, 4f));
         this.add(ModBlocks.ADAPTIVE_FLESH_BLOCK.get(),
                 block -> createMultipleDrops(ModBlocks.ADAPTIVE_FLESH_BLOCK.get(), ModItems.ADAPTIVE_FLESH.get(), 1f, 4f));
+        this.add(ModBlocks.INFECTIOUS_ADAPTIVE_FLESH_BLOCK.get(),
+                block -> createMultipleDrops(ModBlocks.INFECTIOUS_ADAPTIVE_FLESH_BLOCK.get(), ModItems.ADAPTIVE_FLESH.get(), 2f, 6f));
         dropSelf(ModBlocks.AUGMENT_TABLE.get());
         dropSelf(ModBlocks.EXPOSER.get());
         dropSelf(ModBlocks.REPAIR_TABLE.get());
@@ -43,10 +45,9 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider{
     }
 
     protected LootTable.Builder createMultipleDrops(Block pBlock, Item item, float minDrops, float maxDrops) {
-        HolderLookup.RegistryLookup<Enchantment> registrylookup = this.registries.lookupOrThrow(Registries.ENCHANTMENT);
         return this.createSilkTouchDispatchTable(
                 pBlock,
-                (LootPoolEntryContainer.Builder<?>)this.applyExplosionDecay(
+                this.applyExplosionDecay(
                         pBlock,
                         LootItem.lootTableItem(item)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(minDrops, maxDrops)))

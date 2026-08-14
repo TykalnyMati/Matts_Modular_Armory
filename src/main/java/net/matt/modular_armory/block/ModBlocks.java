@@ -20,10 +20,13 @@ public class ModBlocks {
 
     // Blocks
     public static final DeferredHolder<Block, Block> MODULAR_CLAY_BLOCK = registerBlock("modular_clay_block",
-            () -> new Block(BlockBehaviour.Properties.of().strength(0.6f ).sound(SoundType.GRAVEL)));
+            () -> new Block(BlockBehaviour.Properties.of().strength(0.6f).sound(SoundType.GRAVEL)));
 
     public static final DeferredHolder<Block, Block> ADAPTIVE_FLESH_BLOCK = registerBlock("adaptive_flesh_block",
-            () -> new AdaptiveFleshBlock(BlockBehaviour.Properties.of().strength(1f ).sound(SoundType.MUD)));
+            () -> new AdaptiveFleshBlock(BlockBehaviour.Properties.of().strength(1f).sound(SoundType.MUD)));
+
+    public static final DeferredHolder<Block, Block> INFECTIOUS_ADAPTIVE_FLESH_BLOCK = registerBlock("infectious_adaptive_flesh_block",
+            () -> new InfectiousAdaptiveFleshBlock(BlockBehaviour.Properties.of().strength(4f).sound(SoundType.PACKED_MUD).randomTicks()));
 
     public static final DeferredHolder<Block, Block> AUGMENT_TABLE = registerBlock("augment_table",
             () -> new AugmentTableBlock(BlockBehaviour.Properties.of().strength(2f).sound(SoundType.WOOD).noOcclusion()));

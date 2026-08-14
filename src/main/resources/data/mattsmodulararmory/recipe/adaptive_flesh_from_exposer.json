@@ -5,21 +5,21 @@
   },
   "surroundings": [
     {
-      "Name": "mattsmodulararmory:adaptive_flesh_block"
+      "Name": "mattsmodulararmory:infectious_adaptive_flesh_block"
     },
     {
-      "Name": "mattsmodulararmory:adaptive_flesh_block"
+      "Name": "mattsmodulararmory:infectious_adaptive_flesh_block"
     },
     {
-      "Name": "mattsmodulararmory:adaptive_flesh_block"
+      "Name": "mattsmodulararmory:infectious_adaptive_flesh_block"
     },
     {
-      "Name": "mattsmodulararmory:adaptive_flesh_block"
+      "Name": "mattsmodulararmory:infectious_adaptive_flesh_block"
     }
   ],
   "result": {
     "id": "mattsmodulararmory:adaptive_flesh_block",
     "count": 1
   },
-  "time": 600
+  "time": 1200
 }

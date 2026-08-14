@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:adaptive_flesh_block"
+    },
+    "B": {
+      "item": "mattsmodulararmory:adaptive_flesh"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BBB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:infectious_adaptive_flesh_block"
+  }
+}

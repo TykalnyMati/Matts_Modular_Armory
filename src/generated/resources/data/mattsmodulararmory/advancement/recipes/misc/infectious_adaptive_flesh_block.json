@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_infectious_adaptive_flesh_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:adaptive_flesh_block"
+          },
+          {
+            "items": "mattsmodulararmory:adaptive_flesh"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:infectious_adaptive_flesh_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_infectious_adaptive_flesh_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:infectious_adaptive_flesh_block"
+    ]
+  }
+}

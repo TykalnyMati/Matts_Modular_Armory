@@ -128,6 +128,16 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_items_for_adaptive_flesh_block", InventoryChangeTrigger.TriggerInstance.hasItems(Blocks.NETHER_WART, Items.ROTTEN_FLESH, ModBlocks.MODULAR_CLAY_BLOCK.get(), Items.BLAZE_POWDER))
                 .save(pRecipeOutput);
 
+        // Adaptive Flesh Block
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.INFECTIOUS_ADAPTIVE_FLESH_BLOCK.get())
+                .pattern("BBB")
+                .pattern("BAB")
+                .pattern("BBB")
+                .define('A', ModBlocks.ADAPTIVE_FLESH_BLOCK.get())
+                .define('B', ModItems.ADAPTIVE_FLESH.get())
+                .unlockedBy("has_items_for_infectious_adaptive_flesh_block", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.ADAPTIVE_FLESH_BLOCK.get(), ModItems.ADAPTIVE_FLESH.get()))
+                .save(pRecipeOutput);
+
         // Augment Table
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.AUGMENT_TABLE.get())
                 .pattern("AAA")
