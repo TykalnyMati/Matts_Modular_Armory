@@ -3,6 +3,7 @@ package net.matt.modular_armory.block.entity.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
+import net.matt.modular_armory.block.entity.custom.helper.ModularMachineBlockEntity;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -25,9 +26,9 @@ public class ModularMinerBlockEntityRenderer implements BlockEntityRenderer<Modu
 
         Direction facing = pBlockEntity.getFacing();
 
-        int maxExtraWidth = pBlockEntity.getRangeBonus(ModularMinerBlockEntity.RANGE_WIDTH_SLOT);
-        int maxExtraHeight = pBlockEntity.getRangeBonus(ModularMinerBlockEntity.RANGE_HEIGHT_SLOT);
-        int maxLength = 1 + pBlockEntity.getRangeBonus(ModularMinerBlockEntity.RANGE_LENGTH_SLOT);
+        int maxExtraWidth = pBlockEntity.getRangeBonus(ModularMachineBlockEntity.RANGE_WIDTH_SLOT);
+        int maxExtraHeight = pBlockEntity.getRangeBonus(ModularMachineBlockEntity.RANGE_HEIGHT_SLOT);
+        int maxLength = 1 + pBlockEntity.getRangeBonus(ModularMachineBlockEntity.RANGE_LENGTH_SLOT);
 
         double minX = 0, minY = 0, minZ = 0;
         double maxX = 1, maxY = 1, maxZ = 1;
@@ -91,9 +92,9 @@ public class ModularMinerBlockEntityRenderer implements BlockEntityRenderer<Modu
             return baseBox;
         }
 
-        int maxExtraWidth = modularMinerBlockEntity.getRangeBonus(ModularMinerBlockEntity.RANGE_WIDTH_SLOT);
-        int maxExtraHeight = modularMinerBlockEntity.getRangeBonus(ModularMinerBlockEntity.RANGE_HEIGHT_SLOT);
-        int maxLength = 1 + modularMinerBlockEntity.getRangeBonus(ModularMinerBlockEntity.RANGE_LENGTH_SLOT);
+        int maxExtraWidth = modularMinerBlockEntity.getRangeBonus(ModularMachineBlockEntity.RANGE_WIDTH_SLOT);
+        int maxExtraHeight = modularMinerBlockEntity.getRangeBonus(ModularMachineBlockEntity.RANGE_HEIGHT_SLOT);
+        int maxLength = 1 + modularMinerBlockEntity.getRangeBonus(ModularMachineBlockEntity.RANGE_LENGTH_SLOT);
 
         int maxReach = Math.max(maxLength, Math.max(maxExtraWidth, maxExtraHeight));
         return baseBox.inflate(maxReach + 1);
