@@ -36,6 +36,7 @@ public class ModCreativeModeTabs {
 
                         // Machines
                         output.accept(ModBlocks.MODULAR_MINER.get());
+                        output.accept(ModBlocks.MODULAR_BUILDER.get());
 
                         // Filter
                         output.accept(ModItems.BASIC_FILTER.get());

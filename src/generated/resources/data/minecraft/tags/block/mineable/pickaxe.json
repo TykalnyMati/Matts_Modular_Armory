@@ -1,6 +1,7 @@
 {
   "values": [
     "mattsmodulararmory:exposer",
-    "mattsmodulararmory:modular_miner"
+    "mattsmodulararmory:modular_miner",
+    "mattsmodulararmory:modular_builder"
   ]
 }

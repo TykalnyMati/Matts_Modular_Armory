@@ -20,7 +20,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(ModBlocks.EXPOSER.get())
-                .add(ModBlocks.MODULAR_MINER.get());
+                .add(ModBlocks.MODULAR_MINER.get())
+                .add(ModBlocks.MODULAR_BUILDER.get());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.ADAPTIVE_FLESH_BLOCK.get())
