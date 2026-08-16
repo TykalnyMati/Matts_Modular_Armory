@@ -3,7 +3,6 @@ package net.matt.modular_armory.block.entity.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
-import net.matt.modular_armory.block.entity.custom.helper.ModularMachineBlockEntity;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -15,8 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ModularMinerBlockEntityRenderer implements BlockEntityRenderer<ModularMinerBlockEntity> {
 
-    public ModularMinerBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-    }
+    public ModularMinerBlockEntityRenderer(BlockEntityRendererProvider.Context context) {}
 
     @Override
     public void render(ModularMinerBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, @NotNull MultiBufferSource pBufferSource, int pPackedLight, int pPackedOverlay) {

@@ -190,7 +190,7 @@ public abstract class ModularMachineBlockEntity extends BlockEntity {
     }
 
     protected void resetScan() {
-        int maxExtraWidth = getRangeBonus(getRangeLengthSlot());
+        int maxExtraWidth = getRangeBonus(getRangeWidthSlot());
         int maxExtraHeight = getRangeBonus(getRangeHeightSlot());
 
         this.currentDepth = 1;
