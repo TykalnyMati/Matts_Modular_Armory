@@ -3,6 +3,7 @@ package net.matt.modular_armory.block.entity.custom;
 import net.matt.modular_armory.block.custom.ModularBuilderBlock;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.custom.helper.ModularMachineBlockEntity;
+import net.matt.modular_armory.screen.custom.ModularBuilderMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
@@ -28,14 +29,16 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
 public class ModularBuilderBlockEntity extends ModularMachineBlockEntity implements MenuProvider {
-    public static final int RANGE_LENGTH_SLOT = 9;
-    public static final int RANGE_WIDTH_SLOT = 10;
-    public static final int RANGE_HEIGHT_SLOT = 11;
+    // Inventory slots
+    // (2) are skipped for possible expansion
+    public static final int RANGE_LENGTH_SLOT = 11;
+    public static final int RANGE_WIDTH_SLOT = 12;
+    public static final int RANGE_HEIGHT_SLOT = 13;
 
     // Container Data
     protected final ContainerData data;
 
-    private ItemStackHandler itemHandler = new ItemStackHandler(12) {
+    private ItemStackHandler itemHandler = new ItemStackHandler(14) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -158,6 +161,7 @@ public class ModularBuilderBlockEntity extends ModularMachineBlockEntity impleme
 
             if (targetState.isAir() || (targetState.getBlock() instanceof LiquidBlock)) {
                 placeBlock(level, targetPos, consumePower);
+                return;
             }
         }
     }
@@ -173,7 +177,7 @@ public class ModularBuilderBlockEntity extends ModularMachineBlockEntity impleme
     }
 
     @Override
-    protected ItemStackHandler getItemHandler() {
+    public ItemStackHandler getItemHandler() {
         return itemHandler;
     }
 
@@ -198,9 +202,9 @@ public class ModularBuilderBlockEntity extends ModularMachineBlockEntity impleme
         return Component.translatable("block.mattsmodulararmory.modular_builder");
     }
 
-    @Override //TODO
+    @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return null;
+        return new ModularBuilderMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
     public void drops() {

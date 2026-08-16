@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.renderer.AugmentTableBlockEntityRenderer;
+import net.matt.modular_armory.block.entity.renderer.ModularBuilderBlockEntityRenderer;
 import net.matt.modular_armory.block.entity.renderer.ModularMinerBlockEntityRenderer;
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.datagen.DataGenerators;
@@ -113,6 +114,15 @@ public class MattsModularArmory {
                 ModBlockEntities.MODULAR_MINER_BE.get(),
                 (be, direction) -> be.getEnergyStorage()
         );
+
+        // Register Modular Builder (Can only extract from any side)
+        // Inventory
+        // Power
+        event.registerBlockEntity(
+                Capabilities.EnergyStorage.BLOCK,
+                ModBlockEntities.MODULAR_BUILDER_BE.get(),
+                (be, direction) -> be.getEnergyStorage()
+        );
     }
 
     // Add the example block item to the building blocks tab
@@ -134,12 +144,14 @@ public class MattsModularArmory {
             event.register(ModMenuTypes.REPAIR_TABLE_MENU.get(), RepairTableScreen::new);
             event.register(ModMenuTypes.MODULAR_ASSEMBLER_MENU.get(), ModularAssemblerScreen::new);
             event.register(ModMenuTypes.MODULAR_MINER_MENU.get(), ModularMinerScreen::new);
+            event.register(ModMenuTypes.MODULAR_BUILDER_MENU.get(), ModularBuilderScreen::new);
             event.register(ModMenuTypes.FILTER_MENU.get(), FilterScreen::new);
         }
 
         public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(ModBlockEntities.AUGMENT_TABLE_BE.get(), AugmentTableBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntities.MODULAR_MINER_BE.get(), ModularMinerBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntities.MODULAR_BUILDER_BE.get(), ModularBuilderBlockEntityRenderer::new);
         }
     }
 }

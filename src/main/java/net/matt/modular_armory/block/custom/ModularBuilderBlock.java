@@ -7,8 +7,10 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -86,7 +88,7 @@ public class ModularBuilderBlock extends BaseEntityBlock {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
 
             if (entity instanceof ModularBuilderBlockEntity modularBuilderBlockEntity) {
-                // menu
+                ((ServerPlayer) pPlayer).openMenu(new SimpleMenuProvider(modularBuilderBlockEntity, Component.literal("Modular Builder")), pPos);
             } else {
                 throw new IllegalStateException("Container provider is missing!");
             }

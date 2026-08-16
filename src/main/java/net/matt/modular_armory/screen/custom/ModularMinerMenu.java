@@ -2,10 +2,10 @@ package net.matt.modular_armory.screen.custom;
 
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
-import net.matt.modular_armory.block.entity.custom.helper.ModularMachineBlockEntity;
 import net.matt.modular_armory.block.entity.custom.helper.ModularMachineBreakerBlockEntity;
 import net.matt.modular_armory.items.addons.ModularAugmentAddon;
 import net.matt.modular_armory.screen.ModMenuTypes;
+import net.matt.modular_armory.screen.custom.helpers.ModularMachineMenu;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.neoforged.neoforge.items.SlotItemHandler;
 import org.jetbrains.annotations.NotNull;
 
-public class ModularMinerMenu extends AbstractContainerMenu {
+public class ModularMinerMenu extends ModularMachineMenu {
     public final ModularMinerBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
@@ -194,20 +194,5 @@ public class ModularMinerMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, ModBlocks.MODULAR_MINER.get());
-    }
-
-    // Helper methods for adding player inventory
-    private void addPlayerInventory(Inventory playerInventory) {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 9; j++) {
-                this.addSlot(new Slot(playerInventory, j + i * 9 + 9, 8 + j * 18, 97 + i * 18));
-            }
-        }
-    }
-
-    private void addPlayerHotbar(Inventory playerInventory) {
-        for (int i = 0; i < 9; i++) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 155));
-        }
     }
 }
