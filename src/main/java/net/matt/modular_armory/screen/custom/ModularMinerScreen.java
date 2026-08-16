@@ -2,7 +2,7 @@ package net.matt.modular_armory.screen.custom;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.matt.modular_armory.MattsModularArmory;
-import net.matt.modular_armory.block.entity.custom.helper.ModularMachineBlockEntity;
+import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
 import net.matt.modular_armory.network.RangeDisplayStatePayload;
 import net.matt.modular_armory.network.RedstoneModePayload;
 import net.minecraft.client.gui.GuiGraphics;
@@ -222,11 +222,11 @@ public class ModularMinerScreen extends AbstractContainerScreen<ModularMinerMenu
 
             if (!(this.hoveredSlot.container instanceof Inventory)) {
                 String key = switch (slotIndex) {
-                    case ModularMachineBlockEntity.RANGE_LENGTH_SLOT -> "tooltip.mattsmodulararmory.range_slot.length";
-                    case ModularMachineBlockEntity.RANGE_WIDTH_SLOT -> "tooltip.mattsmodulararmory.range_slot.width";
-                    case ModularMachineBlockEntity.RANGE_HEIGHT_SLOT -> "tooltip.mattsmodulararmory.range_slot.height";
-                    case ModularMachineBlockEntity.FILTER_SLOT -> "tooltip.mattsmodulararmory.filter_slot";
-                    case ModularMachineBlockEntity.AUGMENT_SLOT -> "tooltip.mattsmodulararmory.augment_addon_slot";
+                    case ModularMinerBlockEntity.RANGE_LENGTH_SLOT -> "tooltip.mattsmodulararmory.range_slot.length";
+                    case ModularMinerBlockEntity.RANGE_WIDTH_SLOT -> "tooltip.mattsmodulararmory.range_slot.width";
+                    case ModularMinerBlockEntity.RANGE_HEIGHT_SLOT -> "tooltip.mattsmodulararmory.range_slot.height";
+                    case ModularMinerBlockEntity.FILTER_SLOT -> "tooltip.mattsmodulararmory.filter_slot";
+                    case ModularMinerBlockEntity.AUGMENT_SLOT -> "tooltip.mattsmodulararmory.augment_addon_slot";
                     default -> null;
                 };
 

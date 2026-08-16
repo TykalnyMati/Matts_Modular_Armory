@@ -102,14 +102,14 @@ public class ModularMinerBlockEntity extends ModularMachineBreakerBlockEntity im
             return;
         }
 
-        int currentRequiredTime = hasEnoughPower() ? POWERED_MINING_TIME : BASE_MINING_TIME;
+        int currentRequiredTime = hasEnoughPower() ? POWERED_OPERATING_TIME : BASE_OPERATING_TIME;
 
         this.tickCounter++;
         if (this.tickCounter >= currentRequiredTime && !isInventoryFull()) {
             this.tickCounter = 0;
-            this.mineNextBlock((ServerLevel) pLevel, pPos, pState, (currentRequiredTime == POWERED_MINING_TIME));
-        } else if (this.tickCounter > 2 * BASE_MINING_TIME) {
-            this.tickCounter = 2 * BASE_MINING_TIME;
+            this.mineNextBlock((ServerLevel) pLevel, pPos, pState, (currentRequiredTime == POWERED_OPERATING_TIME));
+        } else if (this.tickCounter > 2 * BASE_OPERATING_TIME) {
+            this.tickCounter = 2 * BASE_OPERATING_TIME;
         }
     }
 

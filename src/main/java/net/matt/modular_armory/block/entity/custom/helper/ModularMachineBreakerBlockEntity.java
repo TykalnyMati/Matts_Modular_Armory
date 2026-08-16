@@ -28,8 +28,15 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public abstract class ModularMachineBreakerBlockEntity extends ModularMachineBlockEntity {
-    // Inventory slots
+    // Inventory indexes
+    protected static final int OUTPUT_START = 0;
     protected static final int OUTPUT_SLOTS = 9;
+
+    public static final int FILTER_SLOT = 9;
+    public static final int AUGMENT_SLOT = 10;
+    public static final int RANGE_LENGTH_SLOT = 11;
+    public static final int RANGE_WIDTH_SLOT = 12;
+    public static final int RANGE_HEIGHT_SLOT = 13;
 
     private ItemStackHandler itemHandler = new ItemStackHandler(14) {
         @Override
@@ -62,6 +69,21 @@ public abstract class ModularMachineBreakerBlockEntity extends ModularMachineBlo
     @Override
     public ItemStackHandler getItemHandler() {
         return itemHandler;
+    }
+
+    @Override
+    public int getRangeLengthSlot() {
+        return RANGE_LENGTH_SLOT;
+    }
+
+    @Override
+    public int getRangeWidthSlot() {
+        return RANGE_WIDTH_SLOT;
+    }
+
+    @Override
+    public int getRangeHeightSlot() {
+        return RANGE_HEIGHT_SLOT;
     }
 
     public abstract GameProfile getMinerGameProfile();

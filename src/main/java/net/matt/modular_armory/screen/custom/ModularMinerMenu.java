@@ -3,6 +3,7 @@ package net.matt.modular_armory.screen.custom;
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.custom.ModularMinerBlockEntity;
 import net.matt.modular_armory.block.entity.custom.helper.ModularMachineBlockEntity;
+import net.matt.modular_armory.block.entity.custom.helper.ModularMachineBreakerBlockEntity;
 import net.matt.modular_armory.items.addons.ModularAugmentAddon;
 import net.matt.modular_armory.screen.ModMenuTypes;
 import net.matt.modular_armory.util.ModTags;
@@ -57,7 +58,7 @@ public class ModularMinerMenu extends AbstractContainerMenu {
                 {152, 17}
         };
         for (int i = 0; i < 3; i++) {
-            this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), i + ModularMachineBlockEntity.RANGE_LENGTH_SLOT, rangeSlotsPositions[i][0], rangeSlotsPositions[i][1]) {
+            this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), i + ModularMinerBlockEntity.RANGE_LENGTH_SLOT, rangeSlotsPositions[i][0], rangeSlotsPositions[i][1]) {
                 @Override
                 public boolean mayPlace(ItemStack stack) {
                     if (stack.is(ModTags.Items.MODULAR_RANGE_ADDON)) {
@@ -69,7 +70,7 @@ public class ModularMinerMenu extends AbstractContainerMenu {
         }
 
         // Filter Slot
-        this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), ModularMachineBlockEntity.FILTER_SLOT, 116, 17) {
+        this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), ModularMachineBreakerBlockEntity.FILTER_SLOT, 116, 17) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 if (stack.is(ModTags.Items.FILTER)) {
@@ -80,7 +81,7 @@ public class ModularMinerMenu extends AbstractContainerMenu {
         });
 
         // Augment Slot
-        this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), ModularMachineBlockEntity.AUGMENT_SLOT, 116, 53) {
+        this.addSlot(new SlotItemHandler(blockEntity.getItemHandler(), ModularMachineBreakerBlockEntity.AUGMENT_SLOT, 116, 53) {
             @Override
             public boolean mayPlace(ItemStack stack) {
                 if (stack.is(ModTags.Items.MODULAR_AUGMENT_ADDON)) {

@@ -12,17 +12,9 @@ import net.neoforged.neoforge.energy.EnergyStorage;
 import net.neoforged.neoforge.items.ItemStackHandler;
 
 public abstract class ModularMachineBlockEntity extends BlockEntity {
-    // Inventory indexes
-    protected static final int OUTPUT_START = 0;
-    public static final int FILTER_SLOT = 9;
-    public static final int AUGMENT_SLOT = 10;
-    public static final int RANGE_LENGTH_SLOT = 11;
-    public static final int RANGE_WIDTH_SLOT = 12;
-    public static final int RANGE_HEIGHT_SLOT = 13;
-
     // Mining
-    protected static final int BASE_MINING_TIME = 20;
-    protected static final int POWERED_MINING_TIME = 5;
+    protected static final int BASE_OPERATING_TIME = 20;
+    protected static final int POWERED_OPERATING_TIME = 5;
     protected static final int MAX_ENERGY_CAPACITY = 50000;
     protected static final int MAX_ENERGY_TRANSFER = 2500;
     protected static final int ENERGY_PER_OPERATION = 100;
@@ -70,6 +62,12 @@ public abstract class ModularMachineBlockEntity extends BlockEntity {
     };
 
     protected abstract ItemStackHandler getItemHandler();
+
+    public abstract int getRangeLengthSlot();
+
+    public abstract int getRangeWidthSlot();
+
+    public abstract int getRangeHeightSlot();
 
     protected boolean hasEnoughPower() {
         return this.energyStorage.getEnergyStored() >= ENERGY_PER_OPERATION;
@@ -192,8 +190,8 @@ public abstract class ModularMachineBlockEntity extends BlockEntity {
     }
 
     protected void resetScan() {
-        int maxExtraWidth = getRangeBonus(RANGE_WIDTH_SLOT);
-        int maxExtraHeight = getRangeBonus(RANGE_HEIGHT_SLOT);
+        int maxExtraWidth = getRangeBonus(getRangeLengthSlot());
+        int maxExtraHeight = getRangeBonus(getRangeHeightSlot());
 
         this.currentDepth = 1;
         this.currentWidth = -maxExtraWidth;
