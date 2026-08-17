@@ -117,6 +117,12 @@ public class MattsModularArmory {
 
         // Register Modular Builder (Can only extract from any side)
         // Inventory
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.MODULAR_BUILDER_BE.get(),
+                (be, side) -> be.getItemHandlerCapability(side)
+        );
+
         // Power
         event.registerBlockEntity(
                 Capabilities.EnergyStorage.BLOCK,

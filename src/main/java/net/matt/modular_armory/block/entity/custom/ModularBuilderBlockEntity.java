@@ -20,16 +20,22 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
+import net.neoforged.neoforge.items.wrapper.RangedWrapper;
 import org.jetbrains.annotations.Nullable;
 
 public class ModularBuilderBlockEntity extends ModularMachineBlockEntity implements MenuProvider {
     // Inventory slots
+    protected static final int INPUT_START = 0;
+    protected static final int INPUT_SLOTS = 9;
+
     // (2) are skipped for possible expansion
     public static final int RANGE_LENGTH_SLOT = 11;
     public static final int RANGE_WIDTH_SLOT = 12;
@@ -216,9 +222,47 @@ public class ModularBuilderBlockEntity extends ModularMachineBlockEntity impleme
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
     //TODO
-//    public IItemHandler getItemHandlerCapability(@Nullable Direction side) {
-//
-//    }
+    public IItemHandler getItemHandlerCapability(@Nullable Direction side) {
+        if (side == null) {
+            return getItemHandler();
+        }
+
+        IItemHandler inputView = new RangedWrapper(getItemHandler(), INPUT_START, INPUT_START + INPUT_SLOTS);
+
+        return new IItemHandler() {
+            @Override
+            public int getSlots() {
+                return inputView.getSlots();
+            }
+
+            @Override
+            public ItemStack getStackInSlot(int slot) {
+                return inputView.getStackInSlot(slot);
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                return inputView.getSlotLimit(slot);
+            }
+
+            @Override
+            public boolean isItemValid(int slot, ItemStack stack) {
+                return inputView.isItemValid(slot, stack);
+            }
+
+            @Override
+            public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+                // Can only push into slots 0 - 8
+                return inputView.insertItem(slot, stack, simulate);
+            }
+
+            @Override
+            public ItemStack extractItem(int slot, int amount, boolean simulate) {
+                // Can pull
+                return ItemStack.EMPTY;
+            }
+        };
+    }
 
     @Override
     protected void saveAdditional(CompoundTag pTag, HolderLookup.Provider pRegistries) {
