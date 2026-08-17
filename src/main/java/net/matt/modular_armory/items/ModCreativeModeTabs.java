@@ -34,6 +34,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.EXPOSER.get());
                         output.accept(ModItems.EXPOSER_SLOT_PLUG.get());
 
+                        // Machine crafting parts
+                        output.accept(ModItems.MODULAR_PROCESSING_UNIT.get());
+
                         // Machines
                         output.accept(ModBlocks.MODULAR_MINER.get());
                         output.accept(ModBlocks.MODULAR_BUILDER.get());

@@ -95,6 +95,15 @@ public class ModItems {
         }
     });
 
+    public static final DeferredHolder<Item, Item> MODULAR_PROCESSING_UNIT = ITEMS.register("modular_processing_unit", () -> new Item(new Item.Properties()) {
+        @Override
+        public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+            pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.used_for_crafting").withStyle(ChatFormatting.GRAY));
+
+            super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
+        }
+    });
+
     // Addon Template
     public static final DeferredHolder<Item, Item> ADDON_TEMPLATE = ITEMS.register("addon_template", () -> new Item(new Item.Properties()){
         @Override

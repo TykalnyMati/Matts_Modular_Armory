@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:quartz"
+    },
+    "B": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    "C": {
+      "item": "minecraft:gold_ingot"
+    },
+    "D": {
+      "item": "minecraft:copper_ingot"
+    }
+  },
+  "pattern": [
+    "ABA",
+    "CCC",
+    "D D"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:modular_processing_unit"
+  }
+}

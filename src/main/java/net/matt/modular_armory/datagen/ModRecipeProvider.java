@@ -198,6 +198,23 @@ public class ModRecipeProvider extends RecipeProvider {
                         ItemPredicate.Builder.item().of(ItemTags.STONE_BRICKS).build()))
                 .save(pRecipeOutput);
 
+        // Modular Processing Unit
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MODULAR_PROCESSING_UNIT.get())
+                .pattern("ABA")
+                .pattern("CCC")
+                .pattern("D D")
+                .define('A', Items.QUARTZ)
+                .define('B', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('C', Items.GOLD_INGOT)
+                .define('D', Items.COPPER_INGOT)
+                .unlockedBy("has_items_for_modular_processing_unit", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.QUARTZ,
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.GOLD_INGOT,
+                        Items.COPPER_INGOT
+                ))
+                .save(pRecipeOutput);
+
         // TODO add modular miner recipe
 
         // Basic Filter

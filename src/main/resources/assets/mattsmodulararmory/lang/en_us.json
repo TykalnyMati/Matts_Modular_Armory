@@ -27,6 +27,9 @@
   "item.mattsmodulararmory.exposer_slot_plug": "Exposer Slot Plug",
   "tooltip.mattsmodulararmory.exposer_slot_plug": "Insert into the Exposer to allow for item creation",
 
+  "item.mattsmodulararmory.modular_processing_unit": "Modular Processing Unit",
+  "tooltip.mattsmodulararmory.used_for_crafting": "Used for crafting",
+
   "item.mattsmodulararmory.addon_template": "Addon Template",
   "tooltip.mattsmodulararmory.addon_template": "Used for crafting more specific addon types",
 
