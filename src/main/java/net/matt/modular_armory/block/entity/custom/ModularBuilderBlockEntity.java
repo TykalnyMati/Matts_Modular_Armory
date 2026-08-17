@@ -13,19 +13,22 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.Containers;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import net.neoforged.neoforge.items.wrapper.RangedWrapper;
@@ -118,14 +121,16 @@ public class ModularBuilderBlockEntity extends ModularMachineBlockEntity impleme
             default -> {}
         }
 
-        if (!pState.getValue(ModularBuilderBlock.ACTIVE)) {
+        if (isInventoryEmpty() && pState.getValue(ModularBuilderBlock.ACTIVE)) {
+            pLevel.setBlock(pPos, pState.setValue(ModularBuilderBlock.ACTIVE, false), Block.UPDATE_ALL);
+        } else if (!pState.getValue(ModularBuilderBlock.ACTIVE) && !isInventoryEmpty()) {
             pLevel.setBlock(pPos, pState.setValue(ModularBuilderBlock.ACTIVE, true), Block.UPDATE_ALL);
         }
 
         int currentRequiredTime = hasEnoughPower() ? POWERED_OPERATING_TIME : BASE_OPERATING_TIME;
 
         this.tickCounter++;
-        if (this.tickCounter >= currentRequiredTime) {
+        if (this.tickCounter >= currentRequiredTime && !isInventoryEmpty()) {
             this.tickCounter = 0;
             this.placeNextBlock((ServerLevel) pLevel, pPos, pState, (currentRequiredTime == POWERED_OPERATING_TIME));
         } else if (this.tickCounter > 2 * BASE_OPERATING_TIME) {
@@ -165,21 +170,120 @@ public class ModularBuilderBlockEntity extends ModularMachineBlockEntity impleme
             advanceScanPosition(maxExtraWidth, maxExtraHeight, maxLength);
             positionsChecked++;
 
-            if (targetState.isAir() || (targetState.getBlock() instanceof LiquidBlock)) {
-                placeBlock(level, targetPos, consumePower);
-                return;
+            if (targetState.isAir() || targetState.canBeReplaced() || (targetState.getBlock() instanceof LiquidBlock)) {
+                int slotToUse = getNextBlockSlot();
+                if (slotToUse != -1) {
+
+                    if (tryPlaceBlock(level, targetPos.immutable(), slotToUse, facing, consumePower)) {
+                        return;
+                    }
+                }
             }
         }
     }
 
-    private void placeBlock(ServerLevel level, BlockPos targetPos, boolean consumePower) {
-        if(level.setBlock(targetPos, Blocks.COBBLESTONE.defaultBlockState(), 3)) {
+    private boolean tryPlaceBlock(ServerLevel level, BlockPos targetPos, int slot, Direction machineFacing, boolean consumePower) {
+        ItemStack stack = getItemHandler().getStackInSlot(slot);
+        if (!(stack.getItem() instanceof BlockItem blockItem)) {
+            return false;
+        }
+
+        // Fallback when machine is placed vertically
+        Direction horizontalFacing = machineFacing.getAxis().isVertical() ? Direction.NORTH : machineFacing;
+
+        BlockHitResult hitResult = new BlockHitResult(
+                Vec3.atCenterOf(targetPos),
+                Direction.UP,
+                targetPos,
+                false
+        );
+
+        UseOnContext useOnContext = new UseOnContext(level, null, InteractionHand.MAIN_HAND, stack, hitResult);
+
+        BlockPlaceContext placeContext = new BlockPlaceContext(useOnContext) {
+            @Override
+            public BlockPos getClickedPos() {
+                return targetPos;
+            }
+
+            @Override
+            public Direction getHorizontalDirection() {
+                return horizontalFacing;
+            }
+
+            @Override
+            public Direction getNearestLookingDirection() {
+                return machineFacing.getOpposite();
+            }
+
+            @Override
+            public Direction[] getNearestLookingDirections() {
+                // For vertical placements
+                if (machineFacing.getAxis().isVertical()) {
+                    return new Direction[]{
+                            machineFacing.getOpposite(),
+                            machineFacing,
+                            Direction.NORTH,
+                            Direction.SOUTH,
+                            Direction.EAST,
+                            Direction.WEST
+                    };
+                }
+
+                return new Direction[]{
+                        machineFacing.getOpposite(),
+                        Direction.UP,
+                        Direction.DOWN,
+                        horizontalFacing.getClockWise(),
+                        horizontalFacing.getCounterClockWise()
+                };
+            }
+
+            @Override
+            public boolean replacingClickedOnBlock() {
+                return true;
+            }
+        };
+
+        // Validates placement rules
+        if (!placeContext.canPlace()) {
+            return false;
+        }
+
+        // Place the bloc and reduces item stack
+        InteractionResult result = blockItem.place(placeContext);
+        if (result.consumesAction()) {
+
             if (consumePower) {
                 this.energyStorage.extractEnergy(ENERGY_PER_OPERATION, false);
             }
 
             setChanged();
+            return true;
         }
+        return false;
+    }
+
+    private boolean isInventoryEmpty() {
+        for (int i = INPUT_START; i < INPUT_START + INPUT_SLOTS; i++) {
+            ItemStack stack = getItemHandler().getStackInSlot(i);
+
+            if (!stack.isEmpty()) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private int getNextBlockSlot() {
+        for (int i = INPUT_START; i < INPUT_START + INPUT_SLOTS; i++) {
+            ItemStack stack = getItemHandler().getStackInSlot(i);
+            if (!stack.isEmpty() && stack.getItem() instanceof BlockItem) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     @Override
@@ -221,7 +325,7 @@ public class ModularBuilderBlockEntity extends ModularMachineBlockEntity impleme
 
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
-    //TODO
+
     public IItemHandler getItemHandlerCapability(@Nullable Direction side) {
         if (side == null) {
             return getItemHandler();
