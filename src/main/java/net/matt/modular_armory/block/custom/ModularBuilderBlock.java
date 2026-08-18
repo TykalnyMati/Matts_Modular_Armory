@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -95,6 +96,12 @@ public class ModularBuilderBlock extends BaseEntityBlock {
         }
 
         return ItemInteractionResult.sidedSuccess(pLevel.isClientSide());
+    }
+
+    // Disable menu for spectator mode
+    @Override
+    protected @Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
+        return null;
     }
 
     @Nullable

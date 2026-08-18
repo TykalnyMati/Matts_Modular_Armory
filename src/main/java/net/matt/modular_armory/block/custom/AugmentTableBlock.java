@@ -11,6 +11,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleMenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -98,7 +99,7 @@ public class AugmentTableBlock extends BaseEntityBlock {
         super.onRemove(pState, pLevel, pPos, pNewState, pMovedByPiston);
     }
 
-    // Does stuff
+    // Opens menu
     @Override
     protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         if(pLevel.getBlockEntity(pPos) instanceof AugmentTableBlockEntity augmentTableBlockEntity) {
@@ -111,20 +112,14 @@ public class AugmentTableBlock extends BaseEntityBlock {
                 return ItemInteractionResult.SUCCESS;
             }
 
-//            if(augmentTableBlockEntity.inventory.getStackInSlot(0).isEmpty() && !pStack.isEmpty()) {
-//                augmentTableBlockEntity.inventory.insertItem(0, pStack.copy(), false);
-//                pStack.shrink(1);
-//                pLevel.playSound(pPlayer, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 2f);
-//                return ItemInteractionResult.SUCCESS;
-//            } else if(pStack.isEmpty()) {
-//                ItemStack stackOnTable = augmentTableBlockEntity.inventory.extractItem(0, 1, false);
-//                pPlayer.setItemInHand(InteractionHand.MAIN_HAND, stackOnTable);
-//                augmentTableBlockEntity.clearContents();
-//                pLevel.playSound(pPlayer, pPos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
-//                return ItemInteractionResult.SUCCESS;
-//            }
         }
         return ItemInteractionResult.FAIL;
+    }
+
+    // Disable menu for spectator mode
+    @Override
+    protected @Nullable MenuProvider getMenuProvider(BlockState state, Level level, BlockPos pos) {
+        return null;
     }
 
     @Override
