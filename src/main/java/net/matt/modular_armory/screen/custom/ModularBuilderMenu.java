@@ -11,6 +11,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.SimpleContainerData;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -90,9 +91,65 @@ public class ModularBuilderMenu extends ModularMachineMenu {
         return maxEnergy != 0 && energyStored != 0 ? energyStored * energyProgress / maxEnergy : 0;
     }
 
-    @Override // TODO
+    // Slot indexes
+    private static final int VANILLA_SLOT_COUNT = 36;
+    private static final int INPUT_SLOT_START = 36;
+    private static final int INPUT_SLOT_COUNT = 9;
+    private static final int RANGE_SLOT_START = 45;
+    private static final int RANGE_SLOT_COUNT = 3;
+    @Override
     public ItemStack quickMoveStack(Player player, int index) {
-        return ItemStack.EMPTY;
+        ItemStack itemStack = ItemStack.EMPTY;
+        Slot slot = this.slots.get(index);
+
+        if (slot != null && slot.hasItem()) {
+            ItemStack itemStack1 = slot.getItem();
+            itemStack = itemStack1.copy();
+
+            // from container to player
+            if (index >= VANILLA_SLOT_COUNT) {
+                if (!this.moveItemStackTo(itemStack1, 0, VANILLA_SLOT_COUNT, true)) {
+                    return ItemStack.EMPTY;
+                }
+                slot.onQuickCraft(itemStack1, itemStack);
+            }
+            // from player to container
+            else {
+                // Range Addons -> Range Slots
+                if (itemStack1.is(ModTags.Items.MODULAR_RANGE_ADDON)) {
+                    if (!this.moveItemStackTo(itemStack1, RANGE_SLOT_START, RANGE_SLOT_START + RANGE_SLOT_COUNT, false)) {
+                        return ItemStack.EMPTY;
+                    }
+                }
+                // Other items
+                else if (!this.moveItemStackTo(itemStack1, INPUT_SLOT_START, INPUT_SLOT_START + INPUT_SLOT_COUNT, false)){
+                    // Move between Player Inventory and Hotbar if the item doesn't fit
+                    if (index < 27) {
+                        if (!this.moveItemStackTo(itemStack1, 27, 36, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    } else if (index < 36) {
+                        if (!this.moveItemStackTo(itemStack1, 0, 27, false)) {
+                            return ItemStack.EMPTY;
+                        }
+                    }
+                }
+            }
+
+            if (itemStack1.isEmpty()) {
+                slot.setByPlayer(ItemStack.EMPTY);
+            } else {
+                slot.setChanged();
+            }
+
+            if (itemStack1.getCount() == itemStack.getCount()) {
+                return ItemStack.EMPTY;
+            }
+
+            slot.onTake(player, itemStack1);
+        }
+
+        return itemStack;
     }
 
     @Override
