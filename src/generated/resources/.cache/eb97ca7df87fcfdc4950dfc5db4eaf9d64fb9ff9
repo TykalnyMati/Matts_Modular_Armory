@@ -1,4 +1,4 @@
-// 1.21.1	2026-08-13T22:04:50.4948117	Tags for minecraft:item mod id mattsmodulararmory
+// 1.21.1	2026-08-21T23:44:43.7771621	Tags for minecraft:item mod id mattsmodulararmory
 f2abb7cc3bae3a83f1d2c3b09934f4d62f813deb data/mattsmodulararmory/tags/item/filter.json
 576b480961ae951552a90d18a851cb100b5b8134 data/mattsmodulararmory/tags/item/modular_armor.json
 3b792aaea011ca1c7417ae17ed80df9bc5c61b3f data/mattsmodulararmory/tags/item/modular_augment_addon.json
@@ -6,7 +6,7 @@ f2abb7cc3bae3a83f1d2c3b09934f4d62f813deb data/mattsmodulararmory/tags/item/filte
 85198792b455cb64fbd5db675824508eee5973eb data/mattsmodulararmory/tags/item/modular_chestplate.json
 d7108231d2c0fb14199698e6ca58e544a1ab1d48 data/mattsmodulararmory/tags/item/modular_helmet.json
 e28db23deb359059903dd378e9ad2b60304804cc data/mattsmodulararmory/tags/item/modular_items.json
-dc32bbbad2a83bda8b3cd4e09cdd924be7d045bc data/mattsmodulararmory/tags/item/modular_items_augment.json
+bddb48ad7f81b917fa8138d09f12195a51cd35b8 data/mattsmodulararmory/tags/item/modular_items_augment.json
 41f416f0bca481765d744223d0a18eac01d0b2d3 data/mattsmodulararmory/tags/item/modular_leggings.json
 6d0628d3c07b440cabcb6ad8742aaf0eeebf3578 data/mattsmodulararmory/tags/item/modular_range_addon.json
 62b067aee0e104f96860df1aee0a7f05a829d237 data/mattsmodulararmory/tags/item/modular_tier_0.json

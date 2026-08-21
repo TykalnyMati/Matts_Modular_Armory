@@ -119,13 +119,16 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BIORITE_BOOTS.get());
 
                         // Augments
+                        // Generic
                         output.accept(ModItems.UNBREAKING_AUGMENT.get());
                         output.accept(ModItems.MENDING_AUGMENT.get());
 
+                        // Tools
                         output.accept(ModItems.EFFICIENCY_AUGMENT.get());
                         output.accept(ModItems.SILK_TOUCH_AUGMENT.get());
                         output.accept(ModItems.FORTUNE_AUGMENT.get());
 
+                        // Weapons
                         output.accept(ModItems.SHARPNESS_AUGMENT.get());
                         output.accept(ModItems.SMITE_AUGMENT.get());
                         output.accept(ModItems.BANE_OF_ARTHROPODS_AUGMENT.get());
@@ -134,30 +137,40 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.KNOCKBACK_AUGMENT.get());
                         output.accept(ModItems.FIRE_ASPECT_AUGMENT.get());
 
+                        // Armor
                         output.accept(ModItems.PROTECTION_AUGMENT.get());
                         output.accept(ModItems.BLAST_PROTECTION_AUGMENT.get());
                         output.accept(ModItems.PROJECTILE_PROTECTION_AUGMENT.get());
                         output.accept(ModItems.FIRE_PROTECTION_AUGMENT.get());
                         output.accept(ModItems.THORNS_AUGMENT.get());
 
+                        // Helmet
                         output.accept(ModItems.RESPIRATION_AUGMENT.get());
                         output.accept(ModItems.AQUA_AFFINITY_AUGMENT.get());
 
+                        // Leggings
                         output.accept(ModItems.SWIFT_SNEAK_AUGMENT.get());
 
+                        // Boots
                         output.accept(ModItems.FEATHER_FALLING_AUGMENT.get());
                         output.accept(ModItems.FROST_WALKER_AUGMENT.get());
                         output.accept(ModItems.DEPTH_STRIDER_AUGMENT.get());
                         output.accept(ModItems.SOUL_SPEED_AUGMENT.get());
 
                         // Custom Augments
+                        // Tools
                         output.accept(ModItems.AUTO_SMELT_AUGMENT.get());
                         output.accept(ModItems.DIAMOND_SHARPENED_AUGMENT.get());
                         output.accept(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get());
                         output.accept(ModItems.SCAFFOLDING_AUGMENT.get());
                         output.accept(ModItems.ILLUMINATOR_AUGMENT.get());
-                        output.accept(ModItems.MAGNET_AUGMENT.get());
                         output.accept(ModItems.VOID_AUGMENT.get());
+
+                        // Tools and Weapons
+                        output.accept(ModItems.MAGNET_AUGMENT.get());
+
+                        // Weapons
+                        output.accept(ModItems.POISON_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

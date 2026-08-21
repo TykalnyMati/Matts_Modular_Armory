@@ -51,8 +51,9 @@ public class AugmentObject {
     public int MODULAR_CLAY_EXTRACTOR;
     public int SCAFFOLDING;
     public boolean ILLUMINATOR;
-    public boolean MAGNET;
     public boolean VOID;
+    public boolean MAGNET;
+    public int POISON;
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
@@ -74,8 +75,8 @@ public class AugmentObject {
                     case "modular_clay_extractor_augment" -> this.MODULAR_CLAY_EXTRACTOR = augmentStack.getCount();
                     case "scaffolding_augment" -> this.SCAFFOLDING = augmentStack.getCount();
                     case "illuminator_augment" -> this.ILLUMINATOR = true;
-                    case "magnet_augment" -> this.MAGNET = true;
                     case "void_augment" -> this.VOID = true;
+                    case "magnet_augment" -> this.MAGNET = true;
 
                     // Weapon specific augments
                     case "sharpness_augment" -> this.SHARPNESS = augmentStack.getCount();
@@ -85,6 +86,7 @@ public class AugmentObject {
                     case "looting_augment" -> this.LOOTING = augmentStack.getCount();
                     case "knockback_augment" -> this.KNOCKBACK = augmentStack.getCount();
                     case "fire_aspect_augment" -> this.FIRE_ASPECT = augmentStack.getCount();
+                    case "poison_augment" -> this.POISON = augmentStack.getCount();
 
                     // Armor specific augments
                     case "protection_augment" -> this.PROTECTION = augmentStack.getCount();
@@ -222,6 +224,11 @@ public class AugmentObject {
             if (this.FIRE_ASPECT > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.fire_aspect_augment").withStyle(ChatFormatting.YELLOW)
                         .append(Component.literal(": " + toRoman(this.FIRE_ASPECT)).withStyle(ChatFormatting.YELLOW)));
+            }
+
+            if (this.POISON > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.poison_augment").withStyle(Style.EMPTY.withColor(0x76db4c))
+                        .append(Component.literal(": " + toRoman(this.POISON)).withStyle(Style.EMPTY.withColor(0x76db4c))));
             }
 
             // ARMOR

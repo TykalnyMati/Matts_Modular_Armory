@@ -943,6 +943,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.GLOWSTONE))
                 .save(pRecipeOutput);
 
+        // Void Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOID_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("CAC")
+                .pattern("BBB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.OBSIDIAN)
+                .define('C', Items.ENDER_PEARL)
+                .unlockedBy("has_items_for_void_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.OBSIDIAN,
+                        Items.ENDER_PEARL))
+                .save(pRecipeOutput);
+
         // Magnet Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MAGNET_AUGMENT.get())
                 .pattern("B B")
@@ -957,18 +971,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.IRON_BLOCK))
                 .save(pRecipeOutput);
 
-        // Void Augment
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOID_AUGMENT.get())
-                .pattern("BBB")
+        // Poison Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POISON_AUGMENT.get())
+                .pattern("BCB")
                 .pattern("CAC")
-                .pattern("BBB")
+                .pattern("DCD")
                 .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
-                .define('B', Blocks.OBSIDIAN)
-                .define('C', Items.ENDER_PEARL)
-                .unlockedBy("has_items_for_void_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                .define('B', Items.NETHER_WART)
+                .define('C', Items.SPIDER_EYE)
+                .define('D', Items.BLAZE_POWDER)
+                .unlockedBy("has_items_for_poison_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
                         ModItems.ADVANCED_MODULAR_PLATE.get(),
-                        Blocks.OBSIDIAN,
-                        Items.ENDER_PEARL))
+                        Items.NETHER_WART,
+                        Items.SPIDER_EYE,
+                        Items.BLAZE_POWDER))
                 .save(pRecipeOutput);
     }
 }

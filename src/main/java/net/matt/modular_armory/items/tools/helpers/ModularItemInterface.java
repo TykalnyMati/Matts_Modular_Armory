@@ -136,11 +136,12 @@ public interface ModularItemInterface {
         int bane_of_arthropods = bonuses.BANE_OF_ARTHROPODS;
         int impaling = bonuses.IMPALING;
         int knockback = bonuses.KNOCKBACK;
+        int poison = bonuses.POISON;
 
         boolean DO_ENCHANTED_PARTICLES = false;
 
         if (pAttacker.level() instanceof ServerLevel serverLevel) {
-            // Testing damaging effects
+            // Damaging effects
             if (sharpness > 0) {
                 DO_ENCHANTED_PARTICLES = true;
             } else if (smite > 0) {
@@ -191,6 +192,30 @@ public interface ModularItemInterface {
                 pTarget.knockback(strength, dx, dz);
 
                 pAttacker.setDeltaMovement(pAttacker.getDeltaMovement().multiply(0.6D, 1.0D, 0.6D));
+            }
+
+            // Adding effects
+            if (poison > 0) {
+                int duration;
+                int amplifier;
+
+                if (poison == 1) {
+                    duration = 20 * 6;
+                    amplifier = 0;
+                } else if (poison == 2) {
+                    duration = 20 * 3;
+                    amplifier = 1;
+                } else {
+                    duration = 20 * 3;
+                    amplifier = 3;
+                }
+
+
+                pTarget.addEffect(new MobEffectInstance(
+                        MobEffects.POISON,
+                        duration,
+                        amplifier
+                ));
             }
         }
     }

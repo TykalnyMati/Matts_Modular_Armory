@@ -205,8 +205,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get())
                 .add(ModItems.SCAFFOLDING_AUGMENT.get())
                 .add(ModItems.ILLUMINATOR_AUGMENT.get())
+                .add(ModItems.VOID_AUGMENT.get())
                 .add(ModItems.MAGNET_AUGMENT.get())
-                .add(ModItems.VOID_AUGMENT.get());
+                .add(ModItems.POISON_AUGMENT.get());
 
         // Armor Tags
         tag(ModTags.Items.MODULAR_HELMET)

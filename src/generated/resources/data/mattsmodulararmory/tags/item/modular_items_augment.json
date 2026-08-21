@@ -29,7 +29,8 @@
     "mattsmodulararmory:modular_clay_extractor_augment",
     "mattsmodulararmory:scaffolding_augment",
     "mattsmodulararmory:illuminator_augment",
+    "mattsmodulararmory:void_augment",
     "mattsmodulararmory:magnet_augment",
-    "mattsmodulararmory:void_augment"
+    "mattsmodulararmory:poison_augment"
   ]
 }
