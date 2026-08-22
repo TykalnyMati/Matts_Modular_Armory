@@ -202,12 +202,9 @@ public interface ModularItemInterface {
                 if (poison == 1) {
                     duration = 20 * 6;
                     amplifier = 0;
-                } else if (poison == 2) {
-                    duration = 20 * 3;
-                    amplifier = 1;
                 } else {
-                    duration = 20 * 3;
-                    amplifier = 3;
+                    duration = 20 * 4;
+                    amplifier = 1;
                 }
 
 
