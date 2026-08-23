@@ -101,6 +101,9 @@
   "item.mattsmodulararmory.void_augment_addon": "Void Augment Addon",
   "tooltip.mattsmodulararmory.augment_addon.void_addon": "Voids drops of broken blocks",
 
+  "item.mattsmodulararmory.clay_extractor_augment_addon": "Clay Extractor Augment Addon",
+  "tooltip.mattsmodulararmory.augment_addon.clay_extractor_addon": "Converts mined clay into Modular Clay and Dirt",
+
 
 
   "item.mattsmodulararmory.advanced_modular_clay_upgrade_smithing_template": "Smithing Template",

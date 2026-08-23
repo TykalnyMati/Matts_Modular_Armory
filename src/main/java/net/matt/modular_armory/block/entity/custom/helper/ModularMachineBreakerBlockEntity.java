@@ -3,6 +3,7 @@ package net.matt.modular_armory.block.entity.custom.helper;
 import com.mojang.authlib.GameProfile;
 import net.matt.modular_armory.block.custom.ModularMinerBlock;
 import net.matt.modular_armory.component.ModDataComponentTypes;
+import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.items.addons.ModularAugmentAddon;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -25,6 +26,7 @@ import net.neoforged.neoforge.common.util.FakePlayerFactory;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ModularMachineBreakerBlockEntity extends ModularMachineBlockEntity {
@@ -107,12 +109,23 @@ public abstract class ModularMachineBreakerBlockEntity extends ModularMachineBlo
     }
 
     protected boolean hasRoomForDrops(List<ItemStack> drops) {
+        // Temporary handler mirroring the output slots
+        ItemStackHandler tempHandler = new ItemStackHandler(OUTPUT_SLOTS);
+
+        for (int i = 0; i < OUTPUT_SLOTS; i++) {
+            tempHandler.setStackInSlot(i, getItemHandler().getStackInSlot(OUTPUT_START + i).copy());
+        }
+
         for (ItemStack drop : drops) {
-            // Copy used only for checking if items will fit
+            if (drop.isEmpty()) {
+                continue;
+            }
+
             ItemStack remainder = drop.copy();
 
-            for (int i = OUTPUT_START; i < OUTPUT_START + OUTPUT_SLOTS; i++) {
-                remainder = getItemHandler().insertItem(i, remainder, true);
+            for (int i = 0; i < OUTPUT_SLOTS; i++) {
+                // Simulate insertion to check if ALL items fit
+                remainder = tempHandler.insertItem(i, remainder, false);
                 if (remainder.isEmpty()) {
                     break;
                 }
@@ -123,6 +136,7 @@ public abstract class ModularMachineBreakerBlockEntity extends ModularMachineBlo
                 return false;
             }
         }
+
         return true;
     }
 
@@ -240,6 +254,7 @@ public abstract class ModularMachineBreakerBlockEntity extends ModularMachineBlo
         ItemStack augmentAddon = getItemHandler().getStackInSlot(AUGMENT_SLOT);
         boolean skipDrops = false;
         boolean smeltDrops = false;
+        int clayExtract = 0;
         if (augmentAddon.getItem() instanceof ModularAugmentAddon modularAugmentAddon) {
             switch (modularAugmentAddon.getAddonId()) {
                 case ModularAugmentAddon.ADDONS.SILK_TOUCH -> {
@@ -258,19 +273,29 @@ public abstract class ModularMachineBreakerBlockEntity extends ModularMachineBlo
                 case ModularAugmentAddon.ADDONS.VOID -> {
                     skipDrops = true;
                 }
+                case ModularAugmentAddon.ADDONS.CLAY_EXTRACTOR -> {
+                    clayExtract = augmentAddon.getCount();
+                }
             }
         }
 
         FakePlayer minerPlayer = FakePlayerFactory.get(level, getMinerGameProfile());
         minerPlayer.setItemInHand(InteractionHand.MAIN_HAND, helperTool);
 
-        List<ItemStack> drops = Block.getDrops(
-                targetState,
-                level,
-                targetPos,
-                level.getBlockEntity(targetPos),
-                minerPlayer,
-                helperTool);
+        List<ItemStack> drops = new ArrayList<>();
+
+        if (clayExtract > 0) {
+            drops.add(new ItemStack(Items.DIRT, 1));
+            drops.add(new ItemStack(ModItems.MODULAR_CLAY, 2 + new java.util.Random().nextInt(2 + clayExtract)));
+        } else {
+            drops = Block.getDrops(
+                    targetState,
+                    level,
+                    targetPos,
+                    level.getBlockEntity(targetPos),
+                    minerPlayer,
+                    helperTool);
+        }
 
         if (smeltDrops) {
             for (int i = 0; i < drops.size(); i++) {

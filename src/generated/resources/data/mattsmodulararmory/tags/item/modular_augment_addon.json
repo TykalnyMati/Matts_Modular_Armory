@@ -4,6 +4,7 @@
     "mattsmodulararmory:fortune_augment_addon",
     "mattsmodulararmory:auto_smelt_augment_addon",
     "mattsmodulararmory:auto_smelting_fortune_augment_addon",
-    "mattsmodulararmory:void_augment_addon"
+    "mattsmodulararmory:void_augment_addon",
+    "mattsmodulararmory:clay_extractor_augment_addon"
   ]
 }

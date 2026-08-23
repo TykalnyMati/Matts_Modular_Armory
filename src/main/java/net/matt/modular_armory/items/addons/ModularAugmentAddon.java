@@ -84,5 +84,6 @@ public class ModularAugmentAddon extends Item {
         static public final String AUTO_SMELT = "auto_smelt_addon";
         static public final String AUTO_SMELTING_FORTUNE = "auto_smelting_fortune_addon";
         static public final String VOID = "void_addon";
+        static public final String CLAY_EXTRACTOR = "clay_extractor_addon";
     }
 }

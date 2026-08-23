@@ -224,7 +224,10 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', Items.STRING)
                 .define('B', ModItems.ADDON_TEMPLATE.get())
                 .define('C', Blocks.HOPPER)
-                .unlockedBy("has_items_for_basic_filter", InventoryChangeTrigger.TriggerInstance.hasItems(Items.STRING, ModItems.ADDON_TEMPLATE.get(), Blocks.HOPPER))
+                .unlockedBy("has_items_for_basic_filter", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.STRING,
+                        ModItems.ADDON_TEMPLATE.get(),
+                        Blocks.HOPPER))
                 .save(pRecipeOutput);
 
         // Addon Template
@@ -234,14 +237,18 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("B")
                 .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
                 .define('B', Items.PAPER)
-                .unlockedBy("has_items_for_addon_template", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ADVANCED_MODULAR_PLATE.get(), Items.PAPER))
+                .unlockedBy("has_items_for_addon_template", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.PAPER))
                 .save(pRecipeOutput);
 
         // Blank Range Addon
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLANK_RANGE_ADDON.get())
                 .requires(ModItems.ADDON_TEMPLATE.get())
                 .requires(Blocks.PISTON)
-                .unlockedBy("has_items_for_blank_range_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ADDON_TEMPLATE.get(), Blocks.PISTON))
+                .unlockedBy("has_items_for_blank_range_addon", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADDON_TEMPLATE.get(),
+                        Blocks.PISTON))
                 .save(pRecipeOutput);
 
         // Range Addon Coal
@@ -263,7 +270,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("A A")
                 .define('A', Items.COPPER_INGOT)
                 .define('B', ModItems.BLANK_RANGE_ADDON.get())
-                .unlockedBy("has_items_for_range_addon_copper", InventoryChangeTrigger.TriggerInstance.hasItems(Items.COPPER_INGOT, ModItems.BLANK_RANGE_ADDON.get()))
+                .unlockedBy("has_items_for_range_addon_copper", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.COPPER_INGOT,
+                        ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Range Addon Iron
@@ -273,7 +282,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("A A")
                 .define('A', Items.IRON_INGOT)
                 .define('B', ModItems.BLANK_RANGE_ADDON.get())
-                .unlockedBy("has_items_for_range_addon_iron", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT, ModItems.BLANK_RANGE_ADDON.get()))
+                .unlockedBy("has_items_for_range_addon_iron", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.IRON_INGOT,
+                        ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Range Addon Quartz
@@ -283,7 +294,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("A A")
                 .define('A', Items.QUARTZ)
                 .define('B', ModItems.BLANK_RANGE_ADDON.get())
-                .unlockedBy("has_items_for_range_addon_quartz", InventoryChangeTrigger.TriggerInstance.hasItems(Items.QUARTZ, ModItems.BLANK_RANGE_ADDON.get()))
+                .unlockedBy("has_items_for_range_addon_quartz", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.QUARTZ,
+                        ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Range Addon Redstone
@@ -293,7 +306,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("A A")
                 .define('A', Items.REDSTONE)
                 .define('B', ModItems.BLANK_RANGE_ADDON.get())
-                .unlockedBy("has_items_for_range_addon_redstone", InventoryChangeTrigger.TriggerInstance.hasItems(Items.REDSTONE, ModItems.BLANK_RANGE_ADDON.get()))
+                .unlockedBy("has_items_for_range_addon_redstone", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.REDSTONE,
+                        ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Range Addon Glowstone
@@ -303,7 +318,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("A A")
                 .define('A', Items.GLOWSTONE_DUST)
                 .define('B', ModItems.BLANK_RANGE_ADDON.get())
-                .unlockedBy("has_items_for_range_addon_glowstone", InventoryChangeTrigger.TriggerInstance.hasItems(Items.GLOWSTONE_DUST, ModItems.BLANK_RANGE_ADDON.get()))
+                .unlockedBy("has_items_for_range_addon_glowstone", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.GLOWSTONE_DUST,
+                        ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Range Addon Gold
@@ -313,7 +330,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("A A")
                 .define('A', Items.GOLD_INGOT)
                 .define('B', ModItems.BLANK_RANGE_ADDON.get())
-                .unlockedBy("has_items_for_range_addon_gold", InventoryChangeTrigger.TriggerInstance.hasItems(Items.GOLD_INGOT, ModItems.BLANK_RANGE_ADDON.get()))
+                .unlockedBy("has_items_for_range_addon_gold", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.GOLD_INGOT,
+                        ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Range Addon Amethyst
@@ -323,7 +342,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("A A")
                 .define('A', Items.AMETHYST_SHARD)
                 .define('B', ModItems.BLANK_RANGE_ADDON.get())
-                .unlockedBy("has_items_for_range_addon_amethyst", InventoryChangeTrigger.TriggerInstance.hasItems(Items.AMETHYST_SHARD, ModItems.BLANK_RANGE_ADDON.get()))
+                .unlockedBy("has_items_for_range_addon_amethyst", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.AMETHYST_SHARD,
+                        ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Range Addon Lapis
@@ -333,7 +354,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("A A")
                 .define('A', Items.LAPIS_LAZULI)
                 .define('B', ModItems.BLANK_RANGE_ADDON.get())
-                .unlockedBy("has_items_for_range_addon_lapis", InventoryChangeTrigger.TriggerInstance.hasItems(Items.LAPIS_LAZULI, ModItems.BLANK_RANGE_ADDON.get()))
+                .unlockedBy("has_items_for_range_addon_lapis", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.LAPIS_LAZULI,
+                        ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Range Addon Diamond
@@ -341,7 +364,9 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("ABA")
                 .define('A', Items.DIAMOND)
                 .define('B', ModItems.BLANK_RANGE_ADDON.get())
-                .unlockedBy("has_items_for_range_addon_diamond", InventoryChangeTrigger.TriggerInstance.hasItems(Items.DIAMOND, ModItems.BLANK_RANGE_ADDON.get()))
+                .unlockedBy("has_items_for_range_addon_diamond", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.DIAMOND,
+                        ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Range Addon Emerald
@@ -349,35 +374,45 @@ public class ModRecipeProvider extends RecipeProvider {
                 .pattern("ABA")
                 .define('A', Items.EMERALD)
                 .define('B', ModItems.BLANK_RANGE_ADDON.get())
-                .unlockedBy("has_items_for_range_addon_emerald", InventoryChangeTrigger.TriggerInstance.hasItems(Items.EMERALD, ModItems.BLANK_RANGE_ADDON.get()))
+                .unlockedBy("has_items_for_range_addon_emerald", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.EMERALD,
+                        ModItems.BLANK_RANGE_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Blank Augment Addon
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.BLANK_AUGMENT_ADDON.get())
                 .requires(ModItems.ADDON_TEMPLATE.get())
                 .requires(ModItems.ADVANCED_MODULAR_PLATE.get())
-                .unlockedBy("has_items_for_blank_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ADDON_TEMPLATE.get(), ModItems.ADVANCED_MODULAR_PLATE.get()))
+                .unlockedBy("has_items_for_blank_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADDON_TEMPLATE.get(),
+                        ModItems.ADVANCED_MODULAR_PLATE.get()))
                 .save(pRecipeOutput);
 
         // Silk Touch Augment Addon
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SILK_TOUCH_AUGMENT_ADDON.get())
                 .requires(ModItems.BLANK_AUGMENT_ADDON.get())
                 .requires(ModItems.SILK_TOUCH_AUGMENT.get())
-                .unlockedBy("has_items_for_silk_touch_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.SILK_TOUCH_AUGMENT.get()))
+                .unlockedBy("has_items_for_silk_touch_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.BLANK_AUGMENT_ADDON.get(),
+                        ModItems.SILK_TOUCH_AUGMENT.get()))
                 .save(pRecipeOutput);
 
         // Fortune Augment Addon
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.FORTUNE_AUGMENT_ADDON.get())
                 .requires(ModItems.BLANK_AUGMENT_ADDON.get())
                 .requires(ModItems.FORTUNE_AUGMENT.get())
-                .unlockedBy("has_items_for_fortune_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.FORTUNE_AUGMENT.get()))
+                .unlockedBy("has_items_for_fortune_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.BLANK_AUGMENT_ADDON.get(),
+                        ModItems.FORTUNE_AUGMENT.get()))
                 .save(pRecipeOutput);
 
         // Auto Smelt Augment Addon
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.AUTO_SMELT_AUGMENT_ADDON.get())
                 .requires(ModItems.BLANK_AUGMENT_ADDON.get())
                 .requires(ModItems.AUTO_SMELT_AUGMENT.get())
-                .unlockedBy("has_items_for_auto_smelt_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.AUTO_SMELT_AUGMENT.get()))
+                .unlockedBy("has_items_for_auto_smelt_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.BLANK_AUGMENT_ADDON.get(),
+                        ModItems.AUTO_SMELT_AUGMENT.get()))
                 .save(pRecipeOutput);
 
         // Auto Smelting Fortune Augment Addon
@@ -385,14 +420,28 @@ public class ModRecipeProvider extends RecipeProvider {
                 .requires(ModItems.AUTO_SMELT_AUGMENT_ADDON.get())
                 .requires(ModItems.ADAPTIVE_FLESH_PLATE.get())
                 .requires(ModItems.FORTUNE_AUGMENT_ADDON.get())
-                .unlockedBy("has_items_for_auto_smelting_fortune_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.AUTO_SMELT_AUGMENT_ADDON.get(), ModItems.ADAPTIVE_FLESH_PLATE.get(), ModItems.FORTUNE_AUGMENT_ADDON.get()))
+                .unlockedBy("has_items_for_auto_smelting_fortune_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.AUTO_SMELT_AUGMENT_ADDON.get(),
+                        ModItems.ADAPTIVE_FLESH_PLATE.get(),
+                        ModItems.FORTUNE_AUGMENT_ADDON.get()))
                 .save(pRecipeOutput);
 
         // Void Augment Addon
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VOID_AUGMENT_ADDON.get())
                 .requires(ModItems.BLANK_AUGMENT_ADDON.get())
                 .requires(ModItems.VOID_AUGMENT.get())
-                .unlockedBy("has_items_for_void_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.BLANK_AUGMENT_ADDON.get(), ModItems.VOID_AUGMENT.get()))
+                .unlockedBy("has_items_for_void_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.BLANK_AUGMENT_ADDON.get(),
+                        ModItems.VOID_AUGMENT.get()))
+                .save(pRecipeOutput);
+
+        // Clay Extractor Augment Addon
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.CLAY_EXTRACTOR_AUGMENT_ADDON.get())
+                .requires(ModItems.BLANK_AUGMENT_ADDON.get())
+                .requires(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get())
+                .unlockedBy("has_items_for_clay_extractor_augment_addon", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.BLANK_AUGMENT_ADDON.get(),
+                        ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get()))
                 .save(pRecipeOutput);
 
         // Advanced Modular Clay Upgrade Smithing Template

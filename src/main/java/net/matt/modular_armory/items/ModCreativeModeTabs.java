@@ -68,6 +68,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.AUTO_SMELT_AUGMENT_ADDON.get());
                         output.accept(ModItems.AUTO_SMELTING_FORTUNE_AUGMENT_ADDON.get());
                         output.accept(ModItems.VOID_AUGMENT_ADDON.get());
+                        output.accept(ModItems.CLAY_EXTRACTOR_AUGMENT_ADDON.get());
 
                         // Smiting Templates
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());

@@ -259,7 +259,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.FORTUNE_AUGMENT_ADDON.get())
                 .add(ModItems.AUTO_SMELT_AUGMENT_ADDON.get())
                 .add(ModItems.AUTO_SMELTING_FORTUNE_AUGMENT_ADDON.get())
-                .add(ModItems.VOID_AUGMENT_ADDON.get());
+                .add(ModItems.VOID_AUGMENT_ADDON.get())
+                .add(ModItems.CLAY_EXTRACTOR_AUGMENT_ADDON.get());
 
 
         // NeoForge Tags

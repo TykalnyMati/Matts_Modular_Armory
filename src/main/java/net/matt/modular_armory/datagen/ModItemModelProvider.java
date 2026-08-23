@@ -77,6 +77,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.AUTO_SMELT_AUGMENT_ADDON.get());
         basicItem(ModItems.AUTO_SMELTING_FORTUNE_AUGMENT_ADDON.get());
         basicItem(ModItems.VOID_AUGMENT_ADDON.get());
+        basicItem(ModItems.CLAY_EXTRACTOR_AUGMENT_ADDON.get());
 
         // Smithing Template Upgrades
         basicItem(ModItems.ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE.get());

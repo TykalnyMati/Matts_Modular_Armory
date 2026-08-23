@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "mattsmodulararmory:blank_augment_addon"
+    },
+    {
+      "item": "mattsmodulararmory:modular_clay_extractor_augment"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:clay_extractor_augment_addon"
+  }
+}
