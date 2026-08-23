@@ -8,6 +8,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -18,12 +19,20 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ModularSwordItem extends SwordItem implements ModularItemInterface {
     public ModularSwordItem(Tier pTier, Properties pProperties) {
         super(pTier, pProperties);
+    }
+
+    @Override
+    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, @Nullable T entity, Consumer<Item> onBroken) {
+        damageModularItem(stack, entity, amount);
+        return 0;
     }
 
     // Damage calculations
@@ -85,7 +94,9 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
             return false;
         }
 
-        damageModularItem(stack, entity, 2);
+        if (!level.isClientSide() && state.getDestroySpeed(level, pos) > 0.0F) {
+            stack.hurtAndBreak(2, entity, EquipmentSlot.MAINHAND);
+        }
 
         return true;
     }

@@ -13,6 +13,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
@@ -26,8 +27,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 import static net.minecraft.world.level.block.Block.popResourceFromFace;
 
@@ -40,13 +43,19 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
     }
 
     @Override
+    public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, @Nullable T entity, Consumer<Item> onBroken) {
+        damageModularItem(stack, entity, amount);
+        return 0;
+    }
+
+    @Override
     public boolean mineBlock(ItemStack stack, Level level, BlockState state, BlockPos pos, LivingEntity entity) {
         if (isBroken(stack)) {
             return false;
         }
 
         if (!level.isClientSide() && state.getDestroySpeed(level, pos) > 0.0F) {
-            damageModularItem(stack, entity);
+            stack.hurtAndBreak(1, entity, EquipmentSlot.MAINHAND);
         }
 
         return true;
@@ -177,7 +186,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             return;
         }
 
-        damageModularItem(pStack, pAttacker, 2);
+        pStack.hurtAndBreak(2, pAttacker, EquipmentSlot.MAINHAND);
     }
 
     @Override

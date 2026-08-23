@@ -26,7 +26,7 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
 
     @Override
     public <T extends LivingEntity> int damageItem(ItemStack stack, int amount, @Nullable T entity, Consumer<Item> onBroken) {
-        damageModularItem(stack, entity);
+        damageModularItem(stack, entity, amount);
         return 0;
     }
 

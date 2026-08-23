@@ -9,6 +9,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -20,6 +21,10 @@ import java.util.List;
 
 public interface ModularItemInterface {
     default void damageModularItem(ItemStack stack, LivingEntity entity) {
+        if (entity.hasInfiniteMaterials()) {
+            return;
+        }
+
         int bonusesUnbreaking = getAugmentBonuses(stack).UNBREAKING;
         // Unbreaking augment
         if (bonusesUnbreaking * 0.125f >= 1f || entity.getRandom().nextFloat() < bonusesUnbreaking * 0.125f) {
@@ -127,7 +132,7 @@ public interface ModularItemInterface {
             return;
         }
 
-        damageModularItem(pStack, pAttacker);
+        pStack.hurtAndBreak(1, pAttacker, EquipmentSlot.MAINHAND);
 
         AugmentObject bonuses = getAugmentBonuses(pStack);
 
