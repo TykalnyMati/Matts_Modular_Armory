@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    "B": {
+      "item": "minecraft:coal"
+    },
+    "C": {
+      "item": "minecraft:wither_skeleton_skull"
+    },
+    "D": {
+      "item": "minecraft:wither_rose"
+    }
+  },
+  "pattern": [
+    "BCB",
+    "DAD",
+    "BDB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:wither_augment"
+  }
+}

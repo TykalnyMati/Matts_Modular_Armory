@@ -986,5 +986,21 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.SPIDER_EYE,
                         Items.BLAZE_POWDER))
                 .save(pRecipeOutput);
+
+        // Wither Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WITHER_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("DAD")
+                .pattern("BDB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.COAL)
+                .define('C', Blocks.WITHER_SKELETON_SKULL)
+                .define('D', Blocks.WITHER_ROSE)
+                .unlockedBy("has_items_for_wither_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.COAL,
+                        Blocks.WITHER_SKELETON_SKULL,
+                        Blocks.WITHER_ROSE))
+                .save(pRecipeOutput);
     }
 }

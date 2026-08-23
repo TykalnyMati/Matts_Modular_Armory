@@ -157,6 +157,7 @@
   "item.mattsmodulararmory.void_augment": "Void Augment",
   "item.mattsmodulararmory.magnet_augment": "Magnet Augment",
   "item.mattsmodulararmory.poison_augment": "Poison Augment",
+  "item.mattsmodulararmory.wither_augment": "Wither Augment",
 
   "tooltip.mattsmodulararmory.broken": "Broken",
   "tooltip.mattsmodulararmory.augments": "Augments",
@@ -194,6 +195,7 @@
   "tooltip.mattsmodulararmory.void_augment": "Void",
   "tooltip.mattsmodulararmory.magnet_augment": "Magnet",
   "tooltip.mattsmodulararmory.poison_augment": "Poison",
+  "tooltip.mattsmodulararmory.wither_augment": "Wither",
 
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
   "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
@@ -238,6 +240,7 @@
   "tooltip.mattsmodulararmory.description.void_augment": "Voids drops of broken blocks",
   "tooltip.mattsmodulararmory.description.magnet_augment": "Attracts nearby items when the item is held",
   "tooltip.mattsmodulararmory.description.poison_augment": "Applies poison to the target\nHigher Levels increase poison level, but decrease duration",
+  "tooltip.mattsmodulararmory.description.wither_augment": "Applies wither to the target\nHigher Levels increase wither level, but decrease duration",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",

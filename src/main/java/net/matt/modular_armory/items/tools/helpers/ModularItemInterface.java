@@ -137,6 +137,7 @@ public interface ModularItemInterface {
         int impaling = bonuses.IMPALING;
         int knockback = bonuses.KNOCKBACK;
         int poison = bonuses.POISON;
+        int wither = bonuses.WITHER;
 
         boolean DO_ENCHANTED_PARTICLES = false;
 
@@ -210,6 +211,29 @@ public interface ModularItemInterface {
 
                 pTarget.addEffect(new MobEffectInstance(
                         MobEffects.POISON,
+                        duration,
+                        amplifier
+                ));
+            }
+
+            if (wither > 0) {
+                int duration;
+                int amplifier;
+
+                if (wither == 1) {
+                    duration = 20 * 9;
+                    amplifier = 0;
+                } else if (wither == 2) {
+                    duration = 20 * 6;
+                    amplifier = 1;
+                } else {
+                    duration = 20 * 4;
+                    amplifier = 2;
+                }
+
+
+                pTarget.addEffect(new MobEffectInstance(
+                        MobEffects.WITHER,
                         duration,
                         amplifier
                 ));

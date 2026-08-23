@@ -54,6 +54,7 @@ public class AugmentObject {
     public boolean VOID;
     public boolean MAGNET;
     public int POISON;
+    public int WITHER;
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
@@ -87,6 +88,7 @@ public class AugmentObject {
                     case "knockback_augment" -> this.KNOCKBACK = augmentStack.getCount();
                     case "fire_aspect_augment" -> this.FIRE_ASPECT = augmentStack.getCount();
                     case "poison_augment" -> this.POISON = augmentStack.getCount();
+                    case "wither_augment" -> this.WITHER = augmentStack.getCount();
 
                     // Armor specific augments
                     case "protection_augment" -> this.PROTECTION = augmentStack.getCount();
@@ -229,6 +231,11 @@ public class AugmentObject {
             if (this.POISON > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.poison_augment").withStyle(Style.EMPTY.withColor(0x76db4c))
                         .append(Component.literal(": " + toRoman(this.POISON)).withStyle(Style.EMPTY.withColor(0x76db4c))));
+            }
+
+            if (this.WITHER > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.wither_augment").withStyle(Style.EMPTY.withColor(0x764857))
+                        .append(Component.literal(": " + toRoman(this.WITHER)).withStyle(Style.EMPTY.withColor(0x764857))));
             }
 
             // ARMOR

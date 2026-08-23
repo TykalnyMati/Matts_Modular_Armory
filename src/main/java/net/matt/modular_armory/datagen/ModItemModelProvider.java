@@ -168,6 +168,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VOID_AUGMENT.get());
         basicItem(ModItems.MAGNET_AUGMENT.get());
         basicItem(ModItems.POISON_AUGMENT.get());
+        basicItem(ModItems.WITHER_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(DeferredHolder<Item, ? extends Item> item) {
