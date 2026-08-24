@@ -1,0 +1,44 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_modular_miner": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:advanced_modular_plate"
+          },
+          {
+            "items": "mattsmodulararmory:modular_processing_unit"
+          },
+          {
+            "items": "minecraft:redstone"
+          },
+          {
+            "items": "mattsmodulararmory:advanced_modular_clay_pickaxe"
+          },
+          {
+            "items": "mattsmodulararmory:modular_capacitor"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:modular_miner"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_modular_miner"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:modular_miner"
+    ]
+  }
+}

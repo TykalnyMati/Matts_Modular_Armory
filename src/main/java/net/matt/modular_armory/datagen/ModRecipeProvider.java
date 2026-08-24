@@ -215,7 +215,56 @@ public class ModRecipeProvider extends RecipeProvider {
                 ))
                 .save(pRecipeOutput);
 
-        // TODO add modular miner recipe
+        // Modular Capacitor
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.MODULAR_CAPACITOR.get(), 2)
+                .pattern(" A ")
+                .pattern("B B")
+                .pattern("B B")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.COPPER_INGOT)
+                .unlockedBy("has_items_for_modular_capacitor", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.COPPER_INGOT
+                ))
+                .save(pRecipeOutput);
+
+        // Modular Miner
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MODULAR_MINER.get())
+                .pattern("ABA")
+                .pattern("CDC")
+                .pattern("AEA")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', ModItems.MODULAR_PROCESSING_UNIT.get())
+                .define('C', Items.REDSTONE)
+                .define('D', ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
+                .define('E', ModItems.MODULAR_CAPACITOR.get())
+                .unlockedBy("has_items_for_modular_miner", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        ModItems.MODULAR_PROCESSING_UNIT.get(),
+                        Items.REDSTONE,
+                        ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get(),
+                        ModItems.MODULAR_CAPACITOR.get()
+                ))
+                .save(pRecipeOutput);
+
+        // Modular Builder
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.MODULAR_BUILDER.get())
+                .pattern("ABA")
+                .pattern("CDC")
+                .pattern("AEA")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', ModItems.MODULAR_PROCESSING_UNIT.get())
+                .define('C', Items.REDSTONE)
+                .define('D', Blocks.DISPENSER)
+                .define('E', ModItems.MODULAR_CAPACITOR.get())
+                .unlockedBy("has_items_for_modular_builder", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        ModItems.MODULAR_PROCESSING_UNIT.get(),
+                        Items.REDSTONE,
+                        Blocks.DISPENSER,
+                        ModItems.MODULAR_CAPACITOR.get()
+                ))
+                .save(pRecipeOutput);
 
         // Basic Filter
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.BASIC_FILTER.get())

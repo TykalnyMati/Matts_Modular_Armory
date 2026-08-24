@@ -36,6 +36,7 @@ public class ModCreativeModeTabs {
 
                         // Machine crafting parts
                         output.accept(ModItems.MODULAR_PROCESSING_UNIT.get());
+                        output.accept(ModItems.MODULAR_CAPACITOR.get());
 
                         // Machines
                         output.accept(ModBlocks.MODULAR_MINER.get());

@@ -30,6 +30,8 @@
   "item.mattsmodulararmory.modular_processing_unit": "Modular Processing Unit",
   "tooltip.mattsmodulararmory.used_for_crafting": "Used for crafting",
 
+  "item.mattsmodulararmory.modular_capacitor": "Modular Capacitor",
+
   "item.mattsmodulararmory.addon_template": "Addon Template",
   "tooltip.mattsmodulararmory.addon_template": "Used for crafting more specific addon types",
 
