@@ -421,6 +421,16 @@
   "block.mattsmodulararmory.modular_miner": "Modular Miner",
   "tooltip.mattsmodulararmory.modular_miner": "Mines blocks in an area in front of it",
 
+  "tooltip.mattsmodulararmory.modular_machine.power_usage1": "Working speed can be increased for ",
+  "tooltip.mattsmodulararmory.modular_machine.power_usage2": "100FE",
+  "tooltip.mattsmodulararmory.modular_machine.power_usage3": " per operation",
+
+  "tooltip.mattsmodulararmory.modular_machine.can_be_equipped": "Can be equipped with: ",
+  "tooltip.mattsmodulararmory.modular_machine.range_addons": "range addons",
+  "tooltip.mattsmodulararmory.modular_machine.comma": ", ",
+  "tooltip.mattsmodulararmory.modular_machine.augments": "augments",
+  "tooltip.mattsmodulararmory.modular_machine.filter": "filter",
+
   "block.mattsmodulararmory.modular_builder": "Modular Builder",
   "tooltip.mattsmodulararmory.modular_builder": "Places blocks in an area in front of it",
 

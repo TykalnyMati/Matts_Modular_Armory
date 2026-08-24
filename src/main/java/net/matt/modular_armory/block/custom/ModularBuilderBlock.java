@@ -7,6 +7,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
@@ -118,6 +119,17 @@ public class ModularBuilderBlock extends BaseEntityBlock {
     @Override
     public void appendHoverText(ItemStack pStack, Item.TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
         pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.modular_builder").withStyle(ChatFormatting.GRAY));
+
+        pTooltipComponents.add(
+                Component.translatable("tooltip.mattsmodulararmory.modular_machine.power_usage1").withStyle(ChatFormatting.GRAY)
+                .append(Component.translatable("tooltip.mattsmodulararmory.modular_machine.power_usage2").withStyle(Style.EMPTY.withColor(0xff0000)))
+                .append(Component.translatable("tooltip.mattsmodulararmory.modular_machine.power_usage3").withStyle(ChatFormatting.GRAY))
+        );
+
+        pTooltipComponents.add(
+                Component.translatable("tooltip.mattsmodulararmory.modular_machine.can_be_equipped").withStyle(ChatFormatting.GRAY)
+                        .append(Component.translatable("tooltip.mattsmodulararmory.modular_machine.range_addons").withStyle(ChatFormatting.GRAY))
+        );
 
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
