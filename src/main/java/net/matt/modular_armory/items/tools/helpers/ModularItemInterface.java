@@ -116,6 +116,35 @@ public interface ModularItemInterface {
         }
 
         // Weapons
+        if (bonuses.SHARPNESS > 0) {
+            enchantmentRegistry.get(Enchantments.SHARPNESS)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.SHARPNESS));
+        } else if (bonuses.SMITE > 0) {
+            enchantmentRegistry.get(Enchantments.SMITE)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.SMITE));
+        } else if (bonuses.BANE_OF_ARTHROPODS > 0) {
+            enchantmentRegistry.get(Enchantments.BANE_OF_ARTHROPODS)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.BANE_OF_ARTHROPODS));
+        } else if (bonuses.IMPALING > 0) {
+            enchantmentRegistry.get(Enchantments.IMPALING)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.IMPALING));
+        }
+
+        if (bonuses.LOOTING > 0) {
+            enchantmentRegistry.get(Enchantments.LOOTING)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.LOOTING));
+        }
+
+        if (bonuses.KNOCKBACK > 0) {
+            enchantmentRegistry.get(Enchantments.KNOCKBACK)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.KNOCKBACK));
+        }
+
+        if (bonuses.FIRE_ASPECT > 0) {
+            enchantmentRegistry.get(Enchantments.FIRE_ASPECT)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.FIRE_ASPECT));
+        }
+
 
         ItemEnchantments enchantmentsComponent = mutableEnchantments.toImmutable().withTooltip(false);
         itemStack.set(DataComponents.ENCHANTMENTS, enchantmentsComponent);
@@ -149,33 +178,9 @@ public interface ModularItemInterface {
 
         if (isBroken(weapon)) {
             return -baseDamage + 1;
+        } else {
+            return baseDamage;
         }
-
-        AugmentObject bonuses = getAugmentBonuses(weapon);
-        float bonusDamage = 0.0f;
-
-        int sharpness = bonuses.SHARPNESS;
-        int smite = bonuses.SMITE;
-        int bane_of_arthropods = bonuses.BANE_OF_ARTHROPODS;
-        int impaling = bonuses.IMPALING;
-
-        if (sharpness > 0) {
-            bonusDamage = 0.5f * sharpness  + 0.5f;
-        } else if (smite > 0) {
-            if (target.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
-                bonusDamage = 2.5f * smite;
-            }
-        } else if (bane_of_arthropods > 0) {
-            if (target.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
-                bonusDamage = 2.5f * bane_of_arthropods;
-            }
-        } else if (impaling > 0) {
-            if (target.getType().is(EntityTypeTags.SENSITIVE_TO_IMPALING)) {
-                bonusDamage = 2.5f * impaling;
-            }
-        }
-
-        return bonusDamage;
     }
 
     default void postWeaponHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
@@ -187,70 +192,10 @@ public interface ModularItemInterface {
 
         AugmentObject bonuses = getAugmentBonuses(pStack);
 
-        int sharpness = bonuses.SHARPNESS;
-        int smite = bonuses.SMITE;
-        int bane_of_arthropods = bonuses.BANE_OF_ARTHROPODS;
-        int impaling = bonuses.IMPALING;
-        int knockback = bonuses.KNOCKBACK;
         int poison = bonuses.POISON;
         int wither = bonuses.WITHER;
 
-        boolean DO_ENCHANTED_PARTICLES = false;
-
         if (pAttacker.level() instanceof ServerLevel serverLevel) {
-            // Damaging effects
-            if (sharpness > 0) {
-                DO_ENCHANTED_PARTICLES = true;
-            } else if (smite > 0) {
-                if (pTarget.getType().is(EntityTypeTags.SENSITIVE_TO_SMITE)) {
-                    DO_ENCHANTED_PARTICLES = true;
-                }
-            } else if (bane_of_arthropods > 0) {
-                if (pTarget.getType().is(EntityTypeTags.SENSITIVE_TO_BANE_OF_ARTHROPODS)) {
-                    DO_ENCHANTED_PARTICLES = true;
-
-                    // Random value between 1 and 1 + 0.5 seconds per level
-                    int duration = 20 + pAttacker.getRandom().nextInt(10 * bonuses.BANE_OF_ARTHROPODS);
-
-                    pTarget.addEffect(new MobEffectInstance(
-                            MobEffects.MOVEMENT_SLOWDOWN,
-                            duration,
-                            3
-                    ));
-                }
-            } else if (impaling > 0) {
-                if (pTarget.getType().is(EntityTypeTags.SENSITIVE_TO_IMPALING)) {
-                    DO_ENCHANTED_PARTICLES = true;
-                }
-            }
-
-            // Spawn particles
-            if (DO_ENCHANTED_PARTICLES) {
-                serverLevel.sendParticles(
-                        ParticleTypes.ENCHANTED_HIT,
-                        pTarget.getRandomX(0.5D),
-                        pTarget.getRandomY(),
-                        pTarget.getRandomZ(0.5D),
-                        24,
-                        0.0D,
-                        0.5D,
-                        0.0D,
-                        0.5D
-                );
-            }
-
-            // Knockback augment
-            if (knockback > 0) {
-                float strength = 0.5F * knockback;
-
-                double dx = Math.sin(pAttacker.getYRot() * Math.PI / 180.0);
-                double dz = -Math.cos(pAttacker.getYRot() * Math.PI / 180.0);
-
-                pTarget.knockback(strength, dx, dz);
-
-                pAttacker.setDeltaMovement(pAttacker.getDeltaMovement().multiply(0.6D, 1.0D, 0.6D));
-            }
-
             // Adding effects
             if (poison > 0) {
                 int duration;
