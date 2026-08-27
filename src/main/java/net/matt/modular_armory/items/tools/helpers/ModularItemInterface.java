@@ -1,7 +1,9 @@
 package net.matt.modular_armory.items.tools.helpers;
 
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.EntityTypeTags;
@@ -14,6 +16,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
@@ -40,6 +45,8 @@ public interface ModularItemInterface {
             stack.setDamageValue(stack.getMaxDamage() - 1);
 
             if (!entity.level().isClientSide()) {
+                removeVanillaEnchantments(stack);
+
                 entity.level().playSound(
                         null,
                         entity.blockPosition(),
@@ -50,7 +57,7 @@ public interface ModularItemInterface {
                 );
 
                 if (entity.level() instanceof ServerLevel serverLevel) {
-                    // This spawns the "explosion of tool bits" particles
+                    // Tool break particles
                     serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, stack),
                             entity.getX(), entity.getY() + 1.0, entity.getZ(),
                             5, 0.1, 0.1, 0.1, 0.05);
@@ -68,7 +75,14 @@ public interface ModularItemInterface {
     }
 
     default boolean isBroken(ItemStack item) {
-        return item.getDamageValue() >= item.getMaxDamage() - 1;
+            return item.getDamageValue() >= item.getMaxDamage() - 1;
+    }
+
+    // removes enchantments that were applied
+    default void removeVanillaEnchantments(ItemStack itemStack) {
+        EnchantmentHelper.updateEnchantments(itemStack, mutableEnchantments -> {
+            mutableEnchantments.keySet().clear();
+        });
     }
 
     default AugmentObject getAugmentBonuses(ItemStack stack) {
@@ -76,20 +90,57 @@ public interface ModularItemInterface {
         return Bonuses;
     }
 
-    default int repairFromXp(ItemStack stack, int xpAmount) {
-        if (!getAugmentBonuses(stack).MENDING) {
+    default void applyVanillaEnchantments(ItemStack itemStack, Level level) {
+        var enchantmentRegistry = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
+        AugmentObject bonuses = getAugmentBonuses(itemStack);
+
+        ItemEnchantments.Mutable mutableEnchantments = new ItemEnchantments.Mutable(
+                EnchantmentHelper.getEnchantmentsForCrafting(itemStack)
+        );
+
+        // Clear existing enchantments
+        mutableEnchantments.keySet().clear();
+
+        // Tools
+        if (bonuses.EFFICIENCY > 0) {
+            enchantmentRegistry.get(Enchantments.EFFICIENCY)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.EFFICIENCY));
+        }
+
+        if (bonuses.SILK_TOUCH) {
+            enchantmentRegistry.get(Enchantments.SILK_TOUCH)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, 1));
+        } else if(bonuses.FORTUNE > 0) {
+            enchantmentRegistry.get(Enchantments.FORTUNE)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.FORTUNE));
+        }
+
+        // Weapons
+
+        ItemEnchantments enchantmentsComponent = mutableEnchantments.toImmutable().withTooltip(false);
+        itemStack.set(DataComponents.ENCHANTMENTS, enchantmentsComponent);
+
+        itemStack.set(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, false);
+    }
+
+    default int repairFromXp(ItemStack stack, Level level, int xpAmount) {
+        if (!getAugmentBonuses(stack).MENDING || stack.getDamageValue() <= 0) {
             return xpAmount;
         }
 
-        if (stack.getDamageValue() <= 0) {
-            return xpAmount;
-        }
+        boolean wasBroken = isBroken(stack);
 
         int repairAmount = xpAmount * 2;
         int newDamage = Math.max(0, stack.getDamageValue() - repairAmount);
         int remainingXp = xpAmount - repairAmount / 2;
 
         stack.setDamageValue(newDamage);
+
+        // Reapply enchantments if the item was just fixed
+        if (wasBroken && !isBroken(stack)) {
+            applyVanillaEnchantments(stack, level);
+        }
+
         return remainingXp;
     }
 

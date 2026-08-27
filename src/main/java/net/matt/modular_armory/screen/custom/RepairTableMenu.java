@@ -2,6 +2,7 @@ package net.matt.modular_armory.screen.custom;
 
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.items.ModItems;
+import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.matt.modular_armory.screen.ModMenuTypes;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.network.FriendlyByteBuf;
@@ -70,9 +71,15 @@ public class RepairTableMenu extends ItemCombinerMenu {
 
         if (isValidRepair(tool, material) && tool.isDamaged()) {
             ItemStack result = tool.copy();
-            // Repair 50% of durability
-            int repairAmount = result.getMaxDamage() / 2;
+            // Repair 75% of durability
+            int repairAmount = (int) (result.getMaxDamage() * 0.75);
             result.setDamageValue(Math.max(0, result.getDamageValue() - repairAmount));
+
+            if(result.getItem() instanceof ModularItemInterface modularItem) {
+                this.access.execute((level, pos) -> {
+                    modularItem.applyVanillaEnchantments(result, level);
+                });
+            }
 
             this.resultSlots.setItem(0, result);
         } else {

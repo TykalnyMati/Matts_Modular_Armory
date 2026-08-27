@@ -71,7 +71,7 @@ public class ModEvents {
             }
 
             if (stack.getItem() instanceof ModularItemInterface modularItem) {
-                remainingXp = modularItem.repairFromXp(stack, remainingXp);
+                remainingXp = modularItem.repairFromXp(stack, event.getEntity().level(), remainingXp);
             }
         }
 
@@ -262,17 +262,15 @@ public class ModEvents {
 
             AugmentObject bonuses = modularTool.getAugmentBonuses(itemStack);
 
-            // Only intercept if the tool has Silk touch, Fortune, Auto Smelt and the tool is correct
-            if ((bonuses.SILK_TOUCH || bonuses.FORTUNE > 0 || bonuses.AUTO_SMELT) && !bonuses.VOID) {
-                // Create Simulation Tool
+            // Custom augments handling
+            if (bonuses.VOID) {
+                level.removeBlock(pos, false);
+                return;
+            }
+            else if (bonuses.AUTO_SMELT && !bonuses.SILK_TOUCH) {
                 ItemStack simulationTool = itemStack.copy();
-                if (bonuses.SILK_TOUCH) {
-                    simulationTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.SILK_TOUCH), 1);
-                } else {
-                    simulationTool.enchant(level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.FORTUNE), bonuses.FORTUNE);
-                }
 
-                // Calculate Item Drops
+                // Get item drops
                 LootParams.Builder builder = new LootParams.Builder(serverLevel)
                         .withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos))
                         .withParameter(LootContextParams.TOOL, simulationTool)
@@ -282,58 +280,37 @@ public class ModEvents {
 
                 List<ItemStack> drops = state.getDrops(builder);
 
-                // Handle Experience
-                // If it's Silk Touch, skip entirely
-                // If it's Fortune, manually spawn the XP
-                if (!bonuses.SILK_TOUCH) {
-                    int xp = state.getExpDrop(serverLevel, pos, level.getBlockEntity(pos), player, simulationTool);
-                    if (xp > 0) {
-                        state.getBlock().popExperience(serverLevel, pos, xp);
-                    }
-                }
+                int totalExp = state.getExpDrop(serverLevel, pos, null, player, itemStack);
 
                 // Auto smelting
-                if (bonuses.AUTO_SMELT && !bonuses.SILK_TOUCH) {
-                    for (int i = 0; i < drops.size(); i++) {
-                        ItemStack originalStack = drops.get(i);
-                        ItemStack smeltedResult = modularTool.getSmeltingResult(serverLevel, originalStack);
+                for (int i = 0; i < drops.size(); i++) {
+                    ItemStack originalStack = drops.get(i);
+                    ItemStack smeltedResult = modularTool.getSmeltingResult(serverLevel, originalStack);
 
-                        if (!smeltedResult.isEmpty()) {
-                            // Keep the count from the original drop
-                            ItemStack finalStack = smeltedResult.copy();
-                            finalStack.setCount(originalStack.getCount() * smeltedResult.getCount());
-                            drops.set(i, finalStack);
+                    if (!smeltedResult.isEmpty()) {
+                        // Keep the count from the original drop
+                        ItemStack finalStack = smeltedResult.copyWithCount(originalStack.getCount() * smeltedResult.getCount());
+                        drops.set(i, finalStack);
 
-                            // Spawning XP for the player
-                            float smeltingXp = modularTool.getSmeltingExperience(serverLevel, originalStack);
-                            if (smeltingXp > 0) {
-                                int xpToDrop = (int) smeltingXp + (serverLevel.random.nextFloat() < (smeltingXp % 1) ? 1 : 0);
-
-                                // Apply fortune for xp
-                                if (bonuses.FORTUNE > 0) {
-                                    xpToDrop *= bonuses.FORTUNE;
-                                }
-
-                                if (xpToDrop > 0) {
-                                    state.getBlock().popExperience(serverLevel, pos, xpToDrop);
-                                }
-                            }
-
-                            // Spawn fire particles to show smelting happened
-                            serverLevel.sendParticles(ParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5, 0.2, 0.2, 0.2, 0.05);
-                            modularTool.damageModularItem(itemStack, player);
-                        }
+                        // Spawn fire particles
+                        serverLevel.sendParticles(ParticleTypes.FLAME, pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5, 5, 0.2, 0.2, 0.2, 0.05);
+                        modularTool.damageModularItem(itemStack, player, 4);
                     }
                 }
+
                 // Break the block
                 level.removeBlock(pos, false);
+                modularTool.damageModularItem(itemStack, player);
+
                 for (ItemStack drop : drops) {
                     Block.popResource(level, pos, drop);
                 }
 
-                modularTool.damageModularItem(itemStack, player);
-            } else if (bonuses.VOID) {
-                level.removeBlock(pos, false);
+                if (totalExp > 0) {
+                    state.getBlock().popExperience(serverLevel, pos, totalExp);
+                }
+
+                event.setCanceled(true);
             }
         }
     }

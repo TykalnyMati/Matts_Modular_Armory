@@ -226,7 +226,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         AugmentObject bonuses = getAugmentBonuses(stack);
 
         if (state.is(mineableTag)) {
-            base += (float) (1.0f * (Math.pow(bonuses.EFFICIENCY, 2) + 1 + (bonuses.DIAMOND_SHARPENED ? 2 : 0)));
+            base += (float) (1.0f * (1 + (bonuses.DIAMOND_SHARPENED ? 2 : 0)));
         }
         return base;
 

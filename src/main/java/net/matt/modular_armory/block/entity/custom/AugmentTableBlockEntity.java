@@ -3,6 +3,7 @@ package net.matt.modular_armory.block.entity.custom;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.items.tools.helpers.AugmentGeneric;
+import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.matt.modular_armory.screen.custom.AugmentTableMenu;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
@@ -183,6 +184,13 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
         }
 
         stack.set(ModDataComponentTypes.AUGMENTS.get(), augments);
+        applyEnchantmentAugmentsToItem(stack);
+    }
+
+    private void applyEnchantmentAugmentsToItem(ItemStack stack) {
+        if (stack.getItem() instanceof ModularItemInterface modularItem) {
+            modularItem.applyVanillaEnchantments(stack, level);
+        }
     }
 
     // Loading augments from the item
