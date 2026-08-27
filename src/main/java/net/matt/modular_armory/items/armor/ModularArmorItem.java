@@ -39,37 +39,6 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
         ItemAttributeModifiers modifiers = super.getDefaultAttributeModifiers(stack);
         AugmentObject bonuses = new AugmentObject(stack);
 
-        // Protections
-        if (bonuses.PROTECTION > 0) {
-
-        } else if (bonuses.BLAST_PROTECTION > 0) {
-            double resistanceAmount = bonuses.BLAST_PROTECTION * 0.15;
-            resistanceAmount = Math.min(1.0, resistanceAmount);
-
-            ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID,
-                    "blast_protection_knockback_resistance_" + this.getType().getName());
-
-            modifiers = modifiers.withModifierAdded(
-                    Attributes.EXPLOSION_KNOCKBACK_RESISTANCE,
-                    new AttributeModifier(modifierId, resistanceAmount, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.bySlot(this.getType().getSlot())
-            );
-        } else if (bonuses.PROJECTILE_PROTECTION > 0) {
-
-        } else if (bonuses.FIRE_PROTECTION > 0) {
-            double burnTimeReduction = bonuses.FIRE_PROTECTION * -0.15;
-            burnTimeReduction = Math.max(-1.0, burnTimeReduction);
-
-            ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID,
-                    "fire_protection_burn_time_" + this.getType().getName());
-
-            modifiers = modifiers.withModifierAdded(
-                    Attributes.BURNING_TIME,
-                    new AttributeModifier(modifierId, burnTimeReduction, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.bySlot(this.getType().getSlot())
-            );
-        }
-
         // Respiration
         if (bonuses.RESPIRATION > 0) {
             ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID,

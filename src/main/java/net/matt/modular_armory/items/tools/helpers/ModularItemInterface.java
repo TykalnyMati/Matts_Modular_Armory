@@ -145,6 +145,26 @@ public interface ModularItemInterface {
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.FIRE_ASPECT));
         }
 
+        // Armor
+        if (bonuses.PROTECTION > 0) {
+            enchantmentRegistry.get(Enchantments.PROTECTION)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.PROTECTION));
+        } else if (bonuses.BLAST_PROTECTION > 0) {
+            enchantmentRegistry.get(Enchantments.BLAST_PROTECTION)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.BLAST_PROTECTION));
+        } else if (bonuses.PROJECTILE_PROTECTION > 0) {
+            enchantmentRegistry.get(Enchantments.PROJECTILE_PROTECTION)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.PROJECTILE_PROTECTION));
+        } else if (bonuses.FIRE_PROTECTION > 0) {
+            enchantmentRegistry.get(Enchantments.FIRE_PROTECTION)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.FIRE_PROTECTION));
+        }
+
+        if (bonuses.THORNS > 0) {
+            enchantmentRegistry.get(Enchantments.THORNS)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.THORNS));
+        }
+
 
         ItemEnchantments enchantmentsComponent = mutableEnchantments.toImmutable().withTooltip(false);
         itemStack.set(DataComponents.ENCHANTMENTS, enchantmentsComponent);

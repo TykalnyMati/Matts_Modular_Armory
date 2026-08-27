@@ -184,12 +184,15 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
         }
 
         stack.set(ModDataComponentTypes.AUGMENTS.get(), augments);
+
         applyEnchantmentAugmentsToItem(stack);
     }
 
     private void applyEnchantmentAugmentsToItem(ItemStack stack) {
         if (stack.getItem() instanceof ModularItemInterface modularItem) {
-            modularItem.applyVanillaEnchantments(stack, level);
+            if (!modularItem.isBroken(stack)) {
+                modularItem.applyVanillaEnchantments(stack, level);
+            }
         }
     }
 
