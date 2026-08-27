@@ -176,6 +176,12 @@ public interface ModularItemInterface {
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.AQUA_AFFINITY));
         }
 
+        // Leggings
+        if (bonuses.SWIFT_SNEAK > 0) {
+            enchantmentRegistry.get(Enchantments.SWIFT_SNEAK)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.SWIFT_SNEAK));
+        }
+
 
         ItemEnchantments enchantmentsComponent = mutableEnchantments.toImmutable().withTooltip(false);
         itemStack.set(DataComponents.ENCHANTMENTS, enchantmentsComponent);

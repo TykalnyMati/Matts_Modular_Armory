@@ -39,21 +39,6 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
         ItemAttributeModifiers modifiers = super.getDefaultAttributeModifiers(stack);
         AugmentObject bonuses = new AugmentObject(stack);
 
-
-        // Swift Sneak
-        if (bonuses.SWIFT_SNEAK > 0) {
-            ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID,
-                    "swift_sneak_" + this.getType().getName());
-
-            double sneakBonus = bonuses.SWIFT_SNEAK * 0.15;
-
-            modifiers = modifiers.withModifierAdded(
-                    Attributes.SNEAKING_SPEED,
-                    new AttributeModifier(modifierId, sneakBonus, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.bySlot(this.getType().getSlot())
-            );
-        }
-
         // Depth Strider
         if (bonuses.DEPTH_STRIDER > 0 && bonuses.FROST_WALKER <= 0) {
             ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID,
