@@ -165,6 +165,17 @@ public interface ModularItemInterface {
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.THORNS));
         }
 
+        // Helmet
+        if (bonuses.RESPIRATION > 0) {
+            enchantmentRegistry.get(Enchantments.RESPIRATION)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.RESPIRATION));
+        }
+
+        if (bonuses.AQUA_AFFINITY > 0) {
+            enchantmentRegistry.get(Enchantments.AQUA_AFFINITY)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.AQUA_AFFINITY));
+        }
+
 
         ItemEnchantments enchantmentsComponent = mutableEnchantments.toImmutable().withTooltip(false);
         itemStack.set(DataComponents.ENCHANTMENTS, enchantmentsComponent);
