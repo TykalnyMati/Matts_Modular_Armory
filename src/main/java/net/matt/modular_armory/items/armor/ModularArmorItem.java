@@ -36,24 +36,7 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
             return ItemAttributeModifiers.EMPTY;
         }
 
-        ItemAttributeModifiers modifiers = super.getDefaultAttributeModifiers(stack);
-        AugmentObject bonuses = new AugmentObject(stack);
-
-        // Depth Strider
-        if (bonuses.DEPTH_STRIDER > 0 && bonuses.FROST_WALKER <= 0) {
-            ResourceLocation modifierId = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID,
-                    "depth_strider_" + this.getType().getName());
-
-            double depthBonus = bonuses.DEPTH_STRIDER * 0.3333;
-
-            modifiers = modifiers.withModifierAdded(
-                    Attributes.WATER_MOVEMENT_EFFICIENCY,
-                    new AttributeModifier(modifierId, depthBonus, AttributeModifier.Operation.ADD_VALUE),
-                    EquipmentSlotGroup.bySlot(this.getType().getSlot())
-            );
-        }
-
-        return modifiers;
+        return super.getDefaultAttributeModifiers(stack);
     }
 
     // Anvil repairing and enchanting

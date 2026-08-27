@@ -182,6 +182,25 @@ public interface ModularItemInterface {
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.SWIFT_SNEAK));
         }
 
+        // Boots
+        if (bonuses.FEATHER_FALLING > 0) {
+            enchantmentRegistry.get(Enchantments.FEATHER_FALLING)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.FEATHER_FALLING));
+        }
+
+        if (bonuses.FROST_WALKER > 0) {
+            enchantmentRegistry.get(Enchantments.FROST_WALKER)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.FROST_WALKER));
+        } else if (bonuses.DEPTH_STRIDER > 0) {
+            enchantmentRegistry.get(Enchantments.DEPTH_STRIDER)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.DEPTH_STRIDER));
+        }
+
+        if (bonuses.SOUL_SPEED > 0) {
+            enchantmentRegistry.get(Enchantments.SOUL_SPEED)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.SOUL_SPEED));
+        }
+
 
         ItemEnchantments enchantmentsComponent = mutableEnchantments.toImmutable().withTooltip(false);
         itemStack.set(DataComponents.ENCHANTMENTS, enchantmentsComponent);
