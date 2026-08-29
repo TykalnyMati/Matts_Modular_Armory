@@ -1,6 +1,7 @@
 package net.matt.modular_armory;
 
 import com.mojang.logging.LogUtils;
+import guideme.Guide;
 import net.matt.modular_armory.block.ModBlocks;
 import net.matt.modular_armory.block.entity.ModBlockEntities;
 import net.matt.modular_armory.block.entity.renderer.AugmentTableBlockEntityRenderer;
@@ -13,6 +14,7 @@ import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.recipe.ModRecipes;
 import net.matt.modular_armory.screen.ModMenuTypes;
 import net.matt.modular_armory.screen.custom.*;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -48,6 +50,9 @@ public class MattsModularArmory {
 
         // Adding items
         ModItems.register(modEventBus);
+
+        // Registering Guide
+        var guide = Guide.builder(ResourceLocation.fromNamespaceAndPath(MOD_ID, "guide")).build();
 
         // Adding Blocks
         ModBlocks.register(modEventBus);

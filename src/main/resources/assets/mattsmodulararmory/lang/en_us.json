@@ -1,6 +1,8 @@
 {
   "creativetab.mattsmodulararmory.mattsmodulararmory": "Matt's Modular Armory",
 
+  "item.mattsmodulararmory.guide_book": "Matt's Modular Armory Guide",
+
   "item.mattsmodulararmory.modular_clay": "Modular Clay",
   "item.mattsmodulararmory.basic_modular_plate": "Basic Modular Plate",
   "tooltip.mattsmodulararmory.generic_plate": "Insert into the Modular Assembler to create: ",

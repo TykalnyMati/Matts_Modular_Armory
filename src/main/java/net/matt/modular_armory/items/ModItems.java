@@ -6,6 +6,7 @@ import net.matt.modular_armory.items.addons.ModularAugmentAddon;
 import net.matt.modular_armory.items.addons.ModularRangeAddon;
 import net.matt.modular_armory.items.armor.ModularArmorItem;
 import net.matt.modular_armory.items.custom.FleshMealItem;
+import net.matt.modular_armory.items.custom.GuideBookItem;
 import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
 import net.matt.modular_armory.items.tools.*;
 import net.matt.modular_armory.items.tools.helpers.AugmentGeneric;
@@ -25,6 +26,9 @@ import java.util.List;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, MattsModularArmory.MOD_ID);
+
+    public static final DeferredHolder<Item, Item> GUIDE_BOOK = ITEMS.register("guide_book",
+            () -> new GuideBookItem(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     public static final DeferredHolder<Item, Item> MODULAR_CLAY = ITEMS.register("modular_clay", () -> new Item(new Item.Properties()));
 

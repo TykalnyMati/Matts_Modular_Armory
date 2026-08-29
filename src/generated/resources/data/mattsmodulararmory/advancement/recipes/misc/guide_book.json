@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_guide_book": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:book"
+          },
+          {
+            "items": "mattsmodulararmory:basic_modular_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:guide_book"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_guide_book"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:guide_book"
+    ]
+  }
+}

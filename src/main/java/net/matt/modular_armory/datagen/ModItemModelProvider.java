@@ -40,6 +40,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        basicItem(ModItems.GUIDE_BOOK.get());
         basicItem(ModItems.MODULAR_CLAY.get());
         basicItem(ModItems.BASIC_MODULAR_PLATE.get());
         basicItem(ModItems.MODULAR_CLAY_EXTRACTOR.get());

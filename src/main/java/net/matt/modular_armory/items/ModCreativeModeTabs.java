@@ -17,6 +17,7 @@ public class ModCreativeModeTabs {
             () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.MODULAR_CLAY.get()))
                     .title(Component.translatable("creativetab.mattsmodulararmory.mattsmodulararmory"))
                     .displayItems((itemDisplayParameters, output) -> {
+                        output.accept(ModItems.GUIDE_BOOK.get());
                         output.accept(ModItems.MODULAR_CLAY.get());
                         output.accept(ModBlocks.MODULAR_CLAY_BLOCK.get());
                         output.accept(ModItems.BASIC_MODULAR_PLATE.get());

@@ -24,6 +24,14 @@ public class ModRecipeProvider extends RecipeProvider {
 
     @Override
     protected void buildRecipes(RecipeOutput pRecipeOutput) {
+        // Guide Book
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GUIDE_BOOK.get())
+                .requires(Items.BOOK)
+                .requires(ModItems.BASIC_MODULAR_PLATE.get())
+                .unlockedBy("has_items_for_guide_book", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        Items.BOOK,
+                        ModItems.BASIC_MODULAR_PLATE.get()))
+                .save(pRecipeOutput);
 
         // Modular Clay
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MODULAR_CLAY.get(), 2)
