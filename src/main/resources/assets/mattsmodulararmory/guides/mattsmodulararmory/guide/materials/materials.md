@@ -2,21 +2,17 @@
 navigation:
   title: Materials
   position: 2
-  icon: mattsmodulararmory:modular_clay
+  icon: modular_clay
 ---
 
 # Materials
-The basic material that is used as a building block of the entire mod is
+The basic material that is used as a building block of the entire mod is <Row alignItems="center" gap="1"><ItemImage id="modular_clay" scale="0.75"/><ItemLink id="modular_clay"/></Row>
 
-<ItemImage id="mattsmodulararmory:modular_clay"/> [Modular Clay](modular_clay.md)
+## Tools, weapons and armor is made from 4 main materials:
 
-## Tools and armor is made from 4 main materials:
-
-| Name                                                                                   | Vanilla Equivalent |
-|----------------------------------------------------------------------------------------|--------------------|
-| <ItemImage id="mattsmodulararmory:basic_modular_plate"/>Modular Clay Plate             | Stone              |
-| <ItemImage id="mattsmodulararmory:advanced_modular_plate"/>Advanced Modular Clay Plate | Iron               |
-| <ItemImage id="mattsmodulararmory:adaptive_flesh_plate"/>Adaptive Flesh Plate          | Diamond            |
-| <ItemImage id="mattsmodulararmory:biorite_plate"/>Biorite Plate                        | Netherrite         |
-
-test
+|                                                           Material                                                           |                    Vanilla Equivalent                     |
+|:----------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------:|
+|    <ItemImage id="basic_modular_plate"/><br/><ItemLink id="basic_modular_plate" components="hide_additional_tooltip={}"/>    |        <ItemImage id="minecraft:stone"/><br/>Stone        |
+| <ItemImage id="advanced_modular_plate"/><br/><ItemLink id="advanced_modular_plate" components="hide_additional_tooltip={}"/> |      <ItemImage id="minecraft:iron_ingot"/><br/>Iron      |
+|                               <ItemImage id="adaptive_flesh_plate"/><br/>Adaptive Flesh Plate                                |      <ItemImage id="minecraft:diamond"/><br/>Diamond      |
+|                                      <ItemImage id="biorite_plate"/><br/>Biorite Plate                                       | <ItemImage id="minecraft:netherite_ingot"/><br/>Netherite |

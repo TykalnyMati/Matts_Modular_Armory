@@ -5,7 +5,7 @@
 
   "item.mattsmodulararmory.modular_clay": "Modular Clay",
   "item.mattsmodulararmory.basic_modular_plate": "Basic Modular Plate",
-  "tooltip.mattsmodulararmory.generic_plate": "Insert into the Modular Assembler to create: ",
+  "tooltip.mattsmodulararmory.generic_plate": "In Modular Assembler crafts: ",
   "tooltip.mattsmodulararmory.basic_modular_plate": "Modular Clay Items",
 
   "item.mattsmodulararmory.modular_clay_extractor": "Modular Clay Extractor",
