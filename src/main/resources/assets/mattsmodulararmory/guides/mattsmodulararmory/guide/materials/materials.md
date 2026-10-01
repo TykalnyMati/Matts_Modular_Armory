@@ -14,5 +14,5 @@ The basic material that is used as a building block of the entire mod is <Row al
 |:----------------------------------------------------------------------------------------------------------------------------:|:---------------------------------------------------------:|
 |    <ItemImage id="basic_modular_plate"/><br/><ItemLink id="basic_modular_plate" components="hide_additional_tooltip={}"/>    |        <ItemImage id="minecraft:stone"/><br/>Stone        |
 | <ItemImage id="advanced_modular_plate"/><br/><ItemLink id="advanced_modular_plate" components="hide_additional_tooltip={}"/> |      <ItemImage id="minecraft:iron_ingot"/><br/>Iron      |
-|                               <ItemImage id="adaptive_flesh_plate"/><br/>Adaptive Flesh Plate                                |      <ItemImage id="minecraft:diamond"/><br/>Diamond      |
-|                                      <ItemImage id="biorite_plate"/><br/>Biorite Plate                                       | <ItemImage id="minecraft:netherite_ingot"/><br/>Netherite |
+|   <ItemImage id="adaptive_flesh_plate"/><br/><ItemLink id="adaptive_flesh_plate" components="hide_additional_tooltip={}"/>   |      <ItemImage id="minecraft:diamond"/><br/>Diamond      |
+|          <ItemImage id="biorite_plate"/><br/><ItemLink id="biorite_plate" components="hide_additional_tooltip={}"/>          | <ItemImage id="minecraft:netherite_ingot"/><br/>Netherite |

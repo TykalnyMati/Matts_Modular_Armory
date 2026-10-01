@@ -11,6 +11,8 @@ item_ids:
 
 # Modular Clay Plate
 
+**Clay Given Form**
+
 ## The most basic material for crafting tools, weapons and armor
 
 Items made from this are similar in speed and damage to stone items
