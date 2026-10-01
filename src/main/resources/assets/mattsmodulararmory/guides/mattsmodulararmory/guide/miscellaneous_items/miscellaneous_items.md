@@ -1,11 +1,11 @@
 ---
 navigation:
-  title: Miscellaneous items
+  title: Miscellaneous Items
   position: 6
   icon: modular_clay_extractor
 ---
 
-# Miscellaneous items
+# Miscellaneous Items
 ## Here is a list of items that do not fit other categories:
 
 - <Row alignItems="center" gap="1"><ItemImage id="modular_clay_extractor" scale="0.75"/><ItemLink id="modular_clay_extractor"/></Row>
