@@ -7,12 +7,12 @@ navigation:
 
 # Modular Items
 
-Modular items are made in a Modular Assembler and are made from [plates](../materials/materials.md):
+### Modular items are made in a Modular Assembler and are made from [plates](../materials/materials.md):
 
 <Recipe id="modular_assembler"/>
 
 ## Higher Tier modular items can support higher tiers of augments 
-### All modular items support generic augments
+### All modular items support [generic augments](../augments/generic_augments.md)
 
 # There are different types of modular items:
 
