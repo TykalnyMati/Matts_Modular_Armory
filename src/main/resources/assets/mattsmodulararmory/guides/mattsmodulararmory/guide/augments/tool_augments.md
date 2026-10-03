@@ -13,6 +13,9 @@ item_ids:
   - diamond_sharpened_augment
   - modular_clay_extractor_augment
   - scaffolding_augment
+  - illuminator_augment
+  - void_augment
+  - magnet_augment
 ---
 
 # Tool Augments
@@ -73,3 +76,22 @@ The block starts breaking when no entity is on top of it for a set amount of tim
 The amount of time to break changes with level, on the first level it's 2 seconds, every level adds a bonus second to the breaking time
 
 <Recipe id="scaffolding_augment" />
+
+# Illuminator Augment:
+Right-clicking with the tool creates a slightly visible light
+
+Consumes 5 durability per use
+
+<Recipe id="illuminator_augment" />
+
+# Void Augment:
+Voids drops of broken blocks
+
+<Recipe id="void_augment" />
+
+# Magnet Augment:
+Attracts items in the range of 4 block to the player when the item is held
+
+Can also be applied to weapons
+
+<Recipe id="magnet_augment" />
