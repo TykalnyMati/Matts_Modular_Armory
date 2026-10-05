@@ -9,7 +9,7 @@ navigation:
 
 ### Augments are modifiers that can be inserted into [modular items](../modular_items/modular_items.md)
 
-### To insert augments into modular items you need to use the Augment Table:
+### To insert augments into modular items you need to use the <ItemLink id="augment_table" />:
 
 <Recipe id="augment_table" />
 
@@ -34,6 +34,3 @@ Numbers on the bottom of the tooltip are equivalent to tool tier and how many au
 - [Tool](../augments/tool_augments.md)
 - [Weapon](../augments/weapon_augments.md)
 - [Armor](../augments/armor_augments.md)
-  - [Armor: Head](../augments/armor_head_augments.md)
-  - [Armor: Legs](../augments/armor_legs_augments.md)
-  - [Armor: Feet](../augments/armor_feet_augments.md)

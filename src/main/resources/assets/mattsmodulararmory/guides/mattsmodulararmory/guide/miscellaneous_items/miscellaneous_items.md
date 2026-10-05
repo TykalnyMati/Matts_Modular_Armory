@@ -1,7 +1,7 @@
 ---
 navigation:
   title: Miscellaneous Items
-  position: 6
+  position: 7
   icon: modular_clay_extractor
 ---
 
