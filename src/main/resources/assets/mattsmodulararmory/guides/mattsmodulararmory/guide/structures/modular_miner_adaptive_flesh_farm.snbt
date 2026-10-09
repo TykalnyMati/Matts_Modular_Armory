@@ -1,0 +1,32 @@
+{
+    DataVersion: 3955,
+    size: [3, 3, 4],
+    data: [
+        {pos: [0, 0, 1], state: "minecraft:clay"},
+        {pos: [0, 0, 2], state: "mattsmodulararmory:adaptive_flesh_block"},
+        {pos: [0, 0, 3], state: "minecraft:clay"},
+        {pos: [1, 0, 1], state: "minecraft:clay"},
+        {pos: [1, 0, 2], state: "minecraft:clay"},
+        {pos: [1, 0, 3], state: "mattsmodulararmory:adaptive_flesh_block"},
+        {pos: [2, 0, 1], state: "minecraft:clay"},
+        {pos: [2, 0, 2], state: "minecraft:clay"},
+        {pos: [2, 0, 3], state: "minecraft:clay"},
+        {pos: [0, 1, 3], state: "minecraft:clay"},
+        {pos: [1, 1, 0], state: "mattsmodulararmory:modular_miner{facing:south,lit:false}", nbt: {energy: 0, id: "mattsmodulararmory:modular_miner_be", inventory: {Items: [{Slot: 11, count: 1, id: "mattsmodulararmory:range_addon_copper"}, {Slot: 12, count: 1, id: "mattsmodulararmory:range_addon_coal"}, {Slot: 13, count: 1, id: "mattsmodulararmory:range_addon_coal"}], Size: 14}, miner.currentDepth: 1, miner.currentHeight: 0, miner.currentWidth: 0, miner.movingPositiveWidth: 1b, miner.rangeDisplayState: 0b, miner.redstoneMode: 0, miner.tickCounter: 0}},
+        {pos: [1, 1, 2], state: "mattsmodulararmory:infectious_adaptive_flesh_block"},
+        {pos: [2, 1, 1], state: "minecraft:clay"},
+        {pos: [2, 1, 3], state: "mattsmodulararmory:adaptive_flesh_block"},
+        {pos: [0, 2, 2], state: "minecraft:clay"},
+        {pos: [0, 2, 3], state: "mattsmodulararmory:adaptive_flesh_block"},
+        {pos: [1, 2, 3], state: "minecraft:clay"},
+        {pos: [2, 2, 2], state: "minecraft:clay"},
+        {pos: [2, 2, 3], state: "minecraft:clay"}
+    ],
+    entities: [],
+    palette: [
+        "minecraft:clay",
+        "mattsmodulararmory:adaptive_flesh_block",
+        "mattsmodulararmory:infectious_adaptive_flesh_block",
+        "mattsmodulararmory:modular_miner{facing:south,lit:false}"
+    ]
+}

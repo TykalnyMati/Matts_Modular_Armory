@@ -10,3 +10,7 @@ item_ids:
 ---
 
 # Exposer Slot Plug
+
+When inserted into <ItemLink id="exposer" /> allows for it to create items from nothing, like for example cobblestone
+
+<Recipe id="exposer_slot_plug" />

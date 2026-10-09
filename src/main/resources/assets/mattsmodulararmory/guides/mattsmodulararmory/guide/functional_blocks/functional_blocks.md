@@ -31,6 +31,7 @@ This block allows for the insertion of [augments](../augments/augments.md) into 
 <Recipe id="augment_table" />
 
 ![Augment Table GUI](../images/augment_table.png)
+![Augment Table GUI](../images/augment_table_2.png)
 
 The middle slot is where you insert the modular item, after that the other slots are unlocked and filled with tool's augments, augments can be freely inserted and taken out
 
