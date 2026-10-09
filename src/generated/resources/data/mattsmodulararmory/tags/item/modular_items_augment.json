@@ -32,6 +32,7 @@
     "mattsmodulararmory:void_augment",
     "mattsmodulararmory:magnet_augment",
     "mattsmodulararmory:poison_augment",
-    "mattsmodulararmory:wither_augment"
+    "mattsmodulararmory:wither_augment",
+    "mattsmodulararmory:pumpkin_lens_augment"
   ]
 }

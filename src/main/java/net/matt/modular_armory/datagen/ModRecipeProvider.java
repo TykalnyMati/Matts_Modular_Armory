@@ -1108,5 +1108,19 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.WITHER_SKELETON_SKULL,
                         Blocks.WITHER_ROSE))
                 .save(pRecipeOutput);
+
+        // Pumpkin Lens Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PUMPKIN_LENS_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("CAC")
+                .pattern("BBB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.ORANGE_STAINED_GLASS_PANE)
+                .define('C', Blocks.CARVED_PUMPKIN)
+                .unlockedBy("has_items_for_pumpkin_lens_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.ORANGE_STAINED_GLASS_PANE,
+                        Blocks.CARVED_PUMPKIN))
+                .save(pRecipeOutput);
     }
 }

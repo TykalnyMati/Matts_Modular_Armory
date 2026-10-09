@@ -175,6 +175,9 @@ public class ModCreativeModeTabs {
                         // Weapons
                         output.accept(ModItems.POISON_AUGMENT.get());
                         output.accept(ModItems.WITHER_AUGMENT.get());
+
+                        // Armor
+                        output.accept(ModItems.PUMPKIN_LENS_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

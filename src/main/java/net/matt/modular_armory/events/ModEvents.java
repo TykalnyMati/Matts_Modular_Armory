@@ -11,6 +11,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
@@ -32,6 +33,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.AnvilUpdateEvent;
 import net.neoforged.neoforge.event.GrindstoneEvent;
+import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
@@ -223,6 +225,19 @@ public class ModEvents {
                 }
 
                 event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onEndermanAnger(EnderManAngerEvent event) {
+        if (event.getPlayer() instanceof Player player) {
+            ItemStack headSlot = player.getItemBySlot(EquipmentSlot.HEAD);
+
+            if (headSlot.getItem() instanceof ModularItemInterface modularItem) {
+                if (!modularItem.isBroken(headSlot) && modularItem.getAugmentBonuses(headSlot).PUMPKIN_LENS) {
+                    event.setCanceled(true);
+                }
             }
         }
     }

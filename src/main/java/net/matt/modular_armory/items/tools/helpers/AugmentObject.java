@@ -55,6 +55,7 @@ public class AugmentObject {
     public boolean MAGNET;
     public int POISON;
     public int WITHER;
+    public boolean PUMPKIN_LENS;
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
@@ -99,6 +100,7 @@ public class AugmentObject {
 
                     case "respiration_augment" -> this.RESPIRATION = augmentStack.getCount();
                     case "aqua_affinity_augment" -> this.AQUA_AFFINITY = augmentStack.getCount();
+                    case "pumpkin_lens_augment" -> this.PUMPKIN_LENS = true;
 
                     case "swift_sneak_augment" -> this.SWIFT_SNEAK = augmentStack.getCount();
 
@@ -267,6 +269,10 @@ public class AugmentObject {
             if (this.AQUA_AFFINITY > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.aqua_affinity_augment")
                         .append(Component.literal(": " + toRoman(this.AQUA_AFFINITY))).withStyle(ChatFormatting.AQUA));
+            }
+
+            if (this.PUMPKIN_LENS) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.pumpkin_lens_augment").withStyle(ChatFormatting.GOLD));
             }
 
             // Leggings
