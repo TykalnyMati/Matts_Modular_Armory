@@ -1,9 +1,9 @@
 {
   "description": {
-    "text": "Vampire"
+    "text": "[unused] Vampire"
   },
   "exclusive_set": "#minecraft:exclusive_set/armor",
-  "supported_items": "#minecraft:enchantable/head",
+  "supported_items": "#minecraft:enchantable/head_armor",
   "weight": 1,
   "max_level": 1,
   "min_cost": {
