@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-09T23:41:02.1283125	Item Models: mattsmodulararmory
+// 1.21.1	2026-10-10T21:06:15.0035876	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -176,6 +176,7 @@ c829364b78f83634a2a578d789ca23f554a2d34e assets/mattsmodulararmory/models/item/f
 d8dcc54dffb53312c42efb31d5bf647657e8fe1f assets/mattsmodulararmory/models/item/fortune_augment.json
 c02156e85bf702bb47005eecb14eae4584259f8a assets/mattsmodulararmory/models/item/fortune_augment_addon.json
 1032fb05baaf0bbeb4be03748e7e2cb0972f0346 assets/mattsmodulararmory/models/item/frost_walker_augment.json
+980e4fbf94f7f20444475784fe26153a9672fc97 assets/mattsmodulararmory/models/item/gilded_augment.json
 af7ab740242b5037a411bbeffd3dbcf5d460674b assets/mattsmodulararmory/models/item/guide_book.json
 795993a126fa17bfa9149fc0fa74e0411eff03fb assets/mattsmodulararmory/models/item/illuminator_augment.json
 5dc880793072692d4a49e79ad4c1b41447810d87 assets/mattsmodulararmory/models/item/impaling_augment.json
@@ -259,6 +260,7 @@ e254ad7a8f9a91e7609a9018d476f72feb4b662a assets/mattsmodulararmory/models/item/s
 9816f18c98c11253ce45da1cd5caa1a65028c749 assets/mattsmodulararmory/models/item/silk_touch_augment_addon.json
 09f409f7b633b135818ff6038b18ec708ecabb57 assets/mattsmodulararmory/models/item/smite_augment.json
 cd72470c70c7767f88a6b82c6885d77131e08315 assets/mattsmodulararmory/models/item/soul_speed_augment.json
+fe274218c4af66386468ef0f72ef91302f9917b4 assets/mattsmodulararmory/models/item/super_gilded_augment.json
 432a6366c7b7dd1e4b4b5ac40c401952fed24cf6 assets/mattsmodulararmory/models/item/swift_sneak_augment.json
 c9ab4955d38b4c81dae67f01ab771b86596dc519 assets/mattsmodulararmory/models/item/thorns_augment.json
 eea2dbdf83976bca98b8a73329ae5d3aaacebe3d assets/mattsmodulararmory/models/item/unbreaking_augment.json

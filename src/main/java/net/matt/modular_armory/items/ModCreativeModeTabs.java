@@ -177,6 +177,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WITHER_AUGMENT.get());
 
                         // Armor
+                        output.accept(ModItems.GILDED_AUGMENT.get());
+                        output.accept(ModItems.SUPER_GILDED_AUGMENT.get());
                         output.accept(ModItems.PUMPKIN_LENS_AUGMENT.get());
                     }).build());
 

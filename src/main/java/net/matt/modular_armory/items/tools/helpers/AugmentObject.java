@@ -55,6 +55,8 @@ public class AugmentObject {
     public boolean MAGNET;
     public int POISON;
     public int WITHER;
+    public boolean GILDED;
+    public boolean SUPER_GILDED;
     public boolean PUMPKIN_LENS;
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
@@ -97,6 +99,8 @@ public class AugmentObject {
                     case "projectile_protection_augment" -> this.PROJECTILE_PROTECTION = augmentStack.getCount();
                     case "fire_protection_augment" -> this.FIRE_PROTECTION = augmentStack.getCount();
                     case "thorns_augment" -> this.THORNS = augmentStack.getCount();
+                    case "gilded_augment" -> this.GILDED = true;
+                    case "super_gilded_augment" -> this.SUPER_GILDED = true;
 
                     case "respiration_augment" -> this.RESPIRATION = augmentStack.getCount();
                     case "aqua_affinity_augment" -> this.AQUA_AFFINITY = augmentStack.getCount();
@@ -258,6 +262,13 @@ public class AugmentObject {
             if (this.THORNS > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.thorns_augment")
                         .append(Component.literal(": " + toRoman(this.THORNS))).withStyle(ChatFormatting.DARK_RED));
+            }
+
+            if (this.SUPER_GILDED) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.super_gilded_augment").withStyle(ChatFormatting.GOLD));
+            }
+            else if (this.GILDED) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.gilded_augment").withStyle(ChatFormatting.GOLD));
             }
 
             // Helmet

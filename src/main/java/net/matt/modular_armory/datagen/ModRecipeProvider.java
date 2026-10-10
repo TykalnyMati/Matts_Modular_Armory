@@ -1109,6 +1109,32 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.WITHER_ROSE))
                 .save(pRecipeOutput);
 
+        // Gilded Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_AUGMENT.get())
+                .pattern(" B ")
+                .pattern("BAB")
+                .pattern(" B ")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.GOLD_INGOT)
+                .unlockedBy("has_items_for_gilded_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.GOLD_INGOT))
+                .save(pRecipeOutput);
+
+        // Super Gilded Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SUPER_GILDED_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.GILDED_AUGMENT.get())
+                .define('B', Items.NETHERITE_SCRAP)
+                .define('C', Blocks.GOLD_BLOCK)
+                .unlockedBy("has_items_for_super_gilded_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.NETHERITE_SCRAP,
+                        Blocks.GOLD_BLOCK))
+                .save(pRecipeOutput);
+
         // Pumpkin Lens Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PUMPKIN_LENS_AUGMENT.get())
                 .pattern("BBB")

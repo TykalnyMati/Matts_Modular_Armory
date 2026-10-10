@@ -1,17 +1,12 @@
 package net.matt.modular_armory.items.armor;
 
-import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.items.tools.helpers.AugmentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import org.jetbrains.annotations.Nullable;

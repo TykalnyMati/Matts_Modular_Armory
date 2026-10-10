@@ -209,6 +209,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MAGNET_AUGMENT.get())
                 .add(ModItems.POISON_AUGMENT.get())
                 .add(ModItems.WITHER_AUGMENT.get())
+                .add(ModItems.GILDED_AUGMENT.get())
+                .add(ModItems.SUPER_GILDED_AUGMENT.get())
                 .add(ModItems.PUMPKIN_LENS_AUGMENT.get());
 
         // Armor Tags
