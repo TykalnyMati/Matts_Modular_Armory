@@ -5,37 +5,21 @@ import net.matt.modular_armory.items.tools.helpers.AugmentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularGenericDiggerItem;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
-import net.minecraft.world.item.crafting.RecipeType;
-import net.minecraft.world.item.enchantment.Enchantments;
-import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.AnvilUpdateEvent;
 import net.neoforged.neoforge.event.GrindstoneEvent;
-import net.neoforged.neoforge.event.entity.living.EnderManAngerEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
-import net.neoforged.neoforge.event.entity.living.LivingDropsEvent;
 import net.neoforged.neoforge.event.level.BlockEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
@@ -225,19 +209,6 @@ public class ModEvents {
                 }
 
                 event.setCanceled(true);
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void onEndermanAnger(EnderManAngerEvent event) {
-        if (event.getPlayer() instanceof Player player) {
-            ItemStack headSlot = player.getItemBySlot(EquipmentSlot.HEAD);
-
-            if (headSlot.getItem() instanceof ModularItemInterface modularItem) {
-                if (!modularItem.isBroken(headSlot) && modularItem.getAugmentBonuses(headSlot).PUMPKIN_LENS) {
-                    event.setCanceled(true);
-                }
             }
         }
     }
