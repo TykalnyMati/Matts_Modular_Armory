@@ -11,8 +11,11 @@ item_ids:
   - projectile_protection_augment
   - fire_protection_augment
   - thorns_augment
+  - gilded_augment
+  - super_gilded_augment
   - respiration_augment
   - aqua_affinity_augment
+  - pumpkin_lens_augment
   - swift_sneak_augment
   - feather_falling_augment
   - frost_walker_augment
@@ -22,7 +25,8 @@ item_ids:
 
 # Armor augments
 
-## Weapon augments can be inserted into all armor pieces
+## Armor augments can be inserted into all armor pieces
+## But there are augments that can be inserted only into certain armor pieces
 
 ### All protections work like their enchantment counterparts, higher levels allow for mixing and matching different augments on different armor pieces without losing out on regular protection, check out the [vanilla minecraft wiki](https://minecraft.wiki/w/Protection#Usage) to see how damage reduction is calculated
 
@@ -67,6 +71,22 @@ Consumes 2 durability when activated
 
 <Recipe id="thorns_augment" />
 
+# Gilded Augment:
+Piglin become neutral towards you just like if you were wearing a piece of golden armor
+
+Remember not to anger them in other ways
+
+<Recipe id="gilded_augment" />
+
+# Super Gilded Augment:
+With this even Piglin Brutes respect you (as well as regular Piglin)
+
+They can still be angered if you're not careful
+
+Overwrites the Gilded augment
+
+<Recipe id="super_gilded_augment" />
+
 # <Color id="blue">Head Armor Augments:</Color>
 
 # Respiration Augment:
@@ -82,6 +102,13 @@ First level makes mining speed equivalent to normal
 Second level makes it faster than normal, might as well start carrying a bucket
 
 <Recipe id="aqua_affinity_augment" />
+
+# Pumpkin Lens Augment:
+Allows to look endermen in the eyes
+
+Remember not to anger them in other ways
+
+<Recipe id="pumpkin_lens_augment" />
 
 # <Color id="blue">Leg Armor Augments:</Color>
 
