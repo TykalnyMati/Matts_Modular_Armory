@@ -234,7 +234,7 @@ public interface ModularItemInterface {
         if (isBroken(weapon)) {
             return -baseDamage + 1;
         } else {
-            return baseDamage;
+            return 0.0f;
         }
     }
 
