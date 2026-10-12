@@ -795,12 +795,11 @@ public class ModRecipeProvider extends RecipeProvider {
 
         // Knockback Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.KNOCKBACK_AUGMENT.get())
-                .pattern(" C ")
+                .pattern(" B ")
                 .pattern("BAB")
-                .pattern(" C ")
+                .pattern(" B ")
                 .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
                 .define('B', Blocks.PISTON)
-                .define('C', Items.QUARTZ)
                 .unlockedBy("has_items_for_knockback_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
                         ModItems.ADVANCED_MODULAR_PLATE.get(),
                         Blocks.PISTON,
@@ -1075,6 +1074,18 @@ public class ModRecipeProvider extends RecipeProvider {
                         ModItems.ADVANCED_MODULAR_PLATE.get(),
                         Blocks.REDSTONE_BLOCK,
                         Blocks.IRON_BLOCK))
+                .save(pRecipeOutput);
+
+        // Sweeping Edge Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SWEEPING_EDGE_AUGMENT.get())
+                .pattern(" B ")
+                .pattern("BAB")
+                .pattern(" B ")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.WIND_CHARGE)
+                .unlockedBy("has_items_for_sweeping_edge_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.WIND_CHARGE))
                 .save(pRecipeOutput);
 
         // Poison Augment

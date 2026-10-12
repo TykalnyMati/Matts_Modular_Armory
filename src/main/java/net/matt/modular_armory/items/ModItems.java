@@ -433,6 +433,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> MAGNET_AUGMENT = ITEMS.register("magnet_augment", () -> new AugmentGeneric(new Item.Properties(), "magnet_augment", AugmentGeneric.Types.TOOLS_AND_WEAPONS, List.of(0, 1, 1, 1)));
 
     // Weapons
+    public static final DeferredHolder<Item, Item> SWEEPING_EDGE_AUGMENT = ITEMS.register("sweeping_edge_augment", () -> new AugmentGeneric(new Item.Properties(), "sweeping_edge_augment", AugmentGeneric.Types.SWORD, List.of(1, 2, 3, 4)));
     public static final DeferredHolder<Item, Item> POISON_AUGMENT = ITEMS.register("poison_augment", () -> new AugmentGeneric(new Item.Properties(), "poison_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 1, 2, 2)));
     public static final DeferredHolder<Item, Item> WITHER_AUGMENT = ITEMS.register("wither_augment", () -> new AugmentGeneric(new Item.Properties(), "wither_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 1, 2, 3)));
 

@@ -173,6 +173,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MAGNET_AUGMENT.get());
 
                         // Weapons
+                        output.accept(ModItems.SWEEPING_EDGE_AUGMENT.get());
                         output.accept(ModItems.POISON_AUGMENT.get());
                         output.accept(ModItems.WITHER_AUGMENT.get());
 

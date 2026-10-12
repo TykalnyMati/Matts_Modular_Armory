@@ -96,6 +96,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
                 .add(ModItems.BIORITE_SWORD.get());
 
+        tag(ModTags.Items.MODULAR_SWORD)
+                .add(ModItems.MODULAR_CLAY_SWORD.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
+                .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
+                .add(ModItems.BIORITE_SWORD.get());
+
         // Modular Armor tag
         tag(ModTags.Items.MODULAR_ARMOR)
                 .add(ModItems.MODULAR_CLAY_HELMET.get())
@@ -207,6 +213,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ILLUMINATOR_AUGMENT.get())
                 .add(ModItems.VOID_AUGMENT.get())
                 .add(ModItems.MAGNET_AUGMENT.get())
+                .add(ModItems.SWEEPING_EDGE_AUGMENT.get())
                 .add(ModItems.POISON_AUGMENT.get())
                 .add(ModItems.WITHER_AUGMENT.get())
                 .add(ModItems.GILDED_AUGMENT.get())

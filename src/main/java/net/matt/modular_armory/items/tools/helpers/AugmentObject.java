@@ -27,6 +27,7 @@ public class AugmentObject {
     public int LOOTING;
     public int KNOCKBACK;
     public int FIRE_ASPECT;
+    public int SWEEPING_EDGE;
 
     // Armor Augment values
     public int PROTECTION;
@@ -90,6 +91,7 @@ public class AugmentObject {
                     case "looting_augment" -> this.LOOTING = augmentStack.getCount();
                     case "knockback_augment" -> this.KNOCKBACK = augmentStack.getCount();
                     case "fire_aspect_augment" -> this.FIRE_ASPECT = augmentStack.getCount();
+                    case "sweeping_edge_augment" -> this.SWEEPING_EDGE = augmentStack.getCount();
                     case "poison_augment" -> this.POISON = augmentStack.getCount();
                     case "wither_augment" -> this.WITHER = augmentStack.getCount();
 
@@ -242,6 +244,12 @@ public class AugmentObject {
             if (this.WITHER > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.wither_augment").withStyle(Style.EMPTY.withColor(0x764857))
                         .append(Component.literal(": " + toRoman(this.WITHER)).withStyle(Style.EMPTY.withColor(0x764857))));
+            }
+
+            // SWORD
+            if (this.SWEEPING_EDGE > 0) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.sweeping_edge_augment").withStyle(ChatFormatting.WHITE)
+                        .append(Component.literal(": " + toRoman(this.SWEEPING_EDGE)).withStyle(ChatFormatting.WHITE)));
             }
 
             // ARMOR

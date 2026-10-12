@@ -13,6 +13,7 @@ item_ids:
   - looting_augment
   - knockback_augment
   - fire_aspect_augment
+  - sweeping_edge_augment
   - poison_augment
   - wither_augment
 ---
@@ -65,6 +66,13 @@ Duration increases with level
 Each level adds 4 seconds of burning
 
 <Recipe id="fire_aspect_augment" />
+
+# Sweeping Edge Augment:
+Increases the damage of sweeping attacks
+
+Can only be applied to swords
+
+<Recipe id="sweeping_edge_augment" />
 
 # Poison Augment:
 Applies poison to hit entities

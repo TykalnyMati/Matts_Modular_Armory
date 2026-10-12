@@ -7,15 +7,12 @@
     },
     "B": {
       "item": "minecraft:piston"
-    },
-    "C": {
-      "item": "minecraft:quartz"
     }
   },
   "pattern": [
-    " C ",
+    " B ",
     "BAB",
-    " C "
+    " B "
   ],
   "result": {
     "count": 1,
