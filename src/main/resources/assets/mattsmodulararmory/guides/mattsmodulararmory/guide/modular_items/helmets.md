@@ -8,7 +8,7 @@ navigation:
 
 # Modular Helmets
 
-# Helmets are an [armor](../augments/armor_augments.md) and [head armor](../augments/armor_head_augments.md)
+# Helmets are an [armor](../augments/armor_augments.md) and head armor
 
 # Available Helmets:
 

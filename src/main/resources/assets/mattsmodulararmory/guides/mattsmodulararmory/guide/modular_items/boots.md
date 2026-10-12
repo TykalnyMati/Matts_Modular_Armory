@@ -8,7 +8,7 @@ navigation:
 
 # Modular Boots
 
-# Boots are an [armor](../augments/armor_augments.md) and [feet armor](../augments/armor_feet_augments.md)
+# Boots are an [armor](../augments/armor_augments.md) and feet armor
 
 # Available Boots:
 

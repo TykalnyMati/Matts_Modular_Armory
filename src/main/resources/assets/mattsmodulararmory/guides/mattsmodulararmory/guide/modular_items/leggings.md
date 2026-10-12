@@ -8,7 +8,7 @@ navigation:
 
 # Modular Leggings
 
-# Leggings are an [armor](../augments/armor_augments.md) and [leg armor](../augments/armor_legs_augments.md)
+# Leggings are an [armor](../augments/armor_augments.md) and leg armor
 
 # Available Leggings:
 
