@@ -7,7 +7,7 @@ navigation:
 
 # Modular Items
 
-### Modular items are made in a Modular Assembler and are made from [plates](../materials/materials.md):
+### Modular items are made in a <ItemLink id="modular_assembler" /> and are made from [plates](../materials/materials.md):
 
 <Recipe id="modular_assembler"/>
 

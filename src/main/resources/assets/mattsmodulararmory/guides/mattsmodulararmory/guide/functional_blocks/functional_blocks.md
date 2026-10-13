@@ -19,6 +19,7 @@ This block allow for the creation of modular items
 <Recipe id="modular_assembler" />
 
 ![Modular Assembler GUI](../images/modular_assembler.png)
+![Modular Assembler GUI](../images/modular_assembler_2.png)
 
 You insert a plate of desired quality and a list of items possible to craft appears
 

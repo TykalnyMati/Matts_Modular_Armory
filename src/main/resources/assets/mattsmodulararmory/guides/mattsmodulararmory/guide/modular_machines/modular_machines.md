@@ -11,3 +11,6 @@ navigation:
 - <Row alignItems="center" gap="1"><ItemImage id="exposer" scale="0.75"/><ItemLink id="exposer"/></Row>
 - <Row alignItems="center" gap="1"><ItemImage id="modular_miner" scale="0.75"/><ItemLink id="modular_miner"/></Row>
 - <Row alignItems="center" gap="1"><ItemImage id="modular_builder" scale="0.75"/><ItemLink id="modular_builder"/></Row>
+
+### Augment Addons:
+- <Row alignItems="center" gap="1"><ItemImage id="silk_touch_augment_addon" scale="0.75"/>[Augment Addons](augment_addons.md)</Row>
