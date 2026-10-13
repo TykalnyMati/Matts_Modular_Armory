@@ -444,6 +444,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> PUMPKIN_LENS_AUGMENT = ITEMS.register("pumpkin_lens_augment", () -> new AugmentGeneric(new Item.Properties(), "pumpkin_lens_augment", AugmentGeneric.Types.ARMOR_HEAD, List.of(1, 1, 1, 1)));
 
     public static final DeferredHolder<Item, Item> STEP_UP_AUGMENT = ITEMS.register("step_up_augment", () -> new AugmentGeneric(new Item.Properties(), "step_up_augment", AugmentGeneric.Types.ARMOR_FEET, List.of(1, 1, 2, 2)));
+    public static final DeferredHolder<Item, Item> VOID_TETHER_AUGMENT = ITEMS.register("void_tether_augment", () -> new AugmentGeneric(new Item.Properties(), "void_tether_augment", AugmentGeneric.Types.ARMOR_FEET, List.of(1, 1, 1, 1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

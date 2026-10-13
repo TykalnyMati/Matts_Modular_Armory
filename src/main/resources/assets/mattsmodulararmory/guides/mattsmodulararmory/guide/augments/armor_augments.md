@@ -22,6 +22,7 @@ item_ids:
   - depth_strider_augment
   - soul_speed_augment
   - step_up_augment
+  - void_tether_augment
 ---
 
 # Armor augments
@@ -156,3 +157,14 @@ Level 1: can step onto full blocks
 Level 2: can step onto 1.5 blocks
 
 <Recipe id="step_up_augment" />
+
+# Void Tether Augment:
+Saves you from the void
+
+Gives levitation for a small amount of time when the player is falling into the void
+
+Activates at -1y in the nether and end, at -65y everywhere else
+
+The effect is more potent in the end
+
+<Recipe id="void_tether_augment" />

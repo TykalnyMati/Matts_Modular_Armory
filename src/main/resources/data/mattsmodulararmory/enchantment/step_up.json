@@ -20,7 +20,7 @@
   "effects": {
     "minecraft:attributes": [
       {
-        "id": "matt_modular_armory:augment.step_up",
+        "id": "mattsmodulararmory:augment.step_up",
         "attribute": "minecraft:generic.step_height",
         "amount": {
           "type": "minecraft:linear",

@@ -1170,5 +1170,19 @@ public class ModRecipeProvider extends RecipeProvider {
                         ModItems.ADVANCED_MODULAR_PLATE.get(),
                         Blocks.PISTON))
                 .save(pRecipeOutput);
+
+        // Void Tether Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOID_TETHER_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("CAC")
+                .pattern("C C")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.SHULKER_SHELL)
+                .define('C', Items.WIND_CHARGE)
+                .unlockedBy("has_items_for_void_tether_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.SHULKER_SHELL,
+                        Items.WIND_CHARGE))
+                .save(pRecipeOutput);
     }
 }

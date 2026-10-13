@@ -60,6 +60,7 @@ public class AugmentObject {
     public boolean SUPER_GILDED;
     public boolean PUMPKIN_LENS;
     public int STEP_UP;
+    public boolean VOID_TETHER;
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
@@ -116,6 +117,7 @@ public class AugmentObject {
                     case "depth_strider_augment" -> this.DEPTH_STRIDER = augmentStack.getCount();
                     case "soul_speed_augment" -> this.SOUL_SPEED = augmentStack.getCount();
                     case "step_up_augment" -> this.STEP_UP = augmentStack.getCount();
+                    case "void_tether_augment" -> this.VOID_TETHER = true;
                 }
             }
         }
@@ -324,6 +326,10 @@ public class AugmentObject {
             if (this.STEP_UP > 0) {
                 pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.step_up_augment")
                         .append(Component.literal(": " + toRoman(this.STEP_UP))).withStyle(ChatFormatting.YELLOW));
+            }
+
+            if (this.VOID_TETHER) {
+                pTooltipComponents.add(Component.translatable("tooltip.mattsmodulararmory.void_tether_augment").withStyle(ChatFormatting.WHITE));
             }
 
         }

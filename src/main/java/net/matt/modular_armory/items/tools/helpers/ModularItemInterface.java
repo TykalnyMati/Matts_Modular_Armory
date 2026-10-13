@@ -214,6 +214,10 @@ public interface ModularItemInterface {
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.STEP_UP));
         }
 
+        if (bonuses.VOID_TETHER) {
+            enchantmentRegistry.get(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "void_tether")))
+                    .ifPresent(holder -> mutableEnchantments.set(holder, 1));
+        }
 
         ItemEnchantments enchantmentsComponent = mutableEnchantments.toImmutable().withTooltip(false);
         itemStack.set(DataComponents.ENCHANTMENTS, enchantmentsComponent);
