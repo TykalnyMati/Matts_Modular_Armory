@@ -1,9 +1,12 @@
 package net.matt.modular_armory.items.tools.helpers;
 
+import net.matt.modular_armory.MattsModularArmory;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -204,6 +207,11 @@ public interface ModularItemInterface {
         if (bonuses.SOUL_SPEED > 0) {
             enchantmentRegistry.get(Enchantments.SOUL_SPEED)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.SOUL_SPEED));
+        }
+
+        if (bonuses.STEP_UP > 0) {
+            enchantmentRegistry.get(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "step_up")))
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.STEP_UP));
         }
 
 

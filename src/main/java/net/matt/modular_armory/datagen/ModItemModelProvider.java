@@ -176,6 +176,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.GILDED_AUGMENT.get());
         basicItem(ModItems.SUPER_GILDED_AUGMENT.get());
         basicItem(ModItems.PUMPKIN_LENS_AUGMENT.get());
+        basicItem(ModItems.STEP_UP_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(DeferredHolder<Item, ? extends Item> item) {

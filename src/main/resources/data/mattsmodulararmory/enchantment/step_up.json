@@ -1,0 +1,34 @@
+{
+  "description": {
+    "translate": "[interface] step up"
+  },
+  "supported_items": "mattsmodulararmory:modular_clay",
+  "weight": 1,
+  "max_level": 2,
+  "min_cost": {
+    "base": 0,
+    "per_level_above_first": 0
+  },
+  "max_cost": {
+    "base": 0,
+    "per_level_above_first": 0
+  },
+  "anvil_cost": 0,
+  "slots": [
+    "feet"
+  ],
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "id": "matt_modular_armory:augment.step_up",
+        "attribute": "minecraft:generic.step_height",
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 0.5,
+          "per_level_above_first": 0.5
+        },
+        "operation": "add_value"
+      }
+    ]
+  }
+}

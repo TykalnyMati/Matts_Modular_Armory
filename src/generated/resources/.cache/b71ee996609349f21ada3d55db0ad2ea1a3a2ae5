@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-12T19:18:03.545796	Item Models: mattsmodulararmory
+// 1.21.1	2026-10-13T17:44:44.2367303	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -260,6 +260,7 @@ e254ad7a8f9a91e7609a9018d476f72feb4b662a assets/mattsmodulararmory/models/item/s
 9816f18c98c11253ce45da1cd5caa1a65028c749 assets/mattsmodulararmory/models/item/silk_touch_augment_addon.json
 09f409f7b633b135818ff6038b18ec708ecabb57 assets/mattsmodulararmory/models/item/smite_augment.json
 cd72470c70c7767f88a6b82c6885d77131e08315 assets/mattsmodulararmory/models/item/soul_speed_augment.json
+3173e480601cec909f7a10f41f4448cc037beb31 assets/mattsmodulararmory/models/item/step_up_augment.json
 fe274218c4af66386468ef0f72ef91302f9917b4 assets/mattsmodulararmory/models/item/super_gilded_augment.json
 5cb74a46504ab245efe590b4873b82e8f45d04ed assets/mattsmodulararmory/models/item/sweeping_edge_augment.json
 432a6366c7b7dd1e4b4b5ac40c401952fed24cf6 assets/mattsmodulararmory/models/item/swift_sneak_augment.json

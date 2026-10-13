@@ -169,6 +169,7 @@
   "item.mattsmodulararmory.gilded_augment": "Gilded Augment",
   "item.mattsmodulararmory.super_gilded_augment": "Super Gilded Augment",
   "item.mattsmodulararmory.pumpkin_lens_augment": "Pumpkin Lens Augment",
+  "item.mattsmodulararmory.step_up_augment": "Step Up Augment",
 
   "tooltip.mattsmodulararmory.broken": "Broken",
   "tooltip.mattsmodulararmory.augments": "Augments",
@@ -211,6 +212,7 @@
   "tooltip.mattsmodulararmory.gilded_augment": "Gilded",
   "tooltip.mattsmodulararmory.super_gilded_augment": "Super Gilded",
   "tooltip.mattsmodulararmory.pumpkin_lens_augment": "Pumpkin Lens",
+  "tooltip.mattsmodulararmory.step_up_augment": "Step Up",
 
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
   "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
@@ -261,6 +263,7 @@
   "tooltip.mattsmodulararmory.description.gilded_augment": "Piglin Friend",
   "tooltip.mattsmodulararmory.description.super_gilded_augment": "Brute Friend",
   "tooltip.mattsmodulararmory.description.pumpkin_lens_augment": "Allows to look endermen in the eyes",
+  "tooltip.mattsmodulararmory.description.step_up_augment": "Increases stepping height",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",

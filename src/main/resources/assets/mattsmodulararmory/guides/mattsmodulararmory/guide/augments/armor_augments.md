@@ -21,6 +21,7 @@ item_ids:
   - frost_walker_augment
   - depth_strider_augment
   - soul_speed_augment
+  - step_up_augment
 ---
 
 # Armor augments
@@ -146,3 +147,12 @@ Increases movement speed on soul blocks
 Has a chance to consume durability when walking on compatible blocks
 
 <Recipe id="soul_speed_augment" />
+
+# Step Up Augment:
+Increases stepping height
+
+Level 1: can step onto full blocks
+
+Level 2: can step onto 1.5 blocks
+
+<Recipe id="step_up_augment" />

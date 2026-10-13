@@ -1159,5 +1159,16 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.ORANGE_STAINED_GLASS_PANE,
                         Blocks.CARVED_PUMPKIN))
                 .save(pRecipeOutput);
+
+        // Step Up Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.STEP_UP_AUGMENT.get())
+                .pattern("BAB")
+                .pattern("B B")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.PISTON)
+                .unlockedBy("has_items_for_step_up_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.PISTON))
+                .save(pRecipeOutput);
     }
 }

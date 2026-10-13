@@ -181,6 +181,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.GILDED_AUGMENT.get());
                         output.accept(ModItems.SUPER_GILDED_AUGMENT.get());
                         output.accept(ModItems.PUMPKIN_LENS_AUGMENT.get());
+                        output.accept(ModItems.STEP_UP_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {
