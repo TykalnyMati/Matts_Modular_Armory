@@ -296,5 +296,62 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BIORITE_CHESTPLATE.get())
                 .add(ModItems.BIORITE_LEGGINGS.get())
                 .add(ModItems.BIORITE_BOOTS.get());
+
+        tag(ItemTags.SWORDS)
+                .add(ModItems.MODULAR_CLAY_SWORD.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
+                .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
+                .add(ModItems.BIORITE_SWORD.get());
+
+        tag(ItemTags.PICKAXES)
+                .add(ModItems.MODULAR_CLAY_PICKAXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
+                .add(ModItems.BIORITE_PICKAXE.get());
+
+        tag(ItemTags.AXES)
+                .add(ModItems.MODULAR_CLAY_AXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_AXE.get())
+                .add(ModItems.BIORITE_AXE.get());
+
+        tag(ItemTags.SHOVELS)
+                .add(ModItems.MODULAR_CLAY_SHOVEL.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get())
+                .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
+                .add(ModItems.BIORITE_SHOVEL.get());
+
+        tag(ItemTags.HOES)
+                .add(ModItems.MODULAR_CLAY_HOE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get())
+                .add(ModItems.ADAPTIVE_FLESH_HOE.get())
+                .add(ModItems.BIORITE_HOE.get());
+
+        tag(ItemTags.BREAKS_DECORATED_POTS)
+                .add(ModItems.MODULAR_CLAY_SWORD.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
+                .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
+                .add(ModItems.BIORITE_SWORD.get())
+
+                .add(ModItems.MODULAR_CLAY_PICKAXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
+                .add(ModItems.BIORITE_PICKAXE.get())
+
+                .add(ModItems.MODULAR_CLAY_AXE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
+                .add(ModItems.ADAPTIVE_FLESH_AXE.get())
+                .add(ModItems.BIORITE_AXE.get())
+
+                .add(ModItems.MODULAR_CLAY_SHOVEL.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SHOVEL.get())
+                .add(ModItems.ADAPTIVE_FLESH_SHOVEL.get())
+                .add(ModItems.BIORITE_SHOVEL.get())
+
+                .add(ModItems.MODULAR_CLAY_HOE.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get())
+                .add(ModItems.ADAPTIVE_FLESH_HOE.get())
+                .add(ModItems.BIORITE_HOE.get());
+
     }
 }
