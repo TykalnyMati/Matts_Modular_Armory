@@ -5,6 +5,7 @@ import net.matt.modular_armory.util.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -12,7 +13,6 @@ import net.minecraft.world.item.TooltipFlag;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class AugmentGeneric extends Item {
     private final String augmentID;
@@ -20,13 +20,27 @@ public class AugmentGeneric extends Item {
     private final String typeLocation;
     public final List<Integer> augmentLevels;
     public List<TagKey<Item>> augmentTypes = new ArrayList<>();
+    private boolean levelable = false;
+    private final int tooltipHexColor;
 
-    public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels) {
+    private final List<String> incompatibleWith;
+
+    public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels, int tooltipHexColor, List<String> incompatibleWith) {
         super(pProperties);
         this.augmentID = augmentName;
         this.descriptionLocation = "tooltip." + MattsModularArmory.MOD_ID + ".description." + augmentName;
         this.typeLocation = "tooltip." + MattsModularArmory.MOD_ID + ".augment_type." + augmentType;
         this.augmentLevels = augmentLevels;
+        this.tooltipHexColor = tooltipHexColor;
+
+        this.incompatibleWith = incompatibleWith;
+
+        for (int level : augmentLevels) {
+            if (level > 1) {
+                this.levelable = true;
+                break;
+            }
+        }
 
         switch (augmentType) {
             case Types.GENERIC -> this.augmentTypes.add(ModTags.Items.MODULAR_ITEMS);
@@ -45,12 +59,32 @@ public class AugmentGeneric extends Item {
         }
     }
 
+    public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels, int tooltipHexColor) {
+        this(pProperties, augmentName, augmentType, augmentLevels, tooltipHexColor, List.of());
+    }
+
     public String getAugmentID() {
         return augmentID;
     }
 
+    public boolean isLevelable() {
+        return this.levelable;
+    }
+
+    public int getTooltipHexColor() {
+        return this.tooltipHexColor;
+    }
+
+    public List<String> getIncompatibleWith() {
+        return this.incompatibleWith;
+    }
+
     @Override
     public void appendHoverText(ItemStack pStack, TooltipContext pContext, List<Component> pTooltipComponents, TooltipFlag pTooltipFlag) {
+        pTooltipComponents.add(
+                Component.translatable("tooltip.mattsmodulararmory." + getAugmentID())
+                        .withStyle(Style.EMPTY.withColor(getTooltipHexColor())));
+
         // Augment description
         String description = Component.translatable(descriptionLocation).getString();
         for (String line : description.split("\n")) {
