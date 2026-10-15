@@ -50,7 +50,7 @@ public class ModularBowItem extends BowItem implements ModularItemInterface {
                         return;
                     }
 
-                    float f = getPowerForTime(i);
+                    float f = getPowerForTimeModular(i);
                     if (!((double)f < 0.1)) {
                         List<ItemStack> list = draw(stack, itemstack, player);
                         if (level instanceof ServerLevel) {

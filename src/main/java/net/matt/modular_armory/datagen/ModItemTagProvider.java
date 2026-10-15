@@ -42,6 +42,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOW.get())
 
                 .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
                 .add(ModItems.ADAPTIVE_FLESH_AXE.get())
@@ -52,6 +53,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get())
                 .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
                 .add(ModItems.ADAPTIVE_FLESH_BOOTS.get())
+                .add(ModItems.ADAPTIVE_FLESH_BOW.get())
 
                 .add(ModItems.BIORITE_PICKAXE.get())
                 .add(ModItems.BIORITE_AXE.get())
@@ -98,7 +100,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BIORITE_SWORD.get());
 
         tag(ModTags.Items.MODULAR_BOW)
-                .add(ModItems.MODULAR_CLAY_BOW.get());
+                .add(ModItems.MODULAR_CLAY_BOW.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOW.get())
+                .add(ModItems.ADAPTIVE_FLESH_BOW.get());
 
         tag(ModTags.Items.MODULAR_SWORD)
                 .add(ModItems.MODULAR_CLAY_SWORD.get())
@@ -151,7 +155,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADVANCED_MODULAR_CLAY_HELMET.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
-                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOW.get());
 
         // Modular Items Tier 2
         tag(ModTags.Items.MODULAR_TIER_2)
@@ -163,7 +168,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_HELMET.get())
                 .add(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get())
                 .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
-                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get());
+                .add(ModItems.ADAPTIVE_FLESH_BOOTS.get())
+                .add(ModItems.ADAPTIVE_FLESH_BOW.get());
 
         // Modular Items Tier 3
         tag(ModTags.Items.MODULAR_TIER_3)

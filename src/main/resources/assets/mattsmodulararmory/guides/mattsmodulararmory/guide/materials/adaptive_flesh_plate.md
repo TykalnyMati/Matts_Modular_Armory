@@ -32,6 +32,7 @@ It's crafted from an advanced modular plate and adaptive flesh:
     <Recipe id="mattsmodulararmory:adaptive_flesh_chestplate_from_modular_assembler"/>
     <Recipe id="mattsmodulararmory:adaptive_flesh_leggings_from_modular_assembler"/>
     <Recipe id="mattsmodulararmory:adaptive_flesh_boots_from_modular_assembler"/>
+    <Recipe id="mattsmodulararmory:adaptive_flesh_bow_from_modular_assembler"/>
 </Row>
 
 ## Next tier <Row alignItems="center" gap="1"><ItemImage id="biorite_plate" scale="0.75"/><ItemLink id="biorite_plate" components="hide_additional_tooltip={}"/></Row>:

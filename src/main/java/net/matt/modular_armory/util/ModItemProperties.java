@@ -8,6 +8,8 @@ import net.minecraft.world.item.Item;
 public class ModItemProperties {
     public static void addCustomProperties() {
         makeCustomBowProperties(ModItems.MODULAR_CLAY_BOW.get());
+        makeCustomBowProperties(ModItems.ADVANCED_MODULAR_CLAY_BOW.get());
+        makeCustomBowProperties(ModItems.ADAPTIVE_FLESH_BOW.get());
     }
 
     private static void makeCustomBowProperties(Item item) {

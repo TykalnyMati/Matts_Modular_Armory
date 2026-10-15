@@ -1,0 +1,6 @@
+{
+  "parent": "mattsmodulararmory:item/adaptive_flesh_bow",
+  "textures": {
+    "layer0": "mattsmodulararmory:item/adaptive_flesh_bow_pulling_2"
+  }
+}

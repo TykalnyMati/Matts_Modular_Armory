@@ -99,6 +99,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get());
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get());
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get());
+                        output.accept(ModItems.ADVANCED_MODULAR_CLAY_BOW.get());
 
                         // Tier 2 modular items
                         output.accept(ModItems.ADAPTIVE_FLESH_SWORD.get());
@@ -110,6 +111,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_LEGGINGS.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_BOOTS.get());
+                        output.accept(ModItems.ADAPTIVE_FLESH_BOW.get());
 
                         // Tier 3 modular items
                         output.accept(ModItems.BIORITE_SWORD.get());
