@@ -35,7 +35,7 @@ item_ids:
 # Protection Augment:
 Reduces overall damage taken
 
-Overrides specialized protection augments
+Incompatible with Blast Protection, Projectile Protection and Fire Protection
 
 <Recipe id="protection_augment" />
 
@@ -44,14 +44,14 @@ Reduces damage taken from explosions
 
 Reduces knockback taken from explosions and wind charges
 
-Overrides Projectile Protection and Fire Protection
+Incompatible with Protection, Projectile Protection and Fire Protection
 
 <Recipe id="blast_protection_augment" />
 
 # Projectile Protection Augment:
 Reduces damage taken from projectiles
 
-Overrides Fire Protection
+Incompatible with Protection, Blast Protection and Fire Protection
 
 <Recipe id="projectile_protection_augment" />
 
@@ -61,6 +61,8 @@ Reduces damage taken from fire
 Reduces the amount of time the wearer stays on fire
 
 *As a bonus the augment item is immune to fire*
+
+Incompatible with Protection, Blast Protection and Projectile Protection
 
 <Recipe id="fire_protection_augment" />
 
@@ -78,6 +80,8 @@ Piglin become neutral towards you just like if you were wearing a piece of golde
 
 Remember not to anger them in other ways
 
+Incompatible with Super Gilded
+
 <Recipe id="gilded_augment" />
 
 # Super Gilded Augment:
@@ -85,7 +89,7 @@ With this even Piglin Brutes respect you (as well as regular Piglin)
 
 They can still be angered if you're not careful
 
-Overwrites the Gilded augment
+Incompatible with Gilded
 
 <Recipe id="super_gilded_augment" />
 
@@ -133,12 +137,14 @@ Leaves a trail of ice when walking over water
 
 Radius of ice increases with level
 
-Overrides depth strider
+Incompatible with Depth Strider
 
 <Recipe id="frost_walker_augment" />
 
 # Depth Strider Augment:
 Increases movement speed underwater
+
+Incompatible with Frost Walker
 
 <Recipe id="depth_strider_augment" />
 

@@ -30,12 +30,14 @@ Increases mining speed of tools, high levels can allow for instantly mining bloc
 # Silk Touch Augment:
 Fragile blocks (like glass) mined with this augment drop themselves
 
-Overrides fortune and auto smelt
+Incompatible with Fortune, Auto Smelt and Void
 
 <Recipe id="silk_touch_augment" />
 
 # Fortune Augment:
 Increases the amount of items some blocks (like ores) drop
+
+Incompatible with Silk Touch and Void
 
 <Recipe id="fortune_augment" />
 
@@ -44,7 +46,7 @@ Smelts items dropped from blocks
 
 Each smelting costs 4 extra durability and spawns fire particles
 
-Has a synergy with fortune
+Incompatible with Silk Touch and Void
 
 <Recipe id="auto_smelt_augment" />
 
@@ -64,6 +66,8 @@ Consumes 5 durability per use
 
 The amount dropped changes with level with this formula: 2 + \<2, level) items
 
+Incompatible with Scaffolding and Illuminator
+
 <Recipe id="modular_clay_extractor_augment" />
 
 # Scaffolding Augment:
@@ -75,6 +79,8 @@ The block starts breaking when no entity is on top of it for a set amount of tim
 
 The amount of time to break changes with level, on the first level it's 2 seconds, every level adds a bonus second to the breaking time
 
+Incompatible with Modular Clay Extractor and Illuminator
+
 <Recipe id="scaffolding_augment" />
 
 # Illuminator Augment:
@@ -82,10 +88,14 @@ Right-clicking with the tool creates a slightly visible light
 
 Consumes 5 durability per use
 
+Incompatible with Modular Clay Extractor and Scaffolding
+
 <Recipe id="illuminator_augment" />
 
 # Void Augment:
 Voids drops of broken blocks
+
+Incompatible with Silk Touch, Fortune and Auto Smelt
 
 <Recipe id="void_augment" />
 

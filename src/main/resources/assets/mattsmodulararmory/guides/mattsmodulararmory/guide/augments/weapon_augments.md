@@ -25,26 +25,28 @@ item_ids:
 # Sharpness Augment:
 Increases overall melee damage
 
-Overrides specialized damage augments
+Incompatible with Smite, Bane of Arthropods and Impaling
 
 <Recipe id="sharpness_augment" />
 
 # Smite Augment:
 Increases damage dealt to undead mobs
 
-Overrides Bane of Arthropods and Impaling
+Incompatible with Sharpness, Bane of Arthropods and Impaling
 
 <Recipe id="smite_augment" />
 
 # Bane of Arthropods Augment:
 Increases damage dealt and applies Slowness to arthropods
 
-Overrides Impaling
+Incompatible with Sharpness, Smite and Impaling
 
 <Recipe id="bane_of_arthropods_augment" />
 
 # Impaling Augment:
 Increases damage dealt to aquatic mobs
+
+Incompatible with Sharpness, Smite and Bane of Arthropods
 
 <Recipe id="impaling_augment" />
 
