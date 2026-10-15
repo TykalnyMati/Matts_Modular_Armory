@@ -344,6 +344,9 @@ public class ModItems {
             () -> new ModularArmorItem(ModArmorMaterials.BIORITE_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
                     new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
+    public static final DeferredHolder<Item, Item> BIORITE_BOW = ITEMS.register("biorite_bow",
+            () -> new ModularBowItem(new Item.Properties().durability(769), 1.4F));
+
     // Upgrades
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("advanced_modular_clay_upgrade_smithing_template",
             () -> new SmithingTemplateItem(

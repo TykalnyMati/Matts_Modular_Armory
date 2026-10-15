@@ -1,0 +1,6 @@
+{
+  "parent": "mattsmodulararmory:item/biorite_bow",
+  "textures": {
+    "layer0": "mattsmodulararmory:item/biorite_bow_pulling_1"
+  }
+}

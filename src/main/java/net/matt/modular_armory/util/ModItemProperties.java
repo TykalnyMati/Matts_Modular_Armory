@@ -10,6 +10,7 @@ public class ModItemProperties {
         makeCustomBowProperties(ModItems.MODULAR_CLAY_BOW.get());
         makeCustomBowProperties(ModItems.ADVANCED_MODULAR_CLAY_BOW.get());
         makeCustomBowProperties(ModItems.ADAPTIVE_FLESH_BOW.get());
+        makeCustomBowProperties(ModItems.BIORITE_BOW.get());
     }
 
     private static void makeCustomBowProperties(Item item) {

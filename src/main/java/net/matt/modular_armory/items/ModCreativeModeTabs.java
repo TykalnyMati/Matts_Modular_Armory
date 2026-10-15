@@ -123,6 +123,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BIORITE_CHESTPLATE.get());
                         output.accept(ModItems.BIORITE_LEGGINGS.get());
                         output.accept(ModItems.BIORITE_BOOTS.get());
+                        output.accept(ModItems.BIORITE_BOW.get());
 
                         // Augments
                         // Generic

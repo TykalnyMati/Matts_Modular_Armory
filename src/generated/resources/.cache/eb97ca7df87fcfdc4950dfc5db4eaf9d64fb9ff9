@@ -1,12 +1,12 @@
-// 1.21.1	2026-10-15T23:26:53.2376437	Tags for minecraft:item mod id mattsmodulararmory
+// 1.21.1	2026-10-15T23:58:51.6363597	Tags for minecraft:item mod id mattsmodulararmory
 f2abb7cc3bae3a83f1d2c3b09934f4d62f813deb data/mattsmodulararmory/tags/item/filter.json
 576b480961ae951552a90d18a851cb100b5b8134 data/mattsmodulararmory/tags/item/modular_armor.json
 df4b6539b051c006638434a6e0859238e2bede7d data/mattsmodulararmory/tags/item/modular_augment_addon.json
 9dc4df0ffd708f8ec7358e1c0296c2a1e53590ce data/mattsmodulararmory/tags/item/modular_boots.json
-f9ac3b1f3b917cc08066ff5b1638d8c5fa4295c2 data/mattsmodulararmory/tags/item/modular_bow.json
+89f8debf64ccaecf2e449f3f8895976fa017147d data/mattsmodulararmory/tags/item/modular_bow.json
 85198792b455cb64fbd5db675824508eee5973eb data/mattsmodulararmory/tags/item/modular_chestplate.json
 d7108231d2c0fb14199698e6ca58e544a1ab1d48 data/mattsmodulararmory/tags/item/modular_helmet.json
-29de64547909b3f6dea42dc12db4a8c6eaf746ea data/mattsmodulararmory/tags/item/modular_items.json
+af6db4ac159383caa33aa4a685ace53285d40e48 data/mattsmodulararmory/tags/item/modular_items.json
 b81f234f2a297becca3567a4b88cc9783cd7e791 data/mattsmodulararmory/tags/item/modular_items_augment.json
 41f416f0bca481765d744223d0a18eac01d0b2d3 data/mattsmodulararmory/tags/item/modular_leggings.json
 6d0628d3c07b440cabcb6ad8742aaf0eeebf3578 data/mattsmodulararmory/tags/item/modular_range_addon.json
@@ -14,7 +14,7 @@ b81f234f2a297becca3567a4b88cc9783cd7e791 data/mattsmodulararmory/tags/item/modul
 cf2a0404b861faabb2635436b5cc1253372bf707 data/mattsmodulararmory/tags/item/modular_tier_0.json
 801db23568f530cb45992e27464705cba95644bf data/mattsmodulararmory/tags/item/modular_tier_1.json
 113c70519ae8ff8950335db969841ceda41dbcac data/mattsmodulararmory/tags/item/modular_tier_2.json
-8ba7d97b2be2f66250c88456c00cb9debe4a8c12 data/mattsmodulararmory/tags/item/modular_tier_3.json
+db726c181f108c3be1a97afe2692266ee44e9940 data/mattsmodulararmory/tags/item/modular_tier_3.json
 400aed6c0a4dbdc3425a5c0111cd54098ab60fb1 data/mattsmodulararmory/tags/item/modular_tool.json
 9c76f7a7c3712d4f6fb7c8e27e1dffc730d97acf data/mattsmodulararmory/tags/item/modular_weapon.json
 8c70d516f9494489c8fb0c563bc9f339459192c5 data/minecraft/tags/item/axes.json

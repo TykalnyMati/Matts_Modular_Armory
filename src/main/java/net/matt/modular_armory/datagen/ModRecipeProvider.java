@@ -532,7 +532,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModItems.MODULAR_CLAY_HELMET.get(),
                 ModItems.MODULAR_CLAY_CHESTPLATE.get(),
                 ModItems.MODULAR_CLAY_LEGGINGS.get(),
-                ModItems.MODULAR_CLAY_BOOTS.get()
+                ModItems.MODULAR_CLAY_BOOTS.get(),
+                ModItems.MODULAR_CLAY_BOW.get()
         );
 
         List<Item> AdvancedModularClayItems = List.of(
@@ -544,7 +545,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModItems.ADVANCED_MODULAR_CLAY_HELMET.get(),
                 ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get(),
                 ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get(),
-                ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get()
+                ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get(),
+                ModItems.ADVANCED_MODULAR_CLAY_BOW.get()
         );
 
         for (int i = 0; i < ModularClayItems.size(); i++) {
@@ -589,7 +591,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModItems.ADAPTIVE_FLESH_HELMET.get(),
                 ModItems.ADAPTIVE_FLESH_CHESTPLATE.get(),
                 ModItems.ADAPTIVE_FLESH_LEGGINGS.get(),
-                ModItems.ADAPTIVE_FLESH_BOOTS.get()
+                ModItems.ADAPTIVE_FLESH_BOOTS.get(),
+                ModItems.ADAPTIVE_FLESH_BOW.get()
         );
 
         for (int i = 0; i < AdvancedModularClayItems.size(); i++) {
@@ -634,7 +637,8 @@ public class ModRecipeProvider extends RecipeProvider {
                 ModItems.BIORITE_HELMET.get(),
                 ModItems.BIORITE_CHESTPLATE.get(),
                 ModItems.BIORITE_LEGGINGS.get(),
-                ModItems.BIORITE_BOOTS.get()
+                ModItems.BIORITE_BOOTS.get(),
+                ModItems.BIORITE_BOW.get()
         );
 
         for (int i = 0; i < AdaptiveFleshItems.size(); i++) {

@@ -34,4 +34,5 @@ It's crafted from an adaptive flesh plate, sculk, diamonds and netherite scraps:
     <Recipe id="mattsmodulararmory:biorite_chestplate_from_modular_assembler"/>
     <Recipe id="mattsmodulararmory:biorite_leggings_from_modular_assembler"/>
     <Recipe id="mattsmodulararmory:biorite_boots_from_modular_assembler"/>
+    <Recipe id="mattsmodulararmory:biorite_bow_from_modular_assembler"/>
 </Row>

@@ -63,7 +63,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BIORITE_HELMET.get())
                 .add(ModItems.BIORITE_CHESTPLATE.get())
                 .add(ModItems.BIORITE_LEGGINGS.get())
-                .add(ModItems.BIORITE_BOOTS.get());
+                .add(ModItems.BIORITE_BOOTS.get())
+                .add(ModItems.BIORITE_BOW.get());
 
         // Modular Tools tag
         tag(ModTags.Items.MODULAR_TOOL)
@@ -102,7 +103,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.MODULAR_BOW)
                 .add(ModItems.MODULAR_CLAY_BOW.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_BOW.get())
-                .add(ModItems.ADAPTIVE_FLESH_BOW.get());
+                .add(ModItems.ADAPTIVE_FLESH_BOW.get())
+                .add(ModItems.BIORITE_BOW.get());
 
         tag(ModTags.Items.MODULAR_SWORD)
                 .add(ModItems.MODULAR_CLAY_SWORD.get())
@@ -181,7 +183,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BIORITE_HELMET.get())
                 .add(ModItems.BIORITE_CHESTPLATE.get())
                 .add(ModItems.BIORITE_LEGGINGS.get())
-                .add(ModItems.BIORITE_BOOTS.get());
+                .add(ModItems.BIORITE_BOOTS.get())
+                .add(ModItems.BIORITE_BOW.get());
 
         // Augments
         tag(ModTags.Items.MODULAR_ITEMS_AUGMENT)

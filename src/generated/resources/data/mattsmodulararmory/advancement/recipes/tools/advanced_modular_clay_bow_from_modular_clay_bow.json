@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_advanced_modular_plate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:advanced_modular_plate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:advanced_modular_clay_bow_from_modular_clay_bow"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_advanced_modular_plate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:advanced_modular_clay_bow_from_modular_clay_bow"
+    ]
+  }
+}
