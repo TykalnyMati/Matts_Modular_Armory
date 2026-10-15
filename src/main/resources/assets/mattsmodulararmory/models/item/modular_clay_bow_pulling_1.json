@@ -1,0 +1,6 @@
+{
+  "parent": "mattsmodulararmory:item/modular_clay_bow",
+  "textures": {
+    "layer0": "mattsmodulararmory:item/modular_clay_bow_pulling_1"
+  }
+}

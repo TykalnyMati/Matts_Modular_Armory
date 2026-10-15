@@ -14,6 +14,7 @@ import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.recipe.ModRecipes;
 import net.matt.modular_armory.screen.ModMenuTypes;
 import net.matt.modular_armory.screen.custom.*;
+import net.matt.modular_armory.util.ModItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -146,7 +147,7 @@ public class MattsModularArmory {
     public static class ClientModEvents {
 
         public static void onClientSetup(FMLClientSetupEvent event) {
-            // General client setup if needed
+            ModItemProperties.addCustomProperties();
         }
 
         public static void registerScreens(RegisterMenuScreensEvent event) {

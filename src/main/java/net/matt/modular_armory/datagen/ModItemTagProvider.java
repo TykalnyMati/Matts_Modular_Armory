@@ -31,6 +31,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_CHESTPLATE.get())
                 .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
                 .add(ModItems.MODULAR_CLAY_BOOTS.get())
+                .add(ModItems.MODULAR_CLAY_BOW.get())
 
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
@@ -96,6 +97,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
                 .add(ModItems.BIORITE_SWORD.get());
 
+        tag(ModTags.Items.MODULAR_BOW)
+                .add(ModItems.MODULAR_CLAY_BOW.get());
+
         tag(ModTags.Items.MODULAR_SWORD)
                 .add(ModItems.MODULAR_CLAY_SWORD.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
@@ -134,7 +138,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_HELMET.get())
                 .add(ModItems.MODULAR_CLAY_CHESTPLATE.get())
                 .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
-                .add(ModItems.MODULAR_CLAY_BOOTS.get());
+                .add(ModItems.MODULAR_CLAY_BOOTS.get())
+                .add(ModItems.MODULAR_CLAY_BOW.get());
 
         // Modular Items Tier 1
         tag(ModTags.Items.MODULAR_TIER_1)

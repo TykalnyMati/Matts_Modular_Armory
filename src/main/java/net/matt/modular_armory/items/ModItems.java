@@ -239,6 +239,9 @@ public class ModItems {
             () -> new ModularArmorItem(ModArmorMaterials.MODULAR_CLAY_ARMOR_MATERIAL, ArmorItem.Type.BOOTS,
                     new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(10))));
 
+    public static final DeferredHolder<Item, Item> MODULAR_CLAY_BOW = ITEMS.register("modular_clay_bow",
+            () -> new ModularBowItem(new Item.Properties().durability(161), 0.8F));
+
     // Advanced Modular Clay
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_SHOVEL = ITEMS.register("advanced_modular_clay_shovel",
             () -> new ModularShovelItem(ModToolTiers.ADVANCED_MODULAR_CLAY, new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.ADVANCED_MODULAR_CLAY, 2.0f, -2.8f))));
