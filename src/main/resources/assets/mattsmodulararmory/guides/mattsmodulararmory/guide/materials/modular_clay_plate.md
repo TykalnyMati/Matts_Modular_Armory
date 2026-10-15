@@ -34,6 +34,7 @@ It's crafted with modular clay:
     <Recipe id="mattsmodulararmory:modular_clay_chestplate_from_modular_assembler"/>
     <Recipe id="mattsmodulararmory:modular_clay_leggings_from_modular_assembler"/>
     <Recipe id="mattsmodulararmory:modular_clay_boots_from_modular_assembler"/>
+    <Recipe id="mattsmodulararmory:modular_clay_bow_from_modular_assembler"/>
 </Row>
 
 ## Next tier <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_plate" scale="0.75"/><ItemLink id="advanced_modular_plate" components="hide_additional_tooltip={}"/></Row>:
