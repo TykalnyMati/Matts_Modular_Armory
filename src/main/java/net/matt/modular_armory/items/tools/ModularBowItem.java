@@ -56,7 +56,7 @@ public class ModularBowItem extends BowItem implements ModularItemInterface {
                         if (level instanceof ServerLevel) {
                             ServerLevel serverlevel = (ServerLevel)level;
                             if (!list.isEmpty()) {
-                                this.shoot(serverlevel, player, player.getUsedItemHand(), stack, list, f * 3.0F, 1.0F, f == 1.0F, (LivingEntity)null);
+                                this.shoot(serverlevel, player, player.getUsedItemHand(), stack, list, f * 3.0F, 1.0F, f == maxSpeed, (LivingEntity)null);
                             }
                         }
 
