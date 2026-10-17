@@ -19,6 +19,7 @@ item_ids:
   - power_augment
   - punch_augment
   - flame_augment
+  - infinity_augment
 ---
 
 # Weapon Augments
@@ -115,3 +116,8 @@ Increases arrow knockback
 Sets fired arrows ablaze
 
 <Recipe id="flame_augment" />
+
+# Infinity Augment:
+Grants infinite standard arrows, but it requires at least 1 arrow
+
+<Recipe id="infinity_augment" />

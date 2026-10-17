@@ -150,6 +150,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.POWER_AUGMENT.get());
         basicItem(ModItems.PUNCH_AUGMENT.get());
         basicItem(ModItems.FLAME_AUGMENT.get());
+        basicItem(ModItems.INFINITY_AUGMENT.get());
 
         basicItem(ModItems.PROTECTION_AUGMENT.get());
         basicItem(ModItems.BLAST_PROTECTION_AUGMENT.get());

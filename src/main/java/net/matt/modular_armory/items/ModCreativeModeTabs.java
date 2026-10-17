@@ -149,6 +149,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.POWER_AUGMENT.get());
                         output.accept(ModItems.PUNCH_AUGMENT.get());
                         output.accept(ModItems.FLAME_AUGMENT.get());
+                        output.accept(ModItems.INFINITY_AUGMENT.get());
 
                         // Armor
                         output.accept(ModItems.PROTECTION_AUGMENT.get());

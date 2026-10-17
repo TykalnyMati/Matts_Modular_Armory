@@ -417,6 +417,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> POWER_AUGMENT = ITEMS.register("power_augment", () -> new AugmentGeneric(new Item.Properties(), "power_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(1, 3, 5, 7), 0xf7f5f2));
     public static final DeferredHolder<Item, Item> PUNCH_AUGMENT = ITEMS.register("punch_augment", () -> new AugmentGeneric(new Item.Properties(), "punch_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(1, 1, 2, 3), 0xa5a5a5));
     public static final DeferredHolder<Item, Item> FLAME_AUGMENT = ITEMS.register("flame_augment", () -> new AugmentGeneric(new Item.Properties(), "flame_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(1, 1, 1, 1), 0xffcb00));
+    public static final DeferredHolder<Item, Item> INFINITY_AUGMENT = ITEMS.register("infinity_augment", () -> new AugmentGeneric(new Item.Properties(), "infinity_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(1, 1, 1, 1), 0x8f36db));
 
     // Armor
     public static final DeferredHolder<Item, Item> PROTECTION_AUGMENT = ITEMS.register("protection_augment", () -> new AugmentGeneric(new Item.Properties(), "protection_augment", AugmentGeneric.Types.ARMOR, List.of(1, 3, 5, 7), 0xd8d8d8, List.of("blast_protection_augment", "projectile_protection_augment", "fire_protection_augment")));

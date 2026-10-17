@@ -863,6 +863,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.ARROW))
                 .save(pRecipeOutput);
 
+        // Infinity Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.INFINITY_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("BAB")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.ARROW)
+                .define('C', Items.EXPERIENCE_BOTTLE)
+                .unlockedBy("has_items_for_infinity_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.ARROW,
+                        Items.EXPERIENCE_BOTTLE))
+                .save(pRecipeOutput);
+
         // Protection Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PROTECTION_AUGMENT.get())
                 .pattern("BCB")

@@ -37,6 +37,7 @@ public class AugmentObject {
     public int POWER;
     public int PUNCH;
     public boolean FLAME;
+    public boolean INFINITY;
 
     // Armor Augment values
     public int PROTECTION;
@@ -112,6 +113,7 @@ public class AugmentObject {
                     case "power_augment" -> this.POWER = augmentStack.getCount();
                     case "punch_augment" -> this.PUNCH = augmentStack.getCount();
                     case "flame_augment" -> this.FLAME = true;
+                    case "infinity_augment" -> this.INFINITY = true;
 
                     // Armor specific augments
                     case "protection_augment" -> this.PROTECTION = augmentStack.getCount();
