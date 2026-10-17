@@ -15,15 +15,13 @@ navigation:
 ### All modular items support [generic augments](../augments/generic_augments.md)
 
 # There are different types of modular items:
-
-|                                      Item Types                                      |   Augment types    |
-|:------------------------------------------------------------------------------------:|:------------------:|
-|        <ItemImage id="advanced_modular_clay_sword"/><br/>[Swords](swords.md)         |       Weapon       |
-|     <ItemImage id="advanced_modular_clay_pickaxe"/><br/>[Pickaxes](pickaxes.md)      |        Tool        |
-|           <ItemImage id="advanced_modular_clay_axe"/><br/>[Axes](axes.md)            |  Tool and Weapon   |
-|       <ItemImage id="advanced_modular_clay_shovel"/><br/>[Shovels](shovels.md)       |        Tool        |
-|           <ItemImage id="advanced_modular_clay_hoe"/><br/>[Hoes](hoes.md)            |        Tool        |
-|       <ItemImage id="advanced_modular_clay_helmet"/><br/>[Helmets](helmets.md)       | Armor, Armor: Head |
-| <ItemImage id="advanced_modular_clay_chestplate"/><br/>[Chestplates](chestplates.md) |       Armor        |
-|     <ItemImage id="advanced_modular_clay_leggings"/><br/>[Leggings](leggings.md)     | Armor, Armor: Legs |
-|         <ItemImage id="advanced_modular_clay_boots"/><br/>[Boots](boots.md)          | Armor, Armor: Feet |
+- <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_clay_sword" scale="0.75"/>[Swords](swords.md)</Row>
+- <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_clay_pickaxe" scale="0.75"/>[Pickaxes](pickaxes.md)</Row>
+- <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_clay_axe" scale="0.75"/>[Axes](axes.md)</Row>
+- <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_clay_shovel" scale="0.75"/>[Shovels](shovels.md)</Row>
+- <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_clay_hoe" scale="0.75"/>[Hoes](hoes.md)</Row>
+- <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_clay_helmet" scale="0.75"/>[Helmets](helmets.md)</Row>
+- <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_clay_chestplate" scale="0.75"/>[Chestplates](chestplates.md)</Row>
+- <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_clay_leggings" scale="0.75"/>[Leggings](leggings.md)</Row>
+- <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_clay_boots" scale="0.75"/>[Boots](boots.md)</Row>
+- <Row alignItems="center" gap="1"><ItemImage id="advanced_modular_clay_bow" scale="0.75"/>[Bows](bows.md)</Row>

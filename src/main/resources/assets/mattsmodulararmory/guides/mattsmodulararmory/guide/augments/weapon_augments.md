@@ -16,6 +16,7 @@ item_ids:
   - sweeping_edge_augment
   - poison_augment
   - wither_augment
+  - power_augment
 ---
 
 # Weapon Augments
@@ -95,3 +96,10 @@ Level 2 grants wither 2 for 6 seconds
 Level 3 grants wither 3 for 4 seconds
 
 <Recipe id="wither_augment" />
+
+# <Color id="blue">Ranged Weapons Augments:</Color>
+
+# Power Augment:
+Increases arrow damage
+
+<Recipe id="power_augment" />
