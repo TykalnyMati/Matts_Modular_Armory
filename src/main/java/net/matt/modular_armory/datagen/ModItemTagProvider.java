@@ -211,6 +211,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.SWEEPING_EDGE_AUGMENT.get())
 
                 .add(ModItems.POWER_AUGMENT.get())
+                .add(ModItems.PUNCH_AUGMENT.get())
 
                 .add(ModItems.PROTECTION_AUGMENT.get())
                 .add(ModItems.BLAST_PROTECTION_AUGMENT.get())

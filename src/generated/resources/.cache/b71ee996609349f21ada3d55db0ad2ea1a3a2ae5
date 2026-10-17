@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-17T12:35:00.2810661	Item Models: mattsmodulararmory
+// 1.21.1	2026-10-17T19:16:09.1126137	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -243,6 +243,7 @@ c82f6ce3d83cbeac17106265d9054b5d2fedce4d assets/mattsmodulararmory/models/item/m
 bf756a0b979492a93468ea8df22a5794c62d4f26 assets/mattsmodulararmory/models/item/projectile_protection_augment.json
 4600afa4ee3471917211e46b81a9ac7fe1e44bc8 assets/mattsmodulararmory/models/item/protection_augment.json
 57d9d03219b8b83003fb88df2317b234f801902a assets/mattsmodulararmory/models/item/pumpkin_lens_augment.json
+0766c0515e54ee8b65db39a19b9fd672f37914f7 assets/mattsmodulararmory/models/item/punch_augment.json
 795921c6fc72bbf4b64ac32b7df0db4638adc1e7 assets/mattsmodulararmory/models/item/range_addon_amethyst.json
 22a408e1c62dabf9500b69970c7b0f122d899323 assets/mattsmodulararmory/models/item/range_addon_coal.json
 53e0081898a85b214fe48f0476327594cbe5207f assets/mattsmodulararmory/models/item/range_addon_copper.json

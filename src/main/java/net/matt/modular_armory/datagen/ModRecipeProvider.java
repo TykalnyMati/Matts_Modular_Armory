@@ -806,8 +806,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('B', Blocks.PISTON)
                 .unlockedBy("has_items_for_knockback_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
                         ModItems.ADVANCED_MODULAR_PLATE.get(),
-                        Blocks.PISTON,
-                        Items.QUARTZ))
+                        Blocks.PISTON))
                 .save(pRecipeOutput);
 
         // Fire Aspect Augment
@@ -834,6 +833,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         ModItems.ADVANCED_MODULAR_PLATE.get(),
                         Items.ARROW,
                         Blocks.QUARTZ_BLOCK))
+                .save(pRecipeOutput);
+
+        // Punch Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PUNCH_AUGMENT.get())
+                .pattern("CBC")
+                .pattern("BAB")
+                .pattern("CBC")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Blocks.PISTON)
+                .define('C', Items.ARROW)
+                .unlockedBy("has_items_for_punch_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Blocks.PISTON,
+                        Items.ARROW))
                 .save(pRecipeOutput);
 
         // Protection Augment

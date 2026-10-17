@@ -17,6 +17,7 @@ item_ids:
   - poison_augment
   - wither_augment
   - power_augment
+  - punch_augment
 ---
 
 # Weapon Augments
@@ -103,3 +104,8 @@ Level 3 grants wither 3 for 4 seconds
 Increases arrow damage
 
 <Recipe id="power_augment" />
+
+# Punch Augment:
+Increases arrow knockback
+
+<Recipe id="punch_augment" />
