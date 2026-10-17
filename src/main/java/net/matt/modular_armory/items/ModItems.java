@@ -413,6 +413,9 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> FIRE_ASPECT_AUGMENT = ITEMS.register("fire_aspect_augment", () -> new AugmentGeneric(new Item.Properties(), "fire_aspect_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 1, 2, 3), 0xffcb00));
     public static final DeferredHolder<Item, Item> SWEEPING_EDGE_AUGMENT = ITEMS.register("sweeping_edge_augment", () -> new AugmentGeneric(new Item.Properties(), "sweeping_edge_augment", AugmentGeneric.Types.SWORD, List.of(1, 2, 3, 4), 0xd3dbff));
 
+    // Bow
+    public static final DeferredHolder<Item, Item> POWER_AUGMENT = ITEMS.register("power_augment", () -> new AugmentGeneric(new Item.Properties(), "power_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(1, 3, 5, 7), 0xf7f5f2));
+
     // Armor
     public static final DeferredHolder<Item, Item> PROTECTION_AUGMENT = ITEMS.register("protection_augment", () -> new AugmentGeneric(new Item.Properties(), "protection_augment", AugmentGeneric.Types.ARMOR, List.of(1, 3, 5, 7), 0xd8d8d8, List.of("blast_protection_augment", "projectile_protection_augment", "fire_protection_augment")));
     public static final DeferredHolder<Item, Item> BLAST_PROTECTION_AUGMENT = ITEMS.register("blast_protection_augment", () -> new AugmentGeneric(new Item.Properties(), "blast_protection_augment", AugmentGeneric.Types.ARMOR, List.of(1, 3, 5, 7), 0xb11527, List.of("protection_augment", "projectile_protection_augment", "fire_protection_augment")));

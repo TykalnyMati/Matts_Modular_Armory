@@ -143,6 +143,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.LOOTING_AUGMENT.get());
                         output.accept(ModItems.KNOCKBACK_AUGMENT.get());
                         output.accept(ModItems.FIRE_ASPECT_AUGMENT.get());
+                        output.accept(ModItems.SWEEPING_EDGE_AUGMENT.get());
+
+                        // Bow
+                        output.accept(ModItems.POWER_AUGMENT.get());
 
                         // Armor
                         output.accept(ModItems.PROTECTION_AUGMENT.get());
@@ -177,7 +181,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MAGNET_AUGMENT.get());
 
                         // Weapons
-                        output.accept(ModItems.SWEEPING_EDGE_AUGMENT.get());
                         output.accept(ModItems.POISON_AUGMENT.get());
                         output.accept(ModItems.WITHER_AUGMENT.get());
 

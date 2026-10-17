@@ -822,6 +822,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.BLAZE_POWDER))
                 .save(pRecipeOutput);
 
+        // Power Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POWER_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.ARROW)
+                .define('C', Blocks.QUARTZ_BLOCK)
+                .unlockedBy("has_items_for_power_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.ARROW,
+                        Blocks.QUARTZ_BLOCK))
+                .save(pRecipeOutput);
+
         // Protection Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PROTECTION_AUGMENT.get())
                 .pattern("BCB")

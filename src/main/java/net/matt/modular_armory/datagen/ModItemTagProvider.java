@@ -106,6 +106,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_BOW.get())
                 .add(ModItems.BIORITE_BOW.get());
 
+        tag(ModTags.Items.MODULAR_RANGED_WEAPON)
+                .add(ModItems.MODULAR_CLAY_BOW.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOW.get())
+                .add(ModItems.ADAPTIVE_FLESH_BOW.get())
+                .add(ModItems.BIORITE_BOW.get());
+
         tag(ModTags.Items.MODULAR_SWORD)
                 .add(ModItems.MODULAR_CLAY_SWORD.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
@@ -202,6 +208,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.LOOTING_AUGMENT.get())
                 .add(ModItems.KNOCKBACK_AUGMENT.get())
                 .add(ModItems.FIRE_ASPECT_AUGMENT.get())
+                .add(ModItems.SWEEPING_EDGE_AUGMENT.get())
+
+                .add(ModItems.POWER_AUGMENT.get())
 
                 .add(ModItems.PROTECTION_AUGMENT.get())
                 .add(ModItems.BLAST_PROTECTION_AUGMENT.get())
@@ -227,7 +236,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ILLUMINATOR_AUGMENT.get())
                 .add(ModItems.VOID_AUGMENT.get())
                 .add(ModItems.MAGNET_AUGMENT.get())
-                .add(ModItems.SWEEPING_EDGE_AUGMENT.get())
                 .add(ModItems.POISON_AUGMENT.get())
                 .add(ModItems.WITHER_AUGMENT.get())
                 .add(ModItems.GILDED_AUGMENT.get())

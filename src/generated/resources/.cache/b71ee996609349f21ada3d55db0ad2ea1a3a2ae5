@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-15T15:43:57.4664577	Item Models: mattsmodulararmory
+// 1.21.1	2026-10-17T12:35:00.2810661	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -239,6 +239,7 @@ ff3167fa11add78d9cdc4944292c97518932081e assets/mattsmodulararmory/models/item/m
 7188ac467e25d5c16e65756dddbb5ad9dfdb17f4 assets/mattsmodulararmory/models/item/modular_clay_sword.json
 c82f6ce3d83cbeac17106265d9054b5d2fedce4d assets/mattsmodulararmory/models/item/modular_processing_unit.json
 3a4ceb4b5ef2e6ee5aca32a711d03a02c274e0aa assets/mattsmodulararmory/models/item/poison_augment.json
+1a0c1414b7caf923ff86e84d70c18e7c958937b7 assets/mattsmodulararmory/models/item/power_augment.json
 bf756a0b979492a93468ea8df22a5794c62d4f26 assets/mattsmodulararmory/models/item/projectile_protection_augment.json
 4600afa4ee3471917211e46b81a9ac7fe1e44bc8 assets/mattsmodulararmory/models/item/protection_augment.json
 57d9d03219b8b83003fb88df2317b234f801902a assets/mattsmodulararmory/models/item/pumpkin_lens_augment.json

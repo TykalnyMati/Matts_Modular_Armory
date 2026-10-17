@@ -153,6 +153,12 @@ public interface ModularItemInterface {
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.SWEEPING_EDGE));
         }
 
+        // Bow
+        if (bonuses.POWER > 0) {
+            enchantmentRegistry.get(Enchantments.POWER)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.POWER));
+        }
+
         // Armor
         if (bonuses.PROTECTION > 0) {
             enchantmentRegistry.get(Enchantments.PROTECTION)

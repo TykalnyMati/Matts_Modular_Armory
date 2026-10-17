@@ -84,6 +84,12 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
                 slotSize = augmentItem.augmentLevels.get(tier);
             }
 
+
+            // Ranged Weapon
+            if (modularItemStack.is(ModTags.Items.MODULAR_RANGED_WEAPON) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_RANGED_WEAPON)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            }
+
             // Specific Armor Piece Augments
             if (modularItemStack.is(ModTags.Items.MODULAR_HELMET) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_HELMET)) {
                 slotSize = augmentItem.augmentLevels.get(tier);

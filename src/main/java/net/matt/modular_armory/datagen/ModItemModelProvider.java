@@ -145,6 +145,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.LOOTING_AUGMENT.get());
         basicItem(ModItems.KNOCKBACK_AUGMENT.get());
         basicItem(ModItems.FIRE_ASPECT_AUGMENT.get());
+        basicItem(ModItems.SWEEPING_EDGE_AUGMENT.get());
+
+        basicItem(ModItems.POWER_AUGMENT.get());
 
         basicItem(ModItems.PROTECTION_AUGMENT.get());
         basicItem(ModItems.BLAST_PROTECTION_AUGMENT.get());
@@ -170,7 +173,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.ILLUMINATOR_AUGMENT.get());
         basicItem(ModItems.VOID_AUGMENT.get());
         basicItem(ModItems.MAGNET_AUGMENT.get());
-        basicItem(ModItems.SWEEPING_EDGE_AUGMENT.get());
         basicItem(ModItems.POISON_AUGMENT.get());
         basicItem(ModItems.WITHER_AUGMENT.get());
         basicItem(ModItems.GILDED_AUGMENT.get());

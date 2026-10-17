@@ -33,6 +33,9 @@ public class AugmentObject {
     public int FIRE_ASPECT;
     public int SWEEPING_EDGE;
 
+    // Range Weapon Augment values
+    public int POWER;
+
     // Armor Augment values
     public int PROTECTION;
     public int BLAST_PROTECTION;
@@ -102,6 +105,9 @@ public class AugmentObject {
                     case "sweeping_edge_augment" -> this.SWEEPING_EDGE = augmentStack.getCount();
                     case "poison_augment" -> this.POISON = augmentStack.getCount();
                     case "wither_augment" -> this.WITHER = augmentStack.getCount();
+
+                    // Ranged Weapons specific augments
+                    case "power_augment" -> this.POWER = augmentStack.getCount();
 
                     // Armor specific augments
                     case "protection_augment" -> this.PROTECTION = augmentStack.getCount();
