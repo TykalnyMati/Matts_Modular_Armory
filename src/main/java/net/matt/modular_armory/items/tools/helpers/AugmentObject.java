@@ -36,6 +36,7 @@ public class AugmentObject {
     // Range Weapon Augment values
     public int POWER;
     public int PUNCH;
+    public boolean FLAME;
 
     // Armor Augment values
     public int PROTECTION;
@@ -110,6 +111,7 @@ public class AugmentObject {
                     // Ranged Weapons specific augments
                     case "power_augment" -> this.POWER = augmentStack.getCount();
                     case "punch_augment" -> this.PUNCH = augmentStack.getCount();
+                    case "flame_augment" -> this.FLAME = true;
 
                     // Armor specific augments
                     case "protection_augment" -> this.PROTECTION = augmentStack.getCount();

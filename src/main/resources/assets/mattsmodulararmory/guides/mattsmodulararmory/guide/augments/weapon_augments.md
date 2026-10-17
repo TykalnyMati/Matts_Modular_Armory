@@ -18,6 +18,7 @@ item_ids:
   - wither_augment
   - power_augment
   - punch_augment
+  - flame_augment
 ---
 
 # Weapon Augments
@@ -109,3 +110,8 @@ Increases arrow damage
 Increases arrow knockback
 
 <Recipe id="punch_augment" />
+
+# Flame Augment:
+Sets fired arrows ablaze
+
+<Recipe id="flame_augment" />

@@ -164,6 +164,11 @@ public interface ModularItemInterface {
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.PUNCH));
         }
 
+        if (bonuses.FLAME) {
+            enchantmentRegistry.get(Enchantments.FLAME)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, 1));
+        }
+
         // Armor
         if (bonuses.PROTECTION > 0) {
             enchantmentRegistry.get(Enchantments.PROTECTION)

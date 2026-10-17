@@ -849,6 +849,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.ARROW))
                 .save(pRecipeOutput);
 
+        // Flame Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLAME_AUGMENT.get())
+                .pattern("CBC")
+                .pattern("BAB")
+                .pattern("CBC")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.BLAZE_POWDER)
+                .define('C', Items.ARROW)
+                .unlockedBy("has_items_for_flame_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.BLAZE_POWDER,
+                        Items.ARROW))
+                .save(pRecipeOutput);
+
         // Protection Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PROTECTION_AUGMENT.get())
                 .pattern("BCB")
