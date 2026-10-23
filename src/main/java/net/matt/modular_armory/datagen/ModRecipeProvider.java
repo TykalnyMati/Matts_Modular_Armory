@@ -1179,6 +1179,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.WITHER_ROSE))
                 .save(pRecipeOutput);
 
+        // Rapid Fire Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RAPID_FIRE_AUGMENT.get())
+                .pattern("BBB")
+                .pattern("BAB")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.STRING)
+                .define('C', Items.NETHER_STAR)
+                .unlockedBy("has_items_for_rapid_fire_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.STRING,
+                        Items.NETHER_STAR))
+                .save(pRecipeOutput);
+
         // Gilded Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.GILDED_AUGMENT.get())
                 .pattern(" B ")

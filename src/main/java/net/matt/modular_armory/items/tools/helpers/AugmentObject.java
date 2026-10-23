@@ -66,6 +66,7 @@ public class AugmentObject {
     public boolean MAGNET;
     public int POISON;
     public int WITHER;
+    public boolean RAPID_FIRE;
     public boolean GILDED;
     public boolean SUPER_GILDED;
     public boolean PUMPKIN_LENS;
@@ -114,6 +115,7 @@ public class AugmentObject {
                     case "punch_augment" -> this.PUNCH = augmentStack.getCount();
                     case "flame_augment" -> this.FLAME = true;
                     case "infinity_augment" -> this.INFINITY = true;
+                    case "rapid_fire_augment" -> this.RAPID_FIRE = true;
 
                     // Armor specific augments
                     case "protection_augment" -> this.PROTECTION = augmentStack.getCount();

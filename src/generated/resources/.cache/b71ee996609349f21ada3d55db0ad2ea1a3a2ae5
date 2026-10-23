@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-17T23:04:02.0978538	Item Models: mattsmodulararmory
+// 1.21.1	2026-10-23T20:42:57.5001903	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -257,6 +257,7 @@ e585d60d81389de10f13a660729d986c425357a3 assets/mattsmodulararmory/models/item/r
 09d4837d3434f2fba05be82ac0aec45e7ba564eb assets/mattsmodulararmory/models/item/range_addon_lapis.json
 e814f484fc5036911d88863c8c78c13aa6b5acb6 assets/mattsmodulararmory/models/item/range_addon_quartz.json
 3426a3c378ebfc0c45fdd03d19efd87cf247159d assets/mattsmodulararmory/models/item/range_addon_redstone.json
+d06242470614abc1970c0f71e0e0e4662ebd0a9b assets/mattsmodulararmory/models/item/rapid_fire_augment.json
 6a735ff9756f86a57a7479995344cb385f243f49 assets/mattsmodulararmory/models/item/respiration_augment.json
 8170dc07a2cb97f7d665011b6d99913726dd0d87 assets/mattsmodulararmory/models/item/scaffolding_augment.json
 43fc75185e1b3a65e638f55cba9a628ad4ff9680 assets/mattsmodulararmory/models/item/sharpness_augment.json

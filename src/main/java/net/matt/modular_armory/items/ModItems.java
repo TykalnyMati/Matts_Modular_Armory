@@ -455,6 +455,9 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> POISON_AUGMENT = ITEMS.register("poison_augment", () -> new AugmentGeneric(new Item.Properties(), "poison_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 1, 2, 2), 0x76db4c));
     public static final DeferredHolder<Item, Item> WITHER_AUGMENT = ITEMS.register("wither_augment", () -> new AugmentGeneric(new Item.Properties(), "wither_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 1, 2, 3), 0x764857));
 
+    // Bow
+    public static final DeferredHolder<Item, Item> RAPID_FIRE_AUGMENT = ITEMS.register("rapid_fire_augment", () -> new AugmentGeneric(new Item.Properties(), "rapid_fire_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(0, 1, 1, 1), 0xcc2929));
+
     // Armor
     public static final DeferredHolder<Item, Item> GILDED_AUGMENT = ITEMS.register("gilded_augment", () -> new AugmentGeneric(new Item.Properties(), "gilded_augment", AugmentGeneric.Types.ARMOR, List.of(1, 1, 1, 1), 0xfdf55f, List.of("super_gilded_augment")));
     public static final DeferredHolder<Item, Item> SUPER_GILDED_AUGMENT = ITEMS.register("super_gilded_augment", () -> new AugmentGeneric(new Item.Properties(), "super_gilded_augment", AugmentGeneric.Types.ARMOR, List.of(0, 0, 1, 1), 0xf5da2a, List.of("gilded_augment")));

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    "B": {
+      "item": "minecraft:string"
+    },
+    "C": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "BAB",
+    "BCB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:rapid_fire_augment"
+  }
+}

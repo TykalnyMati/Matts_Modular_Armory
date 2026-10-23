@@ -20,6 +20,7 @@ item_ids:
   - punch_augment
   - flame_augment
   - infinity_augment
+  - rapid_fire_augment
 ---
 
 # Weapon Augments
@@ -121,3 +122,12 @@ Sets fired arrows ablaze
 Grants infinite standard arrows, but it requires at least 1 arrow
 
 <Recipe id="infinity_augment" />
+
+# Rapid Fire Augment:
+The weapon fires without drawing
+
+Each arrow deals 75% of max damage, can't be critical and is shot slightly less accurately
+
+*Just like back in the day*
+
+<Recipe id="rapid_fire_augment" />

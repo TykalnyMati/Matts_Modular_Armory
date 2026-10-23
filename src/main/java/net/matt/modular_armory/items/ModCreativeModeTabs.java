@@ -187,6 +187,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.POISON_AUGMENT.get());
                         output.accept(ModItems.WITHER_AUGMENT.get());
 
+                        // Bow
+                        output.accept(ModItems.RAPID_FIRE_AUGMENT.get());
+
                         // Armor
                         output.accept(ModItems.GILDED_AUGMENT.get());
                         output.accept(ModItems.SUPER_GILDED_AUGMENT.get());

@@ -178,6 +178,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.MAGNET_AUGMENT.get());
         basicItem(ModItems.POISON_AUGMENT.get());
         basicItem(ModItems.WITHER_AUGMENT.get());
+        basicItem(ModItems.RAPID_FIRE_AUGMENT.get());
         basicItem(ModItems.GILDED_AUGMENT.get());
         basicItem(ModItems.SUPER_GILDED_AUGMENT.get());
         basicItem(ModItems.PUMPKIN_LENS_AUGMENT.get());

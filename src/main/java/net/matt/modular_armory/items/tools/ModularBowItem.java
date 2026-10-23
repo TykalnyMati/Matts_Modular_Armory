@@ -41,6 +41,12 @@ public class ModularBowItem extends BowItem implements ModularItemInterface {
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity entityLiving, int timeLeft) {
         if (!isBroken(stack)) {
+            AugmentObject bonuses = getAugmentBonuses(stack);
+
+            if (bonuses.RAPID_FIRE) {
+                return;
+            }
+
             if (entityLiving instanceof Player player) {
                 ItemStack itemstack = player.getProjectile(stack);
                 if (!itemstack.isEmpty()) {
@@ -74,20 +80,28 @@ public class ModularBowItem extends BowItem implements ModularItemInterface {
 
         ItemStack itemstack = player.getItemInHand(hand);
 
-//        if (level instanceof ServerLevel) {
-//            ServerLevel serverlevel = (ServerLevel)level;
-//            ItemStack stack = player.getProjectile(itemstack);
-//            List<ItemStack> list = draw(itemstack, stack, player);
-//
-//            this.shoot(serverlevel, player, player.getUsedItemHand(), itemstack, list, (maxSpeed * 0.75f) * 3.0F, 0.5F, false, (LivingEntity)null);
-//
-//        }
-
-        if (!isBroken(itemstack)) {
-            return super.use(level, player, hand);
+        if (isBroken(itemstack)) {
+            return InteractionResultHolder.fail(itemstack);
         }
 
-        return InteractionResultHolder.fail(itemstack);
+        AugmentObject bonuses = getAugmentBonuses(itemstack);
+
+        if (bonuses.RAPID_FIRE) {
+            ItemStack stack = player.getProjectile(itemstack);
+            List<ItemStack> list = draw(itemstack, stack, player);
+            if (level instanceof ServerLevel) {
+                ServerLevel serverlevel = (ServerLevel)level;
+                if (!list.isEmpty()) {
+                    this.shoot(serverlevel, player, player.getUsedItemHand(), itemstack, list, (maxSpeed * 0.75f) * 3.0F, 1.5F, false, (LivingEntity)null);
+                    level.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (level.getRandom().nextFloat() * 0.4F + 1.2F) + 0.75F * 0.5F);
+                    player.awardStat(Stats.ITEM_USED.get(this));
+                }
+            }
+
+            return InteractionResultHolder.fail(itemstack);
+        } else {
+            return super.use(level, player, hand);
+        }
     }
 
     public float getPowerForTimeModular(int charge) {
