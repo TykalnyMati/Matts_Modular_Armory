@@ -11,6 +11,7 @@ item_ids:
   - projectile_protection_augment
   - fire_protection_augment
   - thorns_augment
+  - vitality_augment
   - gilded_augment
   - super_gilded_augment
   - respiration_augment
@@ -74,6 +75,17 @@ Each armor piece has Level * 15% chance of dealing damage
 Consumes 2 durability when activated
 
 <Recipe id="thorns_augment" />
+
+# Vitality Augment:
+Increases max health
+
+Level 1 increases health by 1 heart
+
+Level 2 increases health by 2.5 hearts
+
+*bonus health unfortunately gets reset on reload*
+
+<Recipe id="vitality_augment" />
 
 # Gilded Augment:
 Piglin become neutral towards you just like if you were wearing a piece of golden armor

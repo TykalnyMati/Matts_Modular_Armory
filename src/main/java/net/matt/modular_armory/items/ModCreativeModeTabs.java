@@ -191,6 +191,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RAPID_FIRE_AUGMENT.get());
 
                         // Armor
+                        output.accept(ModItems.VITALITY_AUGMENT.get());
                         output.accept(ModItems.GILDED_AUGMENT.get());
                         output.accept(ModItems.SUPER_GILDED_AUGMENT.get());
                         output.accept(ModItems.PUMPKIN_LENS_AUGMENT.get());

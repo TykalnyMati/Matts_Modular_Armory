@@ -62,5 +62,23 @@ public class CreativeTabEvents {
 
                     event.remove(enchantedBook, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         });
+
+        // Removing Vitality
+        event.getParameters().holders().lookup(Registries.ENCHANTMENT)
+                .flatMap(registry -> registry.get(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "vitality"))))
+                .ifPresent(holder -> {
+                    int maxLevel = 2;
+
+                    for (int level = 1; level <= maxLevel; level++) {
+                        ItemStack enchantedBook = new ItemStack(Items.ENCHANTED_BOOK);
+
+                        ItemEnchantments.Mutable mutableEnchantments = new ItemEnchantments.Mutable(ItemEnchantments.EMPTY);
+                        mutableEnchantments.set(holder, level);
+
+                        enchantedBook.set(DataComponents.STORED_ENCHANTMENTS, mutableEnchantments.toImmutable());
+
+                        event.remove(enchantedBook, CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+                    }
+                });
     }
 }

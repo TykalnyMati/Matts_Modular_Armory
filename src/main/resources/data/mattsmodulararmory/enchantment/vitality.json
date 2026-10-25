@@ -1,0 +1,34 @@
+{
+  "description": {
+    "translate": "[interface] vitality"
+  },
+  "supported_items": "mattsmodulararmory:modular_clay",
+  "weight": 1,
+  "max_level": 2,
+  "min_cost": {
+    "base": 0,
+    "per_level_above_first": 0
+  },
+  "max_cost": {
+    "base": 0,
+    "per_level_above_first": 0
+  },
+  "anvil_cost": 0,
+  "slots": [
+    "armor"
+  ],
+  "effects": {
+    "minecraft:attributes": [
+      {
+        "id": "mattsmodulararmory:augment.vitality",
+        "attribute": "minecraft:generic.max_health",
+        "amount": {
+          "type": "minecraft:linear",
+          "base": 2,
+          "per_level_above_first": 3
+        },
+        "operation": "add_value"
+      }
+    ]
+  }
+}

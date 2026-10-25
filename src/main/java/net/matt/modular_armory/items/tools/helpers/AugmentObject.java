@@ -67,6 +67,7 @@ public class AugmentObject {
     public int POISON;
     public int WITHER;
     public boolean RAPID_FIRE;
+    public int VITALITY;
     public boolean GILDED;
     public boolean SUPER_GILDED;
     public boolean PUMPKIN_LENS;
@@ -123,6 +124,7 @@ public class AugmentObject {
                     case "projectile_protection_augment" -> this.PROJECTILE_PROTECTION = augmentStack.getCount();
                     case "fire_protection_augment" -> this.FIRE_PROTECTION = augmentStack.getCount();
                     case "thorns_augment" -> this.THORNS = augmentStack.getCount();
+                    case "vitality_augment" -> this.VITALITY = augmentStack.getCount();
                     case "gilded_augment" -> this.GILDED = true;
                     case "super_gilded_augment" -> this.SUPER_GILDED = true;
 

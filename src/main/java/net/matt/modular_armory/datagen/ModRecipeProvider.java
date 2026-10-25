@@ -10,7 +10,10 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionContents;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
@@ -1190,6 +1193,24 @@ public class ModRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_items_for_rapid_fire_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
                         ModItems.ADVANCED_MODULAR_PLATE.get(),
                         Items.STRING,
+                        Items.NETHER_STAR))
+                .save(pRecipeOutput);
+
+        // Vitality Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VITALITY_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("DED")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.NETHER_WART)
+                .define('C', Items.GLISTERING_MELON_SLICE)
+                .define('D', Items.BLAZE_POWDER)
+                .define('E', Items.NETHER_STAR)
+                .unlockedBy("has_items_for_vitality_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.NETHER_WART,
+                        Items.GLISTERING_MELON_SLICE,
+                        Items.BLAZE_POWDER,
                         Items.NETHER_STAR))
                 .save(pRecipeOutput);
 

@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-23T20:42:57.5001903	Item Models: mattsmodulararmory
+// 1.21.1	2026-10-23T21:54:22.0519158	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -271,6 +271,7 @@ fe274218c4af66386468ef0f72ef91302f9917b4 assets/mattsmodulararmory/models/item/s
 432a6366c7b7dd1e4b4b5ac40c401952fed24cf6 assets/mattsmodulararmory/models/item/swift_sneak_augment.json
 c9ab4955d38b4c81dae67f01ab771b86596dc519 assets/mattsmodulararmory/models/item/thorns_augment.json
 eea2dbdf83976bca98b8a73329ae5d3aaacebe3d assets/mattsmodulararmory/models/item/unbreaking_augment.json
+7c6737ccfe8fa3291b29fa5721ce9f51339eb3ad assets/mattsmodulararmory/models/item/vitality_augment.json
 f98cef24bcc31ae159349943c01bac63c167f388 assets/mattsmodulararmory/models/item/void_augment.json
 8eb4c0787cd268606d3e943d8f07e3082e595d92 assets/mattsmodulararmory/models/item/void_augment_addon.json
 03cff677e50834d676f8571a3992b6dbb47b5092 assets/mattsmodulararmory/models/item/void_tether_augment.json

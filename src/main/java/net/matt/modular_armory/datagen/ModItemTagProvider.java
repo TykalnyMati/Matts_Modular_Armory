@@ -242,6 +242,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.POISON_AUGMENT.get())
                 .add(ModItems.WITHER_AUGMENT.get())
                 .add(ModItems.RAPID_FIRE_AUGMENT.get())
+                .add(ModItems.VITALITY_AUGMENT.get())
                 .add(ModItems.GILDED_AUGMENT.get())
                 .add(ModItems.SUPER_GILDED_AUGMENT.get())
                 .add(ModItems.PUMPKIN_LENS_AUGMENT.get())

@@ -194,6 +194,11 @@ public interface ModularItemInterface {
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.THORNS));
         }
 
+        if (bonuses.VITALITY > 0) {
+            enchantmentRegistry.get(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "vitality")))
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.VITALITY));
+        }
+
         // Helmet
         if (bonuses.RESPIRATION > 0) {
             enchantmentRegistry.get(Enchantments.RESPIRATION)

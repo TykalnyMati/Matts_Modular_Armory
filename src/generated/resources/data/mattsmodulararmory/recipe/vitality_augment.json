@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    "B": {
+      "item": "minecraft:nether_wart"
+    },
+    "C": {
+      "item": "minecraft:glistering_melon_slice"
+    },
+    "D": {
+      "item": "minecraft:blaze_powder"
+    },
+    "E": {
+      "item": "minecraft:nether_star"
+    }
+  },
+  "pattern": [
+    "BCB",
+    "CAC",
+    "DED"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:vitality_augment"
+  }
+}
