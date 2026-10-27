@@ -15,7 +15,6 @@ item_ids:
   - scaffolding_augment
   - illuminator_augment
   - void_augment
-  - magnet_augment
 ---
 
 # Tool Augments
@@ -98,10 +97,3 @@ Voids drops of broken blocks
 Incompatible with Silk Touch, Fortune and Auto Smelt
 
 <Recipe id="void_augment" />
-
-# Magnet Augment:
-Attracts items in the range of 4 block to the player when the item is held
-
-Can also be applied to weapons
-
-<Recipe id="magnet_augment" />

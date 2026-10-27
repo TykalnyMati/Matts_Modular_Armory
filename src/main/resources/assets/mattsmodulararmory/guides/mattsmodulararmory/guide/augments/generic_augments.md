@@ -8,6 +8,7 @@ navigation:
 item_ids:
   - unbreaking_augment
   - mending_augment
+  - magnet_augment
 ---
 
 # Generic Augments
@@ -25,3 +26,8 @@ Items with 8 augments become unbreakable
 Repairs items for 2 durability for every xp point absorbed when the item is held in hand or equipped
 
 <Recipe id="mending_augment" />
+
+# Magnet Augment:
+Attracts items in the range of 4 block to the player when the item is held or equipped
+
+<Recipe id="magnet_augment" />

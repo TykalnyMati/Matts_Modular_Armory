@@ -6,9 +6,12 @@ import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.Holder;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -32,6 +35,18 @@ public class ModularArmorItem extends ArmorItem implements ModularItemInterface 
         }
 
         return super.getDefaultAttributeModifiers(stack);
+    }
+
+    @Override
+    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slotId, boolean isSelected) {
+        if (!level.isClientSide && entity instanceof LivingEntity livingEntity) {
+            EquipmentSlot currentSlot = this.getEquipmentSlot();
+            if (livingEntity.getItemBySlot(currentSlot) == stack) {
+                handleHeldOrWornItem(stack, level, entity);
+            }
+        }
+
+        super.inventoryTick(stack, level, entity, slotId, isSelected);
     }
 
     // Anvil repairing and enchanting

@@ -58,8 +58,16 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
 
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
-        if (!pLevel.isClientSide && pIsSelected && !isBroken(pStack)) {
-            handleHeldItem(pStack, pLevel, pEntity);
+        if (!pLevel.isClientSide && pEntity instanceof LivingEntity livingEntity) {
+            boolean isHeld = pIsSelected;
+
+            if (!isHeld) {
+                isHeld = (livingEntity.getOffhandItem() == pStack);
+            }
+
+            if (isHeld) {
+                handleHeldOrWornItem(pStack, pLevel, pEntity);
+            }
         }
 
         super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);

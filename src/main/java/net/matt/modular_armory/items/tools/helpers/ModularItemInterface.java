@@ -341,26 +341,30 @@ public interface ModularItemInterface {
         }
     }
 
-    default void handleHeldItem(ItemStack pStack, Level pLevel, Entity pEntity) {
+    default void handleHeldOrWornItem(ItemStack pStack, Level pLevel, Entity pEntity) {
+        if (isBroken(pStack)) {
+            return;
+        }
+
         if (pEntity instanceof Player player) {
             AugmentObject bonuses = getAugmentBonuses(pStack);
 
             if (bonuses.MAGNET) {
                 double range = 4.0;
 
-                // Find all Item Entities in that range
+                // Find all Item Entities in range
                 List<ItemEntity> items = pLevel.getEntitiesOfClass(
-                        net.minecraft.world.entity.item.ItemEntity.class,
+                        ItemEntity.class,
                         player.getBoundingBox().inflate(range)
                 );
 
-                for (net.minecraft.world.entity.item.ItemEntity item : items) {
-                    // Ignore items that have a pickup delay
+                for (ItemEntity item : items) {
+                    // Ignore items that have pickup delay
                     if (item.hasPickUpDelay()) {
                         continue;
                     }
 
-                    // Calculate the vector from the item to the player
+                    // Vector from the item to the player
                     Vec3 moveVec = player.position().add(0, 0.5, 0).subtract(item.position());
 
                     // Only pull if the item is not too close

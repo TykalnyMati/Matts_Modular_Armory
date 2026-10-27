@@ -440,6 +440,9 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> SOUL_SPEED_AUGMENT = ITEMS.register("soul_speed_augment", () -> new AugmentGeneric(new Item.Properties(), "soul_speed_augment", AugmentGeneric.Types.ARMOR_FEET, List.of(1, 2, 3, 4), 0x60f5fa));
 
     // Custom Augments
+    // Generic
+    public static final DeferredHolder<Item, Item> MAGNET_AUGMENT = ITEMS.register("magnet_augment", () -> new AugmentGeneric(new Item.Properties(), "magnet_augment", AugmentGeneric.Types.GENERIC, List.of(0, 1, 1, 1), 0xd8d8d8));
+
     // Tools
     public static final DeferredHolder<Item, Item> AUTO_SMELT_AUGMENT = ITEMS.register("auto_smelt_augment", () -> new AugmentGeneric(new Item.Properties(), "auto_smelt_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1), 0xff8f00, List.of("void_augment", "silk_touch_augment")));
     public static final DeferredHolder<Item, Item> DIAMOND_SHARPENED_AUGMENT = ITEMS.register("diamond_sharpened_augment", () -> new AugmentGeneric(new Item.Properties(), "diamond_sharpened_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1), 0x4aedd9));
@@ -447,9 +450,6 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> SCAFFOLDING_AUGMENT = ITEMS.register("scaffolding_augment", () -> new AugmentGeneric(new Item.Properties(), "scaffolding_augment", AugmentGeneric.Types.TOOLS, List.of(1, 2, 3, 4), 0xd3bb50, List.of("modular_clay_extractor_augment", "illuminator_augment")));
     public static final DeferredHolder<Item, Item> ILLUMINATOR_AUGMENT = ITEMS.register("illuminator_augment", () -> new AugmentGeneric(new Item.Properties(), "illuminator_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1), 0xffbc5e, List.of("modular_clay_extractor_augment", "scaffolding_augment")));
     public static final DeferredHolder<Item, Item> VOID_AUGMENT = ITEMS.register("void_augment", () -> new AugmentGeneric(new Item.Properties(), "void_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1), 0x8f36db, List.of("silk_touch_augment", "fortune_augment", "auto_smelt_augment")));
-
-    // Tools and Weapons
-    public static final DeferredHolder<Item, Item> MAGNET_AUGMENT = ITEMS.register("magnet_augment", () -> new AugmentGeneric(new Item.Properties(), "magnet_augment", AugmentGeneric.Types.TOOLS_AND_WEAPONS, List.of(0, 1, 1, 1), 0xd8d8d8));
 
     // Weapons
     public static final DeferredHolder<Item, Item> POISON_AUGMENT = ITEMS.register("poison_augment", () -> new AugmentGeneric(new Item.Properties(), "poison_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 1, 2, 2), 0x76db4c));
