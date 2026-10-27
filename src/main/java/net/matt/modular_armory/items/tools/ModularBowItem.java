@@ -11,6 +11,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BowItem;
@@ -112,6 +113,23 @@ public class ModularBowItem extends BowItem implements ModularItemInterface {
         }
 
         return f;
+    }
+
+    @Override
+    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        if (!pLevel.isClientSide && pEntity instanceof LivingEntity livingEntity) {
+            boolean isHeld = pIsSelected;
+
+            if (!isHeld) {
+                isHeld = (livingEntity.getOffhandItem() == pStack);
+            }
+
+            if (isHeld) {
+                handleHeldOrWornItem(pStack, pLevel, pEntity);
+            }
+        }
+
+        super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
     }
 
     // Tooltips
