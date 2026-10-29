@@ -1,0 +1,28 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "minecraft:glowstone_dust"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:prismarine_crystals"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:conduit",
+      "Properties": {
+        "waterlogged": "true"
+      }
+    },
+    {
+      "Name": "minecraft:prismarine"
+    },
+    {
+      "Name": "minecraft:prismarine"
+    },
+    {
+      "Name": "minecraft:prismarine"
+    }
+  ],
+  "time": 200
+}

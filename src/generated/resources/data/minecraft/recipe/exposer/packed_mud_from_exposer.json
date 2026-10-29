@@ -1,0 +1,32 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "minecraft:mud"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:packed_mud"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:piston",
+      "Properties": {
+        "extended": "false",
+        "facing": "north"
+      }
+    },
+    {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:hay_block",
+      "Properties": {
+        "axis": "y"
+      }
+    }
+  ],
+  "time": 200
+}

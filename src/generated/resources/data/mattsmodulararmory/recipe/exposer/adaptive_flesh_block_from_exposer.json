@@ -1,0 +1,25 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "mattsmodulararmory:modular_clay_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:adaptive_flesh_block"
+  },
+  "surroundings": [
+    {
+      "Name": "mattsmodulararmory:infectious_adaptive_flesh_block"
+    },
+    {
+      "Name": "mattsmodulararmory:infectious_adaptive_flesh_block"
+    },
+    {
+      "Name": "mattsmodulararmory:infectious_adaptive_flesh_block"
+    },
+    {
+      "Name": "mattsmodulararmory:infectious_adaptive_flesh_block"
+    }
+  ],
+  "time": 1200
+}

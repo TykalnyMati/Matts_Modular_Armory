@@ -1,0 +1,25 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "minecraft:copper_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:exposed_copper"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:water",
+      "Properties": {
+        "level": "0"
+      }
+    }
+  ],
+  "time": 600
+}

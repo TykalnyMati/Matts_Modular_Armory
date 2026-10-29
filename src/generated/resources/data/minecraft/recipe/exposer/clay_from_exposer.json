@@ -1,0 +1,19 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "minecraft:mud"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:clay"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    }
+  ],
+  "time": 80
+}

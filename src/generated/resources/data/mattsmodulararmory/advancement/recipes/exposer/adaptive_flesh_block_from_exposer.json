@@ -1,0 +1,20 @@
+{
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:exposer/adaptive_flesh_block_from_exposer"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:exposer/adaptive_flesh_block_from_exposer"
+    ]
+  }
+}

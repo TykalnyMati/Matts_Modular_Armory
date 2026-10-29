@@ -223,15 +223,24 @@ public class ExposerBlockEntity extends BlockEntity implements MenuProvider {
 
         ItemStack inputStack = itemHandler.getStackInSlot(INPUT_SLOT);
 
+        RecipeHolder<ExposerRecipe> bestMatch = null;
+        int maxRequirements = -1;
+
         for (RecipeHolder<ExposerRecipe> holder : recipes) {
             ExposerRecipe recipe = holder.value();
 
             if (matchesInput(recipe, inputStack) && matchesEnvironment(recipe)) {
-                return Optional.of(holder);
+                int requirementCount = recipe.surroundings().size();
+
+                // Picks the most complex recipes
+                if (requirementCount > maxRequirements) {
+                    maxRequirements = requirementCount;
+                    bestMatch = holder;
+                }
             }
         }
 
-        return Optional.empty();
+        return Optional.ofNullable(bestMatch);
     }
 
     private boolean matchesInput(ExposerRecipe recipe, ItemStack stack) {

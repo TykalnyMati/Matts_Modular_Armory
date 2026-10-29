@@ -1,0 +1,22 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "minecraft:copper_block"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:weathered_copper"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:water",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:iron_block"
+    }
+  ],
+  "time": 600
+}

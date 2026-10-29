@@ -1,0 +1,31 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "mattsmodulararmory:exposer_slot_plug"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:cobbled_deepslate"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:water",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:deepslate",
+      "Properties": {
+        "axis": "y"
+      }
+    }
+  ],
+  "time": 80
+}

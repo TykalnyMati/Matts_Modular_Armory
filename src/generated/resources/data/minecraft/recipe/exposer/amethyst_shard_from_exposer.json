@@ -1,0 +1,16 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "mattsmodulararmory:exposer_slot_plug"
+  },
+  "result": {
+    "count": 2,
+    "id": "minecraft:amethyst_shard"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:budding_amethyst"
+    }
+  ],
+  "time": 800
+}

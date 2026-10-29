@@ -1,0 +1,40 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "mattsmodulararmory:exposer_slot_plug"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:netherrack"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:soul_soil"
+    }
+  ],
+  "time": 160
+}

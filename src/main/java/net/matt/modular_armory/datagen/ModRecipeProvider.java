@@ -1281,10 +1281,164 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(pRecipeOutput);
 
         // Exposer Recipes
+        // Creation Recipes
+        // Cobblestone
         ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.COBBLESTONE, 40)
                 .surrounding(Blocks.LAVA)
                 .surrounding(Blocks.WATER)
                 .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
+                .save(pRecipeOutput);
+
+        // Cobbled Deepslate
+        ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.COBBLED_DEEPSLATE, 80)
+                .surrounding(Blocks.LAVA)
+                .surrounding(Blocks.WATER)
+                .surrounding(Blocks.DEEPSLATE)
+                .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
+                .save(pRecipeOutput);
+
+        // Basalt
+        ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.BASALT, 80)
+                .surrounding(Blocks.LAVA)
+                .surrounding(Blocks.BLUE_ICE)
+                .surrounding(Blocks.SOUL_SOIL)
+                .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
+                .save(pRecipeOutput);
+
+        // Amethyst Shard
+        ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.AMETHYST_SHARD, 2, 800)
+                .surrounding(Blocks.BUDDING_AMETHYST)
+                .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
+                .save(pRecipeOutput);
+
+        // Netherrack
+        ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.NETHERRACK, 160)
+                .surrounding(Blocks.LAVA)
+                .surrounding(Blocks.LAVA)
+                .surrounding(Blocks.LAVA)
+                .surrounding(Blocks.LAVA)
+                .surrounding(Blocks.SOUL_SOIL)
+                .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
+                .save(pRecipeOutput);
+
+        // Blackstone
+        ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.BLACKSTONE, 80)
+                .surrounding(Blocks.LAVA)
+                .surrounding(Blocks.PACKED_ICE)
+                .surrounding(Blocks.SOUL_SOIL)
+                .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
+                .save(pRecipeOutput);
+
+        // Calcite
+        ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.CALCITE, 100)
+                .surrounding(Blocks.SMOOTH_BASALT)
+                .surrounding(Blocks.AMETHYST_BLOCK)
+                .surrounding(Blocks.WATER)
+                .surrounding(Blocks.LAVA)
+                .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
+                .save(pRecipeOutput);
+
+        // Diorite
+        ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.DIORITE, 80)
+                .surrounding(Blocks.QUARTZ_BLOCK)
+                .surrounding(Blocks.WATER)
+                .surrounding(Blocks.LAVA)
+                .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
+                .save(pRecipeOutput);
+
+        // Granite
+        ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.GRANITE, 80)
+                .surrounding(Blocks.DIORITE)
+                .surrounding(Blocks.QUARTZ_BLOCK)
+                .surrounding(Blocks.WATER)
+                .surrounding(Blocks.LAVA)
+                .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
+                .save(pRecipeOutput);
+
+        // Andesite
+        ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.ANDESITE, 80)
+                .surrounding(Blocks.DIORITE)
+                .surrounding(Blocks.COBBLESTONE)
+                .surrounding(Blocks.WATER)
+                .surrounding(Blocks.LAVA)
+                .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
+                .save(pRecipeOutput);
+
+        // Refining Recipes
+
+        // Mud
+        ExposerRecipeBuilder.exposer(Items.DIRT, Items.MUD, 80)
+                .surrounding(Blocks.WATER)
+                .surrounding(Blocks.WATER)
+                .save(pRecipeOutput);
+
+        // Adaptive Flesh Block
+        ExposerRecipeBuilder.exposer(ModBlocks.MODULAR_CLAY_BLOCK.get().asItem(), ModBlocks.ADAPTIVE_FLESH_BLOCK.get().asItem(), 1200)
+                .surrounding(ModBlocks.INFECTIOUS_ADAPTIVE_FLESH_BLOCK.get())
+                .surrounding(ModBlocks.INFECTIOUS_ADAPTIVE_FLESH_BLOCK.get())
+                .surrounding(ModBlocks.INFECTIOUS_ADAPTIVE_FLESH_BLOCK.get())
+                .surrounding(ModBlocks.INFECTIOUS_ADAPTIVE_FLESH_BLOCK.get())
+                .save(pRecipeOutput);
+
+        // Gravel
+        ExposerRecipeBuilder.exposer(Items.COBBLESTONE, Items.GRAVEL, 200)
+                .surrounding(Blocks.IRON_BLOCK)
+                .surrounding(Blocks.PISTON)
+                .surrounding(Blocks.OBSIDIAN)
+                .save(pRecipeOutput);
+
+        // Sand
+        ExposerRecipeBuilder.exposer(Items.GRAVEL, Items.SAND, 200)
+                .surrounding(Blocks.IRON_BLOCK)
+                .surrounding(Blocks.PISTON)
+                .surrounding(Blocks.OBSIDIAN)
+                .save(pRecipeOutput);
+
+        // Clay
+        ExposerRecipeBuilder.exposer(Items.MUD, Items.CLAY, 80)
+                .surrounding(Blocks.LAVA)
+                .save(pRecipeOutput);
+
+        // Exposed Copper
+        ExposerRecipeBuilder.exposer(Items.COPPER_BLOCK, Items.EXPOSED_COPPER, 600)
+                .surrounding(Blocks.LAVA)
+                .surrounding(Blocks.WATER)
+                .save(pRecipeOutput);
+
+        // Weathered Copper
+        ExposerRecipeBuilder.exposer(Items.COPPER_BLOCK, Items.WEATHERED_COPPER, 600)
+                .surrounding(Blocks.WATER)
+                .surrounding(Blocks.IRON_BLOCK)
+                .save(pRecipeOutput);
+
+        // Oxidized Copper
+        ExposerRecipeBuilder.exposer(Items.COPPER_BLOCK, Items.OXIDIZED_COPPER, 600)
+                .surrounding(Blocks.WATER)
+                .surrounding(Blocks.IRON_BLOCK)
+                .surrounding(Blocks.WAXED_COPPER_BLOCK)
+                .save(pRecipeOutput);
+
+        // Packed Mud
+        ExposerRecipeBuilder.exposer(Items.MUD, Items.PACKED_MUD, 200)
+                .surrounding(Blocks.PISTON)
+                .surrounding(Blocks.LAVA)
+                .surrounding(Blocks.HAY_BLOCK)
+                .save(pRecipeOutput);
+
+        // Prismarine
+        ExposerRecipeBuilder.exposer(Items.LAPIS_LAZULI, Items.PRISMARINE_SHARD, 200)
+                .surrounding(Blocks.CONDUIT)
+                .surrounding(Blocks.PRISMARINE)
+                .surrounding(Blocks.PRISMARINE)
+                .surrounding(Blocks.PRISMARINE)
+                .save(pRecipeOutput);
+
+        // Prismarine Crystal
+        ExposerRecipeBuilder.exposer(Items.GLOWSTONE_DUST, Items.PRISMARINE_CRYSTALS, 200)
+                .surrounding(Blocks.CONDUIT)
+                .surrounding(Blocks.PRISMARINE)
+                .surrounding(Blocks.PRISMARINE)
+                .surrounding(Blocks.PRISMARINE)
                 .save(pRecipeOutput);
     }
 }
