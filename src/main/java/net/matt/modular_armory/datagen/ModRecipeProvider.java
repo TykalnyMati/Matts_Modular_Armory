@@ -2,6 +2,7 @@ package net.matt.modular_armory.datagen;
 
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.block.ModBlocks;
+import net.matt.modular_armory.datagen.recipe_builders.ExposerRecipeBuilder;
 import net.matt.modular_armory.items.ModItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -1277,6 +1278,13 @@ public class ModRecipeProvider extends RecipeProvider {
                         ModItems.ADVANCED_MODULAR_PLATE.get(),
                         Items.SHULKER_SHELL,
                         Items.WIND_CHARGE))
+                .save(pRecipeOutput);
+
+        // Exposer Recipes
+        ExposerRecipeBuilder.exposer(ModItems.EXPOSER_SLOT_PLUG.get(), Items.COBBLESTONE, 40)
+                .surrounding(Blocks.LAVA)
+                .surrounding(Blocks.WATER)
+                .unlockedBy("has_exposer_slot_plug", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.EXPOSER_SLOT_PLUG.get()))
                 .save(pRecipeOutput);
     }
 }

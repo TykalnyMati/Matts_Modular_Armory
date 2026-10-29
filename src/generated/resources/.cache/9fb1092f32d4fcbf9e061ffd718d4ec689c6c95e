@@ -1,4 +1,4 @@
-// 1.21.1	2026-10-25T11:50:31.8021714	Recipes
+// 1.21.1	2026-10-29T13:14:32.8674323	Recipes
 8e4b94d5f37525ad95276358895c635da53e0681 data/mattsmodulararmory/advancement/recipes/misc/adaptive_flesh_block.json
 77c9950bf8408382056a5f4d93429d91e13768f0 data/mattsmodulararmory/advancement/recipes/misc/adaptive_flesh_block_from_flesh.json
 4c7ee98417fd30e4053c654774b7475c9a685893 data/mattsmodulararmory/advancement/recipes/misc/adaptive_flesh_plate.json
@@ -247,3 +247,5 @@ f9b0bbe8db92a44845f958ea4edbaec113e4d473 data/mattsmodulararmory/recipe/vitality
 dd5e1439dc978d04924ded392ea4c5c5f43bd0dc data/mattsmodulararmory/recipe/void_augment_addon.json
 4a8a1cdca38aa2635382af9426932d7b8631d9ff data/mattsmodulararmory/recipe/void_tether_augment.json
 75260be1381fe1ceb3b231567132bc21fffe245a data/mattsmodulararmory/recipe/wither_augment.json
+58a7e2dcf3df6e7886d31186a357a5f15580ce2f data/minecraft/advancement/recipes/exposer/cobblestone_from_exposer.json
+66fd1f68092dd89d18a19feee70f67ce7705ae68 data/minecraft/recipe/exposer/cobblestone_from_exposer.json

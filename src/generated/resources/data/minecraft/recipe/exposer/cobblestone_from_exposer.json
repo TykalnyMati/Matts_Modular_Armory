@@ -1,0 +1,25 @@
+{
+  "type": "mattsmodulararmory:exposer",
+  "ingredient": {
+    "item": "mattsmodulararmory:exposer_slot_plug"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:cobblestone"
+  },
+  "surroundings": [
+    {
+      "Name": "minecraft:lava",
+      "Properties": {
+        "level": "0"
+      }
+    },
+    {
+      "Name": "minecraft:water",
+      "Properties": {
+        "level": "0"
+      }
+    }
+  ],
+  "time": 40
+}
