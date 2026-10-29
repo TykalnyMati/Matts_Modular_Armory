@@ -64,6 +64,7 @@ public class AugmentObject {
     public boolean ILLUMINATOR;
     public boolean VOID;
     public boolean MAGNET;
+    public boolean XP_SIPHON;
     public int POISON;
     public int WITHER;
     public boolean RAPID_FIRE;
@@ -85,6 +86,8 @@ public class AugmentObject {
                     // Generic augments
                     case "unbreaking_augment" -> this.UNBREAKING += augmentStack.getCount();
                     case "mending_augment" -> this.MENDING = true;
+                    case "magnet_augment" -> this.MAGNET = true;
+                    case "xp_siphon_augment" -> this.XP_SIPHON = true;
 
                     // Tool specific augments
                     case "efficiency_augment" -> this.EFFICIENCY += augmentStack.getCount();
@@ -97,7 +100,6 @@ public class AugmentObject {
                     case "scaffolding_augment" -> this.SCAFFOLDING = augmentStack.getCount();
                     case "illuminator_augment" -> this.ILLUMINATOR = true;
                     case "void_augment" -> this.VOID = true;
-                    case "magnet_augment" -> this.MAGNET = true;
 
                     // Weapon specific augments
                     case "sharpness_augment" -> this.SHARPNESS = augmentStack.getCount();

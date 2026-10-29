@@ -172,6 +172,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SOUL_SPEED_AUGMENT.get());
 
                         // Custom Augments
+                        // Generic
+                        output.accept(ModItems.MAGNET_AUGMENT.get());
+                        output.accept(ModItems.XP_SIPHON_AUGMENT.get());
+
                         // Tools
                         output.accept(ModItems.AUTO_SMELT_AUGMENT.get());
                         output.accept(ModItems.DIAMOND_SHARPENED_AUGMENT.get());
@@ -179,9 +183,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCAFFOLDING_AUGMENT.get());
                         output.accept(ModItems.ILLUMINATOR_AUGMENT.get());
                         output.accept(ModItems.VOID_AUGMENT.get());
-
-                        // Tools and Weapons
-                        output.accept(ModItems.MAGNET_AUGMENT.get());
 
                         // Weapons
                         output.accept(ModItems.POISON_AUGMENT.get());

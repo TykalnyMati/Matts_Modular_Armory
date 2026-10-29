@@ -396,7 +396,7 @@ public class ModItems {
     // Augments
     // Generic
     public static final DeferredHolder<Item, Item> UNBREAKING_AUGMENT = ITEMS.register("unbreaking_augment", () -> new AugmentGeneric(new Item.Properties(), "unbreaking_augment", AugmentGeneric.Types.GENERIC, List.of(2, 4, 6, 8), 0x5f3e87));
-    public static final DeferredHolder<Item, Item> MENDING_AUGMENT = ITEMS.register("mending_augment", () -> new AugmentGeneric(new Item.Properties(), "mending_augment", AugmentGeneric.Types.GENERIC, List.of(0, 1, 1, 1), 0xb5e45a));
+    public static final DeferredHolder<Item, Item> MENDING_AUGMENT = ITEMS.register("mending_augment", () -> new AugmentGeneric(new Item.Properties(), "mending_augment", AugmentGeneric.Types.GENERIC, List.of(0, 1, 1, 1), 0xb5e45a, List.of("xp_siphon_augment")));
 
     // Tools
     public static final DeferredHolder<Item, Item> EFFICIENCY_AUGMENT = ITEMS.register("efficiency_augment", () -> new AugmentGeneric(new Item.Properties(), "efficiency_augment", AugmentGeneric.Types.TOOLS, List.of(1, 3, 5, 7), 0xe62008));
@@ -442,6 +442,7 @@ public class ModItems {
     // Custom Augments
     // Generic
     public static final DeferredHolder<Item, Item> MAGNET_AUGMENT = ITEMS.register("magnet_augment", () -> new AugmentGeneric(new Item.Properties(), "magnet_augment", AugmentGeneric.Types.GENERIC, List.of(0, 1, 1, 1), 0xd8d8d8));
+    public static final DeferredHolder<Item, Item> XP_SIPHON_AUGMENT = ITEMS.register("xp_siphon_augment", () -> new AugmentGeneric(new Item.Properties(), "xp_siphon_augment", AugmentGeneric.Types.GENERIC, List.of(0, 1, 1, 1), 0xb5e45a, List.of("mending_augment")));
 
     // Tools
     public static final DeferredHolder<Item, Item> AUTO_SMELT_AUGMENT = ITEMS.register("auto_smelt_augment", () -> new AugmentGeneric(new Item.Properties(), "auto_smelt_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1), 0xff8f00, List.of("void_augment", "silk_touch_augment")));

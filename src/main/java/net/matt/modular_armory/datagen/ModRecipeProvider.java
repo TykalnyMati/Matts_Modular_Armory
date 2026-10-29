@@ -1139,6 +1139,17 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.IRON_BLOCK))
                 .save(pRecipeOutput);
 
+        // XP Siphon Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.XP_SIPHON_AUGMENT.get())
+                .pattern("A")
+                .pattern("B")
+                .define('A', ModItems.MENDING_AUGMENT.get())
+                .define('B', Blocks.HOPPER)
+                .unlockedBy("has_items_for_xp_siphon_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.MENDING_AUGMENT.get(),
+                        Blocks.HOPPER))
+                .save(pRecipeOutput);
+
         // Sweeping Edge Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SWEEPING_EDGE_AUGMENT.get())
                 .pattern(" B ")

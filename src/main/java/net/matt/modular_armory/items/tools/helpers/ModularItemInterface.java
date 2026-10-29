@@ -342,6 +342,43 @@ public interface ModularItemInterface {
     }
 
     default void handleHeldOrWornItem(ItemStack pStack, Level pLevel, Entity pEntity) {
+        if (pEntity instanceof Player player) {
+            AugmentObject bonuses = getAugmentBonuses(pStack);
+
+            if (
+                bonuses.XP_SIPHON &&
+                pStack.getDamageValue() > 0 &&
+                player.totalExperience > 0 &&
+                pLevel.getGameTime() % 80 == 0
+            ) {
+                boolean wasBroken = isBroken(pStack);
+                int xpAmount;
+
+                if (player.totalExperience >= 10) {
+                    xpAmount = 10;
+                } else {
+                    xpAmount = player.totalExperience;
+                }
+
+                int repairAmount = xpAmount * 2;
+                int xpToRemove = xpAmount;
+
+                if (pStack.getDamageValue() < 2 * repairAmount) {
+                    xpToRemove = 2 * pStack.getDamageValue();
+                }
+
+                int newDamage = Math.max(0, pStack.getDamageValue() - repairAmount);
+
+                player.giveExperiencePoints(-xpToRemove);
+                pStack.setDamageValue(newDamage);
+
+                // Reapply enchantments if the item was just fixed
+                if (wasBroken && !isBroken(pStack)) {
+                    applyVanillaEnchantments(pStack, pLevel);
+                }
+            }
+        }
+
         if (isBroken(pStack)) {
             return;
         }

@@ -176,6 +176,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.ILLUMINATOR_AUGMENT.get());
         basicItem(ModItems.VOID_AUGMENT.get());
         basicItem(ModItems.MAGNET_AUGMENT.get());
+        basicItem(ModItems.XP_SIPHON_AUGMENT.get());
         basicItem(ModItems.POISON_AUGMENT.get());
         basicItem(ModItems.WITHER_AUGMENT.get());
         basicItem(ModItems.RAPID_FIRE_AUGMENT.get());
