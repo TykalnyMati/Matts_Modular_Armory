@@ -182,6 +182,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get());
                         output.accept(ModItems.SCAFFOLDING_AUGMENT.get());
                         output.accept(ModItems.ILLUMINATOR_AUGMENT.get());
+                        output.accept(ModItems.FIRE_STARTER_AUGMENT.get());
                         output.accept(ModItems.VOID_AUGMENT.get());
 
                         // Weapons

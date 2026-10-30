@@ -174,6 +174,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.MODULAR_CLAY_EXTRACTOR_AUGMENT.get());
         basicItem(ModItems.SCAFFOLDING_AUGMENT.get());
         basicItem(ModItems.ILLUMINATOR_AUGMENT.get());
+        basicItem(ModItems.FIRE_STARTER_AUGMENT.get());
         basicItem(ModItems.VOID_AUGMENT.get());
         basicItem(ModItems.MAGNET_AUGMENT.get());
         basicItem(ModItems.XP_SIPHON_AUGMENT.get());

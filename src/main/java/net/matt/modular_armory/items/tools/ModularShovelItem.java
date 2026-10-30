@@ -83,6 +83,9 @@ public class ModularShovelItem extends ModularGenericDiggerItem {
     }
 
     public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+        if (!ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(itemAbility)) {
+            return super.canPerformAction(stack, itemAbility);
+        }
         return ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(itemAbility);
     }
 

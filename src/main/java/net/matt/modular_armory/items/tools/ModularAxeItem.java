@@ -125,6 +125,9 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
     }
 
     public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+        if (!ItemAbilities.DEFAULT_AXE_ACTIONS.contains(itemAbility)) {
+            return super.canPerformAction(stack, itemAbility);
+        }
         return ItemAbilities.DEFAULT_AXE_ACTIONS.contains(itemAbility);
     }
 

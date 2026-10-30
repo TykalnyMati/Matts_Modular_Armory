@@ -82,6 +82,9 @@ public class ModularHoeItem extends ModularGenericDiggerItem {
     }
 
     public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+        if (!ItemAbilities.DEFAULT_HOE_ACTIONS.contains(itemAbility)) {
+            return super.canPerformAction(stack, itemAbility);
+        }
         return ItemAbilities.DEFAULT_HOE_ACTIONS.contains(itemAbility);
     }
 }

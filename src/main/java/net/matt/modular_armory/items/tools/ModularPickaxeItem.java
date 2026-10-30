@@ -12,6 +12,9 @@ public class ModularPickaxeItem extends ModularGenericDiggerItem {
     }
 
     public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+        if (!ItemAbilities.DEFAULT_PICKAXE_ACTIONS.contains(itemAbility)) {
+            return super.canPerformAction(stack, itemAbility);
+        }
         return ItemAbilities.DEFAULT_PICKAXE_ACTIONS.contains(itemAbility);
     }
 }

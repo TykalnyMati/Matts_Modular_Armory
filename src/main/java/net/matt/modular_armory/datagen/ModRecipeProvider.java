@@ -1111,6 +1111,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.GLOWSTONE))
                 .save(pRecipeOutput);
 
+        // Fire Starter Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FIRE_STARTER_AUGMENT.get())
+                .pattern("B C")
+                .pattern("BAC")
+                .pattern("B C")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.IRON_INGOT)
+                .define('C', Items.FLINT)
+                .unlockedBy("has_items_for_fire_starter_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.IRON_INGOT,
+                        Items.FLINT))
+                .save(pRecipeOutput);
+
         // Void Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOID_AUGMENT.get())
                 .pattern("BBB")

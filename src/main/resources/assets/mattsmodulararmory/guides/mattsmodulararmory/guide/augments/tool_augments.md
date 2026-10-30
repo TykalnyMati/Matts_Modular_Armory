@@ -14,6 +14,7 @@ item_ids:
   - modular_clay_extractor_augment
   - scaffolding_augment
   - illuminator_augment
+  - fire_starter_augment
   - void_augment
 ---
 
@@ -65,7 +66,7 @@ Consumes 5 durability per use
 
 The amount dropped changes with level with this formula: 2 + \<2, level) items
 
-Incompatible with Scaffolding and Illuminator
+Incompatible with other right-clicking augments
 
 <Recipe id="modular_clay_extractor_augment" />
 
@@ -78,7 +79,7 @@ The block starts breaking when no entity is on top of it for a set amount of tim
 
 The amount of time to break changes with level, on the first level it's 2 seconds, every level adds a bonus second to the breaking time
 
-Incompatible with Modular Clay Extractor and Illuminator
+Incompatible with other right-clicking augments
 
 <Recipe id="scaffolding_augment" />
 
@@ -87,9 +88,18 @@ Right-clicking with the tool creates a slightly visible light
 
 Consumes 5 durability per use
 
-Incompatible with Modular Clay Extractor and Scaffolding
+Incompatible with other right-clicking augments
 
 <Recipe id="illuminator_augment" />
+
+# Fire Starter Augment:
+Right-clicking with the tool creates fire
+
+Consumes 2 durability per use
+
+Incompatible with other right-clicking augments
+
+<Recipe id="fire_starter_augment" />
 
 # Void Augment:
 Voids drops of broken blocks

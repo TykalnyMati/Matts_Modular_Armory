@@ -62,6 +62,7 @@ public class AugmentObject {
     public int MODULAR_CLAY_EXTRACTOR;
     public int SCAFFOLDING;
     public boolean ILLUMINATOR;
+    public boolean FIRE_STARTER;
     public boolean VOID;
     public boolean MAGNET;
     public boolean XP_SIPHON;
@@ -99,6 +100,7 @@ public class AugmentObject {
                     case "modular_clay_extractor_augment" -> this.MODULAR_CLAY_EXTRACTOR = augmentStack.getCount();
                     case "scaffolding_augment" -> this.SCAFFOLDING = augmentStack.getCount();
                     case "illuminator_augment" -> this.ILLUMINATOR = true;
+                    case "fire_starter_augment" -> this.FIRE_STARTER = true;
                     case "void_augment" -> this.VOID = true;
 
                     // Weapon specific augments

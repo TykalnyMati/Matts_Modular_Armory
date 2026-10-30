@@ -5,9 +5,13 @@ import net.matt.modular_armory.block.entity.custom.ScaffoldingAugmentBlockEntity
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.util.ModTags;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionResult;
@@ -22,11 +26,16 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.TntBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.neoforged.neoforge.common.ItemAbilities;
+import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -68,19 +77,12 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                 .orElse(ItemStack.EMPTY);
     }
 
-    public float getSmeltingExperience(Level level, ItemStack input) {
-        return level.getRecipeManager()
-                .getRecipeFor(RecipeType.SMELTING, new net.minecraft.world.item.crafting.SingleRecipeInput(input), level)
-                .map(recipe -> recipe.value().getExperience())
-                .orElse(0.0f);
-    }
-
     @Override
     public InteractionResult useOn(UseOnContext pContext) {
         ItemStack stack = pContext.getItemInHand();
         Player player = pContext.getPlayer();
         Level level = player.level();
-        BlockPos pos = pContext.getClickedPos();
+        BlockPos blockpos = pContext.getClickedPos();
         Direction facing = pContext.getClickedFace();
 
         if (isBroken(stack) || player == null) {
@@ -90,33 +92,33 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
         AugmentObject bonuses = getAugmentBonuses(stack);
 
         if (bonuses.MODULAR_CLAY_EXTRACTOR > 0 && level.getBlockState(pContext.getClickedPos()).getBlock() == Blocks.CLAY) {
-            level.setBlockAndUpdate(pos, Blocks.DIRT.defaultBlockState());
+            level.setBlockAndUpdate(blockpos, Blocks.DIRT.defaultBlockState());
 
             int amount = 2 + new java.util.Random().nextInt(2 + bonuses.MODULAR_CLAY_EXTRACTOR);
-            popResourceFromFace(level, pos, facing, new ItemStack(ModItems.MODULAR_CLAY.get(), amount));
+            popResourceFromFace(level, blockpos, facing, new ItemStack(ModItems.MODULAR_CLAY.get(), amount));
 
             damageModularItem(stack, player, 5);
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
         if (bonuses.SCAFFOLDING > 0) {
-            BlockPos placePos = pos.relative(facing);
+            BlockPos placePos = blockpos.relative(facing);
 
             // Try to replace the block (like grass)
-            if (level.getBlockState(pos).canBeReplaced()) {
+            if (level.getBlockState(blockpos).canBeReplaced()) {
                 ItemStack scaffoldingStack = new ItemStack(ModBlocks.SCAFFOLDING_AUGMENT_BLOCK.get().asItem());
                 BlockPlaceContext scaffoldingContext = new BlockPlaceContext(
                         level,
                         player,
                         pContext.getHand(),
                         scaffoldingStack,
-                        new BlockHitResult(pContext.getClickLocation(), facing, pos, pContext.isInside())
+                        new BlockHitResult(pContext.getClickLocation(), facing, blockpos, pContext.isInside())
                 );
                 InteractionResult result = ModBlocks.SCAFFOLDING_AUGMENT_BLOCK.get().asItem().useOn(scaffoldingContext);
 
                 if (result.consumesAction()) {
                     if (!level.isClientSide) {
-                        BlockEntity be = level.getBlockEntity(pos);
+                        BlockEntity be = level.getBlockEntity(blockpos);
                         if (be instanceof ScaffoldingAugmentBlockEntity scaffoldingBE) {
                             scaffoldingBE.setMaxLife(bonuses.SCAFFOLDING);
                         }
@@ -150,8 +152,10 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                     return InteractionResult.sidedSuccess(level.isClientSide);
                 }
             }
-        } else if (bonuses.ILLUMINATOR) {
-            BlockPos placePos = pos.relative(facing);
+        }
+
+        if (bonuses.ILLUMINATOR) {
+            BlockPos placePos = blockpos.relative(facing);
 
             if (level.getBlockState(placePos).canBeReplaced()) {
                 ItemStack lightStack = new ItemStack(ModBlocks.ILLUMINATOR_AUGMENT_BLOCK.get());
@@ -160,7 +164,7 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
                         player,
                         pContext.getHand(),
                         lightStack,
-                        new BlockHitResult(pContext.getClickLocation(), facing, pos, pContext.isInside())
+                        new BlockHitResult(pContext.getClickLocation(), facing, blockpos, pContext.isInside())
                 );
                 InteractionResult result = ModBlocks.ILLUMINATOR_AUGMENT_BLOCK.get().asItem().useOn(lightContext);
 
@@ -172,7 +176,60 @@ public class ModularGenericDiggerItem extends DiggerItem implements ModularItemI
             }
         }
 
+        if (bonuses.FIRE_STARTER) {
+            BlockState blockstate = level.getBlockState(blockpos);
+
+            // TNT
+            if (blockstate.getBlock() instanceof TntBlock tntBlock) {
+                if (!level.isClientSide) {
+                    tntBlock.onCaughtFire(blockstate, level, blockpos, pContext.getClickedFace(), player);
+                    level.setBlock(blockpos, Blocks.AIR.defaultBlockState(), 11);
+
+                    damageModularItem(stack, player, 2);
+                }
+
+                level.playSound(player, blockpos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                return InteractionResult.sidedSuccess(level.isClientSide());
+            }
+
+            BlockState blockstate2 = blockstate.getToolModifiedState(pContext, ItemAbilities.FIRESTARTER_LIGHT, false);
+            // Normal Blocks
+            if (blockstate2 == null) {
+                BlockPos blockpos1 = blockpos.relative(pContext.getClickedFace());
+                if (BaseFireBlock.canBePlacedAt(level, blockpos1, pContext.getHorizontalDirection())) {
+                    level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                    BlockState blockstate1 = BaseFireBlock.getState(level, blockpos1);
+                    level.setBlock(blockpos1, blockstate1, 11);
+                    level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
+                    if (player instanceof ServerPlayer) {
+                        CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockpos1, stack);
+                        damageModularItem(stack, player, 2);
+                    }
+
+                    return InteractionResult.sidedSuccess(level.isClientSide());
+                }
+            }
+            // Campfires etc.
+            else {
+                level.playSound(player, blockpos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                level.setBlock(blockpos, blockstate2, 11);
+                level.gameEvent(player, GameEvent.BLOCK_CHANGE, blockpos);
+                damageModularItem(stack, player, 2);
+
+                return InteractionResult.sidedSuccess(level.isClientSide());
+            }
+        }
+
         return super.useOn(pContext);
+    }
+
+    @Override
+    public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
+        if (itemAbility == ItemAbilities.FIRESTARTER_LIGHT) {
+            return getAugmentBonuses(stack).FIRE_STARTER;
+        }
+
+        return super.canPerformAction(stack, itemAbility);
     }
 
     @Override
