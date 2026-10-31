@@ -1,6 +1,7 @@
 package net.matt.modular_armory.items.tools.helpers;
 
 import net.matt.modular_armory.MattsModularArmory;
+import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -455,6 +456,9 @@ public interface ModularItemInterface {
 
                 player.getCooldowns().addCooldown(stack.getItem(), 20);
                 damageModularItem(stack, player, 5);
+
+                Vec3 pos = player.getEyePosition();
+                ((ServerLevel) level).sendParticles(ParticleTypes.GLOW, pos.get(Direction.Axis.X), pos.get(Direction.Axis.Y), pos.get(Direction.Axis.Z), 10, 0.2, 0.2, 0.2, 0.1);
             }
 
             level.playSound(
