@@ -9,6 +9,10 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -18,6 +22,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
@@ -417,5 +422,56 @@ public interface ModularItemInterface {
                 }
             }
         }
+    }
+
+    default InteractionResultHolder<ItemStack> WeaponUse(Level level, Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
+
+        if (isBroken(stack) || player == null) {
+            return InteractionResultHolder.pass(stack);
+        }
+
+        AugmentObject bonuses = getAugmentBonuses(stack);
+
+        if (bonuses.LIFE_SENSE > 0) {
+            if (!level.isClientSide) {
+                double range = bonuses.LIFE_SENSE * 8;
+                List<LivingEntity> nearbyEntities = level.getEntitiesOfClass(
+                        LivingEntity.class,
+                        player.getBoundingBox().inflate(range),
+                        entity -> entity != player && !entity.isSpectator()
+                );
+
+                int duration = bonuses.LIFE_SENSE * 3 * 20;
+                for (LivingEntity entity : nearbyEntities) {
+                    entity.addEffect(new MobEffectInstance(
+                            MobEffects.GLOWING,
+                            duration,
+                            0,
+                            false,
+                            false
+                    ));
+                }
+
+                player.getCooldowns().addCooldown(stack.getItem(), 20);
+                damageModularItem(stack, player, 5);
+            }
+
+            level.playSound(
+                    null,
+                    player.blockPosition(),
+                    SoundEvents.SCULK_SHRIEKER_SHRIEK,
+                    SoundSource.PLAYERS,
+                    1.0F,
+                    1.5F
+            );
+
+            player.swing(hand);
+
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+
+        }
+
+        return InteractionResultHolder.pass(stack);
     }
 }

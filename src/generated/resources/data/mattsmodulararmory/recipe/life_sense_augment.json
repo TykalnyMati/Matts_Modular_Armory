@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    "B": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "C": {
+      "item": "minecraft:wind_charge"
+    },
+    "D": {
+      "item": "minecraft:sculk_shrieker"
+    }
+  },
+  "pattern": [
+    "CBC",
+    "BAB",
+    "CDC"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:life_sense_augment"
+  }
+}

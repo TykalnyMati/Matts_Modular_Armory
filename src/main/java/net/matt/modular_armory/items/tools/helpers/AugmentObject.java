@@ -68,6 +68,7 @@ public class AugmentObject {
     public boolean XP_SIPHON;
     public int POISON;
     public int WITHER;
+    public int LIFE_SENSE;
     public boolean RAPID_FIRE;
     public int VITALITY;
     public boolean GILDED;
@@ -114,6 +115,7 @@ public class AugmentObject {
                     case "sweeping_edge_augment" -> this.SWEEPING_EDGE = augmentStack.getCount();
                     case "poison_augment" -> this.POISON = augmentStack.getCount();
                     case "wither_augment" -> this.WITHER = augmentStack.getCount();
+                    case "life_sense_augment" -> this.LIFE_SENSE = augmentStack.getCount();
 
                     // Ranged Weapons specific augments
                     case "power_augment" -> this.POWER = augmentStack.getCount();

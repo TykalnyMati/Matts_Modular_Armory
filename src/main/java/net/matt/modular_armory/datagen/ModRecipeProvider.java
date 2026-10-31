@@ -1208,6 +1208,22 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.WITHER_ROSE))
                 .save(pRecipeOutput);
 
+        // Life Sense Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.LIFE_SENSE_AUGMENT.get())
+                .pattern("CBC")
+                .pattern("BAB")
+                .pattern("CDC")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.GLOWSTONE_DUST)
+                .define('C', Items.WIND_CHARGE)
+                .define('D', Blocks.SCULK_SHRIEKER)
+                .unlockedBy("has_items_for_life_sense_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.GLOWSTONE_DUST,
+                        Items.WIND_CHARGE,
+                        Blocks.SCULK_SHRIEKER))
+                .save(pRecipeOutput);
+
         // Rapid Fire Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RAPID_FIRE_AUGMENT.get())
                 .pattern("BBB")

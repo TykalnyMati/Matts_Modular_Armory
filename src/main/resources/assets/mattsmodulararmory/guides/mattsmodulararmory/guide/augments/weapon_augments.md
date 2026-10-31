@@ -16,6 +16,7 @@ item_ids:
   - sweeping_edge_augment
   - poison_augment
   - wither_augment
+  - life_sense_augment
   - power_augment
   - punch_augment
   - flame_augment
@@ -84,22 +85,32 @@ Can only be applied to swords
 # Poison Augment:
 Applies poison to hit entities
 
-Level 1 grants poison 1 for 6 seconds
+- Level I: poison I | 6 seconds
 
-Level 2 grants poison 2 for 4 seconds
+- Level II: poison II | 4 seconds
 
 <Recipe id="poison_augment" />
 
 # Wither Augment:
 Applies wither to hit entities
 
-Level 1 grants wither 1 for 9 seconds
-
-Level 2 grants wither 2 for 6 seconds
-
-Level 3 grants wither 3 for 4 seconds
+- Level I: wither I | 9 seconds
+- Level II: wither II | 6 seconds
+- Level III: wither III | 4 seconds
 
 <Recipe id="wither_augment" />
+
+# Life Sense Augment:
+Right-clicking with the weapon applies Glowing to surrounding entities
+
+- Level I: 8 block radius | 3 second duration
+- Level II: 16 block radius | 6 second duration
+- Level III: 24 block radius | 9 second duration
+- Level IV: 32 block radius | 12 second duration
+
+Uses 5 durability with a 1-second cooldown.
+
+<Recipe id="life_sense_augment" />
 
 # <Color id="blue">Ranged Weapons Augments:</Color>
 

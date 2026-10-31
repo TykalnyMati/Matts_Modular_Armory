@@ -11,6 +11,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Player;
@@ -86,6 +87,15 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
         }
     }
 
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+        if (super.use(level, player, usedHand).getResult().consumesAction()) {
+            return super.use(level, player, usedHand);
+        } else {
+            return WeaponUse(level, player, usedHand);
+        }
+    }
+
     private static boolean playerHasShieldUseIntent(UseOnContext context) {
         Player player = context.getPlayer();
         return context.getHand().equals(InteractionHand.MAIN_HAND) && player.getOffhandItem().is(Items.SHIELD) && !player.isSecondaryUseActive();
@@ -115,7 +125,7 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
         }
     }
 
-    public static @org.jetbrains.annotations.Nullable BlockState getAxeStrippingState(BlockState originalState) {
+    public static @Nullable BlockState getAxeStrippingState(BlockState originalState) {
         Block block = (Block)STRIPPABLES.get(originalState.getBlock());
         return block != null ? (BlockState)block.defaultBlockState().setValue(RotatedPillarBlock.AXIS, (Direction.Axis)originalState.getValue(RotatedPillarBlock.AXIS)) : null;
     }

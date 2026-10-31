@@ -188,6 +188,7 @@ public class ModCreativeModeTabs {
                         // Weapons
                         output.accept(ModItems.POISON_AUGMENT.get());
                         output.accept(ModItems.WITHER_AUGMENT.get());
+                        output.accept(ModItems.LIFE_SENSE_AUGMENT.get());
 
                         // Bow
                         output.accept(ModItems.RAPID_FIRE_AUGMENT.get());

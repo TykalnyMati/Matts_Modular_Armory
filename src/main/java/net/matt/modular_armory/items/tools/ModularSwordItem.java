@@ -6,6 +6,8 @@ import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -13,6 +15,7 @@ import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.ItemAttributeModifiers;
 import net.minecraft.world.level.Level;
@@ -107,6 +110,15 @@ public class ModularSwordItem extends SwordItem implements ModularItemInterface 
         }
 
         return true;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+        if (super.use(level, player, usedHand).getResult().consumesAction()) {
+            return super.use(level, player, usedHand);
+        } else {
+            return WeaponUse(level, player, usedHand);
+        }
     }
 
     @Override
