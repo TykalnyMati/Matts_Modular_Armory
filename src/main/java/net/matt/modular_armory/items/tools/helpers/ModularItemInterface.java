@@ -118,7 +118,9 @@ public interface ModularItemInterface {
         if (bonuses.SILK_TOUCH) {
             enchantmentRegistry.get(Enchantments.SILK_TOUCH)
                     .ifPresent(holder -> mutableEnchantments.set(holder, 1));
-        } else if(bonuses.FORTUNE > 0) {
+        }
+
+        if(bonuses.FORTUNE > 0) {
             enchantmentRegistry.get(Enchantments.FORTUNE)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.FORTUNE));
         }
@@ -127,13 +129,19 @@ public interface ModularItemInterface {
         if (bonuses.SHARPNESS > 0) {
             enchantmentRegistry.get(Enchantments.SHARPNESS)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.SHARPNESS));
-        } else if (bonuses.SMITE > 0) {
+        }
+
+        if (bonuses.SMITE > 0) {
             enchantmentRegistry.get(Enchantments.SMITE)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.SMITE));
-        } else if (bonuses.BANE_OF_ARTHROPODS > 0) {
+        }
+
+        if (bonuses.BANE_OF_ARTHROPODS > 0) {
             enchantmentRegistry.get(Enchantments.BANE_OF_ARTHROPODS)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.BANE_OF_ARTHROPODS));
-        } else if (bonuses.IMPALING > 0) {
+        }
+
+        if (bonuses.IMPALING > 0) {
             enchantmentRegistry.get(Enchantments.IMPALING)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.IMPALING));
         }
@@ -151,6 +159,11 @@ public interface ModularItemInterface {
         if (bonuses.FIRE_ASPECT > 0) {
             enchantmentRegistry.get(Enchantments.FIRE_ASPECT)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.FIRE_ASPECT));
+        }
+
+        if (bonuses.EXILE > 0) {
+            enchantmentRegistry.get(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "exile")))
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.EXILE));
         }
 
         // Swords
@@ -184,13 +197,19 @@ public interface ModularItemInterface {
         if (bonuses.PROTECTION > 0) {
             enchantmentRegistry.get(Enchantments.PROTECTION)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.PROTECTION));
-        } else if (bonuses.BLAST_PROTECTION > 0) {
+        }
+
+        if (bonuses.BLAST_PROTECTION > 0) {
             enchantmentRegistry.get(Enchantments.BLAST_PROTECTION)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.BLAST_PROTECTION));
-        } else if (bonuses.PROJECTILE_PROTECTION > 0) {
+        }
+
+        if (bonuses.PROJECTILE_PROTECTION > 0) {
             enchantmentRegistry.get(Enchantments.PROJECTILE_PROTECTION)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.PROJECTILE_PROTECTION));
-        } else if (bonuses.FIRE_PROTECTION > 0) {
+        }
+
+        if (bonuses.FIRE_PROTECTION > 0) {
             enchantmentRegistry.get(Enchantments.FIRE_PROTECTION)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.FIRE_PROTECTION));
         }
@@ -231,7 +250,9 @@ public interface ModularItemInterface {
         if (bonuses.FROST_WALKER > 0) {
             enchantmentRegistry.get(Enchantments.FROST_WALKER)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.FROST_WALKER));
-        } else if (bonuses.DEPTH_STRIDER > 0) {
+        }
+
+        if (bonuses.DEPTH_STRIDER > 0) {
             enchantmentRegistry.get(Enchantments.DEPTH_STRIDER)
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.DEPTH_STRIDER));
         }

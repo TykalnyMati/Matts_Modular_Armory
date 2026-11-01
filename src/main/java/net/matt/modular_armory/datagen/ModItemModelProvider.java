@@ -178,6 +178,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VOID_AUGMENT.get());
         basicItem(ModItems.MAGNET_AUGMENT.get());
         basicItem(ModItems.XP_SIPHON_AUGMENT.get());
+        basicItem(ModItems.EXILE_AUGMENT.get());
         basicItem(ModItems.POISON_AUGMENT.get());
         basicItem(ModItems.WITHER_AUGMENT.get());
         basicItem(ModItems.LIFE_SENSE_AUGMENT.get());

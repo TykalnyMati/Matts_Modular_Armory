@@ -66,6 +66,7 @@ public class AugmentObject {
     public boolean VOID;
     public boolean MAGNET;
     public boolean XP_SIPHON;
+    public int EXILE;
     public int POISON;
     public int WITHER;
     public int LIFE_SENSE;
@@ -113,6 +114,7 @@ public class AugmentObject {
                     case "knockback_augment" -> this.KNOCKBACK = augmentStack.getCount();
                     case "fire_aspect_augment" -> this.FIRE_ASPECT = augmentStack.getCount();
                     case "sweeping_edge_augment" -> this.SWEEPING_EDGE = augmentStack.getCount();
+                    case "exile_augment" -> this.EXILE = augmentStack.getCount();
                     case "poison_augment" -> this.POISON = augmentStack.getCount();
                     case "wither_augment" -> this.WITHER = augmentStack.getCount();
                     case "life_sense_augment" -> this.LIFE_SENSE = augmentStack.getCount();

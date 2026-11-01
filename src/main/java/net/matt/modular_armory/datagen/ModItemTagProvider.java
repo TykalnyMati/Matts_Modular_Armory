@@ -241,6 +241,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.VOID_AUGMENT.get())
                 .add(ModItems.MAGNET_AUGMENT.get())
                 .add(ModItems.XP_SIPHON_AUGMENT.get())
+                .add(ModItems.EXILE_AUGMENT.get())
                 .add(ModItems.POISON_AUGMENT.get())
                 .add(ModItems.WITHER_AUGMENT.get())
                 .add(ModItems.LIFE_SENSE_AUGMENT.get())

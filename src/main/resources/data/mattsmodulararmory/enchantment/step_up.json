@@ -1,6 +1,6 @@
 {
   "description": {
-    "translate": "[interface] step up"
+    "text": "[interface] step up"
   },
   "supported_items": "mattsmodulararmory:modular_clay",
   "weight": 1,

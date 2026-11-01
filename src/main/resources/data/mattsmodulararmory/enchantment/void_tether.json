@@ -1,6 +1,6 @@
 {
   "description": {
-    "translate": "[interface] void tether"
+    "text": "[interface] void tether"
   },
   "supported_items": "mattsmodulararmory:modular_clay",
   "weight": 1,

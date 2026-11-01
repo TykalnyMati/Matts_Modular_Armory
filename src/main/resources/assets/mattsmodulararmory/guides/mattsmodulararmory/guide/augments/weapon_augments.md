@@ -14,6 +14,7 @@ item_ids:
   - knockback_augment
   - fire_aspect_augment
   - sweeping_edge_augment
+  - exile_augment
   - poison_augment
   - wither_augment
   - life_sense_augment
@@ -31,28 +32,28 @@ item_ids:
 # Sharpness Augment:
 Increases overall melee damage
 
-Incompatible with Smite, Bane of Arthropods and Impaling
+Incompatible with other damaging effects
 
 <Recipe id="sharpness_augment" />
 
 # Smite Augment:
 Increases damage dealt to undead mobs
 
-Incompatible with Sharpness, Bane of Arthropods and Impaling
+Incompatible with other damaging effects
 
 <Recipe id="smite_augment" />
 
 # Bane of Arthropods Augment:
 Increases damage dealt and applies Slowness to arthropods
 
-Incompatible with Sharpness, Smite and Impaling
+Incompatible with other damaging effects
 
 <Recipe id="bane_of_arthropods_augment" />
 
 # Impaling Augment:
 Increases damage dealt to aquatic mobs
 
-Incompatible with Sharpness, Smite and Bane of Arthropods
+Incompatible with other damaging effects
 
 <Recipe id="impaling_augment" />
 
@@ -81,6 +82,13 @@ Increases the damage of sweeping attacks
 Can only be applied to swords
 
 <Recipe id="sweeping_edge_augment" />
+
+# Exile Augment:
+Increases damage dealt to raiders (and vexes)
+
+Incompatible with other damaging effects
+
+<Recipe id="exile_augment" />
 
 # Poison Augment:
 Applies poison to hit entities

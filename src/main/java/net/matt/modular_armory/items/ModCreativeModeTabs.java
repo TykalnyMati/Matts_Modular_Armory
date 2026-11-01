@@ -186,6 +186,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.VOID_AUGMENT.get());
 
                         // Weapons
+                        output.accept(ModItems.EXILE_AUGMENT.get());
                         output.accept(ModItems.POISON_AUGMENT.get());
                         output.accept(ModItems.WITHER_AUGMENT.get());
                         output.accept(ModItems.LIFE_SENSE_AUGMENT.get());

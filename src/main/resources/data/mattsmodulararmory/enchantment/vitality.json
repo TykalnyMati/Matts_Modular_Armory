@@ -1,6 +1,6 @@
 {
   "description": {
-    "translate": "[interface] vitality"
+    "text": "[interface] vitality"
   },
   "supported_items": "mattsmodulararmory:modular_clay",
   "weight": 1,
