@@ -183,6 +183,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SCAFFOLDING_AUGMENT.get());
                         output.accept(ModItems.ILLUMINATOR_AUGMENT.get());
                         output.accept(ModItems.FIRE_STARTER_AUGMENT.get());
+                        output.accept(ModItems.OVERCLOCK_AUGMENT.get());
                         output.accept(ModItems.VOID_AUGMENT.get());
 
                         // Weapons

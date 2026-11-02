@@ -15,6 +15,7 @@ item_ids:
   - scaffolding_augment
   - illuminator_augment
   - fire_starter_augment
+  - overclock_augment
   - void_augment
 ---
 
@@ -100,6 +101,17 @@ Consumes 2 durability per use
 Incompatible with other right-clicking augments
 
 <Recipe id="fire_starter_augment" />
+
+# Overclock Augment:
+Grants Haste when used
+
+- Level I: Haste I | 40 seconds
+- Level II: Haste II | 30 seconds
+- Level III: Haste III | 20 seconds
+
+Uses Level * 10 durability with 60-second cooldown
+
+<Recipe id="overclock_augment" />
 
 # Void Augment:
 Voids drops of broken blocks

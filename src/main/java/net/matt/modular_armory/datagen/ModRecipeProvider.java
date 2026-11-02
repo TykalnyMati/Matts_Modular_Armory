@@ -1125,6 +1125,22 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.FLINT))
                 .save(pRecipeOutput);
 
+        // Overclock Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.OVERCLOCK_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("DCD")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.NETHER_WART)
+                .define('C', Blocks.REDSTONE_BLOCK)
+                .define('D', Items.BLAZE_POWDER)
+                .unlockedBy("has_items_for_overclock_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.NETHER_WART,
+                        Blocks.REDSTONE_BLOCK,
+                        Items.BLAZE_POWDER))
+                .save(pRecipeOutput);
+
         // Void Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOID_AUGMENT.get())
                 .pattern("BBB")

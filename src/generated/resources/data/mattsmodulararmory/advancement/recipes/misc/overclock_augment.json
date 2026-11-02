@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_overclock_augment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:advanced_modular_plate"
+          },
+          {
+            "items": "minecraft:nether_wart"
+          },
+          {
+            "items": "minecraft:redstone_block"
+          },
+          {
+            "items": "minecraft:blaze_powder"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:overclock_augment"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_overclock_augment"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:overclock_augment"
+    ]
+  }
+}

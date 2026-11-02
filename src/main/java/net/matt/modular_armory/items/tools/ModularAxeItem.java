@@ -92,7 +92,7 @@ public class ModularAxeItem extends ModularGenericDiggerItem {
         if (super.use(level, player, usedHand).getResult().consumesAction()) {
             return super.use(level, player, usedHand);
         } else {
-            return WeaponUse(level, player, usedHand);
+            return modularItemUse(level, player, usedHand);
         }
     }
 

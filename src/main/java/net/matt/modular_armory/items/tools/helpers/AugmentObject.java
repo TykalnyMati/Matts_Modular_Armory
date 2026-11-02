@@ -63,6 +63,7 @@ public class AugmentObject {
     public int SCAFFOLDING;
     public boolean ILLUMINATOR;
     public boolean FIRE_STARTER;
+    public int OVERCLOCK;
     public boolean VOID;
     public boolean MAGNET;
     public boolean XP_SIPHON;
@@ -104,6 +105,7 @@ public class AugmentObject {
                     case "scaffolding_augment" -> this.SCAFFOLDING = augmentStack.getCount();
                     case "illuminator_augment" -> this.ILLUMINATOR = true;
                     case "fire_starter_augment" -> this.FIRE_STARTER = true;
+                    case "overclock_augment" -> this.OVERCLOCK = augmentStack.getCount();
                     case "void_augment" -> this.VOID = true;
 
                     // Weapon specific augments

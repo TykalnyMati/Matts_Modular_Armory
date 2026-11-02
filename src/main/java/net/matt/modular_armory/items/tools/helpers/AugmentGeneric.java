@@ -137,6 +137,6 @@ public class AugmentGeneric extends Item {
     }
 
     public static class Incompatibilities {
-        static public final List<String> RIGHT_CLICK = List.of("modular_clay_extractor_augment", "scaffolding_augment", "illuminator_augment", "fire_starter_augment", "life_sense_augment", "overdrive_augment");
+        static public final List<String> RIGHT_CLICK = List.of("modular_clay_extractor_augment", "scaffolding_augment", "illuminator_augment", "fire_starter_augment", "life_sense_augment", "overdrive_augment", "overclock_augment");
     }
 }

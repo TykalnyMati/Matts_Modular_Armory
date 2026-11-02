@@ -9,7 +9,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
@@ -87,6 +89,15 @@ public class ModularShovelItem extends ModularGenericDiggerItem {
             return super.canPerformAction(stack, itemAbility);
         }
         return ItemAbilities.DEFAULT_SHOVEL_ACTIONS.contains(itemAbility);
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+        if (super.use(level, player, usedHand).getResult().consumesAction()) {
+            return super.use(level, player, usedHand);
+        } else {
+            return modularItemUse(level, player, usedHand);
+        }
     }
 
     static {

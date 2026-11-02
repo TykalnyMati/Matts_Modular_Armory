@@ -451,6 +451,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> SCAFFOLDING_AUGMENT = ITEMS.register("scaffolding_augment", () -> new AugmentGeneric(new Item.Properties(), "scaffolding_augment", AugmentGeneric.Types.TOOLS, List.of(1, 2, 3, 4), 0xd3bb50, AugmentGeneric.Incompatibilities.RIGHT_CLICK));
     public static final DeferredHolder<Item, Item> ILLUMINATOR_AUGMENT = ITEMS.register("illuminator_augment", () -> new AugmentGeneric(new Item.Properties(), "illuminator_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1), 0xffbc5e, AugmentGeneric.Incompatibilities.RIGHT_CLICK));
     public static final DeferredHolder<Item, Item> FIRE_STARTER_AUGMENT = ITEMS.register("fire_starter_augment", () -> new AugmentGeneric(new Item.Properties(), "fire_starter_augment", AugmentGeneric.Types.TOOLS, List.of(1, 1, 1, 1), 0xffcb00, AugmentGeneric.Incompatibilities.RIGHT_CLICK));
+    public static final DeferredHolder<Item, Item> OVERCLOCK_AUGMENT = ITEMS.register("overclock_augment", () -> new AugmentGeneric(new Item.Properties(), "overclock_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 2, 3), 0xe9b115, AugmentGeneric.Incompatibilities.RIGHT_CLICK));
     public static final DeferredHolder<Item, Item> VOID_AUGMENT = ITEMS.register("void_augment", () -> new AugmentGeneric(new Item.Properties(), "void_augment", AugmentGeneric.Types.TOOLS, List.of(0, 1, 1, 1), 0x8f36db, List.of("silk_touch_augment", "fortune_augment", "auto_smelt_augment")));
 
     // Weapons

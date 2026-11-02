@@ -12,7 +12,6 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -23,7 +22,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
@@ -446,7 +444,7 @@ public interface ModularItemInterface {
         }
     }
 
-    default InteractionResultHolder<ItemStack> WeaponUse(Level level, Player player, InteractionHand hand) {
+    default InteractionResultHolder<ItemStack> modularItemUse(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
         if (isBroken(stack) || player == null) {
@@ -522,6 +520,48 @@ public interface ModularItemInterface {
 
                 player.getCooldowns().addCooldown(stack.getItem(), 60 * 20);
                 damageModularItem(stack, player, bonuses.OVERDRIVE * 10);
+            }
+
+            level.playSound(
+                    null,
+                    player.blockPosition(),
+                    SoundEvents.BEACON_ACTIVATE,
+                    SoundSource.PLAYERS,
+                    1.0F,
+                    1.5F
+            );
+
+            player.swing(hand);
+
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+        }
+
+        if (bonuses.OVERCLOCK > 0) {
+            if (!level.isClientSide) {
+                int duration;
+                int amplifier;
+
+                if (bonuses.OVERCLOCK == 1) {
+                    duration = 20 * 40;
+                    amplifier = 0;
+                } else if (bonuses.OVERCLOCK == 2) {
+                    duration = 20 * 30;
+                    amplifier = 1;
+                } else {
+                    duration = 20 * 20;
+                    amplifier = 2;
+                }
+
+                player.addEffect(new MobEffectInstance(
+                        MobEffects.DIG_SPEED,
+                        duration,
+                        amplifier,
+                        false,
+                        true
+                ));
+
+                player.getCooldowns().addCooldown(stack.getItem(), 60 * 20);
+                damageModularItem(stack, player, bonuses.OVERCLOCK * 10);
             }
 
             level.playSound(
