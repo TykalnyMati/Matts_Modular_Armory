@@ -135,4 +135,8 @@ public class AugmentGeneric extends Item {
         static public final String ARMOR_LEGS = "armor_legs";
         static public final String ARMOR_FEET = "armor_feet";
     }
+
+    public static class Incompatibilities {
+        static public final List<String> RIGHT_CLICK = List.of("modular_clay_extractor_augment", "scaffolding_augment", "illuminator_augment", "fire_starter_augment", "life_sense_augment", "overdrive_augment");
+    }
 }

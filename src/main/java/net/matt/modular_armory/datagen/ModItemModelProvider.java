@@ -182,6 +182,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.POISON_AUGMENT.get());
         basicItem(ModItems.WITHER_AUGMENT.get());
         basicItem(ModItems.LIFE_SENSE_AUGMENT.get());
+        basicItem(ModItems.OVERDRIVE_AUGMENT.get());
         basicItem(ModItems.RAPID_FIRE_AUGMENT.get());
         basicItem(ModItems.VITALITY_AUGMENT.get());
         basicItem(ModItems.GILDED_AUGMENT.get());

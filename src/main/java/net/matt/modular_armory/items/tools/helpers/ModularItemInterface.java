@@ -494,7 +494,48 @@ public interface ModularItemInterface {
             player.swing(hand);
 
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+        }
 
+        if (bonuses.OVERDRIVE > 0) {
+            if (!level.isClientSide) {
+                int duration;
+                int amplifier;
+
+                if (bonuses.OVERDRIVE == 1) {
+                    duration = 20 * 40;
+                    amplifier = 0;
+                } else if (bonuses.OVERDRIVE == 2) {
+                    duration = 20 * 30;
+                    amplifier = 1;
+                } else {
+                    duration = 20 * 20;
+                    amplifier = 2;
+                }
+
+                player.addEffect(new MobEffectInstance(
+                        MobEffects.DAMAGE_BOOST,
+                        duration,
+                        amplifier,
+                        false,
+                        true
+                ));
+
+                player.getCooldowns().addCooldown(stack.getItem(), 60 * 20);
+                damageModularItem(stack, player, bonuses.OVERDRIVE * 10);
+            }
+
+            level.playSound(
+                    null,
+                    player.blockPosition(),
+                    SoundEvents.BEACON_ACTIVATE,
+                    SoundSource.PLAYERS,
+                    1.0F,
+                    1.5F
+            );
+
+            player.swing(hand);
+
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
         }
 
         return InteractionResultHolder.pass(stack);

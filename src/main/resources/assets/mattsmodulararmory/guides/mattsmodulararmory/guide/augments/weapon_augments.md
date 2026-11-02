@@ -18,6 +18,7 @@ item_ids:
   - poison_augment
   - wither_augment
   - life_sense_augment
+  - overdrive_augment
   - power_augment
   - punch_augment
   - flame_augment
@@ -91,20 +92,19 @@ Incompatible with other damaging effects
 <Recipe id="exile_augment" />
 
 # Poison Augment:
-Applies poison to hit entities
+Applies Poison to hit entities
 
-- Level I: poison I | 6 seconds
-
-- Level II: poison II | 4 seconds
+- Level I: Poison I | 6 seconds
+- Level II: Poison II | 4 seconds
 
 <Recipe id="poison_augment" />
 
 # Wither Augment:
-Applies wither to hit entities
+Applies Wither to hit entities
 
-- Level I: wither I | 9 seconds
-- Level II: wither II | 6 seconds
-- Level III: wither III | 4 seconds
+- Level I: Wither I | 9 seconds
+- Level II: Wither II | 6 seconds
+- Level III: Wither III | 4 seconds
 
 <Recipe id="wither_augment" />
 
@@ -119,6 +119,17 @@ Right-clicking with the weapon applies Glowing to surrounding entities
 Uses 5 durability with a 1-second cooldown.
 
 <Recipe id="life_sense_augment" />
+
+# Overdrive Augment:
+Grants Strength when used
+
+- Level I: Strength I | 40 seconds
+- Level II: Strength II | 30 seconds
+- Level III: Strength III | 20 seconds
+
+Uses Level * 10 durability with 60-second cooldown
+
+<Recipe id="overdrive_augment" />
 
 # <Color id="blue">Ranged Weapons Augments:</Color>
 

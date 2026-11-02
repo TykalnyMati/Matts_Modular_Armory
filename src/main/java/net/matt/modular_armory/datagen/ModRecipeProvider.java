@@ -1238,6 +1238,21 @@ public class ModRecipeProvider extends RecipeProvider {
                         Blocks.SCULK_SHRIEKER))
                 .save(pRecipeOutput);
 
+        // Overdrive Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.OVERDRIVE_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("DCD")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.NETHER_WART)
+                .define('C', Items.BLAZE_POWDER)
+                .define('D', Items.BLAZE_POWDER)
+                .unlockedBy("has_items_for_overdrive_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.NETHER_WART,
+                        Items.BLAZE_POWDER))
+                .save(pRecipeOutput);
+
         // Rapid Fire Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RAPID_FIRE_AUGMENT.get())
                 .pattern("BBB")
