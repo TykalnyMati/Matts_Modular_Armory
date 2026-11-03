@@ -42,6 +42,10 @@ public class AugmentGeneric extends Item {
             }
         }
 
+        addType(augmentType);
+    }
+
+    private void addType(String augmentType) {
         switch (augmentType) {
             case Types.GENERIC -> this.augmentTypes.add(ModTags.Items.MODULAR_ITEMS);
             case Types.TOOLS -> this.augmentTypes.add(ModTags.Items.MODULAR_TOOL);
@@ -58,7 +62,13 @@ public class AugmentGeneric extends Item {
             case Types.ARMOR_LEGS -> this.augmentTypes.add(ModTags.Items.MODULAR_LEGGINGS);
             case Types.ARMOR_FEET -> this.augmentTypes.add(ModTags.Items.MODULAR_BOOTS);
             case Types.SWORD -> this.augmentTypes.add(ModTags.Items.MODULAR_SWORD);
+            case Types.SHEARS -> this.augmentTypes.add(ModTags.Items.MODULAR_SHEARS);
         }
+    }
+
+    public AugmentGeneric bonusType(String augmentType) {
+        addType(augmentType);
+        return this;
     }
 
     public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels, int tooltipHexColor) {
@@ -130,6 +140,8 @@ public class AugmentGeneric extends Item {
         static public final String RANGED_WEAPONS = "ranged_weapons";
 
         static public final String SWORD = "sword";
+        static public final String SHEARS = "shears";
+
         static public final String ARMOR_HEAD = "armor_head";
         static public final String ARMOR_CHEST = "armor_chest";
         static public final String ARMOR_LEGS = "armor_legs";

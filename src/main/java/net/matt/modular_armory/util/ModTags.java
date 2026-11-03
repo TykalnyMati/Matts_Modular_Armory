@@ -22,6 +22,7 @@ public class ModTags {
         public static final TagKey<Item> MODULAR_TIER_1 = createTag("modular_tier_1");
         public static final TagKey<Item> MODULAR_TIER_2 = createTag("modular_tier_2");
         public static final TagKey<Item> MODULAR_TIER_3 = createTag("modular_tier_3");
+        public static final TagKey<Item> MODULAR_UNTIERED = createTag("modular_untiered");
 
         public static final TagKey<Item> MODULAR_TOOL = createTag("modular_tool");
         public static final TagKey<Item> MODULAR_WEAPON = createTag("modular_weapon");
@@ -36,6 +37,9 @@ public class ModTags {
         public static final TagKey<Item> MODULAR_BOW = createTag("modular_bow");
 
         public static final TagKey<Item> MODULAR_SWORD = createTag("modular_sword");
+
+        // Specific Tools
+        public static final TagKey<Item> MODULAR_SHEARS = createTag("modular_shears");
 
         public static final TagKey<Item> MODULAR_ITEMS_AUGMENT = createTag("modular_items_augment");
 

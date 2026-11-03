@@ -15,7 +15,6 @@ import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.LinkedHashMap;
 
@@ -129,6 +128,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.BIORITE_CHESTPLATE);
         trimmedArmorItem(ModItems.BIORITE_LEGGINGS);
         trimmedArmorItem(ModItems.BIORITE_BOOTS);
+
+        // Untiered
+        basicItem(ModItems.ADVANCED_MODULAR_CLAY_SHEARS.get());
 
         // Augments
         basicItem(ModItems.UNBREAKING_AUGMENT.get());

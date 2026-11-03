@@ -53,7 +53,7 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
             tier = 1;
         } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_2)) {
             tier = 2;
-        } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_3)) {
+        } else if (modularItemStack.is(ModTags.Items.MODULAR_TIER_3) || modularItemStack.is(ModTags.Items.MODULAR_UNTIERED)) {
             tier = 3;
         }
 
@@ -84,7 +84,6 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
                 slotSize = augmentItem.augmentLevels.get(tier);
             }
 
-
             // Ranged Weapon
             if (modularItemStack.is(ModTags.Items.MODULAR_RANGED_WEAPON) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_RANGED_WEAPON)) {
                 slotSize = augmentItem.augmentLevels.get(tier);
@@ -98,6 +97,11 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
             } else if (modularItemStack.is(ModTags.Items.MODULAR_LEGGINGS) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_LEGGINGS)) {
                 slotSize = augmentItem.augmentLevels.get(tier);
             } else if (modularItemStack.is(ModTags.Items.MODULAR_BOOTS) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_BOOTS)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            }
+
+            // Special Items
+            if (modularItemStack.is(ModTags.Items.MODULAR_SHEARS) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_SHEARS)) {
                 slotSize = augmentItem.augmentLevels.get(tier);
             }
         }

@@ -11,6 +11,7 @@ import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
 import net.matt.modular_armory.items.tools.*;
 import net.matt.modular_armory.items.tools.helpers.AugmentGeneric;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -347,6 +348,10 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> BIORITE_BOW = ITEMS.register("biorite_bow",
             () -> new ModularBowItem(new Item.Properties().durability(769), 1.4F));
 
+    // Untiered
+    public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_SHEARS = ITEMS.register("advanced_modular_clay_shears",
+            () -> new ModularShearsItem(new Item.Properties().durability(576).component(DataComponents.TOOL, ShearsItem.createToolProperties())));
+
     // Upgrades
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("advanced_modular_clay_upgrade_smithing_template",
             () -> new SmithingTemplateItem(
@@ -399,7 +404,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> MENDING_AUGMENT = ITEMS.register("mending_augment", () -> new AugmentGeneric(new Item.Properties(), "mending_augment", AugmentGeneric.Types.GENERIC, List.of(0, 1, 1, 1), 0xb5e45a, List.of("xp_siphon_augment")));
 
     // Tools
-    public static final DeferredHolder<Item, Item> EFFICIENCY_AUGMENT = ITEMS.register("efficiency_augment", () -> new AugmentGeneric(new Item.Properties(), "efficiency_augment", AugmentGeneric.Types.TOOLS, List.of(1, 3, 5, 7), 0xe62008));
+    public static final DeferredHolder<Item, Item> EFFICIENCY_AUGMENT = ITEMS.register("efficiency_augment", () -> new AugmentGeneric(new Item.Properties(), "efficiency_augment", AugmentGeneric.Types.TOOLS, List.of(1, 3, 5, 7), 0xe62008).bonusType(AugmentGeneric.Types.SHEARS));
     public static final DeferredHolder<Item, Item> SILK_TOUCH_AUGMENT = ITEMS.register("silk_touch_augment", () -> new AugmentGeneric(new Item.Properties(), "silk_touch_augment", AugmentGeneric.Types.TOOLS, List.of(1, 1, 1, 1), 0x82f6ad, List.of("void_augment", "fortune_augment", "auto_smelt_augment")));
     public static final DeferredHolder<Item, Item> FORTUNE_AUGMENT = ITEMS.register("fortune_augment", () -> new AugmentGeneric(new Item.Properties(), "fortune_augment", AugmentGeneric.Types.TOOLS, List.of(1, 2, 3, 4), 0x2b568d, List.of("void_augment", "silk_touch_augment")));
 
