@@ -480,6 +480,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> VOID_TETHER_AUGMENT = ITEMS.register("void_tether_augment", () -> new AugmentGeneric(new Item.Properties(), "void_tether_augment", AugmentGeneric.Types.ARMOR_FEET, List.of(1, 1, 1, 1), 0x875b87));
 
     // Utility
+    public static final DeferredHolder<Item, Item> ADVANCED_SHEARER_AUGMENT = ITEMS.register("advanced_shearer_augment", () -> new AugmentGeneric(new Item.Properties(), "advanced_shearer_augment", AugmentGeneric.Types.SHEARS, List.of(1, 2, 3, 4), 0x7fcc19));
     public static final DeferredHolder<Item, Item> JEBS_BLESSING_AUGMENT = ITEMS.register("jebs_blessing_augment", () -> new AugmentGeneric(new Item.Properties(), "jebs_blessing_augment", AugmentGeneric.Types.SHEARS, List.of(1, 1, 1, 1), 0xe5e533));
 
     public static void register(IEventBus eventBus) {

@@ -12,6 +12,7 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.animal.Sheep;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
@@ -94,6 +95,17 @@ public class ModularShearsItem extends ShearsItem implements ModularItemInterfac
                 List<ItemStack> drops = target.onSheared(player, stack, entity.level(), pos);
                 // Spawn drops
                 if (!isClient) {
+                    // this doesn't work for some reason????
+//                    if (bonuses.ADVANCED_SHEARER > 0 && target instanceof Sheep && !drops.isEmpty()) {
+//
+//                        ItemStack originalDrop = drops.getFirst();
+//                        if (!originalDrop.isEmpty()) {
+//                            for (int i = 0; i < bonuses.ADVANCED_SHEARER; i++) {
+//                                drops.add(originalDrop);
+//                            }
+//                        }
+//                    }
+
                     for(ItemStack drop : drops) {
                         // Jeb's Blessing handling
                         if (bonuses.JEBS_BLESSING) {

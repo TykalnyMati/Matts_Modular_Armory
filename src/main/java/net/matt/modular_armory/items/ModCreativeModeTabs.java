@@ -207,6 +207,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.STEP_UP_AUGMENT.get());
                         output.accept(ModItems.VOID_TETHER_AUGMENT.get());
 
+                        output.accept(ModItems.ADVANCED_SHEARER_AUGMENT.get());
                         output.accept(ModItems.JEBS_BLESSING_AUGMENT.get());
                     }).build());
 

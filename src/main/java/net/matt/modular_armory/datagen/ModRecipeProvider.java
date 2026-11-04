@@ -1364,6 +1364,20 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(pRecipeOutput);
 
         // Jeb's Blessing Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_SHEARER_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', ItemTags.WOOL)
+                .define('C', Blocks.LAPIS_BLOCK)
+                .unlockedBy("has_items_for_advanced_shearer_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()),
+                        ItemPredicate.Builder.item().of(ItemTags.WOOL),
+                        ItemPredicate.Builder.item().of(Blocks.LAPIS_BLOCK)))
+                .save(pRecipeOutput);
+
+        // Jeb's Blessing Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.JEBS_BLESSING_AUGMENT.get())
                 .pattern("BCB")
                 .pattern("CAC")
@@ -1371,7 +1385,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
                 .define('B', ItemTags.WOOL)
                 .define('C', Items.NAME_TAG)
-                .unlockedBy("has_items_for_void_tether_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                .unlockedBy("has_items_for_jebs_blessing_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
                         ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()),
                         ItemPredicate.Builder.item().of(ItemTags.WOOL),
                         ItemPredicate.Builder.item().of(Items.NAME_TAG)))

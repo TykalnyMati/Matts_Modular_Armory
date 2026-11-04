@@ -265,6 +265,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.STEP_UP_AUGMENT.get())
                 .add(ModItems.VOID_TETHER_AUGMENT.get())
 
+                .add(ModItems.ADVANCED_SHEARER_AUGMENT.get())
                 .add(ModItems.JEBS_BLESSING_AUGMENT.get());
 
         // Armor Tags

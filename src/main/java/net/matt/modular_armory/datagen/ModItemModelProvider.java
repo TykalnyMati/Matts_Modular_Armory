@@ -195,6 +195,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VOID_TETHER_AUGMENT.get());
 
         // Utility
+        basicItem(ModItems.ADVANCED_SHEARER_AUGMENT.get());
         basicItem(ModItems.JEBS_BLESSING_AUGMENT.get());
     }
 

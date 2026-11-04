@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_items_for_void_tether_augment": {
+    "has_items_for_jebs_blessing_augment": {
       "conditions": {
         "items": [
           {
@@ -27,7 +27,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_items_for_void_tether_augment"
+      "has_items_for_jebs_blessing_augment"
     ]
   ],
   "rewards": {

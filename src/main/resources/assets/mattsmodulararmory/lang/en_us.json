@@ -183,6 +183,7 @@
   "item.mattsmodulararmory.pumpkin_lens_augment": "Pumpkin Lens Augment",
   "item.mattsmodulararmory.step_up_augment": "Step Up Augment",
   "item.mattsmodulararmory.void_tether_augment": "Void Tether Augment",
+  "item.mattsmodulararmory.advanced_shearer_augment": "Advanced Shearer Augment",
   "item.mattsmodulararmory.jebs_blessing_augment": "Jeb's Blessing Augment",
 
   "tooltip.mattsmodulararmory.broken": "Broken",
@@ -240,6 +241,7 @@
   "tooltip.mattsmodulararmory.pumpkin_lens_augment": "Pumpkin Lens",
   "tooltip.mattsmodulararmory.step_up_augment": "Step Up",
   "tooltip.mattsmodulararmory.void_tether_augment": "Void Tether",
+  "tooltip.mattsmodulararmory.advanced_shearer_augment": "Advanced Shearer",
   "tooltip.mattsmodulararmory.jebs_blessing_augment": "Jeb's Blessing",
 
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
@@ -308,6 +310,7 @@
   "tooltip.mattsmodulararmory.description.pumpkin_lens_augment": "Allows to look endermen in the eyes",
   "tooltip.mattsmodulararmory.description.step_up_augment": "Increases stepping height",
   "tooltip.mattsmodulararmory.description.void_tether_augment": "Saves you from the void",
+  "tooltip.mattsmodulararmory.description.advanced_shearer_augment": "Sheep drop more wool",
   "tooltip.mattsmodulararmory.description.jebs_blessing_augment": "Sheep drop randomly colored wool",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
