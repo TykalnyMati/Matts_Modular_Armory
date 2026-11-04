@@ -183,6 +183,7 @@
   "item.mattsmodulararmory.pumpkin_lens_augment": "Pumpkin Lens Augment",
   "item.mattsmodulararmory.step_up_augment": "Step Up Augment",
   "item.mattsmodulararmory.void_tether_augment": "Void Tether Augment",
+  "item.mattsmodulararmory.jebs_blessing_augment": "Jeb's Blessing Augment",
 
   "tooltip.mattsmodulararmory.broken": "Broken",
   "tooltip.mattsmodulararmory.augments": "Augments",
@@ -239,6 +240,7 @@
   "tooltip.mattsmodulararmory.pumpkin_lens_augment": "Pumpkin Lens",
   "tooltip.mattsmodulararmory.step_up_augment": "Step Up",
   "tooltip.mattsmodulararmory.void_tether_augment": "Void Tether",
+  "tooltip.mattsmodulararmory.jebs_blessing_augment": "Jeb's Blessing",
 
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
   "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
@@ -251,6 +253,8 @@
   "tooltip.mattsmodulararmory.augment_type.armor_feet": "Armor: Feet",
   "tooltip.mattsmodulararmory.augment_type.sword": "Sword",
   "tooltip.mattsmodulararmory.augment_type.ranged_weapons": "Ranged Weapons",
+
+  "tooltip.mattsmodulararmory.augment_type.shears": "Shears",
 
   "tooltip.mattsmodulararmory.description.unbreaking_augment": "Reduces the chance to consume durability",
   "tooltip.mattsmodulararmory.description.mending_augment": "Repairs items with XP",
@@ -304,6 +308,7 @@
   "tooltip.mattsmodulararmory.description.pumpkin_lens_augment": "Allows to look endermen in the eyes",
   "tooltip.mattsmodulararmory.description.step_up_augment": "Increases stepping height",
   "tooltip.mattsmodulararmory.description.void_tether_augment": "Saves you from the void",
+  "tooltip.mattsmodulararmory.description.jebs_blessing_augment": "Sheep drop randomly colored wool",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",

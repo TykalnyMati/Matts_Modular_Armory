@@ -206,6 +206,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.PUMPKIN_LENS_AUGMENT.get());
                         output.accept(ModItems.STEP_UP_AUGMENT.get());
                         output.accept(ModItems.VOID_TETHER_AUGMENT.get());
+
+                        output.accept(ModItems.JEBS_BLESSING.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

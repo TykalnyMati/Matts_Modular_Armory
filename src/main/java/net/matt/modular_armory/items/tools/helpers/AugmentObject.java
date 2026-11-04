@@ -80,6 +80,9 @@ public class AugmentObject {
     public int STEP_UP;
     public boolean VOID_TETHER;
 
+    // Utility items
+    public boolean JEBS_BLESSING;
+
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
     public AugmentObject(ItemStack stack) {
@@ -152,6 +155,8 @@ public class AugmentObject {
                     case "soul_speed_augment" -> this.SOUL_SPEED = augmentStack.getCount();
                     case "step_up_augment" -> this.STEP_UP = augmentStack.getCount();
                     case "void_tether_augment" -> this.VOID_TETHER = true;
+
+                    case "jebs_blessing_augment" -> this.JEBS_BLESSING = true;
                 }
             }
         }

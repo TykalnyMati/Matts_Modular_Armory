@@ -263,7 +263,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.SUPER_GILDED_AUGMENT.get())
                 .add(ModItems.PUMPKIN_LENS_AUGMENT.get())
                 .add(ModItems.STEP_UP_AUGMENT.get())
-                .add(ModItems.VOID_TETHER_AUGMENT.get());
+                .add(ModItems.VOID_TETHER_AUGMENT.get())
+
+                .add(ModItems.JEBS_BLESSING.get());
 
         // Armor Tags
         tag(ModTags.Items.MODULAR_HELMET)

@@ -479,6 +479,9 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> STEP_UP_AUGMENT = ITEMS.register("step_up_augment", () -> new AugmentGeneric(new Item.Properties(), "step_up_augment", AugmentGeneric.Types.ARMOR_FEET, List.of(1, 1, 2, 2), 0x66a63c));
     public static final DeferredHolder<Item, Item> VOID_TETHER_AUGMENT = ITEMS.register("void_tether_augment", () -> new AugmentGeneric(new Item.Properties(), "void_tether_augment", AugmentGeneric.Types.ARMOR_FEET, List.of(1, 1, 1, 1), 0x875b87));
 
+    // Utility
+    public static final DeferredHolder<Item, Item> JEBS_BLESSING = ITEMS.register("jebs_blessing_augment", () -> new AugmentGeneric(new Item.Properties(), "jebs_blessing_augment", AugmentGeneric.Types.SHEARS, List.of(1, 1, 1, 1), 0x00FFFF));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
