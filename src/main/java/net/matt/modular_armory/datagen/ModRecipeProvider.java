@@ -1366,6 +1366,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.WIND_CHARGE))
                 .save(pRecipeOutput);
 
+        // Jeb's Blessing Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.JEBS_BLESSING.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', ItemTags.WOOL)
+                .define('C', Items.NAME_TAG)
+                .unlockedBy("has_items_for_void_tether_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()),
+                        ItemPredicate.Builder.item().of(ItemTags.WOOL),
+                        ItemPredicate.Builder.item().of(Items.NAME_TAG)))
+                .save(pRecipeOutput);
+
         // Exposer Recipes
         // Creation Recipes
         // Cobblestone

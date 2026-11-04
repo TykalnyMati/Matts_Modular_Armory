@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_void_tether_augment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:advanced_modular_plate"
+          },
+          {
+            "items": "#minecraft:wool"
+          },
+          {
+            "items": "minecraft:name_tag"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:jebs_blessing_augment"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_void_tether_augment"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:jebs_blessing_augment"
+    ]
+  }
+}

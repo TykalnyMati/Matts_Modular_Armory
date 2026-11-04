@@ -34,3 +34,4 @@ Numbers on the bottom of the tooltip are equivalent to tool tier and how many au
 - [Tool](../augments/tool_augments.md)
 - [Weapon](../augments/weapon_augments.md)
 - [Armor](../augments/armor_augments.md)
+- [Other](../augments/other_augments.md)
