@@ -195,7 +195,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VOID_TETHER_AUGMENT.get());
 
         // Utility
-        basicItem(ModItems.JEBS_BLESSING.get());
+        basicItem(ModItems.JEBS_BLESSING_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(DeferredHolder<Item, ? extends Item> item) {

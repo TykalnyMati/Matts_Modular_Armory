@@ -11,10 +11,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionContents;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 
@@ -1367,7 +1364,7 @@ public class ModRecipeProvider extends RecipeProvider {
                 .save(pRecipeOutput);
 
         // Jeb's Blessing Augment
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.JEBS_BLESSING.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.JEBS_BLESSING_AUGMENT.get())
                 .pattern("BCB")
                 .pattern("CAC")
                 .pattern("BCB")
