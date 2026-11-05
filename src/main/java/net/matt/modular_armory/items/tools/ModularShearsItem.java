@@ -104,7 +104,7 @@ public class ModularShearsItem extends ShearsItem implements ModularItemInterfac
                             }
 
                             if (bonuses.ADVANCED_SHEARER > 0) {
-                                int bonusWool = new java.util.Random().nextInt(bonuses.ADVANCED_SHEARER);
+                                int bonusWool = new java.util.Random().nextInt(bonuses.ADVANCED_SHEARER + 1);
                                 drop = new ItemStack(drop.getItem(), drop.getCount() + bonusWool);
                             }
                         }
