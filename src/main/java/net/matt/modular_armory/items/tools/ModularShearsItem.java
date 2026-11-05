@@ -95,23 +95,17 @@ public class ModularShearsItem extends ShearsItem implements ModularItemInterfac
                 List<ItemStack> drops = target.onSheared(player, stack, entity.level(), pos);
                 // Spawn drops
                 if (!isClient) {
-                    // this doesn't work for some reason????
-//                    if (bonuses.ADVANCED_SHEARER > 0 && target instanceof Sheep && !drops.isEmpty()) {
-//
-//                        ItemStack originalDrop = drops.getFirst();
-//                        if (!originalDrop.isEmpty()) {
-//                            for (int i = 0; i < bonuses.ADVANCED_SHEARER; i++) {
-//                                drops.add(originalDrop);
-//                            }
-//                        }
-//                    }
-
                     for(ItemStack drop : drops) {
-                        // Jeb's Blessing handling
-                        if (bonuses.JEBS_BLESSING) {
-                            if (drop.is(ItemTags.WOOL)) {
+
+                        if (drop.is(ItemTags.WOOL)) {
+                            if (bonuses.JEBS_BLESSING) {
                                 int id = new java.util.Random().nextInt(16);
                                 drop = new ItemStack(woolColors.get(id), drop.getCount());
+                            }
+
+                            if (bonuses.ADVANCED_SHEARER > 0) {
+                                int bonusWool = new java.util.Random().nextInt(bonuses.ADVANCED_SHEARER);
+                                drop = new ItemStack(drop.getItem(), drop.getCount() + bonusWool);
                             }
                         }
 

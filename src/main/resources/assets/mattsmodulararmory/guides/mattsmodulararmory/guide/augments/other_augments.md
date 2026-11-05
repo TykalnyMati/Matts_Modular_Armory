@@ -26,8 +26,10 @@ It doesn't matter what wool they should drop originally
 
 # Advanced Shearer Augment:
 
-Sheep drop more wool
+Sheep have a chance to drop more wool
 
-Each level adds 1 more wool
+The amount dropped is between 0 and maximum level inserted
+
+Each level adds 1 maximal additional wool
 
 <Recipe id="advanced_shearer_augment" />
