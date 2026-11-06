@@ -8,6 +8,7 @@ navigation:
 item_ids:
   - jebs_blessing_augment
   - advanced_shearer_augment
+  - area_lighter_augment
 ---
 
 # Other Augments
@@ -33,3 +34,15 @@ The amount dropped is between 0 and maximum level inserted
 Each level adds 1 maximal additional wool
 
 <Recipe id="advanced_shearer_augment" />
+
+# Area Lighter Augment:
+
+Increases the area set on fire
+
+Only works for placing fire and not special actions (i.e. lighting tnt/campfires)
+
+Each level increases it by 4 blocks
+
+Uses 1 more durability per each level
+
+<Recipe id="area_lighter_augment" />

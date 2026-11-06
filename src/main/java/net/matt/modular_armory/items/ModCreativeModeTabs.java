@@ -208,8 +208,13 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.STEP_UP_AUGMENT.get());
                         output.accept(ModItems.VOID_TETHER_AUGMENT.get());
 
+                        // Utility
+                        // Shears
                         output.accept(ModItems.ADVANCED_SHEARER_AUGMENT.get());
                         output.accept(ModItems.JEBS_BLESSING_AUGMENT.get());
+
+                        // Lighter
+                        output.accept(ModItems.AREA_LIGHTER_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

@@ -63,6 +63,7 @@ public class AugmentGeneric extends Item {
             case Types.ARMOR_FEET -> this.augmentTypes.add(ModTags.Items.MODULAR_BOOTS);
             case Types.SWORD -> this.augmentTypes.add(ModTags.Items.MODULAR_SWORD);
             case Types.SHEARS -> this.augmentTypes.add(ModTags.Items.MODULAR_SHEARS);
+            case Types.LIGHTER -> this.augmentTypes.add(ModTags.Items.MODULAR_LIGHTER);
         }
     }
 
@@ -141,6 +142,7 @@ public class AugmentGeneric extends Item {
 
         static public final String SWORD = "sword";
         static public final String SHEARS = "shears";
+        static public final String LIGHTER = "lighter";
 
         static public final String ARMOR_HEAD = "armor_head";
         static public final String ARMOR_CHEST = "armor_chest";

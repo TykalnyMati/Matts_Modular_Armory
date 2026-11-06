@@ -1363,7 +1363,7 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.WIND_CHARGE))
                 .save(pRecipeOutput);
 
-        // Jeb's Blessing Augment
+        // Advanced Shearer Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ADVANCED_SHEARER_AUGMENT.get())
                 .pattern("BCB")
                 .pattern("CAC")
@@ -1389,6 +1389,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()),
                         ItemPredicate.Builder.item().of(ItemTags.WOOL),
                         ItemPredicate.Builder.item().of(Items.NAME_TAG)))
+                .save(pRecipeOutput);
+
+        // Area Lighter Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.AREA_LIGHTER_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.WIND_CHARGE)
+                .define('C', Items.FIRE_CHARGE)
+                .unlockedBy("has_items_for_area_lighter_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.WIND_CHARGE,
+                        Items.FIRE_CHARGE))
                 .save(pRecipeOutput);
 
         // Exposer Recipes

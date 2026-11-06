@@ -104,6 +104,10 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
             if (modularItemStack.is(ModTags.Items.MODULAR_SHEARS) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_SHEARS)) {
                 slotSize = augmentItem.augmentLevels.get(tier);
             }
+
+            if (modularItemStack.is(ModTags.Items.MODULAR_LIGHTER) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_LIGHTER)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            }
         }
 
         return slotSize;

@@ -84,6 +84,8 @@ public class AugmentObject {
     public int ADVANCED_SHEARER;
     public boolean JEBS_BLESSING;
 
+    public int AREA_LIGHTER;
+
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
     public AugmentObject(ItemStack stack) {
@@ -159,6 +161,8 @@ public class AugmentObject {
 
                     case "advanced_shearer_augment" -> this.ADVANCED_SHEARER = augmentStack.getCount();
                     case "jebs_blessing_augment" -> this.JEBS_BLESSING = true;
+
+                    case "area_lighter_augment" -> this.AREA_LIGHTER = augmentStack.getCount();
                 }
             }
         }

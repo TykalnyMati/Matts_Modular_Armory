@@ -196,8 +196,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.VOID_TETHER_AUGMENT.get());
 
         // Utility
+        // Shears
         basicItem(ModItems.ADVANCED_SHEARER_AUGMENT.get());
         basicItem(ModItems.JEBS_BLESSING_AUGMENT.get());
+
+        // Lighter
+        basicItem(ModItems.AREA_LIGHTER_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(DeferredHolder<Item, ? extends Item> item) {

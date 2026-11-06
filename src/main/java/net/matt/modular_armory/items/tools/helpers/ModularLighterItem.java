@@ -3,6 +3,7 @@ package net.matt.modular_armory.items.tools.helpers;
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -46,6 +47,7 @@ public class ModularLighterItem extends FlintAndSteelItem implements ModularItem
             return InteractionResult.PASS;
         }
 
+        AugmentObject bonuses = getAugmentBonuses(itemstack);
         Player player = context.getPlayer();
         Level level = context.getLevel();
         BlockPos blockpos = context.getClickedPos();
@@ -67,19 +69,48 @@ public class ModularLighterItem extends FlintAndSteelItem implements ModularItem
         BlockState blockstate2 = blockstate.getToolModifiedState(context, ItemAbilities.FIRESTARTER_LIGHT, false);
         if (blockstate2 == null) {
             BlockPos blockpos1 = blockpos.relative(context.getClickedFace());
-            if (BaseFireBlock.canBePlacedAt(level, blockpos1, context.getHorizontalDirection())) {
-                level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
-                BlockState blockstate1 = BaseFireBlock.getState(level, blockpos1);
-                level.setBlock(blockpos1, blockstate1, 11);
-                level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
-                if (player instanceof ServerPlayer) {
-                    CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockpos1, itemstack);
-                    itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+
+            if (bonuses.AREA_LIGHTER > 0) {
+                Direction clickedFace = context.getClickedFace();
+                List<BlockPos> toLight = getAreaBlocksToLight(clickedFace, bonuses, blockpos1);
+
+                boolean lightedAtLeastOne = false;
+
+                for (BlockPos blockToLight : toLight) {
+                    if (BaseFireBlock.canBePlacedAt(level, blockToLight, context.getHorizontalDirection())) {
+                        lightedAtLeastOne = true;
+                        BlockState blockstate1 = BaseFireBlock.getState(level, blockToLight);
+                        level.setBlock(blockToLight, blockstate1, 11);
+                        level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
+                        if (player instanceof ServerPlayer) {
+                            CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockToLight, itemstack);
+                        }
+                    }
                 }
 
-                return InteractionResult.sidedSuccess(level.isClientSide());
+                if (lightedAtLeastOne) {
+                    level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                    itemstack.hurtAndBreak(1 + bonuses.AREA_LIGHTER, player, LivingEntity.getSlotForHand(context.getHand()));
+                    return InteractionResult.sidedSuccess(level.isClientSide());
+                } else {
+                    return InteractionResult.FAIL;
+                }
+
             } else {
-                return InteractionResult.FAIL;
+                if (BaseFireBlock.canBePlacedAt(level, blockpos1, context.getHorizontalDirection())) {
+                    level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                    BlockState blockstate1 = BaseFireBlock.getState(level, blockpos1);
+                    level.setBlock(blockpos1, blockstate1, 11);
+                    level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
+                    if (player instanceof ServerPlayer) {
+                        CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer) player, blockpos1, itemstack);
+                        itemstack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(context.getHand()));
+                    }
+
+                    return InteractionResult.sidedSuccess(level.isClientSide());
+                } else {
+                    return InteractionResult.FAIL;
+                }
             }
         } else {
             level.playSound(player, blockpos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
@@ -91,6 +122,131 @@ public class ModularLighterItem extends FlintAndSteelItem implements ModularItem
 
             return InteractionResult.sidedSuccess(level.isClientSide());
         }
+    }
+
+    private static List<BlockPos> getAreaBlocksToLight(Direction clickedFace, AugmentObject bonuses, BlockPos blockpos1) {
+        List<BlockPos> toLight;
+        // Floor / Ceiling
+        if (clickedFace == Direction.UP || clickedFace == Direction.DOWN) {
+            if (bonuses.AREA_LIGHTER == 1) {
+                toLight = List.of(
+                        blockpos1,
+                        blockpos1.north(),
+                        blockpos1.east(),
+                        blockpos1.south(),
+                        blockpos1.west()
+                );
+            } else if (bonuses.AREA_LIGHTER == 2) {
+                toLight = List.of(
+                        blockpos1,
+                        blockpos1.north(),
+                        blockpos1.north().east(),
+                        blockpos1.east(),
+                        blockpos1.east().south(),
+                        blockpos1.south(),
+                        blockpos1.south().west(),
+                        blockpos1.west(),
+                        blockpos1.west().north()
+                );
+            } else {
+                toLight = List.of(
+                        blockpos1,
+                        blockpos1.north(),
+                        blockpos1.north().east(),
+                        blockpos1.north(2),
+                        blockpos1.east(),
+                        blockpos1.east().south(),
+                        blockpos1.east(2),
+                        blockpos1.south(),
+                        blockpos1.south().west(),
+                        blockpos1.south(2),
+                        blockpos1.west(),
+                        blockpos1.west().north(),
+                        blockpos1.west(2)
+                );
+            }
+        }
+        // North / South Walls
+        else if (clickedFace == Direction.NORTH || clickedFace == Direction.SOUTH) {
+            if (bonuses.AREA_LIGHTER == 1) {
+                toLight = List.of(
+                        blockpos1,
+                        blockpos1.above(),
+                        blockpos1.east(),
+                        blockpos1.below(),
+                        blockpos1.west()
+                );
+            } else if (bonuses.AREA_LIGHTER == 2) {
+                toLight = List.of(
+                        blockpos1,
+                        blockpos1.above(),
+                        blockpos1.above().east(),
+                        blockpos1.east(),
+                        blockpos1.east().below(),
+                        blockpos1.below(),
+                        blockpos1.below().west(),
+                        blockpos1.west(),
+                        blockpos1.west().above()
+                );
+            } else {
+                toLight = List.of(
+                        blockpos1,
+                        blockpos1.above(),
+                        blockpos1.above().east(),
+                        blockpos1.above(2),
+                        blockpos1.east(),
+                        blockpos1.east().below(),
+                        blockpos1.east(2),
+                        blockpos1.below(),
+                        blockpos1.below().west(),
+                        blockpos1.below(2),
+                        blockpos1.west(),
+                        blockpos1.west().above(),
+                        blockpos1.west(2)
+                );
+            }
+        }
+        // East / West Walls
+        else {
+            if (bonuses.AREA_LIGHTER == 1) {
+                toLight = List.of(
+                        blockpos1,
+                        blockpos1.above(),
+                        blockpos1.south(),
+                        blockpos1.below(),
+                        blockpos1.north()
+                );
+            } else if (bonuses.AREA_LIGHTER == 2) {
+                toLight = List.of(
+                        blockpos1,
+                        blockpos1.above(),
+                        blockpos1.above().south(),
+                        blockpos1.south(),
+                        blockpos1.south().below(),
+                        blockpos1.below(),
+                        blockpos1.below().north(),
+                        blockpos1.north(),
+                        blockpos1.north().above()
+                );
+            } else {
+                toLight = List.of(
+                        blockpos1,
+                        blockpos1.above(),
+                        blockpos1.above().south(),
+                        blockpos1.above(2),
+                        blockpos1.south(),
+                        blockpos1.south().below(),
+                        blockpos1.south(2),
+                        blockpos1.below(),
+                        blockpos1.below().north(),
+                        blockpos1.below(2),
+                        blockpos1.north(),
+                        blockpos1.north().above(),
+                        blockpos1.north(2)
+                );
+            }
+        }
+        return toLight;
     }
 
     public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {
