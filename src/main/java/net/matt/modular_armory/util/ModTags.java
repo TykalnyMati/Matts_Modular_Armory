@@ -40,6 +40,7 @@ public class ModTags {
 
         // Specific Tools
         public static final TagKey<Item> MODULAR_SHEARS = createTag("modular_shears");
+        public static final TagKey<Item> MODULAR_LIGHTER = createTag("modular_lighter");
 
         public static final TagKey<Item> MODULAR_ITEMS_AUGMENT = createTag("modular_items_augment");
 

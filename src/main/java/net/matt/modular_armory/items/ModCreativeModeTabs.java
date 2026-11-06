@@ -127,6 +127,7 @@ public class ModCreativeModeTabs {
 
                         // Untiered
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_SHEARS.get());
+                        output.accept(ModItems.ADVANCED_MODULAR_CLAY_LIGHTER.get());
 
                         // Augments
                         // Generic

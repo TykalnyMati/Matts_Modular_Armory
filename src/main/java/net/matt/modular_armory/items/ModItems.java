@@ -10,6 +10,7 @@ import net.matt.modular_armory.items.custom.GuideBookItem;
 import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
 import net.matt.modular_armory.items.tools.*;
 import net.matt.modular_armory.items.tools.helpers.AugmentGeneric;
+import net.matt.modular_armory.items.tools.helpers.ModularLighterItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -351,6 +352,9 @@ public class ModItems {
     // Untiered
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_SHEARS = ITEMS.register("advanced_modular_clay_shears",
             () -> new ModularShearsItem(new Item.Properties().durability(576).component(DataComponents.TOOL, ShearsItem.createToolProperties())));
+
+    public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_LIGHTER = ITEMS.register("advanced_modular_clay_lighter",
+            () -> new ModularLighterItem(new Item.Properties().durability(256)));
 
     // Upgrades
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("advanced_modular_clay_upgrade_smithing_template",

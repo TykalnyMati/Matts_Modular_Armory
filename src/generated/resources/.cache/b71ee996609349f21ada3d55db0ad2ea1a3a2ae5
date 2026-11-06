@@ -1,4 +1,4 @@
-// 1.21.1	2026-11-04T23:07:27.3121581	Item Models: mattsmodulararmory
+// 1.21.1	2026-11-06T17:38:28.314977	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -98,6 +98,7 @@ acd70f8be262a622eee28ec99d47abd48e04617f assets/mattsmodulararmory/models/item/a
 e6fb0ca06e0f3ca70efe2f2935e69d8f73342569 assets/mattsmodulararmory/models/item/advanced_modular_clay_leggings_netherite_trim.json
 80871a32fb463bdd8cc028eed45c9f386dfc35e0 assets/mattsmodulararmory/models/item/advanced_modular_clay_leggings_quartz_trim.json
 f31de013d59cbd203d9cc7777c32e332e15e039c assets/mattsmodulararmory/models/item/advanced_modular_clay_leggings_redstone_trim.json
+ef7f810548a53c1fb1dc020d6df5f7716e08f4d3 assets/mattsmodulararmory/models/item/advanced_modular_clay_lighter.json
 d4133d24880d1fc3c86b3e819aca4d539ee801e0 assets/mattsmodulararmory/models/item/advanced_modular_clay_pickaxe.json
 c0458d98a98b7503490d505ecb681aff0cd88c35 assets/mattsmodulararmory/models/item/advanced_modular_clay_shears.json
 9454acda200c3fdf468488c72ae07e5d1d8485e1 assets/mattsmodulararmory/models/item/advanced_modular_clay_shovel.json

@@ -131,6 +131,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         // Untiered
         basicItem(ModItems.ADVANCED_MODULAR_CLAY_SHEARS.get());
+        basicItem(ModItems.ADVANCED_MODULAR_CLAY_LIGHTER.get());
 
         // Augments
         basicItem(ModItems.UNBREAKING_AUGMENT.get());

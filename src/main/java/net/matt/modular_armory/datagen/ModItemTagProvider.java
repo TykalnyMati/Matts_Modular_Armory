@@ -66,7 +66,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BIORITE_BOOTS.get())
                 .add(ModItems.BIORITE_BOW.get())
 
-                .add(ModItems.ADVANCED_MODULAR_CLAY_SHEARS.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SHEARS.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_LIGHTER.get());
 
         // Modular Tools tag
         tag(ModTags.Items.MODULAR_TOOL)
@@ -196,11 +197,20 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         // Modular Items Untiered
         tag(ModTags.Items.MODULAR_UNTIERED)
-                .add(ModItems.ADVANCED_MODULAR_CLAY_SHEARS.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_SHEARS.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_LIGHTER.get());
 
         // Modular Shears
         tag(ModTags.Items.MODULAR_SHEARS)
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SHEARS.get());
+
+        // Modular Lighter
+        tag(ModTags.Items.MODULAR_LIGHTER)
+                .add(ModItems.ADVANCED_MODULAR_CLAY_LIGHTER.get());
+
+        tag(ItemTags.CREEPER_IGNITERS)
+                .add(ModItems.ADVANCED_MODULAR_CLAY_LIGHTER.get());
+
 
         // Augments
         tag(ModTags.Items.MODULAR_ITEMS_AUGMENT)
