@@ -312,7 +312,7 @@ public class ModItems {
                     new Item.Properties().rarity(Rarity.UNCOMMON).durability(ArmorItem.Type.BOOTS.getDurability(30))));
 
     public static final DeferredHolder<Item, Item> ADAPTIVE_FLESH_BOW = ITEMS.register("adaptive_flesh_bow",
-            () -> new ModularBowItem(new Item.Properties().durability(577), 1.2F));
+            () -> new ModularBowItem(new Item.Properties().rarity(Rarity.UNCOMMON).durability(577), 1.2F));
 
     // Biorite
     public static final DeferredHolder<Item, Item> BIORITE_SHOVEL = ITEMS.register("biorite_shovel",
@@ -347,7 +347,7 @@ public class ModItems {
                     new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(ArmorItem.Type.BOOTS.getDurability(40))));
 
     public static final DeferredHolder<Item, Item> BIORITE_BOW = ITEMS.register("biorite_bow",
-            () -> new ModularBowItem(new Item.Properties().durability(769), 1.4F));
+            () -> new ModularBowItem(new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(769), 1.4F));
 
     // Untiered
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_SHEARS = ITEMS.register("advanced_modular_clay_shears",
