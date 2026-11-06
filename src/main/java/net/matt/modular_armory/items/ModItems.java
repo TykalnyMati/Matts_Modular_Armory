@@ -354,7 +354,7 @@ public class ModItems {
             () -> new ModularShearsItem(new Item.Properties().durability(576).component(DataComponents.TOOL, ShearsItem.createToolProperties())));
 
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_LIGHTER = ITEMS.register("advanced_modular_clay_lighter",
-            () -> new ModularLighterItem(new Item.Properties().durability(256)));
+            () -> new ModularLighterItem(new Item.Properties().fireResistant().durability(256)));
 
     // Upgrades
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("advanced_modular_clay_upgrade_smithing_template",
