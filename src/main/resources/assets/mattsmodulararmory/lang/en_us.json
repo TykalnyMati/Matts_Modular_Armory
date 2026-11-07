@@ -187,6 +187,7 @@
   "item.mattsmodulararmory.advanced_shearer_augment": "Advanced Shearer Augment",
   "item.mattsmodulararmory.jebs_blessing_augment": "Jeb's Blessing Augment",
   "item.mattsmodulararmory.area_lighter_augment": "Area Lighter Augment",
+  "item.mattsmodulararmory.flame_wave_augment": "Flame Wave Augment",
 
   "tooltip.mattsmodulararmory.broken": "Broken",
   "tooltip.mattsmodulararmory.augments": "Augments",
@@ -247,6 +248,7 @@
   "tooltip.mattsmodulararmory.advanced_shearer_augment": "Advanced Shearer",
   "tooltip.mattsmodulararmory.jebs_blessing_augment": "Jeb's Blessing",
   "tooltip.mattsmodulararmory.area_lighter_augment": "Area Lighter",
+  "tooltip.mattsmodulararmory.flame_wave_augment": "Flame Wave",
 
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
   "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
@@ -319,6 +321,7 @@
   "tooltip.mattsmodulararmory.description.advanced_shearer_augment": "Sheep have a chance to drop more wool",
   "tooltip.mattsmodulararmory.description.jebs_blessing_augment": "Sheep drop randomly colored wool",
   "tooltip.mattsmodulararmory.description.area_lighter_augment": "Increases the area set on fire",
+  "tooltip.mattsmodulararmory.description.flame_wave_augment": "Creates a wave of flames",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",

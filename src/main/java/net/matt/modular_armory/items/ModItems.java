@@ -10,7 +10,7 @@ import net.matt.modular_armory.items.custom.GuideBookItem;
 import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
 import net.matt.modular_armory.items.tools.*;
 import net.matt.modular_armory.items.tools.helpers.AugmentGeneric;
-import net.matt.modular_armory.items.tools.helpers.ModularLighterItem;
+import net.matt.modular_armory.items.tools.ModularLighterItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -354,7 +354,7 @@ public class ModItems {
             () -> new ModularShearsItem(new Item.Properties().durability(576).component(DataComponents.TOOL, ShearsItem.createToolProperties())));
 
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_LIGHTER = ITEMS.register("advanced_modular_clay_lighter",
-            () -> new ModularLighterItem(new Item.Properties().fireResistant().durability(256)));
+            () -> new ModularLighterItem(new Item.Properties().fireResistant().durability(168)));
 
     // Upgrades
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("advanced_modular_clay_upgrade_smithing_template",
@@ -489,7 +489,8 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> JEBS_BLESSING_AUGMENT = ITEMS.register("jebs_blessing_augment", () -> new AugmentGeneric(new Item.Properties(), "jebs_blessing_augment", AugmentGeneric.Types.SHEARS, List.of(1, 1, 1, 1), 0xe5e533));
 
     // Lighter
-    public static final DeferredHolder<Item, Item> AREA_LIGHTER_AUGMENT = ITEMS.register("area_lighter_augment", () -> new AugmentGeneric(new Item.Properties(), "area_lighter_augment", AugmentGeneric.Types.LIGHTER, List.of(1, 2, 3, 3), 0xffcb00));
+    public static final DeferredHolder<Item, Item> AREA_LIGHTER_AUGMENT = ITEMS.register("area_lighter_augment", () -> new AugmentGeneric(new Item.Properties(), "area_lighter_augment", AugmentGeneric.Types.LIGHTER, List.of(1, 2, 3, 3), 0xffcb00, List.of("flame_wave_augment")));
+    public static final DeferredHolder<Item, Item> FLAME_WAVE_AUGMENT = ITEMS.register("flame_wave_augment", () -> new AugmentGeneric(new Item.Properties(), "flame_wave_augment", AugmentGeneric.Types.LIGHTER, List.of(1, 2, 3, 3), 0xffcb00, List.of("area_lighter_augment")));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -1405,6 +1405,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.FIRE_CHARGE))
                 .save(pRecipeOutput);
 
+        // Flame Wave Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FLAME_WAVE_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.WIND_CHARGE)
+                .define('C', Items.BLAZE_POWDER)
+                .unlockedBy("has_items_for_flame_wave_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.WIND_CHARGE,
+                        Items.BLAZE_POWDER))
+                .save(pRecipeOutput);
+
         // Exposer Recipes
         // Creation Recipes
         // Cobblestone

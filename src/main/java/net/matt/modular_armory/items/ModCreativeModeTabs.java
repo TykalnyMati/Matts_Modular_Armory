@@ -215,6 +215,7 @@ public class ModCreativeModeTabs {
 
                         // Lighter
                         output.accept(ModItems.AREA_LIGHTER_AUGMENT.get());
+                        output.accept(ModItems.FLAME_WAVE_AUGMENT.get());
                     }).build());
 
     public static void register(IEventBus eventBus) {

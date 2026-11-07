@@ -1,6 +1,8 @@
-package net.matt.modular_armory.items.tools.helpers;
+package net.matt.modular_armory.items.tools;
 
 import net.matt.modular_armory.component.ModDataComponentTypes;
+import net.matt.modular_armory.items.tools.helpers.AugmentObject;
+import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,10 +29,11 @@ import net.neoforged.neoforge.common.ItemAbilities;
 import net.neoforged.neoforge.common.ItemAbility;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ModularLighterItem extends FlintAndSteelItem implements ModularItemInterface{
+public class ModularLighterItem extends FlintAndSteelItem implements ModularItemInterface {
     public ModularLighterItem(Properties properties) {
         super(properties);
     }
@@ -70,10 +73,10 @@ public class ModularLighterItem extends FlintAndSteelItem implements ModularItem
         if (blockstate2 == null) {
             BlockPos blockpos1 = blockpos.relative(context.getClickedFace());
 
-            if (bonuses.AREA_LIGHTER > 0) {
-                Direction clickedFace = context.getClickedFace();
-                List<BlockPos> toLight = getAreaBlocksToLight(clickedFace, bonuses, blockpos1);
+            Direction clickedFace = context.getClickedFace();
 
+            if (bonuses.AREA_LIGHTER > 0) {
+                List<BlockPos> toLight = getAreaBlocksToLight(clickedFace, bonuses, blockpos1);
                 boolean lightedAtLeastOne = false;
 
                 for (BlockPos blockToLight : toLight) {
@@ -96,6 +99,50 @@ public class ModularLighterItem extends FlintAndSteelItem implements ModularItem
                     return InteractionResult.FAIL;
                 }
 
+            } else if (bonuses.FLAME_WAVE > 0) {
+                Direction lookingDirection = player.getNearestViewDirection();
+                List<BlockPos> toLight = new ArrayList<>();
+                toLight.add(blockpos1);
+
+                int range = 5 * bonuses.FLAME_WAVE;
+                for (int i = 1; i <= range; i++) {
+                    toLight.add(blockpos1.relative(lookingDirection, i));
+                }
+
+                boolean lightedAtLeastOne = false;
+                boolean placeFire = false;
+                for (BlockPos blockToLight : toLight) {
+                    if (BaseFireBlock.canBePlacedAt(level, blockToLight, context.getHorizontalDirection())) {
+                        placeFire = true;
+                    } else if (clickedFace == Direction.UP) {
+                        if (BaseFireBlock.canBePlacedAt(level, blockToLight.above(), context.getHorizontalDirection())) {
+                            placeFire = true;
+                            blockToLight = blockToLight.above();
+                        } else if (BaseFireBlock.canBePlacedAt(level, blockToLight.below(), context.getHorizontalDirection())) {
+                            placeFire = true;
+                            blockToLight = blockToLight.below();
+                        }
+                    }
+
+                    if (placeFire) {
+                        lightedAtLeastOne = true;
+                        BlockState blockstate1 = BaseFireBlock.getState(level, blockToLight);
+                        level.setBlock(blockToLight, blockstate1, 11);
+                        level.gameEvent(player, GameEvent.BLOCK_PLACE, blockpos);
+                        if (player instanceof ServerPlayer) {
+                            CriteriaTriggers.PLACED_BLOCK.trigger((ServerPlayer)player, blockToLight, itemstack);
+                        }
+                    }
+                    placeFire = false;
+                }
+
+                if (lightedAtLeastOne) {
+                    level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                    itemstack.hurtAndBreak(1 + (2 * bonuses.FLAME_WAVE), player, LivingEntity.getSlotForHand(context.getHand()));
+                    return InteractionResult.sidedSuccess(level.isClientSide());
+                } else {
+                    return InteractionResult.FAIL;
+                }
             } else {
                 if (BaseFireBlock.canBePlacedAt(level, blockpos1, context.getHorizontalDirection())) {
                     level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);

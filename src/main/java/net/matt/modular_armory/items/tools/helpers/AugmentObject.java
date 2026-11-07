@@ -85,6 +85,7 @@ public class AugmentObject {
     public boolean JEBS_BLESSING;
 
     public int AREA_LIGHTER;
+    public int FLAME_WAVE;
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
@@ -163,6 +164,7 @@ public class AugmentObject {
                     case "jebs_blessing_augment" -> this.JEBS_BLESSING = true;
 
                     case "area_lighter_augment" -> this.AREA_LIGHTER = augmentStack.getCount();
+                    case "flame_wave_augment" -> this.FLAME_WAVE = augmentStack.getCount();
                 }
             }
         }

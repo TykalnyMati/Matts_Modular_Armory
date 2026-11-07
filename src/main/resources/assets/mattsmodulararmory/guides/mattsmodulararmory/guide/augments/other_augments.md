@@ -9,6 +9,7 @@ item_ids:
   - jebs_blessing_augment
   - advanced_shearer_augment
   - area_lighter_augment
+  - flame_wave_augment
 ---
 
 # Other Augments
@@ -35,14 +36,32 @@ Each level adds 1 maximal additional wool
 
 <Recipe id="advanced_shearer_augment" />
 
+# <Color id="blue">Lighter Augments:</Color>
+
 # Area Lighter Augment:
 
 Increases the area set on fire
 
 Only works for placing fire and not special actions (i.e. lighting tnt/campfires)
 
-Each level increases it by 4 blocks
+Each level increases the area by 4 blocks
 
 Uses 1 more durability per each level
 
+Incompatible with other lighter augments
+
 <Recipe id="area_lighter_augment" />
+
+# Flame Wave Augment:
+
+Creates a wave of flames in the direction you're looking
+
+Only works for placing fire and not special actions (i.e. lighting tnt/campfires)
+
+Each level increases distance by 5 blocks
+
+Uses 2 more durability per each level
+
+Incompatible with other lighter augments
+
+<Recipe id="flame_wave_augment" />
