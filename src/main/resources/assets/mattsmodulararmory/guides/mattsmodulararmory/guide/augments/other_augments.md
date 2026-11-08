@@ -69,7 +69,7 @@ Incompatible with other lighter augments
 
 # Extinguisher Augment:
 
-Extinguishes nearby fire
+Extinguishes nearby fire, but loses the ability to set things on fire
 
 Each level increases radius by 8 blocks
 
