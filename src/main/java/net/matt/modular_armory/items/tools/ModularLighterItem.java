@@ -10,7 +10,9 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -51,6 +53,10 @@ public class ModularLighterItem extends FlintAndSteelItem implements ModularItem
         }
 
         AugmentObject bonuses = getAugmentBonuses(itemstack);
+        if (bonuses.EXTINGUISHER > 0) {
+            return InteractionResult.PASS;
+        }
+
         Player player = context.getPlayer();
         Level level = context.getLevel();
         BlockPos blockpos = context.getClickedPos();
@@ -294,6 +300,15 @@ public class ModularLighterItem extends FlintAndSteelItem implements ModularItem
             }
         }
         return toLight;
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
+        if (super.use(level, player, usedHand).getResult().consumesAction()) {
+            return super.use(level, player, usedHand);
+        } else {
+            return modularItemUse(level, player, usedHand);
+        }
     }
 
     public boolean canPerformAction(ItemStack stack, ItemAbility itemAbility) {

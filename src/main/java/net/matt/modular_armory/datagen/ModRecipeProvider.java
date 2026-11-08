@@ -1419,6 +1419,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.BLAZE_POWDER))
                 .save(pRecipeOutput);
 
+        // Heat Absorber Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EXTINGUISHER_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.WIND_CHARGE)
+                .define('C', Blocks.PACKED_ICE)
+                .unlockedBy("has_items_for_heat_absorber_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.WIND_CHARGE,
+                        Blocks.PACKED_ICE))
+                .save(pRecipeOutput);
+
         // Exposer Recipes
         // Creation Recipes
         // Cobblestone

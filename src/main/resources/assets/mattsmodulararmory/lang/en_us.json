@@ -188,6 +188,7 @@
   "item.mattsmodulararmory.jebs_blessing_augment": "Jeb's Blessing Augment",
   "item.mattsmodulararmory.area_lighter_augment": "Area Lighter Augment",
   "item.mattsmodulararmory.flame_wave_augment": "Flame Wave Augment",
+  "item.mattsmodulararmory.extinguisher_augment": "Extinguisher Augment",
 
   "tooltip.mattsmodulararmory.broken": "Broken",
   "tooltip.mattsmodulararmory.augments": "Augments",
@@ -249,6 +250,7 @@
   "tooltip.mattsmodulararmory.jebs_blessing_augment": "Jeb's Blessing",
   "tooltip.mattsmodulararmory.area_lighter_augment": "Area Lighter",
   "tooltip.mattsmodulararmory.flame_wave_augment": "Flame Wave",
+  "tooltip.mattsmodulararmory.extinguisher_augment": "Extinguisher",
 
   "tooltip.mattsmodulararmory.augment_type.generic": "All Items",
   "tooltip.mattsmodulararmory.augment_type.tools": "Tools",
@@ -322,6 +324,7 @@
   "tooltip.mattsmodulararmory.description.jebs_blessing_augment": "Sheep drop randomly colored wool",
   "tooltip.mattsmodulararmory.description.area_lighter_augment": "Increases the area set on fire",
   "tooltip.mattsmodulararmory.description.flame_wave_augment": "Creates a wave of flames",
+  "tooltip.mattsmodulararmory.description.extinguisher_augment": "Extinguishes nearby fire",
 
   "item.mattsmodulararmory.modular_clay_pickaxe": "Modular Clay Pickaxe",
   "item.mattsmodulararmory.modular_clay_axe": "Modular Clay Axe",

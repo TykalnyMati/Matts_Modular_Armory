@@ -279,7 +279,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.JEBS_BLESSING_AUGMENT.get())
 
                 .add(ModItems.AREA_LIGHTER_AUGMENT.get())
-                .add(ModItems.FLAME_WAVE_AUGMENT.get());
+                .add(ModItems.FLAME_WAVE_AUGMENT.get())
+                .add(ModItems.EXTINGUISHER_AUGMENT.get());
 
         // Armor Tags
         tag(ModTags.Items.MODULAR_HELMET)

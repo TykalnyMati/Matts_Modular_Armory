@@ -1,6 +1,7 @@
 package net.matt.modular_armory.items.tools.helpers;
 
 import net.matt.modular_armory.MattsModularArmory;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -11,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.damagesource.DamageSource;
@@ -26,6 +28,9 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.enchantment.ItemEnchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
@@ -574,6 +579,50 @@ public interface ModularItemInterface {
             );
 
             player.swing(hand);
+
+            return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+        }
+
+        if (bonuses.EXTINGUISHER > 0) {
+            boolean extinguishedAny = false;
+            if (!level.isClientSide) {
+                double range = bonuses.EXTINGUISHER * 8;
+                BlockPos center = player.blockPosition();
+
+                for (BlockPos pos : BlockPos.betweenClosed(
+                        center.offset((int)-range, (int)-range, (int)-range),
+                        center.offset((int)range, (int)range, (int)range))) {
+
+                    BlockState targetState = level.getBlockState(pos);
+
+                    if (targetState.is(BlockTags.FIRE) || targetState.is(Blocks.FIRE) || targetState.is(Blocks.SOUL_FIRE)) {
+                        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+                        level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
+                        extinguishedAny = true;
+                    }
+                }
+
+                if (extinguishedAny) {
+                    player.getCooldowns().addCooldown(stack.getItem(), 100);
+                    damageModularItem(stack, player, bonuses.EXTINGUISHER * 2);
+
+                    Vec3 pos = player.getEyePosition();
+                    ((ServerLevel) level).sendParticles(ParticleTypes.CAMPFIRE_COSY_SMOKE, pos.get(Direction.Axis.X), pos.get(Direction.Axis.Y), pos.get(Direction.Axis.Z), 10, 0.2, 0.2, 0.2, 0.1);
+                }
+            }
+
+            if (extinguishedAny) {
+                level.playSound(
+                        null,
+                        player.blockPosition(),
+                        SoundEvents.FIRE_EXTINGUISH,
+                        SoundSource.PLAYERS,
+                        1.0F,
+                        1.0F
+                );
+
+            player.swing(hand);
+            }
 
             return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
         }

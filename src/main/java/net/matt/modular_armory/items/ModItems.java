@@ -489,8 +489,9 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> JEBS_BLESSING_AUGMENT = ITEMS.register("jebs_blessing_augment", () -> new AugmentGeneric(new Item.Properties(), "jebs_blessing_augment", AugmentGeneric.Types.SHEARS, List.of(1, 1, 1, 1), 0xe5e533));
 
     // Lighter
-    public static final DeferredHolder<Item, Item> AREA_LIGHTER_AUGMENT = ITEMS.register("area_lighter_augment", () -> new AugmentGeneric(new Item.Properties(), "area_lighter_augment", AugmentGeneric.Types.LIGHTER, List.of(1, 2, 3, 3), 0xffcb00, List.of("flame_wave_augment")));
-    public static final DeferredHolder<Item, Item> FLAME_WAVE_AUGMENT = ITEMS.register("flame_wave_augment", () -> new AugmentGeneric(new Item.Properties(), "flame_wave_augment", AugmentGeneric.Types.LIGHTER, List.of(1, 2, 3, 3), 0xffcb00, List.of("area_lighter_augment")));
+    public static final DeferredHolder<Item, Item> AREA_LIGHTER_AUGMENT = ITEMS.register("area_lighter_augment", () -> new AugmentGeneric(new Item.Properties(), "area_lighter_augment", AugmentGeneric.Types.LIGHTER, List.of(1, 2, 3, 3), 0xffcb00, List.of("flame_wave_augment", "extinguisher_augment")));
+    public static final DeferredHolder<Item, Item> FLAME_WAVE_AUGMENT = ITEMS.register("flame_wave_augment", () -> new AugmentGeneric(new Item.Properties(), "flame_wave_augment", AugmentGeneric.Types.LIGHTER, List.of(1, 2, 3, 3), 0xffcb00, List.of("area_lighter_augment", "extinguisher_augment")));
+    public static final DeferredHolder<Item, Item> EXTINGUISHER_AUGMENT = ITEMS.register("extinguisher_augment", () -> new AugmentGeneric(new Item.Properties(), "extinguisher_augment", AugmentGeneric.Types.LIGHTER, List.of(1, 2, 3, 4), 0xffcb00, List.of("area_lighter_augment", "flame_wave_augment")));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

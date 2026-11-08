@@ -203,6 +203,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         // Lighter
         basicItem(ModItems.AREA_LIGHTER_AUGMENT.get());
         basicItem(ModItems.FLAME_WAVE_AUGMENT.get());
+        basicItem(ModItems.EXTINGUISHER_AUGMENT.get());
     }
 
     private ItemModelBuilder handHeldItem(DeferredHolder<Item, ? extends Item> item) {

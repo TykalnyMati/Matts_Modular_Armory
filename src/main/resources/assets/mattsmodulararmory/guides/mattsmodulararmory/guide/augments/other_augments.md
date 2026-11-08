@@ -10,6 +10,7 @@ item_ids:
   - advanced_shearer_augment
   - area_lighter_augment
   - flame_wave_augment
+  - extinguisher_augment
 ---
 
 # Other Augments
@@ -46,7 +47,7 @@ Only works for placing fire and not special actions (i.e. lighting tnt/campfires
 
 Each level increases the area by 4 blocks
 
-Uses 1 more durability per each level
+Uses (1 * level) durability
 
 Incompatible with other lighter augments
 
@@ -60,8 +61,22 @@ Only works for placing fire and not special actions (i.e. lighting tnt/campfires
 
 Each level increases distance by 5 blocks
 
-Uses 2 more durability per each level
+Uses (2 * level) durability
 
 Incompatible with other lighter augments
 
 <Recipe id="flame_wave_augment" />
+
+# Extinguisher Augment:
+
+Extinguishes nearby fire
+
+Each level increases radius by 8 blocks
+
+Uses (2 * level) durability
+
+Has 5 seconds of cooldown
+
+Incompatible with other lighter augments
+
+<Recipe id="extinguisher_augment" />

@@ -86,6 +86,7 @@ public class AugmentObject {
 
     public int AREA_LIGHTER;
     public int FLAME_WAVE;
+    public int EXTINGUISHER;
 
     public static int TOTAL_FLAVOR_TEXT_AMOUNT = 50;
 
@@ -165,6 +166,7 @@ public class AugmentObject {
 
                     case "area_lighter_augment" -> this.AREA_LIGHTER = augmentStack.getCount();
                     case "flame_wave_augment" -> this.FLAME_WAVE = augmentStack.getCount();
+                    case "extinguisher_augment" -> this.EXTINGUISHER = augmentStack.getCount();
                 }
             }
         }
