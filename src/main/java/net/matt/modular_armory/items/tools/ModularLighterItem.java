@@ -144,6 +144,14 @@ public class ModularLighterItem extends FlintAndSteelItem implements ModularItem
 
                 if (lightedAtLeastOne) {
                     level.playSound(player, blockpos1, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
+                    level.playSound(
+                            null,
+                            player.blockPosition(),
+                            SoundEvents.WIND_CHARGE_BURST.value(),
+                            SoundSource.PLAYERS,
+                            1.0F,
+                            1.0F
+                    );
                     itemstack.hurtAndBreak(1 + (2 * bonuses.FLAME_WAVE), player, LivingEntity.getSlotForHand(context.getHand()));
                     return InteractionResult.sidedSuccess(level.isClientSide());
                 } else {
