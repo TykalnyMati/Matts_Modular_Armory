@@ -5,6 +5,8 @@ import net.matt.modular_armory.items.tools.helpers.AugmentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
@@ -93,6 +95,7 @@ public class ModularShearsItem extends ShearsItem implements ModularItemInterfac
             if (target.isShearable(player, stack, entity.level(), pos)) {
                 // Call onSheared on both sides
                 List<ItemStack> drops = target.onSheared(player, stack, entity.level(), pos);
+                boolean jebsBlessingUsed = false;
                 // Spawn drops
                 if (!isClient) {
                     for(ItemStack drop : drops) {
@@ -101,6 +104,7 @@ public class ModularShearsItem extends ShearsItem implements ModularItemInterfac
                             if (bonuses.JEBS_BLESSING) {
                                 int id = new java.util.Random().nextInt(16);
                                 drop = new ItemStack(woolColors.get(id), drop.getCount());
+                                jebsBlessingUsed = true;
                             }
 
                             if (bonuses.ADVANCED_SHEARER > 0) {
@@ -116,6 +120,18 @@ public class ModularShearsItem extends ShearsItem implements ModularItemInterfac
                 if (!isClient) {
                     stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
                 }
+
+                if (jebsBlessingUsed) {
+                    entity.level().playSound(
+                            null,
+                            player.blockPosition(),
+                            SoundEvents.ENCHANTMENT_TABLE_USE,
+                            SoundSource.PLAYERS,
+                            0.5F,
+                            1.0F
+                    );
+                }
+
                 return InteractionResult.sidedSuccess(isClient);
             }
         }
