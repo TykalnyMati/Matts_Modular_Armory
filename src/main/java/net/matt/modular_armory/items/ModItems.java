@@ -244,6 +244,9 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> MODULAR_CLAY_BOW = ITEMS.register("modular_clay_bow",
             () -> new ModularBowItem(new Item.Properties().durability(193), 0.8F));
 
+    public static final DeferredHolder<Item, Item> MODULAR_CLAY_JAVELIN = ITEMS.register("modular_clay_javelin",
+            () -> new TridentItem(new Item.Properties().durability(126).attributes(TridentItem.createAttributes())));
+
     // Advanced Modular Clay
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_SHOVEL = ITEMS.register("advanced_modular_clay_shovel",
             () -> new ModularShovelItem(ModToolTiers.ADVANCED_MODULAR_CLAY, new Item.Properties().attributes(ShovelItem.createAttributes(ModToolTiers.ADVANCED_MODULAR_CLAY, 2.0f, -2.8f))));

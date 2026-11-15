@@ -1,4 +1,4 @@
-// 1.21.1	2026-11-08T12:20:26.9052097	Item Models: mattsmodulararmory
+// 1.21.1	2026-11-15T23:23:12.5677602	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -235,6 +235,7 @@ c64b4cc5e98e7346c1190756d96ee7da35f45582 assets/mattsmodulararmory/models/item/m
 d72aec95c61ef117a4b27d9fee60bfadd59f6984 assets/mattsmodulararmory/models/item/modular_clay_helmet_quartz_trim.json
 5d21e50f00710b4292bb2aa3f68154e0828ddba8 assets/mattsmodulararmory/models/item/modular_clay_helmet_redstone_trim.json
 e86a371e37d9ff23faecbb25a1bfde6c5708d49e assets/mattsmodulararmory/models/item/modular_clay_hoe.json
+53df9e4214c8e50f8c9a58332d595a267f4e84bb assets/mattsmodulararmory/models/item/modular_clay_javelin.json
 a9a6019afe825d4df3fa641b8b1d92f689bfe59f assets/mattsmodulararmory/models/item/modular_clay_leggings.json
 f1aa92d6e9a8844a81daeee0c268cf30fb9047d2 assets/mattsmodulararmory/models/item/modular_clay_leggings_amethyst_trim.json
 78ca6a09cf1f4839b9517de13c2d7b95c447d6fb assets/mattsmodulararmory/models/item/modular_clay_leggings_copper_trim.json

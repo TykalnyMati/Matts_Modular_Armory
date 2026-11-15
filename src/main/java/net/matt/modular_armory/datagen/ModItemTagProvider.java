@@ -32,6 +32,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
                 .add(ModItems.MODULAR_CLAY_BOOTS.get())
                 .add(ModItems.MODULAR_CLAY_BOW.get())
+                .add(ModItems.MODULAR_CLAY_JAVELIN.get())
 
                 .add(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_AXE.get())
@@ -101,7 +102,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_SWORD.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
                 .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
-                .add(ModItems.BIORITE_SWORD.get());
+                .add(ModItems.BIORITE_SWORD.get())
+
+                .add(ModItems.MODULAR_CLAY_JAVELIN.get());
 
         tag(ModTags.Items.MODULAR_BOW)
                 .add(ModItems.MODULAR_CLAY_BOW.get())
@@ -154,7 +157,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_CHESTPLATE.get())
                 .add(ModItems.MODULAR_CLAY_LEGGINGS.get())
                 .add(ModItems.MODULAR_CLAY_BOOTS.get())
-                .add(ModItems.MODULAR_CLAY_BOW.get());
+                .add(ModItems.MODULAR_CLAY_BOW.get())
+                .add(ModItems.MODULAR_CLAY_JAVELIN.get());
 
         // Modular Items Tier 1
         tag(ModTags.Items.MODULAR_TIER_1)
@@ -411,7 +415,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MODULAR_CLAY_HOE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_HOE.get())
                 .add(ModItems.ADAPTIVE_FLESH_HOE.get())
-                .add(ModItems.BIORITE_HOE.get());
+                .add(ModItems.BIORITE_HOE.get())
+
+                .add(ModItems.MODULAR_CLAY_JAVELIN.get());
 
     }
 }
