@@ -95,7 +95,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.MODULAR_CLAY_CHESTPLATE);
         trimmedArmorItem(ModItems.MODULAR_CLAY_LEGGINGS);
         trimmedArmorItem(ModItems.MODULAR_CLAY_BOOTS);
-        basicItem(ModItems.MODULAR_CLAY_JAVELIN.get());
 
         // Tier 1 modular items
         handHeldItem(ModItems.ADVANCED_MODULAR_CLAY_PICKAXE);

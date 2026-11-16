@@ -1,0 +1,26 @@
+{
+  "loader": "neoforge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "mattsmodulararmory:item/modular_clay_javelin_in_hand"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "mattsmodulararmory:item/modular_clay_javelin_2d"
+    },
+    "ground": {
+      "parent": "mattsmodulararmory:item/modular_clay_javelin_2d"
+    },
+    "fixed": {
+      "parent": "mattsmodulararmory:item/modular_clay_javelin_2d"
+    }
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "minecraft:throwing": 1
+      },
+      "model": "mattsmodulararmory:item/modular_clay_javelin_throwing"
+    }
+  ]
+}
