@@ -26,7 +26,7 @@ public class AugmentGeneric extends Item {
 
     private final List<String> incompatibleWithAugments;
 
-    public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels, int tooltipHexColor, List<String> incompatibleWithAugments) {
+    public AugmentGeneric(Properties pProperties, String augmentName, Types augmentType, List<Integer> augmentLevels, int tooltipHexColor, List<String> incompatibleWithAugments) {
         super(pProperties);
         this.augmentID = augmentName;
         this.descriptionLocation = "tooltip." + MattsModularArmory.MOD_ID + ".description." + augmentName;
@@ -46,7 +46,7 @@ public class AugmentGeneric extends Item {
         addType(augmentType);
     }
 
-    private void addType(String augmentType) {
+    private void addType(Types augmentType) {
         switch (augmentType) {
             case Types.GENERIC -> this.augmentTypes.add(ModTags.Items.MODULAR_ITEMS);
             case Types.TOOLS -> this.augmentTypes.add(ModTags.Items.MODULAR_TOOL);
@@ -68,7 +68,7 @@ public class AugmentGeneric extends Item {
         }
     }
 
-    public AugmentGeneric bonusType(String augmentType) {
+    public AugmentGeneric bonusType(Types augmentType) {
         addType(augmentType);
         return this;
     }
@@ -78,7 +78,7 @@ public class AugmentGeneric extends Item {
         return this;
     }
 
-    public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels, int tooltipHexColor) {
+    public AugmentGeneric(Properties pProperties, String augmentName, Types augmentType, List<Integer> augmentLevels, int tooltipHexColor) {
         this(pProperties, augmentName, augmentType, augmentLevels, tooltipHexColor, List.of());
     }
 
@@ -136,24 +136,24 @@ public class AugmentGeneric extends Item {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 
-    public static class Types {
+    public enum Types {
         // Values for selecting type
-        static public final String GENERIC = "generic";
-        static public final String TOOLS = "tools";
-        static public final String WEAPONS = "weapons";
-        static public final String TOOLS_AND_WEAPONS = "tools_and_weapons";
-        static public final String ARMOR = "armor";
+        GENERIC,
+        TOOLS,
+        WEAPONS,
+        TOOLS_AND_WEAPONS,
+        ARMOR,
 
-        static public final String RANGED_WEAPONS = "ranged_weapons";
+        RANGED_WEAPONS,
 
-        static public final String SWORD = "sword";
-        static public final String SHEARS = "shears";
-        static public final String LIGHTER = "lighter";
+        SWORD,
+        SHEARS,
+        LIGHTER,
 
-        static public final String ARMOR_HEAD = "armor_head";
-        static public final String ARMOR_CHEST = "armor_chest";
-        static public final String ARMOR_LEGS = "armor_legs";
-        static public final String ARMOR_FEET = "armor_feet";
+        ARMOR_HEAD,
+        ARMOR_CHEST,
+        ARMOR_LEGS,
+        ARMOR_FEET
     }
 
     public static class Incompatibilities {
