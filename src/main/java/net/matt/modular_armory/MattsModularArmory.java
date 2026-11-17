@@ -9,6 +9,7 @@ import net.matt.modular_armory.block.entity.renderer.ModularBuilderBlockEntityRe
 import net.matt.modular_armory.block.entity.renderer.ModularMinerBlockEntityRenderer;
 import net.matt.modular_armory.component.ModDataComponentTypes;
 import net.matt.modular_armory.datagen.DataGenerators;
+import net.matt.modular_armory.entity.ModEntities;
 import net.matt.modular_armory.items.ModCreativeModeTabs;
 import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.recipe.ModRecipes;
@@ -69,6 +70,9 @@ public class MattsModularArmory {
 
         // Adding Custom Recipes
         ModRecipes.register(modEventBus);
+
+        // Adding Entities
+        ModEntities.register(modEventBus);
 
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);

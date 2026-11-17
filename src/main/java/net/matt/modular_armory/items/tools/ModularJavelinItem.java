@@ -1,6 +1,7 @@
 package net.matt.modular_armory.items.tools;
 
 import net.matt.modular_armory.component.ModDataComponentTypes;
+import net.matt.modular_armory.entity.ThrownJavelin;
 import net.matt.modular_armory.items.tools.helpers.AugmentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.matt.modular_armory.util.ModTags;
@@ -73,14 +74,14 @@ public class ModularJavelinItem extends TridentItem implements ModularItemInterf
                     if (!level.isClientSide) {
                         stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(entityLiving.getUsedItemHand()));
                         if (f == 0.0F) {
-                            ThrownTrident throwntrident = new ThrownTrident(level, player, stack);
-                            throwntrident.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);
+                            ThrownJavelin thrownJavelin = new ThrownJavelin(level, player, stack);
+                            thrownJavelin.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);
                             if (player.hasInfiniteMaterials()) {
-                                throwntrident.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+                                thrownJavelin.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                             }
 
-                            level.addFreshEntity(throwntrident);
-                            level.playSound((Player)null, throwntrident, (SoundEvent)holder.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                            level.addFreshEntity(thrownJavelin);
+                            level.playSound((Player)null, thrownJavelin, (SoundEvent)holder.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
                             if (!player.hasInfiniteMaterials()) {
                                 player.getInventory().removeItem(stack);
                             }

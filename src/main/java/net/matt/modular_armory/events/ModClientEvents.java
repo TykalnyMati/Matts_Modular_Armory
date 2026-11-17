@@ -3,6 +3,8 @@ package net.matt.modular_armory.events;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.client.model.ModularClayJavelinModel;
 import net.matt.modular_armory.client.renderer.JavelinItemRenderer;
+import net.matt.modular_armory.client.renderer.ThrownJavelinRenderer;
+import net.matt.modular_armory.entity.ModEntities;
 import net.matt.modular_armory.items.ModItems;
 import net.matt.modular_armory.util.ModTags;
 import net.minecraft.client.Minecraft;
@@ -78,5 +80,10 @@ public class ModClientEvents {
                             entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
             );
         });
+    }
+
+    @SubscribeEvent
+    public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntities.THROWN_JAVELIN.get(), ThrownJavelinRenderer::new);
     }
 }
