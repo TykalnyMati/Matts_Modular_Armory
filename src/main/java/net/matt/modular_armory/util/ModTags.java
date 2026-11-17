@@ -37,6 +37,7 @@ public class ModTags {
         public static final TagKey<Item> MODULAR_BOW = createTag("modular_bow");
 
         public static final TagKey<Item> MODULAR_SWORD = createTag("modular_sword");
+        public static final TagKey<Item> MODULAR_JAVELIN = createTag("modular_javelin");
 
         // Specific Tools
         public static final TagKey<Item> MODULAR_SHEARS = createTag("modular_shears");

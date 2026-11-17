@@ -11,6 +11,7 @@ import net.matt.modular_armory.items.custom.ModularClayExtractorItem;
 import net.matt.modular_armory.items.tools.*;
 import net.matt.modular_armory.items.tools.helpers.AugmentGeneric;
 import net.matt.modular_armory.items.tools.ModularLighterItem;
+import net.matt.modular_armory.util.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -470,8 +471,8 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> EXILE_AUGMENT = ITEMS.register("exile_augment", () -> new AugmentGeneric(new Item.Properties(), "exile_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 3, 5, 7), 0x17dd62, List.of("sharpness_augment", "smite_augment", "bane_of_arthropods_augment", "impaling_augment")));
     public static final DeferredHolder<Item, Item> POISON_AUGMENT = ITEMS.register("poison_augment", () -> new AugmentGeneric(new Item.Properties(), "poison_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 1, 2, 2), 0x76db4c));
     public static final DeferredHolder<Item, Item> WITHER_AUGMENT = ITEMS.register("wither_augment", () -> new AugmentGeneric(new Item.Properties(), "wither_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 1, 2, 3), 0x764857));
-    public static final DeferredHolder<Item, Item> LIFE_SENSE_AUGMENT = ITEMS.register("life_sense_augment", () -> new AugmentGeneric(new Item.Properties(), "life_sense_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 2, 3, 4), 0xf9fbcb, AugmentGeneric.Incompatibilities.RIGHT_CLICK));
-    public static final DeferredHolder<Item, Item> OVERDRIVE_AUGMENT = ITEMS.register("overdrive_augment", () -> new AugmentGeneric(new Item.Properties(), "overdrive_augment", AugmentGeneric.Types.WEAPONS, List.of(0, 1, 2, 3), 0xfcc500, AugmentGeneric.Incompatibilities.RIGHT_CLICK));
+    public static final DeferredHolder<Item, Item> LIFE_SENSE_AUGMENT = ITEMS.register("life_sense_augment", () -> new AugmentGeneric(new Item.Properties(), "life_sense_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 2, 3, 4), 0xf9fbcb, AugmentGeneric.Incompatibilities.RIGHT_CLICK).incompatibleItemType(ModTags.Items.MODULAR_JAVELIN));
+    public static final DeferredHolder<Item, Item> OVERDRIVE_AUGMENT = ITEMS.register("overdrive_augment", () -> new AugmentGeneric(new Item.Properties(), "overdrive_augment", AugmentGeneric.Types.WEAPONS, List.of(0, 1, 2, 3), 0xfcc500, AugmentGeneric.Incompatibilities.RIGHT_CLICK).incompatibleItemType(ModTags.Items.MODULAR_JAVELIN));
 
     // Bow
     public static final DeferredHolder<Item, Item> RAPID_FIRE_AUGMENT = ITEMS.register("rapid_fire_augment", () -> new AugmentGeneric(new Item.Properties(), "rapid_fire_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(0, 1, 1, 1), 0xcc2929));

@@ -124,6 +124,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
                 .add(ModItems.BIORITE_SWORD.get());
 
+        tag(ModTags.Items.MODULAR_JAVELIN)
+                .add(ModItems.MODULAR_CLAY_JAVELIN.get());
+
         // Modular Armor tag
         tag(ModTags.Items.MODULAR_ARMOR)
                 .add(ModItems.MODULAR_CLAY_HELMET.get())

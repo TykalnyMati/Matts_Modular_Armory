@@ -15,12 +15,14 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -30,6 +32,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider {
     boolean isClearing = false;
@@ -63,6 +66,15 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
             if (augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_ITEMS)) {
                 slotSize = augmentItem.augmentLevels.get(tier);
             }
+
+            // Prevent insertion into incompatible items
+            List<TagKey<Item>> itemTags = modularItemStack.getTags().toList();
+            for (TagKey<Item> tag : itemTags) {
+                if (augmentItem.incompatibleItemTypes.contains(tag)) {
+                    return slotSize;
+                }
+            }
+
 
             // Tool Augments
             if (modularItemStack.is(ModTags.Items.MODULAR_TOOL) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_TOOL)) {

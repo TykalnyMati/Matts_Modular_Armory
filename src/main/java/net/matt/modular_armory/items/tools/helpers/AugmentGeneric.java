@@ -20,12 +20,13 @@ public class AugmentGeneric extends Item {
     private final String typeLocation;
     public final List<Integer> augmentLevels;
     public List<TagKey<Item>> augmentTypes = new ArrayList<>();
+    public List<TagKey<Item>> incompatibleItemTypes = new ArrayList<>();
     private boolean levelable = false;
     private final int tooltipHexColor;
 
-    private final List<String> incompatibleWith;
+    private final List<String> incompatibleWithAugments;
 
-    public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels, int tooltipHexColor, List<String> incompatibleWith) {
+    public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels, int tooltipHexColor, List<String> incompatibleWithAugments) {
         super(pProperties);
         this.augmentID = augmentName;
         this.descriptionLocation = "tooltip." + MattsModularArmory.MOD_ID + ".description." + augmentName;
@@ -33,7 +34,7 @@ public class AugmentGeneric extends Item {
         this.augmentLevels = augmentLevels;
         this.tooltipHexColor = tooltipHexColor;
 
-        this.incompatibleWith = incompatibleWith;
+        this.incompatibleWithAugments = incompatibleWithAugments;
 
         for (int level : augmentLevels) {
             if (level > 1) {
@@ -72,6 +73,11 @@ public class AugmentGeneric extends Item {
         return this;
     }
 
+    public AugmentGeneric incompatibleItemType(TagKey<Item> incompatibleItemType) {
+        this.incompatibleItemTypes.add(incompatibleItemType);
+        return this;
+    }
+
     public AugmentGeneric(Properties pProperties, String augmentName, String augmentType, List<Integer> augmentLevels, int tooltipHexColor) {
         this(pProperties, augmentName, augmentType, augmentLevels, tooltipHexColor, List.of());
     }
@@ -89,7 +95,7 @@ public class AugmentGeneric extends Item {
     }
 
     public List<String> getIncompatibleWith() {
-        return this.incompatibleWith;
+        return this.incompatibleWithAugments;
     }
 
     @Override
