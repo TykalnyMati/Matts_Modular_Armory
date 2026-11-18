@@ -41,10 +41,15 @@ navigation:
     <Recipe id="mattsmodulararmory:biorite_bow_from_modular_assembler"/>
 </Row>
 
-# Javelins are a [thrown weapon](../augments/weapon_augments.md) which can be used either melee or be thrown, due to the trowing they can't be equipped with augments that change the right click functionality
+# Javelins are a [thrown weapon](../augments/weapon_augments.md) which can be used either melee or be thrown, 
+
+Due to the trowing functionality they can't be equipped with augments that change the right click functionality
+
+*ps. javelins thrown in survival mode don't despawn unlike tridents*
 
 # Available Javelins:
 
 <Row gap="1">
     <Recipe id="mattsmodulararmory:modular_clay_javelin_from_modular_assembler"/>
+    <Recipe id="mattsmodulararmory:advanced_modular_clay_javelin_from_modular_assembler"/>
 </Row>

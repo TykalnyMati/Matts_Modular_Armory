@@ -229,8 +229,7 @@ public class ThrownJavelin extends AbstractArrow {
 
     @Override
     public void tickDespawn() {
-        int i = (Byte)this.entityData.get(ID_LOYALTY);
-        if (this.pickup != Pickup.ALLOWED || i <= 0) {
+        if (this.pickup != Pickup.ALLOWED) {
             super.tickDespawn();
         }
     }
