@@ -1,4 +1,4 @@
-// 1.21.1	2026-11-17T09:55:44.1532402	Tags for minecraft:item mod id mattsmodulararmory
+// 1.21.1	2026-11-18T15:09:27.6103091	Tags for minecraft:item mod id mattsmodulararmory
 f2abb7cc3bae3a83f1d2c3b09934f4d62f813deb data/mattsmodulararmory/tags/item/filter.json
 576b480961ae951552a90d18a851cb100b5b8134 data/mattsmodulararmory/tags/item/modular_armor.json
 df4b6539b051c006638434a6e0859238e2bede7d data/mattsmodulararmory/tags/item/modular_augment_addon.json
@@ -6,9 +6,9 @@ df4b6539b051c006638434a6e0859238e2bede7d data/mattsmodulararmory/tags/item/modul
 89f8debf64ccaecf2e449f3f8895976fa017147d data/mattsmodulararmory/tags/item/modular_bow.json
 85198792b455cb64fbd5db675824508eee5973eb data/mattsmodulararmory/tags/item/modular_chestplate.json
 d7108231d2c0fb14199698e6ca58e544a1ab1d48 data/mattsmodulararmory/tags/item/modular_helmet.json
-2ff10af1cfbd39cd9fedce87cbd8ee2a5ebac3f6 data/mattsmodulararmory/tags/item/modular_items.json
+91b324bc11b93c26397f7a6ea1aad744354c6220 data/mattsmodulararmory/tags/item/modular_items.json
 308edd7ffe058dd3073bebfbb8542b29f5409795 data/mattsmodulararmory/tags/item/modular_items_augment.json
-5a0527f7102604726b7f78ff47f921829eda4600 data/mattsmodulararmory/tags/item/modular_javelin.json
+cc149cee8701d2b988003f293ed8c72e37930b52 data/mattsmodulararmory/tags/item/modular_javelin.json
 41f416f0bca481765d744223d0a18eac01d0b2d3 data/mattsmodulararmory/tags/item/modular_leggings.json
 204abbee4a66fc1b8e3320e2bcbfdc733deec4bf data/mattsmodulararmory/tags/item/modular_lighter.json
 89f8debf64ccaecf2e449f3f8895976fa017147d data/mattsmodulararmory/tags/item/modular_ranged_weapon.json
@@ -16,14 +16,14 @@ d7108231d2c0fb14199698e6ca58e544a1ab1d48 data/mattsmodulararmory/tags/item/modul
 1b038e25b8bfda4cd638c3b26cacb34c1d799ef1 data/mattsmodulararmory/tags/item/modular_shears.json
 2ecb59b4a4b02a8fa91dd861047cf52e41bbc179 data/mattsmodulararmory/tags/item/modular_sword.json
 6b5353a7169ddeb153ae820691a4559ff1b4a231 data/mattsmodulararmory/tags/item/modular_tier_0.json
-801db23568f530cb45992e27464705cba95644bf data/mattsmodulararmory/tags/item/modular_tier_1.json
+99e2f622c338ff2e63a59a95c1855c039520a25e data/mattsmodulararmory/tags/item/modular_tier_1.json
 113c70519ae8ff8950335db969841ceda41dbcac data/mattsmodulararmory/tags/item/modular_tier_2.json
 db726c181f108c3be1a97afe2692266ee44e9940 data/mattsmodulararmory/tags/item/modular_tier_3.json
 400aed6c0a4dbdc3425a5c0111cd54098ab60fb1 data/mattsmodulararmory/tags/item/modular_tool.json
 5e3a2bf25eb823c7e6192e87f568a4a49570c89e data/mattsmodulararmory/tags/item/modular_untiered.json
-5706aad7497f02b1123139f42e13015f368c7108 data/mattsmodulararmory/tags/item/modular_weapon.json
+9e1c4bcc3eb48524c44cf77fc80ea9744d128af5 data/mattsmodulararmory/tags/item/modular_weapon.json
 8c70d516f9494489c8fb0c563bc9f339459192c5 data/minecraft/tags/item/axes.json
-c744ad1887e70a62453bf1de7af659922bc05007 data/minecraft/tags/item/breaks_decorated_pots.json
+ebeac0584325f7b4df349843d93d2d3b1a2ab7ef data/minecraft/tags/item/breaks_decorated_pots.json
 204abbee4a66fc1b8e3320e2bcbfdc733deec4bf data/minecraft/tags/item/creeper_igniters.json
 05a560f3c88640c7d1b088dfcb29c7bff12cd2bc data/minecraft/tags/item/hoes.json
 a37f5bf76b224a11dbe44011f4c39d27cce04302 data/minecraft/tags/item/pickaxes.json

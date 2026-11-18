@@ -17,6 +17,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -31,32 +32,44 @@ public class ThrownJavelin extends AbstractArrow {
             SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.BYTE);
     private static final EntityDataAccessor<Boolean> ID_FOIL =
             SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<ItemStack> ID_ITEM_STACK =
+            SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.ITEM_STACK);
+
+    private float baseDamage = 6.0F;
     private boolean dealtDamage;
     public int clientSideReturnJavelinTickCount;
+
+    private Item returnItem;
 
     public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level) {
         super(entityType, level);
     }
 
-    // todo change entity in child classes for other javelins
-    public ThrownJavelin(Level level, LivingEntity shooter, ItemStack pickupItemStack) {
+    public ThrownJavelin(Level level, LivingEntity shooter, ItemStack pickupItemStack, float baseDamage) {
         super(ModEntities.THROWN_JAVELIN.get(), shooter, level, pickupItemStack, null);
+        this.baseDamage = baseDamage;
         this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(pickupItemStack));
         this.entityData.set(ID_FOIL, pickupItemStack.hasFoil());
+        this.entityData.set(ID_ITEM_STACK, pickupItemStack.copy());
     }
 
-    // todo change entity in child classes for other javelins
-    public ThrownJavelin(Level level, double x, double y, double z, ItemStack pickupItemStack) {
-        super(ModEntities.THROWN_JAVELIN.get(), x, y, z, level, pickupItemStack, pickupItemStack);
-        this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(pickupItemStack));
-        this.entityData.set(ID_FOIL, pickupItemStack.hasFoil());
-    }
+    // Unused for now
+//    public ThrownJavelin(Level level, double x, double y, double z, ItemStack pickupItemStack) {
+//        super(ModEntities.THROWN_JAVELIN.get(), x, y, z, level, pickupItemStack, pickupItemStack);
+//        this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(pickupItemStack));
+//        this.entityData.set(ID_FOIL, pickupItemStack.hasFoil());
+//    }
 
     @Override
     protected void defineSynchedData(SynchedEntityData.Builder builder) {
         super.defineSynchedData(builder);
         builder.define(ID_LOYALTY, (byte) 0);
         builder.define(ID_FOIL, false);
+        builder.define(ID_ITEM_STACK, new ItemStack(ModItems.MODULAR_CLAY_JAVELIN.get()));
+    }
+
+    public ItemStack getSyncedItemStack() {
+        return this.entityData.get(ID_ITEM_STACK);
     }
 
     @Override
@@ -111,11 +124,10 @@ public class ThrownJavelin extends AbstractArrow {
         return this.dealtDamage ? null : super.findHitEntity(startVec, endVec);
     }
 
-    // todo change base damage in child classes for other javelins
     @Override
     protected void onHitEntity(EntityHitResult result) {
         Entity target = result.getEntity();
-        float damage = 6.0F; // Base thrown damage gotta change it
+        float damage = this.baseDamage;
         Entity owner = this.getOwner();
         DamageSource damageSource = this.damageSources().trident(this, owner == null ? this : owner);
 
@@ -167,7 +179,6 @@ public class ThrownJavelin extends AbstractArrow {
         return super.tryPickup(player) || this.isNoPhysics() && this.ownedBy(player) && player.getInventory().add(this.getPickupItem());
     }
 
-    // TODO change it in child classes for other javelins
     @Override
     protected ItemStack getDefaultPickupItem() {
         return new ItemStack(ModItems.MODULAR_CLAY_JAVELIN);
@@ -189,13 +200,19 @@ public class ThrownJavelin extends AbstractArrow {
     public void readAdditionalSaveData(CompoundTag compound) {
         super.readAdditionalSaveData(compound);
         this.dealtDamage = compound.getBoolean("DealtDamage");
-        this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(this.getPickupItemStackOrigin()));
+        if (compound.contains("BaseDamage")) {
+            this.baseDamage = compound.getFloat("BaseDamage");
+        }
+        ItemStack origin = this.getPickupItemStackOrigin();
+        this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(origin));
+        this.entityData.set(ID_ITEM_STACK, origin.copy());
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {
         super.addAdditionalSaveData(compound);
         compound.putBoolean("DealtDamage", this.dealtDamage);
+        compound.putFloat("BaseDamage", this.baseDamage);
     }
 
     private byte getLoyaltyFromItem(ItemStack stack) {

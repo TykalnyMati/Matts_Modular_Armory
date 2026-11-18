@@ -44,6 +44,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_BOW.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get())
 
                 .add(ModItems.ADAPTIVE_FLESH_PICKAXE.get())
                 .add(ModItems.ADAPTIVE_FLESH_AXE.get())
@@ -104,7 +105,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_SWORD.get())
                 .add(ModItems.BIORITE_SWORD.get())
 
-                .add(ModItems.MODULAR_CLAY_JAVELIN.get());
+                .add(ModItems.MODULAR_CLAY_JAVELIN.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get());
 
         tag(ModTags.Items.MODULAR_BOW)
                 .add(ModItems.MODULAR_CLAY_BOW.get())
@@ -125,7 +127,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BIORITE_SWORD.get());
 
         tag(ModTags.Items.MODULAR_JAVELIN)
-                .add(ModItems.MODULAR_CLAY_JAVELIN.get());
+                .add(ModItems.MODULAR_CLAY_JAVELIN.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get());
 
         // Modular Armor tag
         tag(ModTags.Items.MODULAR_ARMOR)
@@ -174,7 +177,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADVANCED_MODULAR_CLAY_CHESTPLATE.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get())
-                .add(ModItems.ADVANCED_MODULAR_CLAY_BOW.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_BOW.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get());
 
         // Modular Items Tier 2
         tag(ModTags.Items.MODULAR_TIER_2)
@@ -420,7 +424,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_HOE.get())
                 .add(ModItems.BIORITE_HOE.get())
 
-                .add(ModItems.MODULAR_CLAY_JAVELIN.get());
+                .add(ModItems.MODULAR_CLAY_JAVELIN.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get());
 
     }
 }

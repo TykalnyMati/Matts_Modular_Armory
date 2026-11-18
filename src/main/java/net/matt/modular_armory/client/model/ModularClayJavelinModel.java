@@ -19,6 +19,10 @@ public class ModularClayJavelinModel extends Model {
 
     public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "textures/entity/modular_clay_javelin.png");
 
+    public ResourceLocation getTexture() {
+        return TEXTURE;
+    }
+
     private final ModelPart root;
 
     public ModularClayJavelinModel(ModelPart root) {

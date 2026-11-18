@@ -101,6 +101,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_LEGGINGS.get());
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_BOOTS.get());
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_BOW.get());
+                        output.accept(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get());
 
                         // Tier 2 modular items
                         output.accept(ModItems.ADAPTIVE_FLESH_SWORD.get());

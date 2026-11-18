@@ -38,8 +38,16 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModularJavelinItem extends TridentItem implements ModularItemInterface {
-    public ModularJavelinItem(Properties properties) {
+    private float thrownDamage;
+
+    public float getThrownDamage() {
+        return this.thrownDamage;
+    }
+
+    public ModularJavelinItem(Properties properties, float thrownDamage) {
         super(properties);
+
+        this.thrownDamage = thrownDamage;
     }
 
     @Override
@@ -74,7 +82,7 @@ public class ModularJavelinItem extends TridentItem implements ModularItemInterf
                     if (!level.isClientSide) {
                         stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(entityLiving.getUsedItemHand()));
                         if (f == 0.0F) {
-                            ThrownJavelin thrownJavelin = new ThrownJavelin(level, player, stack);
+                            ThrownJavelin thrownJavelin = new ThrownJavelin(level, player, stack, this.thrownDamage);
                             thrownJavelin.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);
                             if (player.hasInfiniteMaterials()) {
                                 thrownJavelin.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
