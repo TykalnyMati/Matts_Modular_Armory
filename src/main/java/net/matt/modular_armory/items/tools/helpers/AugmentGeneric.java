@@ -30,7 +30,7 @@ public class AugmentGeneric extends Item {
         super(pProperties);
         this.augmentID = augmentName;
         this.descriptionLocation = "tooltip." + MattsModularArmory.MOD_ID + ".description." + augmentName;
-        this.typeLocation = "tooltip." + MattsModularArmory.MOD_ID + ".augment_type." + augmentType;
+        this.typeLocation = "tooltip." + MattsModularArmory.MOD_ID + ".augment_type." + augmentType.toString().toLowerCase();
         this.augmentLevels = augmentLevels;
         this.tooltipHexColor = tooltipHexColor;
 
