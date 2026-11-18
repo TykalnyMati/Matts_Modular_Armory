@@ -30,7 +30,7 @@ navigation:
     <Recipe id="mattsmodulararmory:biorite_axe_from_modular_assembler"/>
 </Row>
 
-# Boots are a [ranged weapon](../augments/weapon_augments.md) that shoot arrows
+# Bows are a [ranged weapon](../augments/weapon_augments.md) that shoot arrows
 
 # Available Bows:
 
@@ -39,4 +39,12 @@ navigation:
     <Recipe id="mattsmodulararmory:advanced_modular_clay_bow_from_modular_assembler"/>
     <Recipe id="mattsmodulararmory:adaptive_flesh_bow_from_modular_assembler"/>
     <Recipe id="mattsmodulararmory:biorite_bow_from_modular_assembler"/>
+</Row>
+
+# Javelins are a [thrown weapon](../augments/weapon_augments.md) which can be used either melee or be thrown, due to the trowing they can't be equipped with augments that change the right click functionality
+
+# Available Javelins:
+
+<Row gap="1">
+    <Recipe id="mattsmodulararmory:modular_clay_javelin_from_modular_assembler"/>
 </Row>
