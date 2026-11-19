@@ -3,6 +3,7 @@ package net.matt.modular_armory.client.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import net.matt.modular_armory.client.model.AdaptiveFleshJavelinModel;
 import net.matt.modular_armory.client.model.AdvancedModularClayJavelinModel;
 import net.matt.modular_armory.client.model.ModularClayJavelinModel;
 import net.matt.modular_armory.entity.ThrownJavelin;
@@ -29,6 +30,8 @@ public class ThrownJavelinRenderer extends EntityRenderer<ThrownJavelin> {
                 new ModularClayJavelinModel(context.bakeLayer(ModularClayJavelinModel.LAYER_LOCATION)));
         this.models.put(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get(),
                 new AdvancedModularClayJavelinModel(context.bakeLayer(AdvancedModularClayJavelinModel.LAYER_LOCATION)));
+        this.models.put(ModItems.ADAPTIVE_FLESH_JAVELIN.get(),
+                new AdaptiveFleshJavelinModel(context.bakeLayer(AdaptiveFleshJavelinModel.LAYER_LOCATION)));
     }
 
     @Override

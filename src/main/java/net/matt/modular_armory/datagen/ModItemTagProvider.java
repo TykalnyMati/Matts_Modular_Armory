@@ -56,6 +56,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
                 .add(ModItems.ADAPTIVE_FLESH_BOOTS.get())
                 .add(ModItems.ADAPTIVE_FLESH_BOW.get())
+                .add(ModItems.ADAPTIVE_FLESH_JAVELIN.get())
 
                 .add(ModItems.BIORITE_PICKAXE.get())
                 .add(ModItems.BIORITE_AXE.get())
@@ -106,7 +107,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BIORITE_SWORD.get())
 
                 .add(ModItems.MODULAR_CLAY_JAVELIN.get())
-                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get())
+                .add(ModItems.ADAPTIVE_FLESH_JAVELIN.get());
 
         tag(ModTags.Items.MODULAR_BOW)
                 .add(ModItems.MODULAR_CLAY_BOW.get())
@@ -128,7 +130,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(ModTags.Items.MODULAR_JAVELIN)
                 .add(ModItems.MODULAR_CLAY_JAVELIN.get())
-                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get())
+                .add(ModItems.ADAPTIVE_FLESH_JAVELIN.get());
 
         // Modular Armor tag
         tag(ModTags.Items.MODULAR_ARMOR)
@@ -191,7 +194,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_CHESTPLATE.get())
                 .add(ModItems.ADAPTIVE_FLESH_LEGGINGS.get())
                 .add(ModItems.ADAPTIVE_FLESH_BOOTS.get())
-                .add(ModItems.ADAPTIVE_FLESH_BOW.get());
+                .add(ModItems.ADAPTIVE_FLESH_BOW.get())
+                .add(ModItems.ADAPTIVE_FLESH_JAVELIN.get());
 
         // Modular Items Tier 3
         tag(ModTags.Items.MODULAR_TIER_3)
@@ -425,7 +429,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BIORITE_HOE.get())
 
                 .add(ModItems.MODULAR_CLAY_JAVELIN.get())
-                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get());
+                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get())
+                .add(ModItems.ADAPTIVE_FLESH_JAVELIN.get());
 
     }
 }

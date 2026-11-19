@@ -52,4 +52,5 @@ Due to the trowing functionality they can't be equipped with augments that chang
 <Row gap="1">
     <Recipe id="mattsmodulararmory:modular_clay_javelin_from_modular_assembler"/>
     <Recipe id="mattsmodulararmory:advanced_modular_clay_javelin_from_modular_assembler"/>
+    <Recipe id="mattsmodulararmory:adaptive_flesh_javelin_from_modular_assembler"/>
 </Row>

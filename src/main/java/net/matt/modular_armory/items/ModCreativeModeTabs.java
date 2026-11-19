@@ -114,6 +114,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ADAPTIVE_FLESH_LEGGINGS.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_BOOTS.get());
                         output.accept(ModItems.ADAPTIVE_FLESH_BOW.get());
+                        output.accept(ModItems.ADAPTIVE_FLESH_JAVELIN.get());
 
                         // Tier 3 modular items
                         output.accept(ModItems.BIORITE_SWORD.get());

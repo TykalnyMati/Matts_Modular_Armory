@@ -1,6 +1,7 @@
 package net.matt.modular_armory.events;
 
 import net.matt.modular_armory.MattsModularArmory;
+import net.matt.modular_armory.client.model.AdaptiveFleshJavelinModel;
 import net.matt.modular_armory.client.model.AdvancedModularClayJavelinModel;
 import net.matt.modular_armory.client.model.ModularClayJavelinModel;
 import net.matt.modular_armory.client.renderer.JavelinItemRenderer;
@@ -55,6 +56,7 @@ public class ModClientEvents {
     public static void onRegisterLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModularClayJavelinModel.LAYER_LOCATION, ModularClayJavelinModel::createLayer);
         event.registerLayerDefinition(AdvancedModularClayJavelinModel.LAYER_LOCATION, AdvancedModularClayJavelinModel::createLayer);
+        event.registerLayerDefinition(AdaptiveFleshJavelinModel.LAYER_LOCATION, AdaptiveFleshJavelinModel::createLayer);
     }
 
     @SubscribeEvent
@@ -77,6 +79,13 @@ public class ModClientEvents {
                 return getJavelinRenderer();
             }
         }, ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get());
+
+        event.registerItem(new IClientItemExtensions() {
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                return getJavelinRenderer();
+            }
+        }, ModItems.ADAPTIVE_FLESH_JAVELIN.get());
     }
 
     @SubscribeEvent
@@ -93,6 +102,15 @@ public class ModClientEvents {
         event.enqueueWork(() -> {
             ItemProperties.register(
                     ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get(),
+                    ResourceLocation.withDefaultNamespace("throwing"),
+                    (stack, level, entity, seed) ->
+                            entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
+            );
+        });
+
+        event.enqueueWork(() -> {
+            ItemProperties.register(
+                    ModItems.ADAPTIVE_FLESH_JAVELIN.get(),
                     ResourceLocation.withDefaultNamespace("throwing"),
                     (stack, level, entity, seed) ->
                             entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
