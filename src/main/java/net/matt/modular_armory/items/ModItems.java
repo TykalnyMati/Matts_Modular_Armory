@@ -246,7 +246,7 @@ public class ModItems {
             () -> new ModularBowItem(new Item.Properties().durability(193), 0.8F));
 
     public static final DeferredHolder<Item, Item> MODULAR_CLAY_JAVELIN = ITEMS.register("modular_clay_javelin",
-            () -> new ModularJavelinItem(new Item.Properties().durability(126).attributes(ModularJavelinItem.createAttributes(5.0f, -3.1f)), 6.0f));
+            () -> new ModularJavelinItem(new Item.Properties().durability(193).attributes(ModularJavelinItem.createAttributes(5.0f, -3.1f)), 6.0f));
 
     // Advanced Modular Clay
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_SHOVEL = ITEMS.register("advanced_modular_clay_shovel",
@@ -284,7 +284,7 @@ public class ModItems {
                 () -> new ModularBowItem(new Item.Properties().durability(385), 1.0F));
 
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_JAVELIN = ITEMS.register("advanced_modular_clay_javelin",
-            () -> new ModularJavelinItem(new Item.Properties().durability(256).attributes(ModularJavelinItem.createAttributes(7.0f, -3.0f)), 8.0f));
+            () -> new ModularJavelinItem(new Item.Properties().durability(385).attributes(ModularJavelinItem.createAttributes(7.0f, -3.0f)), 8.0f));
 
     // Adaptive Flesh
     public static final DeferredHolder<Item, Item> ADAPTIVE_FLESH_SHOVEL = ITEMS.register("adaptive_flesh_shovel",
@@ -322,7 +322,7 @@ public class ModItems {
             () -> new ModularBowItem(new Item.Properties().rarity(Rarity.UNCOMMON).durability(577), 1.2F));
 
     public static final DeferredHolder<Item, Item> ADAPTIVE_FLESH_JAVELIN = ITEMS.register("adaptive_flesh_javelin",
-            () -> new ModularJavelinItem(new Item.Properties().durability(386).attributes(ModularJavelinItem.createAttributes(7.5f, -3.0f)), 8.5f));
+            () -> new ModularJavelinItem(new Item.Properties().rarity(Rarity.UNCOMMON).durability(577).attributes(ModularJavelinItem.createAttributes(7.5f, -3.0f)), 8.5f));
 
     // Biorite
     public static final DeferredHolder<Item, Item> BIORITE_SHOVEL = ITEMS.register("biorite_shovel",
@@ -358,6 +358,9 @@ public class ModItems {
 
     public static final DeferredHolder<Item, Item> BIORITE_BOW = ITEMS.register("biorite_bow",
             () -> new ModularBowItem(new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(769), 1.4F));
+
+    public static final DeferredHolder<Item, Item> BIORITE_JAVELIN = ITEMS.register("biorite_javelin",
+            () -> new ModularJavelinItem(new Item.Properties().rarity(Rarity.RARE).durability(769).attributes(ModularJavelinItem.createAttributes(9.0f, -2.8f)), 10.0f));
 
     // Untiered
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_SHEARS = ITEMS.register("advanced_modular_clay_shears",

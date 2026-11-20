@@ -4,6 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.matt.modular_armory.client.model.AdaptiveFleshJavelinModel;
 import net.matt.modular_armory.client.model.AdvancedModularClayJavelinModel;
+import net.matt.modular_armory.client.model.BioriteJavelinModel;
 import net.matt.modular_armory.client.model.ModularClayJavelinModel;
 import net.matt.modular_armory.items.ModItems;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -36,6 +37,8 @@ public class JavelinItemRenderer extends BlockEntityWithoutLevelRenderer {
                 new AdvancedModularClayJavelinModel(this.entityModels.bakeLayer(AdvancedModularClayJavelinModel.LAYER_LOCATION)));
         this.models.put(ModItems.ADAPTIVE_FLESH_JAVELIN.get(),
                 new AdaptiveFleshJavelinModel(this.entityModels.bakeLayer(AdaptiveFleshJavelinModel.LAYER_LOCATION)));
+        this.models.put(ModItems.BIORITE_JAVELIN.get(),
+                new BioriteJavelinModel(this.entityModels.bakeLayer(BioriteJavelinModel.LAYER_LOCATION)));
     }
 
     @Override

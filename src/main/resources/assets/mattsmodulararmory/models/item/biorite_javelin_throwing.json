@@ -1,0 +1,18 @@
+{
+    "loader": "neoforge:separate_transforms",
+    "gui_light": "front",
+    "base": {
+        "parent": "mattsmodulararmory:item/biorite_javelin_throwing_in_hand"
+    },
+    "perspectives": {
+        "gui": {
+            "parent": "mattsmodulararmory:item/biorite_javelin_2d"
+        },
+        "ground": {
+            "parent": "mattsmodulararmory:item/biorite_javelin_2d"
+        },
+        "fixed": {
+            "parent": "mattsmodulararmory:item/biorite_javelin_2d"
+        }
+    }
+}

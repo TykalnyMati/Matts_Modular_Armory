@@ -3,6 +3,7 @@ package net.matt.modular_armory.events;
 import net.matt.modular_armory.MattsModularArmory;
 import net.matt.modular_armory.client.model.AdaptiveFleshJavelinModel;
 import net.matt.modular_armory.client.model.AdvancedModularClayJavelinModel;
+import net.matt.modular_armory.client.model.BioriteJavelinModel;
 import net.matt.modular_armory.client.model.ModularClayJavelinModel;
 import net.matt.modular_armory.client.renderer.JavelinItemRenderer;
 import net.matt.modular_armory.client.renderer.ThrownJavelinRenderer;
@@ -57,6 +58,7 @@ public class ModClientEvents {
         event.registerLayerDefinition(ModularClayJavelinModel.LAYER_LOCATION, ModularClayJavelinModel::createLayer);
         event.registerLayerDefinition(AdvancedModularClayJavelinModel.LAYER_LOCATION, AdvancedModularClayJavelinModel::createLayer);
         event.registerLayerDefinition(AdaptiveFleshJavelinModel.LAYER_LOCATION, AdaptiveFleshJavelinModel::createLayer);
+        event.registerLayerDefinition(BioriteJavelinModel.LAYER_LOCATION, BioriteJavelinModel::createLayer);
     }
 
     @SubscribeEvent
@@ -86,6 +88,13 @@ public class ModClientEvents {
                 return getJavelinRenderer();
             }
         }, ModItems.ADAPTIVE_FLESH_JAVELIN.get());
+
+        event.registerItem(new IClientItemExtensions() {
+            @Override
+            public BlockEntityWithoutLevelRenderer getCustomRenderer() {
+                return getJavelinRenderer();
+            }
+        }, ModItems.BIORITE_JAVELIN.get());
     }
 
     @SubscribeEvent
@@ -111,6 +120,15 @@ public class ModClientEvents {
         event.enqueueWork(() -> {
             ItemProperties.register(
                     ModItems.ADAPTIVE_FLESH_JAVELIN.get(),
+                    ResourceLocation.withDefaultNamespace("throwing"),
+                    (stack, level, entity, seed) ->
+                            entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
+            );
+        });
+
+        event.enqueueWork(() -> {
+            ItemProperties.register(
+                    ModItems.BIORITE_JAVELIN.get(),
                     ResourceLocation.withDefaultNamespace("throwing"),
                     (stack, level, entity, seed) ->
                             entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F

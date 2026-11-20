@@ -127,6 +127,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BIORITE_LEGGINGS.get());
                         output.accept(ModItems.BIORITE_BOOTS.get());
                         output.accept(ModItems.BIORITE_BOW.get());
+                        output.accept(ModItems.BIORITE_JAVELIN.get());
 
                         // Untiered
                         output.accept(ModItems.ADVANCED_MODULAR_CLAY_SHEARS.get());
