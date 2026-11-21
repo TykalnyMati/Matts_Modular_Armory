@@ -159,6 +159,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLAME_AUGMENT.get());
                         output.accept(ModItems.INFINITY_AUGMENT.get());
 
+                        // Javelin
+                        output.accept(ModItems.RIPTIDE_AUGMENT.get());
+
                         // Armor
                         output.accept(ModItems.PROTECTION_AUGMENT.get());
                         output.accept(ModItems.BLAST_PROTECTION_AUGMENT.get());

@@ -39,6 +39,8 @@ public class AugmentObject {
     public boolean FLAME;
     public boolean INFINITY;
 
+    public int RIPTIDE;
+
     // Armor Augment values
     public int PROTECTION;
     public int BLAST_PROTECTION;
@@ -137,6 +139,9 @@ public class AugmentObject {
                     case "flame_augment" -> this.FLAME = true;
                     case "infinity_augment" -> this.INFINITY = true;
                     case "rapid_fire_augment" -> this.RAPID_FIRE = true;
+
+                    // Javelin
+                    case "riptide_augment" -> this.RIPTIDE = augmentStack.getCount();
 
                     // Armor specific augments
                     case "protection_augment" -> this.PROTECTION = augmentStack.getCount();

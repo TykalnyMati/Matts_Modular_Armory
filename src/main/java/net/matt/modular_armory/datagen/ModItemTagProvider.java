@@ -254,6 +254,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.FLAME_AUGMENT.get())
                 .add(ModItems.INFINITY_AUGMENT.get())
 
+                .add(ModItems.RIPTIDE_AUGMENT.get())
+
                 .add(ModItems.PROTECTION_AUGMENT.get())
                 .add(ModItems.BLAST_PROTECTION_AUGMENT.get())
                 .add(ModItems.PROJECTILE_PROTECTION_AUGMENT.get())

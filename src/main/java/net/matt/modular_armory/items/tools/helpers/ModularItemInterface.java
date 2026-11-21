@@ -196,6 +196,12 @@ public interface ModularItemInterface {
                     .ifPresent(holder -> mutableEnchantments.set(holder, 1));
         }
 
+        // Javelin
+        if (bonuses.RIPTIDE > 0) {
+            enchantmentRegistry.get(Enchantments.RIPTIDE)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.RIPTIDE));
+        }
+
         // Armor
         if (bonuses.PROTECTION > 0) {
             enchantmentRegistry.get(Enchantments.PROTECTION)

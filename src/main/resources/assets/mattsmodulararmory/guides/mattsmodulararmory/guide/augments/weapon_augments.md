@@ -24,6 +24,7 @@ item_ids:
   - flame_augment
   - infinity_augment
   - rapid_fire_augment
+  - riptide_augment
 ---
 
 # Weapon Augments
@@ -161,3 +162,14 @@ Each arrow deals 75% of max damage, can't be critical and is shot slightly less 
 *Just like back in the day*
 
 <Recipe id="rapid_fire_augment" />
+
+# <Color id="blue">Javelin Augments:</Color>
+
+# Riptide Augment:
+Launches the user when used in water or rain, replacing the javelin's ability to be thrown as a projectile.
+
+Throws the user (6 × level) + 3 blocks when in rain or standing in water, and (4 × level) + 3 blocks while underwater.
+
+Incompatible with Loyalty and Channeling
+
+<Recipe id="riptide_augment" />
