@@ -360,7 +360,7 @@ public class ModItems {
             () -> new ModularBowItem(new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(769), 1.4F));
 
     public static final DeferredHolder<Item, Item> BIORITE_JAVELIN = ITEMS.register("biorite_javelin",
-            () -> new ModularJavelinItem(new Item.Properties().rarity(Rarity.RARE).durability(769).attributes(ModularJavelinItem.createAttributes(9.0f, -2.8f)), 10.0f));
+            () -> new ModularJavelinItem(new Item.Properties().rarity(Rarity.RARE).fireResistant().durability(769).attributes(ModularJavelinItem.createAttributes(9.0f, -2.8f)), 10.0f));
 
     // Untiered
     public static final DeferredHolder<Item, Item> ADVANCED_MODULAR_CLAY_SHEARS = ITEMS.register("advanced_modular_clay_shears",
