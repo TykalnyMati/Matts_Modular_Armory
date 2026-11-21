@@ -1,4 +1,4 @@
-// 1.21.1	2026-11-21T16:44:57.6695384	Item Models: mattsmodulararmory
+// 1.21.1	2026-11-21T20:55:59.8046908	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -168,6 +168,7 @@ d68c54d60398049b69d3e3cdedc0be40ddfa0a1d assets/mattsmodulararmory/models/item/b
 05369d6ac4f1d4e12f8d28619e5451a4555f5e50 assets/mattsmodulararmory/models/item/blank_augment_addon.json
 d201b458d4441ce53538eac5866b4eb8ff46e260 assets/mattsmodulararmory/models/item/blank_range_addon.json
 1ac0f839caf848a284747de626aa8fa465c2e34e assets/mattsmodulararmory/models/item/blast_protection_augment.json
+a1910b743141b4b9de02f9e7caffd0efc0f877b2 assets/mattsmodulararmory/models/item/channeling_augment.json
 97950e3c8c24a18985782b54600836d84e280a08 assets/mattsmodulararmory/models/item/clay_extractor_augment_addon.json
 fa0d672145786a4abfdd4e43546c2204a7e9f37e assets/mattsmodulararmory/models/item/depth_strider_augment.json
 9650e51fef7bf509237dae4ae28cb7e43f438e5e assets/mattsmodulararmory/models/item/diamond_sharpened_augment.json

@@ -442,7 +442,8 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> INFINITY_AUGMENT = ITEMS.register("infinity_augment", () -> new AugmentGeneric(new Item.Properties(), "infinity_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(1, 1, 1, 1), 0x8f36db));
 
     // Javelin
-    public static final DeferredHolder<Item, Item> RIPTIDE_AUGMENT = ITEMS.register("riptide_augment", () -> new AugmentGeneric(new Item.Properties(), "riptide_augment", AugmentGeneric.Types.JAVELIN, List.of(2, 3, 4, 5), 0xd3ebea));
+    public static final DeferredHolder<Item, Item> CHANNELING_AUGMENT = ITEMS.register("channeling_augment", () -> new AugmentGeneric(new Item.Properties(), "channeling_augment", AugmentGeneric.Types.RANGED_AND_THROWN_WEAPONS, List.of(0, 1, 1, 1), 0xf2ff00, List.of("riptide_augment")));
+    public static final DeferredHolder<Item, Item> RIPTIDE_AUGMENT = ITEMS.register("riptide_augment", () -> new AugmentGeneric(new Item.Properties(), "riptide_augment", AugmentGeneric.Types.JAVELIN, List.of(2, 3, 4, 5), 0xd3ebea, List.of("channeling_augment")));
 
     // Armor
     public static final DeferredHolder<Item, Item> PROTECTION_AUGMENT = ITEMS.register("protection_augment", () -> new AugmentGeneric(new Item.Properties(), "protection_augment", AugmentGeneric.Types.ARMOR, List.of(1, 3, 5, 7), 0xd8d8d8, List.of("blast_protection_augment", "projectile_protection_augment", "fire_protection_augment")));

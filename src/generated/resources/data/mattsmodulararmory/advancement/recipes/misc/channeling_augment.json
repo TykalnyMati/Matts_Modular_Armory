@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_channeling_augment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:advanced_modular_plate"
+          },
+          {
+            "items": "minecraft:prismarine_shard"
+          },
+          {
+            "items": "minecraft:lightning_rod"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:channeling_augment"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_channeling_augment"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:channeling_augment"
+    ]
+  }
+}

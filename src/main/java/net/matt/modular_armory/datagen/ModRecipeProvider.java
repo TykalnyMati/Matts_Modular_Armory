@@ -882,6 +882,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.EXPERIENCE_BOTTLE))
                 .save(pRecipeOutput);
 
+        // Channeling Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CHANNELING_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.PRISMARINE_SHARD)
+                .define('C', Blocks.LIGHTNING_ROD)
+                .unlockedBy("has_items_for_channeling_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.PRISMARINE_SHARD,
+                        Blocks.LIGHTNING_ROD))
+                .save(pRecipeOutput);
+
         // Riptide Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.RIPTIDE_AUGMENT.get())
                 .pattern("BCB")

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    "B": {
+      "item": "minecraft:prismarine_shard"
+    },
+    "C": {
+      "item": "minecraft:lightning_rod"
+    }
+  },
+  "pattern": [
+    "BCB",
+    "CAC",
+    "BCB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:channeling_augment"
+  }
+}

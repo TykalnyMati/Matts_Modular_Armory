@@ -124,6 +124,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ADAPTIVE_FLESH_BOW.get())
                 .add(ModItems.BIORITE_BOW.get());
 
+        tag(ModTags.Items.MODULAR_THROWN_WEAPON)
+                .add(ModItems.MODULAR_CLAY_JAVELIN.get())
+                .add(ModItems.ADVANCED_MODULAR_CLAY_JAVELIN.get())
+                .add(ModItems.ADAPTIVE_FLESH_JAVELIN.get())
+                .add(ModItems.BIORITE_JAVELIN.get());
+
         tag(ModTags.Items.MODULAR_SWORD)
                 .add(ModItems.MODULAR_CLAY_SWORD.get())
                 .add(ModItems.ADVANCED_MODULAR_CLAY_SWORD.get())
@@ -254,6 +260,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.FLAME_AUGMENT.get())
                 .add(ModItems.INFINITY_AUGMENT.get())
 
+                .add(ModItems.CHANNELING_AUGMENT.get())
                 .add(ModItems.RIPTIDE_AUGMENT.get())
 
                 .add(ModItems.PROTECTION_AUGMENT.get())

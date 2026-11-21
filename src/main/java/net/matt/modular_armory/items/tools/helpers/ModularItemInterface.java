@@ -202,6 +202,11 @@ public interface ModularItemInterface {
                     .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.RIPTIDE));
         }
 
+        if (bonuses.CHANNELING) {
+            enchantmentRegistry.get(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "channeling")))
+                    .ifPresent(holder -> mutableEnchantments.set(holder, 1));
+        }
+
         // Armor
         if (bonuses.PROTECTION > 0) {
             enchantmentRegistry.get(Enchantments.PROTECTION)

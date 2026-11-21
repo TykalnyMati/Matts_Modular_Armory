@@ -101,6 +101,11 @@ public class AugmentTableBlockEntity extends BlockEntity implements MenuProvider
                 slotSize = augmentItem.augmentLevels.get(tier);
             }
 
+            // Thrown Weapon Augments
+            if (modularItemStack.is(ModTags.Items.MODULAR_THROWN_WEAPON) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_THROWN_WEAPON)) {
+                slotSize = augmentItem.augmentLevels.get(tier);
+            }
+
             // Javelin Augments
             if (modularItemStack.is(ModTags.Items.MODULAR_JAVELIN) && augmentItem.augmentTypes.contains(ModTags.Items.MODULAR_JAVELIN)) {
                 slotSize = augmentItem.augmentLevels.get(tier);

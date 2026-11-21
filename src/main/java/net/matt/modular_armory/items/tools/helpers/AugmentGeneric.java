@@ -57,6 +57,10 @@ public class AugmentGeneric extends Item {
             }
             case Types.ARMOR -> this.augmentTypes.add(ModTags.Items.MODULAR_ARMOR);
             case Types.RANGED_WEAPONS -> this.augmentTypes.add(ModTags.Items.MODULAR_RANGED_WEAPON);
+            case Types.RANGED_AND_THROWN_WEAPONS -> {
+                this.augmentTypes.add(ModTags.Items.MODULAR_RANGED_WEAPON);
+                this.augmentTypes.add(ModTags.Items.MODULAR_THROWN_WEAPON);
+            }
 
             case Types.ARMOR_HEAD -> this.augmentTypes.add(ModTags.Items.MODULAR_HELMET);
             case Types.ARMOR_CHEST -> this.augmentTypes.add(ModTags.Items.MODULAR_CHESTPLATE);
@@ -146,6 +150,7 @@ public class AugmentGeneric extends Item {
         ARMOR,
 
         RANGED_WEAPONS,
+        RANGED_AND_THROWN_WEAPONS,
 
         SWORD,
         JAVELIN,
