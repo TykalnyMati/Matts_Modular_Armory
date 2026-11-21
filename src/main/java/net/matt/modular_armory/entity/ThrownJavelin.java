@@ -1,6 +1,8 @@
 package net.matt.modular_armory.entity;
 
 import net.matt.modular_armory.items.ModItems;
+import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -11,6 +13,7 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -128,11 +131,14 @@ public class ThrownJavelin extends AbstractArrow {
     protected void onHitEntity(EntityHitResult result) {
         Entity target = result.getEntity();
         float damage = this.baseDamage;
+        ItemStack weaponStack = this.getWeaponItem();
         Entity owner = this.getOwner();
+        // This doesn't apply enchantments that require is_direct = true
+        // e.g. fire aspect
         DamageSource damageSource = this.damageSources().trident(this, owner == null ? this : owner);
 
         if (this.level() instanceof ServerLevel serverLevel) {
-            damage = EnchantmentHelper.modifyDamage(serverLevel, this.getWeaponItem(), target, damageSource, damage);
+            damage = EnchantmentHelper.modifyDamage(serverLevel, weaponStack, target, damageSource, damage);
         }
 
         this.dealtDamage = true;
@@ -142,12 +148,23 @@ public class ThrownJavelin extends AbstractArrow {
             }
 
             if (this.level() instanceof ServerLevel serverLevel) {
-                EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, target, damageSource, this.getWeaponItem());
+                // Changes the damage source so that it will apply effects that require is_direct = true
+                DamageSource damageEffectSource = new DamageSource(
+                        this.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.TRIDENT),
+                        owner == null ? this : owner,
+                        owner == null ? this : owner
+                );
+
+                EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, target, damageEffectSource, weaponStack);
             }
 
             if (target instanceof LivingEntity livingTarget) {
                 this.doKnockback(livingTarget, damageSource);
                 this.doPostHurtEffects(livingTarget);
+
+                if (owner instanceof LivingEntity livingOwner && weaponStack.getItem() instanceof ModularItemInterface modularItem) {
+                    modularItem.postWeaponHurtEnemy(weaponStack, livingTarget, livingOwner);
+                }
             }
         }
 
