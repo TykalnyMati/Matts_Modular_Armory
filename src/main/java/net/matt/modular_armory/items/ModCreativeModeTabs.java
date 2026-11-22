@@ -160,6 +160,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.INFINITY_AUGMENT.get());
 
                         // Javelin
+                        output.accept(ModItems.LOYALTY_AUGMENT.get());
                         output.accept(ModItems.CHANNELING_AUGMENT.get());
                         output.accept(ModItems.RIPTIDE_AUGMENT.get());
 

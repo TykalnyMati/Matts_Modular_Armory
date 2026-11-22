@@ -197,14 +197,19 @@ public interface ModularItemInterface {
         }
 
         // Javelin
-        if (bonuses.RIPTIDE > 0) {
-            enchantmentRegistry.get(Enchantments.RIPTIDE)
-                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.RIPTIDE));
+        if (bonuses.LOYALTY > 0) {
+            enchantmentRegistry.get(Enchantments.LOYALTY)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.LOYALTY));
         }
 
         if (bonuses.CHANNELING) {
             enchantmentRegistry.get(ResourceKey.create(Registries.ENCHANTMENT, ResourceLocation.fromNamespaceAndPath(MattsModularArmory.MOD_ID, "channeling")))
                     .ifPresent(holder -> mutableEnchantments.set(holder, 1));
+        }
+
+        if (bonuses.RIPTIDE > 0) {
+            enchantmentRegistry.get(Enchantments.RIPTIDE)
+                    .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.RIPTIDE));
         }
 
         // Armor

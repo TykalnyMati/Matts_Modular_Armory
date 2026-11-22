@@ -882,6 +882,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.EXPERIENCE_BOTTLE))
                 .save(pRecipeOutput);
 
+        // Loyalty Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.LOYALTY_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("CAC")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.PRISMARINE_SHARD)
+                .define('C', Items.LEAD)
+                .unlockedBy("has_items_for_loyalty_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.PRISMARINE_SHARD,
+                        Items.LEAD))
+                .save(pRecipeOutput);
+
         // Channeling Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CHANNELING_AUGMENT.get())
                 .pattern("BCB")

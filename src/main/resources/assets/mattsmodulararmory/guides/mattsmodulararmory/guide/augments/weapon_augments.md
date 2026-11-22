@@ -24,8 +24,9 @@ item_ids:
   - flame_augment
   - infinity_augment
   - rapid_fire_augment
-  - riptide_augment
+  - loyalty_augment
   - channeling_augment
+  - riptide_augment
 ---
 
 # Weapon Augments
@@ -166,14 +167,16 @@ Each arrow deals 75% of max damage, can't be critical and is shot slightly less 
 
 # <Color id="blue">Javelin Augments:</Color>
 
-# Riptide Augment:
-Launches the user when used in water or rain, replacing the javelin's ability to be thrown as a projectile
+# Loyalty Augment:
+Thrown Javelins return to the player, after they hit a block or an entity
 
-Throws the user (6 × level) + 3 blocks when in rain or standing in water, and (4 × level) + 3 blocks while underwater.
+They can still be lost to the void
 
-Incompatible with Loyalty and Channeling
+Level increases the return speed
 
-<Recipe id="riptide_augment" />
+Incompatible with Riptide
+
+<Recipe id="loyalty_augment" />
 
 # Channeling Augment:
 Summons lightning when a projectile hits an enemy or a lightning rod during thunder
@@ -183,3 +186,12 @@ Can also be applied to bows
 Incompatible with Riptide
 
 <Recipe id="channeling_augment" />
+
+# Riptide Augment:
+Launches the user when used in water or rain, replacing the javelin's ability to be thrown as a projectile
+
+Throws the user (6 × level) + 3 blocks when in rain or standing in water, and (4 × level) + 3 blocks while underwater.
+
+Incompatible with Loyalty and Channeling
+
+<Recipe id="riptide_augment" />

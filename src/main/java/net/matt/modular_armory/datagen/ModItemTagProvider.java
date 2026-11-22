@@ -260,6 +260,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.FLAME_AUGMENT.get())
                 .add(ModItems.INFINITY_AUGMENT.get())
 
+                .add(ModItems.LOYALTY_AUGMENT.get())
                 .add(ModItems.CHANNELING_AUGMENT.get())
                 .add(ModItems.RIPTIDE_AUGMENT.get())
 
