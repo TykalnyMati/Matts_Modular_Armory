@@ -156,6 +156,9 @@ public class ThrownJavelin extends AbstractArrow {
                 );
 
                 EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, target, damageEffectSource, weaponStack);
+
+                // Fix for channeling
+                EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, target, damageSource, weaponStack);
             }
 
             if (target instanceof LivingEntity livingTarget) {
