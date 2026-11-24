@@ -489,8 +489,8 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> LIFE_SENSE_AUGMENT = ITEMS.register("life_sense_augment", () -> new AugmentGeneric(new Item.Properties(), "life_sense_augment", AugmentGeneric.Types.WEAPONS, List.of(1, 2, 3, 4), 0xf9fbcb, AugmentGeneric.Incompatibilities.RIGHT_CLICK).incompatibleItemType(ModTags.Items.MODULAR_JAVELIN));
     public static final DeferredHolder<Item, Item> OVERDRIVE_AUGMENT = ITEMS.register("overdrive_augment", () -> new AugmentGeneric(new Item.Properties(), "overdrive_augment", AugmentGeneric.Types.WEAPONS, List.of(0, 1, 2, 3), 0xfcc500, AugmentGeneric.Incompatibilities.RIGHT_CLICK).incompatibleItemType(ModTags.Items.MODULAR_JAVELIN));
 
-    // Bow
-    public static final DeferredHolder<Item, Item> RAPID_FIRE_AUGMENT = ITEMS.register("rapid_fire_augment", () -> new AugmentGeneric(new Item.Properties(), "rapid_fire_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(0, 1, 1, 1), 0xcc2929));
+    // Ranged and Thrown Weapons
+    public static final DeferredHolder<Item, Item> RAPID_FIRE_AUGMENT = ITEMS.register("rapid_fire_augment", () -> new AugmentGeneric(new Item.Properties(), "rapid_fire_augment", AugmentGeneric.Types.RANGED_AND_THROWN_WEAPONS, List.of(0, 1, 1, 1), 0xcc2929));
 
     // Armor
     public static final DeferredHolder<Item, Item> VITALITY_AUGMENT = ITEMS.register("vitality_augment", () -> new AugmentGeneric(new Item.Properties(), "vitality_augment", AugmentGeneric.Types.ARMOR, List.of(0, 0, 1, 2), 0xff1313));

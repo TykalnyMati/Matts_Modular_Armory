@@ -157,12 +157,12 @@ Grants infinite standard arrows, but it requires at least 1 arrow
 
 <Recipe id="infinity_augment" />
 
+# <Color id="blue">Ranged and Thrown Weapon Augments:</Color>
+
 # Piercing Augment:
 Allows projectiles to pierce through entities
 
 Each level increases the maximum of pierced entities by 1
-
-Can also be applied to thrown weapons
 
 <Recipe id="piercing_augment" />
 

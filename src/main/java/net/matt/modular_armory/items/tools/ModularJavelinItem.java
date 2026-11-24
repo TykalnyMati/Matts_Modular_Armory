@@ -74,49 +74,59 @@ public class ModularJavelinItem extends TridentItem implements ModularItemInterf
     @Override
     public void releaseUsing(ItemStack stack, Level level, LivingEntity entityLiving, int timeLeft) {
         if (entityLiving instanceof Player player) {
+            AugmentObject bonuses = ModularItemInterface.getStaticAugmentBonuses(stack);
+            if (bonuses.RAPID_FIRE) {
+                return;
+            }
+
             int i = this.getUseDuration(stack, entityLiving) - timeLeft;
             if (i >= 10) {
-                float f = EnchantmentHelper.getTridentSpinAttackStrength(stack, player);
-                if ((!(f > 0.0F) || player.isInWaterOrRain()) && !isTooDamagedToUse(stack)) {
-                    Holder<SoundEvent> holder = (Holder)EnchantmentHelper.pickHighestLevel(stack, EnchantmentEffectComponents.TRIDENT_SOUND).orElse(SoundEvents.TRIDENT_THROW);
-                    if (!level.isClientSide) {
-                        stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(entityLiving.getUsedItemHand()));
-                        if (f == 0.0F) {
-                            ThrownJavelin thrownJavelin = new ThrownJavelin(level, player, stack, this.thrownDamage);
-                            thrownJavelin.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);
-                            if (player.hasInfiniteMaterials()) {
-                                thrownJavelin.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-                            }
+                throwJavelin(stack, level, entityLiving, player);
+            }
 
-                            level.addFreshEntity(thrownJavelin);
-                            level.playSound((Player)null, thrownJavelin, (SoundEvent)holder.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                            if (!player.hasInfiniteMaterials()) {
-                                player.getInventory().removeItem(stack);
-                            }
-                        }
+        }
+    }
+
+    private void throwJavelin(ItemStack stack, Level level, LivingEntity entityLiving, Player player) {
+        float f = EnchantmentHelper.getTridentSpinAttackStrength(stack, player);
+        if ((!(f > 0.0F) || player.isInWaterOrRain()) && !isTooDamagedToUse(stack)) {
+            Holder<SoundEvent> holder = (Holder)EnchantmentHelper.pickHighestLevel(stack, EnchantmentEffectComponents.TRIDENT_SOUND).orElse(SoundEvents.TRIDENT_THROW);
+            if (!level.isClientSide) {
+                stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(entityLiving.getUsedItemHand()));
+                if (f == 0.0F) {
+                    ThrownJavelin thrownJavelin = new ThrownJavelin(level, player, stack, this.thrownDamage);
+                    thrownJavelin.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 2.5F, 1.0F);
+                    if (player.hasInfiniteMaterials()) {
+                        thrownJavelin.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                     }
 
-                    player.awardStat(Stats.ITEM_USED.get(this));
-                    if (f > 0.0F) {
-                        float f7 = player.getYRot();
-                        float f1 = player.getXRot();
-                        float f2 = -Mth.sin(f7 * ((float)Math.PI / 180F)) * Mth.cos(f1 * ((float)Math.PI / 180F));
-                        float f3 = -Mth.sin(f1 * ((float)Math.PI / 180F));
-                        float f4 = Mth.cos(f7 * ((float)Math.PI / 180F)) * Mth.cos(f1 * ((float)Math.PI / 180F));
-                        float f5 = Mth.sqrt(f2 * f2 + f3 * f3 + f4 * f4);
-                        f2 *= f / f5;
-                        f3 *= f / f5;
-                        f4 *= f / f5;
-                        player.push((double)f2, (double)f3, (double)f4);
-                        player.startAutoSpinAttack(20, 8.0F, stack);
-                        if (player.onGround()) {
-                            float f6 = 1.1999999F;
-                            player.move(MoverType.SELF, new Vec3((double)0.0F, (double)1.1999999F, (double)0.0F));
-                        }
-
-                        level.playSound((Player)null, player, (SoundEvent)holder.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                    level.addFreshEntity(thrownJavelin);
+                    level.playSound((Player)null, thrownJavelin, (SoundEvent)holder.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                    if (!player.hasInfiniteMaterials()) {
+                        player.getInventory().removeItem(stack);
                     }
                 }
+            }
+
+            player.awardStat(Stats.ITEM_USED.get(this));
+            if (f > 0.0F) {
+                float f7 = player.getYRot();
+                float f1 = player.getXRot();
+                float f2 = -Mth.sin(f7 * ((float)Math.PI / 180F)) * Mth.cos(f1 * ((float)Math.PI / 180F));
+                float f3 = -Mth.sin(f1 * ((float)Math.PI / 180F));
+                float f4 = Mth.cos(f7 * ((float)Math.PI / 180F)) * Mth.cos(f1 * ((float)Math.PI / 180F));
+                float f5 = Mth.sqrt(f2 * f2 + f3 * f3 + f4 * f4);
+                f2 *= f / f5;
+                f3 *= f / f5;
+                f4 *= f / f5;
+                player.push((double)f2, (double)f3, (double)f4);
+                player.startAutoSpinAttack(20, 8.0F, stack);
+                if (player.onGround()) {
+                    float f6 = 1.1999999F;
+                    player.move(MoverType.SELF, new Vec3((double)0.0F, (double)1.1999999F, (double)0.0F));
+                }
+
+                level.playSound((Player)null, player, (SoundEvent)holder.value(), SoundSource.PLAYERS, 1.0F, 1.0F);
             }
         }
     }
@@ -128,6 +138,14 @@ public class ModularJavelinItem extends TridentItem implements ModularItemInterf
             return InteractionResultHolder.fail(itemstack);
         } else if (EnchantmentHelper.getTridentSpinAttackStrength(itemstack, player) > 0.0F && !player.isInWaterOrRain()) {
             return InteractionResultHolder.fail(itemstack);
+        }
+
+        // Throwing
+        ItemStack stack = player.getItemInHand(hand);
+        AugmentObject bonuses = ModularItemInterface.getStaticAugmentBonuses(stack);
+        if (bonuses.RAPID_FIRE) {
+            throwJavelin(stack, level, player, player);
+            return InteractionResultHolder.consume(itemstack);
         } else {
             player.startUsingItem(hand);
             return InteractionResultHolder.consume(itemstack);

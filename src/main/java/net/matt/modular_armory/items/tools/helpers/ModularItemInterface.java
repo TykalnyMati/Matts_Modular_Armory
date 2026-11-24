@@ -102,6 +102,12 @@ public interface ModularItemInterface {
         return Bonuses;
     }
 
+    // Used to reduce type casting
+    static AugmentObject getStaticAugmentBonuses(ItemStack stack) {
+        AugmentObject Bonuses = new AugmentObject(stack);
+        return Bonuses;
+    }
+
     default void applyVanillaEnchantments(ItemStack itemStack, Level level) {
         var enchantmentRegistry = level.registryAccess().lookupOrThrow(Registries.ENCHANTMENT);
         AugmentObject bonuses = getAugmentBonuses(itemStack);
