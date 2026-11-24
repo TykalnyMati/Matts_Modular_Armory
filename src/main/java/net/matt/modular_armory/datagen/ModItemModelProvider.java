@@ -154,6 +154,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.PUNCH_AUGMENT.get());
         basicItem(ModItems.FLAME_AUGMENT.get());
         basicItem(ModItems.INFINITY_AUGMENT.get());
+        basicItem(ModItems.PIERCING_AUGMENT.get());
 
         basicItem(ModItems.LOYALTY_AUGMENT.get());
         basicItem(ModItems.CHANNELING_AUGMENT.get());

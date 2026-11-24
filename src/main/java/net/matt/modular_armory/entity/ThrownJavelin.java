@@ -21,7 +21,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
@@ -30,6 +29,9 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.UUID;
 
 public class ThrownJavelin extends AbstractArrow {
     private static final EntityDataAccessor<Byte> ID_LOYALTY =
@@ -43,8 +45,8 @@ public class ThrownJavelin extends AbstractArrow {
     private boolean dealtDamage;
     public int clientSideReturnJavelinTickCount;
 
+    private final Set<UUID> hitEntityIds = new HashSet<>();
     private int maxEntitiesHit = 1;
-    private int entitiesHit = 0;
 
     public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level) {
         super(entityType, level);
@@ -136,6 +138,14 @@ public class ThrownJavelin extends AbstractArrow {
     }
 
     @Override
+    protected boolean canHitEntity(Entity entity) {
+        if (this.hitEntityIds.contains(entity.getUUID())) {
+            return false;
+        }
+        return super.canHitEntity(entity);
+    }
+
+    @Override
     protected void onHitEntity(EntityHitResult result) {
         Entity target = result.getEntity();
         float damage = this.baseDamage;
@@ -148,6 +158,8 @@ public class ThrownJavelin extends AbstractArrow {
         if (this.level() instanceof ServerLevel serverLevel) {
             damage = EnchantmentHelper.modifyDamage(serverLevel, weaponStack, target, damageSource, damage);
         }
+
+        this.hitEntityIds.add(target.getUUID());
 
         if (target.hurt(damageSource, damage)) {
             if (target.getType() == EntityType.ENDERMAN) {
@@ -166,8 +178,6 @@ public class ThrownJavelin extends AbstractArrow {
 
                 // Fix for channeling
                 EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, target, damageSource, weaponStack);
-
-                ++entitiesHit;
             }
 
             if (target instanceof LivingEntity livingTarget) {
@@ -181,7 +191,7 @@ public class ThrownJavelin extends AbstractArrow {
         }
         this.playSound(SoundEvents.TRIDENT_HIT, 1.0F, 1.0F);
 
-        if (entitiesHit >= maxEntitiesHit) {
+        if (hitEntityIds.size() >= maxEntitiesHit) {
             this.dealtDamage = true;
             this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01, -0.1, -0.01));
         }

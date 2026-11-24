@@ -1,4 +1,4 @@
-// 1.21.1	2026-11-22T18:25:12.9779825	Item Models: mattsmodulararmory
+// 1.21.1	2026-11-24T13:26:56.3194042	Item Models: mattsmodulararmory
 b57811b9bf913672a1c0e2db143a30c81b230354 assets/mattsmodulararmory/models/item/adaptive_flesh.json
 3c0d8bb992fb260ea961174c39dbfe7f1edc85ba assets/mattsmodulararmory/models/item/adaptive_flesh_axe.json
 3859b0b848aede32b00e43465e8dab694209b7fc assets/mattsmodulararmory/models/item/adaptive_flesh_boots.json
@@ -254,6 +254,7 @@ ff3167fa11add78d9cdc4944292c97518932081e assets/mattsmodulararmory/models/item/m
 c82f6ce3d83cbeac17106265d9054b5d2fedce4d assets/mattsmodulararmory/models/item/modular_processing_unit.json
 cbff0e5f943e595a8eddf7929d295fab76a08762 assets/mattsmodulararmory/models/item/overclock_augment.json
 416b2a18011ef78ec80158c0706a055fc61b7bf4 assets/mattsmodulararmory/models/item/overdrive_augment.json
+f464c0770db8b6b2dd858e74604b46eb4f9bdd42 assets/mattsmodulararmory/models/item/piercing_augment.json
 3a4ceb4b5ef2e6ee5aca32a711d03a02c274e0aa assets/mattsmodulararmory/models/item/poison_augment.json
 1a0c1414b7caf923ff86e84d70c18e7c958937b7 assets/mattsmodulararmory/models/item/power_augment.json
 bf756a0b979492a93468ea8df22a5794c62d4f26 assets/mattsmodulararmory/models/item/projectile_protection_augment.json
