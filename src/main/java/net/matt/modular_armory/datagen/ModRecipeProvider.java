@@ -882,6 +882,22 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.EXPERIENCE_BOTTLE))
                 .save(pRecipeOutput);
 
+        // Piercing Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PIERCING_AUGMENT.get())
+                .pattern("BCB")
+                .pattern("DAD")
+                .pattern("BCB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.FLINT)
+                .define('C', Blocks.POINTED_DRIPSTONE)
+                .define('D', Items.QUARTZ)
+                .unlockedBy("has_items_for_piercing_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.ADVANCED_MODULAR_PLATE.get(),
+                        Items.FLINT,
+                        Blocks.POINTED_DRIPSTONE,
+                        Items.QUARTZ))
+                .save(pRecipeOutput);
+
         // Loyalty Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.LOYALTY_AUGMENT.get())
                 .pattern("BCB")

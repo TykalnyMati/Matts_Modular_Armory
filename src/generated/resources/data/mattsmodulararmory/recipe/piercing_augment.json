@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "mattsmodulararmory:advanced_modular_plate"
+    },
+    "B": {
+      "item": "minecraft:flint"
+    },
+    "C": {
+      "item": "minecraft:pointed_dripstone"
+    },
+    "D": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "BCB",
+    "DAD",
+    "BCB"
+  ],
+  "result": {
+    "count": 1,
+    "id": "mattsmodulararmory:piercing_augment"
+  }
+}

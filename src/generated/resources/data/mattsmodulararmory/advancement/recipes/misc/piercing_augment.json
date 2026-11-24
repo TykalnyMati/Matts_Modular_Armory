@@ -1,0 +1,41 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_items_for_piercing_augment": {
+      "conditions": {
+        "items": [
+          {
+            "items": "mattsmodulararmory:advanced_modular_plate"
+          },
+          {
+            "items": "minecraft:flint"
+          },
+          {
+            "items": "minecraft:pointed_dripstone"
+          },
+          {
+            "items": "minecraft:quartz"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "mattsmodulararmory:piercing_augment"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_items_for_piercing_augment"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "mattsmodulararmory:piercing_augment"
+    ]
+  }
+}

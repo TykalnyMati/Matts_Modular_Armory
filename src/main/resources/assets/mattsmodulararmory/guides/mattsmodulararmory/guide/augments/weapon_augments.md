@@ -23,6 +23,7 @@ item_ids:
   - punch_augment
   - flame_augment
   - infinity_augment
+  - piercing_augment
   - rapid_fire_augment
   - loyalty_augment
   - channeling_augment
@@ -155,6 +156,15 @@ Sets fired arrows ablaze
 Grants infinite standard arrows, but it requires at least 1 arrow
 
 <Recipe id="infinity_augment" />
+
+# Piercing Augment:
+Allows projectiles to pierce through entities
+
+Each level increases the maximum of pierced entities by 1
+
+Can also be applied to thrown weapons
+
+<Recipe id="piercing_augment" />
 
 # Rapid Fire Augment:
 The weapon fires without drawing

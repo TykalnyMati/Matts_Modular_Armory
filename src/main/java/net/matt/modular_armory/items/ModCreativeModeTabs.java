@@ -159,6 +159,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.FLAME_AUGMENT.get());
                         output.accept(ModItems.INFINITY_AUGMENT.get());
 
+
+                        output.accept(ModItems.PIERCING_AUGMENT.get());
+
                         // Javelin
                         output.accept(ModItems.LOYALTY_AUGMENT.get());
                         output.accept(ModItems.CHANNELING_AUGMENT.get());

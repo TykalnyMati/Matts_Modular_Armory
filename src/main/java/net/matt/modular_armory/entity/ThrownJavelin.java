@@ -1,6 +1,7 @@
 package net.matt.modular_armory.entity;
 
 import net.matt.modular_armory.items.ModItems;
+import net.matt.modular_armory.items.tools.helpers.AugmentObject;
 import net.matt.modular_armory.items.tools.helpers.ModularItemInterface;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
@@ -42,7 +43,8 @@ public class ThrownJavelin extends AbstractArrow {
     private boolean dealtDamage;
     public int clientSideReturnJavelinTickCount;
 
-    private Item returnItem;
+    private int maxEntitiesHit = 1;
+    private int entitiesHit = 0;
 
     public ThrownJavelin(EntityType<? extends ThrownJavelin> entityType, Level level) {
         super(entityType, level);
@@ -54,6 +56,12 @@ public class ThrownJavelin extends AbstractArrow {
         this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(pickupItemStack));
         this.entityData.set(ID_FOIL, pickupItemStack.hasFoil());
         this.entityData.set(ID_ITEM_STACK, pickupItemStack.copy());
+
+        if (pickupItemStack.getItem() instanceof ModularItemInterface modularItem) {
+            AugmentObject bonuses = modularItem.getAugmentBonuses(pickupItemStack);
+            this.maxEntitiesHit = bonuses.PIERCING + 1;
+        }
+
     }
 
     // Unused for now
@@ -141,7 +149,6 @@ public class ThrownJavelin extends AbstractArrow {
             damage = EnchantmentHelper.modifyDamage(serverLevel, weaponStack, target, damageSource, damage);
         }
 
-        this.dealtDamage = true;
         if (target.hurt(damageSource, damage)) {
             if (target.getType() == EntityType.ENDERMAN) {
                 return;
@@ -159,6 +166,8 @@ public class ThrownJavelin extends AbstractArrow {
 
                 // Fix for channeling
                 EnchantmentHelper.doPostAttackEffectsWithItemSource(serverLevel, target, damageSource, weaponStack);
+
+                ++entitiesHit;
             }
 
             if (target instanceof LivingEntity livingTarget) {
@@ -170,9 +179,12 @@ public class ThrownJavelin extends AbstractArrow {
                 }
             }
         }
-
-        this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01, -0.1, -0.01));
         this.playSound(SoundEvents.TRIDENT_HIT, 1.0F, 1.0F);
+
+        if (entitiesHit >= maxEntitiesHit) {
+            this.dealtDamage = true;
+            this.setDeltaMovement(this.getDeltaMovement().multiply(-0.01, -0.1, -0.01));
+        }
     }
 
     @Override

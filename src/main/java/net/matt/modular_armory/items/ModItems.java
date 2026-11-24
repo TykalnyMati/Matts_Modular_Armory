@@ -440,6 +440,7 @@ public class ModItems {
     public static final DeferredHolder<Item, Item> PUNCH_AUGMENT = ITEMS.register("punch_augment", () -> new AugmentGeneric(new Item.Properties(), "punch_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(1, 1, 2, 3), 0xa5a5a5));
     public static final DeferredHolder<Item, Item> FLAME_AUGMENT = ITEMS.register("flame_augment", () -> new AugmentGeneric(new Item.Properties(), "flame_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(1, 1, 1, 1), 0xffcb00));
     public static final DeferredHolder<Item, Item> INFINITY_AUGMENT = ITEMS.register("infinity_augment", () -> new AugmentGeneric(new Item.Properties(), "infinity_augment", AugmentGeneric.Types.RANGED_WEAPONS, List.of(1, 1, 1, 1), 0x8f36db));
+    public static final DeferredHolder<Item, Item> PIERCING_AUGMENT = ITEMS.register("piercing_augment", () -> new AugmentGeneric(new Item.Properties(), "piercing_augment", AugmentGeneric.Types.RANGED_AND_THROWN_WEAPONS, List.of(2, 3, 4, 5), 0xffffff, List.of("riptide_augment")));
 
     // Javelin
     public static final DeferredHolder<Item, Item> LOYALTY_AUGMENT = ITEMS.register("loyalty_augment", () -> new AugmentGeneric(new Item.Properties(), "loyalty_augment", AugmentGeneric.Types.JAVELIN, List.of(1, 2, 3, 4), 0x589d8e, List.of("riptide_augment")));

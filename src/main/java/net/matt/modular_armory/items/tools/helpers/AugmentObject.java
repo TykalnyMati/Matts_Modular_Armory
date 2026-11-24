@@ -39,6 +39,8 @@ public class AugmentObject {
     public boolean FLAME;
     public boolean INFINITY;
 
+    public int PIERCING;
+
     public int LOYALTY;
     public boolean CHANNELING;
     public int RIPTIDE;
@@ -141,6 +143,8 @@ public class AugmentObject {
                     case "flame_augment" -> this.FLAME = true;
                     case "infinity_augment" -> this.INFINITY = true;
                     case "rapid_fire_augment" -> this.RAPID_FIRE = true;
+
+                    case "piercing_augment" -> this.PIERCING = augmentStack.getCount();
 
                     // Javelin
                     case "loyalty_augment" -> this.LOYALTY = augmentStack.getCount();

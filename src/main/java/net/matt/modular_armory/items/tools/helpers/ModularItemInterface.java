@@ -1,6 +1,7 @@
 package net.matt.modular_armory.items.tools.helpers;
 
 import net.matt.modular_armory.MattsModularArmory;
+import net.matt.modular_armory.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
@@ -194,6 +195,13 @@ public interface ModularItemInterface {
         if (bonuses.INFINITY) {
             enchantmentRegistry.get(Enchantments.INFINITY)
                     .ifPresent(holder -> mutableEnchantments.set(holder, 1));
+        }
+
+        if (!itemStack.is(ModTags.Items.MODULAR_JAVELIN)) {
+            if (bonuses.PIERCING > 0) {
+                enchantmentRegistry.get(Enchantments.PIERCING)
+                        .ifPresent(holder -> mutableEnchantments.set(holder, bonuses.PIERCING));
+            }
         }
 
         // Javelin
