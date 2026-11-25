@@ -79,6 +79,7 @@ public class AugmentObject {
     public int LIFE_SENSE;
     public int OVERDRIVE;
     public boolean RAPID_FIRE;
+    public boolean WATER_INERTIA;
     public int VITALITY;
     public boolean GILDED;
     public boolean SUPER_GILDED;
@@ -143,8 +144,8 @@ public class AugmentObject {
                     case "flame_augment" -> this.FLAME = true;
                     case "infinity_augment" -> this.INFINITY = true;
                     case "rapid_fire_augment" -> this.RAPID_FIRE = true;
-
                     case "piercing_augment" -> this.PIERCING = augmentStack.getCount();
+                    case "water_inertia_augment" -> this.WATER_INERTIA = true;
 
                     // Javelin
                     case "loyalty_augment" -> this.LOYALTY = augmentStack.getCount();

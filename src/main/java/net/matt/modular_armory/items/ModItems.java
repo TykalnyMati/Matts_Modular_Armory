@@ -492,6 +492,9 @@ public class ModItems {
     // Ranged and Thrown Weapons
     public static final DeferredHolder<Item, Item> RAPID_FIRE_AUGMENT = ITEMS.register("rapid_fire_augment", () -> new AugmentGeneric(new Item.Properties(), "rapid_fire_augment", AugmentGeneric.Types.RANGED_AND_THROWN_WEAPONS, List.of(0, 1, 1, 1), 0xcc2929));
 
+    // Javelin
+    public static final DeferredHolder<Item, Item> WATER_INERTIA_AUGMENT = ITEMS.register("water_inertia_augment", () -> new AugmentGeneric(new Item.Properties(), "water_inertia_augment", AugmentGeneric.Types.JAVELIN, List.of(1, 1, 1, 1), 0x0f6afd));
+
     // Armor
     public static final DeferredHolder<Item, Item> VITALITY_AUGMENT = ITEMS.register("vitality_augment", () -> new AugmentGeneric(new Item.Properties(), "vitality_augment", AugmentGeneric.Types.ARMOR, List.of(0, 0, 1, 2), 0xff1313));
     public static final DeferredHolder<Item, Item> GILDED_AUGMENT = ITEMS.register("gilded_augment", () -> new AugmentGeneric(new Item.Properties(), "gilded_augment", AugmentGeneric.Types.ARMOR, List.of(1, 1, 1, 1), 0xfdf55f, List.of("super_gilded_augment")));

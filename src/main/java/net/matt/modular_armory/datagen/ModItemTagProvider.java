@@ -299,6 +299,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.LIFE_SENSE_AUGMENT.get())
                 .add(ModItems.OVERDRIVE_AUGMENT.get())
                 .add(ModItems.RAPID_FIRE_AUGMENT.get())
+                .add(ModItems.WATER_INERTIA_AUGMENT.get())
                 .add(ModItems.VITALITY_AUGMENT.get())
                 .add(ModItems.GILDED_AUGMENT.get())
                 .add(ModItems.SUPER_GILDED_AUGMENT.get())

@@ -212,6 +212,9 @@ public class ModCreativeModeTabs {
                         // Bow
                         output.accept(ModItems.RAPID_FIRE_AUGMENT.get());
 
+                        // Javelin
+                        output.accept(ModItems.WATER_INERTIA_AUGMENT.get());
+
                         // Armor
                         output.accept(ModItems.VITALITY_AUGMENT.get());
                         output.accept(ModItems.GILDED_AUGMENT.get());

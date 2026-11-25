@@ -28,6 +28,7 @@ item_ids:
   - loyalty_augment
   - channeling_augment
   - riptide_augment
+  - water_inertia_augment
 ---
 
 # Weapon Augments
@@ -205,3 +206,8 @@ Throws the user (6 × level) + 3 blocks when in rain or standing in water, and (
 Incompatible with Loyalty and Channeling
 
 <Recipe id="riptide_augment" />
+
+# Water Inertia Augment:
+Projectiles don't slow down in water
+
+<Recipe id="water_inertia_augment" />

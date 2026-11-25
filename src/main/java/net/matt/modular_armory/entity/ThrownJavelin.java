@@ -41,6 +41,9 @@ public class ThrownJavelin extends AbstractArrow {
     private static final EntityDataAccessor<ItemStack> ID_ITEM_STACK =
             SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.ITEM_STACK);
 
+    private static final EntityDataAccessor<Boolean> ID_WATER_INERTIA =
+            SynchedEntityData.defineId(ThrownJavelin.class, EntityDataSerializers.BOOLEAN);
+
     private float baseDamage = 6.0F;
     private boolean dealtDamage;
     public int clientSideReturnJavelinTickCount;
@@ -61,7 +64,14 @@ public class ThrownJavelin extends AbstractArrow {
 
         if (pickupItemStack.getItem() instanceof ModularItemInterface modularItem) {
             AugmentObject bonuses = modularItem.getAugmentBonuses(pickupItemStack);
-            this.maxEntitiesHit = bonuses.PIERCING + 1;
+
+            if (bonuses.PIERCING > 0) {
+                this.maxEntitiesHit = bonuses.PIERCING + 1;
+            }
+
+            if (bonuses.WATER_INERTIA) {
+                this.entityData.set(ID_WATER_INERTIA, true);
+            }
         }
 
     }
@@ -79,6 +89,7 @@ public class ThrownJavelin extends AbstractArrow {
         builder.define(ID_LOYALTY, (byte) 0);
         builder.define(ID_FOIL, false);
         builder.define(ID_ITEM_STACK, new ItemStack(ModItems.MODULAR_CLAY_JAVELIN.get()));
+        builder.define(ID_WATER_INERTIA, false);
     }
 
     public ItemStack getSyncedItemStack() {
@@ -248,6 +259,10 @@ public class ThrownJavelin extends AbstractArrow {
         ItemStack origin = this.getPickupItemStackOrigin();
         this.entityData.set(ID_LOYALTY, this.getLoyaltyFromItem(origin));
         this.entityData.set(ID_ITEM_STACK, origin.copy());
+
+        if (origin.getItem() instanceof ModularItemInterface modularItem) {
+            this.entityData.set(ID_WATER_INERTIA, modularItem.getAugmentBonuses(origin).WATER_INERTIA);
+        }
     }
 
     @Override
@@ -278,7 +293,7 @@ public class ThrownJavelin extends AbstractArrow {
 
     @Override
     protected float getWaterInertia() {
-        return 0.6F;
+        return this.entityData.get(ID_WATER_INERTIA) ? 0.99F : 0.6F;
     }
 
     @Override

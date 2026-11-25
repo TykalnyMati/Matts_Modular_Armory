@@ -1342,6 +1342,20 @@ public class ModRecipeProvider extends RecipeProvider {
                         Items.NETHER_STAR))
                 .save(pRecipeOutput);
 
+        // Water Inertia Augment
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WATER_INERTIA_AUGMENT.get())
+                .pattern("BBC")
+                .pattern("BAB")
+                .pattern("CBB")
+                .define('A', ModItems.ADVANCED_MODULAR_PLATE.get())
+                .define('B', Items.PRISMARINE_SHARD)
+                .define('C', ItemTags.FISHES)
+                .unlockedBy("has_items_for_water_inertia_augment", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ItemPredicate.Builder.item().of(ModItems.ADVANCED_MODULAR_PLATE.get()),
+                        ItemPredicate.Builder.item().of(Items.PRISMARINE_SHARD),
+                        ItemPredicate.Builder.item().of(ItemTags.FISHES)))
+                .save(pRecipeOutput);
+
         // Vitality Augment
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VITALITY_AUGMENT.get())
                 .pattern("BCB")
